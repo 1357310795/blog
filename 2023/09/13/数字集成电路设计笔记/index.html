@@ -1,0 +1,819 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/doge.png">
+  <link rel="icon" href="/img/doge.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#e4ad97">
+  <meta name="description" content="">
+  <meta name="author" content="Teruteru">
+  <meta name="keywords" content="">
+  
+  <title>数字集成电路设计笔记 - Teruteru的Hexo博客</title>
+
+  <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myiconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"teru.space","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/76443599_p0-1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="数字集成电路设计笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-09-13 10:01" pubdate>
+        2023年9月13日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      44
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数字集成电路设计笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年10月7日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="第一章-引论"><a href="#第一章-引论" class="headerlink" title="第一章 引论"></a>第一章 引论</h2><h3 id="电压传输特性"><a href="#电压传输特性" class="headerlink" title="电压传输特性"></a>电压传输特性</h3><p>现在假设一个反相门电路的输入为逻辑变量 in，它产生输出变量 out。一个逻辑门的电路功能可以用它的电压传输特性（VTC，有时称为 DC 传输特性）得到最佳描述，它画出了输出电压与输入电压的关系 $V_{out}=f\left(V_{in}\right)$</p>
+<ul>
+<li>额定高电压 $V_{OH}$ 和额定低电压 $V_{OL}$<script type="math/tex; mode=display">
+V_{OH}=f\left(V_{O L}\right),V_{O L}=f\left(V_{O H}\right)</script></li>
+<li>门阈值电压或开关阈值电压 $V_{M}$<script type="math/tex; mode=display">
+V_{M}=f\left(V_{M}\right)</script></li>
+<li>VTC 增益<script type="math/tex; mode=display">
+gain = \frac{\mathrm{d} V_{out}}{\mathrm{d} V_{in}}</script></li>
+<li>可接受的高电压 $V_{IH}$ 和低电压 $V_{IL}$ 代表了 VTC 增益等于 -1 的点</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/09/15/Bz54HFQGZXjJ7cM.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="噪声容限"><a href="#噪声容限" class="headerlink" title="噪声容限"></a>噪声容限</h3><p>一个门对噪声的灵敏度是由低电平噪声容限 $N M_{L}$ 和高电平噪声容限 $N M_{H}$ 来度量的。它们分别量化了合法的“0”和“1”的范围，并确定了噪声的最大固定阈值：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+N M_{L}=V_{I L}-V_{O L} \\
+N M_{H}=V_{O H}-V_{I H}
+\end{array}</script><h3 id="再生性"><a href="#再生性" class="headerlink" title="再生性"></a>再生性</h3><p>再生性保证一个受干扰的信号在通过若干逻辑级后逐渐收敛回到额定电平中的一个。</p>
+<p><img src="https://s2.loli.net/2023/09/15/4eUFyE9XBOjZwp6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="抗噪声能力"><a href="#抗噪声能力" class="headerlink" title="抗噪声能力"></a>抗噪声能力</h3><p>（Todo）</p>
+<h3 id="扇入和扇出"><a href="#扇入和扇出" class="headerlink" title="扇入和扇出"></a>扇入和扇出</h3><ul>
+<li><strong>扇出</strong>表示连接到驱动门输出端的负载门的数目 N。<ul>
+<li>增加一个门的扇出会影响它的逻辑输出电平。通过使负载门的输入电阻尽可能地大（也就是使输入电流最小）并保持驱动门的输出电阻较小（即减小负载电流对输出电压的影响），可以使这一影响减到最小。</li>
+<li>当扇出较大时，所加的负载会使驱动门的动态性能变差。为此许多通用单元和库单元都定义了一个<strong>最大扇出数</strong>来保证该单元的静态和动态性能都能满足规定的技术要求。</li>
+</ul>
+</li>
+<li><strong>扇入</strong>定义为该门输入的数目。扇入较大的门往往比较复杂，这常常会使静态和动态特性变差。</li>
+</ul>
+<h3 id="传播延时"><a href="#传播延时" class="headerlink" title="传播延时"></a>传播延时</h3><p>一个门的<strong>传播延时</strong> $t_{p}$ 定义了它对输入端信号变化的响应有多快。它表示一个信号通过一个门时所经历的延时，定义为输入和输出波形的 $50\%$ 翻转点之间的时间。由于一个门对上升和下降输入波形的响应时间不同，所以需要定义两个传播延时。$t_{p L H}$ 定义为这个门的输出由低至高（或正向）翻转的响应时问，而 $t_{p H L}$ 则为输出由高至低（或负向）翻转的响应时间。传播延时 $t_{p}$ 定义为这两个时间的平均值：</p>
+<script type="math/tex; mode=display">
+t_{p}=\frac{t_{p L H}+t_{p H L}}{2}</script><p><img src="https://s2.loli.net/2023/09/15/JlyHD24wg9xQoRZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>对于 RC 电路</p>
+<ul>
+<li>充电：$V_{out}(t)=V_{dd}(1-e^{-t/\tau})$</li>
+<li>放电：$V_{out}(t)=V_{dd}e^{-t/\tau}$</li>
+</ul>
+<h3 id="功耗与能耗"><a href="#功耗与能耗" class="headerlink" title="功耗与能耗"></a>功耗与能耗</h3><ul>
+<li>功耗可以进一步划分成静态部分和动态部分。<ul>
+<li>动态功耗只发生在门开关的瞬间。这是由于对电容充电以及在电源和地之间有一暂时的电流通路造成的，因此它正比于开关频率</li>
+<li>静态功耗即使在没有发生开关时也存在，并且是由在电源和地之间的静态导电通路或由于漏电流引起的</li>
+</ul>
+</li>
+<li>一个门的传播延时和功耗有关，能量的传送越快（或者说功耗越大）则门越快。<ul>
+<li>对于给定的工艺和门的拓扑结构,功耗和延时的乘积一般为一常数。这一乘积称为<strong>功耗-延时积</strong>（PDP），它可以作为一个开关器件质量的度量。</li>
+</ul>
+</li>
+<li>一个理想的门应当快速且几乎不消耗能量，<strong>能量-延时积</strong>（E-D）是把这两个因素放在一起考虑的复合标准，它经常作为最后的质量评价。</li>
+</ul>
+<h2 id="第二章-制造工艺"><a href="#第二章-制造工艺" class="headerlink" title="第二章 制造工艺"></a>第二章 制造工艺</h2><p>（Todo）</p>
+<h2 id="第三章-器件"><a href="#第三章-器件" class="headerlink" title="第三章 器件"></a>第三章 器件</h2><h3 id="MOSFET-电容模型"><a href="#MOSFET-电容模型" class="headerlink" title="MOSFET 电容模型"></a>MOSFET 电容模型</h3><p><img src="https://s2.loli.net/2023/09/22/sMiYqQnIP1kcmEb.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>覆盖电容 $C_{overlap}=C_{GSO}+C_{GDO}$</li>
+<li>栅至沟道的电容 $C_{GC}=C_{GCB}+C_{GCS}+C_{GCD}$</li>
+<li><p>扩散电容 $C_{diff}=C_{Sdiff}+C_{Ddiff}$</p>
+</li>
+<li><p>$C_{GS}=C_{GSO}+C_{GCS}$</p>
+</li>
+<li>$C_{GD}=C_{GDO}+C_{GCD}$</li>
+<li>$C_{GB}=C_{GCB}$</li>
+<li>$C_{SB}=C_{Sdiff}$</li>
+<li><p>$C_{DB}=C_{Ddiff}$</p>
+</li>
+<li><p>$C_{G}=C_{GC}+C_{overlap}$</p>
+</li>
+</ul>
+<h4 id="术语介绍"><a href="#术语介绍" class="headerlink" title="术语介绍"></a>术语介绍</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>英文名</th>
+<th>中文名</th>
+<th>解释</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Overlap cap</td>
+<td>覆盖电容</td>
+<td>源和漏在氧化层下延展的横向扩散引起的栅和源漏间的寄生电容</td>
+</tr>
+<tr>
+<td>Channel capacitances</td>
+<td>沟道电容</td>
+<td>栅至沟道的电容，包含栅至源、栅至漏、栅至体的电容，是MOS最重要的寄生电路部分</td>
+</tr>
+<tr>
+<td>Junction/diffusion capacitances</td>
+<td>结电容/扩散电容</td>
+<td>反向偏置的源体、漏体间的pn结引起的电容</td>
+</tr>
+<tr>
+<td>Bottom-plate cap</td>
+<td>底板电容</td>
+<td>扩散区底板的pn结电容，由源/漏（掺杂为 $N_{D}$）和衬底（掺杂为 $N_{A}$）形成</td>
+</tr>
+<tr>
+<td>Side-well cap</td>
+<td>侧壁电容</td>
+<td>扩散区侧壁的pn结电容，由源/漏（掺杂为 $N_{D}$）和掺杂为浓度为$N_{A}^{+}$ 的 $p+$ 沟道阻挡层注入形成</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="覆盖电容"><a href="#覆盖电容" class="headerlink" title="覆盖电容"></a>覆盖电容</h4><p><img src="https://s2.loli.net/2023/09/22/Ci4tyahmXAZGFeE.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+C_{GSO}=C_{GDO}=C_{ox}x_{d}W</script><h4 id="栅电容"><a href="#栅电容" class="headerlink" title="栅电容"></a>栅电容</h4><script type="math/tex; mode=display">
+\begin{array}{|c|c|c|c|c|c|}
+\hline \text { 工作区 } & C_{G C B} & C_{G C S} & C_{G C D} & C_{G C}=C_{G C B}+C_{G C S}+C_{G C D} & C_{G}=C_{G C}+C_{\text {overlap }} \\
+\hline \text { 截止 } & C_{o x} W L & 0 & 0 & C_{o x} W L & C_{o x} W L+2 C_{o} W \\
+\hline \text { 线性 } & 0 & C_{o x} W L / 2 & C_{o x} W L / 2 & C_{o x} W L & C_{o x} W L+2 C_{o} W \\
+\hline \text { 饱和 } & 0 & (2 / 3) C_{o x} W L & 0 & (2 / 3) C_{o x} W L & (2 / 3) C_{o x} W L+2 C_{o} W \\
+\hline
+\end{array}</script><h4 id="扩散电容"><a href="#扩散电容" class="headerlink" title="扩散电容"></a>扩散电容</h4><script type="math/tex; mode=display">
+C_{SB}=C_{Sdiff}=AS*C_{jbs}+PS*C_{jbssw}+W*C_{jbsswg}</script><script type="math/tex; mode=display">
+\begin{array}{l}
+A S=L_{S} * W \\
+P S=\left(2 L_{S}+W\right)+W \\
+C_{j b s}=C_{J}\left(1+\frac{V_{S b}}{\psi_{0}}\right)^{-M_{J}} \\
+C_{j b s s w}=C_{J S W}\left(1+\frac{V_{S b}}{\psi_{0}}\right)^{-M_{J S W}} \\
+C_{j b s s wg}=C_{J S W}\left(1+\frac{V_{S b}}{\psi_{0}}\right)^{-M_{J S WG}} \\
+\psi_{0}=\frac{k T}{q} \ln \left(\frac{N_{D} N_{A}}{n_{i}^{2}}\right)
+\end{array}</script><p>其中</p>
+<ul>
+<li>$C_{SB}$ 是源区结电容</li>
+<li>$C_{jbs}$ 是单元区域衬底至源区底部结电容</li>
+<li>$C_{J}$ 是单元区域零偏压电容</li>
+<li>$C_{jbssw}$ 是单位周长衬底至源区侧壁结电容</li>
+<li>$C_{JSW}$ 是单位周长零偏压侧壁结电容</li>
+<li>$C_{jbsswg}$ 是单位周长衬底至源区栅边侧壁结电容</li>
+<li>$C_{JSWG}$ 是单位周长零偏压栅边侧壁结电容</li>
+<li>$AS$ 是源区底部面积</li>
+<li>$PS$ 是源区侧壁周长</li>
+<li>$\Phi_0$ 是内建电势</li>
+<li>$V_{sb}$ 是源和衬底间的电势</li>
+<li>$M_{J},M_{JSW},M_{JSWG}$ 是结缓变系数</li>
+</ul>
+<h3 id="阈值压降"><a href="#阈值压降" class="headerlink" title="阈值压降"></a>阈值压降</h3><p><img src="https://s2.loli.net/2023/10/01/dmtF5e9ClKAjnLT.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>NMOS Transistors pass a “strong” 0 but a “weak” 1</li>
+<li>PMOS Transistors pass a “strong” 1 but a “weak” 0</li>
+<li>NMOS 不能被完全上拉，可以被完全下拉</li>
+<li>PMOS 不能被完全下拉，可以被完全上拉</li>
+</ul>
+<h3 id="体偏效应"><a href="#体偏效应" class="headerlink" title="体偏效应"></a>体偏效应</h3><script type="math/tex; mode=display">
+V_{T}=V_{T 0}+\gamma\left(\sqrt{\left|-2 \phi_{F}+V_{S B}\right|}-\sqrt{\left|2 \phi_{F}\right|}\right)</script><p>其中体效应系数</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\gamma_{N M O S}=\frac{t_{o x}}{\varepsilon_{O x}} \sqrt{2 q \varepsilon_{S i} N_{A}}=\frac{\sqrt{2 q \varepsilon_{S i} N_{A}}}{C_{O x}} \\
+\gamma_{P M O S}=-\frac{t_{O x}}{\varepsilon_{O x}} \sqrt{2 q \varepsilon_{S i} N_{D}}=-\frac{\sqrt{2 q \varepsilon_{S i} N_{D}}}{C_{O x}} \\
+\end{array}</script><p>费米电势</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\phi_{F_{-} N M O S}=\frac{k T}{q} \ln \frac{n_{i}}{N_{A}} \\
+\phi_{F_{-} P M O S}=\frac{k T}{q} \ln \frac{N_{D}}{n_{i}}
+\end{array}</script><ul>
+<li>对于NMOS<ul>
+<li>正体偏，$V_{BS}&gt;0$，$V_T$ 减小</li>
+<li>负体偏，$V_{BS}&lt;0$，$V_T$ 增大</li>
+</ul>
+</li>
+<li>对于PMOS<ul>
+<li>正体偏，$V_{BS}&gt;0$，$V_T$ 增大</li>
+<li>负体偏，$V_{BS}&lt;0$，$V_T$ 减小</li>
+</ul>
+</li>
+</ul>
+<h2 id="第五章-反相器"><a href="#第五章-反相器" class="headerlink" title="第五章 反相器"></a>第五章 反相器</h2><p><img src="https://s2.loli.net/2023/10/01/ItnLUAiNCTq9bpZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="人工分析的统一模型"><a href="#人工分析的统一模型" class="headerlink" title="人工分析的统一模型"></a>人工分析的统一模型</h3><p><img src="https://s2.loli.net/2023/10/01/Mqd6bRawKzSW9mr.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+I_{D}=0 \text { for } V_{G T} \leq 0 \\
+I_{D}=k^{\prime} \frac{W}{L}\left(V_{G T} V_{\text {min }}-\frac{V_{m i n}^{2}}{2}\right)\left(1+\lambda V_{D S}\right) \text { for } V_{G T} \geq 0 \\
+\text { with } V_{\text {min }}=\min \left(V_{G T}, V_{D S}, V_{D S A T}\right), \\
+V_{G T}=V_{G S}-V_{T}, \\
+\text { and } V_{T}=V_{T 0}+\gamma\left(\sqrt{\left|-2 \phi_{F}+V_{S B}\right|}-\sqrt{\left|-2 \phi_{F}\right|}\right)
+\end{array}</script><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>$V_{T0}$</th>
+<th>$\gamma$</th>
+<th>$V_{Dsat}$</th>
+<th>$k’$</th>
+<th>$\lambda$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NMOS</td>
+<td>0.43</td>
+<td>0.4</td>
+<td>0.63</td>
+<td>115e-6</td>
+<td>0.06</td>
+</tr>
+<tr>
+<td>NMOS</td>
+<td>-0.4</td>
+<td>-0.4</td>
+<td>-1</td>
+<td>-30e-6</td>
+<td>-0.1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="静态CMOS反相器特性"><a href="#静态CMOS反相器特性" class="headerlink" title="静态CMOS反相器特性"></a>静态CMOS反相器特性</h3><ul>
+<li>输出高电平和低电平分别为 $V_{dd}$ 和 $GND$。换言之，电压摆幅等于电源电压。因此噪声容限很大。</li>
+<li>逻辑电平与器件的<strong>相对尺寸无关</strong>，所以晶体管可以采用最小尺寸。具有这一特点的门称为<strong>无比逻辑</strong>。它不同于有比逻辑，在有比逻辑中逻辑电平是由组成逻辑的晶体管的相对尺寸来决定的。</li>
+<li>稳态时在输出和 $V_{dd}$ 或 $GND$ 之间总存在一条具有有限电阻的通路。因此一个设计良好的 CMOS 反相器具有低输出阻抗，这使它对噪声和干扰不敏感。输出电阻的典型值在 $k\Omega$ 的范围内。</li>
+<li>CMOS反相器的<strong>输入电阻极高</strong>，因为一个MOS管的栅实际上是-个完全的绝缘体，因此不取任何dc（直流）输入电流。由于反相器的输入节点只连到晶体管的栅上，所以<strong>稳态输入电流几乎为零</strong>。</li>
+<li>理论上，单个反相器可以驱动无穷多个门（或者说具有<strong>无穷大的扇出</strong>）而仍能正确工作，但我们很快会看到增加扇出也会增加传播延时。尽管扇出不会对稳态特性有任何影响，但它使<strong>瞬态响应变差</strong>。</li>
+<li>在稳态工作情况下电源线和地线之间没有直接的通路（即此时输入和输出保持不变）。没有电流存在（忽略漏电流）意味着该门并<strong>不消耗任何静态功率</strong>。</li>
+</ul>
+<h3 id="VTC（电压传输特性）"><a href="#VTC（电压传输特性）" class="headerlink" title="VTC（电压传输特性）"></a>VTC（电压传输特性）</h3><p>电压传输特性（VTC）的性质和形状可以通过图解法迭加 $NMOS$ 和 $PMOS$ 器件的电流特性来得到。这样的一个图形结构通常称为负载曲线图。它要求把 $NMOS$ 和 $PMOS$ 器件的 $I-V$ 曲线转换到一组公共坐标上。我们以输入电压 $V_{i \pi}$、输出电压 $V_{\mathrm{out}}$ 和 $NMOS$ 漏电流 $I_{D N}$ 作为选择的变量，于是 $PMOS$ 的 $I-V$ 关系就可以通过以下关系转换到这一变量空间中（下标 $n$ 和 $p$ 分别表示 $NMOS$ 和 $PMOS$ 器件）：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+I_{D S p}=-I_{D S n} \\
+V_{G S n}=V_{i n} \quad V_{G S p}=V_{i n}-V_{D D} \\
+V_{D S n}=V_{O u t} \quad V_{D S p}=V_{o u t}-V_{D D}
+\end{array}</script><p><img src="https://s2.loli.net/2023/10/01/8vgrup2dNqTJQWE.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>理想CMOS反相器的VTC：<br><img src="https://s2.loli.net/2023/10/01/W8n17lDZiTkIEUe.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>区域</th>
+<th>条件</th>
+<th>PMOS</th>
+<th>NMOS</th>
+<th>输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>$[0,V_{Tn}]$</td>
+<td>线性</td>
+<td>截止</td>
+<td>$V_{DD}$</td>
+</tr>
+<tr>
+<td>B</td>
+<td>$[V_{Tn},V_{DD}/2]$</td>
+<td>线性</td>
+<td>饱和</td>
+<td>$&gt;V_{DD}/2$</td>
+</tr>
+<tr>
+<td>C</td>
+<td>$V_{DD}/2$</td>
+<td>饱和</td>
+<td>饱和</td>
+<td>$X$</td>
+</tr>
+<tr>
+<td>D</td>
+<td>$[V_{DD}/2,V_{DD}-\mid V_{Tp}\mid]$</td>
+<td>饱和</td>
+<td>线性</td>
+<td>$&lt;V_{DD}/2$</td>
+</tr>
+<tr>
+<td>E</td>
+<td>$[V_{DD}-\mid V_{Tp}\mid,V_{DD}]$</td>
+<td>截止</td>
+<td>线性</td>
+<td>$0$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="阈值电压"><a href="#阈值电压" class="headerlink" title="阈值电压"></a>阈值电压</h3><p>开关阈值 $V_{M}$ 定义为 $V_{in}=V_{out}$ 的点，其值可以用图解法由 VTC 与直线 $V_{in}=V_{out}$ 的交点求得。在这一区域由于 $V_{DS}=V_{GS}$，PMOS 和 NMOS 总是饱和的。使通过两个晶体管的电流相等就可以得到 $V_{M}$ 的解析表达式。我们求解的情形是电源电压足够高，所以这两个器件可以被假设为都处于速度饱和（即 $V_{D S A T}&lt;V_{M}-V_{T}$）。同时我们忽略沟长调制效应，于是有：</p>
+<script type="math/tex; mode=display">
+k_{n} V_{D S A T n}\left(V_{M}-V_{T n}-\frac{V_{D S A T n}}{2}\right)+k_{p} V_{D S A T P}\left(V_{M}-V_{D D}-V_{T p}-\frac{V_{D S A T p}}{2}\right)=0</script><p>求解 $V_{M}$ 得到：</p>
+<script type="math/tex; mode=display">
+V_{M}=\frac{\left(V_{T n}+\frac{V_{D S A T n}}{2}\right)+\gamma\left(V_{D D}+V_{T p}+\frac{V_{D S A T p}}{2}\right)}{1+\gamma}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\gamma=\frac{k_p V_{Dsat_p}}{k_n V_{Dsat_n}}=\frac{k_p^{\prime} V_{Dsat_p}}{k_n^{\prime} V_{Dsat_n}}N</script><ul>
+<li>为了让 $V_{M}$ 接近 $V_{DD}$，$\gamma$ 应该在 3~4 之间</li>
+</ul>
+<h3 id="增益"><a href="#增益" class="headerlink" title="增益"></a>增益</h3><script type="math/tex; mode=display">
+\begin{aligned}
+g & =\left.\frac{\mathrm{d} V_{out}}{\mathrm{d} V_{in}}\right|_{V_{in}=V_{M}} \\
+& =-\frac{1}{I_{D}\left(V_{M}\right)} \frac{k_{n} V_{DSATn}\left(1+\lambda_{n} V_{out}\right)+k_{p} V_{DSATp}\left(1+\lambda_{p} V_{out}-\lambda_{p} V_{D D}\right)}{\left(\lambda_{n}-\lambda_{p}\right)} \\
+& \approx-\frac{1+\gamma}{\left(V_{M}-V_{T n}-V_{D S A T n} / 2\right)\left(\lambda_{n}-\lambda_{p}\right)}
+\end{aligned}</script><p>若</p>
+<ul>
+<li>尺寸比增大</li>
+<li>$V_{DD}$ 减小</li>
+</ul>
+<p>则增益增大</p>
+<h3 id="噪声容限-1"><a href="#噪声容限-1" class="headerlink" title="噪声容限"></a>噪声容限</h3><script type="math/tex; mode=display">
+\begin{array}{l}
+V_{I H}=V_{M}-\frac{V_{M}}{g}\\
+V_{I L}=V_{M}+\frac{V_{D D}-V_{M}}{g} \\
+N M_{H}=V_{D D}-V_{I H}\\
+N M_{L}=V_{I L}
+\end{array}</script><p>注意 $g$ 是负数</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">大学学习生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E7%94%B5%E8%B7%AF/">电路</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/09/13/%E6%A8%A1%E6%8B%9F%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">模拟集成电路设计笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', '1357310795/Blog-Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.12.3/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/anchor-js/4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.8/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

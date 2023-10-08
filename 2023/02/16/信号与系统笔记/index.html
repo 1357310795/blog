@@ -1,0 +1,2053 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/doge.png">
+  <link rel="icon" href="/img/doge.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#e4ad97">
+  <meta name="description" content="">
+  <meta name="author" content="Teruteru">
+  <meta name="keywords" content="">
+  
+  <title>信号与系统笔记 - Teruteru的Hexo博客</title>
+
+  <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myiconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"teru.space","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/76443599_p0-1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="信号与系统笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-02-16 08:04" pubdate>
+        2023年2月16日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      5.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      83
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">信号与系统笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年10月7日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="置顶"><a href="#置顶" class="headerlink" title="置顶"></a>置顶</h2><h3 id="复数相关"><a href="#复数相关" class="headerlink" title="复数相关"></a>复数相关</h3><h4 id="形式转换"><a href="#形式转换" class="headerlink" title="形式转换"></a>形式转换</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+z=a+bj\\
+z=r(\cos\theta+j\sin\theta)\\
+z=re^{j\theta}
+\end{array}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+a=r\cos\theta,\ b=r\sin\theta\\
+r=|a^2+b^2|,\ \theta=\arctan\frac{b}{a}\\
+\end{array}</script><p>一些性质</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+e^{j\omega}+e^{-j\omega}=2\cos\omega,\ e^{j\omega}-e^{-j\omega}=2j\sin\omega
+\end{array}</script><h2 id="第一章-信号的函数表示方法与系统分析方法"><a href="#第一章-信号的函数表示方法与系统分析方法" class="headerlink" title="第一章 信号的函数表示方法与系统分析方法"></a>第一章 信号的函数表示方法与系统分析方法</h2><h3 id="信号的描述"><a href="#信号的描述" class="headerlink" title="信号的描述"></a>信号的描述</h3><ul>
+<li>函数式</li>
+<li>波形</li>
+</ul>
+<h3 id="信号的分类"><a href="#信号的分类" class="headerlink" title="信号的分类"></a>信号的分类</h3><h4 id="随机信号与确定性信号"><a href="#随机信号与确定性信号" class="headerlink" title="随机信号与确定性信号"></a>随机信号与确定性信号</h4><ul>
+<li>随机信号：不能给出确切的时间函数，只可能知道它取某一数值的概率。因此也只能用概率方法加以描述。如均值、方差、相关函数等。</li>
+<li>确定性信号：信号被表示为一确定的时间函数。对于指定的某一时刻，可确定一相应的函数值。</li>
+</ul>
+<h4 id="周期信号与非周期信号"><a href="#周期信号与非周期信号" class="headerlink" title="周期信号与非周期信号"></a>周期信号与非周期信号</h4><h4 id="连续时间信号与离散时间信号"><a href="#连续时间信号与离散时间信号" class="headerlink" title="连续时间信号与离散时间信号"></a>连续时间信号与离散时间信号</h4><ul>
+<li><strong>连续信号</strong>是在连续的时间 $t$ 内定义的函数 $f(t)$，它允许存在有限个不连续点，在这些点上，函数值发生跳变，而在不连续点以外的其他时间 $t$，函数值均是确定的。<ul>
+<li>对于时间 $t$ 和函数值 $f(t)$ 都为连续的信号称为<strong>模拟信号</strong>。</li>
+<li>如果时间 $t$ 连续，但函数值 $f(t)$ 离散（只取某些规定值），则称为<strong>量化信号</strong>。</li>
+</ul>
+</li>
+<li><strong>离散信号</strong>是在时间上是离散的，只在某些不连续的规定瞬时 $t_{k}(k=0$，$\pm 1$，$\pm 2$，$\cdots)$ 给出函数值，在其他时间没有定义的信号。$t_{k}$ 与 $t_{k+1}$ 之间的间隔 $T_{k}=t_{k+1}-t_{k}$ 可以是相等的，也可以是不等的。我们一般只讨论 $T_{k}$ 等于常数的情况。若令 $T_{k}=T$，$T$ 为常数，则离散信号只是在 $t=n T(n$ 称为离散时刻序号，$n=0$，$\pm 1$，$\pm 2$，$\cdots)$ 时才有定义，它可以表示为 $f(n T)$，简记为 $f(n)$。<ul>
+<li>如果离散信号的函数值是连续的，则称为<strong>抽样信号</strong>或<strong>取样信号</strong>。</li>
+<li>若其幅值被限定为某些离散值，即时间与函数值均为离散，这种信号称为<strong>数字信号</strong>。</li>
+</ul>
+</li>
+</ul>
+<h4 id="信号的能量和功率"><a href="#信号的能量和功率" class="headerlink" title="信号的能量和功率"></a>信号的能量和功率</h4><p>若信号 $f(t)$ 在单位电阻上的瞬时功率为 $|f(t)|^{2}$，在 $(-\infty,\infty)$ 区间的<strong>信号能量</strong> $E$ 定义为</p>
+<script type="math/tex; mode=display">
+E=\lim _{T \rightarrow \infty} \int_{-T}^{T}|f(t)|^{2} \mathrm{~d} t</script><p>而<strong>信号功率</strong> $P$ 定义为在 $(-\infty,\infty)$ 区间信号 $f(t)$ 的平均功率，即</p>
+<script type="math/tex; mode=display">
+P=\lim _{T \rightarrow \infty} \frac{1}{T} \int_{-T / 2}^{T / 2}|f(t)|^{2} \mathrm{~d} t</script><p>上两式中，被积函数都是 $f(t)$ 的绝对值平方，所以信号能量 $E$ 和信号功率 $P$ 都是非负实数。</p>
+<p>对于离散信号 $f(n)$，按照类似方法也可以分为能量信号和功率信号，其信号能量定义为</p>
+<script type="math/tex; mode=display">
+E=\lim _{N \rightarrow \infty} \sum_{n=-N}^{N}|f(n)|^{2}=\sum_{n=-\infty}^{\infty}|f(n)|^{2}</script><h4 id="能量有限信号与功率有限信号"><a href="#能量有限信号与功率有限信号" class="headerlink" title="能量有限信号与功率有限信号"></a>能量有限信号与功率有限信号</h4><p>若信号 $f(t)$ 的能量 $0&lt;E&lt;\infty$，此时 $P=0$，则称此信号为<strong>能量有限信号</strong>，简称<strong>能量信号</strong>。<br>若信号 $f(t)$ 的功率 $0&lt;P&lt;\infty$，此时 $E \rightarrow \infty$，则称此信号为<strong>功率有限信号</strong>，简称<strong>功率信号</strong>。</p>
+<h4 id="实信号与复信号"><a href="#实信号与复信号" class="headerlink" title="实信号与复信号"></a>实信号与复信号</h4><ul>
+<li>若信号函数在各时刻取值是实数，则称此信号为<strong>实信号</strong>，如 $f(t)=A \sin \omega_{0} t$，$f(n)=2^{n}$ 等。</li>
+<li>如若信号函数在各时刻取值是复数，则称此信号为<strong>复信号</strong>，如 $f(t)=k \mathrm{e}^{-\mathrm{j} \omega t}$</li>
+</ul>
+<h3 id="常用信号"><a href="#常用信号" class="headerlink" title="常用信号"></a>常用信号</h3><h4 id="指数信号"><a href="#指数信号" class="headerlink" title="指数信号"></a>指数信号</h4><script type="math/tex; mode=display">
+f(t)=k e^{\alpha t}</script><p>$\tau=\frac{1}{|\alpha|}$ 称为时间常数。</p>
+<h5 id="单边指数信号"><a href="#单边指数信号" class="headerlink" title="单边指数信号"></a>单边指数信号</h5><script type="math/tex; mode=display">
+f(t)=\left\{\begin{array}{ll}
+e^{-\frac{t}{\tau}} & t \geq 0 \\
+0 & t<0
+\end{array}\right.</script><h4 id="正弦信号"><a href="#正弦信号" class="headerlink" title="正弦信号"></a>正弦信号</h4><script type="math/tex; mode=display">
+x(t)=A_{0} \sin (\omega t+\theta)</script><p>$A_{0}$ 是振幅，$\omega$ 是角频率，$\theta$ 是初相，$T=\frac{2 \pi}{\omega}=\frac{1}{f}$</p>
+<h4 id="复指数信号"><a href="#复指数信号" class="headerlink" title="复指数信号"></a>复指数信号</h4><script type="math/tex; mode=display">
+\begin{aligned}
+x(t)&=K e^{s t} \quad (s=\sigma+j \omega) \\
+&=K e^{\sigma t} \cdot e^{j \omega t} \\
+&=K e^{\sigma t}(\cos \omega t+j \sin \omega t) 
+\end{aligned}</script><script type="math/tex; mode=display">
+\left\{\begin{array}{lll}
+\mathrm{i.} \sigma \neq 0,\omega=0,& =K e^{\sigma t} & \mathrm{指数信号} \\
+\mathrm{ii.} \sigma=0,\omega \neq 0,& =K(\cos \omega t+j \sin \omega t) & \mathrm{正弦信号} \\
+\mathrm{ii.} \sigma=0,\omega=0,& =K & \mathrm{直流信号} \\
+\mathrm{iv.} \sigma \neq 0,\omega \neq 0,& =K e^{\sigma t}(\cos \omega t+j \sin \omega t) &
+\end{array}\right.</script><ul>
+<li>$\sigma<0$ 为衰减的振荡信号，$\sigma>0$ 为增强的振荡信号</li>
+<li>利用复指数信号可以描述常见的普通信号，如直流信号、指数信号、正弦信号等</li>
+</ul>
+<h4 id="抽样信号"><a href="#抽样信号" class="headerlink" title="抽样信号"></a>抽样信号</h4><script type="math/tex; mode=display">
+x(t)=S a(t)=\frac{\sin t}{t}</script><p>还有个类似的</p>
+<script type="math/tex; mode=display">
+\operatorname{sinc}(t)=\frac{\sin \pi t}{\pi t}</script><ul>
+<li>实偶函数 $S a(t)=S a(-t)$</li>
+<li>衰减函数</li>
+<li>零点在 $\pm k \pi$ 处，$k$ 是自然数</li>
+<li>最大值 $S a(0)=1$</li>
+<li><script type="math/tex; mode=display">
+\int_{0}^{\infty} S a\left(\omega_{0} t\right) \mathrm{d} t=\frac{\pi}{2} \cdot \frac{1}{\omega_{0}}</script></li>
+</ul>
+<h4 id="单位阶跃信号"><a href="#单位阶跃信号" class="headerlink" title="单位阶跃信号"></a>单位阶跃信号</h4><script type="math/tex; mode=display">
+u(t)=\left\{\begin{array}{ll}
+1, & t>0 \\
+0, & t<0
+\end{array}\right.</script><p>其中 $u(0)=\frac{1}{2}$ 或不定义</p>
+<h5 id="延时单位阶跃信号"><a href="#延时单位阶跃信号" class="headerlink" title="延时单位阶跃信号"></a>延时单位阶跃信号</h5><script type="math/tex; mode=display">
+u\left(t-t_{0}\right)=\left\{\begin{array}{ll}
+1, & t>t_{0} \\
+0, & t<t_{0}
+\end{array}\right.</script><h4 id="单位冲激信号"><a href="#单位冲激信号" class="headerlink" title="单位冲激信号"></a>单位冲激信号</h4><script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty} \delta(t) \mathrm{d} t=1 ,\quad \delta(t)=0(t \neq 0)</script><p>或者</p>
+<script type="math/tex; mode=display">
+\delta(t)=\lim _{\tau \rightarrow 0} \frac{1}{\tau}\left[u\left(t+\frac{\tau}{2}\right)-u\left(t-\frac{\tau}{2}\right)\right]</script><ul>
+<li>抽样性质<script type="math/tex; mode=display">
+x(t) \cdot \delta\left(t-t_{1}\right)=x\left(t_{1}\right) \cdot \delta\left(t-t_{1}\right)</script><script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty} x(\tau) \delta(t-\tau) d \tau=x(t)</script></li>
+<li>比例特性<script type="math/tex; mode=display">
+\delta(a t)=\frac{1}{|a|} \delta(t)</script></li>
+<li>积分特性<script type="math/tex; mode=display">
+\int_{-\infty}^{t} k \delta(\tau) \mathrm{d} \tau=\left\{\begin{array}{ll}
+k,& t>0 \\
+0,& t<0
+\end{array}=k u(t)\right.</script></li>
+<li>微分特性<script type="math/tex; mode=display">
+\frac{\mathrm{d} u(t)}{\mathrm{d} t}=\delta(t)</script></li>
+<li>卷积特性<script type="math/tex; mode=display">
+\begin{array}{l}
+x(t) * \delta(t)=x(t)=\int_{-\infty}^{+\infty} x(\tau) \delta(t-\tau) d \tau \\
+x(t) * \delta\left(t-t_{0}\right)=x\left(t-t_{0}\right)
+\end{array}</script></li>
+</ul>
+<h4 id="冲激偶函数"><a href="#冲激偶函数" class="headerlink" title="冲激偶函数"></a>冲激偶函数</h4><p>冲激偶函数 $\delta^{\prime}(t)$ 是由正反两个冲激信号组成的。这两个信号同时存在，但永远不能被抵消。</p>
+<ul>
+<li><script type="math/tex; mode=display">
+\delta^{\prime}(t)=\frac{\mathrm{d} \delta(t)}{\mathrm{d}t}</script></li>
+<li><script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty} \delta^{\prime}(t) \mathrm{d}t=0</script></li>
+<li><script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty} \delta^{\prime}(t) f(t) \mathrm{d}t=-f^{\prime}(0)</script></li>
+</ul>
+<h4 id="复合函数形式的冲激函数"><a href="#复合函数形式的冲激函数" class="headerlink" title="复合函数形式的冲激函数"></a>复合函数形式的冲激函数</h4><ul>
+<li>若 $f(t)=0$ 有 $n$ 个互异单根 $t_{i}$，则 <script type="math/tex; mode=display">
+\delta[f(t)]=\sum_{i=1}^{n} \frac{1}{\left|f^{\prime}\left(t_{i}\right)\right|} \delta\left(t-t_{i}\right)</script></li>
+<li>若 $f(t)=0$ 有重根，则 $\delta[f(t)]$ 无意义。</li>
+</ul>
+<h4 id="单位阶跃序列"><a href="#单位阶跃序列" class="headerlink" title="单位阶跃序列"></a>单位阶跃序列</h4><p>与连续时域中的单位阶跃信号 $\varepsilon(t)$ 相对应的单位阶跃序列 $u(n)$，其定义为</p>
+<script type="math/tex; mode=display">
+u(n)=\left\{\begin{array}{ll}
+1,& n \geqslant 0 \\
+0,& n<0
+\end{array}\right.</script><p>应当注意单位阶跃序列 $u(n)$ 和单位阶跃信号 $\varepsilon(t)$ 的区别，$\varepsilon(t)$ 在 $t=0$ 处发生跳变，往往不予定义，而 $u(n)$ 在 $n=0$ 处定义为 $1$。</p>
+<h4 id="单位样值信号（单位脉冲）"><a href="#单位样值信号（单位脉冲）" class="headerlink" title="单位样值信号（单位脉冲）"></a>单位样值信号（单位脉冲）</h4><p>与连续时域中的单位冲激函数 $\delta(t)$ 相对应的单位样值序列 $\delta(n)$，其定义为</p>
+<script type="math/tex; mode=display">
+\delta(n)=\left\{\begin{array}{lc}
+1,& n=0 \\
+0,& \mathrm{其他}
+\end{array}\right.</script><p>$\delta(n)$ 有时也称为单位冲激序列或单位脉冲序列。应当指出，单位冲激函数 $\delta(t)$ 可理解为 $t=0$ 处脉宽趋于零幅度无限大的信号，而单位样值序列 $\delta(n)$ 在 $n=0$ 处为有限值，等于 $1$。</p>
+<h5 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h5><ul>
+<li>时移性：$\delta(n-j)=\left\{\begin{array}{l}0,n \neq j \\ 1,n=j\end{array}\right.$</li>
+<li>比例性：$c \delta(n),c \delta(n-j)$</li>
+<li>抽样性：$f(n) \delta(n)=f(0) \delta(n)$</li>
+<li>用单位样值信号表示任意离散时间序列：<script type="math/tex; mode=display">
+f(n)=\sum_{m=-\infty}^{\infty} f(m) \delta(n-m)</script></li>
+<li>$u(n)$ 可以用单位样值信号表示：<script type="math/tex; mode=display">
+\begin{aligned}
+u(n) & =\delta(n)+\delta(n-1)+\delta(n-2)+\delta(n-3)+\cdots \\
+& =\sum_{k=0}^{\infty} \delta(n-k)
+\end{aligned}</script></li>
+</ul>
+<h4 id="矩形序列"><a href="#矩形序列" class="headerlink" title="矩形序列"></a>矩形序列</h4><script type="math/tex; mode=display">
+\begin{aligned}
+R_{N}(n) & =\left\{\begin{array}{ll}
+1 & 0 \leq n \leq N-1 \\
+0 & n<0,n \geq N
+\end{array}\right. \\
+& =u(n)-u(n-N)
+\end{aligned}</script><h4 id="实指数序列"><a href="#实指数序列" class="headerlink" title="实指数序列"></a>实指数序列</h4><script type="math/tex; mode=display">
+x(n)=C \alpha^{n}</script><p>其中 $C, \alpha$ 均为实数</p>
+<ul>
+<li>当 $\alpha&gt;1$ 时，呈单调指数增长</li>
+<li>当 $0&lt;\alpha&lt;1$ 时，呈单调指数衰减</li>
+<li>当 $-1&lt;\alpha&lt;0$ 时，呈摆动指数衰减</li>
+<li>当 $\alpha&lt;-1$ 时，呈摆动指数增长</li>
+</ul>
+<h4 id="正弦序列"><a href="#正弦序列" class="headerlink" title="正弦序列"></a>正弦序列</h4><script type="math/tex; mode=display">
+x(n)=\sin(n\omega_0)</script><p>其中 $\omega_0$ 是正弦序列的频率，表示两个离散值之间的弧度变化量</p>
+<h4 id="模拟角频率与数字角频率"><a href="#模拟角频率与数字角频率" class="headerlink" title="模拟角频率与数字角频率"></a>模拟角频率与数字角频率</h4><p>略</p>
+<h4 id="复指数序列"><a href="#复指数序列" class="headerlink" title="复指数序列"></a>复指数序列</h4><p>略</p>
+<p>离散时间复指数序列 $x(n)=e^{j \omega_{0} n}$ 不一定是周期性的，要具有周期性，必须满足</p>
+<script type="math/tex; mode=display">
+\frac{\omega_{0}}{2 \pi}=\frac{m}{N}</script><p>其中 $N,m$ 是正整数，$N$ 即是周期。</p>
+<h4 id="连续指数信号与离散指数信号对比"><a href="#连续指数信号与离散指数信号对比" class="headerlink" title="连续指数信号与离散指数信号对比"></a>连续指数信号与离散指数信号对比</h4><h3 id="连续时间信号的基本运算"><a href="#连续时间信号的基本运算" class="headerlink" title="连续时间信号的基本运算"></a>连续时间信号的基本运算</h3><h4 id="加法"><a href="#加法" class="headerlink" title="加法"></a>加法</h4><script type="math/tex; mode=display">
+f_{1}(t)+f_{2}(t)</script><h4 id="乘法"><a href="#乘法" class="headerlink" title="乘法"></a>乘法</h4><script type="math/tex; mode=display">
+f_{1}(t) \cdot f_{2}(t)</script><h4 id="平移"><a href="#平移" class="headerlink" title="平移"></a>平移</h4><script type="math/tex; mode=display">
+f(t) \rightarrow f\left(t-t_{0}\right)</script><h4 id="反转"><a href="#反转" class="headerlink" title="反转"></a>反转</h4><script type="math/tex; mode=display">
+f(t) \rightarrow f(-t)</script><h4 id="尺度变换"><a href="#尺度变换" class="headerlink" title="尺度变换"></a>尺度变换</h4><script type="math/tex; mode=display">
+f(t) \rightarrow f(a t)</script><h4 id="积分"><a href="#积分" class="headerlink" title="积分"></a>积分</h4><script type="math/tex; mode=display">
+f^{\prime}(t)=\frac{\mathrm{d} f(t)}{\mathrm{d} t}</script><h4 id="微分"><a href="#微分" class="headerlink" title="微分"></a>微分</h4><script type="math/tex; mode=display">
+\int_{-\infty}^{t} f(\tau) \mathrm{d} \tau</script><h3 id="离散信号的运算"><a href="#离散信号的运算" class="headerlink" title="离散信号的运算"></a>离散信号的运算</h3><h4 id="相加"><a href="#相加" class="headerlink" title="相加"></a>相加</h4><script type="math/tex; mode=display">
+z(n)=x(n)+y(n)</script><h4 id="相乘"><a href="#相乘" class="headerlink" title="相乘"></a>相乘</h4><script type="math/tex; mode=display">
+z(n)=x(n) \cdot y(n)</script><h4 id="移位"><a href="#移位" class="headerlink" title="移位"></a>移位</h4><script type="math/tex; mode=display">
+\begin{array}{l}
+z(n)=x(n-m) \\
+z(n)=x(n+m) \\
+\end{array}</script><h4 id="倒置"><a href="#倒置" class="headerlink" title="倒置"></a>倒置</h4><script type="math/tex; mode=display">
+z(n)=x(-n)</script><h4 id="差分"><a href="#差分" class="headerlink" title="差分"></a>差分</h4><ul>
+<li>前向差分<script type="math/tex; mode=display">
+\Delta x(n)=x(n+1)-x(n)</script></li>
+<li>后向差分<script type="math/tex; mode=display">
+\nabla x(n)=x(n)-x(n-1)</script></li>
+</ul>
+<h4 id="累加"><a href="#累加" class="headerlink" title="累加"></a>累加</h4><script type="math/tex; mode=display">
+z(n)=\sum_{k=-\infty}^{\mathrm{n}} x(k)</script><h4 id="重排（压缩、扩展）"><a href="#重排（压缩、扩展）" class="headerlink" title="重排（压缩、扩展）"></a>重排（压缩、扩展）</h4><script type="math/tex; mode=display">
+\begin{array}{l}
+x(n) \rightarrow x(a n)\\
+x(n) \rightarrow x\left(\frac{n}{a}\right) 
+\end{array}</script><h3 id="信号分解"><a href="#信号分解" class="headerlink" title="信号分解"></a>信号分解</h3><h4 id="直流分量与交流分量"><a href="#直流分量与交流分量" class="headerlink" title="直流分量与交流分量"></a>直流分量与交流分量</h4><p>一连续信号 $f(t)$ 可以分解为直流分量 $f_{\mathrm{d}}(t)$ 与交流分量 $f_{\mathrm{a}}(t)$ 之和，即</p>
+<script type="math/tex; mode=display">
+f(t)=f_{\mathrm{d}}(t)+f_{\mathrm{a}}(t)</script><p>信号<strong>直流分量</strong> $f_{\mathrm{d}}(t)$ 即信号平均值，例如对于周期信号</p>
+<script type="math/tex; mode=display">
+f_{\mathrm{d}}(t)=\frac{1}{T}\int_t^{t+T} f(\tau)\mathrm{d}\tau</script><p>从原信号中减去直流分量即得到信号的<strong>交流分量</strong> $f_{\mathrm{a}}(t)$，即</p>
+<script type="math/tex; mode=display">
+f_{\mathrm{a}}(t) = f(t) - f_{\mathrm{d}}(t)</script><h4 id="偶分量与奇分量"><a href="#偶分量与奇分量" class="headerlink" title="偶分量与奇分量"></a>偶分量与奇分量</h4><p><strong>偶信号</strong> $f_{\mathrm{e}}(t)$ 满足</p>
+<script type="math/tex; mode=display">
+f_{\mathrm{e}}(t)=f_{\mathrm{e}}(-t)</script><p>而<strong>奇信号</strong> $f_{\mathrm{o}}(t)$ 满足</p>
+<script type="math/tex; mode=display">
+f_{\mathrm{o}}(t)=-f_{\mathrm{o}}(-t)</script><p>任一信号均可以分解为偶分量与奇分量之和，即</p>
+<script type="math/tex; mode=display">
+f(t)=f_{\mathrm{e}}(t)+f_{\mathrm{o}}(t)</script><p>式中 $f_{\mathrm{e}}(t)$ 为偶分量，可表示为</p>
+<script type="math/tex; mode=display">
+f_{\mathrm{e}}(t)=\frac{1}{2}[f(t)+f(-t)]</script><p>$f_{\mathrm{o}}(t)$ 为奇分量，可写成</p>
+<script type="math/tex; mode=display">
+f_{\mathrm{o}}(t)=\frac{1}{2}[f(t)-f(-t)]</script><h4 id="脉冲分量分解"><a href="#脉冲分量分解" class="headerlink" title="脉冲分量分解"></a>脉冲分量分解</h4><p>任一连续信号 $f(t)$ 可分解为许多矩形脉冲的叠加</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f(t) & =\lim _{\Delta \tau \rightarrow 0} \sum_{k=-\infty}^{\infty} f(k \Delta \tau)[u(t-k \Delta \tau)-u(t-k \Delta \tau-\Delta \tau)] \\
+& =\lim _{\Delta \tau \rightarrow 0} \sum_{k=-\infty}^{\infty} f(k \Delta \tau) \delta(t-k \Delta \tau) \Delta \tau \\
+& =\int_{-\infty}^{\infty} f(\tau) \delta(t-\tau) \mathrm{d} \tau
+\end{aligned}</script><h3 id="系统分类"><a href="#系统分类" class="headerlink" title="系统分类"></a>系统分类</h3><ul>
+<li>连续时间系统：输入信号与输出响应都是连续时间信号的系统。</li>
+<li>离散时间系统：输入信号与输出响应都是离散时间信号的系统。</li>
+</ul>
+<h3 id="系统的基本性质"><a href="#系统的基本性质" class="headerlink" title="系统的基本性质"></a>系统的基本性质</h3><h4 id="因果性"><a href="#因果性" class="headerlink" title="因果性"></a>因果性</h4><ul>
+<li>若一个系统在任何时刻的输出都只与当时这个时刻的输入以及该时刻以前的输入有关，而和该时刻以后的输入无关就称该系统是因果的否则是非因果的。</li>
+<li>一般说来，非因果系统是物理不可实现的。但因果性并不一定成为系统能否物理实现的先决条件。</li>
+<li>常把 $t=0$ 接入系统的信号（在 $t&lt;0$ 时函数值为 $0$）称为因果信号。</li>
+<li>对于因果系统，在因果信号的激励下，响应也为因果信号。</li>
+<li>只在 $n\ge 0$ 有非零值的序列称为因果序列（右边序列）</li>
+<li>只在 $n&lt; 0$ 有非零值的序列称为反因果序列（左边序列）</li>
+<li>左右都有非零值的序列称为非因果序列（双边序列）</li>
+</ul>
+<h4 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h4><ul>
+<li>如果一个系统当输入有界时，产生的输出也是有界的，则该系统是稳定系统；否则，就是不稳定系统。</li>
+</ul>
+<script type="math/tex; mode=display">
+|x(t)|<A,|y(t)|<+\infty</script><h4 id="时不变性"><a href="#时不变性" class="headerlink" title="时不变性"></a>时不变性</h4><ul>
+<li>如果一个系统当输入信号有一个时移时，输出响应也产生同样的时移。除此之外，输出响应无任何其它变化，则称该系统是时不变的；否则就是时变的。<script type="math/tex; mode=display">
+x(t)\rightarrow y(t), x(t-t_0)\rightarrow y(t-t_0)</script></li>
+</ul>
+<h4 id="线性"><a href="#线性" class="headerlink" title="线性"></a>线性</h4><p>满足下面关系的系统是线性的。</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+x_{1}(t) \rightarrow y_{1}(t) \quad x_{2}(t) \rightarrow y_{2}(t)\\
+a x_{1}(t)+b x_{2}(t) \rightarrow a y_{1}(t)+b y_{2}(t) 
+\end{array}</script><p>其中 $a,b$ 是常数（包括复数）</p>
+<h3 id="增量线性系统"><a href="#增量线性系统" class="headerlink" title="增量线性系统"></a>增量线性系统</h3><ul>
+<li>在工程实际中，有一类系统并不满足线性系统的要求。但是这类系统的输出响应的增量与输入信号的增量之间满足线性特性。这类系统称为增量线性系统</li>
+<li>任何增量线性系统都可以等效为一个线性系统再加上一部分与输入无关的响应。</li>
+<li>当增量线性系统的 $y_{0}(t)=0$ 时，$y(t)=y_{1}(t)$。此时系统的输出响应完全由 $y_{1}(t)$ 决定。此时系统处于零初始状态，故将 $y_{1}(t)$ 称为系统的<strong>零状态响应</strong>。</li>
+<li>线性系统当输入为零时，系统的输出响应为零。</li>
+<li>增量线性系统当 $x(t)=0$ 时，有 $y_{1}(t)=0,y(t)=y_{0}(t)$，因此将 $y_{0}(t)$ 称为系统的<strong>零输入响应</strong>。</li>
+<li>增量线性系统的响应包括零输入响应和零状态响应两部分。</li>
+</ul>
+<h2 id="第二章-连续时间系统的时域分析"><a href="#第二章-连续时间系统的时域分析" class="headerlink" title="第二章 连续时间系统的时域分析"></a>第二章 连续时间系统的时域分析</h2><h3 id="微分方程的算子"><a href="#微分方程的算子" class="headerlink" title="微分方程的算子"></a>微分方程的算子</h3><p>用 $p$ 表示微分符号，用 $1/p$ 表示积分符号，于是有</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\frac{\mathrm{d} x(t)}{\mathrm{d} t}=p x(t),\quad \frac{\mathrm{d}^{n} x(t)}{\mathrm{d} t^{n}}=p^{n} x(t) \\
+\int_{-\infty}^{t} x(t) \mathrm{d} t=\frac{1}{p} x(t)
+\end{array}</script><h4 id="算子运算规则"><a href="#算子运算规则" class="headerlink" title="算子运算规则"></a>算子运算规则</h4><ul>
+<li>代数和</li>
+<li>相乘和因式分解</li>
+<li>算子方程的两边可以同乘 $p$ 的多项式</li>
+<li>算子 $p$ 和 $1/p$ 的位置不能任意颠倒</li>
+</ul>
+<h3 id="常系数线性微分方程的求解"><a href="#常系数线性微分方程的求解" class="headerlink" title="常系数线性微分方程的求解"></a>常系数线性微分方程的求解</h3><h4 id="齐次解（系统的自然响应）"><a href="#齐次解（系统的自然响应）" class="headerlink" title="齐次解（系统的自然响应）"></a>齐次解（系统的自然响应）</h4><p>齐次方程 $\left(\mathrm{p}^{\mathrm{n}}+a_{n-1} \mathrm{p}^{\mathrm{n}-1}+\cdots+a_{1} \mathrm{p}+a_{0}\right) r(t)=0$ 令 $D(p) r(t)=0$，由 $D(p)$ 写出特征方程：</p>
+<script type="math/tex; mode=display">
+\lambda^{n}+a_{n-1} \lambda^{n-1}+\cdots+a_{1} \lambda+a_{0}=0</script><p>通解：</p>
+<script type="math/tex; mode=display">
+\begin{array}{|c|c|}
+\hline \text { 特征根 } & \text { 方程的通解 } \\
+\hline \text { 单实根 } r & c e^{r x} \\
+\hline k \text { 重实根 } r & e^{r x}\left(c_{1}+c_{2} x+\cdots c_{k} x^{k-1}\right) \\
+\hline \begin{array}{c}\alpha \pm i \beta \\1 \text {重} \end{array}  & e^{\alpha x}\left(c_{1} \cos \beta x+c_{2} \sin \beta x\right) \\
+\hline \begin{array}{c}\alpha \pm i \beta \\k \text {重} \end{array} & \begin{array}{l}
+e^{\alpha x}\left[c_{1}+c_{2} x+\cdots c_{k} x^{k-1}\right] \cos \beta x \\
++e^{\alpha x}\left[c_{k+1}+c_{k+2} x+\cdots c_{2 k} x^{k-1}\right] \sin \beta x
+\end{array} \\
+\hline
+\end{array}</script><h4 id="特解（系统的强迫响应）"><a href="#特解（系统的强迫响应）" class="headerlink" title="特解（系统的强迫响应）"></a>特解（系统的强迫响应）</h4><script type="math/tex; mode=display">
+\begin{array}{|l|l|}
+\hline
+激励  e(t) & 特解  B(t) \\
+\hline
+E(\text { 常数 }) & B \\
+\hline
+ t^{p} & B_{1} t^{p}+B_{2} t^{p-1}+\cdots+B_{p} t+B_{p+1} \\
+\hline
+ e^{\lambda t} & B e^{\lambda t} \\
+\hline
+ \sin w t \text { 或 } \cos w t & B_{1} \cos w t+B_{2} \sin w t \\
+\hline
+ t^{p} e^{\lambda t} \cos w t \text { 或 } t^{p} e^{\lambda t} \sin w t & \left(B_{1} t^{p}+B_{2} t^{p-1}+\cdots+B_{p} t+B_{p+1}\right) e^{\lambda t} \cos w t \\
+ & +\left(D_{1} t^{p}+D_{2} t^{p-1}+\cdots+D_{p} t+D_{p+1}\right) e^{\lambda t} \sin w t\\
+\hline
+\end{array}</script><h3 id="0-初始条件的确定"><a href="#0-初始条件的确定" class="headerlink" title="0+初始条件的确定"></a>0+初始条件的确定</h3><ul>
+<li>假设在零时刻加入激励，系统微分方程的解限于 $0^{+} \leq t&lt;\infty$ 因此不能将 $r^{(k)}\left(0^{-}\right)$ 作为边界条件，而应该用初始条件 $r^{(k)}\left(0^{+}\right)$ 作为边界条件 </li>
+<li>$r^{(k)}\left(0^{+}\right)=$ 系统原有贮能 $r^{(k)}\left(0^{-}\right)+$ 激励在零时刻接入时引起的起始值跳变</li>
+</ul>
+<h4 id="冲激函数系数平衡法来判定系统有无跳变"><a href="#冲激函数系数平衡法来判定系统有无跳变" class="headerlink" title="冲激函数系数平衡法来判定系统有无跳变"></a>冲激函数系数平衡法来判定系统有无跳变</h4><ol>
+<li>只平衡微分方程两边的<strong>冲激函数项及其各阶导数项</strong>（注意：不包括阶跃函数）</li>
+<li>先使方程右边的冲激函数<strong>最高阶次项</strong>和方程左边响应 $r(t)$ 的<strong>最高阶次项</strong>得到平衡</li>
+<li>当平衡低阶次冲激函数时，若方程左边同阶次冲激函数的系数之和不能与方程右边平衡时，由方程左边响应 $r(t)$ 的最高阶次项来补偿</li>
+<li>平衡完成后，响应 $r(t)$ 中应包含这些冲激函数</li>
+<li>平衡完成后，$r(t)$ 的各阶次项的<strong>跳变量</strong>即为包含的阶跃函数前的系数</li>
+</ol>
+<h3 id="自由响应-强迫响应法求全响应"><a href="#自由响应-强迫响应法求全响应" class="headerlink" title="自由响应+强迫响应法求全响应"></a>自由响应+强迫响应法求全响应</h3><ol>
+<li>看右边是否有冲激函数，若有则使用冲激函数系数平衡法</li>
+<li>根据跳变值确定初始条件 $r^{(k)}\left(0^{+}\right)$</li>
+<li>先求齐次解：写出特征方程，解出特征根，写出齐次解形式（含未知数）</li>
+<li>根据非齐次项确定非齐次解形式</li>
+<li>代入方程得到非齐次解</li>
+<li>齐次解+非齐次解=完全解</li>
+<li>初始条件代入完全解计算未知数</li>
+</ol>
+<h3 id="零输入响应"><a href="#零输入响应" class="headerlink" title="零输入响应"></a>零输入响应</h3><ul>
+<li>没有外加激励信号的作用，由起始时刻系统储能所产生的响应称为零输入响应。</li>
+<li>相当于激励为 $0$ 时解方程，边界条件由 $r^{(k)}\left(0^{-}\right)$ 确定</li>
+</ul>
+<h3 id="零状态响应"><a href="#零状态响应" class="headerlink" title="零状态响应"></a>零状态响应</h3><ul>
+<li>零状态响应是不考虑起始时刻系统储能的作用，只由系统的输入信号激励所产生的响应。</li>
+<li>零状态响应中确定系数的边界条件：$r^{(k)}\left(0^{+}\right)$，即为接入激励时的跳变量</li>
+</ul>
+<h3 id="单位冲激响应和阶跃响应"><a href="#单位冲激响应和阶跃响应" class="headerlink" title="单位冲激响应和阶跃响应"></a>单位冲激响应和阶跃响应</h3><ul>
+<li>单位冲激响应 $h(t)$ 是以单位冲激信号 $\delta(t)$ 作为激励，连续时间线性非时变系统的<strong>零状态</strong>响应</li>
+<li>单位阶跃响应 $g(t)$ 是以单位阶跃信号 $u(t)$ 作为激励，系统的<strong>零状态</strong>响应</li>
+</ul>
+<h3 id="单位冲激响应和阶跃响应求解步骤"><a href="#单位冲激响应和阶跃响应求解步骤" class="headerlink" title="单位冲激响应和阶跃响应求解步骤"></a>单位冲激响应和阶跃响应求解步骤</h3><ol>
+<li>先求当 $t&gt;0$ 时的方程形式</li>
+<li>列特征方程，解特征根，写出齐次解形式</li>
+<li>令方程右边的 $u(t)=1$，写出特解和完全解</li>
+<li>由冲激函数系数平衡法，得到 $r(t)$ <strong>各阶导数</strong>中 $u(t)$ 的系数</li>
+<li>根据 $r^{(k)}\left(0^{-}\right)=0$，$r(t)$ <strong>各阶导数</strong>的跳变量即为 $r^{(k)}\left(0^{+}\right)$</li>
+<li>根据完全解的未知数个数代入对应个数的最低阶的跳变量，求出齐次解中的系数</li>
+<li>把齐次解和特解<strong>套在括号里</strong>，乘上 $u(t)$，<strong>再</strong>把 $r(t)$ 中<strong>含有的各阶奇异函数</strong>（除 $u(t)$）加上</li>
+</ol>
+<h3 id="卷积积分"><a href="#卷积积分" class="headerlink" title="卷积积分"></a>卷积积分</h3><p>如果把施加于线性系统的激励信号分解为许多单位冲激信号之和，分别计算系统对各单位冲激信号之零状态响应，然后叠加即可得到系统对激励信号之零状态响应。卷积方法的原理就是借助上述计算过程，即利用系统的冲激响应和叠加原理来求解系统对任意激励信号的零状态响应。</p>
+<h4 id="利用卷积积分求系统的零状态响应"><a href="#利用卷积积分求系统的零状态响应" class="headerlink" title="利用卷积积分求系统的零状态响应"></a>利用卷积积分求系统的零状态响应</h4><p>考虑激励信号 $e(t)$，把它分解成许多相邻的窄脉冲，窄脉冲的宽度为 $\Delta \tau$，其中第 $k$ 个脉冲出现在 $t=k \Delta \tau \pm \frac{\Delta \tau}{2}$ 时间，其函数值为 $e(k \Delta \tau)$。将 $e(t)$ 近似地看做由以下一系列函数值不同接入时刻不同的窄脉冲组成，因此，$e(t)$ 可表示为</p>
+<script type="math/tex; mode=display">
+e(t)=\int_{-\infty}^{\infty} e(\tau) \delta(t-\tau) \mathrm{d} \tau</script><p>根据线性非时变系统的零状态线性性质以及激励与响应间的非时变特性，系统对 $e(t)$ 的零状态响应 $r(t)$ 可表示为</p>
+<script type="math/tex; mode=display">
+r(t)=e(t) * h(t)=\int_{-\infty}^{\infty} e(\tau) h(t-\tau) \mathrm{d} \tau</script><ul>
+<li>上式的积分运算称为<strong>卷积积分</strong>，简称<strong>卷积</strong>。</li>
+<li>如果已知系统的冲激响应 $h(t)$ 及激励信号 $e(t)$，可将 $h(t)$ 与 $e(t)$ 的自变量 $t$ 分别改写为 $t-\tau$ 和 $\tau$，取积分限自 $-\infty$ 至 $\infty$，计算 $e(\tau)$ 与 $h(t-\tau)$ 乘积对变量 $\tau$ 的积分，即得响应 $r(t)$。</li>
+<li>卷积积分常用符号“ $*$ ”来表示</li>
+<li>当 $e(t)$ 与 $h(t)$ 处在某种条件下时，卷积积分上下限可有所变化。</li>
+<li>如果系统是因果系统，则积分上限可以改成 $t$</li>
+</ul>
+<h4 id="LTI系统的稳定性"><a href="#LTI系统的稳定性" class="headerlink" title="LTI系统的稳定性"></a>LTI系统的稳定性</h4><p>对于 LTI 系统，假定输入 $e(t)$ 的值有限，即 $|e(t)|=M&lt;\infty$，那么</p>
+<script type="math/tex; mode=display">
+|r(t)|=\left|\int_{-\infty}^{\infty} e(\tau) h(t-\tau) \mathrm{d} \tau\right|=\left|\int_{-\infty}^{\infty} h(\tau) e(t-\tau) \mathrm{d} \tau\right| \leqslant M \int_{-\infty}^{\infty}|h(\tau)| \mathrm{d} \tau</script><p>如果要求 $|r(t)|&lt;\infty$，则必有</p>
+<script type="math/tex; mode=display">
+\int_{-\infty}^{\infty}|h(\tau)| \mathrm{d} \tau<\infty</script><p>可以证明，上式给出的条件是 LTI 系统稳定的充要条件。</p>
+<h4 id="卷积图解法计算"><a href="#卷积图解法计算" class="headerlink" title="卷积图解法计算"></a>卷积图解法计算</h4><p>$x_{1}(t) * x_{2}(t)$ 的计算步骤：</p>
+<ul>
+<li>自变量变换：自变量由 $t$ 变成 $\tau$，$x_{1}(\tau),x_{2}(\tau)$</li>
+<li>反转：$x_{2}(\tau) \rightarrow x_{2}(-\tau)$</li>
+<li>平移：$x_{2}(-\tau) \rightarrow x_{2}(t-\tau)$ 自变量为 $\tau$，$t$ 是平移量</li>
+<li>叠加：$x_{1}(\tau) x_{2}(t-\tau)$</li>
+<li>求和：$\int_{-\infty}^{+\infty} x_{1}(\tau) x_{2}(t-\tau) \mathrm{d} \tau$</li>
+</ul>
+<h4 id="运算性质"><a href="#运算性质" class="headerlink" title="运算性质"></a>运算性质</h4><ul>
+<li>交换律 $x(t) * h(t)=h(t) * x(t)$</li>
+<li>分配律 $x(t) *\left[h_{1}(t)+h_{2}(t)\right]=x(t) * h_{1}(t)+x(t) * h_{2}(t)$</li>
+<li>结合律 $\left[x(t) * h_{1}(t)\right] * h_{2}(t)=x(t) *\left[h_{1}(t) * h_{2}(t)\right]$</li>
+<li>任何一个信号与 $\delta(t)$ 的卷积是原信号本身<script type="math/tex; mode=display">
+x(t) * \delta(t)=\int_{-\infty}^{\infty} x(\tau) \delta(t-\tau) \mathrm{d} \tau=x(t)</script></li>
+<li>任何一个信号与 $\delta\left(t-t_{0}\right)$ 的卷积是把原信号时移 $t_{0}$<script type="math/tex; mode=display">
+x(t) * \delta\left(t-t_{0}\right)=\int_{-\infty}^{\infty} x(\tau) \delta\left(t-t_{0}-\tau\right) \mathrm{d} \tau=x\left(t-t_{0}\right)</script></li>
+<li>任何一个信号与 $\delta^{\prime}(t)$ 的卷积是对原信号的微分<script type="math/tex; mode=display">
+x(t) * \delta^{\prime}(t)=x^{\prime}(t)</script></li>
+<li>卷积的微分<script type="math/tex; mode=display">
+\frac{\mathrm{d}}{\mathrm{d} t}\left[f_{1}(t) * f_{2}(t)\right]=f_{1}(t) * \frac{\mathrm{d} f_{2}(t)}{\mathrm{d} t}=f_{2}(t) * \frac{\mathrm{d} f_{1}(t)}{\mathrm{d} t}</script></li>
+<li>卷积的积分<script type="math/tex; mode=display">
+\int_{-1}^{\prime} f_{1}(\tau) * f_{2}(\tau) \mathrm{d} \tau=f_{1}(t) * \int_{-\infty}^{\prime} f_{2}(\tau) \mathrm{d} \tau=f_{2}(t) * \int_{-\infty}^{\prime} f_{1}(t) \mathrm{d} \tau</script></li>
+<li>微分和卷积这两种运算可以任意交换运算次序，积分亦是。</li>
+</ul>
+<h2 id="第三章-离散时间系统的时域分析"><a href="#第三章-离散时间系统的时域分析" class="headerlink" title="第三章 离散时间系统的时域分析"></a>第三章 离散时间系统的时域分析</h2><p>通常，连续时间系统可用微分方程描述，方程建立的是输入输出函数本身及其各阶导数，如等之间的函数关系。而在离散时间系统中，输入和输出信号都是离散时间的函数，这些信号不能微分，但可以差分，因此可以用差分方程来描述离散时间系统。</p>
+<script type="math/tex; mode=display">
+a_{0} y(n)+a_{1} y(n-1)+\cdots+a_{N} y(n-N)=\mathrm{b}_{0} x(n)+b_{1} x(n-1)+\cdots+b_{M} x(n-M)</script><h3 id="迭代法"><a href="#迭代法" class="headerlink" title="迭代法"></a>迭代法</h3><p>用迭代法求解差分方程，需要已知起始或初始条件</p>
+<h3 id="经典法"><a href="#经典法" class="headerlink" title="经典法"></a>经典法</h3><ol>
+<li>求解特征方程<script type="math/tex; mode=display">
+a_0\alpha^{n}+a_1\alpha^{n-1}+\cdots+a_{N-1}\alpha+a_{N}=0</script></li>
+<li>写出通解<script type="math/tex; mode=display">
+\begin{array}{|c|c|}
+\hline \text { 特征根情况 } & \text { 通解形式 } \\
+\hline \text { 单重实根 } \alpha_i & y(n)=c_{i} \alpha_{i}^{n} \\
+\hline k\text { 重实根 } \alpha_i & y(n)=\alpha_{i}^{n}(c_1+c_2n+\cdots+c_kn^{k-1}) \\
+\hline \text { 共轭复根 } \alpha \pm j \beta &
+\begin{aligned}y(n)&=c_1(\alpha+j \beta)^n+c_2(\alpha-j \beta)^n\\
+&=c_1\rho^{n}\cos n\varphi+c_2\rho^{n}\sin n\varphi
+\end{aligned}
+\\
+\hline
+\end{array}</script></li>
+<li>写出特解<script type="math/tex; mode=display">
+\begin{array}{|c|c|}
+\hline \text { 非齐次项 } & \text { 特解形式 } \\
+\hline n^k (设1是m重特征根) & (d_1n_k+d_2n^{k-1}+\cdots+d_kn+d_{k+1})n^m \\
+\hline \sin(n\omega)/\cos(n\omega)& d_1\sin(n\omega)+d_2\cos(n\omega) \\
+\hline a^n(a\text{不是特征根}) &da^n\\
+\hline a^n(a\text{是}k\text{重特征根}) &(d_1n_k+d_2n^{k-1}+\cdots+d_kn+d_{k+1})a^n\\
+\hline
+\end{array}</script></li>
+<li>迭代法求系数、代回原方程求系数</li>
+</ol>
+<h3 id="零输入响应-1"><a href="#零输入响应-1" class="headerlink" title="零输入响应"></a>零输入响应</h3><p>零输入响应 $y_{z p}(n)=\sum_{i=1}^{\mathrm{N}} c_{z p i} \alpha_{i}^{n}$，$c_{z p i}$ 由起始状态确定</p>
+<ul>
+<li>当激励信号在 $n=0$ 时加入，则 $y(-1),y(-2),\cdots,y(-N)$ 为起始状态</li>
+<li>当激励信号在 $n=n_{0}$ 时加入，则 $y\left(n_{0}-1\right),y\left(n_{0}-2\right),\cdots,y\left(n_{0}-N\right)$ 为起始状态</li>
+</ul>
+<h3 id="零状态响应-1"><a href="#零状态响应-1" class="headerlink" title="零状态响应"></a>零状态响应</h3><p>零状态响应 $y_{z s}(n)=\sum_{i=1}^{N} c_{z s i} \alpha_{i}^{n}+D(n)$，$D(n)$ 为特解，$c_{z s i}$ 由初始状态确定</p>
+<ul>
+<li>当激励信号在 $n=0$ 时加入，令 $y(-1)=y(-2)=\cdots=y(-N)=0,y(0),y(1),\cdots,y(N-1)$ 为初始状态</li>
+<li>当激励信号在 $n=n_{0}$ 时加入，则令 $y\left(n_{0}-1\right)=y\left(n_{0}-2\right)=,\cdots,=y\left(n_{0}-N\right)=0$，$y\left(n_{0}\right),y\left(n_{0}+1\right),\cdots,y\left(n_{0}+N-1\right)$ 为初始状态</li>
+</ul>
+<h3 id="离散时间系统的单位样值响应和阶跃响应"><a href="#离散时间系统的单位样值响应和阶跃响应" class="headerlink" title="离散时间系统的单位样值响应和阶跃响应"></a>离散时间系统的单位样值响应和阶跃响应</h3><p>与连续时间系统的单位冲激响应 $h(t)$ 的定义相似，</p>
+<ul>
+<li>当输入为单位样值序列 $\delta(n)$ 时，LSI系统的零状态响应称为系统的单位样值响应，以 $h(n)$ 表示，即<script type="math/tex; mode=display">
+h(n)=T[\delta(n)]</script><ul>
+<li>$h(n)$ 表示一个LSI系统的时域特性。</li>
+<li>当输入为 $x(n)$ 时，系统的零状态响应 $y_{z s}(n)$ 是 $h(n)$ 和 $x(n)$ 的“卷积和”</li>
+</ul>
+</li>
+<li>当输入为阶跃序列 $u(n)$ 时，LSI系统的零状态响应称为系统的阶跃响应，以 $g(n)$ 表示，即<script type="math/tex; mode=display">
+g(n)=T[u(n)]</script></li>
+<li>单位样值响应累加得到阶跃响应</li>
+<li>阶跃响应求差分即可得到单位样值响应</li>
+</ul>
+<h3 id="卷积和"><a href="#卷积和" class="headerlink" title="卷积和"></a>卷积和</h3><p>可以将任何一个序列表示为单位延迟取样序列的加权和，即</p>
+<script type="math/tex; mode=display">
+x(n)=\sum_{k=-\infty}^{\infty} x(k) \delta(n-k)</script><p>对于 $LSI$ 系统，可以得到</p>
+<script type="math/tex; mode=display">
+y(n)=T[x(n)]=T\left[\sum_{k=-\infty}^{\infty} x(k) \delta(n-k)\right]=\sum_{k=-\infty}^{\infty} x(k) \cdot T[\delta(n-k)]</script><p>于是，可得到</p>
+<script type="math/tex; mode=display">
+y(n)=\sum_{k=-\infty}^{\infty} x(k) \cdot h(n-k)</script><p>上即为“卷积和”的定义式，即 $y(n)$ 是 $x(n)$ 与 $h(n)$ 的“卷积和”，用简化符号 $*$ 表示“卷积和”，可记为</p>
+<script type="math/tex; mode=display">
+y(n)=x(n) * h(n)</script><p>离散系统中的“卷积和”与连续系统中的卷积积分相对应，“卷积和”也称为<strong>离散卷积</strong>或折积。在离散系统中，激励信号分解为单位样值序列，求各个单位样值分量的响应再叠加，即得到零状态响应 $y(n)$。</p>
+<h3 id="因果性-1"><a href="#因果性-1" class="headerlink" title="因果性"></a>因果性</h3><ul>
+<li>因果系统：输出只取决于现在和过去的输入值</li>
+<li>一个LSI系统是因果的等价于 $h(n)=0,n&lt;0$</li>
+</ul>
+<h3 id="稳定性-1"><a href="#稳定性-1" class="headerlink" title="稳定性"></a>稳定性</h3><ul>
+<li>稳定系统：对于每个有界的输入，其输出都是有界的</li>
+<li>一个LSI系统是稳定的等价于单位脉冲响应绝对可和，即<script type="math/tex; mode=display">
+\sum_{k=-\infty}^{+\infty} |h(k)|<+\infty</script></li>
+</ul>
+<h3 id="卷积和的性质"><a href="#卷积和的性质" class="headerlink" title="卷积和的性质"></a>卷积和的性质</h3><ul>
+<li>交换律：$x_1(n)*x_2(n)=x_2(n)*x_1(n)$</li>
+<li>结合律：$x_1(n)*x_2(n)*x_3(n)=x_1(n)*(x_2(n)*x_3(n))$</li>
+<li>分配律：$x_1(n)*(x_2(n)+x_3(n))=x_1(n)*x_2(n)+x_1(n)*x_3(n)$</li>
+<li>卷积和的差分<script type="math/tex; mode=display">
+\begin{array}{l}
+\Delta x_{1}(n) * x_{2}(n)=x_{1}(n) * \Delta x_{2}(n)=\Delta\left[x_{1}(n) * x_{2}(n)\right] \\
+\nabla x_{1}(n) * x_{2}(n)=x_{1}(n) * \nabla x_{2}(n)=\nabla\left[x_{1}(n) * x_{2}(n)\right]
+\end{array}</script></li>
+<li>卷积和的累加<script type="math/tex; mode=display">
+x_{1}(n) * \sum_{m=-\infty}^{n} x_{2}(m)=x_{2}(n) * \sum_{m=-\infty}^{n} x_{1}(m)=\sum_{m=-\infty}^{n}\left[x_{1}(n) * x_{2}(n)\right]</script></li>
+<li>与单位样值序列的卷积和<script type="math/tex; mode=display">
+\begin{array}{c}
+x(n) * \delta(n)=x(n)\\
+x(n+m) * \delta(n)=x(n+m) \\
+x(n) * \delta(n+m)=x(n+m)
+\end{array}</script></li>
+</ul>
+<h3 id="卷积和的图形求解法"><a href="#卷积和的图形求解法" class="headerlink" title="卷积和的图形求解法"></a>卷积和的图形求解法</h3><ol>
+<li>改变求和变量，$x_{1}(n) \rightarrow x_{1}(m)$，$x_{2}(n) \rightarrow x_{2}(m)$</li>
+<li>$x_{2}(m)$ 反转 $\rightarrow x_{2}(-m)$</li>
+<li>$x_{2}(-m) \rightarrow x_{2}(n-m)$</li>
+<li>相乘与求和 $\sum_{m=-\infty}^{+\infty} x_{1}(m) x_{2}(n-m)$</li>
+</ol>
+<h2 id="第四章-连续时间周期信号的傅里叶级数表示"><a href="#第四章-连续时间周期信号的傅里叶级数表示" class="headerlink" title="第四章 连续时间周期信号的傅里叶级数表示"></a>第四章 连续时间周期信号的傅里叶级数表示</h2><h3 id="欧拉公式"><a href="#欧拉公式" class="headerlink" title="欧拉公式"></a>欧拉公式</h3><script type="math/tex; mode=display">
+e^{j\omega t}=\cos \omega t+j\sin \omega t</script><script type="math/tex; mode=display">
+\cos \omega t = \frac{e^{j\omega t}+e^{-j\omega t}}{2}, \quad \sin \omega t = \frac{e^{j\omega t}-e^{-j\omega t}}{2}</script><h3 id="完备正交函数集"><a href="#完备正交函数集" class="headerlink" title="完备正交函数集"></a>完备正交函数集</h3><p>两个函数在 $\left(t_{1},t_{2}\right)$ 内正交的条件是</p>
+<script type="math/tex; mode=display">
+\int_{t_{1}}^{t_{2}} f_{1}(t) f_{2}(t) \mathrm{d} t=0</script><p>及</p>
+<script type="math/tex; mode=display">
+\int_{t_{1}}^{t_{2}} f_{2}^{2}(t) \mathrm{d} t \neq 0</script><p>设有 $n$ 个函数 $\varphi_{1}(t),\varphi_{2}(t),\cdots,\varphi_{n}(t)$ 构成一函数集，并在区间 $\left(t_{1},t_{2}\right)$ 内满足如下正交特性：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\int_{t_{1}}^{t_{2}} \varphi_{i}(t) \cdot \varphi_{j}(t) \mathrm{d} t=0,i \neq j \\
+\int_{t_{1}}^{t_{2}} \varphi_{i}^{2}(t) \mathrm{d} t=K_{i}
+\end{array}\right.</script><p>式中 $K_{i}$ 不为零，则此函数集称为<strong>正交函数集</strong>。</p>
+<p>如果任一函数 $f(t)$ 在区间 $\left(t_{1},t_{2}\right)$ 内利用此正交函数集的 $n$ 个函数的线性组合来表示，即</p>
+<script type="math/tex; mode=display">
+f(t) \approx C_{1} \varphi_{1}(t)+C_{2} \varphi_{2}(t)+\cdots+C_{n} \varphi_{n}(t)=\sum_{r=1}^{n} C_{r} \varphi_{r}(t)</script><p>系数为</p>
+<script type="math/tex; mode=display">
+C_{i}=\frac{\int_{t_{1}}^{t_{2}} f(t) \varphi_{i}(t) \mathrm{d} t}{\int_{t_{1}}^{t_{2}} \varphi_{i}^{2}(t) \mathrm{d} t}=\frac{1}{K_{i}} \int_{t_{1}}^{t_{2}} f(t) \varphi_{i}(t) \mathrm{d} t</script><p>式中 $K_{i}$ 为不等于零的常数。<br>满足 $K_{i}=1$ 的正交函数集称为<strong>归一化正交函数集</strong>，即</p>
+<script type="math/tex; mode=display">
+K_{i}=\int_{t_{1}}^{t_{2}} \varphi_{i}^{2}(t) \mathrm{d} t=1</script><p>此时，用对应的归一化正交函数集进行线性组合所选的系数 $C_{i}$ 为</p>
+<script type="math/tex; mode=display">
+C_{i}=\int_{t_{1}}^{t_{2}} f(t) \varphi_{i}(t) \mathrm{d} t</script><p>如果在正交函数集 $\left\{\varphi_{r}(t)\right\}(r=1,2,\cdots,n)$ 之外，不存在函数 $\varphi^{\prime}(t)$，满足</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+0<\int_{t_{1}}^{t_{2}} \varphi^{\prime 2}(t) \mathrm{d} t<\infty \\
+\int_{t_{1}}^{t_{2}} \varphi^{\prime}(t) \varphi_{i}(t) \mathrm{d} t=0,\quad i=1,2,\cdots
+\end{array}</script><p>则此函数集称为<strong>完备正交函数集</strong>。</p>
+<h3 id="狄利赫里条件"><a href="#狄利赫里条件" class="headerlink" title="狄利赫里条件"></a>狄利赫里条件</h3><ul>
+<li>在任一周期内，函数 $f(t)$ 必须可积，即<script type="math/tex; mode=display">
+\int_{T_{1}}|f(t)| \mathrm{d} t<\infty</script></li>
+<li>在任一周期内，其最大值和最小值的数目有限。</li>
+<li>在任一周期内，只有有限个不连续点，而且在这些不连续点上，函数必须是有限值。</li>
+</ul>
+<h3 id="信号展开为三角函数"><a href="#信号展开为三角函数" class="headerlink" title="信号展开为三角函数"></a>信号展开为三角函数</h3><p>三角函数集 $\left\{\cos n \omega_{1} t,\sin n \omega_{1} t\right\}(n=0,1,2,\cdots,\infty)$ 在区间 $\left(t_{0},t_{0}+T_{1}\right)$ 内组成完备正交函数集，其中 $T_{1}=\frac{2 \pi}{\omega_{1}}$。<br>对于周期为 $T_{1}$ 的周期函数 $f(t)$，可以由上述三角函数的线性组合来表示，即</p>
+<script type="math/tex; mode=display">
+f(t)=a_{0}+\sum_{n=1}^{\infty}\left(a_{n} \cos n \omega_{1} t+b_{n} \sin n \omega_{1} t\right),\quad t_{0}<t<t_{0}+T_{1}</script><p>其展开式可表示为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f(t)=a_{0}&+a_{1} \cos \omega_{1} t+\cdots+a_{n} \cos n \omega_{1} t+\cdots\\
+&+b_{1} \sin \omega_{1} t+\cdots+b_{n} \sin n \omega_{1} t+\cdots
+\end{aligned}</script><p>上式称为 $f(t)$ 的<strong>傅里叶级数展开</strong>。应当指出，只有满足狄里赫利条件的周期信号才能进行傅里叶级数展开。（狄里赫利条件是充分不必要条件）</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f(t) &=a_{0}+\sum_{n=1}^{\infty}\left[a_{n} \cos n \omega_{1} t+b_{n} \sin n \omega_{1} t\right] \\
+& =c_{0}+\sum_{n=1}^{\infty} c_{n} \cos \left(n \omega_{1} t+\phi_{n}\right) \\
+& =d_{0}+\sum_{n=1}^{\infty} d_{n} \sin \left(n \omega_{1} t+\theta_{n}\right) \\
+\end{aligned}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+a_{0}= c_{0}=d_{0}=\frac{1}{T} \int_{0}^{T} f(t) \mathrm{d} t \  \text { 表示 } f(t) \text { 中的直流分量 } \\
+a_{n}= \frac{2}{T} \int_{0}^{T} f(t) \cdot \cos n \omega_{1} t \mathrm{d} t, \quad b_{n}=\frac{2}{T} \int_{0}^{T} f(t) \cdot \sin n \omega_{1} t \mathrm{d} t \\
+c_{n}= d_{n}=\sqrt{a_{n}^{2}+b_{n}^{2}} \\
+\phi_{n} =-\tan ^{-1} \frac{b_{n}}{a_{n}}, \quad \theta_{n}=\tan ^{-1} \frac{a_{n}}{b_{n}}
+\end{array}</script><h3 id="信号展开为指数函数"><a href="#信号展开为指数函数" class="headerlink" title="信号展开为指数函数"></a>信号展开为指数函数</h3><p>函数集 $\left\{\mathrm{e}^{\mathrm{j} n \omega_{1} t}\right\}(n=0,\pm 1,\pm 2,\cdots)$ 是一个复变函数集，在区间 $\left(t_{0},t_{0}+T_{1}\right)$ 内是一个完备正交函数集，其中 $T_{1}=\frac{2 \pi}{\omega_{1}}$。<br>满足狄里赫利条件的周期函数 $f(t)$ 可展开为复指数形式傅里叶级数，即</p>
+<script type="math/tex; mode=display">
+f(t)=\sum_{n=-\infty}^{\infty} F_{n} \mathrm{e}^{\mathrm{j} n \omega_{1} t},\quad t_{0}<t<t_{0}+T_{1}</script><p>其展开式可写为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f(t)=  F_{0}&+F_{1} \mathrm{e}^{\mathrm{j} \omega_{1} t}+F_{2} \mathrm{e}^{\mathrm{j} 2 \omega_{1} t}+\cdots+F_{n} \mathrm{e}^{\mathrm{j} n \omega_{1} t}+\cdots \\
+& +F_{-1} \mathrm{e}^{-\mathrm{j} \omega_{1} t}+F_{-2} \mathrm{e}^{-\mathrm{j} 2 \omega_{1} t}+\cdots+F_{-n} \mathrm{e}^{-\mathrm{j} n \omega_{1} t}+\cdots
+\end{aligned}</script><p>上式中，$F_{n}$ 是傅里叶级数系数或频谱系数，一般是复数，其表示的复指数展开式可以适用于 $f(t)$ 是复函数，也可以是实函数</p>
+<script type="math/tex; mode=display">
+F_{n} =\frac{1}{T} \int_{0}^{T} f(t) e^{-j n \omega_{1} t} \mathrm{d} t</script><p>其中 $F_{0} =\frac{1}{T} \int_{0}^{T} f(t) \mathrm{d} t$ 为<strong>直流分量</strong></p>
+<h3 id="三角展开和指数展开的系数关系"><a href="#三角展开和指数展开的系数关系" class="headerlink" title="三角展开和指数展开的系数关系"></a>三角展开和指数展开的系数关系</h3><script type="math/tex; mode=display">
+\begin{array}{c}
+a_0=F_0\\
+a_n=F_{-n}+F_{n}\\
+b_n=j(F_{n}-F_{-n})\\
+F_{n}=\frac{1}{2}(a_n-jb_n)\\
+F_{-n}=\frac{1}{2}(a_n+jb_n)\\
+\end{array}</script><h3 id="周期对称信号的展开"><a href="#周期对称信号的展开" class="headerlink" title="周期对称信号的展开"></a>周期对称信号的展开</h3><ul>
+<li>$f(t)$ 是整周期偶对称的，即 $f(t)=f(-t)$，则<script type="math/tex; mode=display">
+\begin{array}{l}
+a_{0}=\frac{2}{T} \int_{0}^{T / 2} f(t) \mathrm{d} t \\
+a_{n}=\frac{4}{T} \int_{0}^{T / 2} f(t) \cdot \cos n \omega_{1} t \mathrm{d} t\\
+b_{n}=0
+\end{array}</script>傅里叶级数展开式中只有直流成分和余弦项。</li>
+<li>$f(t)$ 是整周期奇对称的，即 $f(t)=-f(-t)$<script type="math/tex; mode=display">
+\begin{array}{l}
+a_{0}=a_{n}=0\\
+b_{n}=\frac{4}{T} \int_{0}^{T / 2} f(t) \cdot \sin n \omega_{1} t \mathrm{d} t
+\end{array}</script>傅里叶级数展开式中只有正弦项。</li>
+</ul>
+<h3 id="常见信号的傅里叶展开"><a href="#常见信号的傅里叶展开" class="headerlink" title="常见信号的傅里叶展开"></a>常见信号的傅里叶展开</h3><h4 id="周期矩形脉冲"><a href="#周期矩形脉冲" class="headerlink" title="周期矩形脉冲"></a>周期矩形脉冲</h4><p>脉冲幅度为 $E$，宽度为 $\tau$ 的周期矩形脉冲 $f(t)$，其周期为 $T_{1}\left(\omega_{1}=2 \pi / T_{1}\right)$，如下图所示。在一个周期内的表达式为</p>
+<script type="math/tex; mode=display">
+f(t)=E\left[\varepsilon\left(t+\frac{\tau}{2}\right)-\varepsilon\left(t-\frac{\tau}{2}\right)\right]</script><p><img src="https://s2.loli.net/2023/03/13/aAGuXwp5K9MZOz3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>将 $f(t)$ 展开为复指数形式的傅里叶级数，傅里叶系数为</p>
+<script type="math/tex; mode=display">
+F_{n}=\frac{1}{T_{1}} \int_{-\frac{\tau}{2}}^{\frac{\tau}{2}} E \mathrm{e}^{-j n \omega_{1} t} \mathrm{~d} t=\left.\frac{E}{T_{1}} \frac{\mathrm{e}^{-\mathrm{j} n \omega_{1} t}}{-\mathrm{j} n \omega_{1}}\right|_{-\frac{\tau}{2}} ^{\frac{\tau}{2}}=\frac{E\tau}{T_{1}} \frac{\sin \frac{n \omega_{1} \tau}{2}}{\frac{n \omega_{1} \tau}{2}}=\frac{E\tau}{T_{1}} \mathrm{Sa}\left(\frac{n \omega_{1} \tau}{2}\right)</script><p>于是可以写出</p>
+<script type="math/tex; mode=display">
+f(t)=\sum_{n=-\infty}^{\infty} F_{n} \mathrm{e}^{-\mathrm{j} n \omega_{1} t}=\frac{E\tau}{T_{1}} \sum_{n=-\infty}^{\infty} \mathrm{Sa}\left(\frac{n \omega_{1} \tau}{2}\right) \mathrm{e}^{\mathrm{j} n \omega_{1} t}</script><p>或者用三角函数形式</p>
+<script type="math/tex; mode=display">
+f(t)=\frac{E\tau}{T_{1}}+\frac{E\tau \omega_{1}}{\pi} \sum_{n=1}^{\infty} \operatorname{Sa}\left(\frac{n \omega_{1} \tau}{2}\right) \cos n \omega_{1} t</script><p>周期信号的频谱是离散的频谱，它仅包含 $n \omega_{1}$（$n$ 为整数）的各分量，其相邻两谱线间隔是 $\omega_{1}\left(\omega_{1}=\frac{2 \pi}{T_{1}}\right)$。脉冲重复周期 $T_{1}$ 愈大，则谱线间隔愈小，频谱愈稠密。若 $T_{1}$ 愈小，则频谱愈稀疏。</p>
+<p><img src="https://s2.loli.net/2023/03/14/CoOdaEZ16WMTKU4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>周期矩形脉冲信号包括无限多条谱线，它可以分解为无限多个频率分量。由于各分量的幅度随频率的增加而减小，因此其信号能量主要集中在第一个零值点 $\left(\omega=\frac{2 \pi}{\tau}\right)$ 以内。在允许一定失真的条件下，只需传送 $\omega \leqslant \frac{2 \pi}{\tau}$ 频率范围内的各频谱分量就能满足通信系统的要求。通常把 $\omega=0$ 至 $\frac{2 \pi}{\tau}$ 这段范围称为矩形脉冲信号的<strong>频带宽度</strong>，简称<strong>信号带宽</strong>，用符号 $B_{\omega}$ 或 $B_{f}$ 表示，即</p>
+<script type="math/tex; mode=display">
+B_{\omega}=\frac{2 \pi}{\tau},\quad B_{f}=\frac{1}{\tau}</script><ul>
+<li>信号带宽 $B_{\omega}$ 与脉冲宽度 $\tau$ 成反比。脉冲宽度变窄时，其频谱包络线零值点的频率变高，即信号的带宽 $B_{\omega}$ 变大，频带内所包含的分量增多。</li>
+</ul>
+<h4 id="周期三角波信号"><a href="#周期三角波信号" class="headerlink" title="周期三角波信号"></a>周期三角波信号</h4><p><img src="https://s2.loli.net/2023/03/14/lud8gnjCWExkovH.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+F_n=\frac{1}{2}\mathrm{Sa}^2\left(\frac{n\pi}{2}\right)</script><script type="math/tex; mode=display">
+\begin{aligned}
+f(t)&=\sum_{n=-\infty}^{+\infty} F_n e^{jn\pi t}\\
+&=\sum_{n=-\infty}^{+\infty} \frac{2}{(n\pi)^2}\sin^2\frac{n\pi}{2}e^{jn\pi t}
+\end{aligned}</script><p>用三角函数表示</p>
+<script type="math/tex; mode=display">
+f(t)=\frac{1}{2}+\sum_{n=1}^{+\infty} \mathrm{Sa}^2\left(\frac{n\pi}{2}\right)\cos n\omega_1 t</script><h4 id="对称方波"><a href="#对称方波" class="headerlink" title="对称方波"></a>对称方波</h4><p><img src="https://s2.loli.net/2023/03/14/D9yxnsOojBVdEah.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+F_{n} =\frac{E \tau}{T_{1}} \mathrm{Sa}\left(\frac{n \omega_{1} \tau}{2}\right)=\frac{E}{n \pi} \sin \frac{n \pi}{2} \\
+f(t) =\frac{2 E}{\pi} \sum_{n=1}^{\infty} \frac{1}{n} \sin \frac{n \pi}{2} \cos n \omega_{1} t
+\end{array}</script><h3 id="非周期信号的傅里叶变换"><a href="#非周期信号的傅里叶变换" class="headerlink" title="非周期信号的傅里叶变换"></a>非周期信号的傅里叶变换</h3><p>定义</p>
+<script type="math/tex; mode=display">
+F(j\omega)=\int_{-\infty}^{+\infty} f(t)e^{-j\omega t} \mathrm{d}t</script><p>则非周期信号 $f(t)$ 可以表示为</p>
+<script type="math/tex; mode=display">
+f(t)=\frac{1}{2\pi}\int_{-\infty}^{+\infty} F(j\omega)e^{j\omega t} \mathrm{d}\omega</script><ul>
+<li>$F(\omega)$ 在一般情况下为复函数，可以写成<script type="math/tex; mode=display">
+F(\omega)=|F(\omega)| \mathrm{e}^{\mathrm{j} \varphi(\omega)}=R(\omega)+\mathrm{j} X(\omega)</script></li>
+<li>式中 $|F(\omega)|$ 和 $\varphi(\omega)$ 分别为 $F(\omega)$ 的模和相位，$R(\omega)$ 和 $X(\omega)$ 分别表示 $F(\omega)$ 的实部和虚部。</li>
+<li>$|F(\omega)|$ 代表各频率分量的相对幅度，体现幅度与频率之间的关系，因此称为幅度频谱，简称<strong>幅度谱</strong>；而 $\varphi(\omega)$ 表示各频率分量对应的相位关系，因此成为相位频谱，简称<strong>相位谱</strong>。</li>
+<li>傅里叶变换也可像傅里叶级数那样写成三角形式，即<script type="math/tex; mode=display">
+F(\omega)=\int_{-\infty}^{\infty} f(t) \mathrm{e}^{-\mathrm{j} \omega t} \mathrm{~d} t=\int_{-\infty}^{\infty} f(t) \cos \omega t \mathrm{~d} t-\mathrm{j} \int_{-\infty}^{\infty} f(t) \sin \omega t \mathrm{~d} t=R(\omega)+\mathrm{j} X(\omega)</script>上式两边比较后可得<script type="math/tex; mode=display">
+\begin{array}{c}
+R(\omega)=\int_{-\infty}^{\infty} f(t) \cos \omega t \mathrm{~d} t \\
+X(\omega)=-\int_{-\infty}^{\infty} f(t) \sin \omega t \mathrm{~d} t
+\end{array}</script>与复数形式的关系：<script type="math/tex; mode=display">
+\begin{array}{c}
+|F(\omega)|=\sqrt{R^{2}(\omega)+X^{2}(\omega)} \\
+\varphi(\omega)=\arctan \frac{X(\omega)}{R(\omega)}
+\end{array}</script></li>
+</ul>
+<h3 id="周期信号的傅里叶变换"><a href="#周期信号的傅里叶变换" class="headerlink" title="周期信号的傅里叶变换"></a>周期信号的傅里叶变换</h3><script type="math/tex; mode=display">
+\mathscr{F}[f(t)]=\sum_{n=-\infty}^{\infty} F_{n} \mathscr{F}\left[\mathrm{e}^{\mathrm{j} \omega_{1} t}\right]=2 \pi \sum_{n=-\infty}^{\infty} F_{n} \delta\left(\omega-n \omega_{1}\right)</script><p>上式表明：周期信号 $f(t)$ 的傅里叶变换是由无穷多个冲激函数组成的，这些冲激位于信号的各谐波频率 $n \omega_{1}(n=0,\pm 1,\cdots)$ 处，每个冲激的强度为相应系数 $F_{n}$ 的 $2 \pi$ 倍；周期信号的频谱是离散的，在离散的谐频点上具有无限大的频谱值。因此，周期信号的频谱呈现离散性和谐波性。</p>
+<h3 id="周期信号两种表示的关系"><a href="#周期信号两种表示的关系" class="headerlink" title="周期信号两种表示的关系"></a>周期信号两种表示的关系</h3><script type="math/tex; mode=display">
+\begin{align}
+F_{n} & = \left.\frac{1}{T_{1}} F_{0}(\omega)\right|_{\omega = n \omega_{1}}\\
+& =\int_{n \omega_{1}}^{n \omega_{1}}\frac{1}{2\pi} F(\omega) \mathrm{d}\omega
+\end{align}</script><p>上式表明：周期信号的傅里叶系数 $F_{n}$ 等于<strong>主周期信号</strong>在 $n \omega_{1}$ 点上的频谱值 $F_{0}\left(n \omega_{1}\right)$ 乘以基波周期的倒数 $1 / T_{1}$，也等于周期信号的频谱在 $n \omega_{1}$ 处冲激函数强度的 $1/2\pi$。</p>
+<h3 id="常用非周期信号的傅里叶变换"><a href="#常用非周期信号的傅里叶变换" class="headerlink" title="常用非周期信号的傅里叶变换"></a>常用非周期信号的傅里叶变换</h3><ul>
+<li>单边指数信号 $f(t)=e^{-\alpha t} u(t) \quad(\alpha&gt;0)$<script type="math/tex; mode=display">
+\begin{aligned}
+F(\omega) & =\int_{-\infty}^{+\infty} f(t) e^{-j \omega t} \mathrm{d} t=\int_{0}^{+\infty} e^{-(\alpha+j \omega) t} \mathrm{d} t \\
+& =\frac{1}{\alpha+j \omega}
+\end{aligned}</script></li>
+<li>双边指数信号 $f(t)=e^{-\alpha|t|}$，$\alpha&gt;0$<script type="math/tex; mode=display">
+F(\omega)=\frac{1}{\alpha-j \omega}+\frac{1}{\alpha+j \omega}=\frac{2 \alpha}{\alpha^{2}+\omega^{2}}</script></li>
+<li>矩形脉冲信号 $f(t)=\mathrm{E}\left[u\left(t+\frac{\tau}{2}\right)-u\left(t-\frac{\tau}{2}\right)\right]$<script type="math/tex; mode=display">
+F(\omega)=\frac{2 E}{\omega} \sin \frac{\omega \tau}{2}=E \tau \operatorname{Sa}\left(\frac{\omega \tau}{2}\right)</script></li>
+<li>抽样函数 $f(t)=S a\left(\omega_{c} t\right)=\frac{\sin \omega_{c} t}{\omega_{c} t}$<script type="math/tex; mode=display">
+F(\omega)=\frac{\pi}{\omega_{c}}\left[u\left(\omega+\omega_{c}\right)-u\left(\omega-\omega_{c}\right)\right]</script></li>
+<li>冲激函数 $f(t)=\delta(t)$<script type="math/tex; mode=display">
+F(\omega)=\int_{-\infty}^{+\infty} \delta(t) e^{-j \omega t} d t=1</script></li>
+<li>直流信号 $f(t)=1$<script type="math/tex; mode=display">
+\mathscr{F}(1)=2 \pi \delta(\omega)</script></li>
+<li>符号函数 $f(t)=\operatorname{sgn}(t)$ <script type="math/tex; mode=display">
+F(\omega)=\lim _{\alpha \rightarrow 0} F_{1}(\omega)=\frac{-2 j \omega}{\omega^{2}}=\frac{2}{j \omega}</script></li>
+<li>阶跃函数 $f(t)=u(t)$<script type="math/tex; mode=display">
+F[u(t)]=\pi \delta(\omega)+\frac{1}{j \omega}</script></li>
+<li>★复合函数<script type="math/tex; mode=display">
+\frac{t^{n-1}}{(n-1) !} e^{-a t} u(t) \leftrightarrow \frac{1}{(a+j\omega)^{n}}, \quad \operatorname{Re}\{a\}>0</script></li>
+<li>左半三角形脉冲<script type="math/tex; mode=display">
+F(\omega)=\frac{E}{j\omega}\operatorname{Sa}\left(\frac{\omega\tau}{4}\right) e^{-j\frac{\omega\tau}{4}}-\frac{E}{j\omega} e^{-j\frac{\omega\tau}{2}}</script></li>
+<li>三角形脉冲<script type="math/tex; mode=display">
+F(\omega)=\frac{E\tau}{2}\operatorname{Sa}^2\left(\frac{\omega\tau}{4}\right)</script></li>
+</ul>
+<h3 id="常用周期信号的傅里叶变换"><a href="#常用周期信号的傅里叶变换" class="headerlink" title="常用周期信号的傅里叶变换"></a>常用周期信号的傅里叶变换</h3><ul>
+<li>指数函数<script type="math/tex; mode=display">
+\mathscr{F}\left[e^{j n \omega_{1} t}\right]=2 \pi \delta\left(\omega-n \omega_{1}\right)</script></li>
+<li>三角函数<script type="math/tex; mode=display">
+\begin{array}{l}
+\mathscr{F}\left[\cos \omega_{1} t\right]=\pi\left[\delta\left(\omega+\omega_{1}\right)+\delta\left(\omega-\omega_{1}\right)\right] \\
+\mathscr{F}\left[\sin \omega_{1} t\right]=j \pi\left[\delta\left(\omega+\omega_{1}\right)-\delta\left(\omega-\omega_{1}\right)\right] 
+\end{array}</script></li>
+<li>周期单位冲激函数<script type="math/tex; mode=display">
+\mathscr{F}\left[\delta_{T}(t)\right]=\frac{2 \pi}{T_{1}} \sum_{n=-\infty}^{\infty} \delta\left(\omega-n \omega_{1}\right)=\omega_{1} \sum_{n=-\infty}^{\infty} \delta\left(\omega-n \omega_{1}\right)</script></li>
+<li>周期方波信号<script type="math/tex; mode=display">
+\mathscr{F}\left[f(t)\right]=\omega_{1} E \tau \sum_{n=-\infty}^{\infty} \mathrm{Sa}\left(\frac{n \omega_{1} \tau}{2}\right) \delta\left(\omega-n \omega_{1}\right)</script></li>
+</ul>
+<h3 id="傅里叶变换存在条件"><a href="#傅里叶变换存在条件" class="headerlink" title="傅里叶变换存在条件"></a>傅里叶变换存在条件</h3><ul>
+<li>能量有限，即<script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty} \left|f(t)\right|^2 \mathrm{d}t<+\infty</script></li>
+<li>满足狄利赫里条件<ul>
+<li>$f(t)$ 绝对可积；</li>
+<li>在任何有限区间内 $f(t)$ 只有有限个最大值和最小值；</li>
+<li>在任何有限区间内 $f(t)$ 有有限个不连续点，且在每个不连续点必为有限值。</li>
+</ul>
+</li>
+</ul>
+<h3 id="LTI系统对连续时间复指数信号的响应"><a href="#LTI系统对连续时间复指数信号的响应" class="headerlink" title="LTI系统对连续时间复指数信号的响应"></a>LTI系统对连续时间复指数信号的响应</h3><p>考虑一个 LTI 系统，其单位冲激响应为 $h(t)$</p>
+<ul>
+<li>若输入复指数信号 $x(t)=e^{j w t}$，输出 <script type="math/tex; mode=display">
+\begin{aligned}
+y(t)&=h(t) * e^{j \omega t}\\
+&= \int_{-\infty}^{\infty} h(\tau) e^{j \omega(t-\tau)} \mathrm{d} \tau\\
+&=H(j \omega) \cdot e^{j \omega t}
+\end{aligned}</script>其中 $H(j \omega)=\int_{-\infty}^{\infty} h(t) e^{-j\omega t} \mathrm{d}t$ 为系统的<strong>频率响应</strong></li>
+<li>如输入 $x(t)=a_{1} e^{j \omega_{1} t}+a_{2} e^{j \omega_{2} t}+a_{3} e^{j \omega_{3} t}+\cdots$，输出 <script type="math/tex; mode=display">
+y(t)=H\left(j\omega_{1}\right) \cdot a_{1} e^{j\omega_1 t}+H\left(j\omega_{2}\right) \cdot a_{2} e^{j\omega_2 t}+ H\left(j\omega_{3}\right) \cdot a_{3} e^{j\omega_{3} t}+\cdots</script></li>
+</ul>
+<h3 id="LSI系统对离散时间复指数信号的响应"><a href="#LSI系统对离散时间复指数信号的响应" class="headerlink" title="LSI系统对离散时间复指数信号的响应"></a>LSI系统对离散时间复指数信号的响应</h3><p>考虑一个 LSI 系统，其单位样值响应为 $h(n)$</p>
+<ul>
+<li>若输入离散时间复指数信号 $x(n)=e^{j \omega n}$，则输出 <script type="math/tex; mode=display">
+\begin{aligned}
+y(n)&=h(n) * e^{j \omega n}\\
+&=\sum_{k=-\infty}^{\infty} h(k) e^{j \omega(n-k)}\\
+&=H\left(e^{j \omega}\right) \cdot e^{j \omega n}
+\end{aligned}</script>其中 $H\left(e^{j \omega}\right)= \sum_{n=-\infty}^{\infty} h(n) e^{-j \omega n}$ 称为系统的<strong>频率响应</strong></li>
+<li>如输入 $x(n)=a_{1} e^{j \omega_{1} n}+a_{2} e^{j \omega_{2} n}+a_{3} e^{j \omega_{3} n}+\cdots$，输出是系统对每个分量的响应的线性叠加，<script type="math/tex; mode=display">
+y(n)=H\left(e^{j \omega_{1}}\right) \cdot a_{1} e^{j \omega_{1} n}+   H\left(e^{j \omega_{2}}\right) \cdot a_{2} e^{j \omega_{2} n}+H\left(e^{j w_{3}}\right) \cdot a_{3} e^{j \omega_{3} n}+\cdots</script></li>
+</ul>
+<h3 id="傅里叶级数的性质"><a href="#傅里叶级数的性质" class="headerlink" title="傅里叶级数的性质"></a>傅里叶级数的性质</h3><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><script type="math/tex; mode=display">
+\begin{array}{lll}
+\text{ 性质} & \text{周期信号} & \text{傅里叶级数系数（三角形式）} & \text{傅里叶级数系数（指数形式）}\\
+\hline
+& x(t),y(t),\text{周期为}T,\text{基频}\omega_0 = 2\pi/T & a_k,b_k \\
+\hline
+\text { 线性 } & A x(t)+B y(t) & A a_{k}+B b_{k} \\
+\text { 时移 } & x\left(t-t_{0}\right) & a_{k} \mathrm{e}^{-\mathrm{j} k \omega_{0} t_{0}}=a_{k} \mathrm{e}^{-\mathrm{j} k(2 \pi/T) t_{0}} \\
+\text { 频移 } & \mathrm{e}^{\mathrm{j} M\omega_{0} t} x(t)=\mathrm{e}^{\mathrm{j} M(2 \pi / T) t} x(t) & a_{k-M} \\
+\text { 共轭 } & x^{*}(t) & a_{-k}^{*} \\
+\text { 时间反转 } & x(-t) & a_{-k} \\
+\text { 时域尺度变换 } & x(\alpha t), \alpha > 0 (\text {周期为 } T / \alpha) & a_{k}\\
+\text { 周期卷积 } & \int_{T} x(\tau) y(t-\tau) \mathrm{d} \tau & T a_{k} b_{k} \\
+\text { 相乘 } & x(t) y(t) & \sum_{l=-\infty}^{+\infty} a_{l} b_{k-l} \\
+\text { 微分 } & \frac{\mathrm{d} x(t)}{\mathrm{d} t} & \mathrm{j} k \omega_{0} a_{k}=\mathrm{j} k \frac{2 \pi}{T} a_{k} \\
+\text { 积分 } & \int_{-\infty}^{t} x(t) \mathrm{d} t  (仅当  a_{0}=0  才为有限值且为周期的 ) & \left(\frac{1}{\mathrm{j} k \omega_{0}}\right) a_{k}=\left(\frac{1}{\mathrm{j} k(2 \pi / T)}\right) a_{k} \\
+\text { 实偶信号 } & x(t)为实偶信号 & a_{k}为实偶函数 \\
+\text { 实奇信号 } & x(t)为实奇信号 & a_{k}为纯虚奇函数\\
+\text { 实信号的奇偶分解 } & \left\{\begin{array}{ll}x_{e}(t)=\mathscr{Ev} \{x(t)\} & {[x(t) \text { 为实信号 }]}  \\ x_{o}(t)=\mathscr{Od}\{x(t)\} & {[x(t) \text { 为实信号 }]} \end{array}\right. & \begin{array}{l}
+\mathscr{Re} \left\{a_{k}\right\}\\
+\mathrm{j} \mathscr{Im}\left\{a_{k}\right\}
+\end{array}\\
+\text { 帕斯瓦尔定理 } & \frac{1}{T} \int_{T}|x(t)|^{2} \mathrm{~d} t & \sum_{k=-\infty}^{+\infty}\left|a_{k}\right|^{2} \\
+\end{array}</script><h4 id="线性性"><a href="#线性性" class="headerlink" title="线性性"></a>线性性</h4><p>设<strong>周期</strong>信号 $x(t)$ 与 $y(t)$ 具有相同的周期 $T$，它们的傅里叶级数分别为 $F_n$ 与 $P_n$，则 $Ax(t)+By(t)$ 的傅里叶级数为 $AF_n+BP_n$</p>
+<h4 id="时移性质（延时特性）"><a href="#时移性质（延时特性）" class="headerlink" title="时移性质（延时特性）"></a>时移性质（延时特性）</h4><p>设<strong>周期</strong>信号 $x(t)$ 的周期为 $\mathrm{T}=\frac{2 \pi}{w_{1}}$，傅里叶级数系数为 $F_{n}$ 则 $x\left(t-t_{0}\right)$ 的傅里叶级数系数为 $e^{-j n \omega_{1} t_{0}} \cdot F_{n}$ </p>
+<h4 id="时间反转"><a href="#时间反转" class="headerlink" title="时间反转"></a>时间反转</h4><p>已知<strong>周期</strong>信号 $x(t)=\sum_{n=-\infty}^{\infty} F_{n} e^{j n \omega_{1} t}$ 则 $x(-t)=\sum_{n=-\infty}^{\infty} F_{n} e^{-j n \omega_{1} t}=\sum_{n=-\infty}^{\infty} F_{-n} e^{j n \omega_{1} t}$，傅里叶级数系数为 $F_{-n}$，即对周期信号的时间反转导致傅里叶级数系数序列的反转</p>
+<h4 id="时间尺度变换"><a href="#时间尺度变换" class="headerlink" title="时间尺度变换"></a>时间尺度变换</h4><p>设<strong>周期</strong>信号 $x(t)=\sum_{n=-\infty}^{\infty} F_{n} e^{j n \omega_{1} t}$，周期为 $\mathrm{T}$，基波频率为 $\omega_{1}$，则 $x(\alpha t)=\sum_{n=-\infty}^{\infty} F_{n} e^{j n \alpha \omega_{1} t}$，傅里叶级数系数没有改变</p>
+<h4 id="时域微分性质"><a href="#时域微分性质" class="headerlink" title="时域微分性质"></a>时域微分性质</h4><p>设<strong>周期</strong>信号 $x(t)=\sum_{n=-\infty}^{\infty} F_{n} e^{j n \omega_{1} t}$，周期为 $T$，基波频率为 $\omega_{1}$，可以得出 $\frac{\mathrm{d} x(t)}{\mathrm{d}t}$ 的傅里叶级数系数为 $j n \omega_{1} F_{n}$</p>
+<h4 id="相乘-1"><a href="#相乘-1" class="headerlink" title="相乘"></a>相乘</h4><p>设<strong>周期</strong>信号 $x(t)$ 和 $y(t)$ 具有相同的周期 $T$，它们的傅里叶级数系数分别为 $F_{n}$ 和 $P_{n}$，则 $x(t) \cdot y(t)$ 也是周期的，周期为 $T$，$x(t) \cdot y(t)=\sum_{n=-\infty}^{\infty} F_{n} e^{j n \omega_{1} t} \cdot \sum_{n=-\infty}^{\infty} P_{n} e^{j n \omega_{1} t}$，傅里叶级数系数为 $K_{n}=\sum_{l=-\infty}^{\infty} F_{l} \cdot P_{n-l}$</p>
+<h4 id="共轭"><a href="#共轭" class="headerlink" title="共轭"></a>共轭</h4><p>设<strong>周期</strong>信号 </p>
+<script type="math/tex; mode=display">
+x(t)=\sum_{n=-\infty}^{\infty} F_{n} e^{j n w_{1} t}</script><p>其复数共轭 </p>
+<script type="math/tex; mode=display">
+x^{*}(t)=\sum_{n=-\infty}^{\infty} F_{n}^{*} e^{-j n \omega_{1} t}= \sum_{n=-\infty}^{\infty} F_{-n}^{*} e^{j n \omega_{1} t}</script><p>即 $x^{*}(t)$ 的傅里叶级数系数为 $F_{-n}^{*}$</p>
+<h4 id="帕斯瓦尔定理"><a href="#帕斯瓦尔定理" class="headerlink" title="帕斯瓦尔定理"></a>帕斯瓦尔定理</h4><p>设<strong>周期</strong>信号 $x(t)=\sum_{n=-\infty}^{\infty} F_{n} e^{j n \omega_{1} t}$，周期为 $T$，则 </p>
+<script type="math/tex; mode=display">
+\frac{1}{T} \int_{T}|x(t)|^{2} \mathrm{d} t=\sum_{n=-\infty}^{\infty}\left|F_{n}\right|^{2}</script><p>即周期信号 $x(t)$ 的总平均功率等于全部谐波分量的平均功率之和</p>
+<h3 id="★傅里叶变换的性质"><a href="#★傅里叶变换的性质" class="headerlink" title="★傅里叶变换的性质"></a>★傅里叶变换的性质</h3><h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><script type="math/tex; mode=display">
+\begin{array}{|c|c|c|}
+\hline \text { 性质 } & \text { 时域 } & \text { 频域 } \\
+\hline \text { 线性 } & \sum_{i=1}^{N} a_{i} f_{i}(t) & \sum_{i=1}^{N} a_{i} F_{i}(\omega) \\
+\hline \text { 对称性 } & F(t) & 2 \pi f(-\omega) \\
+\hline \text { 尺度变换 } & f(a t) & \frac{1}{|a|} F\left(\frac{\omega}{a}\right)\\
+\hline \text { 反折 } & f(-t) & F(-\omega) \\
+\hline \text { 共轭 } & f^{*}(t) & F^{*}(-\omega) \\
+\hline \text { 时移 } & f\left(t-t_{0}\right) & F(\omega) \mathrm{e}^{-\mathrm{j} \omega t_{0}} \\
+\hline \text { 时移与相移 } & f\left(a t-t_{0}\right) & \frac{1}{|a|} F\left(\frac{\omega}{a}\right) \mathrm{e}^{-\mathrm{j} \frac{\omega t_0}{a}} \\
+\hline \text { 频移 } & f(t) \mathrm{e}^{\mathrm{j} \omega_{0} t} & F\left(\omega-\omega_{0}\right) \\
+\hline \text { 时域微分 } & f^{(n)}(t) & (\mathrm{j} \omega)^{n} F(\omega) \\
+\hline \text { 频域微分 } & (-\mathrm{j} t)^{n} f(t) & F^{(n)}(\omega) \\
+\hline \text { 时域积分 } & \int_{-\infty}^{t} f(\tau) \mathrm{d} t & \frac{1}{\mathrm{j} \omega} F(\omega)+\pi F(0) \delta(\omega) + 2\pi \cdot f(-\infty)\delta(\omega) \\
+\hline \text { 频域积分 } & \pi f(0) \delta(t)+\frac{1}{-\mathrm{j} t} f(t) & \int_{-\infty}^{\omega} F(\eta) \mathrm{d} \eta \\
+\hline \text { 时域卷积 } & f_{1}(t) * f_{2}(t) & F_{1}(\omega) \cdot F_{2}(\omega) \\
+\hline \text { 频域卷积 } & f_{1}(t) \cdot f_{2}(t) & \frac{1}{2 \pi} F_{1}(\omega) * F_{2}(\omega) \\
+\hline \text { 帕斯瓦尔定理 } & \int_{-\infty}^{\infty}|f(t)|^{2} \mathrm{~d} t & \frac{1}{2 \pi} \int_{-\infty}^{\infty} \left| F(\omega){ }^{2} \right| \mathrm{~d} \omega\\
+\hline 
+\end{array}</script><h4 id="奇偶虚实性"><a href="#奇偶虚实性" class="headerlink" title="奇偶虚实性"></a>奇偶虚实性</h4><table>
+<thead>
+  <tr>
+    <th rowspan="2">频谱</th>
+    <th colspan="2">$f(t)$ 为实函数</th>
+    <th colspan="2">$f(t)$ 为虚函数</th>
+  </tr>
+  <tr>
+    <th>偶对称</th>
+    <th>奇对称</th>
+    <th>偶对称</th>
+    <th>奇对称</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>$F(\omega)$</td>
+    <td>实偶函数</td>
+    <td>虚奇函数</td>
+    <td>虚偶函数</td>
+    <td>实奇函数</td>
+  </tr>
+  <tr>
+    <td>$R(\omega)$</td>
+    <td colspan="2">偶对称</td>
+    <td colspan="2">奇对称</td>
+  </tr>
+  <tr>
+    <td>$X(\omega)$</td>
+    <td colspan="2">奇对称</td>
+    <td colspan="2">偶对称</td>
+  </tr>
+  <tr>
+    <td>$|F(\omega)|$</td>
+    <td colspan="2">偶对称</td>
+    <td colspan="2">偶对称</td>
+  </tr>
+  <tr>
+    <td>$\varphi(\omega)$</td>
+    <td colspan="2">奇对称</td>
+    <td colspan="2">$pi-\varphi(-\omega)$</td>
+  </tr>
+</tbody>
+</table>
+
+<h4 id="线性性-1"><a href="#线性性-1" class="headerlink" title="线性性"></a>线性性</h4><p>设<strong>非周期</strong>信号 $f_{1}(t)$ 和 $f_{2}(t)$ 的傅里叶变换分别为 $F_{1}(\omega)$ 和 $F_{2}(\omega)$，也即</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[f_{1}(t)\right]=F_{1}(\omega),\quad \mathscr{F}\left[f_{2}(t)\right]=F_{2}(\omega)</script><p>则对于任意常数 $a_{1}$ 和 $a_{2}$，有</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[a_{1} f_{1}(t)+a_{2} f_{2}(t)\right]=a_{1} F_{1}(\omega)+a_{2} F_{2}(\omega)</script><p>推广之，若 $\mathscr{F}\left[f_{i}(t)\right]=F_{i}(\omega),i=1,2,\cdots,n$，则</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[\sum_{i=1}^{n} a_{i} f_{i}(t)\right]=\sum_{i=1}^{n} a_{i} F_{i}(\omega)</script><p>式中 $a_{i}$ 为常数，$n$ 为有理正整数。由傅里叶变换的定义式很容易证明线性性质。</p>
+<h4 id="对称性"><a href="#对称性" class="headerlink" title="对称性"></a>对称性</h4><p>对于<strong>非周期</strong>信号，若已知</p>
+<script type="math/tex; mode=display">
+\mathscr{F}[f(t)]=F(\omega)</script><p>则</p>
+<script type="math/tex; mode=display">
+\mathscr{F}[F(t)]=2 \pi f(-\omega)</script><h4 id="时移性质（延时特性）-1"><a href="#时移性质（延时特性）-1" class="headerlink" title="时移性质（延时特性）"></a>时移性质（延时特性）</h4><p>设<strong>非周期</strong>信号 $f(t)$ 的频谱为 $F(\omega)$，若将 $f(t)$ 沿时间轴右移 $($ 延时 $)  t_{0}$ 得到 $f\left(t-t_{0}\right)$，其频谱为</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[f\left(t-t_{0}\right)\right]=\int_{-\infty}^{\infty} f\left(t-t_{0}\right) \mathrm{e}^{-\mathrm{j} \omega t} \mathrm{~d} t</script><h4 id="频移性质"><a href="#频移性质" class="headerlink" title="频移性质"></a>频移性质</h4><p>若<strong>非周期</strong>信号 $f(t)$ 的频谱为 $F(\omega)$，将 $f(t)$ 乘以因子 $\mathrm{e}^{\mathrm{j} \omega_{0} t}$，其中 $\omega_{0}$ 为数，则 $f(t) \mathrm{e}^{\mathrm{j} \omega_{0} t}$ 的频谱为</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[f(t) \mathrm{e}^{\mathrm{j} \omega_{0} t}\right]=\int_{-\infty}^{\infty} f(t) \mathrm{e}^{\mathrm{j} \omega_{0} t} \mathrm{e}^{-\mathrm{j} \omega t} \mathrm{~d} t=\int_{-\infty}^{\infty} f(t) \mathrm{e}^{-\mathrm{j}\left(\omega-\omega_{0}\right) t} \mathrm{~d} t</script><p>于是可得</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[f(t) \mathrm{e}^{\mathrm{j} \omega_{0} t}\right]=F\left(\omega-\omega_{0}\right)</script><p>同理</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[f(t) \mathrm{e}^{-\mathrm{j} \omega_{0} t}\right]=F\left(\omega+\omega_{0}\right)</script><h4 id="时间尺度变换-1"><a href="#时间尺度变换-1" class="headerlink" title="时间尺度变换"></a>时间尺度变换</h4><p>设<strong>非周期</strong>信号信号 $f(t)$ 的频谱为</p>
+<script type="math/tex; mode=display">
+F(\omega)=\int_{-\infty}^{\infty} f(t) \mathrm{e}^{-\mathrm{j} \omega t} \mathrm{~d} t</script><p>变换后信号 $f(a t)$ 的频谱为</p>
+<script type="math/tex; mode=display">
+\mathscr{F}[f(a t)]=\int_{-\infty}^{\infty} f(a t) \mathrm{e}^{-j \omega t} \mathrm{~d} t</script><h4 id="时域频域卷积乘积"><a href="#时域频域卷积乘积" class="headerlink" title="时域频域卷积乘积"></a>时域频域卷积乘积</h4><p>设有两个<strong>非周期</strong>信号 $f_{1}(t)$ 和 $f_{2}(t)$，其频谱分别为 $F_{1}(\omega)$ 与 $F_{2}(\omega)$，考虑 $f_{1}(t)$ 和 $f_{2}(t)$ 的卷积 $f_{1}(t) * f_{2}(t)$ 之频谱为</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\mathscr{F}\left[f_{1}(t) * f_{2}(t)\right]=\int_{-\infty}^{\infty} f_{1}(\tau) F_{2}(\omega) \mathrm{e}^{-\mathrm{j} \omega \tau} \mathrm{d} \tau=F_{1}(\omega) \cdot F_{2}(\omega) \\
+\mathscr{F}\left[f_{1}(t) \cdot f_{2}(t)\right]=\frac{1}{2 \pi} F_{1}(\omega) * F_{2}(\omega)
+\end{array}</script><h4 id="时域微分性质-1"><a href="#时域微分性质-1" class="headerlink" title="时域微分性质"></a>时域微分性质</h4><p>设<strong>非周期</strong>信号 $f(t)$ 导数的频谱为</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[\int_{-\infty}^{t} f(\tau) \mathrm{d} \tau\right] =\frac{1}{\mathrm{j} \omega} F(\omega)</script><p>进一步可推得 $f(t)$ 的 $n$ 阶导数的频谱为</p>
+<script type="math/tex; mode=display">
+\mathscr{F}\left[f^{(n)}(t)\right]=(\mathrm{j} \omega)^{n} F(\omega)</script><h4 id="频域微分性质"><a href="#频域微分性质" class="headerlink" title="频域微分性质"></a>频域微分性质</h4><p>对于<strong>非周期</strong>信号</p>
+<script type="math/tex; mode=display">
+\mathscr{F}^{-1}\left[\int_{-\infty}^{\omega} F(\eta) \mathrm{d} \eta\right] =\pi f(0) \delta(t)-\frac{1}{\mathrm{j} t} f(t)</script><h4 id="帕斯瓦尔定理-1"><a href="#帕斯瓦尔定理-1" class="headerlink" title="帕斯瓦尔定理"></a>帕斯瓦尔定理</h4><p>若<strong>非周期</strong>信号 $f(t)$ 的频谱为 $F(\omega)$，则</p>
+<script type="math/tex; mode=display">
+\int_{-\infty}^{\infty}|f(t)|^{2} \mathrm{~d} t=\frac{1}{2 \pi} \int_{-\infty}^{\infty}|F(\omega)|^{2} \mathrm{~d} \omega</script><p>帕斯瓦尔定理表明，这个能量既可以按每单位时间的能量 $|f(t)|^{2}$ 在整个时间内积分计算出来，也可按单位频率内的能量 $|F(\omega)|^{2} / 2 \pi$ 在整个频率范围内积分而得到。因此，$|F(\omega)|^{2}$ 称为信号 $f(t)$ 的能量谱密度。</p>
+<h3 id="常用信号调制"><a href="#常用信号调制" class="headerlink" title="常用信号调制"></a>常用信号调制</h3><h4 id="正余弦"><a href="#正余弦" class="headerlink" title="正余弦"></a>正余弦</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+\mathscr{F}\left(f(t)\cdot \cos(\omega_0 t)\right)= \frac{1}{2}(F(\omega+\omega_0)+F(\omega-\omega_0))\\
+\mathscr{F}\left(f(t)\cdot \sin(\omega_0 t)\right)= \frac{j}{2}(F(\omega+\omega_0)-F(\omega-\omega_0))
+\end{array}</script><h3 id="傅里叶反变换"><a href="#傅里叶反变换" class="headerlink" title="傅里叶反变换"></a>傅里叶反变换</h3><script type="math/tex; mode=display">
+f(t)=\frac{1}{2 \pi} \int_{-\infty}^{\infty} F(\omega) \mathrm{e}^{\mathrm{j} \omega t} \mathrm{~d} \omega</script><h3 id="频域求解LTI系统单位冲激响应"><a href="#频域求解LTI系统单位冲激响应" class="headerlink" title="频域求解LTI系统单位冲激响应"></a>频域求解LTI系统单位冲激响应</h3><p>对于微分方程</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d} r(t)}{\mathrm{d} t}+ a \cdot r(t) = b \frac{\mathrm{d} e(t)}{\mathrm{d} t}</script><p>两边作傅里叶变换，可得</p>
+<script type="math/tex; mode=display">
+j\omega R(j\omega) + aR(j\omega)=bj\omega e(j\omega)</script><p>于是可得系统的频率响应</p>
+<script type="math/tex; mode=display">
+H(j\omega) = \frac{R(j\omega)}{E(j\omega)}=\frac{bj\omega}{j\omega+a}</script><p>逆变换可得单位冲激响应 $h(t)$</p>
+<h3 id="采样"><a href="#采样" class="headerlink" title="采样"></a>采样</h3><p>我们常常遇到需要将连续信号变为离散信号的情况，这就需要对信号进行抽样，或称<strong>取样</strong>或<strong>采样</strong>。例如，每隔一定时间观测一次气温或各种物理量，取得各信号在各离散时刻的一系列数据。对信号的抽样过程可理解为利用抽样脉冲序列 $p(t)$ 从连续信号 $f(t)$ 中抽取一系列离散值的过程，这样得到的离散信号称为抽样信号，以 $f_{s}(t)$ 表示。在时域进行抽样过程称为<strong>时域抽样</strong>，在频域进行抽样过程称为<strong>频域抽样</strong>。<br><img src="https://s2.loli.net/2023/03/30/pPTqcLEU4nk5tyH.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="时域抽样"><a href="#时域抽样" class="headerlink" title="时域抽样"></a>时域抽样</h4><p>若连续信号 $f(t)$ 的频谱为 $F(\omega)=\mathscr{F}[f(t)]$，抽样脉冲 $p(t)$ 的频谱为 $P(\omega)=\mathscr{F}[p(t)]$，抽样信号的频谱为 $F_{\mathrm{s}}(\omega)=\mathscr{F}\left[f_{\mathrm{s}}(t)\right]$，均匀抽样周期为 $T_{\mathrm{s}}$，抽样角频率为 $\omega_{\mathrm{s}}$，则</p>
+<script type="math/tex; mode=display">
+T_{\mathrm{s}}=\frac{2 \pi}{\omega_{\mathrm{s}}}=\frac{1}{f_{\mathrm{s}}}</script><p>时域抽样过程是通过抽样脉冲信号 $p(t)$ 与连续信号 $f(t)$ 相乘得到的，即</p>
+<script type="math/tex; mode=display">
+f_{\mathrm{s}}(t)=f(t) \cdot p(t)</script><p>根据频域卷积定理，可得抽样信号 $f_{\mathrm{s}}(t)$ 的频谱为</p>
+<script type="math/tex; mode=display">
+F_{\mathrm{s}}(\omega)=\sum_{n=-\infty}^{\infty} P_{n} F\left(\omega-n \omega_{\mathrm{s}}\right)</script><p>其中 $P_{n}$ 为 $p(t)$ 的傅里叶级数的系数</p>
+<script type="math/tex; mode=display">
+P_{n}=\frac{1}{T_{s}} \int_{-\frac{T_{s}}{2}}^{\frac{T_{s}}{2}} p(t) \mathrm{e}^{-j n \omega_{s} t} \mathrm{~d} t</script><h4 id="时域矩形脉冲抽样"><a href="#时域矩形脉冲抽样" class="headerlink" title="时域矩形脉冲抽样"></a>时域矩形脉冲抽样</h4><script type="math/tex; mode=display">
+F_{\mathrm{s}}(\omega)=\frac{E_{\tau}}{T_{\mathrm{s}}} \sum_{n=-\infty}^{\infty} \operatorname{Sa}\left(\frac{n \omega_{\mathrm{s}} \tau}{2}\right) F\left(\omega-n \omega_{\mathrm{s}}\right)</script><h4 id="时域冲激抽样"><a href="#时域冲激抽样" class="headerlink" title="时域冲激抽样"></a>时域冲激抽样</h4><script type="math/tex; mode=display">
+F_{\mathrm{s}}(\omega)=\frac{1}{\mathrm{~T}_{\mathrm{s}}} \sum_{n=-\infty}^{\infty} F\left(\omega-n \omega_{\mathrm{s}}\right)</script><h4 id="时域抽样定理"><a href="#时域抽样定理" class="headerlink" title="时域抽样定理"></a>时域抽样定理</h4><p>时域抽样定理可表示如下：若连续信号 $f(t)$ 的频谱占据 $\left(-\omega_{\mathrm{m}}\right)$ 至 $\left(+\omega_{\mathrm{m}}\right)$ 的范围，此信号称为<strong>频谱受限信号</strong>，则用等间隔抽样值唯一表示 $f(t)$ 之条件为：抽样角频率 $\omega_{\mathrm{s}}$ 必须大于或等于 $2 \omega_{\mathrm{m}}$，即</p>
+<script type="math/tex; mode=display">
+\omega_{\mathrm{s}} \geqslant 2 \omega_{\mathrm{m}}</script><p>或抽样周期</p>
+<script type="math/tex; mode=display">
+T_{\mathrm{s}} \leqslant \frac{1}{2 f_{\mathrm{m}}}</script><p>于是<strong>最小抽样角频率</strong>或<strong>最小抽样频率</strong>为</p>
+<script type="math/tex; mode=display">
+\omega_{\mathrm{smin}}=2 \omega_{\mathrm{m}},\quad f_{\mathrm{smin}}=2 f_{\mathrm{m}}</script><p>式中 $f_{\mathrm{smin}}=\frac{\omega_{\mathrm{smin}}}{2 \pi}$，$f_{\mathrm{m}}=\frac{\omega_{\mathrm{m}}}{2 \pi}$。</p>
+<ul>
+<li>只有满足抽样定理中的 $\omega_{\mathrm{s}} \geqslant 2 \omega_{\mathrm{m}}$ 条件，$F_{\mathrm{s}}(\omega)$ 才不会产生频谱混叠。</li>
+<li>满足抽样定理的抽样信号保留了原信号 $f(t)$ 的全部信息。</li>
+<li>当不满足抽样定理时，即 $\omega_{\mathrm{s}}&lt;2 \omega_{\mathrm{m}}$，则频谱将产生混叠，$F_{\mathrm{s}}(\omega)$ 后一周期的低频混叠至前一周期的高频</li>
+<li>最小抽样频率 $\omega_{\mathrm{smin}}=2 \omega_{\mathrm{m}}$ 或 $f_{\mathrm{s}}=2 f_{\mathrm{m}}$ 称为<strong>奈奎斯特频率</strong>，最大允许抽样周期 $T_{\mathrm{smax}}=\frac{1}{2 f_{\mathrm{m}}}$ 称为<strong>奈奎斯特周期</strong>。</li>
+</ul>
+<h4 id="采样还原"><a href="#采样还原" class="headerlink" title="采样还原"></a>采样还原</h4><p>利用如下的矩形函数 $H(\omega)$ ：</p>
+<script type="math/tex; mode=display">
+H(\omega)=\left\{\begin{array}{ll}
+1,& |\omega|<\omega_{c} \\
+0,& |\omega|>\omega_{c}
+\end{array}\right.</script><p>选择 $\omega_{\mathrm{m}}&lt;\omega_{\mathrm{c}}&lt;\frac{\omega_{\mathrm{s}}}{2}$，然后将 $F_{\mathrm{s}}(\omega)$ 与 $H(\omega)$ 相乘，即得</p>
+<script type="math/tex; mode=display">
+F(\omega)=F_{\mathrm{s}}(\omega) H(\omega)</script><p>反变换后即可得到原始信号 $f(t)$</p>
+<script type="math/tex; mode=display">
+f(t)=\mathscr{F}^{-1}[F(\omega)]</script><p>时域对应式为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+f(t) & =f_{\mathrm{s}}(t) * h(t)=\sum_{n=-\infty}^{\infty} f\left(n T_{\mathrm{s}}\right) \delta\left(t-n T_{\mathrm{s}}\right) * \frac{\omega_{\mathrm{c}}}{\pi} \mathrm{Sa}\left(\omega_{\mathrm{c}} t\right) \\
+& =\sum_{n=-\infty}^{\infty} \frac{\omega_{\mathrm{c}}}{\pi} f\left(n T_{\mathrm{s}}\right) \operatorname{Sa}\left[\omega_{\mathrm{c}}\left(t-n T_{\mathrm{s}}\right)\right]
+\end{aligned}</script><ul>
+<li>通常把上式表示的过程称为<strong>内插</strong>，即用一个常用的样本来重构某一函数。这里的样本就是理想低通滤波器的冲激响应，而被抽样的函数 $f(t)$ 就是要重构的函数。</li>
+</ul>
+<h4 id="频域抽样"><a href="#频域抽样" class="headerlink" title="频域抽样"></a>频域抽样</h4><p>若原始信号 $f(t)$ 的频谱为 $F(\omega)$，$F(\omega)$ 在频域中被间隔为 $\omega_{1}$ 的周期冲激序列 $\delta_{\omega}(\omega)$ 进行抽样，得到</p>
+<script type="math/tex; mode=display">
+F_{1}(\omega)=F(\omega) \cdot \delta_{\omega}(\omega)</script><p>式中</p>
+<script type="math/tex; mode=display">
+\delta_{\omega}(\omega)=\sum_{n=-\infty}^{\infty} \delta\left(\omega-n \omega_{1}\right)</script><p>频域抽样后 $F_{1}(\omega)$ 所对应的信号为</p>
+<script type="math/tex; mode=display">
+f_{1}(t)=f(t) * \frac{1}{\omega_{1}} \delta_{T}(t)=f(t) * \frac{1}{\omega_{1}} \sum_{n=-\infty}^{\infty} \delta\left(t-n T_{1}\right)</script><h4 id="频域抽样定理"><a href="#频域抽样定理" class="headerlink" title="频域抽样定理"></a>频域抽样定理</h4><p>频域抽样定理与时域抽样定理相对应，可表述如下：若信号 $f(t)$ 在 $-t_{\mathrm{m}}$ 至 $t_{\mathrm{m}}$ 范围内为非零值，其他均为零值，则 $f(t)$ 称为<strong>时间受限信号</strong>。时间受限信号 $f(t)$ 的频谱 $F(\omega)$ 在频域中以间隔为 $\omega_{1}$ 的冲激序列进行抽样，则抽样后的频谱 $F_{1}(\omega)$ 可以唯一表示原始信号的条件为重复周期 $T_{1}$ 满足</p>
+<script type="math/tex; mode=display">
+T_{1} \geqslant 2 t_{\mathrm{m}}</script><p>或频率间隔 $f_{1}$ 为</p>
+<script type="math/tex; mode=display">
+f_{1}=\frac{\omega_{1}}{2 \pi} \leqslant \frac{1}{2 t_{\mathrm{m}}},\quad \omega_{1}=\frac{2 \pi}{T_{1}}</script><h2 id="第五章-连续时间系统的频域分析"><a href="#第五章-连续时间系统的频域分析" class="headerlink" title="第五章 连续时间系统的频域分析"></a>第五章 连续时间系统的频域分析</h2><h3 id="线性非时变系统的特征函数"><a href="#线性非时变系统的特征函数" class="headerlink" title="线性非时变系统的特征函数"></a>线性非时变系统的特征函数</h3><p>对于连续时间的线性非时变系统，时域复指数信号 $\mathrm{e}^{\mathrm{j} \omega t}$ 可以构成相当广泛的一类有用信号，而且 LTI 系统对 $\mathrm{e}^{\mathrm{j} \omega t}$ 的响应可以方便地得到。一个 LTI 系统对复指数信号 $\mathrm{e}^{\mathrm{i} m t}$ 的响应 $T\left[\mathrm{e}^{\mathrm{j} \omega t}\right]$ 仍是<strong>同一个复指数信号</strong>，所不同的是<strong>幅度</strong>上产生了变化，即</p>
+<script type="math/tex; mode=display">
+T\left[\mathrm{e}^{\mathrm{j} \omega t}\right]=H(\mathrm{j} \omega) \mathrm{e}^{\mathrm{j} \omega t}</script><p>此处 $H(\mathrm{j} \omega)$ 为 $\omega$ 的函数，是 LTI 系统的<strong>频率响应</strong>。一般说来，一个信号，若系统对该信号的输出仅是一个常数（可能是复数）乘以输入，则称该信号为系统的<strong>特征函数</strong>，而幅度因子称为系统的<strong>特征值</strong>。</p>
+<h3 id="线性非时变系统的频率响应"><a href="#线性非时变系统的频率响应" class="headerlink" title="线性非时变系统的频率响应"></a>线性非时变系统的频率响应</h3><h4 id="由微分方程得到"><a href="#由微分方程得到" class="headerlink" title="由微分方程得到"></a>由微分方程得到</h4><p>$LTI$ 系统的输入和输出满足一个线性常系数微分方程，其一般形式为</p>
+<script type="math/tex; mode=display">
+\sum_{i=0}^{n} C_{i} \frac{\mathrm{d}^{(n-i)}}{\mathrm{d} t^{(n-i)}} r(t)=\sum_{i=0}^{m} E_{i} \frac{\mathrm{d}^{(m-i)}}{\mathrm{d} t^{(m-i)}} e(t)</script><p>频率响应为</p>
+<script type="math/tex; mode=display">
+H(\mathrm{j} \omega)=\frac{R(\mathrm{j} \omega)}{E(\mathrm{j} \omega)}=\frac{\sum_{i=0}^{m} E_{i} \cdot(\mathrm{j} \omega)^{m-i}}{\sum_{i=0}^{n} C_{i} \cdot(\mathrm{j} \omega)^{n-i}}</script><h4 id="由冲激响应得到"><a href="#由冲激响应得到" class="headerlink" title="由冲激响应得到"></a>由冲激响应得到</h4><script type="math/tex; mode=display">
+H(\mathrm{j} \omega) = \mathscr{F}(h(t))</script><h3 id="系统响应的频域分析步骤"><a href="#系统响应的频域分析步骤" class="headerlink" title="系统响应的频域分析步骤"></a>系统响应的频域分析步骤</h3><ol>
+<li>求系统频率响应 $H(\mathrm{j} \omega)$</li>
+<li>求输入信号的傅里叶变换 $E(\omega)$</li>
+<li>计算零状态响应输出 $R(\omega)$</li>
+<li>求零状态响应 $r_{zs}(t)=\mathscr{F}(R(\omega))$</li>
+</ol>
+<h3 id="分式分解与傅里叶逆变换"><a href="#分式分解与傅里叶逆变换" class="headerlink" title="分式分解与傅里叶逆变换"></a>分式分解与傅里叶逆变换</h3><p>在频域分析中，系统响应如果是<strong>实系数有理分式</strong>（注意此处虚数单位 $j$ 算在未知数里）的形式，则可展开成部分分式之和。一般使用部分分式展开法求傅里叶反变换。</p>
+<script type="math/tex; mode=display">
+R(j\omega)=\frac{P(j\omega)}{Q(j\omega)}=\frac{b_{m} (j\omega)^{m}+b_{m-1} (j\omega)^{m-1}+\cdots+b_{1} (j\omega)+b_{0}}{a_{n} (j\omega)^{n}+a_{n-1} (j\omega)^{n-1}+\cdots+a_{1} (j\omega)+a_{0}}</script><p>式中，$m$ 和 $n$ 分别为分子和分母多项式的阶次。如果 $m \geqslant n$，称 $R(j\omega)$ 为<strong>假分式</strong>；如果 $m&lt;n$，则称 $R(j\omega)$ 为<strong>真分式</strong>。当 $m \geqslant n$ 时，可将上式分解为一个 $j\omega$ 多项式和一个真分式之和，即</p>
+<script type="math/tex; mode=display">
+R(j\omega)=\frac{P(j\omega)}{Q(j\omega)}=A(j\omega)+\frac{B(j\omega)}{Q(j\omega)}</script><p>式中，</p>
+<ul>
+<li>$A(j\omega)$ 是 $P(j\omega)$ 被 $Q(j\omega)$ 所除而得的商式</li>
+<li>多项式 $A(j\omega)$ 所对应的时域信号是 $\delta(t), \delta^{(1)}(t), \cdots, \delta^{(m-n)}(t)$ 等函数的线性组合</li>
+<li>$B(j\omega)$ 是 $P(j\omega)$ 被 $Q(j\omega)$ 所除而得的余式，$B(j\omega) / Q(j\omega)$ 为真分式。</li>
+</ul>
+<h4 id="真分式裂项的步骤"><a href="#真分式裂项的步骤" class="headerlink" title="真分式裂项的步骤"></a>真分式裂项的步骤</h4><p>设频域信号 $R(j\omega)$ 为真分式，并将分母多项式 $Q(j\omega)$ 用因式连乘的形式来表示，也就是将其写成</p>
+<script type="math/tex; mode=display">
+R(j\omega)=\frac{P(j\omega)}{Q(j\omega)}=\frac{b_{m} (j\omega)^{m}+b_{m-1} (j\omega)^{m-1}+\cdots+b_{1} (j\omega)+b_{0}}{a_{n} (j\omega)^{n}+a_{n-1} (j\omega)^{n-1}+\cdots+a_{1} (j\omega)+a_{0}}=\frac{1}{a_{n}} \frac{P(j\omega)}{\prod_{j=1}^{n}\left((j\omega)-p_{j}\right)}</script><p>式中，$p_{j}(j=1,2, \cdots, n)$ 为方程 $Q(j\omega)=0$ 的根，即分母多项式 $Q(j\omega)$ 的<strong>零点</strong>。因为 $(j\omega) \rightarrow p_{j}$ 时，$R(j\omega) \rightarrow \infty$，所以 $p_{j}$ 也称为 $R(j\omega)$ 的<strong>极点</strong>。若 $p_{j}$ 是多项式 $Q(j\omega)$ 的单零点（即单根），则称 $p_{j}$ 为 $R(j\omega)$ 的单极点。如果 $p_{j}(j=1,2, \cdots, r)$ 是 $Q(j\omega)$ 的 $r$ 价零点（即 $r$ 重根），则称 $p_{j}$ 为 $R(j\omega)$ 的 $r$ 阶极点。</p>
+<h4 id="实单极点有理分式"><a href="#实单极点有理分式" class="headerlink" title="实单极点有理分式"></a>实单极点有理分式</h4><p>若 $R(j\omega)$ 为单极点有理函数，极点全部为实数，则 $R(j\omega)$ 的部分分式展开式可写为</p>
+<script type="math/tex; mode=display">
+R(j\omega)=\frac{P(j\omega)}{Q(j\omega)}=\frac{K_{1}}{j\omega-p_{1}}+\frac{K_{2}}{j\omega-p_{2}}+\cdots+\frac{K_{n}}{j\omega-p_{n}}=\sum_{j=1}^{n} \frac{K_{j}}{j\omega-p_{j}}</script><p>可得系数</p>
+<script type="math/tex; mode=display">
+K_{j}=\lim _{j\omega \rightarrow p_{j}}\left(j\omega-p_{j}\right) R(j\omega)=\left.\left(j\omega-p_{j}\right) R(j\omega)\right|_{j\omega=p_{j}}</script><p>线性组合后求得</p>
+<script type="math/tex; mode=display">
+r(t)=\mathscr{F}^{-1}[R(j\omega)]=\mathscr{F}^{-1}\left[\sum_{j=1}^{n} \frac{K_{j}}{j\omega-p_{j}}\right]=\sum_{j=1}^{n} K_{j} \mathrm{e}^{p_j t} u(t)</script><h4 id="复单极点有理分式"><a href="#复单极点有理分式" class="headerlink" title="复单极点有理分式"></a>复单极点有理分式</h4><p>当某些极点为复数时，复数极点必以共轭复数的形式成对出现。设 $R(j\omega)$ 的分式展开式为</p>
+<script type="math/tex; mode=display">
+R(j\omega)=\frac{K_{1}}{j\omega-(\alpha+\mathrm{j} \beta)}+\frac{K_{2}}{j\omega-(\alpha-\mathrm{j} \beta)}</script><p>应用上面的规律可得</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+K_{1}=\left.[j\omega-(\alpha+\mathrm{j} \beta)] R(j\omega)\right|_{j\omega=\alpha+\mathrm{j} \beta}\\
+K_{2}=\left.[j\omega-(\alpha-\mathrm{j} \beta)] R(j\omega)\right|_{j\omega=\alpha-\mathrm{j} \beta}
+\end{array}</script><p>$K_{1}$ 和 $K_{2}$ 一般也是共轭复数。如果 $K_{1}=\left|K_{1}\right| \mathrm{e}^{\mathrm{j} \varphi_{K}}$, 则 $K_{2}=K_{1}^{*}=\left|K_{1}\right| \mathrm{e}^{-\mathrm{j} \varphi_{K}}$。于是原式的傅里叶反变换为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+r(t)=K_{1} \mathrm{e}^{(\alpha+\mathrm{j} \beta) t}u(t)+K_{2} \mathrm{e}^{(\alpha-\mathrm{j} \beta) t}u(t) &=\left|K_{1}\right| \mathrm{e}^{\alpha t}\left[\mathrm{e}^{\mathrm{j}\left(\beta t+\varphi_{K}\right)}+\mathrm{e}^{-\mathrm{j}\left(\beta t+\varphi_{K}\right)}\right] \\
+&=2\left|K_{1}\right| \mathrm{e}^{\alpha t} \cos \left(\beta t+\varphi_{K}\right)
+\end{aligned}</script><h4 id="重极点有理分式"><a href="#重极点有理分式" class="headerlink" title="重极点有理分式"></a>重极点有理分式</h4><p>若 $R(j\omega)$ 的分母 $Q(j\omega)$ 有一个 $r$ 重根 $p_{1}$，则 $R(j\omega)$ 的部分分式展开式为</p>
+<script type="math/tex; mode=display">
+R(j\omega)=\frac{K_{11}}{j\omega-p_{1}}+\frac{K_{12}}{\left(j\omega-p_{1}\right)^{2}}+\cdots+\frac{K_{1 r}}{\left(j\omega-p_{1}\right)^{r}}</script><p>可知其中的系数</p>
+<script type="math/tex; mode=display">
+K_{1k}=\frac{1}{(r-k)!} \frac{\mathrm{d}^{r-k}}{\mathrm{~d} (j\omega)^{r-k}}\left[\left(j\omega-p_{1}\right)^{r} R(j\omega)\right]_{j\omega=p_{1}}</script><p>则 $R(j\omega)$ 的原函数为</p>
+<script type="math/tex; mode=display">
+r(t)=\left(K_{11}+\frac{1}{1 !}K_{12} t+\cdots+\frac{1}{(r-1) !} K_{1 r} t^{r-1}\right) \mathrm{e}^{p_{1} t}u(t)</script><h3 id="失真"><a href="#失真" class="headerlink" title="失真"></a>失真</h3><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>线性系统产生的传输信号失真是由两种因素造成的：</p>
+<ul>
+<li>因素一是信号通过线性系统时，信号各频率分量产生不成比例的衰减或增幅，使输出信号各频率分量的幅度比例与输入信号有很大的不同，这称为<strong>幅度失真</strong>。</li>
+<li>因素二是系统对各频率分量产生的相移不与频率成正比例，使输出信号的各频率分量在时间轴上的相对位置发生改变，这称为<strong>相位失真</strong>。</li>
+</ul>
+<h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>上述的幅度失真与相位失真统称为<strong>线性系统的失真</strong>。它与非线性系统的失真有着重要的本质差别。</p>
+<ul>
+<li><strong>非线性系统</strong>是由于非线性特性而使传输信号产生失真，失真原因是由于产生了原来不具有的<strong>新的频率分量</strong></li>
+<li><strong>线性系统</strong>的失真只表现为传输信号各频率分量的幅度和相位比例发生变化，并<strong>不产生新的频率分量</strong>。线性系统产生的幅度失真和相位失真都是由系统的频率响应特性决定的。</li>
+</ul>
+<h4 id="无失真的条件"><a href="#无失真的条件" class="headerlink" title="无失真的条件"></a>无失真的条件</h4><p>所谓信号无失真传输是指系统的输出信号和输入信号相比，<strong>波形形状上没有变化，只有幅度大小和出现时间的先后上有所不同</strong>。设激励信号为 $e(t)$，响应信号为 $r(t)$，经过无失真传输后</p>
+<script type="math/tex; mode=display">
+r(t)=K e\left(t-t_0\right)</script><p>式中 $K$ 为常数，$t_0$ 为延时时间。满足上述无失真传输条件时，输出信号 $r(t)$ 的幅度比输入信号大 $K$ 倍，且比输入信号延时了 $t_0$ 秒，而波形形状不变。将上式两边进行傅里叶变换，并利用傅里叶变换的延时性质，可以写出</p>
+<script type="math/tex; mode=display">
+R(\mathrm{j} \omega)=K E(\mathrm{j} \omega) \mathrm{e}^{-\mathrm{j} \omega t_0}</script><p>于是可得无失真传输系统的频率响应为</p>
+<script type="math/tex; mode=display">
+H(\mathrm{j} \omega)=\frac{R(\mathrm{j} \omega)}{E(\mathrm{j} \omega)}=K \mathrm{e}^{-\mathrm{j} \omega t_0}</script><p>上式表明，如果要使信号通过线性系统不产生幅度失真，则必须在信号的全部频带范围内，系统频率响应的<strong>幅度特性为一常数</strong>；而要使得信号不产生相位失真，则要求相位特性<strong>是一通过原点的直线</strong>。</p>
+<h3 id="理想低通滤波器"><a href="#理想低通滤波器" class="headerlink" title="理想低通滤波器"></a>理想低通滤波器</h3><p>理想滤波器就是将滤波网络的频率特性进行理想化，最经常用到的是具有矩形幅度特性和线性相位特性的理想低通滤波器。这种滤波器将使某一频率范围内的信号完全的通过，而在此频率外的信号则完全抑制，即在一 $\omega_{\mathrm{c}} \leqslant \omega \leqslant \omega_{\mathrm{c}}$ 范围内通过信号，而在 $|\omega|&gt;\omega_{\mathrm{c}}$ 范围，信号完全抑制。理想低通滤波器的幅度响应为</p>
+<script type="math/tex; mode=display">
+|H(\mathrm{j} \omega)|= \begin{cases}1,& |\omega| \leqslant \omega_{\mathrm{c}} \\ 0,& |\omega|>\omega_{\mathrm{c}}\end{cases}</script><p>由于这种滤波器允许信号通过的频带以 $\omega=0$ 为中心，因此称为理想低通滤波器。滤波器通过的频率范围称为滤波器的<strong>通带</strong>，不能通过的频率范围称为<strong>阻带</strong>，频率 $\omega_{\mathrm{c}}$ 称为<strong>截止频率</strong>。为了满足无失真传输的要求，理想低通滤波器的相位特性为一通过原点的直线，即</p>
+<script type="math/tex; mode=display">
+\varphi(\omega)=-\omega t_0</script><p>于是可得理想低通滤波器的频率响应为</p>
+<script type="math/tex; mode=display">
+H(\mathrm{j} \omega)=|H(\mathrm{j} \omega)| \mathrm{e}^{\mathrm{j} \varphi(\omega)}=\left\{\begin{array}{cl}
+\mathrm{e}^{-\mathrm{j} \omega t_0}, & |\omega| \leqslant \omega_{\mathrm{c}} \\
+0, & |\omega|>\omega_{\mathrm{c}}
+\end{array}\right.</script><p>将 $H(\mathrm{j} \omega)$ 进行傅里叶反变换，可得到理想低通滤波器的冲激响应为</p>
+<script type="math/tex; mode=display">
+h(t)=\mathscr{F}^{-1}[H(\mathrm{j} \omega)]=\frac{1}{2 \pi} \int_{-\omega_{\mathrm{c}}}^{\omega_{\mathrm{c}}} \mathrm{e}^{-\mathrm{j} \omega t_0} \mathrm{e}^{\mathrm{j} \omega t} \mathrm{~d} \omega=\frac{\omega_{\mathrm{c}}}{\pi} \mathrm{Sa}\left[\omega_{\mathrm{c}}\left(t-t_0\right)\right]</script><p>理想低通滤波器的冲激响应为一个峰值位于 $t_0$ 时刻的 Sa 函数，$t&lt;0$ 时，$h(t) \neq 0$，也就是说，理想低通系统是一种非因果系统，这种系统在物理上是不可实现的。在实际实现时，只能逼近理想低通滤波器的频率特性和冲激响应，近似地达到上述特性。</p>
+<h3 id="非理想滤波器容限"><a href="#非理想滤波器容限" class="headerlink" title="非理想滤波器容限"></a>非理想滤波器容限</h3><p><img src="https://s2.loli.net/2023/04/05/UvcKkLBQRn9ZE57.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>在滤波器的通带和阻带特性上只容许有某些起伏的容限存在，同时在通带与阻带之间也容许有一个渐变的过渡特性。</li>
+<li>对于连续时间低通滤波器的频率特性，容许通带内在单位增益上可以有某些偏离，在边阻带内零增益附近也可以有某些偏离，同时在通带边缘与阻带边缘之间容许有一个过渡带存在</li>
+<li>滤波器的频率特性幅度位于非阴影区之内，$\delta_1$ 就是可容许的通带偏离，而 $\delta_2$ 就是可容许的阻带偏离，分别称为<strong>通带起伏</strong>（或波纹）和<strong>阻带起伏</strong>（或波纹）。</li>
+<li>$\omega_{\mathrm{p}}$ 和 $\omega_{\mathrm{s}}$ 的频率范围就是<strong>通带截止频率</strong>和<strong>阻带频率</strong>，从 $\omega_{\mathrm{p}}$ 至 $\omega_{\mathrm{s}}$ 的频率范围就是通带和阻带间的过渡带。</li>
+</ul>
+<h3 id="调制与解调"><a href="#调制与解调" class="headerlink" title="调制与解调"></a>调制与解调</h3><p>调制与解调是通信系统中十分重要的部分，分模拟调制和数字调制两大类。模拟调制主要有幅度调制（调幅、双边带调制）和角度调制（频率调制、相位调制）两种。数字调制主要有脉冲调制（脉幅调制，脉宽调制等）、增量调制、相位调制以及幅度和相位相结合的调制等。信号在传输过程中为什么需要进行调制呢？<br>首先，任何一个特定的通信信道都有一个最适合与信号传输的频率范围。例如，地球大气层对音频范围（$10 \mathrm{Hz} \sim 20 \mathrm{kHz}$）的信号剧烈衰减，但对某一个较高频率范围的信号则衰减很少，使其能传播很远的距离。因此要通过大气层在某一个通信信道内传输像语音和音乐那样的音频信号的话，则调制系统就使用一个更高频率的载频信号来携带需要传输的音频信号。例如用适当频率的正弦载波信号携带语言或音乐。<br>从另一方面考虑，如果不进行调制而是把需要传输的信号直接发射出去，各电台所发出的信号频率就会相同，它们混合在一起，收信者就无法简单地选择所要接收的信号。通过调制，信号的频谱产生位移，使它们互不重叠地占据不同的频率范围，接收机就可利用带通滤波器分离出所需频率的信号，不产生相互干扰。利用调制，还可以在一个信道中传输多路信号，这即所谓“<strong>多路复用</strong>”。在简单的通信系统中，只能在一对通话者间使用，而“多路复用”技术将多路信号的频谱分别搬移到不同的频带范围，从而实现在一个信道内传送多路信号，近代通信系统都广泛采用多路复用技术。<br>此外，在自动控制和电子测量系统中，将极低频的信号进行直接放大将产生诸如零极点漂移和自激振荡等问题。为此，利用调制方法将需要放大的低频信号频谱搬移至适宜的高频范围，经放大后再变换至低频信号。</p>
+<h2 id="第六章-离散时间信号与系统的傅里叶分析"><a href="#第六章-离散时间信号与系统的傅里叶分析" class="headerlink" title="第六章 离散时间信号与系统的傅里叶分析"></a>第六章 离散时间信号与系统的傅里叶分析</h2><h3 id="离散时间周期信号的傅里叶级数表示"><a href="#离散时间周期信号的傅里叶级数表示" class="headerlink" title="离散时间周期信号的傅里叶级数表示"></a>离散时间周期信号的傅里叶级数表示</h3><p>考虑一个一般的周期序列 $x(n)$，最小正周期为 $\mathbf{N}$，用成谐波关系的复指数信号 $\left\{e^{j k \omega_{0} n}\right\}$ 的线性组合来表示 $x(n)$，其中 $k=0,\pm 1,\pm 2,\cdots$</p>
+<script type="math/tex; mode=display">
+x(n)=\sum_{k=<N>} F_{k} e^{j k w_{0} n},\quad w_{0}=\frac{2 \pi}{N}</script><script type="math/tex; mode=display">
+\mathrm{F}_{\mathrm{k}}=\frac{1}{N} \sum_{\mathrm{n}=<\mathrm{N}>} \mathrm{x}(\mathrm{n}) \mathrm{e}^{-\mathrm{jkw} w_{0} \mathrm{n}}</script><ul>
+<li>因为复指数信号集合 $\left\{e^{j k \omega_{0} n}\right\}$ 中只有 $N$ 个不相同的信号，因此离散时间周期信号的傅里叶级数仅需包括 $N$ 项。</li>
+<li>其中傅里叶级数系数 $F_{k}$ 是定义在全部 $k$ 值上的一个周期为 $N$ 的序列，$F_{k}=F_{k+N}$</li>
+<li>因为离散时间周期信号的傅里叶级数仅包括 $N$ 项，所以不存在收敛问题</li>
+</ul>
+<h3 id="离散时间信号傅里叶级数性质"><a href="#离散时间信号傅里叶级数性质" class="headerlink" title="离散时间信号傅里叶级数性质"></a>离散时间信号傅里叶级数性质</h3><h3 id="傅里叶变换定义及收敛条件"><a href="#傅里叶变换定义及收敛条件" class="headerlink" title="傅里叶变换定义及收敛条件"></a>傅里叶变换定义及收敛条件</h3><p>对于一般的非周期序列 $x(n)$，其傅里叶正变换的定义式为</p>
+<script type="math/tex; mode=display">
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\sum_{n=-\infty}^{\infty} x(n) \mathrm{e}^{-\mathrm{j} \omega n}</script><p>其傅里叶反变换为</p>
+<script type="math/tex; mode=display">
+x(n)=\frac{1}{2 \pi} \int_{-\pi}^{\pi} X\left(\mathrm{e}^{\mathrm{j} \omega}\right) \mathrm{e}^{\mathrm{j} n \omega} \mathrm{d}\omega</script><p>序列的傅里叶变换也称离散时间傅里叶变换（DTFT），通常用以下符号分别对 $x(n)$ 取傅里叶正变换或反变换：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\operatorname{DTFT}[x(n)]=\sum_{n=-\infty}^{\infty} x(n) \mathrm{e}^{-\mathrm{j} \omega n} \\
+x(n)=\operatorname{IDTFT}\left[X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right]=\frac{1}{2 \pi} \int_{-\pi}^{\pi} X\left(\mathrm{e}^{\mathrm{j} \omega}\right) \mathrm{e}^{\mathrm{j} \omega n} \mathrm{~d} \omega
+\end{array}</script><p>级数和并不一定收敛。例如 $x(n)$ 为一单位阶跃序列，就不收敛。</p>
+<h4 id="傅里叶变换的收敛条件"><a href="#傅里叶变换的收敛条件" class="headerlink" title="傅里叶变换的收敛条件"></a>傅里叶变换的收敛条件</h4><p>若 $x(n)$ 绝对可和，即</p>
+<script type="math/tex; mode=display">
+\sum_{n=-\infty}^{\infty}|x(n)|<\infty</script><p>则 $x(n)$ 的 $DTFT$ 存在，这时级数 $\sum_{n=-\infty}^{\infty} x(n) \mathrm{e}^{-\mathrm{j} \omega n}$ 一致收敛于 $\omega$ 的一个连续函数 $X\left(\mathrm{e}^{\mathrm{j} \omega}\right)$。<br>无论是绝对可和还是平方可和，都只是序列傅里叶变换存在的充分条件，其充分必要条件至今尚末找到。另外，绝对可和的序列一定是平方可和的，但平方可和的序列却不一定是绝对可和的。</p>
+<h4 id="傅里叶变换性质"><a href="#傅里叶变换性质" class="headerlink" title="傅里叶变换性质"></a>傅里叶变换性质</h4><p>对于一般的非周期序列 $x(n)$，其傅里叶变换是以 $2 \pi$ 为周期的 $\omega$ 的周期函数，即</p>
+<script type="math/tex; mode=display">
+X\left(\mathrm{e}^{\mathrm{j}(\omega+2 n \pi)}\right)=\sum_{n=-\infty}^{\infty} x(n) \mathrm{e}^{-\mathrm{j}(\omega+2 m \pi) n}=\sum_{n=-\infty}^{\infty} x(n) \mathrm{e}^{-\mathrm{j} \omega n}=X\left(\mathrm{e}^{\mathrm{j} \omega}\right),\quad m \mathrm{为整数}</script><p>正是由于其频谱是周期性的，故可以在 $-\pi$ 至 $\pi$ 的一个周期求取其反变换 $x(n)$，即</p>
+<script type="math/tex; mode=display">
+x(n)=\frac{1}{2 \pi} \int_{-\pi}^{\pi} X\left(\mathrm{e}^{\mathrm{j} \omega}\right) \mathrm{e}^{\mathrm{j} \omega n} \mathrm{~d} \omega</script><h3 id="常用非周期序列的频谱"><a href="#常用非周期序列的频谱" class="headerlink" title="常用非周期序列的频谱"></a>常用非周期序列的频谱</h3><h4 id="单位样值序列"><a href="#单位样值序列" class="headerlink" title="单位样值序列"></a>单位样值序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=\delta(n) \\
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\operatorname{DTFT}[\delta(n)]=\sum_{n=-\infty}^{\infty} \delta(n) \mathrm{e}^{-\mathrm{j} \omega n}=1
+\end{array}</script><h4 id="矩形序列-1"><a href="#矩形序列-1" class="headerlink" title="矩形序列"></a>矩形序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=\left\{\begin{array}{ll}
+1,& |n| \leqslant N_{1} \\
+0,& |n|>N_{1}
+\end{array}\right. \\
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{\sin \omega\left(N_{1}+\frac{1}{2}\right)}{\sin \frac{\omega}{2}}
+\end{array}</script><h4 id="实指数序列-1"><a href="#实指数序列-1" class="headerlink" title="实指数序列"></a>实指数序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=a^{n} \varepsilon(n),\quad|a|<1 \\
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\sum_{n=-\infty}^{\infty} a^{n} \varepsilon(n) \mathrm{e}^{-\mathrm{j} \omega n}=\sum_{n=0}^{\infty}\left(a \mathrm{e}^{-\mathrm{j} \omega}\right)^{n}=\frac{1}{1-a \mathrm{e}^{-\mathrm{j} \omega}}
+\end{array}</script><h4 id="非因果实指数序列"><a href="#非因果实指数序列" class="headerlink" title="非因果实指数序列"></a>非因果实指数序列</h4><script type="math/tex; mode=display">
+\begin{array}{l}
+x(n)=a^{n} \varepsilon(-n),\quad|a|>1 \\
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\sum_{n=-\infty}^{0} a^{n} \mathrm{e}^{-\mathrm{j} \omega n}=\frac{1}{1-a^{-1} \mathrm{e}^{\mathrm{j} \omega}}
+\end{array}</script><h4 id="双边指数序列"><a href="#双边指数序列" class="headerlink" title="双边指数序列"></a>双边指数序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=a^{|n|},\quad|a|<1 \\
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{1}{1-a \mathrm{e}^{-\mathrm{j} \omega}}+\frac{1}{1-a \mathrm{e}^{\mathrm{j} \omega}}-1=\frac{1-a^{2}}{1-2 a \cos \omega+a^{2}}
+\end{array}</script><h4 id="常数序列"><a href="#常数序列" class="headerlink" title="常数序列"></a>常数序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=1,\quad-\infty<n<\infty \\
+D T F T[1]=2 \pi \sum_{m=-\infty}^{\infty} \delta(\omega-2 m \pi)
+\end{array}</script><h4 id="冲激函数"><a href="#冲激函数" class="headerlink" title="冲激函数"></a>冲激函数</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=\delta(n) \\
+X\left(e^{j w}\right)=\sum_{n=-\infty}^{\infty} x(n) e^{-j n w}=\sum_{n=-\infty}^{\infty} \delta(n) e^{-j n w}=1 \\
+\end{array}</script><h4 id="符号函数"><a href="#符号函数" class="headerlink" title="符号函数"></a>符号函数</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+\operatorname{sgn}(n)=\left\{\begin{array}{c}
+1, n>0 \\
+0, n=0 \\
+-1, n<0
+\end{array}\right. \\
+S\left(e^{j w}\right)=\frac{1+e^{-j w}}{1-e^{-j w}} \\
+\end{array}</script><h4 id="阶跃序列"><a href="#阶跃序列" class="headerlink" title="阶跃序列"></a>阶跃序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=u(n) \\
+X\left(e^{j w}\right)=\frac{1}{1-e^{-j w}}+\pi \sum_{m=-\infty}^{\infty} \delta(w-2 m \pi) \\
+\end{array}</script><h3 id="傅里叶变换的性质"><a href="#傅里叶变换的性质" class="headerlink" title="傅里叶变换的性质"></a>傅里叶变换的性质</h3><h4 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h4><script type="math/tex; mode=display">
+\begin{array}{|c|c|c|}
+\hline \text { 性质 } & \text { 非周期信号 } & \text { 频域 } \\
+\hline \text { 线性 } & a x(n)+b y(n) & a X\left(\mathrm{e}^{\mathrm{j} \omega}\right)+b Y\left(\mathrm{e}^{\mathrm{j} \omega}\right)  \\
+\hline \text { 对称性 } & X(n) & \\
+\hline \text { 尺度变换 } & x_{k}(n)\left\{\begin{array}{ll}x(n / k), &n=m k \\0, &n\ne mk\end{array}\right. & X\left(\mathrm{e}^{\mathrm{j} k \omega}\right) \\
+\hline \text { 反折 } & x(-n) & X\left(\mathrm{e}^{-\mathrm{j} \omega}\right) \\
+\hline \text { 共轭 } & x^*(n) & X^*\left(\mathrm{e}^{-\mathrm{j} \omega}\right) \\
+\hline \text { 时移 } & x\left(n-n_0\right)  & \mathrm{e}^{-\mathrm{j} \omega n_0} X\left(\mathrm{e}^{\mathrm{j} \omega}\right) \\
+\hline \text { 时移与相移 } & x\left(n/k-n_{0}\right) &  \\
+\hline \text { 频移 } & \mathrm{e}^{\mathrm{j} \omega_0 n} x(n) & X\left(\mathrm{e}^{\mathrm{j}\left(\omega-\omega_0\right)}\right) \\
+\hline \text { 时域差分 } & x(n)-x(n-1) & \left(1-\mathrm{e}^{-\mathrm{j} \omega}\right) X\left(\mathrm{e}^{\mathrm{j} \omega}\right) \\
+\hline \text { 频域微分 } & n x(n) & \mathrm{j} \frac{\mathrm{d} X\left(\mathrm{e}^{\mathrm{j} \omega}\right)}{\mathrm{d} \omega} \\
+\hline \text { 时域求和 } & \sum_{m=-\infty}^n x(m) & \frac{X\left(\mathrm{e}^{\mathrm{j} \omega}\right)}{1-\mathrm{e}^{-\mathrm{j} \omega}}+\pi X\left(\mathrm{e}^{\mathrm{j} 0}\right) \sum_{k=-\infty}^{\infty} \delta(\omega-2 \pi k) \\
+\hline \text { 频域积分 } &  \\
+\hline \text { 时域卷积 } & x(n) * y(n) & X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\cdot Y\left(\mathrm{e}^{\mathrm{j} \omega}\right) \\
+\hline \text { 频域卷积 } & x(n) \cdot y(n) & \frac{1}{2 \pi} \int_{2 \pi} X_1\left(\mathrm{e}^{\mathrm{j} \theta}\right) X_2\left(\mathrm{e}^{\mathrm{j}(\omega -\theta)}\right) \mathrm{d} \theta \\
+\hline \text { 帕斯瓦尔定理 } & \sum_{n=\infty}^{\infty}|x(n)|^{2} & \frac{1}{2 \pi} \int_{2 \pi}\left|X\left(e^{j \omega}\right)\right|^{2} \mathrm{d} \omega\\
+\hline 
+\end{array}</script><h4 id="对称性-1"><a href="#对称性-1" class="headerlink" title="对称性"></a>对称性</h4><h3 id="常用周期信号的傅里叶变换-1"><a href="#常用周期信号的傅里叶变换-1" class="headerlink" title="常用周期信号的傅里叶变换"></a>常用周期信号的傅里叶变换</h3><h4 id="正负交替序列"><a href="#正负交替序列" class="headerlink" title="正负交替序列"></a>正负交替序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=(-1)^{n} \\
+2 \pi \sum_{l=-\infty}^{\infty} \delta(\omega-\pi-2 \pi l) \\
+\end{array}</script><h4 id="三角函数序列"><a href="#三角函数序列" class="headerlink" title="三角函数序列"></a>三角函数序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=\cos \omega_{0} n \\
+X\left(e^{j \omega}\right)=\sum_{l=-\infty}^{\infty} 2 \pi \cdot \frac{1}{2} \delta\left(\omega-\omega_{0}-2 \pi l\right)+\sum_{l=-\infty}^{\infty} 2 \pi \cdot \frac{1}{2} \delta\left(\omega+\omega_{0}-2 \pi l\right) \\
+\end{array}</script><h4 id="周期样值信号"><a href="#周期样值信号" class="headerlink" title="周期样值信号"></a>周期样值信号</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=\sum_{k=-\infty}^{\infty} \delta(n-kN) \\
+X\left(e^{j \omega}\right)=\sum_{k=-\infty}^{\infty} \frac{2 \pi}{N} \delta\left(\omega-k \frac{2 \pi}{N}\right)
+\end{array}</script><h3 id="周期信号傅里叶级数与傅里叶变换的关系"><a href="#周期信号傅里叶级数与傅里叶变换的关系" class="headerlink" title="周期信号傅里叶级数与傅里叶变换的关系"></a>周期信号傅里叶级数与傅里叶变换的关系</h3><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=\sum_{k=<N>} F_{k} e^{j k \frac{2 \pi}{N} n} \\
+X\left(e^{j \omega}\right)=\sum_{k=-\infty}^{\infty} 2 \pi F_{k} \delta\left(\omega-k \frac{2 \pi}{N}\right) \\
+\end{array}</script><h3 id="离散时间系统的频率响应"><a href="#离散时间系统的频率响应" class="headerlink" title="离散时间系统的频率响应"></a>离散时间系统的频率响应</h3><script type="math/tex; mode=display">
+H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\sum_{k=-\infty}^{\infty} h(k) \mathrm{e}^{-\mathrm{j} \omega k}</script><p>式中 $H\left(e^{\mathrm{j} \omega}\right)$ 给出了 LSI 系统对于每个 $\omega$ 值的传输性能，因此称其为系统的<strong>频率响应</strong>。于是</p>
+<script type="math/tex; mode=display">
+y(n)=H\left(\mathrm{e}^{\mathrm{j} \omega}\right) \cdot \mathrm{e}^{\mathrm{j} \omega n}</script><p>如果把 $x(n)=\mathrm{e}^{\mathrm{j} \omega n}(-\infty&lt;n&lt;\infty)$ 看成是 LSI 系统的特征输入，那么 $H\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 则可看成是特征值，系统的输出即是特征输入被特征值加权所得的结果。</p>
+<h3 id="连续时间信号的离散时间处理"><a href="#连续时间信号的离散时间处理" class="headerlink" title="连续时间信号的离散时间处理"></a>连续时间信号的离散时间处理</h3><p>（Todo）</p>
+<h2 id="第八章-拉普拉斯变换及连续时间系统的复频域分析"><a href="#第八章-拉普拉斯变换及连续时间系统的复频域分析" class="headerlink" title="第八章 拉普拉斯变换及连续时间系统的复频域分析"></a>第八章 拉普拉斯变换及连续时间系统的复频域分析</h2><h3 id="背景分析"><a href="#背景分析" class="headerlink" title="背景分析"></a>背景分析</h3><ul>
+<li>把连续时间信号表示成 $\mathrm{e}^{\mathrm{j} \omega t}$ 的复指数信号的线性组合就构成了信号傅里叶级数和傅里叶变换的基础。</li>
+<li>如果将 $\mathrm{e}^{\mathrm{j} \omega t}$ 扩展为复变量 $s$ 的复指数函数 $(s=\sigma+\mathrm{j} \omega)$，也即把连续信号看作无穷多项 $\mathrm{e}^{s t}$ 之叠加，将会得到更多的好处，这就由傅里叶变换推广至拉普拉斯变换，简称<strong>拉氏变换</strong>。</li>
+<li>拉氏变换可以理解为一种<strong>推广</strong>的傅里叶变换，而傅里叶变换则是拉氏变换取 $s=\mathrm{j} \omega$ 的一种<strong>特例</strong>。</li>
+<li>信号 $f(t)$ 的傅里叶变换，即信号 $f(t)$ 的频谱<script type="math/tex; mode=display">
+F(\mathrm{j} \omega)=\int_{-\infty}^{\infty} f(t) \mathrm{e}^{-\mathrm{j} \omega t} \mathrm{~d} t</script>然而有不少信号函数不能直接由上面的定义式求得其傅里叶变换。这通常是由于，当 $t$ 趋于无穷大时，$f(t)$ 的幅度不衰减，因而<strong>积分不收敛</strong>的缘故。</li>
+<li>为了使更多的信号函数存在变换，并简化变换形式及运算过程，引入一个衰减因子 $\mathrm{e}^{-\sigma t}$（其中 $\sigma$ 为任意常数），并将其与 $f(t)$ 相乘，于是 $\mathrm{e}^{-\sigma t} f(t)$ 的积分得以收敛，绝对可积的条件就容易满足。据此写出 $\mathrm{e}^{-\sigma t} f(t)$ 的傅里叶变换为<script type="math/tex; mode=display">
+\mathscr{F}\left[\mathrm{e}^{-\sigma t} f(t)\right]=\int_{-\infty}^{\infty} \mathrm{e}^{-\sigma t} f(t) \mathrm{e}^{-\mathrm{j} \omega t} \mathrm{~d} t=\int_{-\infty}^{\infty} f(t) \mathrm{e}^{-(\sigma+\mathrm{j} \omega) t} \mathrm{~d} t</script>上式的积分结果是 $(\sigma+\mathrm{j} \omega)$ 的函数，令其为 $F(\sigma+\mathrm{j} \omega)$，则<script type="math/tex; mode=display">
+F(\sigma+\mathrm{j} \omega)=\int_{-\infty}^{\infty} f(t) \mathrm{e}^{-(\sigma+\mathrm{j} \omega) t} \mathrm{~d} t</script>相应的傅里叶反变换为<script type="math/tex; mode=display">
+\mathrm{e}^{-\sigma t} f(t)=\frac{1}{2 \pi} \int_{-\infty}^{\infty} F(\sigma+\mathrm{j} \omega) \mathrm{e}^{\mathrm{j} \omega t} \mathrm{~d} \omega</script>等式两端乘以 $e^{\sigma t}$，可得<script type="math/tex; mode=display">
+f(t)=\frac{1}{2 \pi} \int_{-\infty}^{\infty} F(\sigma+\mathrm{j} \omega) \mathrm{e}^{(\sigma+\mathrm{j} \omega) t} \mathrm{~d} \omega</script>将 $\sigma+\mathrm{j} \omega$ 作变量替换，令<script type="math/tex; mode=display">
+s=\sigma+\mathrm{j} \omega</script>则……</li>
+</ul>
+<h3 id="双边拉普拉斯变换与反变换的定义"><a href="#双边拉普拉斯变换与反变换的定义" class="headerlink" title="双边拉普拉斯变换与反变换的定义"></a>双边拉普拉斯变换与反变换的定义</h3><script type="math/tex; mode=display">
+F(s)=\int_{-\infty}^{\infty} f(t) \mathrm{e}^{-s t} \mathrm{~d} t</script><p>由于 $\sigma$ 为常数，因此 $\mathrm{d} \omega=\frac{\mathrm{d} s}{\mathrm{j}}$，故</p>
+<script type="math/tex; mode=display">
+f(t)=\frac{1}{2 \pi \mathrm{j}} \int_{\sigma-\mathrm{j} \infty}^{\sigma+\mathrm{j} \infty} F(s) \mathrm{e}^{s t} \mathrm{~d} s</script><p>上面两式常称为双边拉氏变换的<strong>一对变换式</strong>。</p>
+<ul>
+<li>第一个式子表示正变换，式中 $F(s)$ 称为 $f(t)$ 的<strong>双边拉氏变换</strong>，或称<strong>象函数</strong></li>
+<li>第二个式子表示拉氏反变换，式中 $f(t)$ 为 $F(s)$ 的<strong>拉氏反变换</strong>，或称<strong>原函数</strong></li>
+<li>常用记号 $\mathscr{L}_{b}[f(t)]$ 表示 $f(t)$ 取双边拉氏变换，记为 $F_{\mathrm{b}}(s)$</li>
+<li>以 $\mathscr{L}_{\mathrm{b}}^{-1}\left[F_{\mathrm{b}}(s)\right]$ 表示取双边拉氏反变换。</li>
+<li>于是，双边拉氏变化定义式可改写为<script type="math/tex; mode=display">
+F_{\mathrm{b}}(s)=\mathscr{L}_{b}[f(t)]=\int_{-\infty}^{\infty} f(t) \mathrm{e}^{-s t} \mathrm{~d} t</script>及<script type="math/tex; mode=display">
+\mathscr{L}_{\mathrm{b}}^{-1}\left[F_{\mathrm{b}}(s)\right]=f(t)=\frac{1}{2 \pi \mathrm{j}} \int_{\sigma \mathrm{j} \infty}^{\sigma+\mathrm{j} \infty} F(s) \mathrm{e}^{s t} \mathrm{~d} s</script></li>
+</ul>
+<h3 id="单边拉普拉斯变换与反变换的定义"><a href="#单边拉普拉斯变换与反变换的定义" class="headerlink" title="单边拉普拉斯变换与反变换的定义"></a>单边拉普拉斯变换与反变换的定义</h3><p>实际信号 $f(t)$ 都有其起始时刻，若假设其起始时刻为时间坐标的原点是 $t=0$，即 $t&lt;0$ 时，$f(t)=0$。</p>
+<script type="math/tex; mode=display">
+F(s)=\int_{0^{-}}^{\infty} f(t) \mathrm{e}^{-s t} \mathrm{~d} t</script><script type="math/tex; mode=display">
+f(t)=\left\{\begin{array}{ll}
+\frac{1}{2 \pi \mathrm{j}} \int_{\sigma-\mathrm{j} \infty}^{\sigma+\mathrm{j} \infty} F(s) \mathrm{e}^{s t} \mathrm{~d} s,& t>0 \\
+0,& t<0
+\end{array}\right.</script><p>上面两式称为单边拉氏变换的<strong>一对变换式</strong>。</p>
+<ul>
+<li>第一个式子中积分下限取 $0^{-}$ 是考虑 $f(t)$ 中可能<strong>包含冲激函数的各阶导数等奇异函数</strong>，但为了简便，常把下限写为 $0$，只有在必要时才把它写为 $0^{-}$。</li>
+<li>第二个式子中为了表达方便也常常只写 $t&gt;0$ 的部分。</li>
+<li>常以记号 $\mathscr{L}[f(t)]$ 表示 $f(t)$ 取单边拉氏变换，记为 $F(s)$</li>
+<li>以 $\mathscr{L}^{-1}[F(s)]$ 表示对 $F(s)$ 取单边拉氏反变换，于是有<script type="math/tex; mode=display">
+\begin{array}{l}
+F(s)=\mathscr{L}[f(t)]=\int_{0^{-}}^{\infty} f(t) \mathrm{e}^{-s t} \mathrm{~d} t \\
+f(t)=\mathscr{L}^{-1}[F(s)]=\frac{1}{2 \pi \mathrm{j}} \int_{\sigma-\mathrm{j} \infty}^{\sigma+\mathrm{j} \infty} F(s) \mathrm{e}^{s t} \mathrm{~d} s,\quad t>0
+\end{array}</script></li>
+<li>单边拉氏变换对于分析具有起始条件的由线性常系数微分方程描述的因果系统具有重要意义。我们主要讨论单边拉氏变换。</li>
+<li>对于<strong>因果信号</strong>，由于 $t&lt;0$ 时，$f(t)=0$，故其双边拉氏变换与单边拉氏变换是相同的，即 $F_{\mathrm{b}}(s)=F(s)$。</li>
+</ul>
+<h3 id="拉氏变换与傅氏变换"><a href="#拉氏变换与傅氏变换" class="headerlink" title="拉氏变换与傅氏变换"></a>拉氏变换与傅氏变换</h3><p>拉氏变换与傅氏变换的主要差别在于：</p>
+<ul>
+<li>傅氏变换将时域函数 $f(t)$ 变换为频域函数 $F(\omega)$，或作相反变换，时域变量 $t$ 和频域变量 $\omega$ <strong>都是实数</strong></li>
+<li>拉氏变换将时域函数 $f(t)$ 变换为频域函数 $F(s)$，或作相反变换，此时<strong>时域</strong>变量 $t$ 是<strong>实数</strong>，而<strong>频域</strong>变量 $s$ 却是<strong>复数</strong>。与 $\omega$ 相对应，变量 $s$ 称为<strong>复变量</strong>，相应地 $s$ 域称为<strong>复频域</strong>。</li>
+<li>傅里叶变换建立了时域和频域间的联系，而拉氏变换则建立了时域和复频域（$s$ 域）间的联系。</li>
+<li>从数学方法来说，将函数 $f(t)$ 乘以衰减因子 $\mathrm{e}^{-\sigma t}$，使之变为收敛函数，满足绝对可积条件</li>
+<li>从物理意义上分析，将频率 $\omega$ 变换为复频率 $s$，$\omega$ 只能表示振荡的重复频率，而 $s$ 不仅能给出重复频率，还可以表示振荡幅度的增加或衰减速率。</li>
+</ul>
+<h3 id="收敛域"><a href="#收敛域" class="headerlink" title="收敛域"></a>收敛域</h3><h4 id="有理函数"><a href="#有理函数" class="headerlink" title="有理函数"></a>有理函数</h4><p>若拉氏变换 $F_{\mathrm{b}}(s)$ 是复变量 $s$ 的两个多项式之比，即</p>
+<script type="math/tex; mode=display">
+F_{\mathrm{b}}(s)=\frac{N(s)}{D(s)}</script><p>式中 $N(s)$ 和 $D(s)$ 分别称为<strong>分子多项式</strong>和<strong>分母多项式</strong>。<br>此时称 $F_{\mathrm{b}}(s)$ 为<strong>有理函数</strong>。</p>
+<h4 id="零点、极点、零极点图"><a href="#零点、极点、零极点图" class="headerlink" title="零点、极点、零极点图"></a>零点、极点、零极点图</h4><ul>
+<li>对于有理拉氏变换来说，因为在分子多项式 $N(s)=0$ 的根上有 $F_{\mathrm{b}}(s)=0$，故称 $N(s)=0$ 的根为 $F_{\mathrm{b}}(s)$ 的<strong>零点</strong></li>
+<li>在分母多项式 $D(s)=0$ 的根上有 $F_{\mathrm{b}}(s)$ 无穷大，故称 $D(s)=0$ 的根为 $F_{\mathrm{b}}(s)$ 的<strong>极点</strong>。</li>
+<li>在 $s$ 平面内标出 $F_{\mathrm{b}}(s)$ 的零极点位置及收敛域是表示拉氏变换的一种方便而形象的方式。</li>
+<li>图中用 $\times$ 表示 $F_{\mathrm{b}}(s)$ 的极点，用 $\bigcirc$ 表示 $F_{\mathrm{b}}(s)$ 的零点，画斜线的阴影部分为<strong>收敛域</strong>。</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/04/23/dgU8jomnHYQkuiN.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="收敛域的性质"><a href="#收敛域的性质" class="headerlink" title="收敛域的性质"></a>收敛域的性质</h4><ul>
+<li>双边拉氏变换 $F_{\mathrm{b}}(s)$ 的收敛域在 $s$ 平面<strong>平行</strong>于 $\mathrm{j} \omega$ 轴的右边、左边或两个收敛轴中间的带状区域</li>
+<li>对有理拉氏变换来说，<strong>收敛域内不包括任何极点</strong>，收敛域被极点所界定或延伸到无穷远处，如果 $f(t)$ 是右边信号，则收敛域位于最右边极点的右边</li>
+<li>如果 $f(t)$ 是一个<strong>因果信号</strong>，$\operatorname{Re}[s]=\sigma_{0}$ 这条收敛轴位于<strong>收敛域的边界</strong>，则 $F(s)$ 收敛域位于这个<strong>收敛轴的右边</strong>，即 $\operatorname{Re}[s]&gt;\sigma_{0}$</li>
+<li>如果 $f(t)$ 是一个<strong>非因果信号</strong>，$\operatorname{Re}[s]=\sigma_{0}$ 这条收敛轴位于<strong>收敛域的边界</strong>，则双边拉氏变换 $F_{\mathrm{b}}(s)$ 收敛域位于这个<strong>收敛轴的左边</strong>，即 $\operatorname{Re}[s]&lt;\sigma_{0}$</li>
+<li>如果 $f(t)$ 是由因果信号部分和非因果信号部分组成，这可称为<strong>双边信号</strong>，而且收敛轴 $\sigma=\sigma_{1}$ 与 $\sigma=\sigma_{2}$ 位于收敛域的边界，且 $\sigma_{2}&gt;\sigma_{1}$，则双边拉氏变换 $F_{\mathrm{b}}(s)$ 收敛域是收敛轴 $\sigma=\sigma_{1}$ 与 $\sigma=\sigma_{2}$ 之间的一条<strong>带状区域</strong>，$\sigma_{1}&lt;\operatorname{Re}[s]&lt;\sigma_{2}$</li>
+<li>对于<strong>有限持续时间</strong>的 $f(t)$ 信号，若至少存在一个 $s$ 值，使其拉氏变换收敛，则 $F_{\mathrm{b}}(s)$ 的收敛域是<strong>整个</strong> $s$ <strong>平面</strong></li>
+<li>左边信号（在某有限时间点之后信号值全为0）的收敛域是一个左半平面</li>
+<li>右边信号（在某有限时间点之前信号值全为0）的收敛域是一个右半平面</li>
+<li>双边信号（对于 $t&gt;0$ 和 $t&lt;0$ 都具有无限范围的信号）的收敛域是一个带状区域</li>
+<li>对于<strong>单边拉氏变换</strong>，由于其只能适用于因果信号，故其<strong>收敛域位于收敛轴的右边</strong>，其形式比较简单。</li>
+</ul>
+<h3 id="常用信号的拉氏变换"><a href="#常用信号的拉氏变换" class="headerlink" title="常用信号的拉氏变换"></a>常用信号的拉氏变换</h3><ul>
+<li>阶跃信号<script type="math/tex; mode=display">
+\mathscr{L}[\varepsilon(t)]=\frac{1}{s},\quad \operatorname{Re}[s]>0</script></li>
+<li>指数信号<script type="math/tex; mode=display">
+\mathscr{L}\left[\mathrm{e}^{-\alpha t} \varepsilon(t)\right]=\frac{1}{s+\alpha},\quad \operatorname{Re}[s]>-\alpha</script></li>
+<li>$t^{n} \varepsilon(t)$ 信号（$n$ 为正整数）<script type="math/tex; mode=display">
+\mathscr{L}\left[t^{n} \varepsilon(t)\right]=\frac{n !}{s^{n+1}},\quad \operatorname{Re}[s]>0</script></li>
+<li>单位冲激信号<script type="math/tex; mode=display">
+\begin{array}{c}
+\mathscr{L}[\delta(t)]=\int_{0^{-}}^{\infty} \delta(t) \mathrm{e}^{-s t} \mathrm{~d} t=1 \\
+\mathscr{L}\left[\delta\left(t-t_{0}\right)\right]=\int_{0^{-}}^{\infty} \delta\left(t-t_{0}\right) \mathrm{e}^{-s t} \mathrm{~d} t=\mathrm{e}^{-s t_{0}},\quad t_{0}>0
+\end{array}</script></li>
+<li><script type="math/tex; mode=display">
+\mathscr{L}\left[t^{n} \mathrm{e}^{-a t} \varepsilon(t)\right]=\frac{n !}{(s+a)^{n+1}},\quad \operatorname{Re}[s]>-a</script></li>
+<li>三角函数<script type="math/tex; mode=display">
+\begin{array}{ll}
+\mathscr{L}[\sin \omega t \cdot \varepsilon(t)]=\frac{\omega}{s^{2}+\omega^{2}},& \operatorname{Re}[s]>0 \\
+\mathscr{L}[\cos \omega t \cdot \varepsilon(t)]=\frac{s}{s^{2}+\omega^{2}},& \operatorname{Re}[s]>0 \\
+\end{array}</script><script type="math/tex; mode=display">
+\begin{array}{c}
+\mathscr{L}\left[\mathrm{e}^{-\alpha t} \sin \omega t \cdot \varepsilon(t)\right]=\frac{\omega}{(s+\alpha)^{2}+\omega^{2}},\quad \operatorname{Re}[s]>-\alpha \\
+\mathscr{L}\left[\mathrm{e}^{-\alpha t} \cos \omega t \cdot \varepsilon(t)\right]=\frac{s+\alpha}{(s+\alpha)^{2}+\omega^{2}},\quad \operatorname{Re}[s]>-\alpha \\
+\end{array}</script><script type="math/tex; mode=display">
+\begin{array}{c}
+\mathscr{L}[t \sin \omega t \cdot \varepsilon(t)]=-\frac{\mathrm{d}}{\mathrm{d} s}\left[\frac{\omega}{s^{2}+\omega^{2}}\right]=\frac{2 \omega s}{\left(s^{2}+\omega^{2}\right)^{2}}, \operatorname{Re}[s]>0 \\
+\mathscr{L}[t \cos \omega t \cdot \varepsilon(t)]=-\frac{\mathrm{d}}{\mathrm{d} s}\left[\frac{s}{s^{2}+\omega^{2}}\right]=\frac{s^{2}-\omega^{2}}{\left(s^{2}+\omega^{2}\right)^{2}}, \operatorname{Re}[s]>0
+\end{array}</script></li>
+<li>双曲函数<script type="math/tex; mode=display">
+\begin{array}{ll}
+\mathscr{L}[\operatorname{sh}(\alpha t) \cdot \varepsilon(t)]=\frac{\alpha}{s^{2}-\alpha^{2}},& \operatorname{Re}[s]>\alpha \\
+\mathscr{L}[\operatorname{ch}(\alpha t) \cdot \varepsilon(t)]=\frac{s}{s^{2}-\alpha^{2}},& \operatorname{Re}[s]>\alpha
+\end{array}</script></li>
+<li>矩形脉冲 $f(t)=\mathrm{E}\left[u\left(t+\frac{\tau}{2}\right)-u\left(t-\frac{\tau}{2}\right)\right]$<script type="math/tex; mode=display">
+\mathscr{L}[f(t)]=\frac{E}{s}(e^{s\frac{\tau}{2}}-e^{-s\frac{\tau}{2}}),\quad \operatorname{Re}[s]>-\infty</script></li>
+<li>单边周期冲激序列<script type="math/tex; mode=display">
+\mathscr{L}\left[\sum_{n=0}^{\infty} \delta(t-n T)\right]=\frac{1}{1-\mathrm{e}^{-s T}},\quad \operatorname{Re}[s]>0</script></li>
+<li>一些双边变换<script type="math/tex; mode=display">
+\begin{array}{l}
+\mathscr{L}_{b}[-\sin \omega t \cdot \varepsilon(-t)]=\frac{\omega}{s^{2}+\omega^{2}}, \quad \operatorname{Re}[s]<0 \\
+\mathscr{L}_{b}[-\cos \omega t \cdot \varepsilon(-t)]=\frac{s}{s^{2}+\omega^{2}}, \quad \operatorname{Re}[s]<0 \\
+\mathscr{L}_{b}\left[-t \mathrm{e}^{-a t} \varepsilon(-t)\right]=\frac{1}{(s+a)^{2}}, \quad \operatorname{Re}[s]<-a \\
+\mathscr{L}_{b}\left[-t^{n} \mathrm{e}^{-a t} \varepsilon(-t)\right]=\frac{n !}{(s+a)^{n+1}}, \quad \operatorname{Re}[s]<-a
+\end{array}</script></li>
+</ul>
+<h3 id="拉普拉斯变换的性质"><a href="#拉普拉斯变换的性质" class="headerlink" title="拉普拉斯变换的性质"></a>拉普拉斯变换的性质</h3><h4 id="单边性质总结"><a href="#单边性质总结" class="headerlink" title="单边性质总结"></a>单边性质总结</h4><script type="math/tex; mode=display">
+\begin{array}{|c|c|c|}
+\hline \text { 性质 } & \text { 时域 } & \text { s域 } & \text { 收敛域 } \\
+\hline \text { 拉普拉斯变换 } & f(t) & \int_{0^{-}}^{\infty} f(t) \mathrm{e}^{-s t} \mathrm{~d} t & \operatorname{Re}[s]>\sigma_{0} \\
+\hline \text { 拉普拉斯反变换 } & \frac{1}{2 \pi \mathrm{j}} \int_{\sigma-\infty}^{\sigma+\infty} F(s) \mathrm{e}^{s t} \mathrm{~d} s & F(s) \\
+\hline \text { 线性 } & \alpha_{1} f_{1}(t)+\alpha_{2} f_{2}(t) & \alpha_{1} F_{1}(s)+\alpha_{2} F_{2}(s) & \operatorname{Re}[s]>\max \left[\sigma_{1}, \sigma_{2}\right] \\
+\hline \text { 时移 } & f\left(t-t_{0}\right) \varepsilon\left(t-t_{0}\right) & \mathrm{e}^{-s t_{0}} F(s) & \operatorname{Re}[s]>\sigma_{0} \\
+\hline \text { s域平移 } & \mathrm{e}^{s_{0} t} f(t) & F\left(s-s_{0}\right) & \operatorname{Re}[s]>\operatorname{Re}\left[s_{0}\right]+\sigma_{0} \\
+\hline \text { 尺度变换 } & f(a t), \quad a>0 & \frac{1}{a} F\left(\frac{s}{a}\right) & \operatorname{Re}[s]>a \sigma_{0} \\
+\hline \text { 时域微分 } & \begin{array}{c}f^{(1)}(t)\\f^{(n)}(t)\end{array} & \begin{array}{c}s F(s)-f\left(0^{-}\right)\\s^{n} F(s)-\sum_{m=0}^{n-1} s^{n-m-1} f^{(m)}\left(0^{-}\right)\end{array} & \begin{array}{c} \operatorname{Re}[s]>\sigma_{0}\\\operatorname{Re}[s]>\sigma_{0} \end{array} \\
+\hline \text { s域微分 } & \begin{array}{c}-t f(t)\\(-t)^{n} f(t)\end{array} & \begin{array}{c}F^{(1)}(s)\\F^{(n)}(s)\end{array} & \begin{array}{c} \operatorname{Re}[s]>\sigma_{0}\\\operatorname{Re}[s]>\sigma_{0} \end{array} \\
+\hline \text { 时域积分 } & \begin{array}{c}\int_{-\infty}^{t} f(\tau) \mathrm{d} \tau\\f^{(-n)}(t)\end{array} & \begin{array}{c}\frac{F(s)}{s}+\frac{f^{(-1)}\left(0^{-}\right)}{s} \\ \frac{F(s)}{s^{n}}+\sum_{m=1}^{n} f^{(-m)}\left(0^{-}\right) \frac{1}{s^{n-m+1}}\end{array} & \begin{array}{c} \operatorname{Re}[s]>\max \left[\sigma_{0}, 0\right]\\ \end{array} \\
+\hline \text { s域积分 } & t^{-1} f(t) & \int_{s}^{\infty} F(\eta) \mathrm{d} \eta & \operatorname{Re}[s]>\sigma_{0} \\
+\hline \text { 时域卷积 } & f_{1}(t) * f_{2}(t) & F_{1}(s) F_{2}(s) & \operatorname{Re}[s]>\max \left[\sigma_{1}, \sigma_{2}\right] \\
+\hline \text { 时域相乘 } & f_{1}(t) \cdot f_{2}(t) & \frac{1}{2 \pi \mathrm{j}} \int_{\sigma-\mathrm{j} \infty}^{\sigma+\mathrm{j} \infty} F_{1}(\eta) F_{2}(s-\eta) \mathrm{d} \eta & \operatorname{Re}[s]>\sigma_{1}+\sigma_{2} \\
+\hline 
+\end{array}</script><h4 id="双边性质总结"><a href="#双边性质总结" class="headerlink" title="双边性质总结"></a>双边性质总结</h4><script type="math/tex; mode=display">
+\begin{array}{|c|c|c|}
+\hline \text { 性质 } & \text { 时域 } & \text { s域 } & \text { 收敛域 } \\
+\hline \text { 拉普拉斯变换 } & f(t) & \int_{-\infty}^{\infty} f(t) \mathrm{e}^{-s t} \mathrm{~d} t & \operatorname{Re}[s]>\sigma_{0} \\
+\hline \text { 拉普拉斯反变换 } & \frac{1}{2 \pi \mathrm{j}} \int_{\sigma-\infty}^{\sigma+\infty} F_b(s) \mathrm{e}^{s t} \mathrm{~d} s & F_b(s), t>0 \\
+\hline \text { 时移 } & f\left(t-t_{0}\right) & \mathrm{e}^{-s t_{0}} F_b(s) & R \\
+\hline \text { 尺度变换 } & f(a t) & \frac{1}{|a|} F_b\left(\frac{s}{a}\right) & \operatorname{Re}[s]>a \sigma_{0} \\
+\hline \text { 时域微分 } & \begin{array}{c}f^{(1)}(t)\\f^{(n)}(t)\end{array} & \begin{array}{c}s F_b(s)\\s^{n} F_b(s)\end{array} & \begin{array}{c} \operatorname{Re}[s]>\sigma_{0}\\ \supset R \end{array} \\
+\hline \text { 时域积分 } & \begin{array}{c}\int_{-\infty}^{t} f(\tau) \mathrm{d} \tau\\f^{(-n)}(t)\end{array} & \begin{array}{c}\frac{F_b(s)}{s} \\ \frac{F_b(s)}{s^{n}} \end{array} & \begin{array}{c} \operatorname{Re}[s]>\max \left[\sigma_{0}, 0\right]\\ \end{array} \\
+\hline 
+\end{array}</script><h4 id="线性性-2"><a href="#线性性-2" class="headerlink" title="线性性"></a>线性性</h4><p>若信号 $f_{1}(t)$ 与 $f_{2}(t)$ 的拉氏变换分别为 $F_{1}(s)$ 和 $F_{2}(s)$，其 $\mathrm{ROC}$ 分别为 $\operatorname{Re}[s]&gt;\sigma_{1}$ 与 $\operatorname{Re}[s]&gt;\sigma_{2}$，对于任意常数 $\alpha_{1}$ 与 $\alpha_{2}$，$\alpha_{1} f_{1}(t)+\alpha_{2} f_{2}(t)$ 的拉氏变换为 $\alpha_{1} F_{1}(s)+\alpha_{2} F_{2}(s)$。即若</p>
+<script type="math/tex; mode=display">
+\begin{array}{ll}
+\mathscr{L}\left[f_{1}(t)\right]=F_{1}(s),& \operatorname{Re}[s]>\sigma_{1} \\
+\mathscr{L}\left[f_{2}(t)\right]=F_{2}(s),& \operatorname{Re}[s]>\sigma_{2}
+\end{array}</script><p>则</p>
+<script type="math/tex; mode=display">
+\mathscr{L}\left[\alpha_{1} f_{1}(t)+\alpha_{2} f_{2}(t)\right]=\alpha_{1} F_{1}(s)+\alpha_{2} F_{2}(s)</script><ul>
+<li>线性叠加信号的拉氏变换收敛域至少包括原来信号拉氏变换的收敛域的重叠部分，即包括 $\operatorname{Re}[s]&gt;\sigma_{1}$ 与 $\operatorname{Re}[s]&gt;\sigma_{2}$ 的重叠部分。</li>
+<li>如果重叠部分为空，则没有拉氏变换</li>
+<li>有时线性叠加信号拉氏变换的收敛域会扩大<br>（Todo）</li>
+</ul>
+<h4 id="时移性"><a href="#时移性" class="headerlink" title="时移性"></a>时移性</h4><p>若 $\mathscr{L}[f(t) \varepsilon(t)]=F(s)$，$\operatorname{Re}[s]&gt;\sigma_{0}$，则延时后信号函数 $f\left(t-t_{0}\right) \varepsilon\left(t-t_{0}\right)$ 的拉氏变换为</p>
+<script type="math/tex; mode=display">
+\mathscr{L}\left[f\left(t-t_{0}\right) \varepsilon\left(t-t_{0}\right)\right]=\mathrm{e}^{-s t_{0}} F(s),\quad \operatorname{Re}[s]>\sigma_{0}</script><h4 id="复频域频移"><a href="#复频域频移" class="headerlink" title="复频域频移"></a>复频域频移</h4><p>若信号 $f(t)$ 的拉氏变换为 $F(s)$，其收敛域为 $\operatorname{Re}[s]&gt;\sigma_{0}$，则 $\mathrm{e}^{s_{0} t} f(t)$ 的拉氏变换为</p>
+<script type="math/tex; mode=display">
+\mathscr{L}\left[\mathrm{e}^{s_{0} t} f(t)\right]=\int_{0}^{\infty} f(t) \mathrm{e}^{-\left(s-s_{0}\right) t} \mathrm{~d} t=F\left(s-s_{0}\right)</script><h4 id="尺度变换-1"><a href="#尺度变换-1" class="headerlink" title="尺度变换"></a>尺度变换</h4><p>若 $f(t)$ 的拉氏变换为 $F(s)$，其收敛域为 $\operatorname{Re}[s]&gt;\sigma_{0}$，则</p>
+<script type="math/tex; mode=display">
+\mathscr{L}[f(a t)]=\frac{1}{a} F\left(\frac{s}{a}\right),\quad \operatorname{Re}[s]>a \sigma_{0}</script><p>式中 $a&gt;0$。</p>
+<h4 id="时域微分"><a href="#时域微分" class="headerlink" title="时域微分"></a>时域微分</h4><p>若 $f(t)$ 的拉氏变换为 $F(s)$，其收敛域为 $\operatorname{Re}[s]&gt;\sigma_{0}$，则</p>
+<script type="math/tex; mode=display">
+\mathscr{L}\left[\frac{\mathrm{d} f(t)}{\mathrm{d} t}\right]=s F(s)-f\left(0^{-}\right)</script><p>式中 $f\left(0^{-}\right)$ 为 $f(t)$ 在 $t=0^{-}$ 时的起始值。$\mathscr{L}\left[f^{(1)}(t)\right]$ 的 $\operatorname{ROC}$ 包括 $\operatorname{Re}[s]&gt;\sigma_{0}$。</p>
+<h4 id="复频域微分"><a href="#复频域微分" class="headerlink" title="复频域微分"></a>复频域微分</h4><p>若 $f(t)$ 的拉氏变换为 $F(s)$，其收敛域为 $\operatorname{Re}[s]&gt;\sigma_{0}$，则</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\mathscr{L}[-t f(t)]=\frac{\mathrm{d} F(s)}{\mathrm{d} s},\operatorname{ROC} \mathrm{不变} \\
+\mathscr{L}\left[(-t)^{n} f(t)\right]=\frac{\mathrm{d}^{n} F(s)}{\mathrm{d} s^{n}} 
+\end{array}</script><h4 id="时域积分"><a href="#时域积分" class="headerlink" title="时域积分"></a>时域积分</h4><p>若 $\mathscr{L}[f(t)]=F(s)$，$\operatorname{Re}[s]&gt;\sigma_{0}$，则</p>
+<script type="math/tex; mode=display">
+\mathscr{L}\left[\int_{-\infty}^{t} f(\tau) \mathrm{d} \tau\right]=\frac{F(s)}{s}+\frac{f^{(-1)}\left(0^{-}\right)}{s},\quad \operatorname{Re}[s]>\sigma_{0}</script><p>式中 $f^{(-1)}\left(0^{-}\right)=\int_{-\infty}^{0^{-}} f(\tau) \mathrm{d} \tau$ 是 $f(t)$ 积分在 $t=0^{-}$ 的取值，$t$ 取 $0^{-}$ 是考虑到 $t=0$ 处可能跳变。</p>
+<h4 id="s-域积分"><a href="#s-域积分" class="headerlink" title="s 域积分"></a>s 域积分</h4><p>若 $\mathscr{L}[f(t)]=F(s)$，$\operatorname{Re}[s]&gt;\sigma_{0}$，则有</p>
+<script type="math/tex; mode=display">
+\mathscr{L}\left[t^{-1} f(t)\right]=\int_{s}^{\infty} F(\eta) \mathrm{d} \eta,\quad \operatorname{Re}[s]>\sigma_{0}</script><h4 id="时域卷积定理"><a href="#时域卷积定理" class="headerlink" title="时域卷积定理"></a>时域卷积定理</h4><p>如果 $f_{1}(t),f_{2}(t)$ 是因果信号，则</p>
+<script type="math/tex; mode=display">
+\mathscr{L}\left[f_{1}(t) * f_{2}(t)\right]=F_{1}(s) F_{2}(s)</script><p>其 $ROC$ 包括了 $F_{1}(s),F_{2}(s)$ 收敛域的重叠部分，即包括了 $\operatorname{Re}[s]&gt;\sigma_{1}$ 和 $\operatorname{Re}[s]&gt;\sigma_{2}$ 的重叠部分。</p>
+<h4 id="时域相乘（复频域卷积）"><a href="#时域相乘（复频域卷积）" class="headerlink" title="时域相乘（复频域卷积）"></a>时域相乘（复频域卷积）</h4><p>假设 $\mathscr{L}\left[f|_{1}(t)\right]=F_{1}(s)$，$\operatorname{Re}[s]&gt;\sigma_{1}$ 与 $\mathscr{L}\left[f_{2}(t)\right]=F_{2}(s)$，$\operatorname{Re}[s]&gt;\sigma_{2}$，则</p>
+<script type="math/tex; mode=display">
+\mathscr{L}\left[f_{1}(t) \cdot f_{2}(t)\right]=\frac{1}{2 \pi \mathrm{j}} \int_{\sigma \mathrm{j} \infty}^{\sigma+\mathrm{j} \infty} F_{1}(\eta) F_{2}(s-\eta) \mathrm{d} \eta,\quad \operatorname{Re}[s]>\sigma_{1}+\sigma_{2}</script><h4 id="初值定理"><a href="#初值定理" class="headerlink" title="初值定理"></a>初值定理</h4><p>当信号函数 $f(t)$ 为一<strong>因果信号</strong>，即当 $t<0$ 时，$f(t)=0$。$f(t)$ 及其导数 $\frac{\mathrm{d} f(t)}{\mathrm{d} t}$ 可以进行拉氏变换，$f(t)$ 的拉氏变换为 $F(s)$，其收敛域为 $\operatorname{Re}[s]>\sigma_{0}$，且 $F(s)$ 为一<strong>有理分式</strong>，$F(s)$ 分子的阶次低于分母的阶次，即 $F(s)$ 为一<strong>真分式</strong>时，有</p>
+<script type="math/tex; mode=display">
+\lim _{t \rightarrow 0^{+}} f(t)=f\left(0^{+}\right)=\lim _{s \rightarrow \infty} F(s)</script><p>利用初值定理可直接由 $F(s)$ 求得 $f\left(0^{+}\right)$，而不必求 $F(s)$ 的反变换。</p>
+<ul>
+<li>当 $F(s)$ 不是真分式时，不能直接使用初值定理，而必须通过长除法，使 $F(s)$ 中出现真分式后求取，即<script type="math/tex; mode=display">
+F(s)=K_{m} s^{m}+K_{m-1} s^{m-1}+\cdots+K_{0}+F_{0}(s),\quad \operatorname{Re}[s]>\sigma_{0}</script>式中 $F_{0}(s)$ 为真分式。根据时域微分特性，$s^{m}$ 的反变换为 $\delta^{(m)}(t)$，$F_{0}(s)$ 的反变换为 $f_{0}(t)$，$F(s)$ 的反变换可表示为<script type="math/tex; mode=display">
+f(t)=K_{m} \delta^{(m)}(t)+K_{m-1} \delta^{(m-1)}(t)+\cdots+K_{0} \delta(t)+f_{0}(t)</script>式中冲激函数及其各阶导数在 $t=0^{+}$ 时全为零。于是<script type="math/tex; mode=display">
+f\left(0^{+}\right)=f_{0}\left(0^{+}\right)=\lim _{s \rightarrow \infty} F_{0}(s)</script>故当 $F(s)$ 为假分式时，通过长除法得到真分式 $F_{0}(s)$，然后求 $f\left(0^{+}\right)$。</li>
+</ul>
+<h4 id="终值定理"><a href="#终值定理" class="headerlink" title="终值定理"></a>终值定理</h4><p>当信号函数 $f(t)$ 为一<strong>因果信号</strong>，即当 $t<0$ 时，$f(t)=0$。$f(t)$ 及其导数 $\frac{\mathrm{d} f(t)}{\mathrm{d} t}$ 可以进行拉氏变换，$f(t)$ 的拉氏变换为 $F(s)$，其收敛域为 $\operatorname{Re}[s]>\sigma_{0}$，而且 $\lim _{t \rightarrow \infty} f(t)$ 存在，则</p>
+<script type="math/tex; mode=display">
+\lim _{t \rightarrow \infty} f(t)=\lim _{s \rightarrow 0} s(s)</script><p>借助终值定理，可从直接由 $F(s)$ 求得 $f(\infty)$，而不必求 $F(s)$ 的反变换。</p>
+<ul>
+<li>使用终值定理时，定理中的时域条件 $\lim _{t \rightarrow \infty} f(t)$ 必须存在。或者可以从 $s$ 域来判断，这就是：仅当 $F(s)$ 在 $s$ 平面的虚轴及其右边都解析时（原点除外），终值定理才可应用。</li>
+</ul>
+<h4 id="单边拉普拉斯变换性质"><a href="#单边拉普拉斯变换性质" class="headerlink" title="单边拉普拉斯变换性质"></a>单边拉普拉斯变换性质</h4><p>与双边拉普拉斯变换的基本性质一致的包括：</p>
+<ul>
+<li>线性</li>
+<li>s 域平移</li>
+<li>时域尺度变换</li>
+<li>s 域微分</li>
+<li>初值定理与终值定理</li>
+</ul>
+<h3 id="拉氏变换与傅氏变换之间的关系"><a href="#拉氏变换与傅氏变换之间的关系" class="headerlink" title="拉氏变换与傅氏变换之间的关系"></a>拉氏变换与傅氏变换之间的关系</h3><p>（Todo）</p>
+<h2 id="第八章补充-连续时间系统的s域分析"><a href="#第八章补充-连续时间系统的s域分析" class="headerlink" title="第八章补充 连续时间系统的s域分析"></a>第八章补充 连续时间系统的s域分析</h2><h3 id="系统函数"><a href="#系统函数" class="headerlink" title="系统函数"></a>系统函数</h3><p>卷积定理把一个 LTI 系统的输入和输出的拉普拉斯变换通过系统单位冲激响应的拉普拉斯变换联系起来，即</p>
+<script type="math/tex; mode=display">
+R(s)=E(s) H(s)</script><p>式中 $E(s),H(s)$ 和 $R(s)$ 分别为 LTI 系统的激励 $e(t)$、单位冲激响应 $h(t)$ 和零状态响应 $r_{zs}(t)$ 的拉氏变换，其中 $H(s)$ 称为<strong>系统函数</strong>（或转移函数、网络函数），在连续时间系统的 $s$ 域分析中有重要意义。本节首先讨论系统函数 $H(s)$，然后讨论 $H(s)$ 的零、极点分布对系统及其响应的影响。<br>线性非时变系统的系统函数 $H(s)$ 可定义为系统的零状态响应 $r_{z \mathrm{~s}}(t)$ 的拉氏变换 $R(s)$ 与系统激励 $e(t)$ 的拉氏变换 $E(s)$ 之比，即</p>
+<script type="math/tex; mode=display">
+H(s)=\frac{R(s)}{E(s)}</script><p>系统函数 $H(s)$ 的另一个定义是系统单位冲激响应 $h(t)$ 的拉氏变换，即</p>
+<script type="math/tex; mode=display">
+H(s)=\mathscr{L}[h(t)]</script><h3 id="特征函数"><a href="#特征函数" class="headerlink" title="特征函数"></a>特征函数</h3><p>对于连续时间的线性非时变系统，时域复指数信号 $\mathrm{e}^{st}$ 可以构成相当广泛的一类有用信号，而且 LTI 系统对 $\mathrm{e}^{st}$ 的响应可以方便地得到。一个 LTI 系统对复指数信号 $\mathrm{e}^{\mathrm{i} m t}$ 的响应 $T\left[\mathrm{e}^{st}\right]$ 仍是<strong>同一个复指数信号</strong>，所不同的是<strong>幅度</strong>上产生了变化，即</p>
+<script type="math/tex; mode=display">
+T\left[\mathrm{e}^{st}\right]=H(s) \mathrm{e}^{st}</script><p>一般说来，一个信号，若系统对该信号的输出仅是一个常数（可能是复数）乘以输入，则称该信号为系统的<strong>特征函数</strong>，而幅度因子称为系统的<strong>特征值</strong>。</p>
+<h3 id="系统函数与因果性"><a href="#系统函数与因果性" class="headerlink" title="系统函数与因果性"></a>系统函数与因果性</h3><ul>
+<li>一个<strong>因果</strong> LTI 系统的单位冲激响应 $h(t)$ 是因果信号（即 $h(t)=0,t&lt;0$），其系统函数 $H(s)$ 的收敛域是某个右平面。</li>
+<li>反过来未必成立。即若系统函数的收敛域位于最右边极点的右边，只能保证 $h(t)$ 是右边的，并不保证系统是因果。</li>
+<li>对于一个具有<strong>有理系统函数</strong>的 LTI 系统来说，系统的<strong>因果性</strong>等效于<strong>收敛域位于最右边极点的右边</strong>。</li>
+<li>一个<strong>反因果</strong> LTI 系统的单位冲激响应是左边信号（即 $h(t)=0,t&gt;0$），其系统函数 $H(s)$ 的收敛域是某个左平面</li>
+<li>反过来未必成立。即若收敛域位于最左边极点的左边，只能保证 $h(t)$ 是左边的，并不保证系统是反因果的。</li>
+<li>对于一个具有<strong>有理系统函数</strong>的系统来说，系统的<strong>反因果性</strong>等效于<strong>收敛域位于最左边极点的左边</strong>。</li>
+</ul>
+<h3 id="系统函数与稳定性"><a href="#系统函数与稳定性" class="headerlink" title="系统函数与稳定性"></a>系统函数与稳定性</h3><ul>
+<li>对于 LTI 系统，当且仅当系统函数收敛域包括 $j\omega$ 轴，该系统是稳定的</li>
+<li>考虑一个具有有理系统函数 $H(s)$ 的因果 LTI 系统，当且仅当 $H(s)$ 的全部极点都位于 s 平面的左半平面（$j\omega$ 轴左边）时，该系统才是稳定的。</li>
+<li>假设一个因果 LTI 系统的 $\mathrm{H}(\mathrm{s})$ 的分母多项式为 $B(s)=b_{n} s^{n}+b_{n-1} s^{n-1}+\cdots+b_{1} s+b_{0}$，令 $B(s)=  0$ 的解为极点<ul>
+<li>如果 $b_{n}&gt;0$，而其它项有系数为<strong>负数</strong>或有<strong>缺项</strong>，则有正实部的根，则可判定系统<strong>不稳定</strong></li>
+<li>如果全部系数为正且无缺项，如缺项则缺全部偶次项或奇次项，也不能判定其一定为稳定的，可用霍尔维茨稳定性准则进一步判断是否有正实部的根</li>
+</ul>
+</li>
+</ul>
+<h4 id="高阶多项式的劳斯–赫尔维茨判据"><a href="#高阶多项式的劳斯–赫尔维茨判据" class="headerlink" title="高阶多项式的劳斯–赫尔维茨判据"></a>高阶多项式的劳斯–赫尔维茨判据</h4><ul>
+<li>对于二阶多项式<script type="math/tex; mode=display">
+P(s)=a_{2} s^{2}+a_{1} s+a_{0}=0</script>所有根都在左半平面的充要条件是<script type="math/tex; mode=display">
+a_i>0</script></li>
+<li>对于三阶多项式<script type="math/tex; mode=display">
+P(s)=a_{3} s^{3}+a_{2} s^{2}+a_{1} s+a_{0}=0</script>所有根都在左半平面的充要条件是<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+a_i>0\\
+a_{2} a_{1}>a_{3} a_{0}
+\end{array}\right.</script></li>
+<li>对于四阶多项式<script type="math/tex; mode=display">
+P(s)=a_{4} s^{4}+a_{3} s^{3}+a_{2} s^{2}+a_{1} s+a_{0}=0</script>所有根都在左半平面的充要条件是<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+a_i>0\\
+a_{3} a_{2}>a_{4} a_{1} \\
+a_{3} a_{2} a_{1}>a_{4} a_{1}^{2}+a_{3}^{2} a_{0}
+\end{array}\right.</script></li>
+</ul>
+<h3 id="系统函数的方框图表示"><a href="#系统函数的方框图表示" class="headerlink" title="系统函数的方框图表示"></a>系统函数的方框图表示</h3><p><img src="https://s2.loli.net/2023/05/10/k5h1OstMbXLw3Eg.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="RLC-电路的-s-域模型"><a href="#RLC-电路的-s-域模型" class="headerlink" title="RLC 电路的 s 域模型"></a>RLC 电路的 s 域模型</h3><script type="math/tex; mode=display">
+\begin{array}{c}
+u_{R}(t)=R \cdot i_{R}(t) \Rightarrow U_{R}(s)=R \cdot I_{R}(s) \\
+u_{L}(t)=L \cdot \frac{d i_{L}(t)}{d t} \Rightarrow U_{L}(s)=s L \cdot I_{L}(s) \\
+u_{C}(t)=\frac{1}{C} \cdot \int_{-\infty}^{t} i_{C}(\tau) d \tau \Rightarrow U_{C}(s)=\frac{1}{s C} \cdot I_{C}(s)
+\end{array}</script><p>电路起始状态（$0−$ 时）不为 $0$ 时，用单边拉氏变换进行分析</p>
+<h3 id="求解LTI因果系统响应的步骤"><a href="#求解LTI因果系统响应的步骤" class="headerlink" title="求解LTI因果系统响应的步骤"></a>求解LTI因果系统响应的步骤</h3><h4 id="双边法"><a href="#双边法" class="headerlink" title="双边法"></a>双边法</h4><ol>
+<li>明确系统函数 $H(s)$，激励 $E(s)$，各阶起始状态 $r^{(n)}(0^{-})$</li>
+<li>零状态响应 $r_{zs}(t)=L^{-1}(E(s)H(s))$</li>
+<li>由系统函数可得微分方程，写出微分方程的齐次解的形式</li>
+<li>代入各阶起始状态，得到零输入响应</li>
+<li>全响应=零输入响应+零状态响应</li>
+</ol>
+<h4 id="单边法"><a href="#单边法" class="headerlink" title="单边法"></a>单边法</h4><ol>
+<li>明确系统函数 $H(s)$，激励 $E(s)$，各阶起始状态 $r^{(n)}(0^{-})$</li>
+<li>由系统函数可得微分方程</li>
+<li>对方程两边各项做单边拉氏变换，并代入各阶起始状态</li>
+<li>得到全响应的单边拉氏变换 $R(s)$</li>
+<li>做单边拉普拉斯逆变换可得 $r(t)$</li>
+</ol>
+<h2 id="第九章-z变换与离散时间系统的z域分析"><a href="#第九章-z变换与离散时间系统的z域分析" class="headerlink" title="第九章 z变换与离散时间系统的z域分析"></a>第九章 z变换与离散时间系统的z域分析</h2><h3 id="z-变换的定义"><a href="#z-变换的定义" class="headerlink" title="z 变换的定义"></a>z 变换的定义</h3><h4 id="双边"><a href="#双边" class="headerlink" title="双边"></a>双边</h4><p>可以直接对离散信号给予 $z$ 变换的定义。序列 $x(n)$ 的 $z$ 变换 $X(z)$ 定义为</p>
+<script type="math/tex; mode=display">
+X(z)=\sum_{n=-\infty}^{\infty} x(n) z^{-n}</script><p>式中 $z$ 是一个复变量。$x(n)$ 的 $z$ 变换有时记为 $\mathscr{Z}{x(n)}$，即</p>
+<script type="math/tex; mode=display">
+\mathscr{Z}\{x(n)\}=X(z)</script><p>上式定义的 $z$ 变换称作双边 $z$ 变换</p>
+<ul>
+<li>序列的 $z$ 变换是复变量 $z^{-1}$ 的幂级数，其系数是序列 $x(n)$ 在各 $n$ 时的值，有时也把 $X(z)$ 称为序列 $x(n)$ 的生成函数。</li>
+<li>$z$ 变换也并不是对于所有序列或所有 $z$ 值都是收敛的。对于序列 $x(n)$，使 $z$ 变换收敛的 $z$ 值之集合称为收敛域（ROC）</li>
+</ul>
+<h4 id="单边"><a href="#单边" class="headerlink" title="单边"></a>单边</h4><p>单边 $z$ 变换定义为</p>
+<script type="math/tex; mode=display">
+X(z)=\sum_{n=0}^{\infty} x(n) z^{-n}</script><ul>
+<li>对于因果信号 $x(n)$，由于 $n&lt;0$ 时 $x(n)=0$，单边和双边 $z$ 变换相等，否则不相等。</li>
+<li>$x(n)$ 的单边 z 变换等于 $x(n)\cdot u(n)$ 的双边 z 变换，收敛域位于最大模值极点所在圆的外边</li>
+<li>单边 z 变换的幂级数展开式中不包括 z 的正幂次项</li>
+<li>不是每一个 z 函数都能是一个单边 z 变换</li>
+<li>若将一个 z 的有理函数写成 z 的多项式之比，若该有理函数是一个单边变换，其分子的阶次不能高于分母阶次。</li>
+</ul>
+<h3 id="z-变换与傅里叶变换的关系"><a href="#z-变换与傅里叶变换的关系" class="headerlink" title="z 变换与傅里叶变换的关系"></a>z 变换与傅里叶变换的关系</h3><p>对于离散信号，将复变量 $z$ 表示成极坐标形式</p>
+<script type="math/tex; mode=display">
+z=r \mathrm{e}^{\mathrm{j} \omega}</script><p>代入定义可得</p>
+<script type="math/tex; mode=display">
+X\left(r \mathrm{e}^{\mathrm{j} \omega}\right)=D T F T\left\{x(n) r^{-n}\right\}</script><p>指数加权因子 $r^{-n}$ 可以随 $n$ 衰减或递增，这取决于 $r$ 大于或小于 $1$。如果 $r=1$，即 $|z|=1$ 时，序列的 $z$ 变换即等于其傅里叶变换</p>
+<script type="math/tex; mode=display">
+\left.X(z)\right|_{z=\mathrm{e}^{\mathrm{j} \omega}}=\operatorname{DTFT}\{x(n)\}=X\left(\mathrm{e}^{\mathrm{j} \omega}\right)</script><ul>
+<li>傅里叶变换为 $z$ 变换的一个特例，即在复数 $z$ 平面中，半径为 $1$ 的圆上的 $z$ 变换。</li>
+<li>在 $z$ 平面上，这个圆称为<strong>单位圆</strong>。</li>
+<li>离散信号的傅里叶变换即在 $z$ 平面单位圆上的 $z$ 变换。而傅里叶变换的推广，即由 $z$ 平面的单位圆推广至整个 $z$ 平面，则成为 $z$ 变换。</li>
+</ul>
+<h3 id="z-变换与拉氏变换的关系"><a href="#z-变换与拉氏变换的关系" class="headerlink" title="z 变换与拉氏变换的关系"></a>z 变换与拉氏变换的关系</h3><p>我们可以从抽样信号的拉氏变换推导得到 $z$ 变换。若 $x(t)$ 为一连续因果信号，经单位冲激周期信号</p>
+<script type="math/tex; mode=display">
+\delta_{T}(t)=\sum_{n=0}^{\infty} \delta(t-n T)</script><p>抽样后，再进行拉氏变换，最后可得</p>
+<script type="math/tex; mode=display">
+\left.X_{\mathrm{s}}(s)\right|_{e^{s T}=z}=X(z)</script><p>抽样信号的拉氏变换 $X_{\mathrm{s}}(s)$ 经变量替换后就得到其 $z$ 变换，式中常假定 $T=1$。</p>
+<h3 id="收敛域-1"><a href="#收敛域-1" class="headerlink" title="收敛域"></a>收敛域</h3><p>离散信号傅里叶变换的收敛条件是序列绝对可和，则 $z$ 变换收敛要求</p>
+<script type="math/tex; mode=display">
+\sum_{n=-\infty}^{\infty}\left|x(n) r^{-n}\right|<\infty</script><ul>
+<li>由于序列 $x(n)$ 乘上了实指数 $r^{-n}$，因此即使序列的傅里叶变换不满足收敛条件，但其 $z$ 变换仍可能收敛。</li>
+<li>单位阶跃序列 $\varepsilon(n)$ 不满足绝对可和，因而其傅里叶变换不能直接由级数收敛求得。然而当 $|r|&gt;1$ 时，$r^{-n} \varepsilon(n)$ 满足绝对可和，因而 $\varepsilon(n)$ 的 $z$ 变换收敛，其收敛域为 $1&lt;|z|&lt;\infty$</li>
+<li>某个 $z$ 点是否在收敛域内只与模 $r$ 有关。</li>
+<li>如果某个 $z=re^{j\omega}$ 在收敛域内，则位于同一个圆（以原点为中心，以 $r$ 为半径）上的所有 $z$ 也都在收敛域内。</li>
+<li>如果 $x(n)$ 的 $z$ 变换收敛域包括单位圆，则 $x(n)$ 的傅里叶变换也收敛。</li>
+<li>收敛域内不包括任何极点。这是由于 $X(z)$ 在极点处，其值无穷大，$z$ 变换不收敛。故收敛域不包括极点，而常常以 $X(z)$ 的极点作为收敛域的边界。</li>
+<li>如果 $x(n)$ 是有限长序列，那么收敛域是整个 $z$ 平面，可能除去原点（$z=0$）和/或无穷远（$z=\infty$）。</li>
+<li>如果 $x(n)$ 的 $z$ 变换<strong>有理</strong>，则其收敛域被极点所界定，或延伸到无穷远。</li>
+<li>如果 $x(n)$ 的 $z$ 变换<strong>有理</strong>，并且 $x(n)$ 是<strong>右边序列</strong>，那么收敛域位于最外层极点的外边。如果 $x(n)$ 是因果序列，那么收敛域包括无穷远处。</li>
+<li>如果 $x(n)$ 的 $z$ 变换<strong>有理</strong>，并且 $x(n)$ 是<strong>左边序列</strong>，那么收敛域位于最里层非零极点的里边。如果 $x(n)$ 是反因果序列，那么收敛域包括原点。</li>
+</ul>
+<h4 id="收敛模式总结"><a href="#收敛模式总结" class="headerlink" title="收敛模式总结"></a>收敛模式总结</h4><p><img src="https://s2.loli.net/2023/05/20/sTCJPEKm9dXtQxe.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="常见信号的-z-变换及其收敛域"><a href="#常见信号的-z-变换及其收敛域" class="headerlink" title="常见信号的 z 变换及其收敛域"></a>常见信号的 z 变换及其收敛域</h3><h4 id="单位取样序列"><a href="#单位取样序列" class="headerlink" title="单位取样序列"></a>单位取样序列</h4><script type="math/tex; mode=display">
+\mathscr{Z}[\delta(n)]=\sum_{n=0}^{\infty} \delta(n) z^{n}=1, \quad 0 \leqslant|z| \leqslant \infty</script><h4 id="单位阶跃序列-1"><a href="#单位阶跃序列-1" class="headerlink" title="单位阶跃序列"></a>单位阶跃序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+\mathscr{Z}[\varepsilon(n)]=\frac{z}{z-1}=\frac{1}{1-z^{-1}}, \quad|z|>1 \\
+\mathscr{Z}[-\varepsilon(-n-1)]=1-\frac{1}{1-z}=\frac{z}{z-1}=\frac{1}{1-z^{-1}}, \quad|z|<1
+\end{array}</script><h4 id="斜变序列"><a href="#斜变序列" class="headerlink" title="斜变序列"></a>斜变序列</h4><script type="math/tex; mode=display">
+\begin{array}{l}
+\mathscr{Z}[n \varepsilon(n)]=\sum_{n=0}^{\infty} n z^{-n}=\frac{z}{(z-1)^{2}}, \quad|z|>1 \\
+\mathscr{Z}\left[n^{2} \varepsilon(n)\right]=\frac{z(z+1)}{(z-1)^{3}}, \quad|z|>1 \\
+\mathscr{Z}\left[n^{3} \varepsilon(n)\right]=\frac{z\left(z^{2}+4 z+1\right)}{(z-1)^{4}}, \quad|z|>1
+\end{array}</script><script type="math/tex; mode=display">
+\mathscr{Z}[-n \varepsilon(-n-1)]=\frac{z}{(z-1)^{2}}, \quad|z|<1</script><h4 id="单边指数序列"><a href="#单边指数序列" class="headerlink" title="单边指数序列"></a>单边指数序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+\mathscr{Z}\left[a^{n} \varepsilon(n)\right]=\frac{1}{1-a z^{-1}}=\frac{z}{z-a}, \quad|z|>|a| \\
+\mathscr{Z}\left[-a^{n} \varepsilon(-n-1)\right]=\frac{1}{1-a z^{-1}}=\frac{z}{z-a}, \quad|z|<|a| \\
+\mathscr{Z}\left[n a^{n} \varepsilon(n)\right]=\frac{a z^{-1}}{\left(1-a z^{-1}\right)^{2}}=\frac{a z}{(z-a)^{2}}, \quad|z|>|a| \\
+\mathscr{Z}\left[n^{2} a^{n} \varepsilon(n)\right]=\frac{a z(z+a)}{(z-a)^{3}}, \quad|z|>|a|
+\end{array}</script><h4 id="双边指数序列-1"><a href="#双边指数序列-1" class="headerlink" title="双边指数序列"></a>双边指数序列</h4><script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{Z}\left[b^{|n|}\right] & =\frac{1}{1-b z^{-1}}-\frac{1}{1-b^{-1} z^{-1}} \\
+& =\frac{b^{2}-1}{b} \frac{z}{(z-b)\left(z-b^{-1}\right)}, \quad|b|<|z|<\left|b^{-1}\right|
+\end{aligned}</script><h4 id="正弦余弦序列"><a href="#正弦余弦序列" class="headerlink" title="正弦余弦序列"></a>正弦余弦序列</h4><script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{Z}\left[\cos \left(\omega_{0} n\right) \cdot \varepsilon(n)\right] & =\frac{1}{2}\left[\frac{z}{z-\mathrm{e}^{\mathrm{j} \omega_{0}}}+\frac{z}{z-\mathrm{e}^{-\mathrm{j} \omega_{0}}}\right] \\
+& =\frac{z\left(z-\cos \omega_{0}\right)}{z^{2}-2 z \cos \omega_{0}+1}, \quad|z|>1
+\end{aligned}</script><script type="math/tex; mode=display">
+\begin{align}
+\mathscr{Z}\left[\sin \left(\omega_{0} n\right) \cdot \varepsilon(n)\right] & = \frac{1}{2 \mathrm{j}}\left[\frac{z}{z-\mathrm{e}^{\mathrm{j} \omega_{0}}}-\frac{z}{z-\mathrm{e}^{-\mathrm{j} \omega_{0}}}\right] \\ & = \frac{z \sin \omega_{0}}{z^{2}-2 z \cos \omega_{0}+1}, \quad|z|>1 \\
+\end{align}</script><script type="math/tex; mode=display">
+\begin{array}{c}
+\mathscr{Z}\left[\cos \left(\omega_{0} n\right) \cdot \varepsilon(-n-1)\right]=\frac{-z\left(z-\cos \omega_{0}\right)}{z^{2}-2 z \cos \omega_{0}+1}, \quad|z|<1 \\
+\mathscr{Z}\left[\sin \left(\omega_{0} n\right) \cdot \varepsilon(-n-1)\right]=-\frac{z \sin \omega_{0}}{z^{2}-2 z \cos \omega_{0}+1}, \quad|z|<1 \\
+\end{array}</script><script type="math/tex; mode=display">
+\begin{align}
+\mathscr{Z}\left[\beta^{n} \cos \left(\omega_{0} n\right) \cdot \varepsilon(n)\right] & = \frac{1-\beta z^{-1} \cos \omega_{0}}{1-2 \beta z^{-1} \cos \omega_{0}+\beta^{2} z^{-2}} \\ & = \frac{z\left(z-\beta \cos \omega_{0}\right)}{z^{2}-2 \beta z \cos \omega_{0}+\beta^{2}}, \quad|z|>|\beta| \\
+\end{align}</script><script type="math/tex; mode=display">
+\begin{align}
+\mathscr{Z}\left[\beta^{n} \sin \left(\omega_{0} n\right) \cdot \varepsilon(n)\right] & = \frac{\beta z^{-1} \sin \omega_{0}}{1-2 \beta z^{-1} \cos \omega_{0}+\beta^{2} z^{-2}} \\ & = \frac{\beta z \sin \omega_{0}}{z^{2}-2 \beta z \cos \omega_{0}+\beta^{2}}, \quad|z|>|\beta| \\
+\end{align}</script><h3 id="z-反变换"><a href="#z-反变换" class="headerlink" title="z 反变换"></a>z 反变换</h3><p>本节讨论在已知 $z$ 变换和收敛域 $ROC$ 情况下求所对应的序列，即求 $z$ 反变换的方法。若 $X(z)$ 在某收敛域 $ROC$ 时的反变换为 $x(n)$，记为</p>
+<script type="math/tex; mode=display">
+\mathscr{Z}^{-1}[X(z),\mathrm{ROC}]=x(n)</script><h4 id="幂级数展开法"><a href="#幂级数展开法" class="headerlink" title="幂级数展开法"></a>幂级数展开法</h4><p>从 $z$ 变换的定义中可以看出，$X(z)$ 定义为 $z^{-1}$ 的幂级数</p>
+<script type="math/tex; mode=display">
+X(z)=\sum_{n=-\infty}^{\infty} x(n) z^{-n}</script><p>因此，只要在给定的收敛域内把 $X(z)$ 展成 $z^{-1}$ 的幂级数，则序列值 $x(n)$ 就是 $z^{-n}$ 项的系数。</p>
+<h4 id="部分分式展开法"><a href="#部分分式展开法" class="headerlink" title="部分分式展开法"></a>部分分式展开法</h4><p>在一般情况下，序列的 $z$ 变换可以表示为 $z$ 的有理分式，即</p>
+<script type="math/tex; mode=display">
+X(z)=\frac{N(z)}{M(z)}=\frac{b_{r} z^{r}+b_{r-1} z^{r-1}+\cdots+b_{1} z+b_{0}}{a_{k} z^{k}+a_{k-1} z^{k-1}+\cdots+a_{1} z+a_{0}}</script><p>求 $z$ 反变换的部分分式展开法，类似于拉氏反变换中的部分分式展开法，将 $X(z)$ 展开成一些简单的部分分式之和，然后分别求出各个分式的 $z$ 反变换，把各反变换相加，便得到 $x(n)$。</p>
+<h4 id="常用z反变换"><a href="#常用z反变换" class="headerlink" title="常用z反变换"></a>常用z反变换</h4><p><img src="https://s2.loli.net/2023/05/29/aEVGM3LmA8zN9jZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://s2.loli.net/2023/05/29/hp8izjWfwOdY9uH.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>（Todo）</p>
+<h3 id="z-变换的性质"><a href="#z-变换的性质" class="headerlink" title="z 变换的性质"></a>z 变换的性质</h3><h4 id="双边性质总结-1"><a href="#双边性质总结-1" class="headerlink" title="双边性质总结"></a>双边性质总结</h4><script type="math/tex; mode=display">
+\begin{array}{|c|c|c|}
+\hline \text { 性质 } & \text { 时域 } & \text { z域 } & \text { 收敛域 } \\
+\hline \text { z变换 } & x(n) & \sum_{n=-\infty}^{\infty} x(n) z^{-n} \\
+\hline \text { z反变换 } &  & X(z) \\
+\hline \text { 线性 } & a x_{1}(n)+b x_{2}(n) & a X_{1}(z)+b X_{2}(z) & \max \left\{R_{x_{11}}, R_{x_{21}}\right\}<|z|<\min \left\{R_{x_{12}}, R_{x_{22}}\right\} \\
+\hline \text { 共轭 } & x^{*}(n) & X^{*}\left(z^{*}\right) & R_{x_{1}}<|z|<R_{x_{2}} \\
+\hline \text { 时域反向 } & x(-n) & X\left(z^{-1}\right) & R_{x_{1}}<\left|z^{-1}\right|<R_{x_{2}} \\
+\hline \text { 指数 } & a^{n} x(n) & X\left(a^{-1} z\right) & |a| R_{x_{1}}<|z|<|a| R_{x_{2}} \\
+\hline \text { z域反向 } & (-1)^{n} x(n) & X(-z) & R_{x_{1}}<|z|<R_{x_{2}} \\
+\hline \text {  } & n x(n) & -z \frac{\mathrm{d}}{\mathrm{d} z} X(z) & R_{x_{1}}<|z|<R_{x_{2}} \\
+\hline \text { 时移 } & x\left(n-n_{0}\right) & z^{-n_{0}} X(z) & R_{x_{1}}<|z|<R_{x_{2}} \\
+\hline \text { 频移 } & \mathrm{e}^{\mathrm{j} \omega_{0} n} x(n) & X\left(\mathrm{e}^{-\mathrm{j} \omega_{0}} \cdot z\right) & R_{x_{1}}<|z|<R_{x_{2}} \\
+\hline \text { z域尺度变换 } & z_{0}^{n} x(n) & X\left(\frac{z}{z_{0}}\right) & R_{x_{1}}<\left|\frac{z}{z_{0}}\right|<R_{x_{2}} \\
+\hline \text { 时域实部 } & \operatorname{Re}[x(n)] & \frac{1}{2}\left[X(z)+X^{*}\left(z^{*}\right)\right] & R_{x_{1}}<|z|<R_{x_{2}} \\
+\hline \text { 时域虚部 } & \operatorname{Im}[x(n)] & \frac{j}{2}\left[X(z)-X^{*}\left(z^{*}\right)\right] & R_{x_{1}}<|z|<R_{x_{2}} \\
+\hline \text { 时域求和 } & \sum_{k=0}^{n} x(k) & \frac{z}{z-1} X(z) &  \\
+\hline \text { 时域卷积 } & x_{1}(n) * x_{2}(n) & X_{1}(z) \cdot X_{2}(z) & \max \left\{R_{x_{11}}, R_{x_{21}}\right\}<|z|<\min \left\{R_{x_{12}}, R_{x_{22}}\right\} \\
+\hline \text { 时域相乘 } & x_{1}(n) \cdot x_{2}(n) & \frac{1}{2 \pi \mathrm{j}}{ }_{C} \oint X_{1}(v) X_{2}\left(\frac{z}{v}\right) v^{-1} \mathrm{~d} v &  \\
+\hline 
+\end{array}</script><ul>
+<li>初值定理：若 $x(n)$ 为因果序列<script type="math/tex; mode=display">
+x(0)=\lim _{z \rightarrow \infty} X(z)</script></li>
+<li>初值定理：若 $x(n)$ 为非因果序列<script type="math/tex; mode=display">
+x(0)=\lim _{z \rightarrow 0} X(z)</script></li>
+<li>终值定理：若 $x(n)$ 为因果序列<script type="math/tex; mode=display">
+x(\infty)=\lim _{z \rightarrow 1}[(z-1) X(z)]</script></li>
+<li>帕斯瓦尔定理：<script type="math/tex; mode=display">
+\sum_{n=-\infty}^{\infty} x_{1}(n) x_{2}^{*}(n)=\frac{1}{2 \pi \mathrm{j}} \oint_{C} X_{1}(z) X_{2}^{*}\left(\frac{1}{z^{*}}\right) z^{-1} \mathrm{~d} z</script></li>
+</ul>
+<h4 id="单边性质总结-1"><a href="#单边性质总结-1" class="headerlink" title="单边性质总结"></a>单边性质总结</h4><script type="math/tex; mode=display">
+\begin{array}{|c|c|c|}
+\hline \text { 性质 } & \text { 时域 } & \text { s域 } & \text { 条件 } \\
+\hline \text { 时域相乘 } & x_1(n)\cdot x_2(n) & x_1(n) * x_2(n) & n<0,x_1(n)=x_2(n)=0 \\
+\hline \text { 时域求和（累加） } & \sum_{k=0}^{n} x(k) & \frac{z}{z-1} X(z) & n<0,x(n)=0\\
+\hline \text { 时移 } & x(n-1) & z^{-1}X(z)+x(-1) & / \\
+\hline \text { 时移（超前） } & x(n+1) & zX(z)-zx(0) & / \\
+\hline \text { 差分性质 } & x(n)-x(n-1) & (1-z^{-1})X(z)-x(-1) & / \\
+\hline 
+\end{array}</script><h3 id="z-变换与拉氏变换的关系-1"><a href="#z-变换与拉氏变换的关系-1" class="headerlink" title="z 变换与拉氏变换的关系"></a>z 变换与拉氏变换的关系</h3><h3 id="离散时间系统的z域分析"><a href="#离散时间系统的z域分析" class="headerlink" title="离散时间系统的z域分析"></a>离散时间系统的z域分析</h3><h4 id="系统函数-1"><a href="#系统函数-1" class="headerlink" title="系统函数"></a>系统函数</h4><p>已知 $N$ 阶离散系统差分方程的一般表示式为</p>
+<script type="math/tex; mode=display">
+\sum_{k=0}^{N} a_{k} y(n-k)=\sum_{r=0}^{M} b_{r} x(n-r)</script><p>等式两边进行单边 $z$ 变换，并利用时域性质，可得</p>
+<script type="math/tex; mode=display">
+\sum_{k=0}^{N} a_{k} z^{-k}\left[Y(z)+\sum_{l=-k}^{-1} y(l) z^{-l}\right]=\sum_{r=0}^{M} b_{r} z^{-r}\left[X(z)+\sum_{m=-r}^{-1} x(m) z^{-m}\right]</script><p>若系统处于零状态，即当 $-N \leqslant l \leqslant-1$ 时 $y(l)=0$，此时上式可写成</p>
+<script type="math/tex; mode=display">
+\sum_{k=0}^{N} a_{k} z^{-k} Y(z)=\sum_{r=0}^{M} b_{r} z^{-r}\left[X(z)+\sum_{m=-r}^{-1} x(m) z^{-m}\right]</script><p>若 $x(n)$ 为因果序列，则</p>
+<script type="math/tex; mode=display">
+\sum_{k=0}^{N} a_{k} z^{-k} Y(z)=\sum_{r=0}^{M} b_{r} z^{-r} X(z)</script><p>定义</p>
+<script type="math/tex; mode=display">
+H(z)=\frac{Y(z)}{X(z)}=\frac{\sum_{r=0}^{M} b_{r} z^{-r}}{\sum_{k=0}^{N} a_{k} z^{-k}}</script><p>$H(z)$ 称为离散系统的<strong>系统函数</strong>，它是系统零状态响应的 $z$ 变换与因果输入信号 $z$ 变换之比值。<br>系统的z域响应为</p>
+<script type="math/tex; mode=display">
+Y(z)=H(z) X(z)</script><p>系统零状态响应为</p>
+<script type="math/tex; mode=display">
+y_{z s}(n)=\mathscr{Z}^{-1}[H(z) X(z)]</script><h4 id="LSI系统的因果性"><a href="#LSI系统的因果性" class="headerlink" title="LSI系统的因果性"></a>LSI系统的因果性</h4><ul>
+<li>考虑一个 LSI 系统，当且仅当系统函数的收敛域在某个圆的外边且包括无穷远点时，该系统是因果的。<ul>
+<li>一个因果 LSI 系统的单位样值响应 $h(n)=0,n&lt;0$，即 $h(n)$ 是一个右边序列，所以 $H(z)$ 的收敛域在某个圆的外边。</li>
+<li>对于一个因果序列，$H(z)=\sum_{n=0}^{\infty} h(n) \mathrm{z}^{-n}$ 不包含 $z$ 的正幂次项，因此收敛域包括无穷远点。</li>
+</ul>
+</li>
+<li>考虑一个具有<strong>有理</strong>系统函数的 LSI 系统，该系统是因果的，当且仅当<ul>
+<li>收敛域位于最外层极点所在圆的外边</li>
+<li>若 $H(z)$ 表示成 $z$ 的多项式之比，其分子阶次不高于分母的阶次（即 $\lim_{z\to \infty}H(z)$ 是有限的，收敛域包括无穷远点）</li>
+</ul>
+</li>
+</ul>
+<h4 id="LSI系统的稳定性"><a href="#LSI系统的稳定性" class="headerlink" title="LSI系统的稳定性"></a>LSI系统的稳定性</h4><p>LSI 系统稳定的充要条件：</p>
+<ul>
+<li>时域： $\sum_{n=-\infty}^{+\infty}|h(n)|&lt;\infty$</li>
+<li>z 域：因果系统 $H(z)$ 的极点全部位于 $Z$ 平面的单位圆内</li>
+</ul>
+<p>考虑一个具有有理系统函数的因果 LSI 系统，当且仅当系统函数的全部极点都位于单位圆内时，该系统稳定。</p>
+<h3 id="方框图"><a href="#方框图" class="headerlink" title="方框图"></a>方框图</h3><p><img src="https://s2.loli.net/2023/06/14/EY6DPaHxFkInN9m.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>递归系统：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\sum_{k=0}^{N} a_{k} y(n-k)=\sum_{r=0}^{M} b_{r} x(n-r) \\
+w(n)=\sum_{r=0}^{M} b_{r} x(n-r) \\
+y(n)=\frac{1}{a_{0}}\left\{-\sum_{k=0}^{N} a_{k} y(n-k)+w(n)\right\}
+\end{array}</script><p><img src="https://s2.loli.net/2023/06/14/BdZQwf7xp36NarW.png" srcset="/img/loading.gif" lazyload alt=""></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">大学学习生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E7%94%B5%E5%AD%90/">电子</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F/">信号与系统</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/16/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F%E4%B8%8E%E6%8E%A5%E5%8F%A3%E6%8A%80%E6%9C%AF%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">嵌入式系统与接口技术笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/15/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">半导体物理笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', '1357310795/Blog-Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.12.3/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/anchor-js/4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.8/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

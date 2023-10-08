@@ -1,0 +1,890 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/doge.png">
+  <link rel="icon" href="/img/doge.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#e4ad97">
+  <meta name="description" content="炒鸡好用的啦！">
+  <meta name="author" content="Teruteru">
+  <meta name="keywords" content="">
+  
+  <title>高中数学笔记 - Teruteru的Hexo博客</title>
+
+  <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myiconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"teru.space","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/qixi1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="高中数学笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-13 10:28" pubdate>
+        2021年12月13日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      67
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">高中数学笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年10月7日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <blockquote>
+<p>此处只会列出最精华的公式、结论部分，基本知识和解题技巧请熟稔于心！</p>
+</blockquote>
+<h2 id="一、最最最重要的三角公式"><a href="#一、最最最重要的三角公式" class="headerlink" title="一、最最最重要的三角公式"></a>一、最最最重要的三角公式</h2><h3 id="万能公式"><a href="#万能公式" class="headerlink" title="万能公式"></a>万能公式</h3><p>$ \sin^2\alpha=\frac{\tan^2\alpha}{\tan^2\alpha+1} $</p>
+<p>$ \cos^2\alpha=\frac{1}{\tan^2\alpha+1} $</p>
+<p>$ \sin\alpha\cos\alpha=\frac{\tan\alpha}{\tan^2\alpha+1} $</p>
+<p>$ \sin\alpha+\cos\alpha=\pm \sqrt{\frac{(\tan\alpha+1)^2}{\tan^2\alpha+1}} $</p>
+<p>$ \sin\alpha-\cos\alpha=\pm \sqrt{\frac{(\tan\alpha-1)^2}{\tan^2\alpha+1}} $</p>
+<p>$ \tan^2\alpha=\frac{1-\cos^2\alpha}{\cos^2\alpha}=\frac{\sin^2\alpha}{1-\sin^2\alpha} $​</p>
+<h3 id="辅助角公式"><a href="#辅助角公式" class="headerlink" title="辅助角公式"></a>辅助角公式</h3><p>$ a\sin\alpha+b\cos\alpha=\sqrt{a^2+b^2}\sin(\alpha+\varphi) $</p>
+<p>其中$\tan\varphi=\frac{b}{a}$ ，不等式形式取等时$\tan\alpha=\frac{a}{b}$ </p>
+<h3 id="诱导公式完整版"><a href="#诱导公式完整版" class="headerlink" title="诱导公式完整版"></a>诱导公式完整版</h3><ul>
+<li>整圈不变<br>$\sin ( x + 2 \pi ) = \sin x , \cos ( x + 2 \pi ) = \cos x$</li>
+<li>半圈相反<br>$\sin ( x + \pi ) = - \sin x, \cos ( x + \pi ) = - \cos x$</li>
+<li>加直求导<br>$\sin ( x + \frac { \pi }{ 2 } ) = \cos x , \cos ( x + \frac { \pi }{ 2 } ) = - \sin x$</li>
+<li>减直积分<br>$\sin ( x - \frac { \pi }{ 2 } ) = \sin ( x + \frac { 3 \pi }{ 2 } ) = - \cos x$<br>$\cos ( x - \frac { \pi }{ 2 } ) = \cos ( x + \frac { 3 \pi }{ 2 } ) = \sin x$</li>
+<li>正奇余偶<br>$\sin ( - x ) = - \sin x,\cos ( - x ) = \cos x$</li>
+<li>正余互余<br>$\sin ( \frac { \pi }{ 2 } - x ) = \cos x , \cos ( \frac { \pi }{ 2 } - x ) = \sin x $<br>$\tan ( \frac { \pi }{ 2 } - x ) = \cot x,\cot ( \frac { \pi }{ 2 } - x ) = \tan x $</li>
+<li>切直负变<br>$\tan ( x + \frac { \pi }{ 2 } ) = - \cot x , \cot ( x + \frac { \pi }{ 2 } ) = - \tan x$</li>
+</ul>
+<h3 id="诱导公式口诀（官方版）"><a href="#诱导公式口诀（官方版）" class="headerlink" title="诱导公式口诀（官方版）"></a>诱导公式口诀（官方版）</h3><p>奇变偶不变，符号看象限。</p>
+<h3 id="诱导公式口诀（Teruteru版）"><a href="#诱导公式口诀（Teruteru版）" class="headerlink" title="诱导公式口诀（Teruteru版）"></a>诱导公式口诀（Teruteru版）</h3><p>加减$\pi$，$\sin,\cos$变</p>
+<p>加减负号，$\sin,\tan$变</p>
+<p>加$\frac{\pi}{2}$，$\sin,\tan$变</p>
+<p>减$\frac{\pi}{2}$，$\cos,\tan$变</p>
+<h3 id="二倍角公式"><a href="#二倍角公式" class="headerlink" title="二倍角公式"></a>二倍角公式</h3><script type="math/tex; mode=display">
+\begin{align}
+\\ \sin 2\alpha &= 2\sin\alpha\cos\alpha
+\\ &= \frac{2\tan\alpha}{1+\tan^2\alpha}
+\\
+\\ \cos 2\alpha &= 2\cos^{2}\alpha-1 
+\\ &= 1-2\sin^{2}\alpha 
+\\ &=\cos^{2}\alpha-\sin^{2} \alpha 
+\\ &=(\cos\alpha+\sin\alpha)(\cos\alpha-\sin\alpha)
+\\ &=\frac{1-\tan^2\alpha}{1+\tan^2\alpha}
+\\
+\\ \tan 2\alpha &=\frac{2\tan\alpha}{1-\tan^{2}\alpha} 
+\end{align}</script><h3 id="半角公式"><a href="#半角公式" class="headerlink" title="半角公式"></a>半角公式</h3><p>$ \sin^{2}\frac{\alpha}{2}=\frac{1-\cos\alpha}{2} $</p>
+<p>$ \cos^{2}\frac{\alpha}{2}=\frac{1+\cos\alpha}{2} $</p>
+<p>$ \tan^{2}\frac{\alpha}{2}=\frac{1-\cos\alpha}{1+\cos\alpha} $</p>
+<h3 id="和差角公式"><a href="#和差角公式" class="headerlink" title="和差角公式"></a>和差角公式</h3><p>$\cos (\alpha \pm \beta)=\cos \alpha \cos \beta \mp \sin \alpha \sin \beta$</p>
+<p>$\sin (\alpha \pm \beta)=\sin \alpha \cos \beta \pm \cos \alpha \sin \beta$</p>
+<p>$ \tan(\alpha\pm\beta)=\frac{\tan\alpha\pm\tan\beta}{1\mp\tan\alpha\tan\beta} $</p>
+<h3 id="三倍角公式"><a href="#三倍角公式" class="headerlink" title="*三倍角公式"></a>*三倍角公式</h3><p>$ \sin 3\alpha=3\sin\alpha-4\sin^3\alpha $</p>
+<p>$ \cos 3\alpha=4\cos^3\alpha-3\cos\alpha $</p>
+<p>$ \tan 3\alpha=\frac{3\tan\alpha-\tan^3\alpha}{1-3\tan^{2}\alpha} $</p>
+<h3 id="积化和差、和差化积"><a href="#积化和差、和差化积" class="headerlink" title="*积化和差、和差化积"></a>*积化和差、和差化积</h3><p>$\cos \alpha \cos \beta=\frac{1}{2}[\cos (\alpha+\beta)+\cos (\alpha-\beta)]$</p>
+<p>$\sin \alpha \sin \beta=-\frac{1}{2}[\cos (\alpha+\beta)-\cos (\alpha-\beta)]$</p>
+<p>$\sin \alpha \cos \beta=\frac{1}{2}[\sin (\alpha+\beta)+\sin (\alpha-\beta)]$</p>
+<p>$\cos \alpha \sin \beta=\frac{1}{2}[\sin (\alpha+\beta)-\sin (\alpha-\beta)]$</p>
+<p>$ \sin\alpha+\sin\beta=2\sin\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2} $</p>
+<p>$ \sin\alpha-\sin\beta=2\cos\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2} $</p>
+<p>$ \cos\alpha+\cos\beta=2\cos\frac{\alpha+\beta}{2}\cos\frac{\alpha-\beta}{2} $</p>
+<p>$ \cos\alpha-\cos\beta=2\sin\frac{\alpha+\beta}{2}\sin\frac{\alpha-\beta}{2} $</p>
+<h3 id="一些奇怪的公式"><a href="#一些奇怪的公式" class="headerlink" title="一些奇怪的公式"></a>一些奇怪的公式</h3><p>$ 1\pm \sin 2\alpha=(\sin\alpha\pm\cos\alpha)^2 $</p>
+<p>$ \tan\frac{\alpha}{2}=\frac{\sin\alpha}{1+\cos\alpha}=\frac{1-\cos\alpha}{\sin\alpha} $</p>
+<p>$ 4\sin\alpha\cdot\sin(\frac{\pi}{3} -\alpha)\cdot\sin(\frac{\pi}{3} +\alpha)=\sin3\alpha $</p>
+<p>$ 4\cos\alpha\cdot\cos(\frac{\pi}{3} -\alpha)\cdot\cos(\frac{\pi}{3} +\alpha)=\cos3\alpha $</p>
+<p>$ \tan(\frac{\pi}{4}+\alpha)\cdot\tan(\frac{\pi}{4}-\alpha)=\frac{1+\tan\alpha}{1-\tan\alpha}\cdot\frac{1-\tan\alpha}{1+\tan\alpha}=1 $</p>
+<h3 id="象限图"><a href="#象限图" class="headerlink" title="象限图"></a>象限图</h3><p><img src="https://i.loli.net/2021/08/16/KE9NOzXwZtLSIVb.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="二、数列相关"><a href="#二、数列相关" class="headerlink" title="二、数列相关"></a>二、数列相关</h2><h3 id="常见裂项、放缩"><a href="#常见裂项、放缩" class="headerlink" title="常见裂项、放缩"></a>常见裂项、放缩</h3><ol>
+<li>$ \frac{1}{n(n+k)}=\frac{1}{k}\left(\frac{1}{n}-\frac{1}{n+k}\right) $</li>
+<li>$ \frac{1}{n(n+1)(n+2)}=\frac{1}{2}\left(\frac{1}{n(n+1)}-\frac{1}{(n+1)(n+2)}\right) $</li>
+<li>$ \frac{1}{(2n-1)(2n+1)}=\frac{1}{2}\left(\frac{1}{2n-1}-\frac{1}{2n+1}\right) $</li>
+<li>$ \frac{1}{\sqrt{n}+\sqrt{n+k}}=\frac{1}{k}\left(\sqrt{n+k}-\sqrt{n}\right) $</li>
+<li>$ \sum^{n}_{i=1}\left(2i-1\right)=n^2 $</li>
+<li>$ \sum^{n}_{i=1} i^3=\left[\frac{n(n+1)}{2}\right]^2=\left(\sum^{n}_{i=1} i\right)^2 $</li>
+<li>$ \frac{1}{2^n-1}\le\frac{1}{2^{n-1}} $</li>
+<li>$ \frac{1}{(2n-1)^2}&lt;\frac{1}{4n(n-1)}=\frac{1}{4}\left(\frac{1}{n-1}-\frac{1}{n}\right) $</li>
+<li>$ \frac{1}{n^3}&lt;\frac{1}{n(n^2-1)}={1 \over 2}\left[\frac{1}{(n-1)n}-\frac{1}{n(n+1)}\right] $</li>
+<li>$ 2(\sqrt{n+1}-\sqrt{n})=\frac{2}{\sqrt{n+1}+\sqrt{n}}&lt;{1\over \sqrt{n}}&lt;\frac{2}{\sqrt{n}+\sqrt{n-1}}=2(\sqrt{n}-\sqrt{n-1}) $</li>
+<li>$ \frac{2n-1}{2n}&lt;\sqrt{\frac{2n-1}{2n+1}}, \frac{2n}{2n-1}&gt;\sqrt{\frac{2n+1}{2n-1}}$</li>
+<li>$ \frac{n^2}{4n^2-1}={1\over 4}+{1\over 8}\left(\frac{1}{2n-1}-\frac{1}{2n+1}\right) $</li>
+<li>$ \frac{1}{n\sqrt{n}}&lt;2\left(\frac{1}{\sqrt{n-1}}-\frac{1}{\sqrt{n}}\right) $</li>
+<li>$ n\cdot n!=(n+1)!-n! $</li>
+<li>$ \frac{n}{(n+1)!}=\frac{1}{n!}-\frac{1}{(n+1)!} $</li>
+<li>$ {1\over \sqrt{n}}&lt;\sqrt{2}(\sqrt{2n+1}-\sqrt{2n-1}) $</li>
+</ol>
+<h3 id="不动点法"><a href="#不动点法" class="headerlink" title="不动点法"></a>不动点法</h3><p>暂略</p>
+<h3 id="等比数列与等差数列相乘"><a href="#等比数列与等差数列相乘" class="headerlink" title="等比数列与等差数列相乘"></a>等比数列与等差数列相乘</h3><ul>
+<li>[ ] 错位相减（最垃圾的方法，不用管它）</li>
+<li>[ ] 背公式（太复杂）</li>
+<li>[x] 待定系数法（熟练运用）</li>
+<li>[x] 裂项（最好的方法，必须会）</li>
+</ul>
+<h2 id="三、排列组合"><a href="#三、排列组合" class="headerlink" title="三、排列组合"></a>三、排列组合</h2><h3 id="各类基本方法"><a href="#各类基本方法" class="headerlink" title="各类基本方法"></a>各类基本方法</h3><p>不多解释</p>
+<h3 id="小球入盒模型"><a href="#小球入盒模型" class="headerlink" title="小球入盒模型"></a>小球入盒模型</h3><p><a href="/2021/08/19/%E5%BD%93%E5%B0%8F%E7%90%83%E9%81%87%E4%B8%8A%E7%9B%92%E5%AD%90/">点击进入</a></p>
+<h3 id="环形染色问题"><a href="#环形染色问题" class="headerlink" title="环形染色问题"></a>环形染色问题</h3><p>$ ans=(m-1)(-1)^n+(m-1)^n $</p>
+<h2 id="四、基本不等式"><a href="#四、基本不等式" class="headerlink" title="四、基本不等式"></a>四、基本不等式</h2><h3 id="均值不等式"><a href="#均值不等式" class="headerlink" title="*均值不等式"></a>*均值不等式</h3><script type="math/tex; mode=display">
+\begin{array}{c} 
+若a_{n}\ge 0，\\
+H_{n}=\frac{n}{\sum \limits_{i=1}^{n}\frac{1}{a_{i}}}= \frac{n}{\frac{1}{a_{1}}+ \frac{1}{a_{2}}+ \cdots + \frac{1}{a_{n}}} \\ 
+G_{n}=\sqrt[n]{\prod \limits_{i=1}^{n}a_{i}}= \sqrt[n]{a_{1}a_{2}\cdots a_{n}} \\ 
+A_{n}=\frac{1}{n}\sum \limits_{i=1}^{n}a_{i}=\frac{a_{1}+ a_{2}+ \cdots + a_{n}}{n} \\ 
+Q_{n}=\sqrt{\sum \limits_{i=1}^{n}a_{i}^{2}}= \sqrt{\frac{a_{1}^{2}+ a_{2}^{2}+ \cdots + a_{n}^{2}}{n}} \\ 
+H_{n}\leq G_{n}\leq A_{n}\leq Q_{n} 
+\end{array}</script><h3 id="均值不等式的二元形式"><a href="#均值不等式的二元形式" class="headerlink" title="均值不等式的二元形式"></a>均值不等式的二元形式</h3><script type="math/tex; mode=display">
+\frac{2}{\frac{1}{a}+\frac{1}{b}}\le\sqrt{ab}\le\frac{a+b}{2}\le\sqrt{\frac{a^2+b^2}{2}}</script><h3 id="均值不等式二元形式变形"><a href="#均值不等式二元形式变形" class="headerlink" title="均值不等式二元形式变形"></a>均值不等式二元形式变形</h3><p><del>（写在小抄上就很方便）</del></p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{aligned}
+  a+b\ge&2\sqrt{ab} \\ 
+  a+b\ge&\frac{4}{\frac{1}{a}+\frac{1}{b}} \\ 
+  a+b\le&\sqrt{2}\sqrt{a^2+b^2} 
+\end{aligned}
+\right.</script><script type="math/tex; mode=display">
+\left\{
+\begin{aligned}
+  ab\le&\frac{(a+b)^2}{4} \\ 
+  ab\ge&\frac{4}{(\frac{1}{a}+\frac{1}{b})^2} \\ 
+  ab\le&\frac{a^2+b^2}{2}
+\end{aligned}
+\right.</script><script type="math/tex; mode=display">
+\left\{
+\begin{aligned}
+  \frac{1}{a}+\frac{1}{b}\ge&\frac{4}{a+b} \\ 
+  \frac{1}{a}+\frac{1}{b}\ge&\frac{2}{\sqrt{ab}} \\ 
+  \frac{1}{a}+\frac{1}{b}\ge&\frac{2\sqrt{2}}{\sqrt{a^2+b^2}}
+\end{aligned}
+\right.</script><script type="math/tex; mode=display">
+\left\{
+\begin{aligned}
+  a^2+b^2\ge&\frac{(a+b)^2}{2} \\ 
+  a^2+b^2\ge&2ab \\ 
+  a^2+b^2\ge&\frac{8}{(\frac{1}{a}+\frac{1}{b})^2}
+\end{aligned}
+\right.</script><h3 id="其他不等式"><a href="#其他不等式" class="headerlink" title="其他不等式"></a>其他不等式</h3><p>（待更新）<br>1.柯西<br>2.排序<br>3.切比雪夫<br>4.卡尔松</p>
+<h2 id="五、立体几何-amp-平面几何（主要是三角形）"><a href="#五、立体几何-amp-平面几何（主要是三角形）" class="headerlink" title="五、立体几何&amp;平面几何（主要是三角形）"></a>五、立体几何&amp;平面几何（主要是三角形）</h2><h3 id="体积万能公式"><a href="#体积万能公式" class="headerlink" title="体积万能公式"></a>体积万能公式</h3><p>$ V=\frac{1}{6}\left(S_{顶}+S_{底}+4S_{中}\right)h $</p>
+<h3 id="三角形秦九韶公式"><a href="#三角形秦九韶公式" class="headerlink" title="三角形秦九韶公式"></a>三角形秦九韶公式</h3><p>$ S=\frac{1}{4}\sqrt{4a^2b^2-(a^2+b^2-c^2)^2} $<br>(注意此式为三元对称式)</p>
+<h3 id="斯特瓦尔特定理"><a href="#斯特瓦尔特定理" class="headerlink" title="斯特瓦尔特定理"></a>斯特瓦尔特定理</h3><p><img src="https://i.loli.net/2021/08/16/9zvchm2NxoteOVd.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+d=\sqrt{\frac{a^2y+b^2x}{x+y}-xy}</script><p>(看清楚公式和图再记，$a^2y+b^2x$千万别搞错)</p>
+<h3 id="一些三角形小定理"><a href="#一些三角形小定理" class="headerlink" title="一些三角形小定理"></a>一些三角形小定理</h3><p>$ \Delta ABC中，a^2=b(b+c)\Leftrightarrow A=2B $</p>
+<p>$ S_{\Delta ABC}=\frac{c^2}{2}\cdot\frac{\tan A\tan B}{\tan A+\tan B} $</p>
+<p>$ \Delta ABC中，2b=a+c \Leftrightarrow \tan\frac{A}{2}\tan\frac{B}{2}=\frac{1}{3}$</p>
+<h3 id="正四面体相关"><a href="#正四面体相关" class="headerlink" title="正四面体相关"></a>正四面体相关</h3><p><img src="https://i.loli.net/2021/08/16/pGMLcnCliNqQSPf.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>$ S_{截}=\frac{\sqrt{2}}{4}a^2, S_{表}=\sqrt{3}a^2, V=\frac{\sqrt{2}}{12}a^3 $<br>$ h=\frac{\sqrt{6}}{3}a, r=\frac{\sqrt{6}}{12}a, R=\frac{\sqrt{6}}{4}a $</p>
+<p>对棱中点连线长$\frac{\sqrt{2}}{2}a$</p>
+<p>线面角：$\sin\theta=\frac{\sqrt{6}}{3}, \cos\theta=\frac{\sqrt{3}}{3}, 1:\sqrt{2}:\sqrt{3} $</p>
+<p>二面角：$\sin\alpha=\frac{2\sqrt{2}}{3}, \cos\alpha=\frac{1}{3}, 1:2\sqrt{2}:3 $</p>
+<h3 id="三射线定理-amp-Teruteru线面角终极公式"><a href="#三射线定理-amp-Teruteru线面角终极公式" class="headerlink" title="三射线定理&amp;Teruteru线面角终极公式"></a>三射线定理&amp;Teruteru线面角终极公式</h3><p><img src="https://i.loli.net/2021/08/16/oFH9pITyGe61Zbk.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>三射线定理：$\angle AOC=\alpha, \angle AOB=\beta,\angle BOC=\theta, 二面角C-OA-B=\gamma, 则：$</p>
+<script type="math/tex; mode=display">\cos\gamma=\frac{\cos\theta-\cos\alpha\cos\beta}{\sin\alpha\sin\beta}</script><p>Teruteru线面角终极公式：$\cos\angle AOH_2=a, \cos\angle AOH_3=b, \cos\angle COD=c, 则： $</p>
+<script type="math/tex; mode=display">\cos\angle AOH_1=\sqrt{\frac{a^2+b^2-2abc}{1-c^2}}</script><h3 id="其他公式"><a href="#其他公式" class="headerlink" title="其他公式"></a>其他公式</h3><p>四面体$ABCD$对棱$AB、BD$所成角为$\alpha$，则：</p>
+<script type="math/tex; mode=display">
+\cos\alpha=\frac{\left|AB\right|^2+\left|CD\right|^2-\left|AD\right|^2-\left|BC\right|^2}{2\left|AC\right|\cdot\left|BD\right|}</script><p>$AC、BD$距离为$d$, 则</p>
+<script type="math/tex; mode=display">V_{ABCD}=\frac{\left|AC\right|\left|BD\right|d\sin\alpha}{6}</script><h2 id="六、解析几何"><a href="#六、解析几何" class="headerlink" title="六、解析几何"></a>六、解析几何</h2><h3 id="常用结论"><a href="#常用结论" class="headerlink" title="常用结论"></a>常用结论</h3><p>★1.点$(x_1,y_1)$关于直线$Ax+By+C=0$的对称点坐标：</p>
+<script type="math/tex; mode=display">
+\left(x_1-\frac{2A(Ax_1+By_1+C)}{A^2+B^2},y_1-\frac{2B(Ax_1+By_1+C)}{A^2+B^2}\right)</script><p>垂足坐标：</p>
+<script type="math/tex; mode=display">
+\left(x_1-\frac{A(Ax_1+By_1+C)}{A^2+B^2},y_1-\frac{B(Ax_1+By_1+C)}{A^2+B^2}\right)</script><p>2.直线$Ax+By+C=0$关于点$(x_0,y_0)$对称的直线方程为：</p>
+<script type="math/tex; mode=display">
+Ax+By-2(Ax_0+By_0)-C=0</script><p>*3.直线$A_1x+B_1y+C_1=0$关于直线$A_0x+B_0y+C_0=0$对称的直线：</p>
+<script type="math/tex; mode=display">
+(A_1A_0^2-A_1B_0^2+2B_0B_1A_0)x+(B_1B_0^2-B_1A_0^2+2A_0A_1B_0)y+(2A_1A_0C_0+2B_1B_0C_0-C_1A_0^2-C_1B_0^2)=0</script><p>★4.以点$(x_1,y_1),(x_2,y_2)$为端点的线段的中垂线为：</p>
+<script type="math/tex; mode=display">
+2(x_1-x_2)x+2(y_1-y_2)y+(y_2^2-y_1^2+x_2^2-x_1^2)=0</script><p>5.点$(x_1,y_1)$关于点$(x_0,y_0)$顺时针旋转$\theta$所得点：</p>
+<script type="math/tex; mode=display">
+\left((x_1-x_0)\cos\theta+(y_1-y_0)\sin\theta+x_0,(x_1-x_0)\cos\theta+(y_1-y_0)\sin\theta+y_0\right)</script><p>6.三角形“七心”</p>
+<script type="math/tex; mode=display">
+\begin{array}{c} 
+重心G\left(\frac{\sum x_A}{3},\frac{\sum y_A}{3}\right)\\
+内心I\left(\frac{\sum ax_A}{\sum a},\frac{\sum ay_A}{\sum a}\right)\\
+垂心H\left(\frac{\sum\frac{ax_A}{\cos A}}{\sum\frac{a}{\cos A}},\frac{\sum\frac{ay_A}{\cos A}}{\sum\frac{a}{\cos A}}\right)\\
+内心I\left(\frac{\sum x_A\sin2A}{\sum\sin2A},\frac{\sum y_A\sin2A}{\sum\sin2A}\right)\\
+三个旁心略
+\end{array}</script><h3 id="圆锥曲线——椭圆"><a href="#圆锥曲线——椭圆" class="headerlink" title="圆锥曲线——椭圆"></a>圆锥曲线——椭圆</h3><h4 id="点差法结论"><a href="#点差法结论" class="headerlink" title="点差法结论"></a>点差法结论</h4><p><img src="https://i.loli.net/2021/08/17/r6Cp1wnFj4YcJb7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{l} 
+k_{AB}=-\frac{b^2x_0}{a^2y_0} \\
+k_{OP}\cdot k_{AB}=-\frac{b^2}{a^2}
+\end{array}</script><h4 id="焦半径公式"><a href="#焦半径公式" class="headerlink" title="焦半径公式"></a>焦半径公式</h4><script type="math/tex; mode=display">
+\begin{array}{l} 
+\left|PF_1\right|=ex_0+a \\
+\left|PF_2\right|=-ex_0+a
+\end{array}</script><h4 id="通径长：-frac-2b-2-a"><a href="#通径长：-frac-2b-2-a" class="headerlink" title="通径长：$\frac{2b^2}{a}$"></a>通径长：$\frac{2b^2}{a}$</h4><h4 id="准线：-x-pm-frac-a-2-c"><a href="#准线：-x-pm-frac-a-2-c" class="headerlink" title="准线：$x=\pm\frac{a^2}{c}$"></a>准线：$x=\pm\frac{a^2}{c}$</h4><h4 id="过端点-原点的直线"><a href="#过端点-原点的直线" class="headerlink" title="过端点/原点的直线"></a>过端点/原点的直线</h4><p><img src="https://i.loli.net/2021/08/17/yz3K7GnIfmioCVv.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://i.loli.net/2021/08/17/fPMEGITOlL95pgW.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://i.loli.net/2021/08/17/I6BRwoGYZH2Mheg.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://i.loli.net/2021/08/17/5drkUHDgQ6pxEBY.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://i.loli.net/2021/08/17/zF3lm8bE71hpPXj.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="对端点张角的三角形"><a href="#对端点张角的三角形" class="headerlink" title="对端点张角的三角形"></a>对端点张角的三角形</h4><p><img src="https://i.loli.net/2021/08/18/9qYzKDwEfHRG7Qe.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="★过焦点的直线"><a href="#★过焦点的直线" class="headerlink" title="★过焦点的直线"></a>★过焦点的直线</h4><p><img src="https://i.loli.net/2021/08/18/ShV4j3NrEY5ldtA.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li><script type="math/tex; mode=display">
+\left\{
+\begin{array}{l} 
+x_1+x_2=\frac{2a^2k^2c}{b^2+a^2k^2} \\
+x_1\cdot x_2=\frac{a^2k^2c^2-a^2b^2}{b^2+a^2k^2} \\
+\left|x_1-x_2\right|=\frac{2ab^2\sqrt{k^2+1}}{b^2+a^2k^2}
+\end{array}
+\right.</script></li>
+<li><script type="math/tex; mode=display">
+\left\{
+\begin{array}{l} 
+y_1+y_2=\frac{-2b^2ck}{b^2+a^2k^2} \\
+y_1\cdot y_2=\frac{-k^2b^4}{b^2+a^2k^2} \\
+\left|y_1-y_2\right|=\frac{2ab^2|k|\sqrt{k^2+1}}{b^2+a^2k^2}
+\end{array}
+\right.</script></li>
+<li><p>$\Delta=4a^2b^4(k^2+1)$</p>
+</li>
+<li><p>$|AB|=(k^2+1)\frac{2ab^2}{b^2+a^2k^2}=\frac{2ab^2}{a^2-c^2\cos^2\theta}$</p>
+</li>
+<li><p>$\overrightarrow{OA}\cdot\overrightarrow{OB}=\frac{a^2k^2c^2-a^2b^2-b^4k^2}{b^2+a^2k^2}$</p>
+</li>
+<li><p>$S_{\Delta OAB}=\frac{\sqrt{k^2+1}|ab^2ck|}{b^2+a^2k^2}=\frac{\sqrt{m^2+1}ab^2c}{b^2m^2+a}(m=\frac{1}{k})$</p>
+</li>
+<li><p>$|AF_2|\cdot|BF_2|=\frac{b^4(k^2+1)}{b^2+a^2k^2}$</p>
+</li>
+<li><p>$\frac{b^4}{a^2}\le |AF_2|\cdot|BF_2| \le b^2$<br>（左边$k$不存在时取等，右边$k=0$时取等）</p>
+</li>
+<li><p>$|AF_1|\cdot|BF_1|=\frac{(4a^2c^2+b^4)k^2+b^4}{b^2+a^2k^2}$</p>
+</li>
+<li><p>$b^2\le |AF_1|\cdot|BF_1| \le \frac{(2a^2-b^2)^2}{a^2}$<br>（左边$k=0$时取等，右边$k$不存在时取等）</p>
+</li>
+<li><p>$|AF_2|=\frac{b^2}{a+c\cos\theta},|BF_2|=\frac{b^2}{a-c\cos\theta}$</p>
+</li>
+<li><p>$\frac{1}{|AF_2|}+\frac{1}{|BF_2|}=\frac{2a}{b^2}$</p>
+</li>
+<li><p>若$|AF_2|=m|BF_2|$，则$(\frac{1-m}{1+m})^2=\frac{e^2}{1+k^2}$（圆锥曲线都成立），<br>则$|AB|=\frac{b^2(m+1)^2}{2am}$，$k=\pm\sqrt{\frac{4a^2m-b^2(m+1)^2}{a^2(m-1)^2}}$</p>
+</li>
+</ul>
+<h4 id="不知名的公式"><a href="#不知名的公式" class="headerlink" title="不知名的公式"></a>不知名的公式</h4><p>过点$M(x_0,y_0)$作斜率为$k$的直线交椭圆于点$A,B$，则：</p>
+<script type="math/tex; mode=display">\overrightarrow{MA}\cdot\overrightarrow{MB}=\frac{(k^2+1)(a^2y_0^2+b^2x_0^2-a^2b^2)}{b^2+a^2k^2}</script><h4 id="两直线斜率之和-积为定值"><a href="#两直线斜率之和-积为定值" class="headerlink" title="两直线斜率之和/积为定值"></a>两直线斜率之和/积为定值</h4><p>设有圆锥曲线$\Gamma$，点$P(x_0,y_0)$在$\Gamma$上，$l$交$\Gamma$于点$A,B$，</p>
+<ul>
+<li><p>若$k_{PA}\cdot k_{PB}=\lambda\ne\frac{b^2}{a^2}$</p>
+<ul>
+<li>椭圆：$l$过定点$(\frac{\lambda a^2+b^2}{\lambda a^2-b^2}x_0,-\frac{\lambda a^2+b^2}{\lambda a^2-b^2}y_0)$</li>
+<li>双曲线：$l$过定点$(\frac{\lambda a^2-b^2}{\lambda a^2+b^2}x_0,-\frac{\lambda a^2-b^2}{\lambda a^2+b^2}y_0)$</li>
+<li>抛物线：$l$过定点$(x_0-\frac{2p}{\lambda},-y_0)$</li>
+</ul>
+</li>
+<li><p>若$k_{PA}+k_{PB}=\lambda\ne 0$</p>
+<ul>
+<li>椭圆：$l$过定点$(x_0-\frac{2y_0}{\lambda},-\frac{2b^2x_0}{a^2\lambda}-y_0)$</li>
+<li>双曲线：$l$过定点$(x_0-\frac{2y_0}{\lambda},\frac{2b^2x_0}{a^2\lambda}-y_0)$</li>
+<li>抛物线：$l$过定点$(x_0-\frac{2y_0}{\lambda},\frac{2p}{\lambda}-y_0)$</li>
+</ul>
+</li>
+</ul>
+<h4 id="直线与椭圆相交弦长"><a href="#直线与椭圆相交弦长" class="headerlink" title="直线与椭圆相交弦长"></a>直线与椭圆相交弦长</h4><p>$Ax+By+C=0$与$\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$的相交弦长：</p>
+<script type="math/tex; mode=display">l=\sqrt{A^2+B^2}\frac{2ab\sqrt{a^2A^2+b^2B^2-C^2}}{a^2A^2+b^2B^2}</script><h4 id="对中心张直角的弦"><a href="#对中心张直角的弦" class="headerlink" title="对中心张直角的弦"></a>对中心张直角的弦</h4><p><img src="https://i.loli.net/2021/08/18/Xu2IBsfMOm3c45T.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="一些等价转换"><a href="#一些等价转换" class="headerlink" title="一些等价转换"></a>一些等价转换</h4><p><img src="https://i.loli.net/2021/08/18/VmD15Ccevf8YwqM.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+  & \qquad k_{OM}\cdot k_{ON}=-\frac{b^2}{a^2} \\ 
+  & \Leftrightarrow x_1^2+x_2^2=a^2 \\
+  & \Leftrightarrow y_1^2+y_2^2=b^2 \\
+  & \Leftrightarrow S_{\Delta OMN}=\frac{ab}{2} \\
+  & \Leftrightarrow OM^2+ON^2=a^2+b^2 \\
+  & \Leftrightarrow (\text{若}\overrightarrow{OP}=\lambda\overrightarrow{OM}+\mu\overrightarrow{ON}),\lambda^2+\mu^2=1 \\
+  & \Leftrightarrow Q\text{在}\frac{x^2}{a^2}+\frac{y^2}{b^2}=\frac{1}{2}\text{上} \\
+  & \Leftrightarrow (\text{若}\overrightarrow{OP}=\lambda\overrightarrow{OM}+\mu\overrightarrow{ON}), P\text{在}\frac{x^2}{a^2}+\frac{y^2}{b^2}=\lambda^2+\mu^2\text{上}
+\end{aligned}</script><h4 id="more-もっともっと"><a href="#more-もっともっと" class="headerlink" title="more/もっともっと"></a>more/もっともっと</h4><p><img src="/static/QQ截图20210818194202.png" srcset="/img/loading.gif" lazyload alt=""><br><a href="/static/史上最全椭圆二级结论大全.docx">点击下载</a></p>
+<h3 id="双曲线二级结论"><a href="#双曲线二级结论" class="headerlink" title="双曲线二级结论"></a>双曲线二级结论</h3><h4 id="一个特殊三角形"><a href="#一个特殊三角形" class="headerlink" title="一个特殊三角形"></a>一个特殊三角形</h4><p><img src="https://i.loli.net/2021/08/18/RJSFzGrbcxTON8E.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="切线与渐近线"><a href="#切线与渐近线" class="headerlink" title="切线与渐近线"></a>切线与渐近线</h4><p><img src="https://i.loli.net/2021/08/18/7jxkzQmHlBUIOtd.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="焦半径公式-1"><a href="#焦半径公式-1" class="headerlink" title="焦半径公式"></a>焦半径公式</h4><p><img src="https://i.loli.net/2021/08/18/wJKbc9zvty5mV6S.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{c} 
+\text{准线：}x=\pm\frac{a^2}{c} \\
+|P_1F_1|=ex_0+a \\
+|P_1F_2|=ex_0-a \\
+|P_2F_1|=-ex_0-a \\
+|P_2F_2|=-ex_0+a \\
+\end{array}</script><h4 id="对两焦点张直角"><a href="#对两焦点张直角" class="headerlink" title="对两焦点张直角"></a>对两焦点张直角</h4><p><img src="https://i.loli.net/2021/08/18/jqP2UlIoVgxJOHL.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="抛物线二级结论"><a href="#抛物线二级结论" class="headerlink" title="抛物线二级结论"></a>抛物线二级结论</h3><h4 id="一些基本量"><a href="#一些基本量" class="headerlink" title="一些基本量"></a>一些基本量</h4><p><img src="https://i.loli.net/2021/08/18/4i1LpqTZGbuA9yc.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li><script type="math/tex; mode=display">
+\left\{
+\begin{array}{l} 
+x_A+x_B=\frac{p^2}{4} \\
+x_A\cdot x_B=\frac{pk^2+2p}{k^2}
+\end{array}
+\right.</script></li>
+<li><script type="math/tex; mode=display">
+\left\{
+\begin{array}{l} 
+y_A+y_B=-p^2 \\
+y_A\cdot y_B=\frac{2p}{k}
+\end{array}
+\right.</script></li>
+<li><script type="math/tex; mode=display">
+\begin{aligned}
+|AB|&=\frac{2p}{\sin^2\theta} \\ 
+&=2p\cdot\frac{1+k^2}{k^2} \\ 
+&=x_A+x_B+p
+\end{aligned}</script></li>
+<li><p>$|AF|=\frac{p}{1-\cos\theta}$</p>
+</li>
+<li><p>$|BF|=\frac{p}{1+\cos\theta}$</p>
+</li>
+<li><p>$\frac{1}{|AF|}+\frac{1}{|AF|}=\frac{2}{p}$</p>
+</li>
+<li><p>$S_{\Delta AOB}=\frac{p^2}{2\sin\theta}=\frac{p^2}{2}\sqrt{\frac{k^2+1}{k^2}}$</p>
+</li>
+</ul>
+<h4 id="开口向上的"><a href="#开口向上的" class="headerlink" title="开口向上的"></a>开口向上的</h4><p><img src="https://i.loli.net/2021/08/19/IswTdU97CD1VqYu.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="两条过焦点的直线"><a href="#两条过焦点的直线" class="headerlink" title="两条过焦点的直线"></a>两条过焦点的直线</h4><p><img src="https://i.loli.net/2021/08/19/W591tGLmeYcRP24.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="中垂线"><a href="#中垂线" class="headerlink" title="中垂线"></a>中垂线</h4><p><img src="https://i.loli.net/2021/08/19/XNwMvD7zki2UJLc.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="阿基米德三角形"><a href="#阿基米德三角形" class="headerlink" title="阿基米德三角形"></a>阿基米德三角形</h4><h2 id="七、导数"><a href="#七、导数" class="headerlink" title="七、导数"></a>七、导数</h2><h3 id="e-x-、-lnx-、-x-的基本组合"><a href="#e-x-、-lnx-、-x-的基本组合" class="headerlink" title="$e^x$、$lnx$、$x$ 的基本组合"></a>$e^x$、$lnx$、$x$ 的基本组合</h3><p><img src="https://i.loli.net/2021/08/19/IOcfyazAl8JEUY7.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://i.loli.net/2021/08/19/HS68wmyX3xdfPpZ.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://i.loli.net/2021/08/19/63Z8dNMX4mtkhJH.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://i.loli.net/2021/08/19/MNcRIrZFxJ8jTOo.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://i.loli.net/2021/08/19/zvAtMP2XTEi18qe.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://i.loli.net/2021/08/19/cmuB8tWlP516ozI.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="常用放缩不等式"><a href="#常用放缩不等式" class="headerlink" title="常用放缩不等式"></a>常用放缩不等式</h3><ul>
+<li><p>★$\ln x&lt;\frac{1}{2}(x-\frac{1}{x}),x&gt;1$</p>
+</li>
+<li><p>★$\ln x&gt;\frac{1}{2}(x-\frac{1}{x}),0&lt;x&lt;1$</p>
+</li>
+<li><p>$\ln x&lt;\sqrt{x}-\frac{1}{\sqrt{x}},x&gt;1$</p>
+</li>
+<li><p>$\ln x&gt;\sqrt{x}-\frac{1}{\sqrt{x}},0&lt;x&lt;1$</p>
+</li>
+<li><p>$\ln x\le -\frac{1}{2}(x-1)(x-3),0&lt;x&lt;1$</p>
+</li>
+<li><p>$\ln x\ge -\frac{1}{2}(x-1)(x-3),x&gt;1$</p>
+</li>
+<li><p>★$\ln x\ge 1-\frac{1}{x}$</p>
+</li>
+<li><p>★$\ln x&gt;\frac{2(x-1)}{x+1},x&gt;1$</p>
+</li>
+<li><p>★$\ln x&lt;\frac{2(x-1)}{x+1},0&lt;x&lt;1$</p>
+</li>
+<li><p>$x\ln x\ge x-1$</p>
+</li>
+<li><p>$\ln x\le\frac{x}{e}$</p>
+</li>
+<li><p>★$e^x\ge x+1[+\frac{1}{2}x^2][+\frac{1}{6}x^3]$</p>
+</li>
+<li><p>$e^x\ge x^2+1,x\ge 0$</p>
+</li>
+<li><p>$e^{x-1}\ge \frac{x^2+1}{2},x\ge 0$</p>
+</li>
+<li><p>★$e^x\le\frac{1}{1-x},x&lt;1$</p>
+</li>
+<li><p>★$e^x\ge\frac{1}{1-x},x&gt;1$</p>
+</li>
+<li><p>★$e^x\ge ex$</p>
+</li>
+<li><p>$e^x\ge ex+(x-1)^2,x\ge 0$</p>
+</li>
+<li><p>$e^x\ge\frac{23}{15}x^2+1,x\ge 0$</p>
+</li>
+<li><p>$\frac{e^x}{x}-x\ln x&gt;2$</p>
+</li>
+<li><p>$e^x\ge 2x+1-\ln(x+1)$</p>
+</li>
+<li><p>$e^x&gt;\ln(x+2)$</p>
+</li>
+<li><p>当 $0&lt;x&lt;1$ 时</p>
+<p>$\frac{x^2-1}{x^2+1}&gt;\frac{2(x-1)}{x+1}&gt;\frac{4(\sqrt{x}-1)}{\sqrt{x}+1}&gt;\ln x$</p>
+</li>
+<li><p>当 $x&gt;1$ 时</p>
+<p>$\frac{x^2-1}{x^2+1}&lt;\frac{2(x-1)}{x+1}&lt;\frac{4(\sqrt{x}-1)}{\sqrt{x}+1}&lt;\ln x$</p>
+</li>
+</ul>
+<h3 id="帕德逼近"><a href="#帕德逼近" class="headerlink" title="帕德逼近"></a>帕德逼近</h3><p><img src="https://i.loli.net/2021/08/19/83ybsLAajiKd6BY.png" srcset="/img/loading.gif" lazyload alt="常用帕德逼近表.png"></p>
+<h3 id="均值不等式加强版"><a href="#均值不等式加强版" class="headerlink" title="均值不等式加强版"></a>均值不等式加强版</h3><h4 id="幂平均数"><a href="#幂平均数" class="headerlink" title="幂平均数"></a>幂平均数</h4><script type="math/tex; mode=display">
+\begin{array}{c} 
+M_p(a,b)=(\frac{a^p+b^p}{2})^{\frac{1}{p}}\\
+若x\le y，则M_x\le M_y
+\end{array}</script><h4 id="对数平均数"><a href="#对数平均数" class="headerlink" title="对数平均数"></a>对数平均数</h4><script type="math/tex; mode=display">
+L(a,b)=\frac{b-a}{\ln b-\ln a}</script><h4 id="指数平均数"><a href="#指数平均数" class="headerlink" title="指数平均数"></a>指数平均数</h4><script type="math/tex; mode=display">
+\begin{array}{c} 
+I(a,b)=\frac{1}{e}(\frac{b^b}{a^a})^{\frac{1}{b-a}}\\
+\ln(I(a,b))=-1+\frac{b\ln b-a\ln a}{b-a}
+\end{array}</script><h4 id="调和平均数"><a href="#调和平均数" class="headerlink" title="调和平均数"></a>调和平均数</h4><script type="math/tex; mode=display">
+M_{-1}(a,b)=\frac{2}{\frac{1}{a}+\frac{1}{b}}</script><h4 id="几何平均数"><a href="#几何平均数" class="headerlink" title="几何平均数"></a>几何平均数</h4><script type="math/tex; mode=display">
+M_0(a,b)=G(a,b)=\sqrt{ab}</script><h4 id="算数平均数"><a href="#算数平均数" class="headerlink" title="算数平均数"></a>算数平均数</h4><script type="math/tex; mode=display">
+M_1(a,b)=A(a,b)=\frac{a+b}{2}</script><h4 id="平方平均数"><a href="#平方平均数" class="headerlink" title="平方平均数"></a>平方平均数</h4><script type="math/tex; mode=display">
+M_2(a,b)=\sqrt{\frac{a^2+b^2}{2}}</script><h4 id="均值不等式-1"><a href="#均值不等式-1" class="headerlink" title="均值不等式"></a>均值不等式</h4><script type="math/tex; mode=display">
+M_{-1}(a,b)\le M_0(a,b)=G(a,b)\le L(a,b)\le M_{\frac{1}{3}}(a,b)\le M_{\frac{1}{2}}(a,b)\le I(a,b)\le M_1(a,b)=A(a,b)\le M_2(a,b)</script><h2 id="八、其他资料分享"><a href="#八、其他资料分享" class="headerlink" title="八、其他资料分享"></a>八、其他资料分享</h2><p><a href="/static/50条高考数学秒杀公式方法，助你再提30分.pptx">50条高考数学秒杀公式方法，助你再提30分.pptx</a><br><a href="/static/解析几何中若干经典结论及其应用.docx">解析几何中若干经典结论及其应用.docx</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%AB%98%E4%B8%AD%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">高中学习生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E9%AB%98%E4%B8%AD%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0/">数学笔记</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/12/13/%E7%BA%BF%E4%BB%A3%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">线代笔记整理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/10/24/%E5%A4%A7%E5%AD%A6%E5%8C%96%E5%AD%A6%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">大学化学笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', '1357310795/Blog-Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.12.3/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/anchor-js/4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.8/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

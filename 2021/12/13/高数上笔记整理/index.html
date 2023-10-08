@@ -1,0 +1,1581 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/doge.png">
+  <link rel="icon" href="/img/doge.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#e4ad97">
+  <meta name="description" content="上海交通大学版高数教材">
+  <meta name="author" content="Teruteru">
+  <meta name="keywords" content="">
+  
+  <title>高数上笔记整理 - Teruteru的Hexo博客</title>
+
+  <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myiconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"teru.space","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/82432106_p0-1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="高数上笔记整理">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-12-13 10:28" pubdate>
+        2021年12月13日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      167 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">高数上笔记整理</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年10月7日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="第一章-函数"><a href="#第一章-函数" class="headerlink" title="第一章 函数"></a>第一章 函数</h2><p>1.描述集合中元素的方式：枚举法、属性法。</p>
+<p>2.逻辑符号：略</p>
+<p>3.数域的定义：设P是由一些复数组成的集合，其中包括0与1，如果P中任意两个数的和、差、积、商（除数不为0）仍是P中的数，则称P为一个数域。<br>    扩展：“包括0与1”可以改成“包括0与x”</p>
+<p>4.有理数有序的定义：</p>
+<script type="math/tex; mode=display">对于任意x,y\in \mathbb{Q}，x<y,x=y,x>y有且仅有一个成立</script><p>5.有理数集可数的定义：</p>
+<script type="math/tex; mode=display">\mathbb{Q}与自然数集\mathbb{N}能建立双射。</script><p>6.有理数稠密性的定义：</p>
+<script type="math/tex; mode=display">\forall a,b\in \mathbb{Q},a<b,\exists c \in \mathbb{Q},使得a<c<b</script><p>7.无理数也是稠密的</p>
+<p>8.实数的连续性（完备性）：<br>实数与数轴上的点一一对应<br>或者<br>任意两个实数“中间”的数都是实数</p>
+<p>9.[去心]领域的定义：略</p>
+<p>10.ALG不等式、CS不等式：略</p>
+<p>11.伯努利不等式：设实数$x&gt;-1$，$a\ge 1$，则$(1+x)^a\ge 1+ax$</p>
+<p>12.求证：$\sqrt[n]{n}-1&lt;\frac{2}{\sqrt{n}}$</p>
+<script type="math/tex; mode=display">
+\begin{align}
+ &\Leftrightarrow \sqrt[n]{n}-1<\frac{2\sqrt{n}}{n}
+\\ &\Leftrightarrow \sqrt[n]{n}<\frac{2\sqrt{n}}{n}+1
+\\ &\Leftarrow \sqrt[n]{\sqrt{n}\cdot\sqrt{n}\cdot 1 \cdots 1}\text{(n-2个1)}\le\frac{2\sqrt{n}+n-2}{n}<\frac{2\sqrt{n}}{n}+1,n\ge 2
+\end{align}</script><p>或者<br>构造$a_1=a_2=\sqrt{n},a_3=\cdots=a_n=1$，由AG不等式导出</p>
+<p>13.求证：$(1+\frac{1}{n})^n\le(1+\frac{1}{n+1})^{n+1}$<br>构造$a_1=a_2=a_3=\cdots=a_n=1+\frac{1}{n},a_{n+1}=1$，由AG不等式导出</p>
+<p>14.求证：$(1+\frac{1}{n})^{n+1}\ge(1+\frac{1}{n+1})^{n+2}$<br>构造$a_1=a_2=a_3=\cdots=a_{n+1}=1-\frac{1}{n+1},a_{n+2}=1$，由AG不等式导出</p>
+<p>15.数集的界：<br>对非空实数集 $E\subset\mathbb{R} $，<br>（1）若$\exists M\in \mathbb{R}$，使得$\forall x \in E$，有$x\le M$，则称$M$是$E$的一个<strong>上界</strong><br>（2）若$\exists m\in \mathbb{R}$，使得$\forall x \in E$，有$x\ge m$，则称$M$是$E$的一个<strong>下界</strong><br>（3）若$\forall M&gt;0,\exists x \in E:|x|&gt;M$，则称数集$E$无界</p>
+<p>16.数集的上下确界：<br>对非空实数集 $E\subset\mathbb{R} $，若$\exists \beta\in\mathbb{R}$满足：<br>（1）$\forall x\in E$，有$x\le \beta$；<br>（2）$\forall \varepsilon&gt;0,\exists x_{\varepsilon}\in E$，使得$x_{\varepsilon}&gt;\beta-\varepsilon$，<br>则称$\beta$是$E$的<strong>上确界</strong>，记为$\beta=\text{sup} \ E$</p>
+<p>对非空实数集 $E\subset\mathbb{R} $，若$\exists \beta\in\mathbb{R}$满足：<br>（1）$\forall x\in E$，有$x\ge \beta$；<br>（2）$\forall \varepsilon&gt;0,\exists x_{\varepsilon}\in E$，使得$x_{\varepsilon}&lt;\beta+\varepsilon$，<br>则称$\beta$是$E$的<strong>下确界</strong>，记为$\beta=\text{inf} \ E$</p>
+<p>17.数集中若有最大（小）值，则这个值是数集的上（下）确界。</p>
+<p>18.确界存在性定理：<br>若非空数集E有上（下）界，则E必有上（下）确界。</p>
+<p>19.单射、满射的定义：略</p>
+<p>20.取整函数的性质：<br>（1）$x-1&lt;[x]\le x&lt;[x]+1$<br>（2）$[x+n]=[x]+n$</p>
+<p>21.符号函数：略</p>
+<p>22.狄利克雷(Dirichlet)函数：</p>
+<script type="math/tex; mode=display">
+D(x)=\left\{
+\begin{aligned}
+1 & ,x\in \mathbb{Q} \\
+0 & ,x\in \mathbb{Q}^c 
+\end{aligned}
+\right.</script><p>$D_f=\mathbb{R},R_f={0,1}$</p>
+<p>23.定义在$[0,1]$上的黎曼(Riemann)函数：</p>
+<script type="math/tex; mode=display">
+R(x)=\left\{
+\begin{aligned}
+1 & ,x=0,1 \\
+\frac{1}{q} & ,x=\frac{p}{q}（p,q互质,p<q） \\
+0 & ,x\in \mathbb{Q}^c 
+\end{aligned}
+\right.</script><p>24.函数的四则运算：略</p>
+<p>25.函数的复合：<br>$(g○f)(x)\overset{\Delta}{=}g(f(x))$<br>条件：$R_f\cap D_g\ne \emptyset$</p>
+<p>26.反函数：<br>条件：一一映射<br>$y=f(x)\longrightarrow x=f^{-1}(y)$</p>
+<p>27.函数有界的定义：<br>设函数$f$的定义域为$I$<br>（1）若$\exists M \in \mathbb{R},\forall x \in I$，都有$f(x)\le M$，则称$M$为$f$的一个<strong>上界</strong><br>（2）若$\exists m \in \mathbb{R},\forall x \in I$，都有$f(x)\ge m$，则称$m$为$f$的一个<strong>下界</strong></p>
+<p>28.初等函数：<br>由基本初等函数（常值函数，对数函数，幂函数，指数函数，三角及反三角函数）经过有限次四则运算与复合运算所得到的函数统称为初等函数。</p>
+<p>29.函数的基本性质：略<br>双曲函数的性质：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/20042215">https://zhuanlan.zhihu.com/p/20042215</a><br>反三角函数的性质：<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/295227701">https://www.zhihu.com/question/295227701</a></p>
+<p>30.极坐标方程：<br>好难啊！这个我不会！</p>
+<h2 id="第二章-极限与连续"><a href="#第二章-极限与连续" class="headerlink" title="第二章 极限与连续"></a>第二章 极限与连续</h2><p>1.单调数列的定义：略</p>
+<p>2.数列有界的定义：<br>$\exists M&gt;0,\forall n \in \mathbb{N}^{+}:|x_n|\le M$<br>否命题的正面描述<br>$\forall M&gt;0,\exists n \in \mathbb{N}^{+}:|x_n|&gt; M$</p>
+<p>3.数列极限的定义：<br>4.对数列${x_n}$，若</p>
+<script type="math/tex; mode=display">
+\exists A \in \mathbb{R},\forall \varepsilon>0,\exists N\in \mathbb{N}^{+},\forall n>N:|x_n-a|<\varepsilon,</script><p>则称数列${x_n}$收敛于$A$，记为$\lim_{n \to \infty}  x_n=A$或$x_n\to A(n\to \infty)$<br>若不存在这样的$A$，则称数列${x_n}$无极限，也称数列${x_n}$发散或不收敛</p>
+<p>5.数列极限$\lim_{n \to \infty}  x_n=A$的等价定义：<br>（1）$\forall \varepsilon\in (0,1),\exists N\in \mathbb{N}^{+},\forall n&gt;N:|x_n-A|&lt;\varepsilon$</p>
+<p>（2）$\forall \varepsilon&gt;0,\exists N\in \mathbb{N}^{+},\forall n&gt;N:|x_n-A|&lt;m\varepsilon$,</p>
+<p>$\left(m&gt;0 \text{为常数}\right)$</p>
+<p>（3）$\forall \varepsilon&gt;0,{x_m}中最多只有有限项在A的\varepsilon邻域之内$</p>
+<p>6.压缩映像原理：<br>设$\exists a \in \mathbb{R},\forall n \in \mathbb{N}$，有</p>
+<script type="math/tex; mode=display">|x_{n+1}-a|\le q|x_n-a|,\qquad (0<q<1)</script><p>则$\lim_{n \to \infty}  x_n=A$</p>
+<p>证明：</p>
+<script type="math/tex; mode=display">0<|x_{n+1}-a|\le q|x_n-a|\le \cdots \le q^n|x_1-a|</script><script type="math/tex; mode=display">q^n无穷小量，|x_1-a|有界量，夹逼可得</script><p>7.无穷小量的定义：略</p>
+<p>8.有限个无穷小的和/积是无穷小<br>无限个无穷小的和/积不一定是无穷小<br>例子：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c} 
+a_{m,n}=n-m\\
+对于任意i\in \mathbb{N}^{*}，\{a_{i,n}\}在n\to \inf为正无穷大\\
+但：\sum_{i=1}^{+\infty} a_{i,n}=-\infty,\forall n\in\mathbb{N}^{*}
+\end{array}</script><p>9.无穷小量乘以有界量仍为无穷小量</p>
+<p>10.无穷小量一定有界</p>
+<p>11.无穷大量的定义：<br>若$\forall M&gt;0,\exists N \in \mathbb{N}^{+},\forall n &gt;N:|x_n|&gt;M$，<br>则称数列${x_n}$为无穷大量，记作$\lim_{n \to \infty}  x_n=\infty$</p>
+<p>若将$|x_n|&gt;M$改为$x_n&gt;M$，则称数列${x_n}$为正无穷大量，记作$\lim_{n \to \infty}  x_n=+\infty$</p>
+<p>若将$|x_n|&gt;M$改为$x_n&lt;-M$，则称数列${x_n}$为负无穷大量，记作$\lim_{n \to \infty}  x_n=-\infty$</p>
+<p>12.无穷大的倒数为无穷小</p>
+<p>13.无穷大量一定无界，反过来不成立<br>事实上，数列无界的充要条件是数列存在子列为无穷大。</p>
+<p>14.正无穷大量的相反数是负无穷大量</p>
+<p>15.有限个无穷大的和/积是无穷大<br>无限个无穷大的和/积不一定是无穷大<br>有界量（即使非零）乘无穷大<strong>不一定</strong>是无穷大</p>
+<p>16.数列极限的唯一性：略</p>
+<p>17.收敛数列的有界性：略</p>
+<p>18.减少（增加）数列的有限项，收敛性不变。</p>
+<p>19.保号性：<br>若$\lim_{n \to \infty}  x_n=A$，且$A&gt;0$，则$\exists N \in \mathbb{N},\forall n&gt;N:x_n&gt;0$</p>
+<p>20.保序性：<br>暂略<br><img src="https://i.loli.net/2021/10/07/mYoPTj1HC5k2xDO.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>21.归并性：<br>$\lim_{n \to \infty}  x_n=A$的充分必要条件是${x_n}$的任一子列${x_{n_k}}$均满足$\lim_{k \to \infty}  x_{n_k}=A$<br>（A可以是无穷）</p>
+<p>推论：<br>（1）$\lim_{n \to \infty}  x_n=A$的充分必要条件是$\lim_{k \to \infty}  x_{2k+1}=A$且$\lim_{k \to \infty}  x_{2k}=A$<br>（2）更一般地，如果存在有限个子列，能取遍数列的所有元素，而这有限个子列均收敛于同一极限则该数列收敛。<br>（3）若数列有两个子列极限不同，或存在发散的子列，则该数列一定发散。<br>（4）<strong>单调</strong>数列${x_n}$收敛(于A) $\Leftrightarrow$ 存在一个收敛子列(收敛于A)<br>（5）数列无界的充要条件：存在一个子列为无穷大<br>（6）数列无上（下）界的充要条件：存在一个子列为正（负）无穷大</p>
+<p>22.收敛数列极限的四则运算法则：略<br>推论：若$\lim_{n \to \infty}  x_n=A$，$k$是正整数，则$\lim_{n \to \infty}  x_n^k=A^k$</p>
+<p>23.若$\lim_{n \to \infty}  x_n=A$，$k$是正整数，则$\lim_{n \to \infty}  x_n^k=A^k$</p>
+<p>24.夹逼定理：<br>设$\lim_{n \to \infty}  y_n=\lim_{n \to \infty}  z_n=a$，<br>且$\exists N_0\in\mathbb{N},\forall n&gt;N_0:y_n\le x_n\le z_n$，<br>则$\lim_{n \to \infty}  x_n=a$<br>证明略</p>
+<p>25.求证：$\lim_{n \to \infty}  \sqrt[n]{n}=1$<br>证明：设$x_n=\sqrt[n]{n}-1$，则当$n\ge 2$时，</p>
+<script type="math/tex; mode=display">
+n=(1+x_n)^n=1+C_n^1x_n+C_n^2x_n^2+\cdots+x_n^n>\frac{n(n-1)}{2}x_n^2</script><p>从而有</p>
+<script type="math/tex; mode=display">
+0\le x_n<\sqrt{\frac{2}{n-1}}</script><p>由于$\lim_{n \to \infty}\sqrt{\frac{2}{n-1}}=0$，依夹逼定理得$\lim_{n \to \infty}  x_n=0$，即</p>
+<script type="math/tex; mode=display">
+\lim_{n \to \infty}  \sqrt[n]{n}=1</script><p>26.单调有界数列极限存在定理<br>若${x_n}$单调增加（减少）且有上界（下界），则${x_n}$收敛到其上（下）确界。<br>单调递增有上界，则$\lim_{n \rightarrow \infty} x_{n}=\sup_{n}{x_{n}}$<br>单调递减有下界，则$\lim_{n \rightarrow \infty} x_{n}=\inf_{n}{x_{n}}$<br>单调递增无上界，则$\lim_{n \rightarrow \infty} x_{n}=+\infty$<br>单调递减无下界，则$\lim_{n \rightarrow \infty} x_{n}=-\infty$</p>
+<p>26.5.莱布尼茨判别法判断交错级数的收敛性<br>如果交错级数 $\sum_{n=1}^{\infty}(-1)^{n+1} u_{n}$ 满足以下两个条件：<br>(1) 数列 $\left\{u_{n}\right\}$ 单调递减<br>(2) $\lim_{n \rightarrow \infty} u_{n}=0$<br>那么该交错级数收敛，且其和满足 $S \leq u_{1}$。</p>
+<p>27.求递推数列极限的方法：<br>（1）利用单调有界数列极限存在定理<br>    a)证明有上界或下界<br>    b)证明单调增或单调减<br>    c)由“单调有界数列极限存在定理”知数列收敛，特征方程求极限<br>（2）用定义或压缩映像原理证明</p>
+<p>28.闭区间套定理：<br>设闭区间列满足条件：<br>(1)$[a_{n+1},b_{n+1}]\subset [a_n,b_n],\forall n \in \mathbb{N}$<br>(2)$\lim_{n \rightarrow \infty}(b_n-a_n)=0$<br>则存在唯一$\xi\in[a_n,b_n] (\forall n \in \mathbb{N})$，使得$\lim_{n \to \infty}  a_n=\lim_{n \to \infty} b_n=\xi$</p>
+<p>29.函数极限的定义<br>总体而言：<br>从过程看，$x \rightarrow x_0$用$\delta$语言，$x \rightarrow \infty$用$X$语言;<br>从结果看，$f(x) \rightarrow A$用$\epsilon$语言，$f(x) \rightarrow \infty$用$M$语言(广义极限).</p>
+<p><img src="https://i.loli.net/2021/10/10/BDgmrfd9WQkcb7q.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>30.证明函数极限时记得保留$|x-a|$，并运用min、max对参数限制范围。</p>
+<p>31.函数极限的无穷大、无穷小的定义</p>
+<p>32.函数极限的唯一性：<br>若$\lim_{x \to a}  f(x)=A$，又$\lim_{x \to a}  f(x)=B$，那么$A=B$</p>
+<p>33.函数极限的局部有界性：<br>若$\lim_{x \to a}  f(x)=A$，则$\exists \epsilon&gt;0$，使得函数$f(x)$在$a$的$\epsilon$去心邻域内有界</p>
+<p>34.函数极限的局部保序性：<br>设$\lim_{x \to a}  f(x)=A,\lim_{x \to a}  g(x)=B$，且$A&gt;B$，则$\exists \epsilon&gt;0$，当$x$在$a$的$\epsilon$去心邻域内，$f(x)&gt;g(x)$</p>
+<p>35.函数极限的局部保号性：<br>若$\lim_{x\to a} f(x)=A,A&gt;0(A<0)$，则$\exists \delta>0$，当$x\in \mathring{U}(a,\delta)$时，</p>
+<script type="math/tex; mode=display">
+f(x)>\frac{A}{2}>0\quad \left(f(x)<\frac{A}{2}<0\right)</script><p><strong>推论：</strong>若$\exists \delta&gt;0$，当$x\in \mathring{U}(a,\delta)$时，有$f(x)\ge 0  (f(x)\le 0)$，且$\lim_{x\to a} f(x)=A$，则</p>
+<script type="math/tex; mode=display">
+A\ge 0 \left(A\le 0\right)</script><p>36.函数极限的四则运算法则：略<br>$\lim_{x \rightarrow a}(f(x))^{\frac{k}{m}}=A^{\frac{k}{m}}$</p>
+<p>37.复合函数的极限运算定理：<br>若$\lim_{u \to b}  f(u)=A,\lim_{x \to a}  \varphi(x)=b$，且当$x$在$a$的邻域内时，$\varphi(x)\ne b$，则</p>
+<script type="math/tex; mode=display">
+\lim_{x\to a} f[\varphi(x)]=A</script><p>38.夹逼定理<br>(1)$\exists \delta_{0}&gt;0, \forall x \in \mathring{U}\left(x_{0}, \delta_{0}\right): g(x) \leqslant f(x) \leqslant h(x)$<br>(2)$\lim_{x \rightarrow x_{0}} g(x)=\lim_{x \rightarrow x_{0}} h(x)=A$<br>则必有$\lim_{x\to x_0} f(x)=A$</p>
+<p>39.单调有界函数单侧极限的存在性<br><img src="https://i.loli.net/2021/10/10/S5twPWeVuD8Qklc.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>40.Heine归并定理<br>$\lim_{x\to a} f(x)=A$的充要条件为：对任一满足$\lim_{n \to \infty}  x_n=a$且$x_n\ne a$的数列${x_n}$均有</p>
+<script type="math/tex; mode=display">
+\lim_{n \to \infty} f(x_n)=A</script><p>41.常用极限</p>
+<ul>
+<li>$\lim_{x\to 0}\frac{\sin{x}}{x}=\lim_{x\to 0}\frac{\tan{x}}{x}=1$</li>
+<li>$\lim_{x\to 0}\frac{1-\cos{x}}{x^2}=\frac{1}{2}$</li>
+<li>$\lim_{x\to 0}\frac{\ln(x+1)}{x}=\lim_{x\to 0}\frac{x}{e^x-1}=1$</li>
+<li>$\lim_{x \to 0} \frac{\arcsin x}{x}=\lim_{t \to 0} \frac{t}{\sin t}=1$</li>
+<li>$\lim_{x \to \infty}\left(1+\frac{1}{x}\right)^{x}=\lim_{x \to 0}(1+x)^{\frac{1}{x}}=e$</li>
+<li>$\lim_{n \to \infty} n(\sqrt[n]{a}-1)=\lim_{x \to 0} \frac{a^{x}-1}{x}=\lim_{t \to 0} \frac{t}{\frac{\ln (1+t)}{\ln a}}=\ln a\ (a&gt;0)$</li>
+<li>$\lim_{x \to 0} \frac{(1+x)^{\alpha}-1}{x}=\alpha, \alpha \in \mathbb{R}$</li>
+<li>$\lim_{x\to a}\frac{\sin{x}-\sin{a}}{x-a}=\cos{a}$</li>
+</ul>
+<p>42.幂指函数$f(x)^{g(x)}$的极限的计算<br><img src="https://i.loli.net/2021/10/10/y1GIUtf8iB3csMu.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>43.一个奇怪的技巧</p>
+<script type="math/tex; mode=display">
+\begin{align}
+&\lim_{x\to 0}\frac{\ln(1+x)-x}{x^2}\\
+=&\lim_{x\to 0}\frac{\ln(1-x)+x}{x^2}\\
+=&\lim_{x\to 0}\frac{\ln(1+x)-x}{2x^2}+\lim_{x\to 0}\frac{\ln(1-x)+x}{2x^2}\\
+=&\lim_{x\to 0}\frac{\ln(1-x^2)}{2x^2}\\
+=&-\frac{1}{2}
+\end{align}</script><p>44.无穷小的比较<br>设  $\lim_{x \rightarrow \Delta} f(x)=\lim_{x \rightarrow \Delta} g(x)=0, \lim_{x \rightarrow \Delta} \frac{f(x)}{g(x)}=l$<br>(1)若$l=0$，则称$x \rightarrow \Delta$时$\beta(x)$是比$\alpha(x)$<strong>高阶的无穷小</strong>，记为</p>
+<script type="math/tex; mode=display">
+\beta(x)=o(\alpha(x))\quad (x \rightarrow \Delta)</script><p>(2)若$l\ne 0$，则称$x \rightarrow \Delta$时$\beta(x)$是与$\alpha(x)$<strong>同阶的无穷小</strong>，记为</p>
+<script type="math/tex; mode=display">
+\beta(x)=O(\alpha(x))\quad (x \rightarrow \Delta)</script><p>特别地，若$l = 1$，则称$x \rightarrow \Delta$时$\beta(x)$是与$\alpha(x)$<strong>等价的无穷小</strong>，记为</p>
+<script type="math/tex; mode=display">
+\beta(x)\sim\alpha(x)\quad (x \rightarrow \Delta)</script><p>注：$f(x)=o(1)$表示$f(x)$在$x \rightarrow \Delta$时为无穷小</p>
+<p>45.定义：若$\lim_{x \rightarrow a} f(x)=0$，且存在常数$c\ne 0,k&gt;0:\lim_{x \rightarrow a} \frac{f(x)}{(x-a)^{k}}=c$，则称当$x \rightarrow a$时，$f(x)$是标准无穷小$x-a$的$k$阶无穷小，简称$f(x)$是阶无穷小，而称$c(x-a)^{k}$是$f(x)$的主部。</p>
+<p>46.常见的等价无穷小</p>
+<ul>
+<li>$\sin{x}\sim\tan{x}\sim\ln(1+x)\sim e^x-1\sim\arcsin{x}\sim\arctan{x}\sim x$</li>
+<li>$1-\cos{x}\sim\frac{1}{2}x^2$</li>
+<li>$(1+x)^{\alpha}-1\sim\alpha x$</li>
+<li>$a^x-1\sim x\ln{a}$</li>
+</ul>
+<p>47.等价无穷小替换的前提：<br>极限运算中，当分子分母的函数均有乘积项组成时，可对其中的乘积因子做无穷小替换。</p>
+<p>48.函数间断点的定义<br>设函数$f(x)$在点$x_0$的某邻域内有定义，若</p>
+<script type="math/tex; mode=display">
+\lim_{x\to x_0}f(x)=f(x_0)</script><p>则称函数$f(x)$在$x_0$处连续，称$x_0$是$f(x)$的<strong>连续间断点</strong>；如果$f(x)$在$x_0$处不连续，则称$f(x)$在$x_0$处间断，称$x_0$是$f(x)$的<strong>间断点</strong></p>
+<p>简单来说，函数在某点连续就是在该点极限存在、值存在且两者相等</p>
+<p>49.函数连续的定义：<br>设函数$f(x)$在点$x_0$的某右邻域内有定义，且</p>
+<script type="math/tex; mode=display">
+\lim_{x\to x_0^{+}}f(x)=f(x_0)</script><p>则称函数$f(x)$在$x_0$处右连续；<br>设函数$f(x)$在点$x_0$的某左邻域内有定义，且</p>
+<script type="math/tex; mode=display">
+\lim_{x\to x_0^{-}}f(x)=f(x_0)</script><p>则称函数$f(x)$在$x_0$处左连续。</p>
+<p>或者说，函数 $f(x) $ 在  $x_{0}$  点处连续是 指:  $\forall \epsilon&gt;0, \exists \delta&gt;0, \forall x \in U\left(x_{0}, \delta\right): \mid f(x)-  f\left(x_{0}\right) \mid&lt;\epsilon$ , 即  $\lim_{x \rightarrow x_{0}} f(x)=f\left(x_{0}\right)$ </p>
+<ul>
+<li>若 $f(x)$ 连续，令 $f(x+\theta\Delta x)=f(x)+\alpha$,$\theta$ 是常数，则<script type="math/tex; mode=display">
+\lim_{\Delta x\to 0}\alpha=0</script></li>
+</ul>
+<p>例：黎曼函数在无理点连续，有理点不连续</p>
+<script type="math/tex; mode=display">
+R(x)=\left\{\begin{array}{ll}
+\frac{1}{p} & x \text { 为有理数 } \frac{q}{p}, p \in N^{+}, q \in Z \text { 且 } p 、 q \text { 互质 } \\
+1 & x=0 \\
+0 & x \text { 为无理数 }
+\end{array}\right.</script><p>50.定理：在点连续的充分必要条件是在点既左连续又右连续。<br>式子略</p>
+<p>51.定义：若$f(x)$在区间$(a, b)$上的每一点都连续，则称$f(x)$在$(a,b)$上连续，记做$f\in C(a, b)$.</p>
+<p>若$f(x)\in C(a,b)$，且$f(x)$在$x=a$处右连续，在$x=b$处左连续，则称$f(x)$在$[a,b]$上连续，记做$f\in C[a, b]$</p>
+<p>52.复合函数的连续性定理<br>设$f(u)$在$u_0$处连续，$u = g(x)$在$x_0$处连续，$u_0= g(x_0)$。则复合函数$f(g(x))$在$x_0$处连续。</p>
+<p>53.反函数连续性定理<br>设$f(x)$是区间$I$上严格单调的连续函数，则在$f(I)$上存在具有同样严格单调性的连续反函数$f^{-1}$。</p>
+<p>54.初等函数的连续性<br>一切初等函数在其定义域上都是连续的</p>
+<p>55.$f(x)$  在 $ x_{0} $ 处间断是指下列三种情况之一：<br>(1)$f(x)$  在 $ x_{0}$  点处无定义；<br>(2)$\lim_{x \rightarrow x_{0}} f(x)$  不存在；<br>(3)$\lim_{x \rightarrow x_{0}} f(x)$  存在，但是不等于  $f(x_{0})$</p>
+<p>56.间断点</p>
+<ul>
+<li>第一类间断点：$\lim_{x\to x_0^{+}}f(x)$和$\lim_{x\to x_0^{-}}f(x)$均存在</li>
+<li><ul>
+<li>两者相等：<strong>可去间断点</strong></li>
+</ul>
+</li>
+<li><ul>
+<li>两者不相等：<strong>跳跃间断点</strong></li>
+</ul>
+</li>
+<li>第二类间断点：$\lim_{x\to x_0^{+}}f(x)$和$\lim_{x\to x_0^{-}}f(x)$至少有一个不存在</li>
+<li><ul>
+<li><strong>无穷间断点</strong>（不要求掌握）</li>
+</ul>
+</li>
+<li><ul>
+<li><strong>振荡间断点</strong>（不要求掌握）</li>
+</ul>
+</li>
+</ul>
+<p>57.连续函数的性质</p>
+<ul>
+<li><p>定义在 $\mathbb{R}$ 上连续函数 $f(x)$ 的值域为 $(m,M)$，$-\infty,+\infty$ 处极限存在，则 $m,M$ 只能在 $-\infty,+\infty$ 处取到。</p>
+</li>
+<li><p>定义在 $(a,b)$ 上连续函数 $f(x)$ 的值域为 $(m,M)$，$x=a$ 和 $x=b$ 处极限存在，则 $m,M$ 只能在 $x=a$ 或 $x=b$ 处取到。</p>
+</li>
+<li><p>定义在 $\mathbb{R}$ 上连续函数 $f(x)$ 在开区间 $(a,b)$ 上的最值一定是极值。</p>
+<p>证明：<br>设最值在 $x_0$ 处取到，$a &lt; x_0 &lt; b$，不妨设为最大值。<br>由实数的稠密性，$\exists \delta &gt;0,a&lt;x_0-\delta&lt;x_0&lt;x_0+\delta&lt;b$<br>由最值的定义，$\forall x \in (a,b),f(x)\leqslant f(x_0)$<br>所以 $\forall x \in (x_0-\delta,x_0+\delta),f(x)\leqslant f(x_0)$<br>故 $x_0$ 为极大值点，$f(x_0)$ 为极大值。</p>
+</li>
+<li><p>定义在 $\mathbb{R}$ 上连续函数 $f(x)$，$\lim_{x\to \infty} f(x)=A$，则 $f(x)$ 存在最值。</p>
+<p>证明：<br>由极限的定义，$\forall X&gt;0,\exists \varepsilon&gt;0,\forall |x|&gt;X:|f(x)-A|&lt;\varepsilon$<br>于是，$\forall X&gt;0$，若 $|x|&gt;X$，则 $A-\varepsilon&lt;f(x)&lt;A+\varepsilon$；若 $|x|\leq X$，则根据“闭区间上连续函数有界”，$m\leq f(x) \leq M$<br>所以 $f(x)$ 在 $\mathbb{R}$ 上连续有界</p>
+<p>下面反证，假设 $f(x)$ 不存在最值。因为 $f(x)$ 是连续函数，可设值域为 $(a,b)$<br>易知 $a,b$ 只能在 $-\infty,+\infty$ 处取到。<br>即 $a=b=A$，这与值域为 $(a,b)$ 矛盾，故假设不成立，$f(x)$ 存在最值</p>
+</li>
+</ul>
+<h3 id="闭区间上连续函数的性质"><a href="#闭区间上连续函数的性质" class="headerlink" title="闭区间上连续函数的性质"></a>闭区间上连续函数的性质</h3><p>57.有界性定理<br>设$f(x)\in C[a,b]$，则$f(x)$在$[a,b]$上有界。<br>证明：</p>
+<p>58.最值定理<br>设$f(x) \in C[a, b]$ ，则$\exists x_{1}, x_{2} \in [a, b] :$ $f(x_{1})=\max_{x \in[a, b]}{f(x)},$ $f\left(x_{2}\right)=\min_{x \in[a, b]}{f(x)}$</p>
+<p>59.零点存在性定理<br>设  $f(x) \in C[a, b]$  , 若  $f(a) \cdot f(b)&lt;0$ , 则  $\exists \xi \in(a, b): f(\xi)=0$ .</p>
+<p>60.介值性定理<br>设  $f(x) \in C[a, b]$, $M=   \max_{x \in[a, b]}{f(x)}$, $m=\min_{x \in[a, b]}{f(x)}$，则$\forall \lambda \in[m, M]$,$\exists \xi \in[a, b]:$$ f(\xi)=\lambda$</p>
+<h3 id="易错分析"><a href="#易错分析" class="headerlink" title="易错分析"></a>易错分析</h3><ul>
+<li>数列发散的定义：<script type="math/tex; mode=display">
+\forall A,\exists\varepsilon_0>0,\forall N \in \mathbb{N}^{*},\exists n>N:|x_n-A|\ge\varepsilon_0</script></li>
+<li>数列无界的定义：<script type="math/tex; mode=display">
+\forall A>0,\exists n \in \mathbb{N}^{*}:|x_n|>A</script></li>
+<li><p>数列无穷大的定义</p>
+<script type="math/tex; mode=display">
+\forall G>0,\exists N\in \mathbb{N}^{*},\forall n>N:|x_n|>G</script></li>
+<li><p>相互关系：<br><img src="https://i.loli.net/2021/10/19/GBWMcEPTpHX57Ad.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+</ul>
+<h2 id="第三章-导数与微分"><a href="#第三章-导数与微分" class="headerlink" title="第三章 导数与微分"></a>第三章 导数与微分</h2><p>1.导数的定义：<br><img src="https://i.loli.net/2021/10/14/q1eKIgpo6v4fykA.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>2.单侧导数：<br>$f(x)$  在  $x_{0}$处的左(右)导数, 记为  $f_{-}^{\prime}\left(x_{0}\right)\left(f_{+}^{\prime}\left(x_{0}\right)\right)$，函数的左、右导数统称为<strong>单侧导数</strong>。</p>
+<p>3.函数可导的条件<br>设$f(x)$在$x_{0}$点处某邻域有定义，则$f\left(x_{0}\right)$在$x_{0}$点处可导的充要条件是$f_{-}^{\prime}\left(x_{0}\right)=f_{+}^{\prime}\left(x_{0}\right)$</p>
+<p>4.注意<strong>单侧导数</strong>与<strong>导数单侧极限</strong>两个概念的区别</p>
+<ul>
+<li>单侧导数存在，导数单侧极限不一定存在<br>例:f(x)=0 当x＝0<br>f(x)=x²sin(1/x) 当x≠0<br>(以下只讨论导数右极限与右导数，左侧读者自行证明)<br>在点0处 右导数:xsin(1/x) 其中x→0+，数值为0<br>导数右极限:2xsin(1/x)+x²cos(1/x)(-1/x²)=-cos(1/x)其中x→0+ 不存在</li>
+<li>导数单侧极限存在，单侧导数不一定存在<br>例:f(x)=100 当x=0<br>f(x)=x 当x≠0<br>导数右极限为1 (x→0+)<br>右导数:(x-100)/x 其中x→0+ 不存在</li>
+</ul>
+<p>5.可导性和连续性<br><img src="https://i.loli.net/2021/10/14/5WUMpEROPKnlbgA.jpg" srcset="/img/loading.gif" lazyload alt="经典老图了，极其生动形象"></p>
+<p>6.常见函数导数<br><img src="https://i.loli.net/2021/10/22/EKaWURV6j9G3bNe.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://i.loli.net/2021/10/22/HymVdPKIg3FWvpU.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\left(\frac{\sin x}{1+\cos x}\right)'=\frac{1}{1+\cos x}</script><script type="math/tex; mode=display">
+\left(\frac{\cos x}{1+\sin x}\right)'=\frac{1}{1+\sin x}</script><p>7.单侧导数的定义：$f(x)$在$x_0$处的左(右)导数，记为$f_{-}^{\prime}\left(x_{0}\right)\left(f_{+}^{\prime}\left(x_{0}\right)\right)$.函数的左、右导数统称为单侧导数。</p>
+<ul>
+<li>设$f(x)$在$x_0$点处某邻域有定义，则$f(x)$在$x_0$点处可导的充要条件是$f_{-}^{\prime}\left(x_{0}\right)=f_{+}^{\prime}\left(x_{0}\right)$</li>
+</ul>
+<p>8.函数在点$x_0$的单侧导数和导函数在该点的单侧极限是两个不同的概念</p>
+<p>9.微分、可微、线性主部的定义：略</p>
+<p>10.微分与导数的关系：$d y=f^{\prime}(x) \mathrm{d} x$</p>
+<p>11.导数的四则运算：略</p>
+<p>12.链式法则：</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{\mathrm{d}y}{\mathrm{d}u}\cdot\frac{\mathrm{d}u}{\mathrm{d}x}</script><p>13.反函数求导：设函数$y= f(x)$在$x_0$的某邻域内严格单调，连续，在$x_0$点处可导且$f^{\prime}\left(x_{0}\right) \neq 0$，则$f(x)$的反函数$x=\phi(y)$在点$y_0(y_0=f(x_0))$处可导，且有</p>
+<script type="math/tex; mode=display">
+\phi^{\prime}\left(y_{0}\right)=\frac{1}{f^{\prime}\left(x_{0}\right)}</script><p>14.高阶导数的概念：略</p>
+<p>15.$n$阶连续可导：若$f^{(n)}$在$I$上连续，则称$f(x)$在$I$上$n$阶连续可导，记为$f(x) \in C^{(n)}(I)$</p>
+<p>16.几个常用的基本初等函数的n次导数公式</p>
+<ul>
+<li>$\left[(a x+b)^{\alpha}\right]^{(n)}=\frac{\alpha!}{(\alpha-n)!} a^{n}(a x+b)^{\alpha-n}(n \in \mathbb{N}, a \neq 0)$</li>
+<li>$(\sin a x)^{(n)}=a^{n} \sin \left(a x+\frac{n \pi}{2}\right), n \in \mathbb{N}$</li>
+<li>$(\cos a x)^{(n)}=a^{n} \cos \left(a x+\frac{n \pi}{2}\right), n \in \mathbb{N}$</li>
+<li>$\left(a^{x}\right)^{(n)}=a^{x}(\ln a)^{n},(a&gt;0)$</li>
+<li>$(\ln x)^{(n)}=(-1)^{n-1} \frac{(n-1) !}{x^{n}}$</li>
+</ul>
+<p>17.设函数</p>
+<script type="math/tex; mode=display">
+f(x)=\left\{\begin{array}{lc}
+|x|^{\alpha} \sin \frac{1}{x}, \quad x \neq 0 \\
+0, \quad x=0
+\end{array}\right.</script><script type="math/tex; mode=display">
+\begin{matrix}
+ & x=0处连续 & x=0处可导 & x=0处导数连续 & x=0处导数可导\\
+ \alpha\le 0 & × & × & N/A & N/A\\
+ 0<\alpha\le 1 & √ & × & N/A & N/A\\
+ 1<\alpha\le 2 & √ & √ & × & ×\\
+ 2<\alpha\le 3 & √ & √ & √ & ×\\
+ \alpha>3 & √ & √ & √ & √\\
+\end{matrix}</script><p>18.莱布尼茨公式：</p>
+<script type="math/tex; mode=display">
+[u(x) v(x)]^{(n)}=\sum_{k=0}^{n} C_{n}^{k} u^{(k)}(x) v^{(n-k)}(x)</script><h2 id="第四章-微分中值定理与导数的应用"><a href="#第四章-微分中值定理与导数的应用" class="headerlink" title="第四章 微分中值定理与导数的应用"></a>第四章 微分中值定理与导数的应用</h2><p>19.费马（Fermat）引理：<br>若函数$f(x)$在$x_0$点处可导，且$x_0$为$f(x)$的极值点，则$f’(x_0)=0$</p>
+<ul>
+<li>$f’(x)$的零点称为$f(x)$的驻点或稳定点</li>
+<li>可导的极值点必为驻点，驻点未必是极值点</li>
+<li>几何意义：可导的极值点处的切线平行于$x$轴</li>
+<li>推论：若$f(x)$在$x_0$处可导，为$f(x)$在区间$I$上的最值点，且为$I$的内点，则$f’(x_0)=0$</li>
+</ul>
+<div class="note note-warning">
+            <p>用于证明 $\exists \xi : f’(\xi)=0$类的题</p>
+          </div>
+<p>20.罗尔（Rolle）中值定理<br>设 $f(x) \in C[a, b] \cap D(a, b)$  且 $ f(a)=f(b)$，则  $\exists \xi \in(a, b): f^{\prime}(\xi)=0$</p>
+<ul>
+<li>推论：若  $f(x) \in C[a, b] \cap D(a, b)$，且在 $ (a, b)$内 $ f^{\prime}(x) \neq 0 $， 则 $ y=f(x)$  在 $ [a, b]$  上为单射，从而必存在反函数</li>
+<li>推广1：设函数 $ f(x) \in C[a,+\infty) \cap D(a,+\infty)$, $a$  为常数。又 $ \lim_{x \rightarrow+\infty} f(x)=f(a)$，则  $\exists \xi \in(a ,+\infty): f^{\prime}(\xi)=0$.</li>
+<li>用于计算函数零点个数或证明$f^{\prime}(\xi)+g(\xi) f(\xi)=0$类的题<br>1.化为$f^{\prime}(\xi)+g(\xi) f(\xi)=0$的形式<br>2.构造$F(x)=f(x)e^{u(x)}$，则$F^{\prime}(x)=f^{\prime}(x)+u^{\prime}(x) f(x)$<br>3.利用 $u^{\prime}(x)=g(x)$求 $u(x)$，然后代入<br>4.找到$x_1,x_2$，使得$F(x_1)=F(x_2)=0$<br>5.利用罗尔定理，得出结论</li>
+</ul>
+<div class="note note-info">
+            <p>若出现了二阶导数，往往需要找$F(x)$的三个零点</p>
+          </div>
+<p>21.拉格朗日（Lagrange）中值定理<br>设 $ f(x) \in C[a, b] \cap D(a, b)$，则  $\exists \xi \in(a, b): f^{\prime}(\xi)=\frac{f(b)-f(a)}{b-a}$</p>
+<ul>
+<li>常见变形<ul>
+<li>$\exists \xi \in(a, b): f(b)-f(a)=f^{\prime}(\xi)(b-a)$</li>
+<li>$\exists \theta \in(0,1):f(b)-f(a)=f^{\prime}(a+\theta(b-a)) \cdot(b-a)$（有限增量公式）</li>
+<li>$\exists \theta \in(0,1):f\left(x_{0}+h\right)-f\left(x_{0}\right)=f^{\prime}\left(x_{0}+\theta h\right) \cdot h$</li>
+<li>$\exists \xi \in(a, x): f(x)-f(a)=f^{\prime}\left(\xi_{x}\right)(x-a)$</li>
+</ul>
+</li>
+<li>推论1：区间$I$上函数$f(x)=C$(常数) $\Leftrightarrow  f^{\prime}(x)=0, \forall x \in I$</li>
+<li>推论2：$f(x), g(x) \in C(I)$, $f^{\prime}(x)=g^{\prime}(x), x \in I$ $\Leftrightarrow \exists C: f(x)=g(x)+C$, $\forall x \in I$ </li>
+</ul>
+<div class="note note-danger">
+            <p>用于证明与$f’(x)$相关的等式、不等式（尤其是出现了很多相似式子相减）</p>
+          </div>
+<h3 id="扩展：用拉格朗日中值定理求复杂极限"><a href="#扩展：用拉格朗日中值定理求复杂极限" class="headerlink" title="扩展：用拉格朗日中值定理求复杂极限"></a>扩展：用拉格朗日中值定理求复杂极限</h3><p>可参考<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/366733582">https://zhuanlan.zhihu.com/p/366733582</a></p>
+<ul>
+<li>共性：<ul>
+<li>1.存在两项相减因式且形式相同；</li>
+<li>2.随着$x$的变化，因式的两项越来越接近（$\xi$所在区间变小） </li>
+</ul>
+</li>
+<li>做法：<ul>
+<li>1.用拉格朗日中值定理$f(b)-f(a)=f^{\prime}(\xi)(b-a)$，其中$\xi \in(a, b)$</li>
+<li>2.由夹逼得出$\xi \sim a$或$\xi \sim b$</li>
+<li>3.继续使用其他技巧解题</li>
+</ul>
+</li>
+</ul>
+<p>22.柯西（Cauchy）中值定理<br>设  $f(x), g(x) \in C[a, b]  \cap D(a, b)$, $g^{\prime}(x) \neq 0, x \in(a, b)$ ，则$ \exists \xi \in(a, b):$ $\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f^{\prime}(\xi)}{g^{\prime}(\xi)}$</p>
+<div class="note note-success">
+            <p>用于证明看起来上下都求了导的式子</p>
+          </div>
+<p>23.达布（Darboux）定理<br>设  $f(x) \in D[a, b]$ , 且  $f^{\prime}(a)&lt;f^{\prime}(b)$ , 则 $\forall \lambda \in\left(f^{\prime}(a), f^{\prime}(b)\right)$, $\exists \xi \in   (a, b): f^{\prime}(\xi)=\lambda$</p>
+<p>24.导数极限定理：<br>设函数$f(x)$在$x_0$处连续，在$x_0$的某去心邻域可导，且$\lim_{x \rightarrow x_{0}} f^{\prime}(x)$存在，则$f(x)$在$x_0$处可导，且$f’(x_0)=\lim_{x \rightarrow x_{0}} f^{\prime}(x)$ （即导函数在$x_0$处连续)</p>
+<p>25.导函数的连续性定理<br>设 $f(x) \in D(a, b)$，则 $ (a, b)$  内的点要么是  $f^{\prime}(x)$  的连续点，要么是  $f^{\prime}(x)$  的第二类间断点</p>
+<ul>
+<li>推论：存在第一类间断点的函数必然不是某个函数的导函数</li>
+</ul>
+<p>26.洛必达（L’Hôpital，或者L’Hospital）法则<br>若  $\exists \delta&gt;0:$ $f(x), g(x) \in D\left(x_{0}, x_{0}+\delta\right)$, $ g^{\prime}(x) \neq 0$, $\forall x \in\left(x_{0}, x_{0}+\delta\right)$，又$\lim_{x \rightarrow x_{0}^{+}} \frac{f^{\prime}(x)}{g^{\prime}(x)}=A$（$A$为有限数或$\infty$）<br>1.$\lim_{x \rightarrow x_{0}^{+}} f(x)=\lim_{x \rightarrow x_{0}^{+}} g(x)=0$,则$\lim_{x \rightarrow x_{0}^{+}} \frac{f(x)}{g(x)}=A$<br>2.$\lim_{x \rightarrow x_{0}^{+}} g(x)=\infty$,则$\lim_{x \rightarrow x_{0}^{+}} \frac{f(x)}{g(x)}=A$</p>
+<div class="note note-primary">
+            <p>实际运用中结合等价无穷小替换和换元</p>
+          </div>
+<h3 id="扩展：数列中的洛必达定理：斯托尔茨-O-Stolz-定理"><a href="#扩展：数列中的洛必达定理：斯托尔茨-O-Stolz-定理" class="headerlink" title="扩展：数列中的洛必达定理：斯托尔茨(O.Stolz)定理"></a>扩展：数列中的洛必达定理：斯托尔茨(O.Stolz)定理</h3><h4 id="定理1（-frac-infty-型）"><a href="#定理1（-frac-infty-型）" class="headerlink" title="定理1（$\frac{*}{\infty}$型）"></a>定理1（$\frac{*}{\infty}$型）</h4><p>设数列  $\{a_{n}\}$ 、 $\{b_{n}\}$  满足:<br>(1) $\{b_{n}\}$  严格单调递增<br>(2) $\lim _{n \rightarrow \infty} b_{n}=+\infty$</p>
+<p>那么:  </p>
+<script type="math/tex; mode=display">
+\lim _{n \rightarrow \infty} \frac{a_{n+1}}{b_{n+1}}=\lim _{n \rightarrow \infty} \frac{a_{n}}{b_{n}}=\lim _{n \rightarrow \infty} \frac{a_{n+1}-a_{n}}{b_{n+1}-b_{n}}=L</script><p>(其中$L$可为有限数,$+\infty,-\infty$,不能是$\infty$)</p>
+<p>特例：</p>
+<script type="math/tex; mode=display">
+\lim _{n \rightarrow \infty} \frac{a_{n+1}}{n+k+1}=\lim _{n \rightarrow \infty} \frac{a_{n}}{n+k}=\lim _{n \rightarrow \infty}a_{n+1}-a_{n}=L</script><h4 id="定理2（-frac-0-0-型）"><a href="#定理2（-frac-0-0-型）" class="headerlink" title="定理2（$\frac{0}{0}$型）"></a>定理2（$\frac{0}{0}$型）</h4><p>设数列  $\{a_{n}\}$ 、 $\{b_{n}\}$  满足:<br>(1) $\{b_{n}\}$  严格单调递增<br>(2) $\lim _{n \rightarrow \infty} b_{n}=0$<br>(2) $\lim _{n \rightarrow \infty} a_{n}=0$</p>
+<p>那么:  </p>
+<script type="math/tex; mode=display">
+\lim _{n \rightarrow \infty} \frac{a_{n+1}}{b_{n+1}}=\lim _{n \rightarrow \infty} \frac{a_{n}}{b_{n}}=\lim _{n \rightarrow \infty} \frac{a_{n+1}-a_{n}}{b_{n+1}-b_{n}}=L</script><p>(其中$L$可为有限数,$+\infty,-\infty$,不能是$\infty$)</p>
+<h3 id="week7感想"><a href="#week7感想" class="headerlink" title="week7感想"></a>week7感想</h3><blockquote>
+<p>中值定理是反映函数与导数之间联系的重要定理，也是微积分学的理论基础，在许多方面它都有重要的作用，在进行一些公式推导与定理证明中都有很多应用。</p>
+</blockquote>
+<p>　　本周我们主要学习了三大微分中值定理，并通过具体例题初步了解了如何构造函数来运用中值定理，从而得出要证的式子。构造一直被认为是反直觉的方法。波利亚·哲尔吉在《怎样解题》中提到：</p>
+<blockquote>
+<p>这个方法虽然看上去很完美，没有任何瑕疵，<br>但究竟是怎么想出这个方法的呢？<br>我究竟该怎么做才能想出或发现方法呢？</p>
+</blockquote>
+<p>　　比如，你有一道中值定理的题不会做，看到答案，上来就是构造函数，你也不禁要问：为什么是这样构造的？答案是怎么想到这样构造的？回答这两个问题，我们就需要对常用函数有深刻的了解，比如你看到$f(x)+f’(x)$，你脑子里立刻应该跳出$e^x$，因为$(f(x)e^x)’=(f(x)+f’(x))e^x$。然后，通过不断重复记忆，增强前后关联程度，你才能在结论和原函数可能的形式之间来去自如。</p>
+<p>　　我们还学了心心念念的洛必达法则。明白了洛必达法则的适用前提和内在原理。之前很多极限的计算到此方便了很多。同时也留下一个悬念：洛必达和泰勒到底谁更厉害呢？还要等下周再揭晓了</p>
+<blockquote>
+<p>我一边想着那些计算公式，一边体会着古时候数学家们体验到的那份感动。即便是几百年前就已经被证明的也没关系，现在我一边追溯理论一边埋头苦思的东西一定是自己的东西。<br>——结城浩《数学女孩》</p>
+</blockquote>
+<p>27.泰勒（Taylor）多项式<br>如果函数$f(x)$在点$x_{0}$处$n$阶可导, 则</p>
+<script type="math/tex; mode=display">
+p_{n}(x)=f\left(x_{0}\right)+f^{\prime}\left(x_{0}\right)\left(x-x_{0}\right)+\frac{f^{\prime \prime}\left(x_{0}\right)}{2}\left(x-x_{0}\right)^{2}+\cdots+\frac{f^{(n)}\left(x_{0}\right)}{n !}\left(x-x_{0}\right)^{n}</script><ul>
+<li>泰勒系数</li>
+<li>分时泰勒展开：<br>x趋向于0，极限看上下多项式的<strong>最低</strong>次项；<br>x趋向于$\infty$，极限看上下多项式的<strong>最高</strong>次项；</li>
+</ul>
+<p>28.带皮亚诺（Peano）余项的泰勒公式<br>如果函数$f(x)$在点$x_0$的邻域内有定义，在点$x_0$处$n$阶可导，则</p>
+<script type="math/tex; mode=display">
+f(x)=\sum_{k=0}^{n} \frac{f^{(k)}\left(x_{0}\right)}{k !}\left(x-x_{0}\right)^{k}+o\left(\left(x-x_{0}\right)^{n}\right)</script><ul>
+<li>展开式唯一</li>
+<li>一般在$x\to x_0 $的情况下使用</li>
+</ul>
+<p>29.麦克劳林（Mauclaurin）公式<br>当$x_0=0$时的泰勒公式</p>
+<p>30.常见的麦克劳林展开</p>
+<ul>
+<li><script type="math/tex; mode=display">\mathrm{e}^{x}=1+\frac{x}{1 !}+\frac{x^{2}}{2 !}+\cdots+\frac{x^{n}}{n !}+\frac{\mathrm{e}^{\theta x}}{(n+1) !} x^{n+1}, \text { 其中 } \theta \in(0,1)</script></li>
+<li><script type="math/tex; mode=display">\sin x=x-\frac{x^{3}}{3 !}+\frac{x^{5}}{5 !}-\cdots+(-1)^{n-1} \frac{x^{2 n-1}}{(2 n-1) !}+(-1)^{n} \frac{\cos \theta x}{(2 n+1) !} x^{2 n+1} \text {, 其中 } \theta \in(0,1)</script></li>
+<li><script type="math/tex; mode=display">\cos x=1-\frac{x^{2}}{2 !}+\frac{x^{4}}{4 !}-\cdots+(-1)^{n} \frac{x^{2 n}}{(2 n) !}+(-1)^{n+1} \frac{\cos \theta x}{(2 n+2) !} x^{2 n+2} \text {, 其中 } \theta \in(0,1)</script></li>
+<li><script type="math/tex; mode=display">\ln (1+x)=x-\frac{1}{2} x^{2}+\frac{1}{3} x^{3}-\cdots+(-1)^{n-1} \frac{1}{n} x^{n}+(-1)^{n} \frac{1}{(n+1)(1+\theta x)^{n+1}} x^{n+1} \text {, 其中 } \theta \in(0,1),x\in(-1,1]</script></li>
+<li><script type="math/tex; mode=display">(1+x)^{\alpha}= 1+\alpha x+\frac{\alpha(\alpha-1)}{2 !} x^{2}+\cdots+\frac{\alpha(\alpha-1) \cdots(\alpha-n+1)}{n !} x^{n}+ \frac{1}{(n+1) !} \alpha(\alpha-1)(\alpha-2) \cdots(\alpha-n)(1+\theta x)^{\alpha-n-1} x^{n+1},|x|<1</script></li>
+<li><script type="math/tex; mode=display">\frac{1}{1+x}=1-x+x^{2}+\cdots+(-1)^{n} x^{n}+\frac{(-1)^{n+1}}{(1+\theta x)^{n+2}} x^{n+1}, \text { 其中 } \theta \in(0,1),|x|<1</script></li>
+<li><script type="math/tex; mode=display">\frac{1}{1-x}=1+x+x^{2}+\cdots+x^{n}+\frac{x^{n+1}}{(1-\theta x)^{n+2}},\text { 其中 } \theta \in(0,1),|x|<1</script></li>
+<li><script type="math/tex; mode=display">\arctan x=x-\frac{x^{3}}{3}+\frac{x^{5}}{5}-\cdots+\frac{(-1)^{n} x^{2 n+1}}{2 n+1}+o(x^{2n+2})</script></li>
+</ul>
+<p><img src="https://i.loli.net/2021/11/02/WHFOtsdarEufNBQ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>31.带拉格朗日（Lagrange）余项的泰勒公式<br>设$f(x)$在包$x_{0}$点的某开区间$(a, b)$内$n+1$阶可导，则$\forall x \in(a, b)$，有</p>
+<script type="math/tex; mode=display">
+f(x)=\sum_{k=0}^{n} \frac{f^{(k)}\left(x_{0}\right)}{k !}\left(x-x_{0}\right)^{k}+\frac{f^{(n+1)}(\xi)}{(n+1) !}\left(x-x_{0}\right)^{n+1}</script><h3 id="Toeplitz定理"><a href="#Toeplitz定理" class="headerlink" title="Toeplitz定理"></a>Toeplitz定理</h3><p>若：<br>(1)$\forall n,k \in \mathbb{N}, t_{n,k} \geq 0$；<br>(2)$\forall n \in \mathbb{N},\sum_{k=1}^{n} t_{n,k}=1$；<br>(3)$\forall k \in \mathbb{N},\lim_{n \rightarrow \infty} t_{n,k}=0$；<br>(4)$\lim_{n \rightarrow \infty} a_{n}=A$<br>则有<script type="math/tex">\lim_{n \rightarrow \infty} \sum_{k=1}^{n} t_{n,k} a_{k}=A</script></p>
+<h3 id="函数的性质"><a href="#函数的性质" class="headerlink" title="函数的性质"></a>函数的性质</h3><p>32.定理：设$f(x)\in C[a,b]\cap D(a, b)$，则$f(x)$在$[a,b]$上递增(或递减)的充要条件是$\forall x \in (a, b) :f’(x)\ge 0$</p>
+<p>33.定理：设$f(x)\in C[a,b]\cap D(a, b)$，则$f(x)$在$[a,b]$上严格单调递增(或严格单调递减)<br>的充要条件是$\forall x \in (a, b) :f’(x)\ge 0$（或者$f’(x)\le 0$）,并且$(a,b)$内任意子区间上$f’(x)$不恒为$0$</p>
+<p>34.Jordan不等式：当$x \in\left(0, \frac{\pi}{2}\right)$时，$\frac{2}{\pi}&lt;\frac{\sin x}{x}&lt;1$</p>
+<p>35.极值第一判别法（充分性定理）<br>设函数$f(x)$在点$x_{0}$的某个邻域$U\left(x_{0}, \delta\right)$上连续，且在去心邻域$\mathring{U}\left(x_{0}, \delta\right)$内可导，<br>(1) 若在$x_{0}$左侧$f^{\prime}(x)<0$，在$x_{0}$右侧$f^{\prime}(x)>0$，则$x_{0}$是$f(x)$的极小值点；<br>(2) 若在$x_{0}$左侧$f^{\prime}(x)&gt;0$，在$x_{0}$右侧$f^{\prime}(x)&lt;0$，则$x_{0}$是$f(x)$的极大值点；<br>(3) 若在$x_{0}$两侧$f^{\prime}(x)$同号, 则$x_{0}$不是$f(x)$的极值点</p>
+<ul>
+<li>例：<script type="math/tex; mode=display">
+f(x)=\left\{\begin{array}{ll}
+-x^{2}\left(2+\sin \frac{1}{x}\right), & x \neq 0 \\
+0, & x=0
+\end{array}\right.</script>$f(0)=0$为极大值, 在$x=0$两侧任意邻域都不单调。</li>
+</ul>
+<p>36.极值第二判别法（充分性定理）<br>设$f(x)$在$x_0$处二阶可导，且$f’(x_0) =0$，<br>(1) 若$f’’(x_0)&lt;0$，则$f(x_0)$为严格极大值；</p>
+<p>(2) 若$f’’(x_0)&gt;0$，则$f(x_0)$为严格极小值。</p>
+<p>37.最值计算的一般步骡：<br>1)求导数$f’(x)$；<br>2)$f’(x)=0$，求出所有的驻点和不可导点；<br>3)比较$f(x)$所有驻点、不可导点及区间端点处（包括$\infty$）的函数值，确定该函数的最大值与最小值。</p>
+<p>38.凸函数的定义：<br>设$f(x)$定义在区间$I$上。若$\forall x_{1}, x_{2} \in I, \forall\lambda \in(0,1)$都有$f\left(\lambda x_{1}+(1-\lambda) x_{2}\right) \leqslant \lambda f\left(x_{1}\right)+(1-\lambda) f\left(x_{2}\right)$，则称$f(x)$为$I$上的下凸函数。</p>
+<ul>
+<li>上式中严格不等式成立，则称$f(x)$为$I$上的严格下凸函数。不等式反向，则称$f(x)$为$I$上的上凸函数，可类似定义严格上凸函数。</li>
+</ul>
+<p>39.凸性的第一判别法：<br>设$f(x)\in D(a, b)$，若$f’(x)$在$(a,b)$内严格单调递增(递减),则$f(x)$在$(a,b)$内为严格下凸(上凸)函数。</p>
+<p>40.凸性的第二判别法：<br>设$f(x)$在$(a, b)$内二阶可导, 则:</p>
+<ul>
+<li>$f^{\prime \prime}(x)&gt;0$时,$f(x)$在$(a, b)$内为下凸函数;</li>
+<li>$f^{\prime \prime}(x)&lt;0$时,$f(x)$在$(a, b)$内为上凸函数。</li>
+</ul>
+<p>41.拐点的定义：<br>设函数$f(x)$在点$x_0$的某邻域$U(x_0)$内连续,而在$x_0$的左右两侧$f(x)$有不同的凸性，则称$x_0$为$f(x)$的拐点。</p>
+<ul>
+<li>函数的拐点应落在二阶导数为0，或者二阶导数不存在的那些点上。</li>
+</ul>
+<p>42.Young不等式：<br>设  $A, B \geqslant 0$,$ p, q&gt;0 $, 且  $\frac{1}{p}+\frac{1}{q}=1 $, 则有</p>
+<script type="math/tex; mode=display">
+\sqrt[p]{A} \sqrt[q]{B} \leqslant \frac{A}{p}+\frac{B}{q}</script><p>43.渐近线定义：<br>设$C$为平面曲线$y= f(x)$。若存在直线$L$，当动点$P$沿曲线$C$无限远离原点时，点$P$与直线$L$的距离趋于$0$，则称直线$L$为曲线$C$的渐近线。<br>(1) 若存在常数$c: \lim_{x \rightarrow+\infty} f(x)=c $, 或 $\lim_{x \rightarrow-\infty} f(x)= c$ , 则称直线 $y=c$ 为曲线 $ C $ 的水平渐近线;<br>(2) 若存在常数$x_{0} : \lim_{x \rightarrow x_{0}^{+}} f(x)=\infty$ 或 $\lim_{x \rightarrow x_{0}^{-}} f(x)= \infty $, 则称直线 $x=x_{0}$ 为曲线 $C$的垂直渐近线; （此时 $x_{0}$ 为函数 $y=f(x)$ 的无穷间断点。)<br>(3) 若存在常数 $a, b : \lim_{x \rightarrow+\infty}(f(x)-(a x+b))=0$ 或 $\lim_{x \rightarrow-\infty}(f(x)-(a x+b))=0$ , 则称 $y=a x+b$ 为曲线 $C$ 的斜渐近线.</p>
+<p>44.函数作图的一般步骤：<br>(1)确定定义域、零点(与x轴，y轴的交点)与间断点，考虑函数的奇偶性、周期性等；<br>(2)确定函数的单调区间与极值点、凸性区间与拐点；<br>(3)确定渐近线：水平渐近线（看x取$\pm\infty$的极限），垂直渐近线（看没定义的点），斜渐近线（求$k=\lim_{x \rightarrow\pm\infty} \frac{f(x)}{x}$与$b=\lim_{x \rightarrow\pm\infty}(f(x)-kx)$）；<br>(4)列表反映上述信息，由列表数据给出函数的单调性、凸性；间断点、驻点、拐点、不可导点为分区间的依据。<br>(5)作图。图上标注：极值点坐标，拐点坐标，渐近线方程。</p>
+<p>45.求方程的近似解：二分法/牛顿切线法</p>
+<h2 id="第五章-积分"><a href="#第五章-积分" class="headerlink" title="第五章 积分"></a>第五章 积分</h2><h3 id="问题的提出"><a href="#问题的提出" class="headerlink" title="问题的提出"></a>问题的提出</h3><p>略</p>
+<h3 id="定义符号"><a href="#定义符号" class="headerlink" title="定义符号"></a>定义符号</h3><script type="math/tex; mode=display">
+\begin{array}{|l|l|}
+\hline T:[a, b] & \text { 对 }[a, b] \text { 的分划 } T: a=x_{0}<x_{1}<\cdots<x_{n}=b ; \\
+\hline \Delta x_{k} & x_{k}-x_{k-1} \text { 小区间的长度 } \\
+\hline\|T\| & \max _{1 \leqslant k \leqslant n}\left\{\Delta x_{k}\right\}, \text { 称为分划 } T \text { 的细度; } \\
+\hline \xi(T) & \text { 分划 } T \text { 下的介点集 }\left\{\xi_{k} \mid \xi_{k} \in\left[x_{k-1}, x_{k}\right], k=1, \cdots n\right\} ; \\
+\hline \sum_{k=1}^{n} f\left(\xi_{k}\right) \Delta x_{k} & \text { 称为Riemann 和 } \\
+\hline
+\end{array}</script><h3 id="可积的定义"><a href="#可积的定义" class="headerlink" title="可积的定义"></a>可积的定义</h3><p>设$f(x)$在$[a,b]$上有界。在$[a,b]$上的任意分划$T: [a,b]$，任取介点集$\xi(T)$，作Riemann和$\sum_{k=1}^{n} f\left(\xi_{k}\right) \Delta x_{k}$.当$|T|\to 0$时，若上述和式的极限存在，且此极限的存在性与分划T及相应的介点集$\xi(T)$的取法无关，则称$f(x)$在$[a,b]$上Riemann可积，简称可积，记作$f(x) \in R[a,b]$，并将该极限值称为函数$f(x)$在$[a,b]$上的定积分，记作$\int_{a}^{b} f(x)\mathrm{d}x$</p>
+<h3 id="可积的充分条件"><a href="#可积的充分条件" class="headerlink" title="可积的充分条件"></a>可积的充分条件</h3><p>设$f(x):[a, b] \rightarrow \mathbb{R} $满足下列条件之一，则$f(x) \in R[a, b]:$</p>
+<ul>
+<li>$f(x) \in C[a, b]$</li>
+<li>$f(x)$为$[a, b]$上只有有限个间断点的有界函数</li>
+<li>$f(x)$在$[a, b]$上单调有界</li>
+</ul>
+<h3 id="分段连续函数定义"><a href="#分段连续函数定义" class="headerlink" title="分段连续函数定义"></a>分段连续函数定义</h3><p>若函数$f(x)$在区间$[a,b]$上除有限个第一类间断点外均连续，则称$f(x)$是$[a,b]$上的分段连续函数</p>
+<h3 id="定积分的基本性质"><a href="#定积分的基本性质" class="headerlink" title="定积分的基本性质"></a>定积分的基本性质</h3><p>设$f(x),g(x)\in R[a,b]$，则</p>
+<ul>
+<li>线性性：<script type="math/tex; mode=display">
+\int_{a}^{b} [\alpha f(x)+\beta g(x)]\mathrm{d}x=\alpha\int_{a}^{b}f(x)\mathrm{d}x+\beta\int_{a}^{b}g(x)\mathrm{d}x</script></li>
+<li>保号性：若$f(x)\ge 0$在$[a,b]$上成立，则<script type="math/tex; mode=display">
+\int_{a}^{b} f(x)\mathrm{d}x\ge 0</script></li>
+<li>保序性：若$f(x)\le g(x)$在$[a,b]$上成立，则<script type="math/tex; mode=display">
+\int_{a}^{b} f(x)\mathrm{d}x\le \int_{a}^{b} g(x)\mathrm{d}x</script></li>
+<li>区间可加性：<script type="math/tex; mode=display">
+\int_{a}^{c} f(x)\mathrm{d}x=\int_{a}^{b} f(x)\mathrm{d}x+\int_{b}^{b} f(x)\mathrm{d}x</script></li>
+<li>估值不等式：若$m\le f(x)\le M$在$[a,b]$上成立，则<script type="math/tex; mode=display">
+m(b-a)\le \int_{a}^{b} f(x)\mathrm{d}x \le M(b-a)</script></li>
+<li>绝对值不等式：若$|f(x)| \in R[a,b]$，则<script type="math/tex; mode=display">
+\left|\int_{a}^{b} f(x)\mathrm{d}x\right| \le \int_{a}^{b} |f(x)|\mathrm{d}x</script></li>
+<li>柯西（Cauchy·Schwarz）不等式：<script type="math/tex; mode=display">
+\left(\int_{a}^{b} f(x) g(x) \mathrm{d} x\right)^{2} \leqslant \int_{a}^{b} f^{2}(x) \mathrm{d} x \cdot \int_{a}^{b} g^{2}(x) \mathrm{d} x</script></li>
+<li>乘积函数可积性：<script type="math/tex; mode=display">
+f(x)g(x) \in R[a,b]</script></li>
+</ul>
+<h3 id="积分第一中值定理"><a href="#积分第一中值定理" class="headerlink" title="积分第一中值定理"></a>积分第一中值定理</h3><p>设 $f(x), g(x) \in R[a, b] $，且 $g(x)$ 在$[a, b]$上不变号。记 $M, m$分别为$f(x)$在$[a, b]$上的上、下确界，则$\exists \lambda \in[m, M]: $</p>
+<script type="math/tex; mode=display">
+\int_{a}^{b} f(x) g(x) \mathrm{d} x=\lambda \int_{a}^{b} g(x) \mathrm{d} x</script><ul>
+<li>推论：若$f(x) \in C[a, b]$,$g(x) \in R[a, b]$且不变号, 则$\exists \xi \in[a,b]:$<script type="math/tex; mode=display">
+\int_{a}^{b} f(x) g(x) \mathrm{d} x=f(\xi) \int_{a}^{b} g(x)\mathrm{d} x</script></li>
+<li>特别地，若$f(x) \in C[a, b]$，则$\exists\xi \in[a, b]:$<script type="math/tex; mode=display">
+\int_{a}^{b} f(x) \mathrm{d} x=f(\xi)(b-a)</script></li>
+<li>$\frac{\int_{a}^{b} f(x) \mathrm{d} x}{b-a}$称为函数$f(x)$在$[a, b] $上的平均值</li>
+</ul>
+<h3 id="原函数的定义"><a href="#原函数的定义" class="headerlink" title="原函数的定义"></a>原函数的定义</h3><p>设$f(x)$和$F(x)$是定义在区间$I$上的函数，如果对于$\forall x \in I$，都有$F’(x)= f(x)$，则称$F(x)$是$f(x)$在区间$I$上的一个原函数，可等价地表示为$\mathrm{d}(F(x))=f(x)\mathrm{d}x$，$F(x)+C$可以代表$f(x)$的全部原函数。</p>
+<h3 id="不定积分的定义"><a href="#不定积分的定义" class="headerlink" title="不定积分的定义"></a>不定积分的定义</h3><p>$f(x)$在$I$上的原函数的全体称为$f(x)$在$I$上的不定积分，记为$\int f(x) \mathrm{d} x$，其中$\int$称为积分号，$f(x)$称为被积函数，$x$称为积分变量，$\mathrm{d}$是微分算符。若$F(x)$是$f(x)$在$I$上的原函数，则$\int f(x) \mathrm{d} x = F(x)+C$，其中$C$为积分常数。</p>
+<h3 id="变限积分函数定义"><a href="#变限积分函数定义" class="headerlink" title="变限积分函数定义"></a>变限积分函数定义</h3><p>如果$f(x) \in R[a, b]$，则$f(x)$的部分区间$[a, x]\subset[a, b]$上也可积，从而</p>
+<script type="math/tex; mode=display">
+\varphi(x)=\int_{a}^{x} f(t) \mathrm{d} t, x \in[a, b]</script><p>定义了一个$[a, b]$上的新函数，称为变上限积分或者积分上限函数。同样可以定义变下限积分</p>
+<script type="math/tex; mode=display">
+\psi(x)=\int_{x}^{b} f(t) \mathrm{d} t, x \in[a, b]</script><h3 id="变限积分相关定理"><a href="#变限积分相关定理" class="headerlink" title="变限积分相关定理"></a>变限积分相关定理</h3><p>记$\varphi(x)=\int_{a}^{x} f(t) \mathrm{d} t, t \in[a, b]$</p>
+<ul>
+<li>若$f(x) \in R[a, b]$, 则$\varphi(x) \in C[a, b]$</li>
+<li>若$f(x) \in C[a, b]$, 则$\varphi(x) \in D[a, b]$，且$\varphi^{\prime}(x)=f(x)$,$x \in[a, b]$，即$\frac{d}{\mathrm{d} x} \int_{a}^{x} f(t) \mathrm{d} t$=$\lim_{\Delta x \rightarrow 0} \frac{\int_{x}^{x+\Delta x} f(t) \mathrm{d} t}{\Delta x}$=$f(x)$</li>
+<li>$f(x)$可积，变限积分一定连续</li>
+<li>$f(x)$连续，变限积分一定可导（反过来不成立）</li>
+</ul>
+<h3 id="原函数存在定理"><a href="#原函数存在定理" class="headerlink" title="原函数存在定理"></a>原函数存在定理</h3><p>连续函数必定有原函数，变上限积分函数就是它的一个原函数。</p>
+<h3 id="变限积分函数求导"><a href="#变限积分函数求导" class="headerlink" title="变限积分函数求导"></a>变限积分函数求导</h3><script type="math/tex; mode=display">
+\left(\int_{\varphi_{1}(x)}^{\varphi_{2}(x)} f(t) \mathrm{d} t\right)^{\prime}=f\left[\varphi_{2}(x)\right] \varphi_{2}^{\prime}(x)-f\left[\varphi_{1}(x)\right] \varphi_{1}^{\prime}(x)</script><p><strong>注意：</strong> $f(t)$ 不能与 $x$ 相关！！！</p>
+<h3 id="牛顿-莱布尼兹-Newton-Leibnitz-公式"><a href="#牛顿-莱布尼兹-Newton-Leibnitz-公式" class="headerlink" title="牛顿-莱布尼兹(Newton-Leibnitz)公式"></a>牛顿-莱布尼兹(Newton-Leibnitz)公式</h3><p>设$f(x) \in R[a, b]$,$F(x) \in C[a, b]$，且 $\forall x \in(a, b)$, $F^{\prime}(x)=f(x)$，则</p>
+<script type="math/tex; mode=display">
+\int_{a}^{b} f(x) \mathrm{d} x=F(b)-F(a) \overset{\Delta}{=} F(x)|_{a}^{b}</script><h3 id="有原函数、函数可积、函数可导、函数有界、函数连续的关系"><a href="#有原函数、函数可积、函数可导、函数有界、函数连续的关系" class="headerlink" title="有原函数、函数可积、函数可导、函数有界、函数连续的关系"></a>有原函数、函数可积、函数可导、函数有界、函数连续的关系</h3><p><img src="https://s2.loli.net/2021/12/05/aiorCtLQs2DM5f6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="不定积分表"><a href="#不定积分表" class="headerlink" title="不定积分表"></a>不定积分表</h3><ul>
+<li><script type="math/tex; mode=display">\int x^{\alpha} \mathrm{d}x = \frac{1}{\alpha+1} x^{\alpha+1}+C, \quad \alpha \neq-1 \quad</script></li>
+<li><script type="math/tex; mode=display">\int \frac{1}{x} \mathrm{d}x = \ln |x|+C</script></li>
+<li><script type="math/tex; mode=display">\int a^{x} \mathrm{d}x = \frac{1}{\ln a} a^{x}+C, \quad a>0, a \neq 1 \quad</script></li>
+<li><script type="math/tex; mode=display">\int e^{x} \mathrm{d}x = e^{x}+C</script></li>
+<li><script type="math/tex; mode=display">\int \sin x \mathrm{d}x = -\cos x+C \quad</script></li>
+<li><script type="math/tex; mode=display">\int \cos x \mathrm{d}x = \sin x+C</script></li>
+<li><script type="math/tex; mode=display">\int \tan x \mathrm{d}x = -\ln |\cos x|+C</script></li>
+<li><script type="math/tex; mode=display">\int \cot x \mathrm{d}x = \ln |\sin x|+C</script></li>
+<li><script type="math/tex; mode=display">\int \sec x \mathrm{d}x = \ln |\sec x+\tan x|+C</script></li>
+<li><script type="math/tex; mode=display">\int \csc x \mathrm{d}x = \ln |\csc x-\cot x|+C</script></li>
+<li><script type="math/tex; mode=display">\int \sec ^{2} x \mathrm{d}x = \tan x+C</script></li>
+<li><script type="math/tex; mode=display">\int \csc ^{2} x \mathrm{d}x = -\cot x+C</script></li>
+<li><script type="math/tex; mode=display">\int x\cos x \mathrm{d}x = \cos x + x\sin x + C</script></li>
+<li><script type="math/tex; mode=display">\int x\sin x \mathrm{d}x = \sin x - x\cos x + C</script></li>
+<li><script type="math/tex; mode=display">\int \frac{1}{1+\cos x} \mathrm{d}x = \frac{\sin x}{1+\cos x} + C</script></li>
+<li><script type="math/tex; mode=display">\int \frac{1}{1+\sin x} \mathrm{d}x = \frac{\cos x}{1+\sin x} + C</script></li>
+<li><script type="math/tex; mode=display">\int \frac{1}{\sqrt{a^{2}-x^{2}}} \mathrm{d}x=\arcsin \frac{x}{a}+C</script></li>
+<li><script type="math/tex; mode=display">\int \frac{1}{a^{2}+x^{2}} \mathrm{d}x=\frac{1}{a} \arctan \frac{x}{a}+C</script></li>
+<li><script type="math/tex; mode=display">\int \frac{1}{x^{2}-a^{2}} \mathrm{d}x=\frac{1}{2 a} \ln \left|\frac{x-a}{x+a}\right|+C</script></li>
+<li><script type="math/tex; mode=display">\int \frac{1}{\sqrt{x^{2} \pm a^{2}}} \mathrm{d}x=\ln |x+\sqrt{x^{2} \pm a^{2}}|+C</script></li>
+<li><script type="math/tex; mode=display">\int \sqrt{a^{2}-x^{2}} \mathrm{d}x=\frac{x}{2} \sqrt{a^{2}-x^{2}}+\frac{a^{2}}{2} \arcsin \frac{x}{a}+C</script></li>
+<li><script type="math/tex; mode=display">\int \sqrt{x^{2} \pm a^{2}} \mathrm{d}x=\frac{x}{2} \sqrt{x^{2} \pm a^{2}} \pm \frac{a^{2}}{2} \ln |x+\sqrt{x^{2} \pm a^{2}}|+C</script></li>
+<li><script type="math/tex; mode=display">\int \log _{a} x \mathrm{d}x =x \log _{a} x-x \log _{a} e+C</script></li>
+<li><script type="math/tex; mode=display">\int \ln x \mathrm{d}x =x \ln x-x+C</script></li>
+<li><script type="math/tex; mode=display">\int \arcsin x \mathrm{d}x  = x \arcsin x+\sqrt{1-x^{2}}+C</script></li>
+<li><script type="math/tex; mode=display">\int \arccos \mathrm{d}x  = x \arccos x-\sqrt{1-x^{2}}+C</script></li>
+<li><script type="math/tex; mode=display">\int \arctan x \mathrm{d}x  = x \arctan x-\frac{1}{2} \ln \left(1+x^{2}\right)+C</script></li>
+<li><script type="math/tex; mode=display">\int \operatorname{arccot} x \mathrm{d}x  = x \operatorname{arccot} x+\frac{1}{2} \ln \left(1+x^{2}\right)+C</script></li>
+<li><p>$\tan^{n}(x)$<br><img src="https://i.loli.net/2021/11/24/esnPXmwEY9klMZ3.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+</ul>
+<h3 id="第一换元积分法（凑微分法、直接代换法）"><a href="#第一换元积分法（凑微分法、直接代换法）" class="headerlink" title="第一换元积分法（凑微分法、直接代换法）"></a>第一换元积分法（凑微分法、直接代换法）</h3><script type="math/tex; mode=display">
+\begin{array}{c}
+\int f(g(x)) g^{\prime}(x) \mathrm{d} x \stackrel{u=g(x)}{=} \int f(u) \mathrm{d}(u) \\
+\stackrel{\text { 积分 }}{=} F(u)+C \stackrel{\text { 回代 }}{=} F(g(x))+C .
+\end{array}</script><h3 id="第二换元积分法（变量替换法）"><a href="#第二换元积分法（变量替换法）" class="headerlink" title="第二换元积分法（变量替换法）"></a>第二换元积分法（变量替换法）</h3><p>设$x=\varphi(t)$可导，$\varphi^{\prime}(t) \neq 0$，并且$\int f(\varphi(t)) \varphi^{\prime}(t) \mathrm{d} t=G(t)+C$，则</p>
+<script type="math/tex; mode=display">
+\int f(x) \mathrm{d} x=G\left(\varphi^{-1}(x)\right)+C</script><h3 id="常用的变换形式："><a href="#常用的变换形式：" class="headerlink" title="常用的变换形式："></a>常用的变换形式：</h3><ul>
+<li>$\sqrt{a^{2}-x^{2}}$型: 令$x=a \sin t, x=a \cos t$</li>
+<li>$\sqrt{x^{2}+a^{2}}$型: 令$x=a \tan t, x=a \cot t, x=a \sinh t$</li>
+<li>$\sqrt{x^{2}-a^{2}}$型: 令$x=a \sec t, x=\csc t, x=\cosh t$</li>
+<li>分母出现$x^n$或$\sqrt[m]{ax^2+bx+c}$，令$t=\frac{1}{x}$</li>
+<li>出现$\sqrt[n]{\frac{a x+b}{c x+d}}$：令$\sqrt[n]{\frac{a x+b}{c x+d}}=t$</li>
+</ul>
+<h3 id="分部积分法"><a href="#分部积分法" class="headerlink" title="分部积分法"></a>分部积分法</h3><script type="math/tex; mode=display">
+\int u \mathrm{d} v=u v-\int v \mathrm{d} u</script><ul>
+<li>应用时注意“反对幂指三”或“反对幂三指”</li>
+<li><p>分部积分的循环运用<br> 被积函数中含有根式、指数函数与三角函数乘积时，有可能会形成循环。</p>
+<p> 例：$\int e^{a x} \cos b x \mathrm{~d} x$</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+&\int e^{a x} \cos b x \mathrm{~d} x\\
+=&\frac{1}{a} \int \cos b x \mathrm{~d}\left(e^{a x}\right) \\
+=&\frac{1}{a} e^{a x} \cos b x-\frac{1}{a} \int e^{a x} \mathrm{~d}(\cos b x) \\
+=&\frac{1}{a} e^{a x} \cos b x+\frac{b}{a} \int e^{a x} \sin b x \mathrm{~d} x \\
+=&\frac{1}{a} e^{a x} \cos b x+\frac{b}{a^{2}} \sin b x e^{a x}-\frac{b}{a^{2}} \int e^{a x} \mathrm{~d}(\sin b x) \\
+=&\frac{1}{a} e^{a x} \cos b x+\frac{b}{a^{2}} \sin b x e^{a x}-\frac{b^{2}}{a^{2}} \int e^{a x} \cos b x \mathrm{~d}x
+\end{array}</script><p> 两边的$\int e^{a x} \cos b x \mathrm{~d} x$合并, 可求解出结果.</p>
+</li>
+</ul>
+<h3 id="可积与不可积"><a href="#可积与不可积" class="headerlink" title="可积与不可积"></a>可积与不可积</h3><ul>
+<li>不是所有的函数都有原函数</li>
+<li>有的函数，尽管原函数存在，但是不能表达为初等函数的形式</li>
+<li>如果原函数是<strong>初等函数</strong>,我们通常就说积分<strong>可以积出来</strong></li>
+<li>如果原函数存在，但是<strong>不是初等函数</strong>，我们就说积分<strong>积不出来</strong></li>
+<li>黎曼函数在$[0,1]$上可积</li>
+<li>已经证明的“积分积不出来”的函数有<ul>
+<li>$\int_{-\infty}^{+\infty} e^{-x^{2}} \mathrm{~d} x=\sqrt{\pi}$ : Gauss 积分, 概率论 (Gauss, 1777-1855, 德国)</li>
+<li>$\int_{0}^{+\infty} \frac{\sin x}{x} \mathrm{~d} x=\frac{\pi}{2}$ : Dirichlet 积分</li>
+<li>$\int_{2}^{x} \frac{1}{\ln t} d t \sim \pi(x)$ : Euler 对数积分, 数论 (Euler, 1707-1783, 瑞士, $f(x), e, \pi, i, \sum,$ 拓扑、图论等若干数学分支的奠基者）</li>
+<li>$\int_{0}^{\infty} \sin \left(x^{2}\right) \mathrm{d} x=\sqrt{\frac{\pi}{8}}$ : Fresnel 积分, 光学 (Fresnel, 1788-1827, 法国, 工程师、物理学家)</li>
+<li>$\int_{0}^{\pi / 2} \sqrt{1-\varepsilon^{2} \cos ^{2} x} \mathrm{~d} x (0&lt;\varepsilon&lt;1)$ : 椭圆积分，代数、数论等，比特币</li>
+</ul>
+</li>
+<li>可积的充要条件——勒贝格定理<ul>
+<li>定义：设数集$E\subset \mathbb{R},\forall \varepsilon &gt; 0$，存在可数个开区间列$\{x_n\}$覆盖了$E$，而$\sum_{n=1}^{+\infty} |x_n|&lt;\varepsilon$，则称数集$E$是零集，其中$|x_n|$表示$x_n$的长度。</li>
+<li>定理：有限个点所成的集合是零集；可数个点所成的集合是零集；可数个可数集的并集是零集。注意：不可数集也可能是零集。在$[a,b]$严格增加或减少的函数f(x)的间断点是零集。</li>
+<li>勒贝格定理：在区间$[a,b]$上<strong>有界函数</strong> $f(x)$黎曼可积的充分必要条件是$[a, b]$所有间断点是零集。不是可数集的零集同样成立。</li>
+</ul>
+</li>
+</ul>
+<h3 id="有理函数的不定积分"><a href="#有理函数的不定积分" class="headerlink" title="有理函数的不定积分"></a>有理函数的不定积分</h3><p>理论来说，任意有理函数的不定积分都可以归结为</p>
+<script type="math/tex; mode=display">
+\int \frac{\mathrm{d} x}{(x-a)^{m}}, \quad \int \frac{B x+C}{\left(x^{2}+p x+q\right)^{n}} \mathrm{~d} x</script><p>（其中$k\ge 1,p^2-4q&lt;0$）<br>并表示为有理函数、对数函数和反正切函数的线性组合。</p>
+<ul>
+<li><script type="math/tex; mode=display">
+\int \frac{\mathrm{d} x}{(x-a)^{m}} = \left\{\begin{array}{c}
+\ln|x-a|+C,&m=1\\
+\frac{(x-a)^{-m+1}}{-m+1}+C,&m\ne 1
+\end{array}\right.</script></li>
+<li><script type="math/tex; mode=display">
+\begin{array}{l}
+\int \frac{1}{x^2+bx+c} d x&= \int \frac{1}{(x+\frac{b}{2})^2+c-\frac{b^2}{4}} d x\\
+&= \int \frac{d(u)}{u^2+c-\frac{b^2}{4}}\text{（令}u=x+\frac{b}{2}\text{）} \\
+&=\left\{\begin{array}{l}
+\int \frac{d(u)}{u^2},&c-\frac{b^2}{4}=0\\
+\int \frac{d(u)}{u^2+a^2},&c-\frac{b^2}{4}\overset{\Delta}{=}a^2>0\\
+\int \frac{d(u)}{u^2-a^2},&\frac{b^2}{4}-c\overset{\Delta}{=}a^2>0
+\end{array}\right.\\
+&= \left\{\begin{array}{l}
+-\frac{1}{u}+C,&c-\frac{b^2}{4}=0\\
+\frac{1}{a}\arctan{\frac{u}{a}}+C,&c-\frac{b^2}{4}\overset{\Delta}{=}a^2>0\\
+\frac{1}{2a}\ln|\frac{u-a}{u+a}|+C,&\frac{b^2}{4}-c\overset{\Delta}{=}a^2>0
+\end{array}\right.\\
+&\overset{\Delta}{=} dif(b,c,0)
+\end{array}</script></li>
+<li><script type="math/tex; mode=display">
+\begin{array}{l}
+\int \frac{x}{x^2+bx+c} d x&= \frac{1}{2}\int \frac{d(x^2+bx+c)}{x^2+bx+c}-\frac{b}{2}\int \frac{d x}{x^2+bx+c}\\
+&= \frac{1}{2}\ln|x^2+bx+c|-\frac{b}{2}dif(b,c,0)+C\\
+&\overset{\Delta}{=} dif(b,c,1)
+\end{array}</script></li>
+<li><script type="math/tex; mode=display">
+\begin{array}{l}
+\int \frac{x^2}{x^2+bx+c} d x&= \int (1-\frac{bx+c}{x^2+bx+c})dx\\
+&= x-b\cdot dif(b,c,1)-c\cdot dif(b,c,0)+C\\
+&= x-\frac{b}{2}\ln|x^2+bx+c|+(\frac{b^2}{2}-c)dif(b,c,0)+C\\
+&\overset{\Delta}{=} dif(b,c,2)
+\end{array}</script></li>
+<li><script type="math/tex; mode=display">
+\begin{aligned}
+\int \frac{B x+D}{x^{2}+p x+q} \mathrm{~d} x &=\frac{B}{2} \int \frac{\mathrm{d}\left(x^{2}+p x+q\right)}{x^{2}+p x+q}+\frac{2 D-B p}{2} \int \frac{\mathrm{d}\left(x+\frac{p}{2}\right)}{\left(x+\frac{p}{2}\right)^{2}+\frac{4q-p^2}{4}} \\
+&=\frac{B}{2} \ln \left(x^{2}+p x+q\right)+\frac{2 D-B p}{\sqrt{4q-p^2}} \arctan \left(\frac{2 x+p}{\sqrt{4q-p^2}}\right)+C .
+\end{aligned}</script></li>
+<li><script type="math/tex; mode=display">
+\int \frac{B x+D}{\left(x^{2}+p x+q\right)^{k}} \mathrm{~d} x=\frac{B}{2} \int \frac{\mathrm{d}\left(x^{2}+p x+q\right)}{\left(x^{2}+p x+q\right)^{k}}+\frac{2 D-B p}{2} \int \frac{\mathrm{d}\left(x+\frac{p}{2}\right)}{\left[\left(x+\frac{p}{2}\right)^{2}+\left(\frac{\sqrt{-\Delta}}{2}\right)^{2}\right]^{k}}</script></li>
+</ul>
+<h3 id="有理真分式的部分分式展开法"><a href="#有理真分式的部分分式展开法" class="headerlink" title="有理真分式的部分分式展开法"></a>有理真分式的部分分式展开法</h3><p>略</p>
+<h3 id="三角函数有理式的不定积分"><a href="#三角函数有理式的不定积分" class="headerlink" title="三角函数有理式的不定积分"></a>三角函数有理式的不定积分</h3><ul>
+<li>$\int R(\sin x)\cos x\mathrm{d}x$和$\int R(\cos x)\sin x\mathrm{d}x$型<br>第一换元法</li>
+<li>$\int R(\sin^2 x,\cos^2 x)\mathrm{d}x$型<br>令$t=\tan x$</li>
+<li>$\int \cos mx\cos nx\mathrm{d}x$、$\int \sin mx\sin nx\mathrm{d}x$和$\int \cos mx\sin nx\mathrm{d}x$型<br>积化和差</li>
+<li>对于一般的$\int R(\sin x,\cos x)\mathrm{d}x$<br>令$t=\tan\frac{x}{2}$，万能代换<script type="math/tex; mode=display">
+\int R(\sin x, \cos x) \mathrm{d} x=\int R\left(\frac{2 t}{1+t^{2}}, \frac{1-t^{2}}{1+t^{2}}\right) \frac{2 \mathrm{d} t}{1+t^{2}}</script></li>
+</ul>
+<h3 id="定积分的分部积分法"><a href="#定积分的分部积分法" class="headerlink" title="定积分的分部积分法"></a>定积分的分部积分法</h3><p>设$u^{\prime}(x), v^{\prime}(x) \in R[a, b]$，则</p>
+<script type="math/tex; mode=display">
+\int_{a}^{b} u v^{\prime} \mathrm{d} x=\left.u v\right|_{a} ^{b}-\int_{a}^{b} v u^{\prime} \mathrm{d} x</script><h3 id="常见定积分"><a href="#常见定积分" class="headerlink" title="常见定积分"></a>常见定积分</h3><ul>
+<li>Wallis公式（点火公式）<script type="math/tex; mode=display">
+\star \int_{0}^{\frac{\pi}{2}} \sin ^{n} x \mathrm{~d} x=\int_{0}^{\frac{\pi}{2}} \cos^{n} x \mathrm{~d} x=\left\{\begin{array}{ll}
+\frac{\pi}{2} \frac{(2 k-1) ! !}{(2 k) ! !}, & n=2 k \\
+\frac{(2 k) ! !}{(2 k+1) ! !}, & n=2 k+1
+\end{array}\right.</script><ul>
+<li><script type="math/tex; mode=display">
+\lim _{k \rightarrow \infty}\left[\frac{(2 k) ! !}{(2 k-1) ! !}\right]^{2} \cdot \frac{1}{2 k+1}=\frac{\pi}{2}</script></li>
+</ul>
+</li>
+</ul>
+<h3 id="定积分的变量替换法"><a href="#定积分的变量替换法" class="headerlink" title="定积分的变量替换法"></a>定积分的变量替换法</h3><p>设 $f(x) \in C(I)$, $F^{\prime}(u)=f(u)$, $\varphi^{\prime}(x) \in$ $C[a, b]$，且 $R(\varphi) \subset I$，则</p>
+<script type="math/tex; mode=display">
+\int_{b}^{a} f(\varphi(x)) \varphi^{\prime}(x) \mathrm{d} x=\left.F(\varphi(x))\right|_{a} ^{b}</script><h3 id="定积分的换元积分法"><a href="#定积分的换元积分法" class="headerlink" title="定积分的换元积分法"></a>定积分的换元积分法</h3><p>设$f(x) \in C[a, b]$，而 $x=\varphi(t)$ 满足: </p>
+<ul>
+<li>$\varphi(\alpha)=a, \varphi(\beta)=b $</li>
+<li>$\varphi^{\prime}(t) \in R[\alpha, \beta]$，且 $\varphi([\alpha, \beta])=[a, b] $<br>则有<script type="math/tex; mode=display">
+\int_{a}^{b} f(x) \mathrm{d} x=\int_{\alpha}^{\beta} f(\varphi(t)) \varphi^{\prime}(t) \mathrm{d} t</script></li>
+</ul>
+<h3 id="换元常用公式（以下均为-f-x-连续）"><a href="#换元常用公式（以下均为-f-x-连续）" class="headerlink" title="换元常用公式（以下均为$f(x)$连续）"></a>换元常用公式（以下均为$f(x)$连续）</h3><ul>
+<li>若$f(x)$为偶函数, 则<script type="math/tex; mode=display">
+\int_{-a}^{a} f(x) \mathrm{d} x=2 \int_{0}^{a} f(x) \mathrm{d} x</script></li>
+<li>若$f(x)$为奇函数, 则<script type="math/tex; mode=display">
+\int_{-a}^{a} f(x) \mathrm{d} x=0</script></li>
+<li>若$f(x)$为周期$T$的函数,则<script type="math/tex; mode=display">
+\int_{a}^{a+n T} f(x) \mathrm{d} x=n \int_{0}^{T} f(x) \mathrm{d} x</script></li>
+<li>正余弦互换<script type="math/tex; mode=display">
+\int_{0}^{\frac{\pi}{2}} f(\sin x, \cos x) \mathrm{d} x=\int_{0}^{\frac{\pi}{2}} f(\cos x, \sin x) \mathrm{d} x</script></li>
+<li>正弦对称区间<script type="math/tex; mode=display">
+\int_{0}^{\pi} f(\sin x) \mathrm{d} x=2 \int_{0}^{\frac{\pi}{2}} f(\sin x) \mathrm{d} x</script></li>
+<li>$x f(\sin x)$型<script type="math/tex; mode=display">
+\int_{0}^{\pi} x f(\sin x) \mathrm{d} x=\frac{\pi}{2} \int_{0}^{\pi} f(\sin x) \mathrm{d} x</script></li>
+<li>区间再现公式<script type="math/tex; mode=display">
+\int_{a}^{b} f(x) \mathrm{d} x=\int_{a}^{b} f(a+b-x) \mathrm{d} x</script></li>
+</ul>
+<h3 id="关于循环"><a href="#关于循环" class="headerlink" title="关于循环"></a>关于循环</h3><ul>
+<li>定积分换元后循环，<strong>可以</strong>移项得到结论（变量只是工具，无关联）</li>
+<li>不定积分换元后循环<strong>不能</strong>移项得到结论（换元前后变量有关联）</li>
+<li>不定积分里，分部积分循环，<strong>可以</strong>移项得出结论（分部积分并没有引入新变量）</li>
+<li>牢记：<strong>不定积分是函数，定积分是值</strong></li>
+</ul>
+<h3 id="解简单的积分方程"><a href="#解简单的积分方程" class="headerlink" title="解简单的积分方程"></a>解简单的积分方程</h3><ul>
+<li>变限积分方程，求导解决</li>
+<li>定积分方程，令定积分=t</li>
+</ul>
+<h3 id="直角坐标系下的平面图形面积"><a href="#直角坐标系下的平面图形面积" class="headerlink" title="直角坐标系下的平面图形面积"></a>直角坐标系下的平面图形面积</h3><ul>
+<li>由直线$x=a, x=b(a&lt;b)$以及连续曲线$y=f_{1}(x), y=f_{2}(x)$围成的平面图形的面积为<script type="math/tex; mode=display">
+S=\int_{a}^{b}\left|f_{2}(x)-f_{1}(x)\right| \mathrm{d} x</script></li>
+<li>由直线$y=c, y=d(c&lt;d)$以及连续曲线$x=g_{1}(y), x=g_{2}(y)$围成的平面图形的面积为  <script type="math/tex; mode=display">
+S=\int_{c}^{d}\left|g_{2}(y)-g_{1}(y)\right| \mathrm{d} y</script></li>
+</ul>
+<h3 id="参数方程下平面图形的面积"><a href="#参数方程下平面图形的面积" class="headerlink" title="参数方程下平面图形的面积"></a>参数方程下平面图形的面积</h3><p>曲线$C$的方程为$\left\{\begin{array}{l}x=x(t) \\ y=y(t)\end{array} \quad t \in[\alpha, \beta]\right.$<br>其中$x^{\prime}(t), y(t) \in C[\alpha, \beta]$，且$x^{\prime}(t) \neq 0$<br>记$x(\alpha)=a, x(\beta)=b$，则曲线$C, x=a, x=b$及$x$轴围成的图形面积为</p>
+<script type="math/tex; mode=display">
+S=\int_{\alpha}^{\beta}\left|y(t) x^{\prime}(t)\right| \mathrm{d} t</script><p>$y^{\prime}(t) \neq 0$可类似讨论。</p>
+<h3 id="极坐标下平面图形的面积"><a href="#极坐标下平面图形的面积" class="headerlink" title="极坐标下平面图形的面积"></a>极坐标下平面图形的面积</h3><p>曲线$C$的方程为$r=r(\theta), r(\theta) \in C[\alpha, \beta]$<br>则由$\theta=\alpha, \theta=\beta$与$r=r(\theta)$所围成图形的面积为</p>
+<script type="math/tex; mode=display">
+S=\frac{1}{2} \int_{\alpha}^{\beta} r^{2}(\theta) \mathrm{d} \theta</script><h3 id="基本图形的面积"><a href="#基本图形的面积" class="headerlink" title="基本图形的面积"></a>基本图形的面积</h3><ul>
+<li>心脏线:$r=2 a(1+\cos \theta)(a&gt;0)$<script type="math/tex; mode=display">
+S=2 \cdot \frac{1}{2} \int_{0}^{\pi} a^{2}(1+\cos \theta)^{2} \mathrm{~d} \theta=\frac{3}{2} \pi a^{2}</script></li>
+<li>星形线:$x=a \cos ^{3} t, y=a \sin ^{3} t, t \in[0,2 \pi]$<script type="math/tex; mode=display">
+S=4 \cdot \int_{0}^{\frac{\pi}{2}}\left|a \sin ^{3} t\left(a \cos ^{3} t\right)^{\prime}\right| \mathrm{d} t=\cdots=\frac{3}{8} \pi a^{2}</script></li>
+<li>椭圆:$\frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}=1(a, b&gt;0)$<script type="math/tex; mode=display">
+S=\pi ab</script></li>
+<li>双扭线:$\left(x^{2}+y^{2}\right)^{2}=a^{2}\left(x^{2}-y^{2}\right)$<script type="math/tex; mode=display">
+S=4 \cdot \frac{1}{2} \int_{0}^{\frac{\pi}{4}} a^{2} \cos 2 \theta \mathrm{d} \theta=\cdots=a^{2}</script></li>
+</ul>
+<h3 id="平面曲线的弧长"><a href="#平面曲线的弧长" class="headerlink" title="平面曲线的弧长"></a>平面曲线的弧长</h3><p>（注意：并不是所有的曲线都可求长）</p>
+<ul>
+<li>直角坐标系下平面曲线的弧长 <ul>
+<li>曲线：$y=f(x)$, $x \in[a, b]$, $f^{\prime}(x) \in C[a, b]$</li>
+<li>弧微分：$\mathrm{d} s=\sqrt{1+f^{\prime 2}(x)} \mathrm{d} x $</li>
+<li>弧长：$s=\int_{a}^{b} \sqrt{1+f^{\prime 2}(x)} \mathrm{d} x $</li>
+</ul>
+</li>
+<li>参数方程下平面曲线的弧长<ul>
+<li>曲线：$x=x(t), y=y(t)$, $t \in[\alpha, \beta]$, $x^{\prime}(t)$, $y^{\prime}(x) \in C[\alpha, \beta]$</li>
+<li>弧微分：$\mathrm{d} s=\sqrt{x^{\prime 2}(t)+y^{\prime 2}(t)} \mathrm{d} t $</li>
+<li>弧长：$s=\int_{\alpha}^{\beta} \sqrt{x^{\prime 2}(t)+y^{\prime 2}(t)} \mathrm{d} t$</li>
+</ul>
+</li>
+<li>极坐标下平面曲线的弧长<ul>
+<li>曲线：$r=r(\theta), \theta \in[\alpha, \beta]$, $r^{\prime}(\theta)=C[\alpha, \beta]$</li>
+<li>弧微分：$\mathrm{d} s=\sqrt{r^{2}(\theta)+r^{\prime 2}(\theta)} \mathrm{d} \theta$</li>
+<li>弧长：$s=\int_{\alpha}^{\beta} \sqrt{r^{2}(\theta)+r^{\prime 2}(\theta)} \mathrm{d} \theta$</li>
+<li>曲线：$\theta=f(r), r\in[\alpha, \beta]$ , $f(r) \in C[\alpha, \beta]$</li>
+<li>弧长：$s=\int_{\alpha}^{\beta} \sqrt{1+r^{2}f^{\prime 2}(r)} \mathrm{d} r$</li>
+</ul>
+</li>
+</ul>
+<h3 id="基本图形的周长"><a href="#基本图形的周长" class="headerlink" title="基本图形的周长"></a>基本图形的周长</h3><ul>
+<li>星形线：$x=a \cos ^{3} t, y=a \sin ^{3} t, t \in[0,2 \pi]$<script type="math/tex; mode=display">
+C=6a</script></li>
+<li>心脏线：$r=2 a(1+\cos \theta)$<script type="math/tex; mode=display">
+C=8a</script></li>
+<li>椭圆：$\frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}=1$<script type="math/tex; mode=display">
+C=4a\int_0^{\frac{\pi}{2}}\sqrt{1-\left(1-\frac{b^2}{a^2}\right)\cos^2\theta}\mathrm{d}\theta\quad\text{椭圆积分}</script></li>
+</ul>
+<h3 id="曲率"><a href="#曲率" class="headerlink" title="曲率"></a>曲率</h3><ul>
+<li>若曲线由$y=y(x)$表示，则曲率<script type="math/tex; mode=display">
+\kappa=\frac{\left|y^{\prime \prime}(x)\right|}{\left[1+y^{\prime 2}(x)\right]^{3 / 2}}</script></li>
+<li>若曲线由参数方程$x=x(t), y=y(t)$表示，则曲率<script type="math/tex; mode=display">
+\kappa=\frac{\left|x^{\prime}(t) y^{\prime \prime}(t)-x^{\prime \prime}(t) y^{\prime}(t)\right|}{\left[x^{\prime 2}(t)+y^{\prime 2}(t)\right]^{\frac{3}{2}}} .</script></li>
+<li>若曲线由极坐标方程$r=r(\theta)$表示，则曲率<script type="math/tex; mode=display">
+\kappa=\frac{\left|r^{2}(\theta)+2 r^{\prime 2}(\theta)-r(\theta) r^{\prime \prime}(\theta)\right|}{\left[r^{2}(\theta)+\left(r^{\prime 2}(\theta)\right)\right]^{3 / 2}}</script></li>
+<li>半径为$r=\frac{1}{\kappa}$的圆是曲率圆</li>
+</ul>
+<h3 id="立体体积的微元法"><a href="#立体体积的微元法" class="headerlink" title="立体体积的微元法"></a>立体体积的微元法</h3><p>设立体位于平面$x=a, x=b$之间$(a&lt;b)$,$\forall x \in[a, b]$, 用垂直于$x$轴的平面截立体，截面面积为$A(x) \in C[a, b]$<br>体积微元$\mathrm{d}V=A(x) \mathrm{d} x$, 故体积$V=\int_{a}^{b} A(x) \mathrm{d} x$<br>先求出截面面积，积分即可得到立体的体积。</p>
+<h3 id="旋转体体积"><a href="#旋转体体积" class="headerlink" title="旋转体体积"></a>旋转体体积</h3><ul>
+<li><p>薄片法<br>旋转体由连续曲线$y= f (x)$,$x=a$,$x=b(a&lt;b)$与$x$轴围成图形绕$x$轴旋转一周形成。</p>
+<ul>
+<li>截面面积函数为$A(x)=\pi f^2(x)$</li>
+<li>体积微元$\mathrm{d}V =\pi f^2(x)\mathrm{d}x$</li>
+<li>旋转体体积$V=\pi\int_a^b f^2(x)\mathrm{d}x$</li>
+</ul>
+<p>由连续函数$x= g(y)$,$y= c$,$y=d(c&lt;d)$与$y$轴围成的图形绕$y$轴旋转得到的旋转体的体积为</p>
+<script type="math/tex; mode=display">
+V=\pi\int_c^d g^2(y)\mathrm{d}y</script><p>若连续函数由参数形式给出:$x = x(t)$,$y = y(t)$, $t\in [\alpha,\beta]$, $y’(t) , x’(t)\in C[\alpha,\beta]$，绕$x$轴旋转，则旋转体体积为</p>
+<script type="math/tex; mode=display">
+V=\pi\int_\alpha^\beta |y^2(t)x'(t)|\mathrm{d}t</script></li>
+<li><p>薄壳法<br>由连续曲线$y = f(x)$,$x = a$,$x = b(a&lt;b)$与$x$轴围成图形，绕$y$轴旋转一周形成旋转体。</p>
+<ul>
+<li>体积微元：$\mathrm{d} V=2 \pi x f(x) \mathrm{d} x$</li>
+<li>立体的体积：$V=2 \pi \int_{a}^{b} x f(x) \mathrm{d} x$</li>
+</ul>
+</li>
+</ul>
+<h3 id="旋转曲面的侧面积"><a href="#旋转曲面的侧面积" class="headerlink" title="旋转曲面的侧面积"></a>旋转曲面的侧面积</h3><p>微元法，用圆台侧面积近似表示旋转曲面的侧面积微元。</p>
+<ul>
+<li>直角坐标系下旋转曲面的侧面积<br>设非负光滑曲线$y=f(x)$,$x \in[a, b]$，绕$x$轴旋转一周形成的旋转曲面的面积为<script type="math/tex; mode=display">
+S=2 \pi \int_{a}^{b} f(x) \sqrt{1+f^{\prime 2}(x)} \mathrm{d} x</script></li>
+<li>参数方程下旋转曲面的侧面积<br>非负光滑曲线为$C: x=x(t)$,$y=y(t)$,$t \in   [\alpha, \beta]$，则曲线绕$x$轴旋转形成的旋转体侧面积为<script type="math/tex; mode=display">
+S=2 \pi \int_{\alpha}^{\beta} y(t) \sqrt{x^{\prime 2}(t)+y^{\prime 2}(t)} \mathrm{d} t</script></li>
+<li>极坐标系下旋转曲面的侧面积<br>非负光滑曲线为$C: r=r(\theta)$,$ \theta \in[\alpha, \beta]$，则曲线绕极轴旋转形成的旋转体侧面积为<script type="math/tex; mode=display">
+S=2 \pi \int_{\alpha}^{\beta} r(\theta) \sin \theta \sqrt{r^{2}(\theta)+r^{\prime 2}(\theta)} d \theta</script></li>
+</ul>
+<p><strong>注意</strong>区分旋转面的<strong>侧</strong>面积和旋转体的<strong>表</strong>面积。</p>
+<h3 id="反常积分（广义积分）"><a href="#反常积分（广义积分）" class="headerlink" title="反常积分（广义积分）"></a>反常积分（广义积分）</h3><ul>
+<li>无穷积分：积分区间无限的情况</li>
+<li>瑕积分：被积函数无界的情况</li>
+<li>这两种积分统称为反常积分，广义积分</li>
+<li>之前学习的定积分称为常义积分</li>
+</ul>
+<h3 id="无穷积分"><a href="#无穷积分" class="headerlink" title="无穷积分"></a>无穷积分</h3><ul>
+<li>定义<br>设$f(x), x \in[a,+\infty)$，若$\forall b&gt;a$,$f(x) \in R[a, b]$，则称形式积分$\int_{a}^{+\infty} f(x) \mathrm{d} x$为$f(x)$在无穷区间$[a,+\infty)$上的反常积分（无穷积分）。</li>
+<li><p>敛散性定义<br>令$F(b)=\int_{a}^{b} f(x) \mathrm{d} x$。若极限$\lim_{b \rightarrow+\infty} F(b)$存在，收敛到$I$（有限存在，非无穷），则称反常积分$\int_{a}^{+\infty} f(x) \mathrm{d} x$收敛，且定义其值为</p>
+<script type="math/tex; mode=display">
+\int_{a}^{+\infty} f(x) \mathrm{d} x=\lim _{b \rightarrow+\infty} \int_{a}^{b} f(x) \mathrm{d} x=I .</script><p>否则称$f(x)$在$[a,+\infty)$上的无穷积分发散。</p>
+</li>
+<li><p>几何意义<br>函数$f(x) \geqslant 0$,$\int_{a}^{+\infty} f(x) \mathrm{d} x$收敛 表示由曲线$y=f(x)$,直线$x=a$和$x$轴所围成的向右无限伸展的图形面积有限。</p>
+</li>
+<li><p>敛散性判断定理<br>设$f(x) \in C[a,+\infty)$,$F(x)$是它在$[a,+\infty)$上的一个原函数，由N-L公式，</p>
+<script type="math/tex; mode=display">
+\int_{a}^{+\infty} f(x) \mathrm{d} x=\left.\lim _{b \rightarrow+\infty} F(x)\right|_{a} ^{b}=\lim _{b \rightarrow+\infty} F(b)-F(a)</script><p>故无穷积分$\int_{a}^{+\infty} f(x) \mathrm{d} x$的敛散性等价于函数极限$\lim_{b \rightarrow+\infty} F(b)$的敛散性。</p>
+</li>
+<li><p>双向无穷积分敛散性<br>设$f(x), x \in \mathbb{R}$，若$\exists a \in \mathbb{R}$，无穷积分$\int_{a}^{+\infty} f(x) \mathrm{d} x$,$\int_{-\infty}^{a} f(x) \mathrm{d} x$均收敛，则称无穷积分收敛，且定义其值为</p>
+<script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty} f(x) \mathrm{d} x=\int_{-\infty}^{a} f(x) \mathrm{d} x+\int_{a}^{+\infty} f(x) \mathrm{d} x</script><p>否则称无穷积分$\int_{-\infty}^{+\infty} f(x) \mathrm{d} x$发散。</p>
+</li>
+</ul>
+<h3 id="瑕积分"><a href="#瑕积分" class="headerlink" title="瑕积分"></a>瑕积分</h3><ul>
+<li>定义<br>若$f(x)$在$a$点的任一邻域内无界，则称$a$点 为$f(x)$的奇点或者瑕点。<br>设$f(x), x \in(a, b]$，若$a$是$f(x)$的一个瑕点而在任一区间$\forall \epsilon&gt;0$,$f(x) \in R[a+\epsilon, b]$，则称形式积分$\int_{a}^{b} f(x) \mathrm{d} x$为$f(x)$在$(a, b]$上的反常积分，又称为瑕积分，$a$为瑕点。<br>类似可定义瑕积分$\int_{a}^{b} f(x) \mathrm{d} x$，$x = b$为瑕点。</li>
+<li>敛散性<br>若极限$\lim_{\epsilon \rightarrow 0^{+}} \int_{a+\epsilon}^{b} f(x) \mathrm{d} x$(有限) 存在，称瑕积分$\int_{a}^{b} f(x) \mathrm{d} x$收敛，且积分值为<script type="math/tex; mode=display">
+\int_{a}^{b} f(x) \mathrm{d} x=\lim _{\epsilon \rightarrow 0^{+}} \int_{a+\epsilon}^{b} f(x) \mathrm{d} x .</script>否则称瑕积分$\int_{a}^{b} f(x) \mathrm{d} x$发散。</li>
+<li>区间内瑕点<br>设$c \in[a, b]$是$f(x)$在$[a, b]$区间上唯一的瑕点。若瑕积分$\int_{a}^{c} f(x) \mathrm{d} x$,$\int_{c}^{b} f(x) \mathrm{d} x$均收敛，则称瑕积分$\int_{a}^{b} f(x) \mathrm{d} x$收敛，且定义其值为$\int_{a}^{b} f(x) \mathrm{d} x=\int_{a}^{c} f(x) \mathrm{d} x+\int_{c}^{b} f(x) \mathrm{d} x$</li>
+</ul>
+<h3 id="常见敛散性判断"><a href="#常见敛散性判断" class="headerlink" title="常见敛散性判断"></a>常见敛散性判断</h3><ul>
+<li>无穷积分$\int_{1}^{+\infty} \frac{1}{x^{p}} \mathrm{d} x$<ul>
+<li>$p&gt;1$时收敛于$\frac{1}{p-1}$</li>
+<li>$p \leqslant 1$时发散</li>
+</ul>
+</li>
+<li>瑕积分$\int_{0}^{1} \frac{\mathrm{d} x}{x^{p}}$,$\int_{a}^{b} \frac{\mathrm{d} x}{(x-a)^{p}}$,$\int_{a}^{b} \frac{\mathrm{d} x}{(x-b)^{p}}$ $(p \in \mathbb{R})$<ul>
+<li>$p&lt;1$时收敛</li>
+<li>$p \geqslant 1$时发散</li>
+</ul>
+</li>
+</ul>
+<h3 id="无穷积分与瑕积分的互相转化"><a href="#无穷积分与瑕积分的互相转化" class="headerlink" title="无穷积分与瑕积分的互相转化"></a>无穷积分与瑕积分的互相转化</h3><ul>
+<li><p>对瑕积分$\int_{a}^{b} f(x) \mathrm{d} x$，$x=a$为瑕点，令</p>
+<script type="math/tex; mode=display">
+x=a+\frac{1}{y}\left(y=\frac{1}{x-a}\right)</script><p>瑕积分可化为无穷积分</p>
+</li>
+<li><p>对无穷积分$\int_{a}^{+\infty} f(x) \mathrm{d} x$，令</p>
+<script type="math/tex; mode=display">
+x=\frac{a}{y}</script><p>无穷积分可化为瑕积分</p>
+</li>
+</ul>
+<h3 id="Heine归并定理"><a href="#Heine归并定理" class="headerlink" title="Heine归并定理"></a>Heine归并定理</h3><p>无穷积分$\int_{a}^{+\infty} f(x) \mathrm{d} x$收敛的充要条件是</p>
+<ul>
+<li><script type="math/tex; mode=display">
+\forall\left\{A_{n}\right\} \subset[a,+\infty), \lim _{n \rightarrow \infty} A_{n}=+\infty</script></li>
+<li>极限$\lim_{n \rightarrow \infty} \int_{a}^{A_{n}} f(x) \mathrm{d} x$均存在且相等</li>
+</ul>
+<p>逆否命题判别发散。</p>
+<h3 id="非负函数无穷积分的判敛法"><a href="#非负函数无穷积分的判敛法" class="headerlink" title="非负函数无穷积分的判敛法"></a>非负函数无穷积分的判敛法</h3><p>设$f(x)$和$g(x)$非负，均在任意有界区间上可积。<br>(1)$\int_{a}^{+\infty} f(x) \mathrm{d} x$收敛的充要条件是$F(A)=\int_{a}^{A} f(x) \mathrm{d} x$在$[a,+\infty)$上有上界<br>(2) 比较法：若$0 \leqslant f(x) \leqslant g(x)$，则：</p>
+<ul>
+<li>$\int_{a}^{+\infty} g(x) \mathrm{d} x$收敛时，$\int_{a}^{+\infty} f(x) \mathrm{d} x$也收敛;</li>
+<li>$\int_{a}^{+\infty} f(x) \mathrm{d} x$发散时，$\int_{a}^{+\infty} g(x) \mathrm{d} x$也发散。<br>(3) 以$p$积分为比较函数，可以得到$p$判别法。</li>
+</ul>
+<h3 id="一般函数无穷积分判敛法：AD判别法"><a href="#一般函数无穷积分判敛法：AD判别法" class="headerlink" title="一般函数无穷积分判敛法：AD判别法"></a>一般函数无穷积分判敛法：AD判别法</h3><ul>
+<li>Abel判别法：设$g(x)$在$[a,+\infty)$上单调有界，$\int_{a}^{+\infty} f(x) \mathrm{d} x$收敛，则$\int_{a}^{+\infty} f(x) g(x) \mathrm{d} x$收敛。</li>
+<li>Dirichlet判别法：设$F(A)=\int_{a}^{A} f(x) \mathrm{d} x$在$[a,+\infty)$上有界，$g(x)$在$[a,+\infty)$上单调，且$\lim_{x \rightarrow+\infty} g(x)=0$，则$\int_{a}^{+\infty} f(x) g(x) \mathrm{d} x$收敛。</li>
+</ul>
+<h3 id="无穷积分的函数性质"><a href="#无穷积分的函数性质" class="headerlink" title="无穷积分的函数性质"></a>无穷积分的函数性质</h3><ul>
+<li>$\lim_{x \rightarrow+\infty} f(x)=0 \nRightarrow \int_{a}^{+\infty} f(x) \mathrm{d} x$收敛</li>
+<li>$\lim_{x \rightarrow+\infty} f(x)=c \neq 0$，则$\int_{a}^{+\infty} f(x) \mathrm{d} x$发散</li>
+<li>无穷积分收敛$\nRightarrow \lim_{x \rightarrow+\infty} f(x)=0 $</li>
+<li>可以构造出$f(x)$在$[a,+\infty)$上恒正连续 且无界，而$\int_{a}^{+\infty} f(x) \mathrm{d} x$收敛的例子。</li>
+<li>$\int_{a}^{+\infty} f(x) \mathrm{d} x$收敛。若$\lim_{x \rightarrow+\infty} f(x)$存在，或者$f(x)$在$[a,+\infty)$上单调，则$\lim_{x \rightarrow+\infty} f(x)=0$</li>
+</ul>
+<h2 id="第六章-微分方程"><a href="#第六章-微分方程" class="headerlink" title="第六章 微分方程"></a>第六章 微分方程</h2><h3 id="微分方程相关定义"><a href="#微分方程相关定义" class="headerlink" title="微分方程相关定义"></a>微分方程相关定义</h3><ul>
+<li>微分方程，微分方程的阶数</li>
+<li>微分方程的解，通解，特解</li>
+<li>微分方程的定解条件，定解问题</li>
+<li>初值条件(Cauchy条件)，初值问题(Cauchy问题)</li>
+<li>一阶微分方程的初值问题<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+y^{\prime}=f(x, y) \\
+\left.y\right|_{x=x_{0}}=y_{0}
+\end{array}\right.</script></li>
+<li>二阶微分方程的初值问题<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+y^{\prime \prime}=f\left(x, y, y^{\prime}\right) \\
+\left.y\right|_{x=x_{0}}=y_{0} \\
+\left.y^{\prime}\right|_{x=x_{0}}=y_{1}
+\end{array}\right.</script></li>
+</ul>
+<h3 id="一阶微分方程"><a href="#一阶微分方程" class="headerlink" title="一阶微分方程"></a>一阶微分方程</h3><p>一阶微分方程的一般形式：$F\left(x, y, y^{\prime}\right)=0$<br>主要讨论$y^{\prime}=f(x, y)$形式的一阶微分方程。<br>有时也写成$P(x, y) \mathrm{d} x+Q(x, y) \mathrm{d} y=0$的形式</p>
+<h3 id="可分离变量方程"><a href="#可分离变量方程" class="headerlink" title="可分离变量方程"></a>可分离变量方程</h3><ul>
+<li>形式：$\frac{\mathrm{d} y}{\mathrm{d} x}=\varphi(x) \psi(y)$</li>
+<li>解法：化为$\frac{1}{\psi(y)} \mathrm{d} y=\varphi(x) \mathrm{d} x$后两边积分</li>
+<li>注意：$\psi(y)=0$ 得到的 $y=Const$ 也是方程的解</li>
+<li>注意：某些情况下积分后绝对值可以借助任意常数拿掉</li>
+</ul>
+<p>有些方程经过变换可化为可分离变量的方程。<br>如$\frac{\mathrm{d} y}{\mathrm{d} x}=f(a x+b y+c), \quad(b \neq 0)$<br>令$a x+b y+c=u(x) \Longrightarrow \frac{\mathrm{d} u}{\mathrm{d} x}=b f(u)+a$<br>分离变量，变量回代，注意隐式解, 特解;</p>
+<h3 id="齐次微分方程"><a href="#齐次微分方程" class="headerlink" title="齐次微分方程"></a>齐次微分方程</h3><ul>
+<li>判定：<br>形如 $\frac{\mathrm{d} y}{\mathrm{d} x}=f\left(\frac{y}{x}\right)$ 的方程称为齐次微分方程。<br>一般地，$\frac{\mathrm{d} y}{\mathrm{d} x}=\phi(x, y)$，如果 $\phi(x, y)$ 满足 $\phi(t x, t y)=\phi(x, y)$ ，则 $\phi(x, y)$ 一定可以化为 $f\left(\frac{y}{x}\right)$ 形式。</li>
+<li>求解：<br>$\frac{\mathrm{d} y}{\mathrm{d} x}=f\left(\frac{y}{x}\right)$. 令$\frac{y}{x}=u(x) $ 即 $y=x u(x)$ $\Longrightarrow$ $\frac{\mathrm{d} u}{f(u)-u}=\frac{\mathrm{d} x}{x}$</li>
+</ul>
+<h3 id="上下一次分式型"><a href="#上下一次分式型" class="headerlink" title="上下一次分式型"></a>上下一次分式型</h3><p> 形如$\frac{\mathrm{d} y}{\mathrm{d} x}=f\left(\frac{a_{1} x+b_{1} y+c_{1}}{a_{2} x+b_{2} y+c_{2}}\right)$ $\left(a_{1}: a_{2} \neq b_{1}: b_{2}\right)$的方程可化为齐次方程。</p>
+<ul>
+<li>$c_{1}=c_{2}=0$，即为齐次方程</li>
+<li>$c_{1}, c_{2}$  不同时为 $0$ , 不是齐次方程<br>令 $X=x-x_{0}, Y=y-y_{0}$ , 其中 $x_{0}, y_{0}$ 满足<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+a_{1} x+b_{1} y+c_{1}=0 \\
+a_{2} x+b_{2} y+c_{2}=0
+\end{array}\right.</script>则原方程可以化为 $\frac{\mathrm{d} y}{\mathrm{d} x}=f\left(\frac{a_{1} X+b_{1} Y}{a_{2} X+b_{2} Y}\right)$，为齐次方程。</li>
+</ul>
+<h3 id="一阶线性微分方程"><a href="#一阶线性微分方程" class="headerlink" title="一阶线性微分方程"></a>一阶线性微分方程</h3><p>一阶线性(linear)微分方程：$y^{\prime}+P(x) y=Q(x)$，其中 $P(x), Q(x)$ 连续。$Q(x)$ 称为非齐次项或自由项。</p>
+<ul>
+<li>$Q(x)=0$ , 称为一阶线性齐次(homogeneous)微分方程 ($1-\mathrm{LH}$)<br>可分离变量，方程的解为<script type="math/tex; mode=display">
+y=C e^{-\int P(x) \mathrm{d} x}\left(\int P(x) \mathrm{d} x\right. \text{表示一个原函数}  )</script></li>
+<li>$Q(x) \neq 0$,$y^{\prime}+P(x) y=Q(x)$ 称为一阶线性非齐次(non-homogeneous)微分方程($1-\mathrm{LNH}$)<br>通常用常数变易法求解：<br>已知它对应的齐次方程 $y^{\prime}+P(x) y=0$ 的通解为$y=C e^{-\int P(x) \mathrm{d} x}$，设$y=C(x) e^{-\int P(x) \mathrm{d} x}$为$y^{\prime}+P(x) y=Q(x)$的解， 则可推出<script type="math/tex; mode=display">
+\begin{aligned}
+y &=e^{-\int P(x) \mathrm{d} x}\left(\int Q(x) e^{\int P(x) \mathrm{d} x} \mathrm{d} x+C\right) \\
+&=C e^{-\int P(x) \mathrm{d} x}+e^{-\int P(x) \mathrm{d} x} \cdot \int Q(x) e^{\int P(x) \mathrm{d} x}
+\end{aligned}</script>由对应的一阶线性齐次微分方程的通解和一个 线性非齐次微分方程的特解组成。</li>
+</ul>
+<h3 id="Bernoulli方程"><a href="#Bernoulli方程" class="headerlink" title="Bernoulli方程"></a>Bernoulli方程</h3><p>形如</p>
+<script type="math/tex; mode=display">
+y^{\prime}+P(x) y=Q(x) y^{\alpha}, \quad(\alpha \neq 0,1)</script><p>的方程称为Bernoulli方程。<br>解法：令 $z=y^{1-\alpha}$，Bernoulli方程可化为</p>
+<script type="math/tex; mode=display">
+z^{\prime}+(1-\alpha) P(x) z=(1-\alpha) Q(x) .</script><p>（一阶线性非齐次微分方程）<br>$y=0$亦为原方程的解，不要遗漏!</p>
+<h3 id="可降阶的高阶微分方程"><a href="#可降阶的高阶微分方程" class="headerlink" title="可降阶的高阶微分方程"></a>可降阶的高阶微分方程</h3><ul>
+<li>$y^{(n)}=f(x)$ 型方程<br>每积分一次，就降阶一次。逐次积分得出通解</li>
+<li>$y^{\prime \prime}=f\left(x, y^{\prime}\right)$ 型方程（含 $y^{\prime \prime}, y^{\prime}$ 项, 不显含 $y$ 项）<br>令 $\frac{\mathrm{d} y}{\mathrm{d} x}=p(x) \Longrightarrow \frac{\mathrm{d} p}{\mathrm{d} x}=f(x, p)$ 降阶</li>
+<li>$y^{\prime \prime}=f\left(y, y^{\prime}\right)$ 型方程（不显含$x$）<br>令 $\frac{\mathrm{d} y}{\mathrm{d} x}=p(y) \Longrightarrow p(y) \cdot \frac{\mathrm{d} p}{\mathrm{d} y}=f(y, p)$ 降阶</li>
+</ul>
+<h3 id="线性微分方程解的结构"><a href="#线性微分方程解的结构" class="headerlink" title="线性微分方程解的结构"></a>线性微分方程解的结构</h3><p>$n$ 阶线性微分方程的标准形式为</p>
+<script type="math/tex; mode=display">
+y^{(n)}+p_{1}(x) y^{(n-1)}+\cdots+p_{n-1}(x) y^{\prime}+p_{n}(x) y=f(x)</script><p>其中 $p_{1}(x), \cdots, p_{n}(x), f(x)$ 为已知的连续函数，$f(x)$称为自由项，或非齐次项。</p>
+<ul>
+<li>$f(x) \equiv 0$: $n$ 阶线性齐次微分方程  ($n-\mathrm{LH}$)</li>
+<li>$f(x)$不恒等于$0$: $n$ 阶线性非齐次微分方程  ($n-\mathrm{LNH}$)</li>
+</ul>
+<h3 id="线性微分方程解的叠加原理"><a href="#线性微分方程解的叠加原理" class="headerlink" title="线性微分方程解的叠加原理"></a>线性微分方程解的叠加原理</h3><p>如果 $y_{1}(x), y_{2}(x)$ 分别是方程</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+y^{(n)}+p_{1}(x) y^{(n-1)}+\cdots+p_{n}(x) y=f_{1}(x) \\
+y^{(n)}+p_{1}(x) y^{(n-1)}+\cdots+p_{n}(x) y=f_{2}(x)
+\end{array}</script><p>的解，则 $c_{1} y_{1}(x)+c_{2} y_{2}(x)$ 是方程</p>
+<script type="math/tex; mode=display">
+y^{(n)}+p_{1}(x) y^{(n-1)}+\cdots+p_{n}(x) y=c_{1} f_{1}(x)+c_{2} f_{2}(x)</script><p>的解（$c_{1}, c_{2}$为任意常数）</p>
+<ul>
+<li>推论 1： 如果 $y_{1}(x), y_{2}(x)$ 是线性齐次方程的解, 则 $c_{1} y_{1}(x)+c_{2} y_{2}(x)$（$c_{1}, c_{2}$是任意常数）也是该线性齐次方程的解($\mathrm{H}+\mathrm{H}=\mathrm{H}$)</li>
+<li>推论 2： 线性非齐次方程的解加上相应的线性齐次方程的解，依然是该线性非齐次方程的解 ($\mathrm{N}+\mathrm{H}=\mathrm{N}$)</li>
+<li>推论 3： 若 $y_{1}, y_{2}$ 为线性非齐次方程的两个解，则 $y_{1}-y_{2}$ 是相应的线性齐次微分方程的解 ($\mathrm{N}-\mathrm{N}=\mathrm{H}$) </li>
+</ul>
+<h3 id="二阶线性齐次微分方程解的结构"><a href="#二阶线性齐次微分方程解的结构" class="headerlink" title="二阶线性齐次微分方程解的结构"></a>二阶线性齐次微分方程解的结构</h3><p>二阶线性齐次微分方程标准形式</p>
+<script type="math/tex; mode=display">
+y^{\prime \prime}+p(x) y^{\prime}+q(x) y=0</script><p>其中 $p(x), q(x)$ 连续。<br>显然 $y=0$ 是方程的解，称为平凡解。<br>除平凡解外，其他解称为非平凡解。</p>
+<p>由叠加原理，$y_{1}(x), y_{2}(x)$ 是方程$(\mathrm{HL})$ 的解，则 $c_{1} y_{1}(x)+c_{2} y_{2}(x)$ 也是 $(\mathrm{HL})$ 的解($c_{1}, c_{2}$是任意常数) </p>
+<ul>
+<li>定理<br>若 $y_{1}(x), y_{2}(x)$ 是方程$(\mathrm{HL})$的两个线性无关的特解，则<script type="math/tex; mode=display">
+c_{1} y_{1}(x)+c_{2} y_{2}(x)  (c_{1} , c_2  \text {为任意常数})</script>是方程 $(\mathrm{HL})$ 的通解，给出方程所有的解。<br>$y_{1}(x), y_{2}(x)$ 称为方程的基本解组。</li>
+</ul>
+<h3 id="Liouville公式"><a href="#Liouville公式" class="headerlink" title="Liouville公式"></a>Liouville公式</h3><p>若知道一个非零特解，可用常数变易法求出另一线性无关解<br>定理3 (Liouville公式)：若 $y_{1}(x)$ 是$(\mathrm{HL})$的非零解，那么</p>
+<script type="math/tex; mode=display">
+y_{2}(x)=y_{1}(x) \int \frac{1}{y_{1}^{2}(x)} e^{-\int p(x) \mathrm{d} x} \mathrm{~d} x</script><p>是方程$(\mathrm{HL})$的另一解，且与 $y_{1}(x)$ 线性无关。</p>
+<h3 id="二阶线性非齐次微分方程解的结构"><a href="#二阶线性非齐次微分方程解的结构" class="headerlink" title="二阶线性非齐次微分方程解的结构"></a>二阶线性非齐次微分方程解的结构</h3><p>二阶线性非齐次方程的标准形式为</p>
+<script type="math/tex; mode=display">
+y^{\prime \prime}+p(x) y^{\prime}+q(x) y=f(x) \quad (\mathrm{NHL})</script><p>对应的线性齐次方程为</p>
+<script type="math/tex; mode=display">
+y^{\prime \prime}+p(x) y^{\prime}+q(x) y=0 \quad (\mathrm{HL})</script><p>定理3 (线性非齐次方程解的结构定理):<br>设 $y^{\star}(x)$ 是方程 $(\mathrm{NHL})$ 的解，$\bar{y}=C_{1} y_{1}(x)+C_{2} y_{2}(x)$ 是对应的方程 $(\mathrm{HL})$ 的通解，则 $y=y^{*}(x)+\bar{y}$ 是方程 $(\mathrm{NHL})$ 的通解。</p>
+<h3 id="如何求方程的一个特解"><a href="#如何求方程的一个特解" class="headerlink" title="如何求方程的一个特解"></a>如何求方程的一个特解</h3><ul>
+<li>$(\mathrm{HL})$方程<br>常用的方法：观察法</li>
+<li><p>$(\mathrm{NHL})$方程<br>常用的方法：观察法、叠加法、常数变易法、待定系数法</p>
+</li>
+<li><p>观察法：简单形式方程常用观察法找出特解<br>$x^{m}, e^{\alpha x}, \sin m x, \cos m x$ 等</p>
+</li>
+<li>叠加法：利用线性方程解的叠加原理</li>
+<li>常数变易法:<br>所谓常数变易法就是先求出对应的线性齐次方程的通解，然后将通解中的任意常数换成待定的函数，代入方程，确定此函数，从而得到线性非齐次方程的解。<br>（上面是废话）<br>一般的解法:<br>若$(\mathrm{HL})$ 的基本解组为$y_{1}(x), y_{2}(x)$，则设 $(\mathrm{NHL})$ 的特解为<script type="math/tex; mode=display">
+y^{*}=c_{1}(x) y_{1}(x)+c_{2}(x) y_{2}(x)</script><script type="math/tex; mode=display">
+\text{联立} \left\{\begin{array}{l}c_{1}^{\prime}(x) y_{1}(x)+c_{2}^{\prime}(x) y_{2}(x)=0 \\ c_{1}^{\prime}(x) y_{1}^{\prime}(x)+c_{2}^{\prime}(x) y_{2}^{\prime}(x)=f(x)\end{array}\right.</script>解出 $c_{1}^{\prime}(x), c_{2}^{\prime}(x)$，从而求出 $c_{1}(x), c_{2}(x)$，得到方程 $(\mathrm{NHL})$ 的解。</li>
+</ul>
+<h3 id="微分方程解法总结"><a href="#微分方程解法总结" class="headerlink" title="微分方程解法总结"></a>微分方程解法总结</h3><ul>
+<li><p>简单一阶线性方程</p>
+<script type="math/tex; mode=display">
+\begin{array}{|l|l|}
+\hline 类型 & 解法 \\
+\hline \frac{\mathrm{d} y}{\mathrm{d} x}=\varphi(x) \psi(y) & 分离变量 \\
+\hline \frac{\mathrm{d} y}{\mathrm{d} x}=f(a x+b y+c) & \begin{array}{l} 令ax+by+c=u(x) \\ \Longrightarrow \frac{\mathrm{d} u}{\mathrm{d} x}=b f(u)+a ，分离变量\end{array} \\
+\hline \frac{\mathrm{d} y}{\mathrm{d} x}=f\left(\frac{y}{x}\right) & \begin{array}{l} 令\frac{y}{x}=u(x)  即 y=x u(x) \\ \Longrightarrow \frac{\mathrm{d} u}{f(u)-u}=\frac{\mathrm{d} x}{x}\end{array} \\
+\hline \begin{array}{l}\frac{\mathrm{d} y}{\mathrm{d} x}=f\left(\frac{a_{1} x+b_{1} y+c_{1}}{a_{2} x+b_{2} y+c_{2}}\right)\\ \left(a_{1}: a_{2} \neq b_{1}: b_{2}\right)\end{array} & \begin{array}{l} 令X=x-x_{0}, Y=y-y_{0}, \\其中x_{0}, y_{0}满足 \\\left\{\begin{array}{l}
+a_{1} x_0+b_{1} y_0+c_{1}=0 \\
+a_{2} x_0+b_{2} y_0+c_{2}=0
+\end{array}\right.\\则原方程可以化为齐次方程 \end{array} \\
+\hline
+\end{array}</script></li>
+<li><p>一阶线性方程</p>
+<script type="math/tex; mode=display">
+\begin{array}{|l|l|}
+\hline 类型 & 解法 \\
+\hline y^{\prime}+P(x) y=0 & y=C e^{-\int P(x) \mathrm{d} x} \\
+\hline y^{\prime}+P(x) y=Q(x) & \begin{aligned}
+y &=e^{-\int P(x) \mathrm{d} x}\left(\int Q(x) e^{\int P(x) \mathrm{d} x} \mathrm{d} x+C\right) \\
+&=C e^{-\int P(x) \mathrm{d} x}+e^{-\int P(x) \mathrm{d} x} \cdot \int Q(x) e^{\int P(x) \mathrm{d} x}\mathrm{d} x \\
+&\text{（上面的不定积分都是指一个原函数）}
+\end{aligned} \\
+\hline y^{\prime}+P(x) y=Q(x) y^{\alpha} & \begin{array}{l}y=0是一解\\令z=y^{1-\alpha},Bernoulli方程可化为 \\z^{\prime}+(1-\alpha) P(x) z=(1-\alpha) Q(x) \end{array}\\
+\hline
+\end{array}</script></li>
+<li><p>简单高阶线性方程</p>
+<script type="math/tex; mode=display">
+\begin{array}{|l|l|}
+\hline 类型 & 解法 \\
+\hline y^{(n)}=f(x) & 积分n次 \\
+\hline y^{\prime \prime}=f\left(x, y^{\prime}\right) & 令\frac{\mathrm{d} y}{\mathrm{d} x}=p(x) \Longrightarrow \frac{\mathrm{d} p}{\mathrm{d} x}=f(x, p) 降阶\\
+\hline y^{\prime \prime}=f\left(y, y^{\prime}\right) & 令\frac{\mathrm{d} y}{\mathrm{d} x}=p(y) \Longrightarrow p(y) \cdot \frac{\mathrm{d} p}{\mathrm{d} y}=f(y, p)降阶\\
+\hline
+\end{array}</script></li>
+<li><p>二阶线性微分方程</p>
+<ul>
+<li>先求解$(\mathrm{HL})$方程<br>$y=0$是解<br>常用的方法：观察法</li>
+<li>再求解$(\mathrm{NHL})$方程<br>常用的方法：观察法、叠加法、常数变易法、待定系数法</li>
+</ul>
+</li>
+</ul>
+<h3 id="二阶常系数线性齐次微分方程"><a href="#二阶常系数线性齐次微分方程" class="headerlink" title="二阶常系数线性齐次微分方程"></a>二阶常系数线性齐次微分方程</h3><p>二阶常系数线性齐次微分方程的标准形式：</p>
+<script type="math/tex; mode=display">
+y''+py'+qy=0\text{（其中}p, q\text{为实数）}</script><p>令$y = e^{rx}$，得到</p>
+<script type="math/tex; mode=display">
+r^2+pr+q=0</script><p>称为特征方程，它的两个根称为特征根。</p>
+<script type="math/tex; mode=display">
+r_{1,2}=\frac{-p \pm \sqrt{p^{2}-4 q}}{2} .</script><ul>
+<li>通解<script type="math/tex; mode=display">
+\begin{array}{|c|c|}
+\hline \text { 特征根情况 } & \text { 通解形式 } \\
+\hline \text { 相异实根 } r_{1}, r_{2} & c_{1} e^{r_{1} x}+c_{2} e^{r_{2} x} \\
+\hline \text { 相同实根 } r & e^{r x}\left(c_{1}+c_{2} x\right) \\
+\hline \text { 共轭复根 } \alpha \pm i \beta & e^{\alpha x}\left(c_{1} \cos \beta x+c_{2} \sin \beta x\right) \\
+\hline
+\end{array}</script></li>
+</ul>
+<h3 id="n阶常系数线性齐次微分方程"><a href="#n阶常系数线性齐次微分方程" class="headerlink" title="n阶常系数线性齐次微分方程"></a>n阶常系数线性齐次微分方程</h3><script type="math/tex; mode=display">
+y^{(n)}+p_{1} y^{(n-1)}+\cdots+p_{n-1} y^{\prime}+p_{n} y=0</script><p>其中 $p_{1}, \cdots, p_{n}$ 是实数。<br>令$y=e^{r x}$，代入上式，得</p>
+<script type="math/tex; mode=display">
+r^{n}+p_{1} r^{n-1}+\cdots p_{n-1} r+p_{n}=0</script><p>称为上面方程的特征方程。<br>根据特征根的情况，可以写出对应微分方程的解</p>
+<ul>
+<li><p>通解：</p>
+<script type="math/tex; mode=display">
+\begin{array}{|c|c|}
+\hline \text { 特征根 } & \text { 方程的通解 } \\
+\hline \text { 单实根 } r & c e^{r x} \\
+\hline k \text { 重实根 } r & e^{r x}\left(c_{1}+c_{2} x+\cdots c_{k} x^{k-1}\right) \\
+\hline \begin{array}{c}\alpha \pm i \beta \\1 \text {重} \end{array}  & e^{\alpha x}\left(c_{1} \cos \beta x+c_{2} \sin \beta x\right) \\
+\hline \begin{array}{c}\alpha \pm i \beta \\k \text {重} \end{array} & \begin{array}{l}
+e^{\alpha x}\left[c_{1}+c_{2} x+\cdots c_{k} x^{k-1}\right] \cos \beta x \\
++e^{\alpha x}\left[c_{k+1}+c_{k+2} x+\cdots c_{2 k} x^{k-1}\right] \sin \beta x
+\end{array} \\
+\hline
+\end{array}</script></li>
+<li><p>留意常系数线性齐次微分方程的解的特点，可由解反推出方程。</p>
+</li>
+</ul>
+<h3 id="二阶常系数线性非齐次微分方程"><a href="#二阶常系数线性非齐次微分方程" class="headerlink" title="二阶常系数线性非齐次微分方程"></a>二阶常系数线性非齐次微分方程</h3><ul>
+<li>一般形式<script type="math/tex; mode=display">
+y''+py'+qy=f(x)</script></li>
+<li>一般解法：常数变易法</li>
+</ul>
+<h3 id="特殊的常系数线性非齐次微分方程"><a href="#特殊的常系数线性非齐次微分方程" class="headerlink" title="特殊的常系数线性非齐次微分方程"></a>特殊的常系数线性非齐次微分方程</h3><p>非齐次项$f(x)$为某些特殊形式时，则可用观察法、叠加法和待定系数法求特解。</p>
+<p>下列两种 $f(x)$ 形式可用待定系数法：</p>
+<ul>
+<li>$f(x)=P_{m}(x) e^{\lambda x}$,$P_{m}(x)$是$m$次多项式</li>
+<li>$f(x)=e^{\lambda x}[P(x) \cos \mu x+Q(x) \sin \mu x]$<br>其中 $\lambda, \mu \in \mathbb{R}$,$\mu \neq 0$,$P(x), Q(x)$ 为实系数多项式，最高次为 $m$ 次</li>
+</ul>
+<h4 id="二阶，-f-x-P-m-x-e-lambda-x-型"><a href="#二阶，-f-x-P-m-x-e-lambda-x-型" class="headerlink" title="二阶，$f(x)=P_{m}(x) e^{\lambda x}$型"></a>二阶，$f(x)=P_{m}(x) e^{\lambda x}$型</h4><p>令$y*=x^kQ_m(x)e^{\lambda x}$，<br>其中$Q_m(x)$是与$P_m(x)$同幂次的多项式，系数待定，$k$是$\lambda$作为微分方程的特征根的重数</p>
+<ul>
+<li>$\lambda$不是特征根：$k=0$</li>
+<li>$\lambda$是特征单根：$k=1$</li>
+<li>$\lambda$是二重特征根：$k=2$</li>
+</ul>
+<p>上述结论可以推广到$n$阶：<br>令$y*=x^kQ_m(x)e^{\lambda x}$，$k$是$\lambda$作为$n$阶常系数线性微分方程的特征根的重数。</p>
+<h4 id="二阶，-f-x-e-lambda-x-left-P-m-x-cos-mu-x-Q-m-x-sin-mu-x-right-型"><a href="#二阶，-f-x-e-lambda-x-left-P-m-x-cos-mu-x-Q-m-x-sin-mu-x-right-型" class="headerlink" title="二阶，$f(x)=e^{\lambda x}\left[P_{m}(x) \cos \mu x+Q_{m}(x) \sin \mu x\right]$型"></a>二阶，$f(x)=e^{\lambda x}\left[P_{m}(x) \cos \mu x+Q_{m}(x) \sin \mu x\right]$型</h4><p>令$y^{*}=x^{k}\left[A_{m}(x) \cos \mu x+B_{m}(x) \sin \mu x\right] e^{\lambda x}$<br>其中$A_{m}(x), B_{m}(x)$均为$m$次待定多项式<br>若 $\lambda \pm i \mu$ 是方程的特征根，则取  k=1  ；若不是，则取 $k=0$</p>
+<ul>
+<li>即使 $f$ 中 $P_{m}=0$ （或 $Q_{m}=0$ ），所设特解中仍应同时含 $\cos \mu x$ 和 $\sin \mu x$</li>
+</ul>
+<p>上述结论可以推广到$n$阶：<br>$k$即是$\lambda \pm i \mu$作为$n$阶常系数线性微分方程的特征根的重数。</p>
+<h3 id="欧拉-Euler-方程"><a href="#欧拉-Euler-方程" class="headerlink" title="欧拉(Euler)方程"></a>欧拉(Euler)方程</h3><p>Euler方程：形如</p>
+<script type="math/tex; mode=display">
+x^{n} y^{(n)}+p_{1} x^{n-1} y^{(n-1)}+\cdots+p_{n-1} x y^{\prime}+p_{n} y=f(x)</script><p>的方程（其中 $p_{1}, p_{2}, \cdots, p_{n}$ 为常数）<br>解法：变量代换。令 $x=e^{t}$，则 $t=\ln x$</p>
+<p>$n=2$ ：二阶Euler方程的形式为</p>
+<script type="math/tex; mode=display">
+x^{2} y^{\prime \prime}+p x y^{\prime}+q y=f(x) \text {. }</script><p>做变换 $x=e^{t}$ 后，可化为</p>
+<script type="math/tex; mode=display">
+\frac{d^{2} y}{d t^{2}}+(p-1) \frac{d y}{d t}+q y=f\left(e^{t}\right),</script><p>为一个二阶常系数线性非齐次微分方程。<br>特征方程为 $r^{2}+(p-1) r+q=0$</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">大学学习生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/02/17/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%8A%E5%86%8C%EF%BC%89/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">大学物理笔记（上册）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/12/13/%E7%BA%BF%E4%BB%A3%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/">
+                        <span class="hidden-mobile">线代笔记整理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', '1357310795/Blog-Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.12.3/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/anchor-js/4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.8/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

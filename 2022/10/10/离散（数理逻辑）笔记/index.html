@@ -1,0 +1,1846 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/doge.png">
+  <link rel="icon" href="/img/doge.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#e4ad97">
+  <meta name="description" content="">
+  <meta name="author" content="Teruteru">
+  <meta name="keywords" content="">
+  
+  <title>离散（数理逻辑）笔记 - Teruteru的Hexo博客</title>
+
+  <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myiconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"teru.space","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/76443599_p0-1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="离散（数理逻辑）笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-10-10 20:20" pubdate>
+        2022年10月10日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      19.4k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      267
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">离散（数理逻辑）笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年10月7日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="第一章-命题逻辑的基本概念"><a href="#第一章-命题逻辑的基本概念" class="headerlink" title="第一章 命题逻辑的基本概念"></a>第一章 命题逻辑的基本概念</h2><h3 id="命题"><a href="#命题" class="headerlink" title="命题"></a>命题</h3><p>命题是一个非真即假的<strong>陈述句</strong>。凡与事实相符的陈述句为真语句，而与事实不符的陈述句为假语句。因为只有两种取值，所以这样的命题逻辑称为<strong>二值逻辑</strong>。</p>
+<h3 id="命题变项（变元）"><a href="#命题变项（变元）" class="headerlink" title="命题变项（变元）"></a>命题变项（变元）</h3><p>用大写字母表示命题变项。命题与命题变项含义是不同的，命题指具体的陈述句，是有确定的真值，而命题变项的真值不定，只当将某个具体命题代入命题变项时，命题变项化为命题，方可确定其真值。</p>
+<h3 id="命题的分类"><a href="#命题的分类" class="headerlink" title="命题的分类"></a>命题的分类</h3><p><strong>简单命题</strong>又称<strong>原子命题</strong>，它是不包含任何的与、或、非一类联结词的命题。这样的命题不可再分割，如再分割就不是命题了。</p>
+<p>把一个或几个简单命题用联结词（如与、或、非）联结所构成的新的命题称为<strong>复合命题</strong>，也称为<strong>分子命题</strong>。复合命题自然也是陈述句，其真值依赖于构成该复合命题的各简单命题的真值以及联结词，从而复合命题有确定的真值。</p>
+<h3 id="命题联结词及真值表"><a href="#命题联结词及真值表" class="headerlink" title="命题联结词及真值表"></a>命题联结词及真值表</h3><h4 id="否定词"><a href="#否定词" class="headerlink" title="否定词"></a>否定词</h4><p>否定词“$\neg$”是个一元联结词，亦称否定符号。一个命题 $P$ 加上否定词就形成了一个新的命题，记作 $\neg P$，这个新命题是命题的否定，读作非 $P$<br>否定词的真值规定如下：若命题 $P$ 的真值为真，那么 $\neg P$ 的真值就为假；若 $P$ 的真值为假，那么 $\neg P$ 的真值就为真。</p>
+<h4 id="合取词"><a href="#合取词" class="headerlink" title="合取词"></a>合取词</h4><p>合取词“$\wedge$”是个二元命题联结词，亦称合取符号。将两个命题 $P,Q$ 联结起来，构成一个新的命题 $P \wedge Q$，读作 $P,Q$ 的合取，也可读作 $P$ 与 $Q$。</p>
+<h4 id="析取词"><a href="#析取词" class="headerlink" title="析取词"></a>析取词</h4><p>析取词“$\vee$”是个二元命题联结词，亦称析取符号。将两个命题 $P,Q$ 联结起来，构成一个新的命题 $P \vee Q$，读作 $P,Q$ 的析取，也读作 $P$ 或 $Q$。</p>
+<h4 id="蕴涵词"><a href="#蕴涵词" class="headerlink" title="蕴涵词"></a>蕴涵词</h4><p>蕴涵词“$\rightarrow$”也是个二元命题联结词，亦称推断符号。将两个命题 $P,Q$ 联结起来，构成一个新的命题 $P \rightarrow Q$，读作如果 $P$ 则 $Q$，或读作 $P$ 蕴涵 $Q$，如果 $P$ 那么 $Q$，其中 $P$ 称前件（前项、条件），$Q$ 称后件（后项、结论）<br>规定只有当 $P$ 为 $\mathrm{T}$ 而 $Q$ 为 $\mathrm{F}$ 时，$P \rightarrow Q=\mathrm{F}$，而 $P=\mathrm{F}$、$Q$ 任意，或 $P=\mathrm{T}$、$Q=\mathrm{T}$ 时，$P \rightarrow Q$ 均取值为 $T$。</p>
+<h4 id="双条件词"><a href="#双条件词" class="headerlink" title="双条件词"></a>双条件词</h4><p>双条件词“$\leftrightarrow$”同样是个二元命题联结词，亦称等价符号。将两个命题 $P,Q$ 联结起来构成新命题 $P \leftrightarrow Q$，读作 $P$ 当且仅当 $Q$，或读作 $P$ 等价于 $Q$</p>
+<h4 id="其他条件词"><a href="#其他条件词" class="headerlink" title="其他条件词"></a>其他条件词</h4><ul>
+<li>异或（半加）$\bar{\vee}: P \bar{\vee} \mathrm{Q}=(\neg \mathrm{P} \wedge \mathrm{Q}) \vee(\mathrm{P} \wedge \neg \mathrm{Q})$</li>
+<li>与非 $\uparrow: \mathrm{P} \uparrow \mathrm{Q}=\neg(\mathrm{P} \wedge \mathrm{Q})$</li>
+<li>或非 $\downarrow: \mathrm{P} \downarrow \mathrm{Q}=\neg(\mathrm{P} \vee \mathrm{Q})$</li>
+</ul>
+<h3 id="合式公式"><a href="#合式公式" class="headerlink" title="合式公式"></a>合式公式</h3><p>合式公式（简记为 $\mathrm{Wff}$）的定义：</p>
+<ul>
+<li>简单命题是合式公式</li>
+<li>如果 $\mathrm{A}$ 是合式公式，那么 $\neg \mathrm{A}$ 也是合式公式</li>
+<li>如果 $\mathrm{A}, \mathrm{B}$ 是合式公式，那么 $(\mathrm{A} \wedge \mathrm{B})$，$(\mathrm{A} \vee \mathrm{B})$，$(\mathrm{A} \rightarrow \mathrm{B})$ 和 $(\mathrm{A} \leftrightarrow \mathrm{B})$ 是合式公式<br>这个定义给出了建立合式公式的一般原则，也给出了识别一个符号串是否是合式公式的原则</li>
+</ul>
+<p>在实际使用中，为了减少圆括号的数量，可以引入一些约定，如规定联结词优先级的办法，可按 $\neg$，$\wedge$，$\vee$，$\rightarrow$，$\leftrightarrow$ 的排列次序安排优先的级别，多个同一联结词按从左到右的优先次序。这样，在书写合式公式时，可以省去部分或全部圆括号。通常采用省略一部分又保留一部分括号的办法，这样选择就给公式的阅读带来方便。</p>
+<h3 id="三类公式"><a href="#三类公式" class="headerlink" title="三类公式"></a>三类公式</h3><h4 id="重言式"><a href="#重言式" class="headerlink" title="重言式"></a>重言式</h4><ul>
+<li>如果一个公式，对于它的任一解释 $I$ 下其真值都为真，就称为重言式（永真式）</li>
+<li>$P \vee \neg P$ 是一个重言式</li>
+<li>显然由 $\vee$、$\wedge$、$\rightarrow$ 和 $\leftrightarrow$ 联结的重言式仍是重言式</li>
+</ul>
+<h4 id="可满足式"><a href="#可满足式" class="headerlink" title="可满足式"></a>可满足式</h4><ul>
+<li>一个公式，如有某个解释 $\mathrm{I}_{0}$，在 $\mathrm{I}_{0}$ 下该公式真值为真，则称这公式是可满足的</li>
+<li>重言式都是可满足的</li>
+</ul>
+<h4 id="矛盾式"><a href="#矛盾式" class="headerlink" title="矛盾式"></a>矛盾式</h4><ul>
+<li>如果一个公式，对于它的任一解释 $I$ 下真值都是假，便称是矛盾式（永假式）</li>
+<li>$\mathrm{P} \wedge \neg \mathrm{P}$ 是矛盾式</li>
+</ul>
+<h4 id="三类公式间的关系"><a href="#三类公式间的关系" class="headerlink" title="三类公式间的关系"></a>三类公式间的关系</h4><ul>
+<li>公式 $\mathrm{A}$ 永真，当且仅当 $\neg \mathrm{A}$ 永假</li>
+<li>公式 $\mathrm{A}$ 可满足，当且仅当 $\neg \mathrm{A}$ 非永真</li>
+<li>不是可满足的公式必永假</li>
+<li>不是永假的公式必可满足</li>
+</ul>
+<h4 id="代入规则"><a href="#代入规则" class="headerlink" title="代入规则"></a>代入规则</h4><ul>
+<li>$A$ 是一个公式，对 $A$ 使用代入规则得到公式 $B$，若 $A$ 是重言式，则 $B$ 也是重言式。</li>
+<li>为保证重言式经代入规则仍得到保持，要求：</li>
+<li>公式中被代换的<strong>只能是命题变元（原子命题）</strong>，<strong>不能是复合命题</strong>；</li>
+<li>对公式中某命题变项施以代入，必须对该公式中出现的<strong>所有同一命题</strong>变项代换同一公式；</li>
+</ul>
+<h3 id="命题形式化"><a href="#命题形式化" class="headerlink" title="命题形式化"></a>命题形式化</h3><h4 id="简单自然语句的形式化"><a href="#简单自然语句的形式化" class="headerlink" title="简单自然语句的形式化"></a>简单自然语句的形式化</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>自然语言</th>
+<th>合式公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>……是……</td>
+<td>$P$</td>
+</tr>
+<tr>
+<td>……不是……</td>
+<td>$\neg P$</td>
+</tr>
+<tr>
+<td>既……又……</td>
+<td>$P \wedge Q$</td>
+</tr>
+<tr>
+<td>如果……，那么……</td>
+<td>$P \rightarrow Q$</td>
+</tr>
+<tr>
+<td>……，但是……</td>
+<td>$P \wedge Q$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="较复杂自然语句的形式化"><a href="#较复杂自然语句的形式化" class="headerlink" title="较复杂自然语句的形式化"></a>较复杂自然语句的形式化</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>自然语言</th>
+<th>合式公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>……或……都能……</td>
+<td>$P \wedge Q$</td>
+</tr>
+<tr>
+<td>……或……（两者不能同时发生）</td>
+<td>$P \overline{\vee } Q$</td>
+</tr>
+<tr>
+<td>……，除非……</td>
+<td>$\neg P \rightarrow Q$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="波兰表达式"><a href="#波兰表达式" class="headerlink" title="波兰表达式"></a>波兰表达式</h3><p>前缀式也被称为波兰式，以波兰式表达的公式，由计算机识别处理的过程，当自右向左扫描时可以一次完成，避免了重复扫描。同样后辍表示（逆波兰式）也有同样的优点，而且自左向右一次扫描（看起来更合理）便可识别处理一个公式，很是方便，常为计算机的程序系统所采用。</p>
+<h3 id="等值"><a href="#等值" class="headerlink" title="等值"></a>等值</h3><h4 id="等值的定义"><a href="#等值的定义" class="headerlink" title="等值的定义"></a>等值的定义</h4><p>给定两个命题公式 $A$ 和 $B$，而 $P_{1},\cdots,P_{n}$ 是出现于 $A$ 和 $B$ 中的所有命题变项，那么公式 $A$ 和 $B$ 共有 $2^{n}$ 个解释，若在其中的任一解释下，公式 $A$ 和 $B$ 的真值都相等，就称 $A$ 和 $B$ 是<strong>等值</strong>的（或称<strong>等价</strong>），记作 $A=B$ 或 $A \Leftrightarrow B$</p>
+<h4 id="等值定理"><a href="#等值定理" class="headerlink" title="等值定理"></a>等值定理</h4><p>对公式 $A$ 和 $B$，$A=B$ 的充分必要条件是 $A \leftrightarrow B$ 是重言式</p>
+<h4 id="等值的性质"><a href="#等值的性质" class="headerlink" title="等值的性质"></a>等值的性质</h4><ul>
+<li>（自反性）$A = A$</li>
+<li>（对称性）若 $A =B$，则 $B = A$</li>
+<li>（传递性）若 $A= B$，$B =C$，则 $A = C$</li>
+</ul>
+<h4 id="基本等值公式（命题定律）"><a href="#基本等值公式（命题定律）" class="headerlink" title="基本等值公式（命题定律）"></a>基本等值公式（命题定律）</h4><ul>
+<li>双重否定律<script type="math/tex; mode=display">
+\neg \neg P=P</script></li>
+<li>结合律<script type="math/tex; mode=display">
+\begin{array}{l}
+(P \vee Q) \vee R=P \vee(Q \vee R)\\
+(P \wedge Q) \wedge R=P \wedge(Q \wedge R)\\
+(P \leftrightarrow Q) \leftrightarrow R=P \leftrightarrow(Q \leftrightarrow R)\\
+(P \rightarrow Q) \rightarrow R \neq P \rightarrow(Q \rightarrow R)
+\end{array}</script></li>
+<li>交换律<script type="math/tex; mode=display">
+\begin{array}{l}
+P \vee Q=Q \vee P \\
+P \wedge Q=Q \wedge P \\
+P \leftrightarrow Q=Q \leftrightarrow P \\
+P \rightarrow Q \neq Q \rightarrow P
+\end{array}</script></li>
+<li>分配律<script type="math/tex; mode=display">
+\begin{array}{l}
+P \vee(Q \wedge R)=(P \vee Q) \wedge(P \vee R) \\
+P \wedge(Q \vee R)=(P \wedge Q) \vee(P \wedge R) \\
+P \rightarrow(Q \rightarrow R)=(P \rightarrow Q) \rightarrow(P \rightarrow R) \\
+P \leftrightarrow(Q \leftrightarrow R) \neq(P \leftrightarrow Q) \leftrightarrow(P \leftrightarrow R)
+\end{array}</script></li>
+<li>等幂律（恒等律）<script type="math/tex; mode=display">
+\begin{array}{l}
+P \vee P=P \\
+P \wedge P=P \\
+P \rightarrow P=\mathrm{T} \\
+P \leftrightarrow P=\mathrm{T}
+\end{array}</script></li>
+<li>吸收律<script type="math/tex; mode=display">
+\begin{array}{l}
+P \vee(P \wedge Q)=P \\
+P \wedge(P \vee Q)=P
+\end{array}</script></li>
+<li>摩根律<script type="math/tex; mode=display">
+\begin{array}{l}
+\neg(P \vee Q)=\neg P \wedge \neg Q \\
+\neg(P \wedge Q)=\neg P \vee \neg Q
+\end{array}</script>对蕴涵词；双条件词作否定有<script type="math/tex; mode=display">
+\begin{array}{l}
+\neg(P \rightarrow Q)=P \wedge \neg Q \\
+\neg(P \leftrightarrow Q)=\neg P \leftrightarrow Q=P \leftrightarrow \neg Q=(\neg P \wedge Q) \vee(P \wedge \neg Q)
+\end{array}</script></li>
+<li>同一律<script type="math/tex; mode=display">
+\begin{array}{l}
+P \vee F=P \\
+P \wedge \mathrm{T}=P \\
+\mathrm{T} \rightarrow P=P \\
+\mathrm{T} \leftrightarrow P=P
+\end{array}</script>还有<script type="math/tex; mode=display">
+\begin{array}{l}
+P \rightarrow F=\neg P \\
+F \leftrightarrow P=\neg P
+\end{array}</script></li>
+<li>零律<script type="math/tex; mode=display">
+\begin{array}{l}
+P \vee \mathrm{T}=\mathrm{T} \\
+P \wedge \mathrm{F}=\mathrm{F}
+\end{array}</script>还有<script type="math/tex; mode=display">
+\begin{array}{l}
+P \rightarrow \mathrm{T}=\mathrm{T} \\
+F \rightarrow P=\mathrm{T}
+\end{array}</script></li>
+<li>补余律<script type="math/tex; mode=display">
+\begin{array}{l}
+P \vee \neg P=\mathrm{T} \\
+P \wedge \neg P=\mathrm{F}
+\end{array}</script>还有<script type="math/tex; mode=display">
+\begin{array}{l}
+P \rightarrow \neg P=\neg P \\
+\neg P \rightarrow P=P \\
+P \leftrightarrow \neg P=\mathrm{F}
+\end{array}</script></li>
+</ul>
+<h4 id="常用等值公式"><a href="#常用等值公式" class="headerlink" title="常用等值公式"></a>常用等值公式</h4><ul>
+<li>$P\rightarrow Q=\neg P\vee Q$</li>
+<li>$P\rightarrow Q=\neg Q\rightarrow \neg P$</li>
+<li>$P\rightarrow (Q\rightarrow R)=(P \wedge Q)\rightarrow R$</li>
+<li>$P \leftrightarrow Q = (P\wedge Q)\vee(\neg P\wedge \neg Q)$</li>
+<li>$P \leftrightarrow Q = (P\vee \neg Q)\wedge(\neg P\vee Q)$</li>
+<li>$P \leftrightarrow Q = (P\rightarrow Q)\wedge(Q\rightarrow P)$</li>
+<li>$P\rightarrow (Q\rightarrow R)=Q\rightarrow (P\rightarrow R)$</li>
+<li>$(P\rightarrow R)\wedge (Q\rightarrow R)=(P \vee Q)\rightarrow R$</li>
+<li>$P\rightarrow (Q\rightarrow R)=(P\wedge Q)\rightarrow R$</li>
+</ul>
+<h4 id="置换规则"><a href="#置换规则" class="headerlink" title="置换规则"></a>置换规则</h4><p>对公式 $A$ 的子公式，用与之<strong>等值</strong>的公式代换称为<strong>置换</strong>，公式置换后，$A$ 化为公式 $B$，必有 $A=B$</p>
+<ul>
+<li>当 $A$ 是重言式时，置换后的公式 $B$ 必也是重言式。</li>
+<li>置换与代入的区别：<ul>
+<li>置换只要求 $A$ 的某一子公式作代换，置换规则被替换的不一定是简单命题 </li>
+<li>等值必须对所有同一的子公式都作代换，代入规则被替换的只能是简单命题 </li>
+</ul>
+</li>
+</ul>
+<h3 id="由真值表写命题公式"><a href="#由真值表写命题公式" class="headerlink" title="由真值表写命题公式"></a>由真值表写命题公式</h3><h4 id="T列写"><a href="#T列写" class="headerlink" title="T列写"></a>T列写</h4><script type="math/tex; mode=display">
+A=(\cdots)_1 \vee (\cdots)_2 \vee (\cdots)_3</script><h4 id="F列写"><a href="#F列写" class="headerlink" title="F列写"></a>F列写</h4><script type="math/tex; mode=display">
+B=(\cdots)_1 \wedge (\cdots)_2 \wedge (\cdots)_3</script><h3 id="命题联结词的个数"><a href="#命题联结词的个数" class="headerlink" title="命题联结词的个数"></a>命题联结词的个数</h3><p>按照合式公式的定义，由命题变项和命题联结词可以构造出无限多个合式公式. 可把所有的合式公式加以分类，将等值的公式视为同一类，从中选一个作代表称之为<strong>真值函项</strong>。对一个真值函项就有一个联结词与之对应。<br>对于 $n$ 个命题变元，有 $2^{2^n}$ 个不同的个真值函项<br>一元联结词是联结一个命题变项的，如 $P$。它取值只有真假两种情形，于是联结词作用于 $P$，可建立 4 种不同的真值函项，相应的可定义出四个不同的一元联结词 $f_0,f_1,f_2,f_3$</p>
+<h3 id="联结词的完备集"><a href="#联结词的完备集" class="headerlink" title="联结词的完备集"></a>联结词的完备集</h3><p>如果对任一命题公式都有由 $\mathrm{C}$ 中的联结词表示出来的公式与之等值，就说 $\mathrm{C}$ 是完备的联结词集合，或说 $\mathrm{C}$ 是联结词的<strong>完备集</strong></p>
+<h4 id="完备"><a href="#完备" class="headerlink" title="完备"></a>完备</h4><ul>
+<li>显然全体联结词的无限集合是完备的</li>
+<li>$\{\neg,\vee,\wedge\}$ （不独立）</li>
+<li>$\{\neg, \vee\}$ （独立）</li>
+<li>$\{\neg, \wedge\}$ （独立）</li>
+<li>$\{\neg, \rightarrow\}$ （独立）</li>
+<li>$\{\uparrow\}$ （独立）</li>
+<li>$\{\downarrow\}$ （独立）</li>
+</ul>
+<h4 id="不完备"><a href="#不完备" class="headerlink" title="不完备"></a>不完备</h4><ul>
+<li>$\{\vee, \wedge, \rightarrow, \leftrightarrow\}$ 的任何子集都是不完备的</li>
+<li>$\{\neg, \leftrightarrow\}$ 的任何子集也是不完备的</li>
+<li>如果一个联结词的集合是不完备的，那么它的任何子集都是不完备的</li>
+</ul>
+<h3 id="对偶式"><a href="#对偶式" class="headerlink" title="对偶式"></a>对偶式</h3><p>将 $A$ 中出现的 $\vee,\wedge,T,F$ 分别以 $\wedge,\vee,F,T$ 代换，得到公式 $A^{\star}$，则称 $A^{\star}$ 是 $A$ 的对偶式，或说 $A$ 和 $A^{\star}$ 互为对偶式</p>
+<p>为方便，若 $A=A\left(P_{1},\cdots,P_{n}\right)$，令 $A$ 的内否式 $A^{-}=A\left(\neg P_{1},\cdots,\neg P_{n}\right)$</p>
+<ul>
+<li>$\neg\left(A^{\star}\right)=(\neg A)^{\star}$，$\neg\left(A^{-}\right)=(\neg A)^{-}$</li>
+<li>$\left(A^{\star}\right)^{\star}=A$，$\left(A^{-}\right)^{-}=A$</li>
+<li>$\neg A=A^{\star-}=A^{-\star}$</li>
+<li>$(A \vee B)^{\star}=A^{\star} \wedge B^{\star}$</li>
+<li>$(A \wedge B)^{\star}=A^{\star} \vee B^{\star}$</li>
+<li>$(A \vee B)^{-}=A^{-} \vee B^{-}$</li>
+<li><p>$(A \wedge B)^{-}=A^{-} \wedge B^{-}$</p>
+</li>
+<li><p>若 $A=B$，必有 $A^{\star}=B^{\star}$</p>
+</li>
+<li>若 $A \rightarrow B$ 永真，必有 $B^{\star} \rightarrow A^{\star}$ 永真</li>
+<li>$A$ 与 $A^{-}$ 同永真，同可满足；$\neg A$ 与 $A^{\star}$ 同永真，同可满足</li>
+<li>注意：替换前先加满括号！替换后运算顺序不会变！</li>
+</ul>
+<h3 id="范式"><a href="#范式" class="headerlink" title="范式"></a>范式</h3><h4 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h4><ul>
+<li>范式：一种命题公式的统一标准形式</li>
+<li>文字：简单命题 $P$ 及其否定式 $\neg P$ 统称为文字</li>
+<li>合取式：有限个文字的合取称为合取式（也称<strong>短语</strong>）</li>
+<li>析取式：有限个文字的析取称为析取式（也称<strong>子句</strong>）</li>
+<li>互补对：$P$ 与 $¬P$ 称为互补对</li>
+<li>析取范式：有限个合取式的析取式，形如 $A_{1} \vee A_{2} \vee \cdots \vee A_{n}$，其中 $A_{i}(i=1,\cdots,n)$ 为合取式</li>
+<li>合取范式：有限个析取式的合取式，形如 $A_{1} \wedge A_{2} \wedge \cdots \wedge A_{n}$，其中 $A_{i}(i=1,\cdots,n)$ 为析取式</li>
+</ul>
+<h4 id="范式定理"><a href="#范式定理" class="headerlink" title="范式定理"></a>范式定理</h4><p>任一命题公式都存在与之等值的合取范式和析取范式（注：不唯一）</p>
+<h4 id="求范式的步骤"><a href="#求范式的步骤" class="headerlink" title="求范式的步骤"></a>求范式的步骤</h4><p>对一个已给的公式，可按下述步骤求得该公式的合取范式和析取范式</p>
+<ol>
+<li>消去已给公式中的联结词 $\rightarrow$ 和 $\leftrightarrow$。这可利用如下等值式：<script type="math/tex; mode=display">
+\begin{array}{c}
+A \rightarrow B=\neg A \vee B \\
+A \leftrightarrow B=(\neg A \vee B) \wedge(A \vee \neg B) \\
+=(A \wedge B) \vee(\neg A \wedge \neg B)
+\end{array}</script></li>
+<li>重复使用摩根律和双重否定律，把否定词内移到直接作用于命题变项上。这可利用等值式：<script type="math/tex; mode=display">
+\begin{array}{c}
+\neg(A \wedge B)=\neg A \vee \neg B \\
+\neg(A \vee B)=\neg A \wedge \neg B \\
+\neg \neg A=A
+\end{array}</script>将所有的否定词，都内移到命题变项前，这也是范式的要求</li>
+<li>重复使用分配律。这可利用等值式：<script type="math/tex; mode=display">
+\begin{array}{l}
+A \wedge(B \vee C)=(A \wedge B) \vee(A \wedge C) \\
+A \vee(B \wedge C)=(A \vee B) \wedge(A \vee C)
+\end{array}</script>将公式化成一些合取式的析取，或化成一些析取式的合取，都必须使用分配律来实现</li>
+</ol>
+<h4 id="范式功能"><a href="#范式功能" class="headerlink" title="范式功能"></a>范式功能</h4><ul>
+<li>判断重言式：<br>合取范式中所有析取式都是互补对</li>
+<li>判断矛盾式：<br>析取范式中存在合取式是互补对</li>
+<li>判断公式等值：<br>范式不唯一，引入唯一主范式，判断公式等值</li>
+</ul>
+<h3 id="主析取范式"><a href="#主析取范式" class="headerlink" title="主析取范式"></a>主析取范式</h3><p>对 $n$ 个命题变项（原子命题） $P_{1},\cdots,P_{n}$ 来说，所组成的公式</p>
+<script type="math/tex; mode=display">
+Q_{1} \wedge Q_{2} \wedge \cdots \wedge Q_{n}</script><p>其中 $Q_{i}=P_{i}$ 或 $\neg P_{i}(i=1,\cdots,n)$，则称 $Q_{1} \wedge \cdots \wedge Q_{n}$ 为<strong>极小项</strong>，并以 $m_{i}$ 表示。极小项<strong>必须含有</strong> $Q_{1},\cdots,Q_{n}$ <strong>全部</strong> $n$ 个文字。仅由极小项构成的析取式为<strong>主析取范式</strong>。</p>
+<ul>
+<li>任一含有 $n$ 个命题变项的公式，都有唯一的一个与之等值的恰仅含这 $n$ 个命题变项的主析取范式</li>
+</ul>
+<h4 id="求解步骤"><a href="#求解步骤" class="headerlink" title="求解步骤"></a>求解步骤</h4><ol>
+<li>求出该公式对应的析取范式</li>
+<li>消去重复出现的命题变元，重言式，矛盾式</li>
+<li>在析取范式的所有短语中补齐全部命题变元</li>
+<li>用幂等律（$A \vee A=A$）消去重复的极小项，用交换律调整顺序</li>
+</ol>
+<h4 id="极小项的性质"><a href="#极小项的性质" class="headerlink" title="极小项的性质"></a>极小项的性质</h4><ul>
+<li>对一个含有 $n$ 个变项的公式来说，所有可能的极小项个数和该公式的解释个数一样多，都是 $2^{n}$</li>
+<li>每个极小项只在一个解释下为真</li>
+<li>极小项两两不等值，而且 $m_{i} \wedge m_{j}=\mathrm{F}(i \neq j)$</li>
+<li>任一含有 $n$ 个变项的公式，都可由 $k$ 个 $\left(k \leqslant 2^{n}\right)$ 极小项的析取来表示，或说所有的极小项可建立一个“坐标系”</li>
+<li>恰由 $2^{n}$ 个极小项的析取构成的公式，必为重言式<script type="math/tex; mode=display">
+\vee_{i=0}^{2^{n}-1} m_{i}=\mathrm{T}</script></li>
+<li>若 $A$ 由 $k$ 个极小项的析取组成，那么其余的 $2^{n}-k$ 个极小项的析取必是公式 $\neg A$</li>
+</ul>
+<h3 id="主合取范式"><a href="#主合取范式" class="headerlink" title="主合取范式"></a>主合取范式</h3><p>由 $n$ 个命题变项 $P_{1},\cdots,P_{n}$ 所组成的公式</p>
+<script type="math/tex; mode=display">
+Q_{1} \vee Q_{2} \vee \cdots \vee Q_{n}</script><p>其中 $Q_{i}=P_{i}$ 或 $\neg P_{i}(i=1,\cdots,n)$，则称 $Q_{1} \vee \cdots \vee Q_{n}$ 为<strong>极大项</strong>，并以 $M_{i}$ 表示。极大项<strong>必须含有</strong> $Q_{1}$，$\cdots$，$Q_{n}$ <strong>全部</strong> $n$ 个文字。仅由极大项构成的合取式为<strong>主合取范式</strong>。</p>
+<ul>
+<li>任一含有 $n$ 个命题变项的公式，都有唯一的一个与之等值的恰仅含这 $n$ 个命题变项的主合取范式.</li>
+</ul>
+<h4 id="求解步骤-1"><a href="#求解步骤-1" class="headerlink" title="求解步骤"></a>求解步骤</h4><ol>
+<li>求出该公式对应的合取范式</li>
+<li>消去重复出现的命题变元，重言式，永真式</li>
+<li>在合取范式的所有子句中补齐命题变元</li>
+<li>用幂等律（$A\wedge A=A$）消去重复的极大项，用交换律调整顺序</li>
+</ol>
+<h4 id="极大项的性质"><a href="#极大项的性质" class="headerlink" title="极大项的性质"></a>极大项的性质</h4><ul>
+<li>对一个含有 $n$ 个变项的公式来说，所有可能的极大项个数和该公式的解释个数一样多，都是 $2^{n}$</li>
+<li>每个极大项只在一个解释下为假</li>
+<li>极大项两两不等值，而且 $M_{i} \vee M_{j}=T(i \neq j)$</li>
+<li>任一含有 $n$ 个变项的公式，都可由 $k$ 个 $\left(k \leqslant 2^{n}\right)$ 极大项的合取来表示。或说可将所有的极大项建立一个“坐标系”</li>
+<li>恰由 $2^{n}$ 个极大项的合取构成的公式，必为矛盾式<script type="math/tex; mode=display">
+\wedge_{i=0}^{2^{n}-1} M_{i}=\mathrm{F}</script></li>
+<li>若 $A$ 由 $k$ 个极大项的合取组成，那么其余的 $2^{n}-k$ 个极大项的合取必是公式 $\neg A$</li>
+</ul>
+<h3 id="极大项和极小项的编码"><a href="#极大项和极小项的编码" class="headerlink" title="极大项和极小项的编码"></a>极大项和极小项的编码</h3><p>$\neg P$ 看成 $0$，$P$ 看成 $1$，按变项的字典序连起来形成一个二进制数 $x$</p>
+<ul>
+<li>极小项简记为 $m_x$，主析取范式可记为 $\vee_{m_{x_1};m_{x_2};\cdots}$</li>
+<li>极大项简记为 $M_x$，主析取范式可记为 $\wedge_{M_{x_1};M_{x_2};\cdots}$</li>
+</ul>
+<h3 id="推理"><a href="#推理" class="headerlink" title="推理"></a>推理</h3><h4 id="永真蕴含"><a href="#永真蕴含" class="headerlink" title="永真蕴含"></a>永真蕴含</h4><p>如果给定两个公式 $A,B$，只要 $A$ 取值为真，$B$ 就必取值为真，便称 $A$ <strong>重言（永真）蕴涵</strong> $B$，或称 $B$ 是 $A$ 的<strong>逻辑推论</strong>，并用符号</p>
+<script type="math/tex; mode=display">
+A \Rightarrow B</script><p>表示</p>
+<ul>
+<li>符号“$\Rightarrow$”表示两个公式间的一种真值关系，它不是逻辑联结词，$A \Rightarrow B$ 也不是合式公式</li>
+<li>对以 $A \rightarrow B$ 表示的推理形式来说，推理形式是正确的，就同 $A$ 重言蕴涵 $B$ 是同一概念了，于是正确的推理形式便可以 $A \Rightarrow B$ 表示了</li>
+</ul>
+<h5 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h5><ul>
+<li>如果 $A \Rightarrow B$，$A$ 为重言式，则 $B$ 也是重言式</li>
+<li>如果 $A \Rightarrow B$，$B \Rightarrow A$ 同时成立，必有 $A=B$</li>
+<li>反过来，$A=B$ 也必有 $A \Rightarrow B$ 和 $B \Rightarrow A$</li>
+<li>如果 $A \Rightarrow B$，$B \Rightarrow C$，则 $A \Rightarrow C$</li>
+<li>如果 $A \Rightarrow B$，$A \Rightarrow C$，则 $A \Rightarrow B \wedge C$</li>
+<li>如果 $A \Rightarrow C$，$B \Rightarrow C$，则 $A \vee B \Rightarrow C$</li>
+</ul>
+<h4 id="基本推理公式"><a href="#基本推理公式" class="headerlink" title="基本推理公式"></a>基本推理公式</h4><ul>
+<li>$P \wedge Q \Rightarrow P$</li>
+<li>$\neg(P \rightarrow Q) \Rightarrow P$</li>
+<li>$\neg(P \rightarrow Q) \Rightarrow \neg Q$</li>
+<li>$P \Rightarrow P \vee Q$</li>
+<li>$\neg P \Rightarrow P \rightarrow Q$</li>
+<li>$Q \Rightarrow P \rightarrow Q$</li>
+<li>$\neg P \wedge(P \vee Q) \Rightarrow Q$</li>
+<li>$P \wedge(P \rightarrow Q) \Rightarrow Q$</li>
+<li>$\neg Q \wedge(P \rightarrow Q) \Rightarrow \neg P$</li>
+<li>$(P \rightarrow Q) \wedge(Q \rightarrow R) \Rightarrow P \rightarrow R$</li>
+<li>$(P \leftrightarrow Q) \wedge(Q \leftrightarrow R) \Rightarrow P \leftrightarrow R$</li>
+<li>$(P \rightarrow R) \wedge(Q \rightarrow R) \wedge(P \vee Q) \Rightarrow R$</li>
+<li>$(P \rightarrow Q) \wedge(R \rightarrow S) \wedge(P \vee R) \Rightarrow Q \vee S$</li>
+<li>$(P \rightarrow Q) \wedge(R \rightarrow S) \wedge(\neg Q \vee \neg S) \Rightarrow \neg P \vee \neg R$</li>
+<li>$(Q \rightarrow R) \Rightarrow((P \vee Q) \rightarrow(P \vee R))$</li>
+<li>$(Q \rightarrow R) \Rightarrow((P \rightarrow Q) \rightarrow(P \rightarrow R))$</li>
+</ul>
+<h4 id="证明推理公式的方法"><a href="#证明推理公式的方法" class="headerlink" title="证明推理公式的方法"></a>证明推理公式的方法</h4><ul>
+<li>$A \Rightarrow B$ 成立的充分必要条件是 $A \rightarrow B$ 为重言式</li>
+<li>$A \Rightarrow B$ 成立的充分必要条件是 $A \wedge \neg B$ 是矛盾式</li>
+<li>还可以用：逆否命题法、解释法、真值表法、等值演算、范式</li>
+</ul>
+<h4 id="推理规则"><a href="#推理规则" class="headerlink" title="推理规则"></a>推理规则</h4><ul>
+<li>前提引入规则：在推理过程中，可以随时引入前提</li>
+<li>结论引用规则：在推理过程中所得到的中间结论，可作为后续推理的前提</li>
+<li>代入规则：在推理过程中，对<strong>重言式</strong>中的命题变项可使用代入规则</li>
+<li>置换规则：在推理过程中，命题公式中的任何部分公式都可以用与之等值的命题公式来置换</li>
+<li>分离规则（假言推理）：如果已知命题公式 $A \rightarrow B$ 和 $A$，则有命题公式 $B$</li>
+<li>条件证明规则：$A_{1} \wedge A_{2} \Rightarrow B$ 与 $A_{1} \Rightarrow A_{2} \rightarrow B$ 是等价的</li>
+</ul>
+<h4 id="归结推理"><a href="#归结推理" class="headerlink" title="归结推理"></a>归结推理</h4><h5 id="归结式的定义"><a href="#归结式的定义" class="headerlink" title="归结式的定义"></a>归结式的定义</h5><p>设 $C_{1}=L \vee C_{1}^{\prime},C_{2}=\neg L \vee C_{2}^{\prime}$ 为两个子句，有互补对 $L$ 和 $\neg L$，则新子句</p>
+<script type="math/tex; mode=display">
+R\left(C_{1},C_{2}\right)=C_{1}^{\prime} \vee C_{2}^{\prime}</script><p>称作 $C_{1}$，$C_{2}$ 的<strong>归结式</strong><br>归结过程就是对 $S$ 的子句求归结式的过程</p>
+<h5 id="归结式应用"><a href="#归结式应用" class="headerlink" title="归结式应用"></a>归结式应用</h5><script type="math/tex; mode=display">
+C_{1} \wedge C_{2} \Rightarrow R\left(C_{1},C_{2}\right)</script><p>这说明归结式 $R\left(C_{1},C_{2}\right)$ 是子句 $C_{1},C_{2}$ 的逻辑推论，从而归结是正确推理规则</p>
+<h5 id="归结证明过程"><a href="#归结证明过程" class="headerlink" title="归结证明过程"></a>归结证明过程</h5><ol>
+<li>为证明 $A \rightarrow B$（可称作定理）是重言式，则等价于证明 $A \wedge \neg B$ 是矛盾式。使用归结证明法，就是从 $A \wedge \neg B$ 出发</li>
+<li>建立子句集 $S$<br>将 $A \wedge \neg B$ 化成<strong>合取范式</strong>，如<script type="math/tex; mode=display">
+P \wedge(P \vee R) \wedge(\neg P \vee \neg Q) \wedge(\neg P \vee R)</script>形式，进而将所有子句（析取式）构成子句集合<script type="math/tex; mode=display">
+S=\{P,(P \vee R),(\neg P \vee \neg Q),(\neg P \vee R)\}</script>即以集合来描述这合取范式，这种表示法对归结过程的阐明是方便的</li>
+<li>对 $S$ 作归结<br>进而对 $S$ 的子句作归结（消互补对），如子句 $P \vee R$ 与 $\neg P \vee \neg Q$ 作归结，得归结式 $R \vee\neg Q$，并将这归结式仍放入 $S$ 中。重复这过程。</li>
+<li>直至归结出矛盾式 $\square$</li>
+</ol>
+<h2 id="第四章-谓词逻辑的基本概念"><a href="#第四章-谓词逻辑的基本概念" class="headerlink" title="第四章 谓词逻辑的基本概念"></a>第四章 谓词逻辑的基本概念</h2><h3 id="谓词"><a href="#谓词" class="headerlink" title="谓词"></a>谓词</h3><ul>
+<li>谓词是给定的个体域到集合 $\{\mathrm{T},\mathrm{F}\}$ 上的一个映射。</li>
+<li>在一个命题里，如果主词只有一个，这时表示该主词性质或属性的词便称作<strong>谓词</strong>。这是一元（目）谓词，以 $P(x),Q(x),\cdots$ 表示.</li>
+<li>在一个命题里，如果主词多于一个，那么表示这几个主词间的关系的词称作<strong>谓词</strong>。这是多元谓词，以 $P(x,y),Q(x,y),R(x,y,z),\cdots$ 表示</li>
+<li>约定以大写字母来表示谓词</li>
+<li>一般地说谓词 $P(x),Q(x,y)$ 是命题形式而不是命题，因为这里没有指定谓词符号 $P,Q$ 的含义，即它们是谓词变项。仅当谓词变项取定为某个谓词常项，并且个体词取定为个体常项时，命题形式才化为命题</li>
+</ul>
+<h3 id="个体词"><a href="#个体词" class="headerlink" title="个体词"></a>个体词</h3><p>在数理逻辑中，不使用主词这个词，习惯称为个体词。它是一个命题里表示思维对象的词。</p>
+<h3 id="谓词变项"><a href="#谓词变项" class="headerlink" title="谓词变项"></a>谓词变项</h3><p>有 $n$ 个个体的谓词 $P\left(x_{1},\cdots,x_{n}\right)$ 称 $n$ 项（目；元）谓词。如果 $P$ 是已赋有确定含义的谓词，就称为<strong>谓词常项</strong>，而 $P$ 表任一谓词时，就称为<strong>谓词变项</strong>。</p>
+<h3 id="个体域"><a href="#个体域" class="headerlink" title="个体域"></a>个体域</h3><p>将个体变项的变化范围称为<strong>个体域</strong>或<strong>论域</strong>，以 $D$ 表示。并约定谓词逻辑的个体域除明确指明外，都认为是包括一切事物的一个最广的集合。谓词变项的变化范围，不做特别声明时，指一切关系或一切性质的集合</p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>函数是某个体域（不必是实数）到另一个体域的映射，约定函数符号用小写字母表示。</p>
+<h3 id="量词"><a href="#量词" class="headerlink" title="量词"></a>量词</h3><p>量词仅作用于<strong>个体变元</strong>，不允许量词作用于<strong>命题变项</strong>和<strong>谓词变项</strong></p>
+<h4 id="全称量词"><a href="#全称量词" class="headerlink" title="全称量词"></a>全称量词</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+ (\forall x)  (  x  是运动的)\\
+ (x)  (  x  是运动的)\\
+ \forall x  (  x  是运动的  ) \\
+\end{array}</script><ul>
+<li>符号 $(\forall x)$ 读作所有的 $x$ 或任一 $x$，一切 $x$。而 $\forall$ 就是<strong>全称量词</strong>，它所约束的个体是 $x$。命题 $(\forall x) P(x)$ 当且仅当对论域中的所有 $x$ 来说，$P(x)$ 均为真时方为真。</li>
+<li>从而 $(\forall x) P(x)=\mathrm{F}$ 成立，当且仅当有一个 $x_{0} \in D$，使 $P\left(x_{0}\right)=\mathrm{F}$</li>
+</ul>
+<h4 id="存在量词"><a href="#存在量词" class="headerlink" title="存在量词"></a>存在量词</h4><ul>
+<li>符号 $(\exists x)$ 读作至少有一个 $x$ 或存在一个 $x$ 或有某些 $x$。而 $\exists$ 就是对个体词起约束作用的<strong>存在量词</strong>，所约束的变元是 $x$</li>
+<li>命题 $(\exists x) Q(x)$ 当且仅当在论域中至少有一个 $x_{0}$，$Q\left(x_{0}\right)$ 为真时方为真</li>
+<li>从而 $(\exists x) Q(x)=F$，当且仅当对所有的 $x \in D$ 都有 $Q(x)=F$</li>
+</ul>
+<h3 id="约束变元和自由变元"><a href="#约束变元和自由变元" class="headerlink" title="约束变元和自由变元"></a>约束变元和自由变元</h3><p>略</p>
+<h3 id="辖域"><a href="#辖域" class="headerlink" title="辖域"></a>辖域</h3><p>量词所约束的范围称为量词的辖域</p>
+<ul>
+<li>$(\forall x) R(x,y)$ 中，$R(x,y)$ 是 $(\forall x)$ 的辖域</li>
+<li>$(\exists x)((\forall y) P(x,y))$ 中，$P(x,y)$ 是 $(\forall y)$ 的辖域</li>
+<li>$(\forall y) P(x,y)$ 是 $(\exists x)$ 的辖域</li>
+</ul>
+<h3 id="合式公式-1"><a href="#合式公式-1" class="headerlink" title="合式公式"></a>合式公式</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><ol>
+<li>命题常项、命题变项和原子谓词公式（不含联结词的谓词）都是合式公式</li>
+<li>如果 $A$ 是合式公式，则 $\neg A$ 也是合式公式</li>
+<li>如果 $A,B$ 是合式公式，而无变元 $x$ 在 $A,B$ 的一个中是约束的而在另一个中是是自由的，则 $(A \wedge B),(A \vee B),(A \rightarrow B),(A \leftrightarrow B)$ 也是合式公式（最外层括号可省略）</li>
+<li>如果 $A$ 是合式公式，而 $x$ 在 $A$ 中是自由变元，则 $(\forall x) A,(\exists x) A$ 也是合式公式</li>
+<li>只有适合以上 $4$ 条的才是合式公式</li>
+</ol>
+<h3 id="自然语句的形式化"><a href="#自然语句的形式化" class="headerlink" title="自然语句的形式化"></a>自然语句的形式化</h3><h4 id="“所有的……都是……”"><a href="#“所有的……都是……”" class="headerlink" title="“所有的……都是……”"></a>“所有的……都是……”</h4><p>所有的有理数都是实数，其意思是说，对任一事物而言，如果它是有理数，那么它是实数。即对任一 $x$ 而言，如果 $x$ 是有理数，那么 $x$ 是实数。若以 $P(x)$ 表示 $x$ 是有理数，$Q(x)$ 表示 $x$ 是实数，这句话的形式描述应为</p>
+<script type="math/tex; mode=display">
+(\forall x)(P(x) \rightarrow Q(x))</script><h4 id="“有的……是”"><a href="#“有的……是”" class="headerlink" title="“有的……是”"></a>“有的……是”</h4><p>这句话的意思是说，存在一事物它是实数，而且是有理数。即有一个 $x$，$x$ 是实数并且是有理数。仍以 $P(x)$ 表 $x$ 是有理数，$Q(x)$ 表示 $x$ 是实数，这句话的形式描述应为</p>
+<script type="math/tex; mode=display">
+(\exists x)(Q(x) \wedge P(x))</script><h4 id="“没有……是……”"><a href="#“没有……是……”" class="headerlink" title="“没有……是……”"></a>“没有……是……”</h4><p>这句话有否定词，意思是对任一 $x$ 而言，如果 $x$ 是无理数，那么 $x$ 不是有理数。若以 $A(x)$ 表示 $x$ 是无理数，$B(x)$ 表示 $x$ 是有理数，这句话的形式描述为</p>
+<script type="math/tex; mode=display">
+\neg(\exists x)(A(x) \wedge B(x))</script><p>也可以逻辑上等价的</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+(\forall x)(A(x) \rightarrow \neg B(x)) \\
+(\forall x)(B(x) \rightarrow \neg A(x))
+\end{array}</script><p>来描述</p>
+<h4 id="“有的……不是……”"><a href="#“有的……不是……”" class="headerlink" title="“有的……不是……”"></a>“有的……不是……”</h4><p>这句话的意思是有的 $x$，它是实数而且不是有理数。若以 $A(x)$ 表示 $x$ 是实数，$B(x)$ 表示 $x$ 是有理数，那么这句话可形式描述为</p>
+<script type="math/tex; mode=display">
+(\exists x)(A(x) \wedge \neg B(x))</script><h3 id="自然数集的形式描述"><a href="#自然数集的形式描述" class="headerlink" title="自然数集的形式描述"></a>自然数集的形式描述</h3><p>论域是自然数集，来形式化语句<br>（1）对每个数，有且仅有一个相继后元<br>（2）没有这样的数，$0$ 是其相继后元<br>（3）对除 $0$ 而外的数，有且仅有一个相继前元（可将这三句话作为建立自然数集合的公理）</p>
+<p>引入谓词 $E(x,y)$ 表示 $x=y$，函数 $f(x)$ 表示个体 $x$ 的相继后元，即 $f(x)=x+1$。函数 $g(x)$ 表示个体 $x$ 的相继前元，即 $g(x)=x-1$</p>
+<script type="math/tex; mode=display">
+(\forall x)(\exists y)(E(y, f(x)) \wedge(\forall z)(E(z, f(x)) \rightarrow E(y, z)))</script><script type="math/tex; mode=display">
+(\forall x)(\neg E(x, 0) \rightarrow(\exists y)(E(y, g(x)) \wedge(\forall z)(E(z, g(x)) \rightarrow E(y, z))))</script><script type="math/tex; mode=display">
+\neg(\exists x) \mathrm{E}(0, f(x))</script><h3 id="谓词变元多次量化"><a href="#谓词变元多次量化" class="headerlink" title="谓词变元多次量化"></a>谓词变元多次量化</h3><script type="math/tex; mode=display">
+\begin{array}{l}
+(\forall x)(\forall y) P(x, y)=(\forall x)((\forall y) P(x, y)) \\
+(\forall x)(\exists y) P(x, y)=(\forall x)((\exists y) P(x, y)) \\
+(\exists x)(\forall y) P(x, y)=(\exists x)((\forall y) P(x, y)) \\
+(\exists x)(\exists y) P(x, y)=(\exists x)((\exists y) P(x, y))
+\end{array}</script><p>其中第一个和第四个公式里的约束可交换</p>
+<h3 id="论域为有限域时的公式表示法"><a href="#论域为有限域时的公式表示法" class="headerlink" title="论域为有限域时的公式表示法"></a>论域为有限域时的公式表示法</h3><p>约定论域限定为有限集，用 $\{1,2,\cdots,k\}$ 来代表；</p>
+<script type="math/tex; mode=display">
+(\forall x)(P(x) \rightarrow Q(x))</script><p>论域为有限域时，公式表示法：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+(\forall x) P(x)=P(1) \wedge P(2) \wedge \cdots \wedge P(k) \\
+(\exists x) P(x)=P(1) \vee P(2) \vee \cdots \vee P(k)
+\end{array}</script><ul>
+<li>严格意义上，无限域下，不是合式公式，谓词逻辑公式不能转换为命题逻辑公式</li>
+</ul>
+<h3 id="谓词公式的解释"><a href="#谓词公式的解释" class="headerlink" title="谓词公式的解释"></a>谓词公式的解释</h3><ul>
+<li>谓词公式的解释与论域，自由个体变元，命题变元，谓词变元，函数都有关系</li>
+<li>对谓词公式 $I$ 的解释包括五个部分<ul>
+<li>非空论域 $D$</li>
+<li>命题变元指派为 $\{0,1\}$</li>
+<li>对个体常元和（自由）个体变元指派为 $D$ 中的元素</li>
+<li>对谓词指派为 $D$ 上的谓词</li>
+<li>对函数指派为 $D$ 上的函数</li>
+</ul>
+</li>
+</ul>
+<h3 id="公式的普遍有效性"><a href="#公式的普遍有效性" class="headerlink" title="公式的普遍有效性"></a>公式的普遍有效性</h3><ul>
+<li>对一个谓词公式来说，如果在它的任一解释 $I$ 下真值都为真，便称作普遍有效的</li>
+<li>对一个谓词公式来说，如果在它的某个解释 $I$ 下真值为真，便称作可满足的</li>
+<li>对一个谓词公式来说，如果在它的任一解释 $I$ 下真值均为假，便称作不可满足的</li>
+<li>有限域上一个公式的可满足性和普遍有效性依赖于个体域个体的个数且仅依赖于个体域个体的数目<ul>
+<li>在某个含 $k$ 个元素的 $k$ 个体域上普遍有效（或可满足），则在任一 $k$ 个体域上也普遍有效（或可满足）</li>
+<li>如果某公式在 $k$ 个体域上普遍有效，则在 $k-1$ 个体域上也普遍有效</li>
+<li>如果某公式在 $k$ 个体域上可满足，则在 $k+1$ 个体域上也可满足</li>
+</ul>
+</li>
+</ul>
+<h3 id="判定问题"><a href="#判定问题" class="headerlink" title="判定问题"></a>判定问题</h3><p>谓词逻辑的判定问题，指的是任一公式的普遍有效性。若说谓词逻辑是可判定的，就要给出一个能行方法，使得对任一谓词公式都能判断其是否普遍有效。</p>
+<ul>
+<li>谓词逻辑是不可判定的；<ul>
+<li>对任一谓词公式而言，没有能行的方法判明它是否是普遍有效的</li>
+<li>并不排除谓词公式有子类是可判定的</li>
+<li>判定问题的困难在于个体域是个无穷集以及对谓词设定的任意性</li>
+</ul>
+</li>
+<li>只含一元谓词变元的公式是可判定的</li>
+<li>$\left(\forall x_{1}\right) \cdots\left(\forall x_{n}\right) P\left(x_{1}, \cdots, x_{n}\right)$ 和 $\left(\exists x_{1}\right) \cdots\left(\exists x_{n}\right) P\left(x_{1} \ldots x_{n}\right)$ 型公式，若 $P$ 中无量词和其他自由变项时， 也是可判定的</li>
+<li>个体域有穷时的谓词公式是可判定的</li>
+</ul>
+<h2 id="第五章-谓词逻辑的等值和推理演算"><a href="#第五章-谓词逻辑的等值和推理演算" class="headerlink" title="第五章 谓词逻辑的等值和推理演算"></a>第五章 谓词逻辑的等值和推理演算</h2><h3 id="由命题公式移植来的等值式"><a href="#由命题公式移植来的等值式" class="headerlink" title="由命题公式移植来的等值式"></a>由命题公式移植来的等值式</h3><script type="math/tex; mode=display">
+\neg \neg P(x)= P(x)</script><script type="math/tex; mode=display">
+\neg \neg(\forall x) P(x)=(\forall x) P(x)</script><script type="math/tex; mode=display">
+P(x) \rightarrow Q(x)=\neg P(x) \vee Q(x)</script><script type="math/tex; mode=display">
+(\forall x) P(x) \rightarrow(\exists x) Q(x)=\neg(\forall x) P(x) \vee(\exists x) Q(x)</script><script type="math/tex; mode=display">
+(P(x) \wedge Q(x)) \vee R(x)=(P(x) \vee R(x)) \wedge(Q(x) \vee R(x))</script><script type="math/tex; mode=display">
+((\forall x) P(x) \wedge Q(y)) \vee(\exists z) R(z)=((\forall x) P(x) \vee(\exists z) R(z)) \wedge(Q(y) \vee(\exists z) R(z))</script><h3 id="否定型等值式"><a href="#否定型等值式" class="headerlink" title="否定型等值式"></a>否定型等值式</h3><script type="math/tex; mode=display">
+\begin{array}{l}
+\neg(\forall x) P(x)=(\exists x) \neg P(x) \\
+\neg(\exists x) P(x)=(\forall x) \neg P(x)
+\end{array}</script><p>形式上看这对公式，是说否定词“$\neg$”可越过量词深入到量词的辖域内，但要把所越过的量词 $\forall$ 转换为 $\exists$，$\exists$ 转换为 $\forall$</p>
+<h3 id="量词对合取、析取的分配律"><a href="#量词对合取、析取的分配律" class="headerlink" title="量词对合取、析取的分配律"></a>量词对合取、析取的分配律</h3><script type="math/tex; mode=display">
+\begin{array}{l}
+(\forall x)(P(x) \vee q)=(\forall x) P(x) \vee q \\
+(\exists x)(P(x) \vee q)=(\exists x) P(x) \vee q \\
+(\forall x)(P(x) \wedge q)=(\forall x) P(x) \wedge q \\
+(\exists x)(P(x) \wedge q)=(\exists x) P(x) \wedge q
+\end{array}</script><h3 id="量词对蕴涵的分配律"><a href="#量词对蕴涵的分配律" class="headerlink" title="量词对蕴涵的分配律"></a>量词对蕴涵的分配律</h3><script type="math/tex; mode=display">
+\begin{array}{l}
+(\forall x)(P(x) \rightarrow q)=(\exists x) P(x) \rightarrow q \\
+(\exists x)(P(x) \rightarrow q)=(\forall x) P(x) \rightarrow q \\
+(\forall x)(p \rightarrow Q(x))=p \rightarrow(\forall x) Q(x) \\
+(\exists x)(p \rightarrow Q(x))=p \rightarrow(\exists x) Q(x)
+\end{array}</script><h3 id="量词对合取、析取的分配律2"><a href="#量词对合取、析取的分配律2" class="headerlink" title="量词对合取、析取的分配律2"></a>量词对合取、析取的分配律2</h3><script type="math/tex; mode=display">
+\begin{array}{l}
+(\forall x)(P(x) \wedge Q(x))=(\forall x) P(x) \wedge(\forall x) Q(x) \\
+(\exists x)(P(x) \vee Q(x))=(\exists x) P(x) \vee(\exists x) Q(x)
+\end{array}</script><h3 id="变元易名后的分配律"><a href="#变元易名后的分配律" class="headerlink" title="变元易名后的分配律"></a>变元易名后的分配律</h3><script type="math/tex; mode=display">
+\begin{array}{l}
+(\forall x)(\forall y)(P(x) \vee Q(y))=(\forall x) P(x) \vee(\forall x) Q(x) \\
+(\exists x)(\exists y)(P(x) \wedge Q(y))=(\exists x) P(x) \wedge(\exists x) Q(x)
+\end{array}</script><h3 id="范式-1"><a href="#范式-1" class="headerlink" title="范式"></a>范式</h3><ul>
+<li>对谓词逻辑的公式来说也有范式</li>
+<li>其中前束范式与原公式是等值的，而其他范式与原公式只有较弱的关系</li>
+</ul>
+<h3 id="前束范式"><a href="#前束范式" class="headerlink" title="前束范式"></a>前束范式</h3><p>说公式 $A$ 是一个<strong>前束范式</strong>，如果 $A$ 中的一切量词都位于该公式的最左边（不含否定词）且这些量词的辖域都延伸到公式的末端。前束范式 $A$ 的一般形式为</p>
+<script type="math/tex; mode=display">
+\left(Q_{1} x_{1}\right) \cdots\left(Q_{n} x_{n}\right) M\left(x_{1},\cdots,x_{n}\right)</script><p>其中 $Q_{i}$ 为量词 $\forall$ 或 $\exists(i=1,\cdots,n)$，$M$ 称作公式 $A$ 的<strong>母式</strong>（基式），$M$ 中不再有量词</p>
+<ul>
+<li>谓词逻辑的任一公式都可化为与之等值的前束范式，但其前束范式并不唯一</li>
+</ul>
+<h3 id="Skolem-标准形"><a href="#Skolem-标准形" class="headerlink" title="Skolem 标准形"></a>Skolem 标准形</h3><ul>
+<li>谓词逻辑的任一公式 A 都可以化作 Skolem 标准型</li>
+<li>A 是不可满足的，当且仅当其 Skolem 标准型是不可满足的</li>
+</ul>
+<h4 id="求-Skolem-标准形的步骤"><a href="#求-Skolem-标准形的步骤" class="headerlink" title="求 Skolem 标准形的步骤"></a>求 Skolem 标准形的步骤</h4><ul>
+<li>首先要求出前束形</li>
+<li>从左到右消去存在量词，设要消去 $(\exists x)$，则将谓词 $P$ 中出现的所有变元 $x$ 均以论域中的某个常项 $a$ 代入。若 $(\exists x)$ 的左边有若干全称量词 $(\forall y)\cdots(\forall z)$，需将谓词 $P$ 中出现的所有变元 $x$ 均以全称量词 $y,\cdots,z$ 的某个多元函数 $f(y,\cdots,z)$ 代入。</li>
+<li>这样便得消去全部存在量词的 Skolem 标准形</li>
+</ul>
+<h3 id="基本推理公式-1"><a href="#基本推理公式-1" class="headerlink" title="基本推理公式"></a>基本推理公式</h3><script type="math/tex; mode=display">
+(\forall x) P(x) \vee(\forall x) Q(x) \Rightarrow(\forall x)(P(x) \vee Q(x))</script><script type="math/tex; mode=display">
+(\exists x)(P(x) \wedge Q(x)) \Rightarrow(\exists x) P(x) \wedge(\exists x) Q(x)</script><script type="math/tex; mode=display">
+(\forall x)(P(x) \rightarrow Q(x)) \Rightarrow(\forall x) P(x) \rightarrow(\forall x) Q(x)</script><script type="math/tex; mode=display">
+(\forall x)(P(x) \rightarrow Q(x)) \Rightarrow(\exists x) P(x) \rightarrow(\exists x) Q(x)</script><script type="math/tex; mode=display">
+(\forall x)(P(x) \leftrightarrow Q(x)) \Rightarrow(\forall x) P(x) \leftrightarrow(\forall x) Q(x)</script><script type="math/tex; mode=display">
+(\forall x)(P(x) \leftrightarrow Q(x)) \Rightarrow(\exists x) P(x) \leftrightarrow(\exists x) Q(x)</script><script type="math/tex; mode=display">
+(\forall x)(P(x) \rightarrow Q(x)) \wedge(\forall x)(Q(x) \rightarrow R(x)) \Rightarrow(\forall x)(P(x) \rightarrow R(x))</script><script type="math/tex; mode=display">
+(\forall x)(P(x) \rightarrow Q(x)) \wedge P(a) \Rightarrow Q(a)</script><script type="math/tex; mode=display">
+(\forall x)(\forall y) P(x, y) \Rightarrow(\exists x)(\forall y) P(x, y)</script><script type="math/tex; mode=display">
+(\exists x)(\forall y) P(x, y) \Rightarrow(\forall y)(\exists x) P(x, y)</script><h3 id="推理规则-1"><a href="#推理规则-1" class="headerlink" title="推理规则"></a>推理规则</h3><h4 id="全称量词消去规则"><a href="#全称量词消去规则" class="headerlink" title="全称量词消去规则"></a>全称量词消去规则</h4><script type="math/tex; mode=display">
+(\forall x) P(x) \Rightarrow P(y)</script><p>其中 $y$ 是论域中一个体<br>意指如果所有的 $x \in D$ 都具有性质 $P$，那么 $D$ 中任一个体 $y$ 必具有性质 $P$。当 $P(x)$ 中不再含有量词和其他变项时，这条规则明显成立。</p>
+<h4 id="全称量词引入规则"><a href="#全称量词引入规则" class="headerlink" title="全称量词引入规则"></a>全称量词引入规则</h4><script type="math/tex; mode=display">
+P(y) \Rightarrow(\forall x) P(x)</script><p>其中 $y$ 是论域中任一个体<br>意指如果任一个体 $y$（自由变项）都具有性质 $P$，那么所有个体 $x$ 都具有性质 $P$。</p>
+<h4 id="存在量词消去规则"><a href="#存在量词消去规则" class="headerlink" title="存在量词消去规则"></a>存在量词消去规则</h4><script type="math/tex; mode=display">
+(\exists x) P(x) \Rightarrow P(c)</script><p>其中 $c$ 是论域中的一个个体常项<br>意指如果论域中存在有个体具有性质 $P$，那么必有某个个体 $c$ 具有性质 $P$。</p>
+<h4 id="存在量词引入规则"><a href="#存在量词引入规则" class="headerlink" title="存在量词引入规则"></a>存在量词引入规则</h4><script type="math/tex; mode=display">
+P(c) \Rightarrow(\exists x) P(x)</script><p>其中 $c$ 是论域中一个个体常项<br>意指如果有个体常项 $c$ 具有性质 $P$，那么 $(\exists x) P(x)$ 必真。</p>
+<h3 id="推理演算"><a href="#推理演算" class="headerlink" title="推理演算"></a>推理演算</h3><ul>
+<li>命题逻辑中引入推理规则的推理演算，可推广到谓词逻辑；</li>
+<li>有关的推理规则（代入规则需补充说明）都可直接移入到谓词逻辑；</li>
+<li>代入规则需补充说明：命题变项、自由个体变项和谓词变项的代入，要求保持合式公式和普遍有效性不被破坏</li>
+<li>推理演算过程<ul>
+<li>以自然语句表示的推理问题引入谓词形式化</li>
+<li>使用基本的推理公式</li>
+<li>若不能直接使用基本的推理公式，则消去量词</li>
+<li>在无量词下，使用规则和公式推理</li>
+<li>引入量词以求得结论</li>
+</ul>
+</li>
+</ul>
+<h3 id="谓词逻辑的归结推理法"><a href="#谓词逻辑的归结推理法" class="headerlink" title="谓词逻辑的归结推理法"></a>谓词逻辑的归结推理法</h3><ol>
+<li><p>为证明 $A \rightarrow B$ 是定理（$A$，$B$ 为谓词公式），等价的是证明 $A \wedge \neg B=G$ 是矛盾式，这是归结法的出发点</p>
+</li>
+<li><p>建立子句集 $S$</p>
+</li>
+</ol>
+<ul>
+<li>先将 $G$ 化成等值的前束范式，进而将这前束形化成 $Skolem$ 标准形（消去存在量词），得仅含全称量词的公式 $G^{\star}$（曾指出 $G$ 与 $G^{\star}$ 在不可满足的意义下是一致的）</li>
+<li>再将 $G^{\star}$ 中的全称量词省略，$G^{\star}$ 母式（已合取范式化）中的合取词 $\wedge$ 以“，”表示，便得 $G$ 的子句集 $S$ </li>
+<li>而 $S$ 与 $G$ 是同时不可满足的，$S$ 中的变元视作有全称量词作用着</li>
+</ul>
+<ol>
+<li><p>对 $S$ 作归结<br>设 $C_{1}$，$C_{2}$ 是两个无共同变元的子句，$L_{1}$，$L_{2}$ 分别是 $C_{1}$，$C_{2}$ 中的文字，如果 $L_{1}$ 和 $\neg L_{2}$ 有合一置换 $\sigma$，则</p>
+<script type="math/tex; mode=display">
+\left(C_{1} \sigma-\left\{L_{1} \sigma\right\}\right) \cup\left(C_{2} \sigma-\left\{L_{2} \sigma\right\}\right)</script><p>称作子句 $C_{1}$，$C_{2}$ 的归结式</p>
+</li>
+<li><p>对子句集 $S$ 的任两子句作归结（如果可作归结），并将归结式仍放入 $S$ 中。重复这过程直至归结出空子句 $\square$，证明结束</p>
+</li>
+</ol>
+<h2 id="第九章-集合"><a href="#第九章-集合" class="headerlink" title="第九章 集合"></a>第九章 集合</h2><h3 id="集合的概念"><a href="#集合的概念" class="headerlink" title="集合的概念"></a>集合的概念</h3><p>集合是一些确定的、可以区分的事物汇聚在一起组成的一个整体。组成一个集合的每个事物称为该集合的一个<strong>元素</strong>，或简称一个<strong>元</strong></p>
+<ul>
+<li>如果 $a$ 是集合 $A$ 的一个元素，就说 $a$ <strong>属于</strong> $A$，或者说 $a$ 在 $A$ 中，记作<script type="math/tex; mode=display">
+a \in A</script></li>
+<li>如果 $b$ 不是集合 $A$ 的一个元素，就说 $b$ <strong>不属于</strong> $A$，或者说 $b$ 不在 $A$ 中，记作 <script type="math/tex; mode=display">
+b \notin A</script></li>
+<li>集合的元素可以是任何事物，也可以是另外的集合（集合的元素不能是该集合自身）</li>
+<li>一个集合的各个元素是可以互相区分开的。这意味着，在一个集合中不会重复出现相同的元素</li>
+<li>组成一个集合的各个元素在该集合中是无次序的</li>
+<li>任一事物是否属于一个集合，回答是确定的。也就是说，对一个集合来说，任一事物或者是它的元素或者不是它的元素，二者必居其一而不可兼而有之，且结论是确定的</li>
+</ul>
+<h3 id="集合的表示方法"><a href="#集合的表示方法" class="headerlink" title="集合的表示方法"></a>集合的表示方法</h3><h4 id="常用集合"><a href="#常用集合" class="headerlink" title="常用集合"></a>常用集合</h4><ul>
+<li>$\mathbb{N}$ 表示全体自然数的集合</li>
+<li>$\mathbb{Z}$ 表示全体整数的集合</li>
+<li>$\mathbb{Q}$ 表示全体有理数的集合</li>
+<li>$\mathbb{R}$ 表示全体实数的集合</li>
+<li>$\mathbb{C}$ 表示全体复数的集合</li>
+</ul>
+<h4 id="外延表示法"><a href="#外延表示法" class="headerlink" title="外延表示法"></a>外延表示法</h4><p>一一列举集合的全体元素</p>
+<h4 id="内涵表示法"><a href="#内涵表示法" class="headerlink" title="内涵表示法"></a>内涵表示法</h4><p>用谓词来描述集合中元素的性质</p>
+<h3 id="集合间的关系"><a href="#集合间的关系" class="headerlink" title="集合间的关系"></a>集合间的关系</h3><h4 id="相等（外延公理）"><a href="#相等（外延公理）" class="headerlink" title="相等（外延公理）"></a>相等（外延公理）</h4><p>两个集合是相等的，当且仅当它们有相同的元素。若两个集合 $\mathrm{A}$ 和 $\mathrm{B}$ 相等，则记作 $A=B$；若 $A$ 和 $B$ 不相等，则记作 $A \neq B$<br>这个定义也可以写成</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+A=B \Leftrightarrow(\forall x)(x \in A \leftrightarrow x \in B)\\
+A \neq B \Leftrightarrow(\exists x) \neg(x \in A \leftrightarrow x \in B)
+\end{array}</script><p>这个定义就是集合论中的<strong>外延公理</strong>，也叫<strong>外延原理</strong>。它实质上是说“一个集合是由它的元素完全决定的”</p>
+<h4 id="子集"><a href="#子集" class="headerlink" title="子集"></a>子集</h4><p>对任意两个集合 $A$ 和 $B$，若 $A$ 的每个元素都是 $B$ 的元素，就称 $A$ 为 $B$ 的<strong>子集合</strong>，或称 $B$ 包含 $A$，或称 $B$ 是 $A$ 的<strong>超集合</strong>，记作</p>
+<script type="math/tex; mode=display">
+A \subseteq B \mathrm{或} B \supseteq A</script><p>这个定义也可以写成</p>
+<script type="math/tex; mode=display">
+A \subseteq B \Leftrightarrow(\forall x)(x \in A \rightarrow x \in B)</script><p>当 $A$ 不是 $B$ 的子集合时，即 $A \subseteq B$ 不成立时，记作 $A \nsubseteq B$（子集合可简称为子集）</p>
+<ul>
+<li>两个集合相等的充要条件是它们互为子集，即 $A=B \Leftrightarrow(A \subseteq B \wedge B \subseteq A)$</li>
+<li>对任意的集合 $A,B,C$：<ul>
+<li>自反性：$A \subseteq A$</li>
+<li>反对称性：$(A \subseteq B \wedge B \subseteq A) \Rightarrow A=B$</li>
+<li>传递性：$(A \subseteq B \wedge B \subseteq C) \Rightarrow A \subseteq C$</li>
+</ul>
+</li>
+</ul>
+<h3 id="真子集"><a href="#真子集" class="headerlink" title="真子集"></a>真子集</h3><p>对任意两个集合 $A$ 和 $B$，若 $A \subseteq B$ 且 $A \neq B$，就称 $A$ 为 $B$ 的<strong>真子集</strong>，或称 $B$ <strong>真包含</strong> $A$，或称 $B$ 是 $A$ 的<strong>真超集合</strong>，记作</p>
+<script type="math/tex; mode=display">
+A \subset B \text{ 或 } B \supset A</script><p>这个定义也可以写成</p>
+<script type="math/tex; mode=display">
+A \subset B \Leftrightarrow(A \subseteq B \wedge A \neq B)</script><h3 id="不相交"><a href="#不相交" class="headerlink" title="不相交"></a>不相交</h3><p>若两个集合 $A$ 和 $B$ 没有公共元素，就称 $A$ 和 $B$ 是不相交的。这个定义也可以写成 $A$ 和 $B$ 不相交 $\Leftrightarrow \neg(\exists x)(x \in A \wedge x \in B)$<br>若 $A$ 和 $B$ 不是不相交的，就称 $A$ 和 $B$ 是相交的</p>
+<h3 id="空集"><a href="#空集" class="headerlink" title="空集"></a>空集</h3><p>不含任何元素的集合称为空集，记作 $\varnothing$，空集的定义也可以写成</p>
+<script type="math/tex; mode=display">
+\varnothing=\{x \mid x \neq x\}</script><ul>
+<li>对于任意的集合 $A$，$\varnothing \in A$</li>
+<li>空集是唯一的</li>
+</ul>
+<h3 id="全集"><a href="#全集" class="headerlink" title="全集"></a>全集</h3><p>在给定的问题中，所考虑的所有事物的集合称为全集，记作 $E$，全集的定义也可以写成</p>
+<script type="math/tex; mode=display">
+E=\{x \mid x=x\}</script><h3 id="集合的基本运算"><a href="#集合的基本运算" class="headerlink" title="集合的基本运算"></a>集合的基本运算</h3><p>对集合 $A$ 和 $B$，</p>
+<ul>
+<li>并集 $A \cup B$ 定义为<script type="math/tex; mode=display">
+A \cup B=\{x \mid x \in A \vee x \in B\}</script></li>
+<li>交集 $A \cap B$ 定义为<script type="math/tex; mode=display">
+A \cap B=\{x \mid x \in A \wedge x \in B\}</script></li>
+<li>差集（又称 $B$ 对 $A$ 的相对补集，补集）$A-B$ 定义为<script type="math/tex; mode=display">
+A-B=\{x \mid x \in A \wedge x \notin B\}</script></li>
+<li>余集（又称 $A$ 的绝对补集）$-A$ 定义为<script type="math/tex; mode=display">
+-A=E-A=\{x \mid x \notin A\}</script>（其中 $E$ 为全集，$A$ 的余集就是 $A$ 对 $E$ 的相对补集）</li>
+<li>对称差 $A \oplus B$ 定义为<script type="math/tex; mode=display">
+A \oplus B=(A-B) \cup(B-A)=\{x \mid x \in A \overline{\vee} x \in B\}</script></li>
+</ul>
+<h3 id="广义交和广义并"><a href="#广义交和广义并" class="headerlink" title="广义交和广义并"></a>广义交和广义并</h3><p>若集合 $A$ 的元素都是集合，则</p>
+<ul>
+<li>把 $A$ 的所有元素的元素组成的集合称为 $A$ 的<strong>广义并</strong>，记作 $\cup A$</li>
+<li>把 $A$ 的所有元素的公共元素组成的集合称为 $A$ 的<strong>广义交</strong>，记作 $\cap A$<script type="math/tex; mode=display">
+\begin{array}{l}
+\cup A=\{x \mid(\exists z)(z \in A \wedge x \in z)\} \\
+\cap A=\{x \mid(\forall z)(z \in A \rightarrow x \in z)\}
+\end{array}</script>此外，规定 $\cup \varnothing=\varnothing$，规定 $\cap \varnothing$ 无意义</li>
+</ul>
+<h3 id="幂集"><a href="#幂集" class="headerlink" title="幂集"></a>幂集</h3><p>若 $A$ 是集合，则把 $A$ 的所有子集组成的集合称为 $A$ 的幂集，记作 $P(A)$</p>
+<script type="math/tex; mode=display">
+P(A)=\{x \mid x \subseteq A\}</script><ul>
+<li><script type="math/tex; mode=display">
+P(\{\varnothing\})=\{\varnothing,\{\varnothing\}\}</script></li>
+<li><script type="math/tex; mode=display">
+P(\{a,b\})=\{\varnothing,\{a\},\{b\},\{a,b\}\}</script></li>
+<li>$P(\varnothing)={\varnothing}$</li>
+<li>$\varnothing \in P(A)$</li>
+<li>$A \in P(A)$</li>
+</ul>
+<h3 id="有序对"><a href="#有序对" class="headerlink" title="有序对"></a>有序对</h3><p>两个元素 $x$ 和 $y$（允许 $x=y$）按给定次序排列组成的二元组合称为一个有序对，记作 $\langle x,y\rangle$ 其中 $x$ 是它的第一元素，$y$ 是它的第二元素</p>
+<ul>
+<li>$x \neq y \Rightarrow\langle x,y\rangle \neq\langle y,x\rangle$</li>
+<li>$\langle x,y\rangle=\langle u,v\rangle \Leftrightarrow x=u \wedge y=v$</li>
+<li>在平面直角坐标系上一个点的坐标就是一个有序对</li>
+</ul>
+<h4 id="用集合定义有序对"><a href="#用集合定义有序对" class="headerlink" title="用集合定义有序对"></a>用集合定义有序对</h4><p>有序对 $\langle x,y\rangle$ 定义为</p>
+<script type="math/tex; mode=display">
+\langle x,y\rangle=\{\{x\},\{x,y\}\}</script><ul>
+<li>$\langle x,y\rangle=\langle u,v\rangle \Leftrightarrow x=u \wedge y=v$</li>
+<li>$x \neq y \Rightarrow\langle x,y\rangle \neq\langle y,x\rangle$</li>
+</ul>
+<h4 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h4><p>若 $n \in \mathbb{N}$ 且 $n&gt;1,x_{1},x_{2},\cdots,x_{n}$ 是 $n$ 个元素，则 $n$ 元组 $\left\langle x_{1},\cdots,x_{n}\right\rangle$ 定义为</p>
+<ul>
+<li>当 $n=2$ 时，二元组是有序对 $\left\langle x_{1},x_{2}\right\rangle$</li>
+<li>当 $n \neq 2$ 时，$\left\langle x_{1},\cdots,x_{n}\right\rangle=\left\langle\left\langle x_{1},\cdots,x_{n-1}\right\rangle,x_{n}\right\rangle$</li>
+</ul>
+<h3 id="笛卡尔积"><a href="#笛卡尔积" class="headerlink" title="笛卡尔积"></a>笛卡尔积</h3><p>集合 $A$ 和 $B$ 的笛卡儿积（又称卡氏积、乘积、直积）$A \times B$ 定义为</p>
+<script type="math/tex; mode=display">
+A \times B=\{z \mid x \in A \wedge y \in B \wedge z=\langle x,y\rangle\}</script><p>或者</p>
+<script type="math/tex; mode=display">
+A \times B=\{\langle x,y\rangle \mid x \in A \wedge y \in B\}</script><h4 id="扩展-1"><a href="#扩展-1" class="headerlink" title="扩展"></a>扩展</h4><p>若 $n \in \mathbb{N}$ 且 $n&gt;1$，而 $A_{1},A_{2},\cdots,A_{n}$ 是 $n$ 个集合，它们的 $n$ 阶笛卡儿积记作 $A_{1} \times A_{2} \times \cdots \times A_{n}$，并定义为</p>
+<script type="math/tex; mode=display">
+A_{1} \times A_{2} \times \cdots \times A_{n}=\left\{\left\langle x_{1},\cdots,x_{n}\right\rangle \mid x_{1} \in A_{1} \wedge \cdots \wedge x_{n} \in A_{n}\right\}</script><p>当 $A_{1}=A_{2}=\cdots=A_{n}$ 时，它们的 $n$ 阶笛卡儿积可以简写为 $A_{1}^{n}$</p>
+<h3 id="优先权"><a href="#优先权" class="headerlink" title="优先权"></a>优先权</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>优先级</th>
+<th>运算符</th>
+<th>运算符</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>一元运算符</td>
+<td>$-A, P(A), \cap A, \cup A$</td>
+</tr>
+<tr>
+<td>2</td>
+<td>二元运算符</td>
+<td>$-, \cap, \cup, \oplus, \times$</td>
+</tr>
+<tr>
+<td>3</td>
+<td>集合关系符</td>
+<td>$=, \subseteq, \subset, \in$</td>
+</tr>
+<tr>
+<td>4</td>
+<td>一元联结词</td>
+<td>$\neg$</td>
+</tr>
+<tr>
+<td>5</td>
+<td>二元联结词</td>
+<td>$\wedge, \vee, \rightarrow, \leftrightarrow$</td>
+</tr>
+<tr>
+<td>6</td>
+<td>逻辑关系符</td>
+<td>$\Leftrightarrow, \Rightarrow$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="图示"><a href="#图示" class="headerlink" title="图示"></a>图示</h3><p>略</p>
+<h3 id="基本运算的性质"><a href="#基本运算的性质" class="headerlink" title="基本运算的性质"></a>基本运算的性质</h3><p>对任意的集合 $A$，$B$ 和 $C$，有</p>
+<ul>
+<li>交换律<script type="math/tex; mode=display">
+\begin{array}{c}
+A \cup B=B \cup A\\
+A \cap B=B \cap A
+\end{array}</script></li>
+<li>结合律  <script type="math/tex; mode=display">
+\begin{array}{c}
+(A \cup B) \cup C=A \cup(B \cup C)\\
+(A \cap B) \cap C=A \cap(B \cap C)\
+\end{array}</script></li>
+<li>分配律<script type="math/tex; mode=display">
+\begin{array}{c}
+A \cup(B \cap C)=(A \cup B) \cap(A \cup C)\\
+A \cap(B \cup C)=(A \cap B) \cup(A \cap C)
+\end{array}</script></li>
+<li>幂等律<script type="math/tex; mode=display">
+\begin{array}{c}
+A \cup A=A\\
+A \cap A=A
+\end{array}</script></li>
+<li>吸收律<script type="math/tex; mode=display">
+\begin{array}{c}
+A \cup(A \cap B)=A\\
+A \cap(A \cup B)=A
+\end{array}</script></li>
+<li>摩根律<script type="math/tex; mode=display">
+\begin{array}{c}
+A-(B \cup C)=(A-B) \cap(A-C)\\
+A-(B \cap C)=(A-B) \cup(A-C)\\
+-(B \cup C)=-B \cap-C\\
+-(B \cap C)=-B \cup-C
+\end{array}</script></li>
+<li>同一律<script type="math/tex; mode=display">
+\begin{array}{c}
+A \cup \varnothing=A\\
+A \cap E=A
+\end{array}</script></li>
+<li>零律<script type="math/tex; mode=display">
+\begin{array}{c}
+\quad A \cup E=E\\
+A \cap \varnothing=\varnothing
+\end{array}</script></li>
+<li>补余律<script type="math/tex; mode=display">
+\begin{array}{c}
+A \cup-A=E\\
+A \cap-A=\varnothing
+\end{array}</script></li>
+<li><script type="math/tex; mode=display">
+\begin{array}{c}
+-\varnothing=E\\
+-E=\varnothing
+\end{array}</script></li>
+<li>双补律<script type="math/tex; mode=display">
+-(-A)=A</script></li>
+</ul>
+<h4 id="差集的性质"><a href="#差集的性质" class="headerlink" title="差集的性质"></a>差集的性质</h4><p>对任意的集合 $A,B$ 和 $C$，有</p>
+<ul>
+<li>$A-B=A-(A \cap B)$</li>
+<li>$A-B=A \cap-B$</li>
+<li>$A \cup(B-A)=A \cup B$</li>
+<li>$A \cap(B-C)=(A \cap B)-C$</li>
+</ul>
+<h4 id="对称差的性质"><a href="#对称差的性质" class="headerlink" title="对称差的性质"></a>对称差的性质</h4><p>对任意的集合 $A,B$ 和 $C$，有</p>
+<ul>
+<li>交换律 $A \oplus B=B \oplus A$</li>
+<li>结合律 $(A \oplus B) \oplus C=A \oplus(B \oplus C)$</li>
+<li>分配律 $A \cap(B \oplus C)=(A \cap B) \oplus(A \cap C)$</li>
+<li>同一律 $A \oplus \varnothing=A$</li>
+<li>零律 $A \oplus A=\varnothing$</li>
+<li>$A \oplus(A \oplus B)=B$</li>
+</ul>
+<h4 id="子集的性质"><a href="#子集的性质" class="headerlink" title="子集的性质"></a>子集的性质</h4><p>对任意的集合 $A,B,C$ 和 $D$，有</p>
+<ul>
+<li>$A \subseteq B \Rightarrow(A \cup C) \subseteq(B \cup C)$</li>
+<li>$A \subseteq B \Rightarrow(A \cap C) \subseteq(B \cap C)$</li>
+<li>$(A \subseteq B) \wedge(C \subseteq D) \Rightarrow(A \cup C) \subseteq(B \cup D)$</li>
+<li>$(A \subseteq B) \wedge(C \subseteq D) \Rightarrow(A \cap C) \subseteq(B \cap D)$</li>
+<li>$(A \subseteq B) \wedge(C \subseteq D) \Rightarrow(A-D) \subseteq(B-C)$</li>
+<li>$C \subseteq D \Rightarrow(A-D) \subseteq(A-C)$</li>
+</ul>
+<h4 id="幂集合的性质"><a href="#幂集合的性质" class="headerlink" title="幂集合的性质"></a>幂集合的性质</h4><p>对任意的集合 $A$ 和 $B$，有</p>
+<ul>
+<li>$A \subseteq B \Leftrightarrow P(A) \subseteq P(B)$</li>
+<li>$A=B \Leftrightarrow P(A)=P(B)$</li>
+<li>$P(A)\in P(B) \Rightarrow A \in B$</li>
+<li>$P(A)\cap P(B)=P(A\cap B)$</li>
+<li>$P(A)\cup P(B)\subseteq P(A\cup B)$</li>
+<li>$P(A-B)\subseteq (P(A)-P(B))\cup \{\varnothing\}$</li>
+</ul>
+<h4 id="传递集合及其性质"><a href="#传递集合及其性质" class="headerlink" title="传递集合及其性质"></a>传递集合及其性质</h4><p>如果集合的集合 $A$ 的任一元素的元素都是 $A$ 的元素，就称 $A$ 为<strong>传递集合</strong>，即</p>
+<script type="math/tex; mode=display">
+(\forall x)(\forall y)((x \in y \wedge y \in A) \rightarrow x \in A)</script><ul>
+<li>对集合的集合 $A$，$A$ 是传递集合 $\Leftrightarrow A \subseteq P(A)$</li>
+<li>对集合的集合 $A$，$A$ 是传递集合 $\Leftrightarrow$ $P(A)$ 是传递集合</li>
+</ul>
+<h3 id="广义并和广义交的性质"><a href="#广义并和广义交的性质" class="headerlink" title="广义并和广义交的性质"></a>广义并和广义交的性质</h3><p>对集合的集合 $A$ 和 $B$，有</p>
+<ul>
+<li>$A \subseteq B \Rightarrow \cup A \subseteq \cup B$</li>
+<li>$A \subseteq B \Rightarrow \cap B \subseteq \cap A$，其中 $A$ 和 $B$ 非空</li>
+<li>$\cup(A \cup B)=(\cup A) \cup(\cup B)$</li>
+<li>$\cap(A \cup B)=(\cap A) \cap(\cap B)$，其中 $A$ 和 $B$ 非空</li>
+<li>$\cup(P(A))=A$</li>
+<li>若集合 $A$ 是传递集合，则 $\cup A$ 是传递集合</li>
+<li>若集合 $A$ 的元素都是传递集合，则 $\cup A$ 是传递集合</li>
+<li>若非空集合 $A$ 是传递集合，则 $\cap A$ 是传递集合，且 $\cap A=\varnothing$</li>
+<li>若非空集合 $A$ 的元素都是传递集合，则 $\cap A$ 是传递集合</li>
+</ul>
+<h3 id="笛卡尔积的性质"><a href="#笛卡尔积的性质" class="headerlink" title="笛卡尔积的性质"></a>笛卡尔积的性质</h3><ul>
+<li>$A \times \varnothing=\varnothing \times B=\varnothing$</li>
+<li>若 $A \neq \varnothing$，$B \neq \varnothing$ 且 $A \neq B$，则 $A \times B \neq B \times A$</li>
+<li>$A \times(B \times C) \neq(A \times B) \times C$</li>
+<li>$A \times(B \cup C)=(A \times B) \cup(A \times C)$</li>
+<li>$A \times(B \cap C)=(A \times B) \cap(A \times C)$</li>
+<li>$(B \cup C) \times A=(B \times A) \cup(C \times A)$</li>
+<li>$(B \cap C) \times A=(B \times A) \cap(C \times A)$<br>若 $C \neq \varnothing$，则 $(A \subseteq B) \Leftrightarrow(A \times C \subseteq B \times C) \Leftrightarrow(C \times A \subseteq C \times B)$</li>
+<li>$(A \times B \subseteq C \times D) \Leftrightarrow(A \subseteq C \wedge B \subseteq D)$</li>
+</ul>
+<h4 id="杂项性质"><a href="#杂项性质" class="headerlink" title="杂项性质"></a>杂项性质</h4><ul>
+<li>$A \cup B=A \cup C, A \cap B=A \cap C \Rightarrow B=C$</li>
+<li>$(A-B) \oplus(A-C)=\varnothing$ 的充要条件是 $A-B=A-C$</li>
+</ul>
+<h3 id="有限集合的基数"><a href="#有限集合的基数" class="headerlink" title="有限集合的基数"></a>有限集合的基数</h3><p>如果存在 $n \in \mathbb{N}$，使集合 $A$ 与集合 $\{x \mid x \in \mathbb{N} \wedge x&lt;n\}=\{0,1,2,\cdots,n-1\}$ 的元素个数相同，就说集合 $A$ 的<strong>基数</strong>是 $n$，记作 $\#(A)=n$ 或 $|A|=n$ 或 $\operatorname{card}(A)=n$，空集 $\varnothing$ 的基数是 $0$</p>
+<p>如果存在 $n \in \mathbb{N}$，使 $n$ 是集合 $A$ 的基数 $.$ 就说 $A$ 是有限集合 $.$ 如果不存在这样的 $n$，就说 $A$ 是<strong>无限集合</strong></p>
+<ul>
+<li>对于有限集合 $A$，$|P(A)|=2^{|A|}$</li>
+<li>对有限集合 $A$ 和 $B$，$|A\times B|=|A|\cdot|B|$</li>
+</ul>
+<h3 id="基本运算的基数"><a href="#基本运算的基数" class="headerlink" title="基本运算的基数"></a>基本运算的基数</h3><p>对有限集合 $A_{1}$ 和 $A_{2}$，有</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\left|A_{1} \cup A_{2}\right| \leqslant\left|A_{1}\right|+\left|A_{2}\right| \\
+\left|A_{1} \cap A_{2}\right| \leqslant \min \left(\left|A_{1}\right|,\left|A_{2}\right|\right) \\
+\left|A_{1}-A_{2}\right| \geqslant\left|A_{1}\right|-\left|A_{2}\right|\\
+\left|A_{1} \oplus A_{2}\right|=\left|A_{1}\right|+\left|A_{2}\right|-2\left|A_{1} \cap A_{2}\right|
+\end{array}</script><h3 id="排斥原理"><a href="#排斥原理" class="headerlink" title="排斥原理"></a>排斥原理</h3><p>对有限集合 $A_{1}$ 和 $A_{2}$，有</p>
+<script type="math/tex; mode=display">
+\left|A_{1} \cup A_{2}\right|=\left|A_{1}\right|+\left|A_{2}\right|-\left|A_{1} \cap A_{2}\right|</script><h2 id="第十章-关系"><a href="#第十章-关系" class="headerlink" title="第十章 关系"></a>第十章 关系</h2><h3 id="二元关系"><a href="#二元关系" class="headerlink" title="二元关系"></a>二元关系</h3><p>对集合 $A$ 和 $B$，$A \times B$ 的任一子集称为 $A$ 到 $B$ 的一个<strong>二元关系</strong>，一般记作 $R$。若 $\langle x,y\rangle \in R$，可记作 $x R y$；若 $\langle x,y\rangle \notin R$，可记作 $x \not R y$。在 $A=B$ 时，$A \times A$ 的任一子集称为 $A$ 上的一个<strong>二元关系</strong>。二元关系可<strong>简称关系</strong></p>
+<h4 id="扩展-2"><a href="#扩展-2" class="headerlink" title="扩展"></a>扩展</h4><p>若 $n \in N$ 且 $n&gt;1,A_{1},A_{2},\cdots,A_{n}$ 是 $n$ 个集合，则 $A_{1} \times A_{2} \times \cdots \times A_{n}$ 的任一子集称为从 $A_{1}$ 到 $A_{n}$ 上的一个 <strong>n 元关系</strong></p>
+<h3 id="特殊关系"><a href="#特殊关系" class="headerlink" title="特殊关系"></a>特殊关系</h3><p>对任意的集合 $A$</p>
+<ul>
+<li>$A$ 上的恒等关系 $I_{A}$ 定义为<script type="math/tex; mode=display">
+I_{A}=\{\langle x,x\rangle \mid x \in A\}</script></li>
+<li>$A$ 上的全域关系（全关系）$E_{A}$ 定义为<script type="math/tex; mode=display">
+E_{A}=\{\langle x,y\rangle \mid x \in A \wedge y \in A\}</script></li>
+<li>$\varnothing$ 是 $A$ 上的空关系</li>
+</ul>
+<h3 id="定义域和值域"><a href="#定义域和值域" class="headerlink" title="定义域和值域"></a>定义域和值域</h3><p>对 $A$ 到 $B$ 的一个关系 $R$，可以定义</p>
+<ul>
+<li>$R$ 的定义域 $\operatorname{dom}(R)$ 为<script type="math/tex; mode=display">
+\operatorname{dom}(R)=\{x \mid(\exists y)(\langle x,y\rangle \in R)\}</script></li>
+<li>$R$ 的值域 $\operatorname{ran}(R)$ 为<script type="math/tex; mode=display">
+\operatorname{ran}(R)=\{y \mid(\exists x)(\langle x,y\rangle \in R)\}</script></li>
+<li>$R$ 的域 $\operatorname{fld}(R)$ 为<script type="math/tex; mode=display">
+\operatorname{fld}(R)=\operatorname{dom}(R) \cup \operatorname{ran}(R)</script></li>
+</ul>
+<h4 id="性质-1"><a href="#性质-1" class="headerlink" title="性质"></a>性质</h4><ul>
+<li>对 $A$ 到 $B$ 的关系 $R$，如果 $\langle x,y\rangle \in R$，则<script type="math/tex; mode=display">
+x \in \cup \cup R,y \in \cup \cup R</script></li>
+<li>对 $A$ 到 $B$ 的关系 $R$，则<script type="math/tex; mode=display">
+\operatorname{fld}(R)=\cup \cup R</script></li>
+</ul>
+<h3 id="关系矩阵"><a href="#关系矩阵" class="headerlink" title="关系矩阵"></a>关系矩阵</h3><p>设集合 $X=\left\{x_{1},x_{2},\cdots,x_{m}\right\},Y=\left\{y_{1},y_{2},\cdots,y_{n}\right\}$</p>
+<ul>
+<li>若 $R$ 是 $X$ 到 $Y$ 的一个关系，则 $R$ 的关系矩阵是 $m \times n$ 矩阵（$m$ 行、$n$ 列的矩阵）<script type="math/tex; mode=display">
+M(R)=\left(r_{i j}\right)_{m \times n}</script>矩阵元素是 $r_{i j}$，且<script type="math/tex; mode=display">
+r_{i j}=\left\{\begin{array}{ll}
+1,& \mathrm{当}\left\langle x_{i},y_{j}\right\rangle \in R \\
+0,& \mathrm{当}\left\langle x_{i},y_{j}\right\rangle \notin R
+\end{array}\right.</script>其中 $1 \leqslant i \leqslant m,1 \leqslant j \leqslant n$</li>
+<li><p>若 $R$ 是 $X$ 上的一个关系，则 $R$ 的关系矩阵是 $m \times m$ 方阵（$m$ 行、$m$ 列的矩阵）</p>
+<script type="math/tex; mode=display">
+M(R)=\left(r_{i j}\right)_{m \times m}</script><p>矩阵元素是 $r_{i j}$，且</p>
+<script type="math/tex; mode=display">
+r_{i j}=\left\{\begin{array}{ll}
+1,& \mathrm{当}\left\langle x_{i},x_{j}\right\rangle \in R \\
+0,& \mathrm{当}\left\langle x_{i},x_{j}\right\rangle \notin R
+\end{array}\right.</script><p>其中 $1 \leqslant i \leqslant m,1 \leqslant j \leqslant m$</p>
+</li>
+<li><p>$A$ 到 $B$ 的关系 $R$ 是 $A \times B$ 的子集</p>
+</li>
+<li>$A \times B$ 有 $m \times n$ 个有序对</li>
+<li>矩阵 $M(R)$ 有 $m$ 行、$n$ 列，共有 $m \times n$ 个元素</li>
+<li>$M(R)$ 的每个元素恰好对应 $A \times B$ 的一个有序对</li>
+<li>用 $M(R)$ 中元素 $r_{i j}$ 的值表示有序对 $\left\langle x_{i},y_{j}\right\rangle$ 是否在 $R$ 中，因为只有 $\in$ 和 $\notin$ 两种情况，所以 $r_{i j}$ 只取值 $0$ 和 $1$ 是合理的</li>
+</ul>
+<h3 id="关系图"><a href="#关系图" class="headerlink" title="关系图"></a>关系图</h3><p>设集合 $X=\left\{x_{1},x_{2},\cdots,x_{m}\right\}$，$Y=\left\{y_{1},y_{2},\cdots,y_{n}\right\}$</p>
+<ul>
+<li>若 $R$ 是 $X$ 到 $Y$ 的一个关系，则 $R$ 的关系图是一个有向图 $G(R)=\langle V,E\rangle$，它的顶点集是 $V=X \cup Y$，边集是 $E$，从 $x_{i}$ 到 $y_{j}$ 的有向边 $e_{i j} \in E$，当且仅当 $\left\langle x_{i},y_{j}\right\rangle \in R$</li>
+<li>若 $R$ 是 $X$ 上的一个关系，则 $R$ 的关系图是一个有向图 $G(R)=\langle V,E\rangle$，它的顶点集是 $V=X$，边集是 $E$，从 $x_{i}$ 到 $x_{j}$ 的有向边 $e_{i j} \in E$ 当且仅当 $\left\langle x_{i},x_{j}\right\rangle \in R$</li>
+<li>关系图中一条有向边 $e_{i j}$ 与 $R$ 中的一个有序对 $\left\langle x_{i},x_{j}\right\rangle$ 一一对应</li>
+</ul>
+<h3 id="关系的逆、合成、限制和象"><a href="#关系的逆、合成、限制和象" class="headerlink" title="关系的逆、合成、限制和象"></a>关系的逆、合成、限制和象</h3><p>对 $X$ 到 $Y$ 的关系 $R$，$Y$ 到 $Z$ 的关系 $S$，定义</p>
+<ul>
+<li>$R$ 的<strong>逆</strong> $R^{-1}$ 为 $Y$ 到 $X$ 的关系<script type="math/tex; mode=display">
+R^{-1}=\{\langle x,y\rangle \mid\langle y,x\rangle \in R\}</script></li>
+<li>$R$ 与 $S$ 的<strong>合成</strong> $S \circ R$ 为 $X$ 到 $Z$ 的关系<script type="math/tex; mode=display">
+S \circ R=\{\langle x,y\rangle \mid(\exists z)(\langle x,z\rangle \in R \wedge\langle z,y\rangle \in S)\}</script>此外，对任意的集合 $A$，还可定义</li>
+<li>$R$ 在 $A$ 上的<strong>限制</strong> $R \upharpoonright A$ 为 $A$ 到 $Y$ 的关系<script type="math/tex; mode=display">
+R \upharpoonright A=\{\langle x,y\rangle \mid\langle x,y\rangle \in R \wedge x \in A\}</script></li>
+<li>$A$ 在 $R$ 下的<strong>象</strong> $R[A]$ 为集合<script type="math/tex; mode=display">
+R[A]=\{y \mid(\exists x)(x \in A \wedge\langle x,y\rangle \in R)\}</script></li>
+</ul>
+<h4 id="合成的关系矩阵"><a href="#合成的关系矩阵" class="headerlink" title="合成的关系矩阵"></a>合成的关系矩阵</h4><ul>
+<li>$R_1$ 的关系矩阵 $\boldsymbol{M}(R^{-1})$ 就是 $R$ 的关系矩阵的<strong>转置矩阵</strong></li>
+<li><script type="math/tex; mode=display">
+M(S \circ R)=M(R) M(S)</script>其中 <script type="math/tex; mode=display">
+w_{i j}=\bigvee_{k=1}^{n}\left(r_{i k} \wedge s_{k j}\right)</script></li>
+</ul>
+<h3 id="关系的运算的性质"><a href="#关系的运算的性质" class="headerlink" title="关系的运算的性质"></a>关系的运算的性质</h3><h4 id="组1"><a href="#组1" class="headerlink" title="组1"></a>组1</h4><p>对 $X$ 到 $Y$ 的关系 $R$ 和 $Y$ 到 $Z$ 的关系 $S$，则</p>
+<ul>
+<li>$\operatorname{dom}\left(R^{-1}\right)=\operatorname{ran}(R)$</li>
+<li>$\operatorname{ran}\left(R^{-1}\right)=\operatorname{dom}(R)$</li>
+<li>$\left(R^{-1}\right)^{-1}=R$</li>
+<li>$(S \circ R)^{-1}=R^{-1} \circ S^{-1}$</li>
+</ul>
+<h4 id="组2"><a href="#组2" class="headerlink" title="组2"></a>组2</h4><p>对 $X$ 到 $Y$ 的关系 $Q$，$Y$ 到 $Z$ 的关系 $S$，$Z$ 到 $W$ 的关系 $R$，则</p>
+<script type="math/tex; mode=display">
+(R \circ S) \circ Q=R \circ(S \circ Q)</script><h4 id="组3"><a href="#组3" class="headerlink" title="组3"></a>组3</h4><p>对 $X$ 到 $Y$ 的关系 $R_{2}$ 和 $R_{3}$，$Y$ 到 $Z$ 的关系 $R_{1}$，有</p>
+<ul>
+<li>$R_{1} \circ\left(R_{2} \cup R_{3}\right)=R_{1} \circ R_{2} \cup R_{1} \circ R_{3}$</li>
+<li>$R_{1} \circ\left(R_{2} \cap R_{3}\right) \subseteq R_{1} \circ R_{2} \cap R_{1} \circ R_{3}$</li>
+</ul>
+<h4 id="组4"><a href="#组4" class="headerlink" title="组4"></a>组4</h4><p>对 $X$ 到 $Y$ 的关系 $R_{3}$，$Y$ 到 $Z$ 的关系 $R_{1}$、$R_{2}$，有</p>
+<ul>
+<li>$\left(R_{1} \cup R_{2}\right) \circ R_{3}=R_{1} \circ R_{3} \cup R_{2} \circ R_{3}$</li>
+<li>$\left(R_{1} \cap R_{2}\right) \circ R_{3} \subseteq R_{1} \circ R_{3} \cap R_{2} \circ R_{3}$</li>
+</ul>
+<h4 id="组5"><a href="#组5" class="headerlink" title="组5"></a>组5</h4><p>对 $X$ 到 $Y$ 的关系 $R$ 和集合 $A$，$B$，有</p>
+<ul>
+<li>$R[A \cup B]=R[A] \cup R[B]$</li>
+<li>$R[\cup A]=\cup\{R[B] \mid B \in A\}$</li>
+<li>$R[A \cap B] \subseteq R[A] \cap R[B]$</li>
+<li>$R[\cap A] \subseteq \cap\{R[B] \mid B \in A\}\ (A \neq \varnothing)$</li>
+<li>$R[A]-R[B] \subseteq R[A-B]$</li>
+</ul>
+<h3 id="关系的性质"><a href="#关系的性质" class="headerlink" title="关系的性质"></a>关系的性质</h3><h4 id="自反性"><a href="#自反性" class="headerlink" title="自反性"></a>自反性</h4><p>对 $A$ 上的关系 $R$，若对任意的 $x \in A$ 都有 $x R x$，则称 $R$ 为 $A$ 上<strong>自反</strong>的关系；若对任意的 $x \in A$ 都有 $x \not R x$，则称 $R$ 为 $A$ 上<strong>非自反</strong>的关系。或者说：</p>
+<ul>
+<li>$R$ 是 $A$ 上自反的 $\Leftrightarrow(\forall x)\left(x \in A \rightarrow x R x\right)$</li>
+<li>$R$ 是 $A$ 上非自反的 $\Leftrightarrow(\forall x)(x \in A \rightarrow x \not R x)$</li>
+</ul>
+<p>性质：</p>
+<ul>
+<li>在非空集合 $A$ 上的恒等关系 $I_{A}$ 和全关系 $E_{A}$ 都是自反的</li>
+<li>在非空集合 $A$ 上的空关系 $\varnothing$ 是非自反的</li>
+<li>在集合 $\mathbb{N}$ 上的小于关系 $&lt;$ 是非自反的</li>
+<li>在集合 $A$ 的幂集 $P(A)$ 上的真包含关系 $\subsetneqq$ 是非自反的</li>
+<li>如果 $R$ 是 $A$ 上自反的，则关系矩阵 $M(R)$ 的主对角线元素都是 $1$（即 $r_{i i}$ 都是 $1$），关系图 $G(R)$ 的每个顶点都有自圈</li>
+<li>如果 $R$ 是 $A$ 上非自反的，则 $M(R)$ 的主对角线元素都是 $0$，$G(R)$ 的每个顶点都没有自圈</li>
+<li>三种状态：自反、非自反，既不是自反也不是非自反</li>
+</ul>
+<h4 id="对称性"><a href="#对称性" class="headerlink" title="对称性"></a>对称性</h4><p>$R$ 为 $A$ 上的关系，对任意的 $x,y \in A$，若 $x R y \rightarrow y R x$，则称 $R$ 为 $A$ 上<strong>对称</strong>的关系；若 $(x R y \wedge y R x) \rightarrow(x=y)$，则称 $R$ 为 $A$ 上<strong>反对称</strong>的关系<br>这个定义也可以写成</p>
+<ul>
+<li>$R$ 是 $A$ 上对称的 $\Leftrightarrow(\forall x)(\forall y)$<script type="math/tex; mode=display">
+((x \in A \wedge y \in A \wedge x R y) \rightarrow y R x)</script></li>
+<li>$R$ 是 $A$ 上反对称的 $\Leftrightarrow(\forall x)(\forall y)$<script type="math/tex; mode=display">
+((x \in A \wedge y \in A \wedge x R y \wedge y R x) \rightarrow x=y)</script></li>
+</ul>
+<p>反对称性还有另一种等价的定义</p>
+<ul>
+<li>$R$ 是 $A$ 上反对称的 $\Leftrightarrow(\forall x)(\forall y)$<script type="math/tex; mode=display">
+((x \in A \wedge y \in A \wedge x R y \wedge x \neq y) \rightarrow y \not R x)</script></li>
+</ul>
+<p>性质</p>
+<ul>
+<li>在非空集合 $A$ 上的全关系是对称的，不是反对称的</li>
+<li>在 $B=\{x \mid x \in \mathbb{N} \wedge x \neq 0\}$ 上的整除关系、小于等于关系、小于关系都是反对称的，且不是对称的</li>
+<li>在非空集合 $A$ 上的恒等关系和空关系都是对称的，也都是反对称的</li>
+<li>如果 $R$ 是 $A$ 上对称的，则 $M(R)$ 是对称矩阵（对任意的 $i$ 和 $j$，$r_{i j}=r_{j i}$），$G(R)$ 中任意两个顶点之间或者没有有向边，或者互有有向边 $e_{i j}$ 和 $e_{j i}$（不会只有 $e_{i j}$ 没有 $e_{j i}$） </li>
+<li>如果 $R$ 是 $A$ 上反对称的，则 $M(R)$ 是反对称矩阵（对任意的 $i \neq j$，若 $r_{i j}=1$ 则 $r_{j i}=0$），$G(R)$ 中任意两个顶点之间或者没有有向边，或者仅有一条有向边（不会同时有 $e_{i j}$ 和 $e_{j i}$）</li>
+<li>四种状态：对称、反对称，既不是对称也不是反对称，既是对称也是反对称</li>
+</ul>
+<h4 id="传递性"><a href="#传递性" class="headerlink" title="传递性"></a>传递性</h4><p>$R$ 为 $A$ 上的关系，对任意的 $x,y,z \in A$，若 $(x R y \wedge y R z) \rightarrow x R z$，则称 $R$ 为 $A$ 上<strong>传递</strong>的关系<br>这个定义也可以写成</p>
+<ul>
+<li>$R$ 是 $A$ 上传递的 $\Leftrightarrow(\forall x)(\forall y)(\forall z)$<script type="math/tex; mode=display">
+((x \in A \wedge y \in A \wedge z \in A \wedge x R y \wedge y R z) \rightarrow x R z)</script></li>
+</ul>
+<p>性质：</p>
+<ul>
+<li>在集合 $A$ 上的全关系、恒等关系、空关系都是传递的</li>
+<li>在 $B=\{x \mid x \in \mathbb{N} \wedge x \neq 0\}$ 上的整除关系、小于等于关系、小于关系都是传递的</li>
+<li>两种状态：传递、非传递</li>
+</ul>
+<h3 id="运算与性质结合的性质"><a href="#运算与性质结合的性质" class="headerlink" title="运算与性质结合的性质"></a>运算与性质结合的性质</h3><ul>
+<li>$R_{1},R_{2}$ 是 $A$ 上自反的关系，则 $R_{1}^{-1},R_{1} \cap R_{2},R_{1} \cup R_{2}, R_{1} \circ R_{2}$ 也是 $A$ 上自反的关系</li>
+<li>$R_{1},R_{2}$ 是 $A$ 上对称的关系，则 $R_{1}^{-1},R_{1} \cap R_{2},R_{1} \cup R_{2}, R_{1} \circ R_{2}$ 也是 $A$ 上对称的关系</li>
+<li>$R_{1},R_{2}$ 是 $A$ 上传递的关系，则 $R_{1}^{-1},R_{1} \cap R_{2}$ 是 $A$ 上传递的关系（<strong>注意</strong>，$R_{1} \cup R_{2}, R_{1} \circ R_{2}$ <strong>不一定是传递的</strong>）</li>
+<li>$R_{1},R_{2}$ 是 $A$ 上反对称的关系，则 $R_{1}^{-1},R_{1} \cap R_{2}$ 是 $A$ 上反对称的关系（<strong>注意</strong>，$R_{1} \cup R_{2}, R_{1} \circ R_{2}$ <strong>不一定是反对称的</strong>）</li>
+<li>对 $A$ 上的关系 $R$，有<ul>
+<li>$R$ 是对称的 $\Leftrightarrow R=R^{-1}$</li>
+<li>$R$ 是反对称的 $\Leftrightarrow R \cap R^{-1} \subseteq I_{A}$</li>
+</ul>
+</li>
+</ul>
+<h3 id="关系的合成"><a href="#关系的合成" class="headerlink" title="关系的合成"></a>关系的合成</h3><p>对 $A$ 上的关系 $R$，$n \in \mathbb{N}$，关系 $R$ 的 $n$ 次幂 $R^{n}$ 定义如下：</p>
+<ul>
+<li>$R^{0}={\langle x,x\rangle \mid x \in A}=I_{A}$</li>
+<li>$R^{n+1}=R^{n} \circ R \quad(n \geqslant 0)$</li>
+</ul>
+<h4 id="性质-2"><a href="#性质-2" class="headerlink" title="性质"></a>性质</h4><ul>
+<li>设 $A$ 是有限集合，$|A|=n$，$R$ 是 $A$ 上的关系，则存在自然数 $s$ 和 $t$，$s \neq t$，使得 $R^{s}=R^{t}$ </li>
+<li>设 $A$ 是有限集合，$R$ 是 $A$ 上的关系，$m$ 和 $n$ 是非零自然数，则<ul>
+<li>$R^{m} \circ R^{n}=R^{m+n}$</li>
+<li>$\left(R^{m}\right)^{n}=R^{m n}$</li>
+</ul>
+</li>
+<li>设 $A$ 是有限集合，$R$ 是 $A$ 上的关系，若存在自然数 $s$ 和 $t$，$s&lt;t$，使得 $R^{s}=R^{t}$，则<ul>
+<li>$R^{s+k}=R^{t+k}$，其中 $k$ 为自然数；</li>
+<li>$R^{s+k p+i}=R^{s+i}$，$k$ 和 $i$ 为自然数，$p=t-s$</li>
+<li>令 $B=\left\{R^{0},R^{1},\cdots,R^{t-1}\right\}$，则 $R$ 的各次幂均为 $B$ 的元素，即对任意的自然数 $q$，有 $R^{q} \in B$</li>
+</ul>
+</li>
+</ul>
+<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h3><h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><p>对非空集合 $A$ 上的关系 $R$，如果有 $A$ 上另一个关系 $R^{\prime}$ 满足：</p>
+<ul>
+<li>$R^{\prime}$ 是自反的（对称的，传递的）</li>
+<li>$R \subseteq R^{\prime}$</li>
+<li>对 $A$ 上任何自反的（对称的，传递的）关系 $R^{\prime \prime}$<script type="math/tex; mode=display">
+R \subseteq R^{\prime \prime} \rightarrow R^{\prime} \subseteq R^{\prime \prime}</script>则称关系 $R^{\prime}$ 为 $R$ 的自反（对称，传递）闭包，记作 $r(R)$（$s(R),t(R)$）</li>
+<li>直观上说，$r(R)$ 是有自反性的 $R$ 的“最小”超集合，$s(R)$ 是有对称性的 $R$ 的“最小”超集合，$t(R)$ 是有传递性的 $R$ 的“最小”超集合</li>
+<li></li>
+</ul>
+<h4 id="性质-3"><a href="#性质-3" class="headerlink" title="性质"></a>性质</h4><ul>
+<li>对非空集合 $A$ 上的关系 $R$，有<ul>
+<li>$R$ 是自反的 $\Leftrightarrow r(R)=R$</li>
+<li>$R$ 是对称的 $\Leftrightarrow s(R)=R$</li>
+<li>$R$ 是传递的 $\Leftrightarrow t(R)=R$</li>
+</ul>
+</li>
+<li>对非空集合 $A$ 上的关系 $R_{1}$，$R_{2}$，若 $R_{1} \subseteq R_{2}$，则<ul>
+<li>$r\left(R_{1}\right) \subseteq r\left(R_{2}\right)$</li>
+<li>$s\left(R_{1}\right) \subseteq s\left(R_{2}\right)$</li>
+<li>$t\left(R_{1}\right) \subseteq t\left(R_{2}\right)$</li>
+</ul>
+</li>
+<li>对非空集合 $A$ 上的关系 $R_{1}$、$R_{2}$，则<ul>
+<li>$r\left(R_{1}\right) \cup r\left(R_{2}\right)=r\left(R_{1} \cup R_{2}\right)$</li>
+<li>$s\left(R_{1}\right) \cup s\left(R_{2}\right)=s\left(R_{1} \cup R_{2}\right)$</li>
+<li>$t\left(R_{1}\right) \cup t\left(R_{2}\right) \subseteq t\left(R_{1} \cup R_{2}\right)$</li>
+</ul>
+</li>
+</ul>
+<h4 id="构造"><a href="#构造" class="headerlink" title="构造"></a>构造</h4><p>对非空集合 $A$ 上的关系 $R$，有</p>
+<script type="math/tex; mode=display">
+r(R)=R \cup R^{0}</script><script type="math/tex; mode=display">
+s(R)=R \cup R^{-1}</script><script type="math/tex; mode=display">
+t(R)=R \cup R^{2} \cup R^{3} \cup \cdots</script><h4 id="传递闭包的构造优化"><a href="#传递闭包的构造优化" class="headerlink" title="传递闭包的构造优化"></a>传递闭包的构造优化</h4><p>设 $A$ 为非空有限集合，$|A|=n$，$R$ 是 $A$ 上的关系，则存在一个正整数 $k \leqslant   n$，使得</p>
+<script type="math/tex; mode=display">
+t(R)=R^{+}=R \cup R^{2} \cup \cdots \cup R^{k}</script><h4 id="Warshall-算法"><a href="#Warshall-算法" class="headerlink" title="Warshall 算法"></a>Warshall 算法</h4><ol>
+<li>令矩阵 $\boldsymbol{B}=\boldsymbol{M}(R)$</li>
+<li>令 $i=1$，$n=|A|$</li>
+<li>对 $1 \leqslant j \leqslant n$，如果 $\boldsymbol{B}[j,i]=1$，则对 $1 \leqslant k \leqslant n$，令 $\boldsymbol{B}[j,k]=\boldsymbol{B}[j,k] \vee \boldsymbol{B}[i,k]$</li>
+<li>$i$ 加 $1$，</li>
+<li>若 $i \leqslant n$，则转到 $(3)$，否则停止，且<script type="math/tex; mode=display">
+M\left(R^{+}\right)=\boldsymbol{B}</script></li>
+</ol>
+<h3 id="混合性质"><a href="#混合性质" class="headerlink" title="混合性质"></a>混合性质</h3><ul>
+<li>对非空集合 $A$ 上的关系 $R$，有<ul>
+<li>若 $R$ 是自反的，则 $s(R)$ 和 $t(R)$ 是自反的</li>
+<li>若 $R$ 是对称的，则 $r(R)$ 和 $t(R)$ 是对称的</li>
+<li>若 $R$ 是传递的，则 $r(R)$ 是传递的</li>
+<li>$r(s(R))=s(r(R))$</li>
+<li>$r(t(R))=t(r(R))$</li>
+<li>$s(t(R))\subseteq t(s(R))$</li>
+</ul>
+</li>
+<li>按照 $t(s(R))$ 的顺序求等价关系</li>
+</ul>
+<h3 id="等价关系"><a href="#等价关系" class="headerlink" title="等价关系"></a>等价关系</h3><p>对非空集合 $A$ 上的关系 $R$，如果 $R$ 是<strong>自反的、对称的和传递的</strong>，则称 $R$ 为 $A$ 上的等价关系</p>
+<h3 id="等价类"><a href="#等价类" class="headerlink" title="等价类"></a>等价类</h3><p>$R$ 是非空集合 $A$ 上的等价关系，对任意的 $x \in A$，令</p>
+<script type="math/tex; mode=display">
+[x]_{R}=\{y \mid y \in A \wedge x R y\}</script><p>则称集合 $[x]_{R}$ 为 $x$ 关于 $R$ 的等价类，简称 $x$ 的<strong>等价类</strong>，也可记作 $[x]$ 或 $\bar{x}$，$x$ 称为等价类 $[x]_{R}$ 的<strong>代表元素</strong></p>
+<h4 id="性质-4"><a href="#性质-4" class="headerlink" title="性质"></a>性质</h4><p>$R$ 是非空集合 $A$ 上的等价关系，对任意的 $x,y \in A$</p>
+<ul>
+<li>$[x]_{R} \neq \varnothing$ 且 $[x]_{R} \subseteq A$</li>
+<li>若 $x R y$，则 $[x]_{R}=[y]_{R}$</li>
+<li>若 $x  \not R  y$，则 $[x]_{R} \cap[y]_{R}=\varnothing$</li>
+<li>$\cup\left\{[x]_{R} \mid x \in A\right\}=A$</li>
+</ul>
+<h3 id="商集"><a href="#商集" class="headerlink" title="商集"></a>商集</h3><p>对非空集合 $A$ 上的关系 $R$，以 $R$ 的不相交的等价类为元素的集合称为 $A$ 的商集，记作 $A / R$</p>
+<h3 id="划分"><a href="#划分" class="headerlink" title="划分"></a>划分</h3><p>对非空集合 $A$，若存在集合 $\pi$ 满足下列条件：</p>
+<ul>
+<li>$(\forall x)(x \in \pi \rightarrow x \subseteq A)$ （A的子集族）</li>
+<li>$\varnothing \notin \pi$ （不空）</li>
+<li>$\cup \pi=A$ （不漏）</li>
+<li>$(\forall x)(\forall y)((x \in \pi \wedge y \in \pi \wedge x \neq y) \rightarrow x \cap y=\varnothing)$ （不交）<br>则称 $\pi$ 为 $A$ 的一个<strong>划分</strong>，称 $\pi$ 中的元素为 $A$ 的<strong>划分块</strong></li>
+<li>$\pi$ 中的元素称为<strong>划分的单元</strong>，特别约定 $A=\varnothing$ 时只有划分 $\varnothing$</li>
+</ul>
+<p>$A$ 的一个划分 $\pi$ 是 $A$ 的非空子集的集合（即 $\pi \subseteq P(A)$ 且 $\varnothing \notin \pi$），$A$ 的这些子集互不相交，且它们的并集为 $A$</p>
+<h4 id="诱导划分"><a href="#诱导划分" class="headerlink" title="诱导划分"></a>诱导划分</h4><ul>
+<li>对非空集合 $A$ 上的等价关系 $R$，$A$ 的商集 $A / R$ 就是 $A$ 的划分，它称为由等价关系 $R$ 诱导出来的 $A$ 的划分，记作 $\pi_{R}$</li>
+<li>对非空集合 $A$ 的一个划分 $\pi$，令 $A$ 上的关系 $R_{\pi}$ 为<script type="math/tex; mode=display">
+R_{\pi}=\{\langle x,y\rangle \mid(\exists z)(z \in \pi \wedge x \in z \wedge y \in z)\}</script>则 $R_{\pi}$ 为 $A$ 上的等价关系，它称为划分 $\pi$ 诱导出的 $A$ 上的等价关系</li>
+<li>对非空集合 $A$ 的一个划分 $\pi$ 和 $A$ 上的等价关系 $R$，$\pi$ 诱导 $R$ 当且仅当 $R$ 诱导 $\pi$</li>
+</ul>
+<h3 id="相容"><a href="#相容" class="headerlink" title="相容"></a>相容</h3><ul>
+<li>对非空集合 $A$ 上的关系 $R$，如果 $R$ 是<strong>自反的、对称的</strong>，则称 $R$ 为 $A$ 上的<strong>相容关系</strong></li>
+<li>对非空集合 $A$ 上的相容关系 $R$，若 $C \subseteq A$，且 $C$ 中任意两个元素 $x$ 和 $y$ 有 $x R y$，则称 $C$ 是由相容关系 $R$ 产生的相容类，简称<strong>相容类</strong></li>
+<li>对非空集合 $A$ 上的相容关系 $R$，一个相容类若不是任何相容类的真子集，就称为<strong>最大相容类</strong>，记作 $C_{R}$</li>
+<li>对非空有限集合 $A$ 上的相容关系 $R$，若 $C$ 是一个相容类，则存在一个最大相容类 $C_{R}$，使 $C \subseteq C_{R}$</li>
+<li>最大相容类 $C_{R}$ 有下列性质：<script type="math/tex; mode=display">
+\begin{array}{c}
+(\forall x)(\forall y)\left(\left(x \in C_{R} \wedge y \in C_{R}\right) \rightarrow x R y\right) \\
+(\forall x)\left(x \in A-C_{R} \rightarrow(\exists y)\left(y \in C_{R} \wedge x R y\right)\right)
+\end{array}</script></li>
+</ul>
+<h3 id="覆盖"><a href="#覆盖" class="headerlink" title="覆盖"></a>覆盖</h3><ul>
+<li>对非空集合 $A$，若存在集合 $\Omega$ 满足下列条件：<ul>
+<li>$(\forall x)(x \in \Omega \rightarrow x \subseteq A)$</li>
+<li>$\varnothing \notin \Omega$</li>
+<li>$\cup \Omega=A$</li>
+</ul>
+</li>
+</ul>
+<p>则称 $\Omega$ 为 $A$ 的一个<strong>覆盖</strong>，称 $\Omega$ 中的元素为 $\Omega$ 的<strong>覆盖块</strong></p>
+<ul>
+<li>一个划分是一个覆盖，但一个覆盖不一定是一个划分。因为划分中各元素不相交，覆盖中各元素可能相交</li>
+<li>对非空集合 $A$ 上的相容关系 $R$，最大相容类的集合是 $A$ 的一个覆盖，称为 $A$ 的<strong>完全覆盖</strong>，记作 $C_{R}(A)$，而且 $C_{R}(A)$ 是唯一的</li>
+<li>对非空集合 $A$ 的一个覆盖 $\Omega=\left\{A_{1},A_{2},\cdots,A_{n}\right\}$，由 $\Omega$ 确定的关系 $R=A_{1} \times A_{1} \cup A_{2} \times A_{2} \cup \cdots \cup A_{n} \times A_{n}$ 是 $A$ 上的相容关系</li>
+</ul>
+<h3 id="偏序关系和拟序关系"><a href="#偏序关系和拟序关系" class="headerlink" title="偏序关系和拟序关系"></a>偏序关系和拟序关系</h3><ul>
+<li>对非空集合 $A$ 上的关系 $R$，如果 $R$ 是<strong>自反的、反对称的和传递的</strong>，则称 $R$ 为 $A$ 上的<strong>偏序关系</strong>。偏序关系 $R$ 通常记作 $\leqslant$，当 $x R y$ 时，可记作 $x \leqslant y$</li>
+<li>对非空集合 $A$ 上的关系 $R$，如果 $R$ 是<strong>非自反的和传递的</strong>（暗含了反对称），则称 $R$ 为 $A$ 上的<strong>拟序关系</strong>。拟序关系 $R$ 通常记作 $&lt;$ 当 $x R y$ 时，可记作 $x&lt;y$</li>
+<li>偏序关系又称<strong>弱偏序关系</strong>，或<strong>半序关系</strong>；拟序关系又称<strong>强偏序关系</strong></li>
+<li>若 $R$ 为 $A$ 上的拟序关系，则 $R$ 是反对称的</li>
+<li>对 $A$ 上的拟序关系 $R$，$R \cup R^{0}$ 是 $A$ 上的偏序关系</li>
+<li>对 $A$ 上的偏序关系 $R$，$R-R^{0}$ 是 $A$ 上的拟序关系</li>
+<li>集合 $A$ 与 $A$ 上的关系 $R$ 一起称为一个<strong>结构</strong>。集合 $A$ 与 $A$ 上的偏序关系 $R$ 一起称为一个偏序结构，或称<strong>偏序集</strong>，并记作 $\langle A,R\rangle$</li>
+</ul>
+<h3 id="偏序集的哈斯图"><a href="#偏序集的哈斯图" class="headerlink" title="偏序集的哈斯图"></a>偏序集的哈斯图</h3><p>对偏序集 $\langle A,\leqslant\rangle$，如果 $x,y \in A$，$x \leqslant y$，$x \neq y$，且不存在元素 $z \in A$ 使得 $x \leqslant z$ 且 $z \leqslant y$，则称 $y$ 盖住 $x$。$A$ 上的盖住关系 $\operatorname{cov} A$ 定义为</p>
+<script type="math/tex; mode=display">
+\operatorname{cov} A=\{\langle x,y\rangle \mid x \in A \wedge y \in A \wedge y \mathrm{盖住} x\}</script><p>对偏序集 $\langle A,\leqslant\rangle$，$A$ 上的盖住关系 $\operatorname{cov} A$ 是唯一的，可以用盖住关系画偏序集的哈斯图，作图规则为：</p>
+<ul>
+<li>每个顶点代表 $A$ 的一个元素，</li>
+<li>若 $x \leqslant y$ 且 $x \neq y$，则顶点 $y$ 在顶点 $x$ 上方，</li>
+<li>若 $\langle x,y\rangle \in \operatorname{cov} A$，则 $x,y$ 间连无向边</li>
+</ul>
+<h3 id="最大最小元"><a href="#最大最小元" class="headerlink" title="最大最小元"></a>最大最小元</h3><p>对偏序集 $\langle A,\leqslant\rangle$，且 $B \subseteq A$，进一步</p>
+<ul>
+<li>若 $(\exists y)(y \in B \wedge(\forall x)(x \in B \rightarrow y \leqslant x))$，则称 $y$ 为 $B$ 的<strong>最小元</strong>，</li>
+<li>若 $(\exists y)(y \in B \wedge(\forall x)(x \in B \rightarrow x \leqslant y))$，则称 $y$ 为 $B$ 的<strong>最大元</strong>，</li>
+<li>若 $(\exists y)(y \in B \wedge(\forall x)((x \in B \wedge x \leqslant y) \rightarrow x=y))$，则称 $y$ 为 $B$ 的<strong>极小元</strong>，</li>
+<li>若 $(\exists y)(y \in B \wedge(\forall x)((x \in B \wedge y \leqslant x) \rightarrow x=y))$，则称 $y$ 为 $B$ 的<strong>极大元</strong></li>
+<li>最小（大）元不一定存在，若存在必唯一。</li>
+<li>在非空有限集合B中，极小（大）元必存在，不一定唯一。</li>
+<li>直观理解：<ul>
+<li>最小元是哈斯图最下面那个（有多个则没有最小元）</li>
+<li>最大元是哈斯图最上面那个（有多个则没有最大元）</li>
+<li>极大元是哈斯图最上面那个（有多个则全部是极大元）</li>
+<li>极小元是哈斯图最下面那个（有多个则全部是极小元）</li>
+<li>极大和最大的差别在于 $B$ 中是否包含不可比较的元素</li>
+</ul>
+</li>
+</ul>
+<h3 id="上下界"><a href="#上下界" class="headerlink" title="上下界"></a>上下界</h3><p>对偏序集 $\langle A,\leqslant\rangle$，且 $B \subseteq A$，进一步</p>
+<ul>
+<li>若 $(\exists y)(y \in A \wedge(\forall x)(x \in B \rightarrow x \leqslant y))$，则称 $y$ 为 $B$ 的<strong>上界</strong>，</li>
+<li>若 $(\exists y)(y \in A \wedge(\forall x)(x \in B \rightarrow y \leqslant x))$，则称 $y$ 为 $B$ 的<strong>下界</strong>，</li>
+<li>若集合 $C=\{y \mid y 是 B 的上界 \}$，则 $C$ 的最小元称为 $B$ 的<strong>上确界</strong>或最小上界，</li>
+<li>若集合 $C=\{y \mid y 是 B 的下界 \}$，则 $C$ 的最大元称为 $B$ 的<strong>下确界</strong>或最大下界</li>
+<li>上下界未必存在，存在时也未必唯一</li>
+<li>上（下）确界未必存在，存在必唯一</li>
+<li><strong>有了上（下）界，也未必存在上（下）确界</strong></li>
+<li>如果 $b$ 是 $B$ 的最大（小）元，则 $b$ 是 $B$ 的上（下）确界</li>
+<li>如果 $b$ 是 $B$ 的上（下）界，而且 $b \in B$，则 $b$ 一定是 $B$ 的最大（小）元</li>
+</ul>
+<h3 id="全序关系和链"><a href="#全序关系和链" class="headerlink" title="全序关系和链"></a>全序关系和链</h3><ul>
+<li>对偏序集 $\langle A,\leqslant\rangle$，对任意的 $x$，$y \in A$，若有 $x \leqslant y$ 或 $y \leqslant x$，则称 $x$ 和 $y$ 是<strong>可比</strong>的</li>
+<li>对偏序集 $\langle A,\leqslant\rangle$，如果对任意的 $x$，$y \in A$，$x$ 和 $y$ 都可比，则称 $\leqslant$ 为 $A$ 上的<strong>全序关系</strong>，或称<strong>线序关系</strong>，并称 $\langle A,\leqslant\rangle$ 为<strong>全序集</strong></li>
+<li>对偏序集 $\langle A,\leqslant\rangle$，且 $B \subseteq A$，进一步<ul>
+<li>如果对任意的 $x,y \in B$，$x$ 和 $y$ 都是可比的，则称 $B$ 为 $A$ 上的链，$B$ 中元素个数称为<strong>链的长度</strong></li>
+<li>如果对任意的 $x,y \in B$，$x$ 和 $y$ 都不是可比的，则称 $B$ 为 $A$ 上的反链，$B$ 中元素个数称为<strong>反链的长度</strong></li>
+</ul>
+</li>
+<li>对偏序集 $\langle A,\leqslant\rangle$，设 $A$ 中最长链的长度是 $n$，则将 $A$ 中元素分成不相交的反链，反链个数至少是 $n$</li>
+<li>对偏序集 $\langle A,\leqslant\rangle$，若 $A$ 中元素为 $m n+1$ 个，则 $A$ 中或者存在一条长度为 $m+1$ 的反链，或者存在一条长度为 $n+1$ 的链</li>
+</ul>
+<h3 id="良序关系"><a href="#良序关系" class="headerlink" title="良序关系"></a>良序关系</h3><ul>
+<li>对偏序集 $\langle A,\leqslant\rangle$，如果 $A$ 的任何非空子集都有最小元，则称 $\leqslant$ 为<strong>良序关系</strong>，称 $\langle A,\leqslant\rangle$ 为<strong>良序集</strong></li>
+<li>一个良序集一定是全序集</li>
+<li>一个有限的全序集一定是良序集</li>
+<li>良序定理：任意的集合都是可以良序化的</li>
+</ul>
+<h3 id="区间"><a href="#区间" class="headerlink" title="区间"></a>区间</h3><p>在全序集 $\langle\mathbb{R},\leqslant\rangle$ 上，对于 $a,b \in \mathbb{R}$，$a \neq b$，$a \leqslant b$，则</p>
+<ul>
+<li>$[a,b]=\{x \mid x \in \mathbb{R} \wedge a \leqslant x \leqslant b\}$，称为从 $a$ 到 $b$ 的<strong>闭区间</strong></li>
+<li>$(a,b)=\{x \mid x \in \mathbb{R} \wedge a \leqslant x \leqslant b \wedge x \neq a \wedge x \neq b\}$，称为从 $a$ 到 $b$ 的<strong>开区间</strong></li>
+<li>$[a,b)=\{x \mid x \in \mathbb{R} \wedge a \leqslant x \leqslant b \wedge x \neq b\}$ 称为从 $a$ 到 $b$ 的<strong>半开区间</strong></li>
+<li>$(a,b]=\{x \mid x \in \mathbb{R} \wedge a \leqslant x \leqslant b \wedge x \neq a\}$ 称为从 $a$ 到 $b$ 的<strong>半开区间</strong></li>
+<li>还可以定义下列区间<script type="math/tex; mode=display">
+\begin{array}{l}
+(-\infty,a]=\{x \mid x \in \mathbb{R} \wedge x \leqslant a\},\\
+(-\infty,a)=\{x \mid x \in \mathbb{R} \wedge x \leqslant a \wedge x \neq a\},\\
+{[a,\infty)=\{x \mid x \in \mathbb{R} \wedge a \leqslant x\},} \\
+(a,\infty)=\{x \mid x \in \mathbb{R} \wedge a \leqslant x \wedge x \neq a\},\\
+(-\infty,\infty)=\mathbb{R}
+\end{array}</script></li>
+</ul>
+<h2 id="第十一章-函数"><a href="#第十一章-函数" class="headerlink" title="第十一章 函数"></a>第十一章 函数</h2><p>对集合 $A$ 到集合 $B$ 的关系 $f$，若满足下列条件：</p>
+<ul>
+<li>（单值性）对任意的 $x \in \operatorname{dom}(f)$，存在唯一的 $y \in \operatorname{ran}(f)$，使 $x f y$ 成立</li>
+<li>（定义域）$\operatorname{dom}(f)=A$<br>则称 $f$ 为从 $A$ 到 $B$ 的<strong>函数</strong>，或称 $f$ 把 $A$ 映射到 $B$</li>
+</ul>
+<p>一个从 $A$ 到 $B$ 的函数 $f$，可以写成 $f:A \rightarrow B$，这时若 $x f y$，则可记作 $f:x \mid \rightarrow y$ 或 $f(x) =y$</p>
+<p>函数的两个条件可以写成</p>
+<ul>
+<li>$(\forall x)\left(\forall y_{1}\right)\left(\forall y_{2}\right)\left(\left(x f y_{1} \wedge x f y_{2}\right) \rightarrow y_{1}=y_{2}\right)$</li>
+<li>$(\forall x)(x \in A \rightarrow(\exists y)(y \in B \wedge x f y))$</li>
+</ul>
+<p>如果一个关系是函数，则它的关系矩阵中每行恰好有一个 $1$，其余为 $0$，它的关系图中每个 $A$ 中的顶点恰好发出一条有向边</p>
+<h3 id="象"><a href="#象" class="headerlink" title="象"></a>象</h3><p>对集合 $A$ 和 $B$，从 $A$ 到 $B$ 的所有函数的集合记为 $A_{B}$ 于是，$A_{B}=\{f \mid f:A \rightarrow B\}$<br>设 $f:A \rightarrow B$，$A_{1} \subseteq A$，定义 $A_{1}$ 在 $f$ 下的象 $f\left[A_{1}\right]$ 为</p>
+<script type="math/tex; mode=display">
+f\left[A_{1}\right]=\left\{y \mid(\exists x)\left(x \in A_{1} \wedge y=f(x)\right)\right\}</script><p>把 $f[A]$ 称为<strong>函数的象</strong><br>设 $B_{1} \subseteq B$，定义 $B_{1}$ 在 $f$ 下的<strong>完全原象</strong> $f^{-1}\left[B_{1}\right]$ 为</p>
+<script type="math/tex; mode=display">
+f^{-1}\left[B_{1}\right]=\left\{x \mid x \in A \wedge f(x) \in B_{1}\right\}</script><h3 id="单射双射满射"><a href="#单射双射满射" class="headerlink" title="单射双射满射"></a>单射双射满射</h3><p>对于函数 $f:A\rightarrow B$</p>
+<ul>
+<li>若 $\operatorname{ran}(f)=B$，则称 $f$ 是<strong>满射</strong>的，或称 $f$ 是 $A$ 到 $B$ 上的</li>
+<li>如果 $f:A \rightarrow B$ 是满射的，则对任意的 $y \in B$，存在 $x \in A$，使 $f(x)=y$ </li>
+<li>若对任意的 $x_{1},x_{2} \in A,x_{1} \neq x_{2}$，都有 $f\left(x_{1}\right) \neq f\left(x_{2}\right)$，则称 $f$ 是<strong>单射</strong>的，或内射的，或一对一的</li>
+<li>如果 $f:A \rightarrow B$ 是单射的，则对任意的 $y \in \operatorname{ran}(f)$，存在唯一的 $x \in A$，使 $f(x)=y$</li>
+<li>若 $f$ 是满射的又是单射的，则称 $f$ 是<strong>双射</strong>的</li>
+<li>特别地，$\varnothing:\varnothing \rightarrow B$ 是单射的，$\varnothing:\varnothing \rightarrow \varnothing$ 是双射的</li>
+</ul>
+<h3 id="特殊的函数"><a href="#特殊的函数" class="headerlink" title="特殊的函数"></a>特殊的函数</h3><ul>
+<li>设 $f:A \rightarrow B$，如果存在一个 $y \in B$，使得对所有的 $x \in A$，有 $f(x)=y$，即有 $f[A]=\{y\}$，则称 $f:A \rightarrow B$ 为<strong>常函数</strong></li>
+<li>$A$ 上的恒等关系 $I_{A}:A \rightarrow A$ 称为<strong>恒等函数</strong>。对任意的 $x \in A$，有 $I_{A}(x)=x$</li>
+<li>对实数集 $\mathbb{R}$，设 $f:\mathbb{R} \rightarrow \mathbb{R}$，如果 $(x \leqslant y) \rightarrow(f(x) \leqslant f(y))$，则称 $f$ 为<strong>单调递增</strong>的；如果 $(x&lt;y) \rightarrow(f(x)&lt;f(y))$，则称 $f$ 为<strong>严格单调递增</strong>的，类似可定义单调递减和严格单调递减的函数</li>
+<li>对集合 $A$，$n \in \mathbb{N}$，把函数 $f:A^{n} \rightarrow A$ 称为 $A$ 上的 <strong>n 元运算</strong></li>
+<li>设 $A,B,C$ 是集合，$B_{C}$ 为从 $B$ 到 $C$ 的所有函数的集合，则 $F:A \rightarrow B_{C}$ 称为一个<strong>泛函</strong>（有时 $G:B_{C} \rightarrow A$ 称为一个泛函）</li>
+<li>设 $E$ 是全集，对任意的 $A \subseteq E$，$A$ 的<strong>特征函数</strong> $\chi_{A}$ 定义为：<script type="math/tex; mode=display">
+\chi_{A}:E \rightarrow\{0,1\},\chi_{A}(a)=\left\{\begin{array}{ll}
+1,& a \in A \\
+0,& a \notin A
+\end{array}\right.</script></li>
+<li>设 $R$ 是 $A$ 上的等价关系，令 $g:A \rightarrow A / R$，$g(a)=[a]_{R}$，则称 $g$ 为从 $A$ 到商集 $A / R$ 的<strong>典型映射</strong>或<strong>自然映射</strong></li>
+</ul>
+<h3 id="函数的合成"><a href="#函数的合成" class="headerlink" title="函数的合成"></a>函数的合成</h3><p>对任意的关系 $R$，存在函数 $f$，使得 $f \subseteq R$ 且 $\operatorname{dom}(f)=\operatorname{dom}(R)$<br>设 $g:A \rightarrow B$，$f:B \rightarrow C$，则</p>
+<ul>
+<li>$f \circ g$ 是函数 $f \circ g:A \rightarrow C$</li>
+<li>对任意的 $x \in A$，有 $(f \circ g)(x)=f(g(x))$</li>
+<li>若 $f,g$ 是满射的，则 $f \circ g$ 是满射的</li>
+<li>若 $f,g$ 是单射的，则 $f \circ g$ 是单射的</li>
+<li>若 $f,g$ 是双射的，则 $f \circ g$ 是双射的</li>
+<li>若 $f \circ g$ 是满射的，则 $f$ 是满射的</li>
+<li>若 $f \circ g$ 是单射的，则 $g$ 是单射的</li>
+<li>若 $f \circ g$ 是双射的，则 $f$ 是满射的，$g$ 是单射的</li>
+<li>$f=f \circ I_{A}=I_{B} \circ f$</li>
+</ul>
+<h3 id="函数的逆"><a href="#函数的逆" class="headerlink" title="函数的逆"></a>函数的逆</h3><ul>
+<li>一个关系的逆不一定是函数，一个函数的逆也不一定是函数</li>
+<li>若 $f:A \rightarrow B$ 是双射的，则 $f^{-1}$ 是函数 $f^{-1}:B \rightarrow A$<script type="math/tex; mode=display">
+\begin{array}{l}
+\left(f^{-1}\right)^{-1}=f \\
+f^{-1} \circ f=E_{A} \\
+f \circ f^{-1}=E_{B}
+\end{array}</script></li>
+<li>两个可逆函数 $f,g$ 的合成：$(g \circ f)^{-1}=f^{-1} \circ g^{-1}$</li>
+<li>设 $f:A \rightarrow B$ 是双射的，则称 $f^{-1}:B \rightarrow A$ 为 $f$ 的反函数</li>
+<li>若 $f:A \rightarrow B$ 是双射的，则 $f^{-1}:B \rightarrow A$ 是双射的</li>
+<li>若 $f:A \rightarrow B$ 是双射的，则对任意的 $x \in A$，有 $f^{-1}(f(x))=x$，对任意的 $y\in B$，有 $f\left(f^{-1}(y)\right)=y$</li>
+<li>设 $f:A \rightarrow B$，$g:B \rightarrow A$，如果 $g \circ f=I_{A}$，则称 $g$ 为 $f$ 的左逆；如果 $f \circ g=I_{B}$，则称 $g$ 为 $f$ 的右逆</li>
+<li>设 $f:A \rightarrow B$，$A \neq \varnothing$，则<ul>
+<li>$f$ 存在左逆，当且仅当 $f$ 是单射的</li>
+<li>$f$ 存在右逆，当且仅当 $f$ 是满射的</li>
+<li>$f$ 存在左逆又存在右逆，当且仅当 $f$ 是双射的</li>
+<li>若 $f$ 是双射的，则 $f$ 的左逆等于右逆</li>
+</ul>
+</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">大学学习生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%A6%BB%E6%95%A3/">离散</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/02/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Java学习笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/17/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">概率统计笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', '1357310795/Blog-Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.12.3/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/anchor-js/4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.8/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

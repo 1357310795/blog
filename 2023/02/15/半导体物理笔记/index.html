@@ -1,0 +1,1882 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/doge.png">
+  <link rel="icon" href="/img/doge.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#e4ad97">
+  <meta name="description" content="">
+  <meta name="author" content="Teruteru">
+  <meta name="keywords" content="">
+  
+  <title>半导体物理笔记 - Teruteru的Hexo博客</title>
+
+  <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myiconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"teru.space","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/76443599_p0-1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="半导体物理笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-02-15 20:25" pubdate>
+        2023年2月15日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8.6k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      116
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">半导体物理笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年10月7日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="第三章第四章总结"><a href="#第三章第四章总结" class="headerlink" title="第三章第四章总结"></a>第三章第四章总结</h3><h4 id="常用符号一览"><a href="#常用符号一览" class="headerlink" title="常用符号一览"></a>常用符号一览</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>符号</th>
+<th>含义</th>
+<th>重要关系式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$E_c$</td>
+<td>导带底的能量</td>
+<td></td>
+</tr>
+<tr>
+<td>$E_v$</td>
+<td>价带顶的能量</td>
+<td></td>
+</tr>
+<tr>
+<td>$E_G$</td>
+<td>带隙能量</td>
+<td>$E_G=E_c-E_v$</td>
+</tr>
+<tr>
+<td>$m^{*}$</td>
+<td>有效质量</td>
+<td>$m^{*}=\left[\frac{\mathrm{d}^{2} E}{\mathrm{d} P^{2}}\right]^{-1}=\hbar^{2}\left[\frac{\mathrm{d}^{2} E}{\mathrm{d} k^{2}}\right]^{-1}$</td>
+</tr>
+<tr>
+<td>$g_{c/v}(E)$</td>
+<td>态密度</td>
+<td></td>
+</tr>
+<tr>
+<td>$f(e)$</td>
+<td>费米分布函数</td>
+<td>$f(E)=\frac{1}{1+e^{\left(E-E_{F}\right) / k T}}$</td>
+</tr>
+<tr>
+<td>$E_{F}$</td>
+<td>费米能量/费米能级</td>
+<td></td>
+</tr>
+<tr>
+<td>$n/p$</td>
+<td>电子/空穴数</td>
+<td></td>
+</tr>
+<tr>
+<td>$n_{i}/p_{i}$</td>
+<td>本质半导体的电子/空穴数</td>
+<td>$p_{i}=n_{i}$</td>
+</tr>
+<tr>
+<td>$E_{i}$</td>
+<td>本征半导体的费米能级</td>
+<td>$E_{i}=\frac{E_{c}+E_{v}}{2}+\frac{3 k T}{4} \ln \left(\frac{m_{p}^{*}}{m_{n}^{*}}\right) \cong \frac{E_{c}+E_{v}}{2}$</td>
+</tr>
+<tr>
+<td>$N_c$</td>
+<td>未命名变量</td>
+<td>$N_{c}=2\left(\frac{m_{n}^{*} k T}{2 \pi \hbar^{2}}\right)^{3 / 2}$</td>
+</tr>
+<tr>
+<td>$N_v$</td>
+<td>未命名变量</td>
+<td>$N_{v}=2\left(\frac{m_{p}^{*} k T}{2 \pi \hbar^{2}}\right)^{3 / 2}$</td>
+</tr>
+<tr>
+<td>$\tau$</td>
+<td>散射时间</td>
+<td></td>
+</tr>
+<tr>
+<td>$\vec{v_d}$</td>
+<td>漂移速度</td>
+<td></td>
+</tr>
+<tr>
+<td>$\mu$</td>
+<td>载流子迁移率</td>
+<td></td>
+</tr>
+<tr>
+<td>$l$</td>
+<td>平均自由程</td>
+<td></td>
+</tr>
+<tr>
+<td>$J_{p/n,\mathrm{drift}}$</td>
+<td>漂移电流密度</td>
+<td></td>
+</tr>
+<tr>
+<td>$\sigma$</td>
+<td>电导率</td>
+<td></td>
+</tr>
+<tr>
+<td>$\rho$</td>
+<td>电阻率</td>
+<td></td>
+</tr>
+<tr>
+<td>$kT$</td>
+<td>/</td>
+<td>$kT=0.026\mathrm{eV}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="第一章-固体物理初步"><a href="#第一章-固体物理初步" class="headerlink" title="第一章 固体物理初步"></a>第一章 固体物理初步</h2><h3 id="电阻率"><a href="#电阻率" class="headerlink" title="电阻率"></a>电阻率</h3><ul>
+<li>导体：$\rho=10^{-5}-10^{-6} \Omega \cdot \mathrm{cm}$</li>
+<li>绝缘体：$\rho=10^{14}-10^{18} \Omega \cdot \mathrm{cm}$</li>
+<li><p>半导体：$\rho=10^{-3}-10^{3} \Omega \cdot \mathrm{cm}$</p>
+</li>
+<li><p>A semiconductor material has an electrical conductivity value falling between that of a metal (Cu, Au, etc.) and an insulator (glass etc.)</p>
+</li>
+<li>The resistance of a semiconductor increases as the temperature decreases, which is the behavior opposite to that of a metal.</li>
+</ul>
+<h3 id="能带理论"><a href="#能带理论" class="headerlink" title="能带理论"></a>能带理论</h3><p>能带论的基本出发点是认为固体中的电子不再是完全被束缚在某个原子周围，而是可以在整个固体中运动的，称之为共有化电子。但电子在运动过程中并也不像自由电子那样，完全不受任何力的作用，电子在运动过程中受到晶格原子势场的作用。</p>
+<h4 id="能带论的两个基本假设"><a href="#能带论的两个基本假设" class="headerlink" title="能带论的两个基本假设"></a>能带论的两个基本假设</h4><h5 id="Born-Oppenhaimer-近似（玻恩-奥本海默绝热近似）"><a href="#Born-Oppenhaimer-近似（玻恩-奥本海默绝热近似）" class="headerlink" title="Born-Oppenhaimer 近似（玻恩-奥本海默绝热近似）"></a>Born-Oppenhaimer 近似（玻恩-奥本海默绝热近似）</h5><p>所有原子核都<strong>周期性</strong>地<strong>静止</strong>排列在其格点位置上，因而<strong>忽略了电子与质子的碰撞</strong>。</p>
+<h5 id="Hatree-Fock平均场近似"><a href="#Hatree-Fock平均场近似" class="headerlink" title="Hatree-Fock平均场近似"></a>Hatree-Fock平均场近似</h5><p>忽略电子与电子间的相互作用，用平均场代替电子与电子间的相互作用。即假设每个电子所处的势场完全相同，电子的势能<strong>只与该电子的位置有关</strong>，而与其他电子的位置无关。</p>
+<h4 id="能级与能带"><a href="#能级与能带" class="headerlink" title="能级与能带"></a>能级与能带</h4><p>当两个相同的原子相互靠近的时候，会出现这样一个矛盾：两个电子一模一样，所以它们的运动状态和轨道肯定也是一模一样，但是这与泡利不相容原理矛盾，因此当发生电子共有化运动的时候，这两个一模一样的电子会出现细微的差别，主要表现在电子轨道不同，一个电子的轨道会比另一个电子轨道略高或者略低，就出现了两个不同的能级，这就是能级分化/扩展成能带。</p>
+<ul>
+<li>当能级分化时，能量大的电子便可以到处串门，便成了所有原子的“共有电子”</li>
+<li>这些共有电子都可以在整个固体（晶体）中自由自在地跑来跑去，我们将它们叫做<strong>自由电子</strong>。自由电子的存在决定了固体的导电性能。</li>
+<li>如果固体中总的原子数目为N的话，原来的一个能级就分裂成了N个能级。</li>
+<li>原子能级的分裂与原子之间的距离有关。当原子之间相距很远时，每个原子相当于单原子，电子处于相同的单原子的能级上。如果原子之间距离越来越近，单个原子的电子逐渐公有化，能级分裂成许多相隔很近、貌似连续的能级，形成能带。</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/02/15/4S6zOsUiMKXxtPr.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="导带"><a href="#导带" class="headerlink" title="导带"></a>导带</h4><p>价带之上的第一个，即能量最低的那个允许电子占有的能带叫<strong>导带</strong></p>
+<h4 id="价带"><a href="#价带" class="headerlink" title="价带"></a>价带</h4><p>价电子（原子核外电子中能与其他原子相互作用形成化学键的电子）的能级分裂而形成的能带叫<strong>价带</strong></p>
+<h4 id="禁带"><a href="#禁带" class="headerlink" title="禁带"></a>禁带</h4><p>导带和价带之间可以有空隙，称之为<strong>能隙</strong>，或<strong>禁带</strong>。对于不同的材料，禁带宽度不同，导带中电子的数目也不同，从而有不同的导电性。导带、价带和禁带之间的关系决定了绝缘体、导体、半导体的区别。</p>
+<ul>
+<li>绝缘体的价带充满电子，导带是空带，导带和价带之间有很宽的能隙（禁带），价带中的电子很难突破这个禁带到达导带，所以，绝缘体不能导电。</li>
+<li>导体中没有禁带，导带和价带连在一起，甚至互相重叠，<strong>价带中的电子可以到达导带而成为整个固体共有的自由电子</strong>，所以，导体有强导电性。</li>
+<li>半导体的价带也是满带，但是价带和空带之间的能隙很小，也可能有交叠。这样它就很容易在外界作用（如光照、升温等）下发生跃迁而发生导电现象。但它的导电性能比导体要差得多，因而称之为半导体。</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/02/15/AMxYGPrRTy3NZ46.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>材料</th>
+<th>Ge</th>
+<th>Si</th>
+<th>GaAs</th>
+<th>GaN</th>
+<th>金刚石</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>带隙宽度（室温）</td>
+<td>0.66eV</td>
+<td>1.12 eV</td>
+<td>1.42 eV</td>
+<td>3.44 eV</td>
+<td>5.47 eV</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="传统半导体材料与应用"><a href="#传统半导体材料与应用" class="headerlink" title="传统半导体材料与应用"></a>传统半导体材料与应用</h3><p><img src="https://s2.loli.net/2023/02/16/BPhYZzVvXbEmD5s.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://s2.loli.net/2023/02/16/6IwWAbczY42DGlZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="新型半导体材料"><a href="#新型半导体材料" class="headerlink" title="新型半导体材料"></a>新型半导体材料</h3><p>略</p>
+<h3 id="二维半导体材料"><a href="#二维半导体材料" class="headerlink" title="二维半导体材料"></a>二维半导体材料</h3><p><img src="https://s2.loli.net/2023/02/16/XHuGFQ9Y3snxZhd.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="一维半导体材料"><a href="#一维半导体材料" class="headerlink" title="一维半导体材料"></a>一维半导体材料</h3><h4 id="纳米线"><a href="#纳米线" class="headerlink" title="纳米线"></a>纳米线</h4><h4 id="碳纳米管"><a href="#碳纳米管" class="headerlink" title="碳纳米管"></a>碳纳米管</h4><h3 id="零维半导体材料"><a href="#零维半导体材料" class="headerlink" title="零维半导体材料"></a>零维半导体材料</h3><h4 id="量子点"><a href="#量子点" class="headerlink" title="量子点"></a>量子点</h4><h3 id="固体材料分类"><a href="#固体材料分类" class="headerlink" title="固体材料分类"></a>固体材料分类</h3><h4 id="非晶"><a href="#非晶" class="headerlink" title="非晶"></a>非晶</h4><p>不具有规则的几何构型的物质为非晶体。<br>例如非晶硅，可用于太阳能板、红外探测。</p>
+<h4 id="单晶"><a href="#单晶" class="headerlink" title="单晶"></a>单晶</h4><p>整块物质都由原子或分子按一定规律作周期性重复排列的晶体称为单晶体<br>例如单晶硅，用于IC芯片</p>
+<h4 id="多晶"><a href="#多晶" class="headerlink" title="多晶"></a>多晶</h4><p>整个物体是由许多杂乱无章的排列着的小晶体组成的，这样的物体叫多晶体。<br>例如多晶硅，用于MOSFET、大规模光伏</p>
+<h3 id="晶体相关定义"><a href="#晶体相关定义" class="headerlink" title="晶体相关定义"></a>晶体相关定义</h3><h4 id="晶格"><a href="#晶格" class="headerlink" title="晶格"></a>晶格</h4><h4 id="晶胞"><a href="#晶胞" class="headerlink" title="晶胞"></a>晶胞</h4><h4 id="单胞"><a href="#单胞" class="headerlink" title="单胞"></a>单胞</h4><h4 id="初基原胞"><a href="#初基原胞" class="headerlink" title="初基原胞"></a>初基原胞</h4><p>基元：一个理想的晶体是由完全相同的原子团（或分子、原子）— 基本结构单元，在空间周期性重复排列而成的。构成晶体的完全相同的基本结构单元，称为基元。基元可以是一个原子（金、银、铜），两个以上原子（石墨、金刚石），无机晶体可达100，化合物1000，蛋白质10000。任何两个基元中相应原子周围的情况是完全相同的（几何环境、化学性质）；而每一个基元中不同原子周围情况则不相同。原胞：以三个基矢为边长形成的平行六面体，称为原胞（固体物理学原胞，初级原胞）。 代表原胞三个边的矢量即为原胞的基矢。晶胞（结晶学原胞，布拉维原胞，单胞）：使三个基矢的方向尽可能地沿着对称轴的方向，它具有明显的对称性。</p>
+<h3 id="常见晶体结构"><a href="#常见晶体结构" class="headerlink" title="常见晶体结构"></a>常见晶体结构</h3><h4 id="简单立方晶体（Simple-cubic-crystal，SC）"><a href="#简单立方晶体（Simple-cubic-crystal，SC）" class="headerlink" title="简单立方晶体（Simple cubic crystal，SC）"></a>简单立方晶体（Simple cubic crystal，SC）</h4><h4 id="体心立方晶格（Body-centered-cubic-crystal，BCC）"><a href="#体心立方晶格（Body-centered-cubic-crystal，BCC）" class="headerlink" title="体心立方晶格（Body centered cubic crystal，BCC）"></a>体心立方晶格（Body centered cubic crystal，BCC）</h4><p>体心立方晶格的晶胞中，八个原子处于立方体的角上，一个原子处于立方体的中心，角上八个原子与中心原子紧靠。</p>
+<h4 id="三维最密堆积"><a href="#三维最密堆积" class="headerlink" title="三维最密堆积"></a>三维最密堆积</h4><p>ABC方式与AB方式<br><img src="https://s2.loli.net/2023/02/16/DrdwpnCENvt3Luc.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="六方最密堆积（Hexagonal-close-packed-crystal，HCP）"><a href="#六方最密堆积（Hexagonal-close-packed-crystal，HCP）" class="headerlink" title="六方最密堆积（Hexagonal close packed crystal，HCP）"></a>六方最密堆积（Hexagonal close packed crystal，HCP）</h4><p><img src="https://s2.loli.net/2023/02/16/37raMPeljq6dbNH.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><a target="_blank" rel="noopener" href="https://www.geogebra.org/3d/vgzhatzy"><img src="https://s2.loli.net/2023/02/19/mCYMR4wG1eKxnzh.png" srcset="/img/loading.gif" lazyload alt=""></a></p>
+<!-- <iframe src="https://www.geogebra.org/3d/vgzhatzy?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe> -->
+<h4 id="面心立方晶格（Face-centered-cubic-crystal，FCC）"><a href="#面心立方晶格（Face-centered-cubic-crystal，FCC）" class="headerlink" title="面心立方晶格（Face-centered cubic crystal，FCC）"></a>面心立方晶格（Face-centered cubic crystal，FCC）</h4><p>面心立方晶格的晶胞是一个立方体，立方体的八个顶角和六个面的中心各有一个原子。<br><img src="https://s2.loli.net/2023/02/17/A5eyzjKFaDSIV6J.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><a target="_blank" rel="noopener" href="https://www.geogebra.org/3d/tvpjry35"><img src="https://s2.loli.net/2023/02/19/OupH4bfJjPI1Xh9.png" srcset="/img/loading.gif" lazyload alt=""></a><br><!-- <iframe src="https://www.geogebra.org/3d/tvpjry35?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe> --></p>
+<p><a target="_blank" rel="noopener" href="https://www.geogebra.org/3d/pgtwjsk4"><img src="https://s2.loli.net/2023/02/19/iKEtU8vChk1sXGp.png" srcset="/img/loading.gif" lazyload alt=""></a><br><!-- <iframe src="https://www.geogebra.org/3d/pgtwjsk4?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe> --></p>
+<!-- <iframe scrolling="no" title="未命名" src="https://www.geogebra.org/material/iframe/id/eznwssgm/width/700/height/500/border/888888/sfsb/true/smb/false/stb/false/stbh/false/ai/false/asb/false/sri/false/rc/false/ld/false/sdz/true/ctl/false" width="700px" height="500px" style="border:0px;"> </iframe> -->
+<h4 id="金刚石结构（Diamond-structure）"><a href="#金刚石结构（Diamond-structure）" class="headerlink" title="金刚石结构（Diamond structure）"></a>金刚石结构（Diamond structure）</h4><p>在晶体学中，金刚石结构又称为金刚石立方晶体结构，原型是金刚石。金刚石结构中的每个原子与相邻的 4 个原子形成正四面体，故单胞内原子数为 5。具有金刚石结构的晶体除了金刚石以外，还有硅、锗、α-锡等。</p>
+<p><img src="https://s2.loli.net/2023/02/18/GeUogjfJzEsubPk.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<!-- <iframe src="https://www.geogebra.org/3d/txngw8vn?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe> -->
+<h4 id="闪锌矿结构（Diamond-structure）"><a href="#闪锌矿结构（Diamond-structure）" class="headerlink" title="闪锌矿结构（Diamond structure）"></a>闪锌矿结构（Diamond structure）</h4><p>闪锌矿结构以硫化锌晶体为代表的一类化合物晶体的结构。由两种元素的原子各自形成面心立方晶格再沿对角线滑移对角线长度的四分之一套迭而成。</p>
+<p><img src="https://s2.loli.net/2023/02/18/HAtn25GY6sbqUpB.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="晶格因子-参数（Lattice-Factors）"><a href="#晶格因子-参数（Lattice-Factors）" class="headerlink" title="晶格因子/参数（Lattice Factors）"></a>晶格因子/参数（Lattice Factors）</h3><h4 id="原胞"><a href="#原胞" class="headerlink" title="原胞"></a>原胞</h4><p>晶体的<strong>原胞</strong>是构成晶体的<strong>周期性结构单元</strong>，但是原胞往往由于太小而不能反映晶格的对称性。有的晶体，无论怎样选取原胞，都不能直接反映出整个格子的对称性。体心和面心立方晶体就是这种情形。为了反映格子的对称性，必须选取较大的周期单元。</p>
+<ul>
+<li>体心立方结构和面心立方结构的原胞都是一个不具有立方对称性的平行六面体</li>
+</ul>
+<h4 id="单胞（Unit-cell）"><a href="#单胞（Unit-cell）" class="headerlink" title="单胞（Unit cell）"></a>单胞（Unit cell）</h4><p>在能够<strong>保持晶格对称性的前提下</strong>，构成晶体的周期性结构单元称为晶体的<strong>单胞</strong>。单胞的边矢量称为<strong>单胞基矢</strong>，通常用 $a,b,c$ 表示</p>
+<ul>
+<li>体心立方结构和面心立方结构的单胞为体心立方体和面心立方体；</li>
+<li>单胞有时称为晶胞、惯用原胞（结晶学中惯用）</li>
+</ul>
+<h4 id="初基元胞（primitive-cell）"><a href="#初基元胞（primitive-cell）" class="headerlink" title="初基元胞（primitive cell）"></a>初基元胞（primitive cell）</h4><p><strong>初基元胞</strong>是在能够<strong>保持晶格对称性的前提下</strong>，构成晶体的<strong>最小</strong>周期性结构单元。</p>
+<h4 id="晶格常数（Length-of-the-cell-edge）"><a href="#晶格常数（Length-of-the-cell-edge）" class="headerlink" title="晶格常数（Length of the cell edge）"></a>晶格常数（Length of the cell edge）</h4><p>单胞的边长称为<strong>晶格常数</strong></p>
+<h4 id="配位数（Coordination-Number）"><a href="#配位数（Coordination-Number）" class="headerlink" title="配位数（Coordination Number）"></a>配位数（Coordination Number）</h4><p><strong>配位数</strong>是晶格中与某一布拉维晶格相距最近的格子个数。</p>
+<h4 id="单胞原子数（Number-of-atom-per-unit-cell）"><a href="#单胞原子数（Number-of-atom-per-unit-cell）" class="headerlink" title="单胞原子数（Number of atom per unit cell）"></a>单胞原子数（Number of atom per unit cell）</h4><p>一个单胞中的原子数</p>
+<h4 id="密排指数（Atomic-Packing-Factor）"><a href="#密排指数（Atomic-Packing-Factor）" class="headerlink" title="密排指数（Atomic Packing Factor）"></a>密排指数（Atomic Packing Factor）</h4><p>APF = 组成颗粒占据的体积分数</p>
+<h4 id="常见堆积的参数"><a href="#常见堆积的参数" class="headerlink" title="常见堆积的参数"></a>常见堆积的参数</h4><script type="math/tex; mode=display">
+\begin{array}{|c|c|c|c|c|}
+\hline \text { Lattice Parameters } & \begin{array}{c}
+\text { Simple } \\
+\text { Cubic (SC) }
+\end{array} & \begin{array}{c}
+\text { Body Center } \\
+\text { Cubic (BCC) }
+\end{array} & \begin{array}{c}
+\text { Face Center } \\
+\text { Cubic (FCC) }
+\end{array} & \text { Diamond } \\
+\hline \text { Cell edge length (a) } & 2 r & 4 r / \sqrt{3} & 2 \sqrt{2} r & 8 r / \sqrt{3} \\
+\hline \text { Atom Radius (r) } & a / 2 & \sqrt{3} / 4 a & \sqrt{2} / 4 a & \sqrt{3} / 8 a \\
+\hline \begin{array}{c}
+\text { Coordination } \\
+\text { number (CN) }
+\end{array} & 6 & 8 & 12 & 4 \\
+\hline \begin{array}{c}
+\text { Number of atoms } \\
+\text { per unit cell }
+\end{array} & 1 & 2 & 4 & 8 \\
+\hline \begin{array}{c}
+\text { Atomic packing } \\
+\text { factor (APF) }
+\end{array} & \pi / 6=52 \% & \pi \sqrt{3} / 8=68 \% & \pi \sqrt{2} / 6=74 \% &
+\pi \sqrt{3} / 16
+=34 \% \\
+\hline
+\end{array}</script><h3 id="晶向"><a href="#晶向" class="headerlink" title="晶向"></a>晶向</h3><p>晶向是指晶体的一个基本特点是具有方向性，沿晶格的不同方向晶体性质不同。布拉维点阵的格点可以看成分列在一系列相互平行的直线系上，这些直线系称为<strong>晶列</strong>。同一个格点可以形成方向不同的晶列，每一个晶列定义了一个方向，称为<strong>晶向</strong>。</p>
+<ul>
+<li>晶体中的一个特定方向可以表示为一组三个互质整数，它们是该方向上的一个矢量的分量。标志晶向的这一组数称为<strong>晶向指数</strong>。</li>
+<li>晶向指数依次放在方括号<code>[]</code>内，负号用上标 $\bar{x}$ 表示。</li>
+<li>对于立方系，晶向 $[100]$、$[010]$、$[001]$ 及其相反晶向就可以用 $<100>$ 表示，其它晶系不适用。</li>
+</ul>
+<h3 id="晶面"><a href="#晶面" class="headerlink" title="晶面"></a>晶面</h3><p>晶面是在晶体中由原子、离子或分子的阵点所组成的平面。晶体可看成是由一层层晶面堆砌而成。</p>
+<p>设 $a,b,c$ 为晶体的一套基向量，晶面在 $a,b,c$ 上所截长度分别为 $pa,qb,sc$，则 $p,q,s$ 为晶面在三个晶轴上的截数，而 $1/p,1/q,1/s$ 为倒易截数。将晶面在三个晶轴上倒易截数之比化为一组互质整数，即 $1/p:1/q:1/s=h:k:l$，则这一套互质整数即为<strong>晶面指标</strong>，也叫密勒指数，用 $(hkl)$ 符号来表示。</p>
+<p><a target="_blank" rel="noopener" href="https://www.geogebra.org/3d/j8vrpx3a"><img src="https://s2.loli.net/2023/02/19/IMJjHck9otz2CPx.png" srcset="/img/loading.gif" lazyload alt=""></a><br><!-- <iframe src="https://www.geogebra.org/3d/j8vrpx3a?embed" width="100%" height="600" allowfullscreen style="border: 1px solid #e4e4e4;border-radius: 4px;" frameborder="0"></iframe> --></p>
+<h2 id="第二章-量子力学初步"><a href="#第二章-量子力学初步" class="headerlink" title="第二章 量子力学初步"></a>第二章 量子力学初步</h2><h3 id="波粒二象性（Wave-Particle-Duality）"><a href="#波粒二象性（Wave-Particle-Duality）" class="headerlink" title="波粒二象性（Wave Particle Duality）"></a>波粒二象性（Wave Particle Duality）</h3><p>略</p>
+<h3 id="双缝干涉（Double-slit-experiment）"><a href="#双缝干涉（Double-slit-experiment）" class="headerlink" title="双缝干涉（Double slit experiment）"></a>双缝干涉（Double slit experiment）</h3><p>略</p>
+<h3 id="光电效应（Photoelectric-effect）"><a href="#光电效应（Photoelectric-effect）" class="headerlink" title="光电效应（Photoelectric effect）"></a>光电效应（Photoelectric effect）</h3><ul>
+<li>光电效应是物理学中一个重要而神奇的现象。在高于某特定频率的电磁波（该频率称为<strong>极限频率</strong>，threshold frequency）照射下，某些物质内部的电子吸收能量后逸出而形成电流，即光生电。</li>
+<li>只要光的频率超过某一极限频率，受光照射的金属表面立即就会逸出光电子，发生光电效应。当在金属外面加一个闭合电路，加上正向电源，这些逸出的光电子全部到达阳极便形成所谓的<strong>光电流</strong>。</li>
+<li>在入射光一定时，增大光电管两极的正向电压，提高光电子的动能，光电流会随之增大。但光电流不会无限增大，要受到光电子数量的约束，有一个最大值，这个值就是<strong>饱和电流</strong>。</li>
+<li>当入射光强度增大时，单位时间里通过金属表面的光子数也就增多，于是，光子与金属中的电子碰撞次数也增多，因而单位时间里从金属表面<strong>逸出的光电子也增多</strong>，电流也随之增大；光电子最大动能不变。</li>
+<li>当入射光频率增加时，光电子最大动能增加。</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/02/18/3LR7zMfEIC9m2At.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="物质波（Matter-Wave）"><a href="#物质波（Matter-Wave）" class="headerlink" title="物质波（Matter Wave）"></a>物质波（Matter Wave）</h3><p>德布罗意提出假设：实物粒子也具有波动性，即每一个运动的粒子都与一个对应的波相联系。粒子的能量 $\varepsilon$ 和动量 $p$ 跟它所对应的波的频率 $\nu$ 和波长 $\lambda$ 之间，遵从如下关系：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+p=\frac{h}{\lambda}=\hbar k \\
+E=h v=\hbar \omega
+\end{array}</script><p>其中</p>
+<ul>
+<li>$k=\frac{2\pi}{\lambda}$ 为波矢</li>
+<li>$h=6.63\times 10^{-34} \mathrm{J}\cdot \mathrm{s}$ 为普朗克常量</li>
+<li>$\hbar=h/2\pi=1.05\times 10^{-34} \mathrm{J}\cdot \mathrm{s}$ 为约化普朗克常量</li>
+</ul>
+<h3 id="海森堡测不准原理"><a href="#海森堡测不准原理" class="headerlink" title="海森堡测不准原理"></a>海森堡测不准原理</h3><script type="math/tex; mode=display">
+\Delta x\Delta p\ge \frac{\hbar}{2}</script><h3 id="波函数"><a href="#波函数" class="headerlink" title="波函数"></a>波函数</h3><ul>
+<li>波函数 $\Psi(x, t)$ 一个复值的概率幅度，它是对一个孤立的量子系统的量子状态的数学描述。</li>
+<li>波函数是一个复值函数</li>
+<li>波函数模的平方 $|\Psi(x, t)|^2$ 描述在时间t找到 $x$ 和 $x+\mathrm{d}x$ 之间的粒子的概率</li>
+<li>标准化方程：<script type="math/tex; mode=display">
+\int_{-\infty}^{\infty}|\Psi(x)|^{2} \mathrm{d} x=1</script></li>
+</ul>
+<h3 id="薛定谔方程"><a href="#薛定谔方程" class="headerlink" title="薛定谔方程"></a>薛定谔方程</h3><h4 id="一维时变形式"><a href="#一维时变形式" class="headerlink" title="一维时变形式"></a>一维时变形式</h4><script type="math/tex; mode=display">
+j \hbar \frac{\partial \Psi(x, t)}{\partial t}=-\frac{\hbar^{2}}{2 m} \cdot \frac{\partial^{2} \Psi(x, t)}{\partial x^{2}}+V(x) \Psi(x, t)</script><h4 id="一维不含时形式（定态）"><a href="#一维不含时形式（定态）" class="headerlink" title="一维不含时形式（定态）"></a>一维不含时形式（定态）</h4><script type="math/tex; mode=display">
+\phi(t)=e^{-j(E / \hbar) t}=e^{-j \omega t}</script><script type="math/tex; mode=display">
+\frac{\partial^{2} \psi(x)}{\partial x^{2}}+\frac{2 m}{\hbar^{2}}(E-V(x)) \psi(x)=0</script><p>其中 $V(x)$ 表示一维空间中的势场分布。</p>
+<h4 id="自由电子求解（V-x-0）"><a href="#自由电子求解（V-x-0）" class="headerlink" title="自由电子求解（V(x)=0）"></a>自由电子求解（V(x)=0）</h4><script type="math/tex; mode=display">
+\begin{align}
+\psi(x) & = A \exp (j k x)+B \exp (-j k x)\\
+& = A\cos(kx)+B\sin(kx)
+\end{align}</script><ul>
+<li>其中 $k=\sqrt{\frac{2 m E}{\hbar^{2}}}$</li>
+<li>指数形式对应行波，用于非束缚态边界问题</li>
+<li>三角函数形式对应驻波，用于束缚态边界问题</li>
+<li>完整形式为<script type="math/tex; mode=display">
+\Psi(x, t)=A \exp [j(k x-\omega t)]+B \exp [-j(k x+\omega t)]</script></li>
+</ul>
+<h3 id="势垒-amp-势井"><a href="#势垒-amp-势井" class="headerlink" title="势垒&amp;势井"></a>势垒&amp;势井</h3><h4 id="无限深势井"><a href="#无限深势井" class="headerlink" title="无限深势井"></a>无限深势井</h4><p><img src="https://s2.loli.net/2023/02/21/uWYkmZq3NP9GOAi.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\frac{\partial^{2} \psi(x)}{\partial x^{2}}+\frac{2 m E}{\hbar^{2}} \psi(x)=0 \\
+\Rightarrow \psi(x)=A_{1} \cos (k x)+A_{2} \sin (k x)
+\end{array}</script><p>其中 $k=\sqrt{\frac{2 m E}{\hbar^{2}}}$</p>
+<p>代入边界条件和归一化条件：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\psi(x=0)=0 \\
+\psi(x=L)=0 \\
+\int_{0}^{L} A_{2}^{2} \sin ^{2}(k x) d x=1
+\end{array}</script><p>解得</p>
+<script type="math/tex; mode=display">
+\psi(x)=\sqrt{\frac{2}{L} \sin \left(\frac{n \pi x}{L}\right)}</script><script type="math/tex; mode=display">
+E=E_{n}=\frac{n^{2} \hbar^{2} \pi^{2}}{2 m L^{2}}\quad, n=1,2,3 \ldots</script><h4 id="阶梯势垒"><a href="#阶梯势垒" class="headerlink" title="阶梯势垒"></a>阶梯势垒</h4><p><img src="https://s2.loli.net/2023/02/21/lrUjsdkoYVNcPbZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>区域一：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\frac{\partial^{2} \psi(x)}{\partial x^{2}}+\frac{2 m E}{\hbar^{2}} \psi(x)=0 \\
+\psi_{1}(x)=A_{1} e^{j k_{1} x}+B_{1} e^{-j k_{1} x}
+\end{array}</script><p>其中</p>
+<script type="math/tex; mode=display">
+k_{1}=\sqrt{\frac{2 m E}{\hbar^{2}}}</script><p>区域二：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\frac{\partial^{2} \psi(x)}{\partial x^{2}}-\frac{2 m\left(V_{0}-E\right)}{\hbar^{2}} \psi(x)=0 \\
+\psi_{2}(x)=A_{2} e^{-k_{2} x}+B_{2} e^{k_{2} x} \\
+\end{array}</script><p>其中</p>
+<script type="math/tex; mode=display">
+k_{2}=\sqrt{\frac{2 m\left(V_{0}-E\right)}{\hbar^{2}}}</script><p>边界条件：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\psi_{1}(0)=\psi_{2}(0) \\
+\left.\frac{\partial \psi_{1}}{\partial x}\right|_{x=0}=\left.\frac{\partial \psi_{2}}{\partial x}\right|_{x=0}
+\end{array}</script><p>解得</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+B_{1}=\frac{-\left(k_{2}^{2}+2 j k_{1} k_{2}-k_{1}^{2}\right)}{k_{2}^{2}+k_{1}^{2}} A_{1} \\
+A_{2}=\frac{2 k_{1}\left(k_{1}-j k_{2}\right)}{k_{2}^{2}+k_{1}^{2}} A_{1}
+\end{array}\right.</script><p>定义反射率与透射率</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+R=\frac{V_{r} \cdot B_{1} \cdot B_{1}^{*}}{V_{i} \cdot A_{1} \cdot A_{1}^{*}}=1 \\
+T=\frac{V_{t} \cdot A_{2} \cdot A_{2}^{*}}{V_{i} \cdot A_{1} \cdot A_{1}^{*}}
+\end{array}\right.</script><p>阶梯势垒的反射率为 $1$，透射率不为 $0$。</p>
+<h4 id="方形势垒"><a href="#方形势垒" class="headerlink" title="方形势垒"></a>方形势垒</h4><p><img src="https://s2.loli.net/2023/02/21/4sYyR7NIju6JKln.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在I、III区</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\frac{\partial^{2} \psi(x)}{\partial x^{2}}+\frac{2 m E}{\hbar^{2}} \psi(x)=0 \\
+\psi_{1}(x)=A_{1} e^{j k_{1} x}+B_{1} e^{-j k_{1} x} \\
+\psi_{3}(x)=A_{3} e^{j k_{1} x}+B_{3} e^{-j k_{1} x} \\
+\end{array}</script><p>其中</p>
+<script type="math/tex; mode=display">
+k_{1}=\sqrt{\frac{2 m E}{\hbar^{2}}}</script><p>在II区</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\frac{\partial^{2} \psi(x)}{\partial x^{2}}-\frac{2 m\left(V_{0}-E\right)}{\hbar^{2}} \psi(x)=0 \\
+\psi_{2}(x)=A_{2} e^{k_{2} x}+B_{2} e^{-k_{2} x} \\
+\end{array}</script><p>其中</p>
+<script type="math/tex; mode=display">
+k_{2}=\sqrt{\frac{2 m\left(V_{0}-E\right)}{\hbar^{2}}}</script><p>边界条件</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\psi_{1}(0)=\psi_{2}(0) \\
+\psi_{2}(a)=\psi_{3}(a) \\
+\left.\frac{\partial \psi_{1}}{\partial x}\right|_{x=0}=\left.\frac{\partial \psi_{2}}{\partial x}\right|_{x=0} \\
+\left.\frac{\partial \psi_{2}}{\partial x}\right|_{x=a}=\left.\frac{\partial \psi_{3}}{\partial x}\right|_{x=a}
+\end{array}</script><p>透射率</p>
+<script type="math/tex; mode=display">
+T \approx 16 \frac{E}{V_{0}}\left(1-\frac{E}{V_{0}}\right) e^{-2 k_{2} a} \quad\text { if } E<<V_{0}</script><h3 id="玻尔电子模型"><a href="#玻尔电子模型" class="headerlink" title="玻尔电子模型"></a>玻尔电子模型</h3><ul>
+<li>经典玻尔理论: 原子核是一个带正电的重质子，电子是一个带负电的轻粒子，它围绕原子核旋转。</li>
+<li>电子与原子核的势能方程：<script type="math/tex; mode=display">
+V(r)=\frac{-q^{2}}{4 \pi \varepsilon_{0} r}</script></li>
+<li>电子的角动量可以被量子化<script type="math/tex; mode=display">
+L=n \hbar \quad n=1,2,3,\cdots</script></li>
+<li>量子化的能量：<script type="math/tex; mode=display">
+E_{n}=-\frac{m_{0} q^{4}}{\left(4 \pi \varepsilon_{0}\right)^{2} 2 \hbar^{2} n^{2}}</script>其中<ul>
+<li>电子质量<script type="math/tex; mode=display">
+m_{0}=9.1 \times 10^{-31} \mathrm{~kg}</script></li>
+<li>电子电量<script type="math/tex; mode=display">
+q=1.6 \times 10^{-19} \mathrm{C}</script></li>
+<li>真空介电常量<script type="math/tex; mode=display">
+\varepsilon_{0}=8.85 \times 10^{-12} \mathrm{~F} / \mathrm{m}</script></li>
+</ul>
+</li>
+</ul>
+<h3 id="量子力学解释电子模型"><a href="#量子力学解释电子模型" class="headerlink" title="量子力学解释电子模型"></a>量子力学解释电子模型</h3><script type="math/tex; mode=display">
+\nabla^{2} \psi(r, \theta, \phi)+\frac{2 m_{0}(E-V(r))}{\hbar^{2}} \psi(r, \theta, \phi)=0</script><p>解得</p>
+<script type="math/tex; mode=display">
+E_{n}=-\frac{m_{0} q^{4}}{\left(4 \pi \varepsilon_{0}\right)^{2} 2 \hbar^{2} n^{2}}</script><p>其中</p>
+<ul>
+<li>主量子数 $n=1,2,3,\cdots$，即电子层数</li>
+<li>角量子数 $l=n-1,n-2,\cdots,0$，表示电子的亚层或能级</li>
+<li>磁量子数 $m=\pm l,\pm (l-1),\cdots,0$，代表每个亚层的轨道（轨道方向）</li>
+</ul>
+<p>对于 $n=1$，波函数为</p>
+<script type="math/tex; mode=display">
+\Psi_{100}=\frac{1}{\sqrt{\pi}}\left(\frac{1}{a_{0}}\right)^{3 / 2} e^{-r / a_{0}}</script><h2 id="第三章-载流子模型与特性"><a href="#第三章-载流子模型与特性" class="headerlink" title="第三章 载流子模型与特性"></a>第三章 载流子模型与特性</h2><h3 id="能带模型"><a href="#能带模型" class="headerlink" title="能带模型"></a>能带模型</h3><p><img src="https://s2.loli.net/2023/03/05/aX2yxIOMAnrFwzj.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>在简化模型中，导带底的能量记为 $E_c$，价带顶的能量记为 $E_v$，带隙能量为 $E_G=E_c-E_v$</li>
+<li>空穴占据导带，电子占据价带</li>
+<li>$E_G$ 就是电子刚好跃迁到导带要吸收的能量</li>
+<li>绝缘体的 $E_G$ 很大，半导体的 $E_G$ 较小，导体的 $E_G$ 是负数</li>
+<li>传统半导体材料的带隙能量</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>材料</th>
+<th>Ge</th>
+<th>Si</th>
+<th>GaAs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>能量（$\mathrm{eV}$）</td>
+<td>$0.67$</td>
+<td>$1.12$</td>
+<td>$1.42$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="E-k关系"><a href="#E-k关系" class="headerlink" title="E-k关系"></a>E-k关系</h3><h4 id="自由电子"><a href="#自由电子" class="headerlink" title="自由电子"></a>自由电子</h4><p>由薛定谔方程求解可得</p>
+<script type="math/tex; mode=display">
+E=\frac{\hbar^2 k^2}{2m_0}</script><p>图像是二次曲线</p>
+<h4 id="一维晶格周期势下"><a href="#一维晶格周期势下" class="headerlink" title="一维晶格周期势下"></a>一维晶格周期势下</h4><p><img src="https://s2.loli.net/2023/03/05/WXPomJtqYkgd7yf.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>由于周期分布，把曲线都集中到 $[-\frac{\pi}{a},\frac{\pi}{a}]$ 里</p>
+<p><img src="https://s2.loli.net/2023/03/05/A3bhQYCl2Lm7cnM.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="直接带隙半导体和间接带隙半导体"><a href="#直接带隙半导体和间接带隙半导体" class="headerlink" title="直接带隙半导体和间接带隙半导体"></a>直接带隙半导体和间接带隙半导体</h3><ul>
+<li>直接带隙半导体材料就是导带最小值（导带底）和满带最大值在k空间中同一位置，电子要跃迁到导带上产生导电的电子和空穴（形成半满能带）只需要吸收能量</li>
+<li>间接带隙半导体材料导带最小值（导带底）和满带最大值在k空间中不同位置，形成半满能带不只需要吸收能量，还要改变动量</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/03/05/vTnBV6pHdgombZh.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="有效质量"><a href="#有效质量" class="headerlink" title="有效质量"></a>有效质量</h3><p>晶格中的电子受到原子核的周期性势场以及其他电子势场综合作用，将这些力看成内力，可以引进有效质量的概念，它概括了半导体内部势场的作用，使得在解决半导体中电子在外力作用下的运动规律时，可以不涉及半导体内部势场的作用。</p>
+<script type="math/tex; mode=display">
+m^{*}=\left[\frac{\mathrm{d}^{2} E}{\mathrm{d} P^{2}}\right]^{-1}=\hbar^{2}\left[\frac{\mathrm{d}^{2} E}{\mathrm{d} k^{2}}\right]^{-1}</script><ul>
+<li>其中 $P=\hbar k$ </li>
+<li>导带底电子有效质量为正，价带顶电子有效质量为负</li>
+<li>温度为 300K 时的有效质量</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>材料</th>
+<th>$m_n^{*}/m_0$</th>
+<th>$m_p^{*}/m_0$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Si</td>
+<td>1.18</td>
+<td>0.81</td>
+</tr>
+<tr>
+<td>Ge</td>
+<td>0.55</td>
+<td>0.36</td>
+</tr>
+<tr>
+<td>GaAs</td>
+<td>0.066</td>
+<td>0.52</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="掺杂"><a href="#掺杂" class="headerlink" title="掺杂"></a>掺杂</h3><ul>
+<li>施主原子：P,As,Sb（N型掺杂）</li>
+<li>受主原子：B,Al,Ga,In（P型掺杂）</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/03/05/JzntYjamO6AW9lQ.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/03/05/6yHSMs3Nfw5ejuk.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<table>
+<thead>
+  <tr>
+    <th></th>
+    <th colspan="3">施主</th>
+    <th colspan="3">受主</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>掺杂原子</td>
+    <td>Sb</td>
+    <td>P</td>
+    <td>As</td>
+    <td>B</td>
+    <td>Al</td>
+    <td>In</td>
+  </tr>
+  <tr>
+    <td>电离能（meV）</td>
+    <td>39</td>
+    <td>45</td>
+    <td>54</td>
+    <td>45</td>
+    <td>67</td>
+    <td>160</td>
+  </tr>
+</tbody>
+</table>
+
+<h4 id="电离电子随温度变化图"><a href="#电离电子随温度变化图" class="headerlink" title="电离电子随温度变化图"></a>电离电子随温度变化图</h4><p><img src="https://s2.loli.net/2023/03/05/PaSFhKETZe4GYQl.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="态密度"><a href="#态密度" class="headerlink" title="态密度"></a>态密度</h3><ul>
+<li>概念：每立方<strong>厘米</strong>所含量子态的数目<strong>分布</strong></li>
+<li>在能带边缘附近：<script type="math/tex; mode=display">
+\begin{array}{l}
+g_{c}(E)=\frac{8 \pi \sqrt{2}}{h^{3}}\left(m_{n}^{*}\right)^{3 / 2} \sqrt{\left(E-E_{c}\right)} \text { for } E \geq E_{\mathrm{c}} \\
+g_{v}(E)=\frac{8 \pi \sqrt{2}}{h^{3}}\left(m_{p}^{*}\right)^{3 / 2} \sqrt{\left(E_{v}-E\right)} \text { for } E \leq E_{\mathrm{v}}
+\end{array}</script></li>
+</ul>
+<h3 id="费米分布函数"><a href="#费米分布函数" class="headerlink" title="费米分布函数"></a>费米分布函数</h3><ul>
+<li>费米分布函数是热平衡体系中粒子按能量分布的一种规律，表示一个电子占据能量为 $E$ 的本征态的几率。<script type="math/tex; mode=display">
+f(E)=\frac{1}{1+e^{\left(E-E_{F}\right) / k T}}</script></li>
+<li>其中 $E_{F}$ 称为费米能量/费米能级，刚好是被占据概率为 50% 的能级<br><img src="https://s2.loli.net/2023/03/05/vLRqKpzcm3MU829.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li>n型掺杂的 $E_{F}$ 增大，积分可得体系里的自由电子更多</li>
+<li>p型掺杂的 $E_{F}$ 减小，积分可得体系里的自由空穴更多</li>
+</ul>
+<h4 id="玻尔兹曼近似"><a href="#玻尔兹曼近似" class="headerlink" title="玻尔兹曼近似"></a>玻尔兹曼近似</h4><script type="math/tex; mode=display">
+\begin{array}{ll}
+E-E_{F}>3 k T&: f(E) \approx e^{-\left(E-E_{F}\right) / k T} \\
+E_{F}-E>3 k T&: 1-f(E) \approx e^{-\left(E_{F}-E\right) / k T} \\
+E=E_{F}&: f(E)=1 / 2
+\end{array}</script><ul>
+<li>物理解释：玻尔兹曼近似适用于轻掺杂的情况，此时可以忽略电子之间的相互作用</li>
+</ul>
+<h4 id="费米分布函数积分"><a href="#费米分布函数积分" class="headerlink" title="费米分布函数积分"></a>费米分布函数积分</h4><p>导带所有电子数：（n型掺杂）</p>
+<script type="math/tex; mode=display">
+n=\int_{E_{c}}^{E_{\text {top }}} g_{c}(E) f(E) \mathrm{d} E</script><p>使用玻尔兹曼近似：</p>
+<script type="math/tex; mode=display">
+n=N_{c} e^{-\left(E_{c}-E_{F}\right) / k T} \text { where } N_{c}=2\left(\frac{m_{n}^{*} k T}{2 \pi \hbar^{2}}\right)^{3 / 2}</script><p>价带所有空穴数：（p型掺杂）</p>
+<script type="math/tex; mode=display">
+p=\int_{E_{\text {botom }}}^{E_{v}} g_{v}(E)[1-f(E)] d E</script><p>使用玻尔兹曼近似：</p>
+<script type="math/tex; mode=display">
+p=N_{v} e^{-\left(E_{F}-E_{v}\right) / k T} \text { where } N_{v}=2\left(\frac{m_{p}^{*} k T}{2 \pi \hbar^{2}}\right)^{3 / 2}</script><p>本质半导体：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+n=p=p_{i}=n_{i} \\
+E_{F} \triangleq E_{i} \\
+n=n_{i}=N_{c} e^{-\left(E_{c}-E_{i}\right) / k T} \\
+p=p_{i}=N_{v} e^{-\left(E_{i}-E_{v}\right) / k T} \\
+n_{i}^{2}=N_{c} N_{v} e^{-\left(E_{c}-E_{v}\right) / k T}=N_{c} N_{v} e^{-E_{G} / k T}
+\end{array}</script><script type="math/tex; mode=display">
+\begin{array}{c}
+n_{i}=\sqrt{N_{c} N_{v}} e^{-E_{G} / 2 k T} \\
+n_{i}^{2}=n p
+\end{array}</script><ul>
+<li>本征载流子浓度取决于温度、带隙和载流子有效质量</li>
+<li>温度越高，$n_i$ 越大；带隙越大，$n_i$ 越小</li>
+<li>对于硅材料，在 300K 时，$n_i=10^{10}\mathrm{cm}^{-3}$</li>
+</ul>
+<h4 id="电荷守恒"><a href="#电荷守恒" class="headerlink" title="电荷守恒"></a>电荷守恒</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+N_D^{+}+p=N_{A}^{-}+n\\
+N_D+p=N_{A}+n
+\end{array}</script><p>其中</p>
+<ul>
+<li>$N_D^{+}$ 是电离的施主原子数</li>
+<li>$N_A^{-}$ 是电离的受主原子数</li>
+<li>$N_D$ 是完全电离的施主原子数</li>
+<li>$N_A$ 是完全电离的受主原子数</li>
+</ul>
+<h4 id=""><a href="#" class="headerlink" title=" "></a> </h4><p>在掺杂原子完全电离的情况下，可以用掺杂原子浓度和本征载流子浓度来表示 $n$ 和 $p$</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+n=\frac{N_{D}-N_{A}}{2}+\sqrt{\left(\frac{N_{D}-N_{A}}{2}\right)^{2}+n_{i}^{2}} \\
+p=\frac{N_{A}-N_{D}}{2}+\sqrt{\left(\frac{N_{A}-N_{D}}{2}\right)^{2}+n_{i}^{2}}
+\end{array}</script><ul>
+<li>对于本征半导体<script type="math/tex; mode=display">
+N_{A}=N_{D}=0 \Rightarrow n=p=n_{i}</script></li>
+<li>对于 N 型半导体<script type="math/tex; mode=display">
+N_{D}-N_{A} \cong N_{D}\gg n_{i} \Rightarrow n=N_{D}, p=n_{i}^{2} / n</script></li>
+<li>对于 P 型半导体<script type="math/tex; mode=display">
+N_{A}-N_{D} \cong N_{A} \gg n_{i} \Rightarrow p=N_{A}, n=n_{i}^{2} / p</script></li>
+<li>在高温下<script type="math/tex; mode=display">
+n_{i}\gg \left|N_{D}-N_{A}\right| \Rightarrow n \cong p \cong n_{i}</script></li>
+<li>对于补偿半导体<script type="math/tex; mode=display">
+N_{A} \neq N_{D} \neq 0 \Rightarrow n=\frac{N_{D}-N_{A}}{2}+\sqrt{\left(\frac{N_{D}-N_{A}}{2}\right)^{2}+n_{i}^{2}}</script></li>
+</ul>
+<h3 id="本征半导体的-E-F"><a href="#本征半导体的-E-F" class="headerlink" title="本征半导体的 $E_F$"></a>本征半导体的 $E_F$</h3><script type="math/tex; mode=display">
+\begin{array}{l}
+E_{F}=\frac{E_{c}+E_{v}}{2}+\frac{k T}{2} \ln \left(\frac{N_{v}}{N_{c}}\right) \triangleq E_{i} \\
+E_{i}=\frac{E_{c}+E_{v}}{2}+\frac{3 k T}{4} \ln \left(\frac{m_{p}^{*}}{m_{n}^{*}}\right) \cong \frac{E_{c}+E_{v}}{2}
+\end{array}</script><p>于是可以用 $n_i$ 来表示 $n,p$</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+n=n_i e^{\left(E_{F}-E_{i}\right) / k T} \\
+p=n_i e^{\left(E_{i}-E_{F}\right) / k T}
+\end{array}</script><p>也就是说</p>
+<script type="math/tex; mode=display">
+E_{F}=E_{i}+k T \ln \left(\frac{n}{n_{i}}\right)=E_{i}-k T \ln \left(\frac{p}{n_{i}}\right)</script><p>当温度在 300K 时，又有</p>
+<script type="math/tex; mode=display">
+E_{F}=E_{i}+k T \ln \left(\frac{N_D}{n_{i}}\right)=E_{i}-k T \ln \left(\frac{N_A}{n_{i}}\right)</script><h2 id="第四章-载流子的输运"><a href="#第四章-载流子的输运" class="headerlink" title="第四章 载流子的输运"></a>第四章 载流子的输运</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>漂移</li>
+<li>扩散</li>
+</ul>
+<h3 id="有效质量-1"><a href="#有效质量-1" class="headerlink" title="有效质量"></a>有效质量</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Si</th>
+<th>Ge</th>
+<th>GaAs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$m_n^{*}/m_0$</td>
+<td>0.26</td>
+<td>0.12</td>
+<td>0.068</td>
+</tr>
+<tr>
+<td>$m_p^{*}/m_0$</td>
+<td>0.39</td>
+<td>0.30</td>
+<td>0.50</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="零电场时载流子的平均动能"><a href="#零电场时载流子的平均动能" class="headerlink" title="零电场时载流子的平均动能"></a>零电场时载流子的平均动能</h3><script type="math/tex; mode=display">
+\frac{3}{2} k T=\frac{1}{2} m_{n}^{*} v_{t h}^{2}</script><p>对于硅，</p>
+<script type="math/tex; mode=display">
+v_{t h}=2.3 \times 10^{7} \mathrm{~cm} / \mathrm{s}</script><h3 id="非零电场时载流子的运动"><a href="#非零电场时载流子的运动" class="headerlink" title="非零电场时载流子的运动"></a>非零电场时载流子的运动</h3><ul>
+<li>散射时间 $\tau$：两次散射发生的平均时间间隔</li>
+<li>漂移速度 $\vec{v_d}=-\frac{q\tau}{m^{*}}\vec{E}$</li>
+<li>载流子迁移率 $\mu=q\tau/m^{*}$</li>
+<li>平均自由程 $l=v_{th}\tau$</li>
+</ul>
+<p>载流子迁移率是指载流子（电子和空穴）在单位电场作用下的平均漂移速度</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Si</th>
+<th>Ge</th>
+<th>GaAs</th>
+<th>InAs</th>
+<th>Graphene</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\mu_n\ (\mathrm{cm}^2/\mathrm{V}\cdot\mathrm{s})$</td>
+<td>1400</td>
+<td>3900</td>
+<td>8500</td>
+<td>30000</td>
+<td>140000</td>
+</tr>
+<tr>
+<td>$\mu_p\ (\mathrm{cm}^2/\mathrm{V}\cdot\mathrm{s})$</td>
+<td>470</td>
+<td>1900</td>
+<td>400</td>
+<td>500</td>
+<td>140000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="常见散射模式"><a href="#常见散射模式" class="headerlink" title="常见散射模式"></a>常见散射模式</h3><ul>
+<li>低电场：掺杂离子散射、声子散射</li>
+<li>高电场：光学声子散射</li>
+<li>轻掺杂：晶格散射主导</li>
+<li>重掺杂：杂质离子散射主导</li>
+<li>超重掺杂：载流子间相互作用主导</li>
+<li>其他：不均匀等</li>
+</ul>
+<h3 id="掺杂离子散射的迁移率"><a href="#掺杂离子散射的迁移率" class="headerlink" title="掺杂离子散射的迁移率"></a>掺杂离子散射的迁移率</h3><script type="math/tex; mode=display">
+\mu_{\text {impurity }} \propto \frac{V_{t h}^{3}}{N_{A}+N_{D}} \propto \frac{T^{3 / 2}}{N_{A}+N_{D}}</script><p>温度越高迁移率越高，浓度越大迁移率越低</p>
+<h3 id="晶格振动散射的迁移率"><a href="#晶格振动散射的迁移率" class="headerlink" title="晶格振动散射的迁移率"></a>晶格振动散射的迁移率</h3><script type="math/tex; mode=display">
+\mu_{\text {phonon }} \propto \tau_{\text {phonon }} \propto \frac{1}{\text { phonon density } \times v_{t h}} \propto \frac{1}{T \times T^{1 / 2}} \propto T^{-3 / 2}</script><h3 id="马西森定则"><a href="#马西森定则" class="headerlink" title="马西森定则"></a>马西森定则</h3><script type="math/tex; mode=display">
+\frac{1}{\tau}=\frac{1}{\tau_{\text {phonon }}}+\frac{1}{\tau_{\text {impurity }}} \Rightarrow \frac{1}{\mu}=\frac{1}{\mu_{\text {phonon }}}+\frac{1}{\mu_{\text {impurity }}}</script><h3 id="迁移率与温度"><a href="#迁移率与温度" class="headerlink" title="迁移率与温度"></a>迁移率与温度</h3><p><img src="https://s2.loli.net/2023/03/09/pbEh4H2YDdVPLyk.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="漂移电流密度"><a href="#漂移电流密度" class="headerlink" title="漂移电流密度"></a>漂移电流密度</h3><script type="math/tex; mode=display">
+\begin{array}{c}
+J_{p,\mathrm{drift}}=qpv_{dp}=qp\mu_pE\\
+J_{n,\mathrm{drift}}=-qpv_{dp}=-qn(-\mu_nE)\\
+J_{\mathrm{drift}}=qp\mu_pE+qn\mu_nE
+\end{array}</script><p>定义电导率</p>
+<script type="math/tex; mode=display">
+\sigma \triangleq qp\mu_p+qn\mu_n</script><ul>
+<li>迁移率是描述单个载流子的运动快慢，而电导率是整体的所有载流子的导电性能</li>
+</ul>
+<p>定义电阻率</p>
+<script type="math/tex; mode=display">
+\rho\triangleq \frac{1}{\sigma}</script><p>则有欧姆定律</p>
+<script type="math/tex; mode=display">
+R=\frac{V}{I}=\rho \frac{L}{ab}</script><p>欧姆定律微观形式</p>
+<script type="math/tex; mode=display">
+J=\sigma E</script><h3 id="掺杂硅的电阻率"><a href="#掺杂硅的电阻率" class="headerlink" title="掺杂硅的电阻率"></a>掺杂硅的电阻率</h3><script type="math/tex; mode=display">
+\rho \approx\left.\frac{1}{qn\mu_n} \mathrm{Or} \frac{1}{qp\mu_p}\right.</script><h3 id="能带模型解释载流子输运"><a href="#能带模型解释载流子输运" class="headerlink" title="能带模型解释载流子输运"></a>能带模型解释载流子输运</h3><p><img src="https://s2.loli.net/2023/03/10/wNTCclr38fzhstg.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+E=-\frac{\mathrm{d}V(x)}{\mathrm{d}x}=\frac{1}{q}\frac{\mathrm{d}E_c}{\mathrm{d}x}</script><p>直观解释：载流子受到电场力作用向右运动并获得动能，偏离导带底部，然后遇到散射，又回到导带底部，如此循环往复。</p>
+<h3 id="测量电阻"><a href="#测量电阻" class="headerlink" title="测量电阻"></a>测量电阻</h3><h4 id="二探针法"><a href="#二探针法" class="headerlink" title="二探针法"></a>二探针法</h4><p><img src="https://s2.loli.net/2023/03/10/Bxu1nRj5mbqQiPo.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\rho=\frac{V}{I}\frac{Wt}{L}</script><h4 id="四探针法"><a href="#四探针法" class="headerlink" title="四探针法"></a>四探针法</h4><p><img src="https://s2.loli.net/2023/03/10/Eptg2QJz9mu4U8A.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\rho=\frac{V}{I}\frac{Wt}{L}</script><h4 id="圆盘"><a href="#圆盘" class="headerlink" title="圆盘"></a>圆盘</h4><p><img src="https://s2.loli.net/2023/03/10/1j7iFGLnUVhIqxY.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\rho=\frac{V}{I}\cdot 2\pi s\cdot f(d,t)</script><h3 id="霍尔效应"><a href="#霍尔效应" class="headerlink" title="霍尔效应"></a>霍尔效应</h3><p><img src="https://s2.loli.net/2023/03/10/72T6hLd1crkyUGN.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+E_{H}=V_{X} B_{z} \\
+V_{H}=E_{H} W \\
+V_{x}=\frac{J_{p}}{q p}=\frac{I_{x}}{q p W d} \\
+V_{H}=E_{H} W=\frac{I_{X} B_{z}}{q p d} \\
+p=\frac{I_{x} B_{z}}{q V_{H} d} \\
+n=-\frac{I_{x} B_{z}}{q V_{H} d}
+\end{array}</script><script type="math/tex; mode=display">
+\begin{array}{c}
+\sigma=\frac{I_{x}}{V_{x}} \frac{L}{W d} \\
+\mu_{p}=\frac{V_{H} L}{V_{x} W B_{z}} \\
+\mu_{n}=-\frac{V_{H} L}{V_{x} W B_{z}}
+\end{array}</script><h3 id="场效应管"><a href="#场效应管" class="headerlink" title="场效应管"></a>场效应管</h3><script type="math/tex; mode=display">
+\mu=\frac{\Delta I_{DS}}{\Delta V_{G}}\frac{L}{W}\frac{1}{V_{DS}}\frac{1}{C_i}</script><p>其中 $C_i$ 是单位面积栅极介电电容</p>
+<h3 id="菲克第一定律（载流子扩散电流）"><a href="#菲克第一定律（载流子扩散电流）" class="headerlink" title="菲克第一定律（载流子扩散电流）"></a>菲克第一定律（载流子扩散电流）</h3><script type="math/tex; mode=display">
+\begin{array}{c}
+J_{n,\mathrm{diff}}=qD_n\frac{\mathrm{d}n}{\mathrm{d}x}\\
+J_{p,\mathrm{diff}}=-qD_p\frac{\mathrm{d}p}{\mathrm{d}x}\\
+\end{array}</script><p>其中 $D$ 是扩散常数（扩散率）</p>
+<h3 id="非均匀掺杂半导体"><a href="#非均匀掺杂半导体" class="headerlink" title="非均匀掺杂半导体"></a>非均匀掺杂半导体</h3><p><img src="https://s2.loli.net/2023/03/22/oO72eyaCnJlNG5A.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>非均匀掺杂半导体内部存在扩散电流和漂移电流，两者代数和为0</li>
+<li>以n型半导体为例，电子从浓度高的一侧扩散到浓度低的一侧，导致浓度高的一侧用大量正离子，内部就产生电场。电场阻止电子继续扩散。</li>
+<li>在电场作用下，载流子的定向运动，即空穴沿着电场方向的运动，电子逆着电场方向的运动统称为<strong>漂移运动</strong>。由于热运动而使载流子从高浓度区域向低浓度区域的流动称为<strong>扩散运动</strong>。描述载流子漂移运动特征的物理量是“迁移率”，描述载流子扩散运动特征的物理量是“扩散系数”</li>
+<li>内建电场电势差<script type="math/tex; mode=display">
+V_2-V_1=\frac{kT}{q}\ln\left(\frac{n_2}{n_1}\right)</script></li>
+<li>内建电场强度<script type="math/tex; mode=display">
+E=-\frac{kT}{nq}\frac{\mathrm{d}n}{\mathrm{d}x}</script></li>
+</ul>
+<h3 id="爱因斯坦关系"><a href="#爱因斯坦关系" class="headerlink" title="爱因斯坦关系"></a>爱因斯坦关系</h3><p>对于热平衡状态的半导体没有净电流流动</p>
+<script type="math/tex; mode=display">
+J_n=0 \quad J_p=0</script><p>根据电流密度的定义</p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{array}{l}
+J_{n}=q n \mu_{n} \varepsilon+q D_{n} \frac{\mathrm{d}n}{\mathrm{d}x}=0 \\
+J_{p}=q p \mu_{p} \varepsilon-q D_{p} \frac{\mathrm{d}p}{\mathrm{d}x}=0
+\end{array}
+\right.</script><p>把电场强度代入，得</p>
+<script type="math/tex; mode=display">
+\frac{kT}{q}=\frac{D_n}{\mu_n},\quad\frac{kT}{q}=\frac{D_p}{\mu_p}</script><p>爱因斯坦关系把载流子的扩散系数和迁移率关联起来，爱因斯坦关系在非简并掺杂和非热平衡状态都适用。</p>
+<h3 id="电子空穴对"><a href="#电子空穴对" class="headerlink" title="电子空穴对"></a>电子空穴对</h3><ul>
+<li><strong>产生</strong>：电子和空穴成对产生</li>
+<li><strong>复合</strong>：电子和空穴成对湮灭</li>
+<li><strong>过剩载流子</strong>：在非热平衡状态下产生的多余的电子空穴对</li>
+<li><strong>载流子注入</strong>：改变外部条件产生过剩载流子的过程</li>
+<li>当受到干扰时，系统倾向于恢复平衡。</li>
+<li>复合过程中释放的能量可用于发射光子（<strong>辐射性复合</strong>）或作为热量散失到晶格中（<strong>非辐射性复合</strong>）。</li>
+<li>带到带过程：<br><img src="https://s2.loli.net/2023/03/12/mRcMOjJ47QpSdz1.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li>复合产生中心过程：<br><img src="https://s2.loli.net/2023/03/12/DgRZN8CbJnAKsle.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li>载流子-载流子相互作用过程：<br><img src="https://s2.loli.net/2023/03/12/TmtUwfebXlOA3pG.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li>碰撞离化：是指半导体中的自由载流子在强电场作用下加速到具有足够高的能量，在与晶格的相互作用中使另一个电子从价带跃迁到导带，从而产生新的电子-空穴对的过程。载流子在强电场区内的一连串碰撞离化过程造成载流子的雪崩倍增，在外电路中表现为电流的雪崩倍增。</li>
+<li>俄歇效应：俄歇效应是原子发射的一个电子导致另一个或多个电子（俄歇电子）被发射出来而非辐射X射线，使原子、分子成为高阶离子的物理现象，是伴随一个电子能量降低的同时，另一个（或多个）电子能量增高的跃迁过程。</li>
+</ul>
+<h3 id="小注入"><a href="#小注入" class="headerlink" title="小注入"></a>小注入</h3><script type="math/tex; mode=display">
+n\approx n_0,\ p\approx p_0</script><p>多子浓度不变，少子浓度显著改变</p>
+<h3 id="小注入半导体空穴间接复合率、产生率"><a href="#小注入半导体空穴间接复合率、产生率" class="headerlink" title="小注入半导体空穴间接复合率、产生率"></a>小注入半导体空穴间接复合率、产生率</h3><p>非热平衡状态空穴的复合率</p>
+<script type="math/tex; mode=display">
+\left.\frac{\partial p}{\partial t}\right|_{R}=-c_{p} N_{T} p</script><p>其中 $c_{p}$ 为空穴俘获系数，$N_T$ 为单位体积内 R-G 中心数量。小注入条件下空穴的产生率</p>
+<script type="math/tex; mode=display">
+\left.\frac{\partial p}{\partial t}\right|_{G} \approx \left.\frac{\partial p}{\partial t}\right|_{G \text {-equilibrium }}=-\left.\frac{\partial p}{\partial t}\right|_{R\text {-equilibrium }}=c_{p} N_{T} p_{0}</script><p>空穴的净变化率</p>
+<script type="math/tex; mode=display">
+\left.\frac{\partial p}{\partial t}\right|_{R-G}=\left.\frac{\partial p}{\partial t}\right|_{R}+\left.\frac{\partial p}{\partial t}\right|_{G}=-c_{p} N_{T} p+c_{p} N_{T} p_{0}</script><p>令</p>
+<script type="math/tex; mode=display">
+\tau_{p} \triangleq \frac{1}{c_{p} N_{T}} \quad \tau_{n} \triangleq \frac{1}{c_{n} N_{T}}</script><p>则空穴和电子的净变化率</p>
+<script type="math/tex; mode=display">
+\left.\frac{\partial p}{\partial t}\right|_{R-G}=-\frac{\Delta p}{\tau_{p}}\quad
+\left.\frac{\partial n}{\partial t}\right|_{R-G}=-\frac{\Delta n}{\tau_{n}}</script><h3 id="少子寿命"><a href="#少子寿命" class="headerlink" title="少子寿命"></a>少子寿命</h3><p>少数载流子寿命是过量少数载流子在多数载流子海洋中“存活”的平均时间。$\tau$ 在硅中的范围从 1ns 到 1ms，并取决于金属杂质（污染物）的密度，如金和铂，以及晶体缺陷的密度。这些杂质/缺陷在带隙深处产生了局部的能量状态。这种深层陷阱捕获电子或空穴以促进重组，被称为重组生成中心。</p>
+<h3 id="一般情况下的载流子变化率"><a href="#一般情况下的载流子变化率" class="headerlink" title="一般情况下的载流子变化率"></a>一般情况下的载流子变化率</h3><script type="math/tex; mode=display">
+\begin{array}{l}
+\left.\frac{\partial p}{\partial t}\right|_{R-G}=\left.\frac{\partial n}{\partial t}\right|_{R-G}=-\frac{n_{i}^{2}-n p}{\tau_{p}\left(n+n_{1}\right)+\tau_{n}\left(p+p_{1}\right)} \\
+n_{1}=n_{i} e^{(E_T-E_i) / k T} \\
+p_{1}=n_{i} e^{(E_i-E_T) / k T}
+\end{array}</script><h3 id="载流子连续性方程"><a href="#载流子连续性方程" class="headerlink" title="载流子连续性方程"></a>载流子连续性方程</h3><p><img src="https://s2.loli.net/2023/03/14/6ZTzGrxe1oOmcSX.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+A \mathrm{d} x\left(\frac{\partial n}{\partial t}\right)=-\frac{1}{q}\left[J_{n}(x) A-J_{n}(x+\mathrm{d} x) A\right]-\frac{\Delta n}{\tau_{n}} A \mathrm{d} x+G_{L} A \mathrm{d} x</script><p>解得</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\frac{\partial n}{\partial t}=\frac{1}{q} \frac{\partial J_{n}(x)}{\partial x}-\frac{\Delta n}{\tau_{n}}+G_{L} \\
+\frac{\partial p}{\partial t}=-\frac{1}{q} \frac{\partial J_{p}(x)}{\partial x}-\frac{\Delta p}{\tau_{p}}+G_{L}
+\end{array}</script><h3 id="少子扩散方程"><a href="#少子扩散方程" class="headerlink" title="少子扩散方程"></a>少子扩散方程</h3><p>若假设</p>
+<ul>
+<li>电场强度较小</li>
+<li>连续性掺杂</li>
+<li>小注入<br>则可化简为<script type="math/tex; mode=display">
+\begin{array}{l}
+\frac{\partial \Delta n_{p}}{\partial t}=D_{n} \frac{\partial^{2} \Delta n_{p}}{\partial x^{2}}-\frac{\Delta n_{p}}{\tau_{n}}+G_{L} \\
+\frac{\partial \Delta p_{n}}{\partial t}=D_{p} \frac{\partial^{2} \Delta p_{n}}{\partial x^{2}}-\frac{\Delta p_{n}}{\tau_{p}}+G_{L} \\
+\end{array}</script></li>
+<li>若稳态：$\frac{\partial \Delta n_{p}}{\partial t}=0 \quad \frac{\partial \Delta p_{n}}{\partial t}=0$</li>
+<li>若无扩散电流：$D_{n} \frac{\partial^{2} \Delta n_{p}}{\partial x^{2}}=0 \quad D_{p} \frac{\partial^{2} \Delta p_{n}}{\partial x^{2}}=0$</li>
+<li>若无 R-G 中心过程：$\frac{\Delta n_{p}}{\tau_{n}}=0 \quad \frac{\Delta p_{n}}{\tau_{p}}=0$</li>
+<li>若无光照：$G_{L}=0$</li>
+</ul>
+<h3 id="扩散长度"><a href="#扩散长度" class="headerlink" title="扩散长度"></a>扩散长度</h3><script type="math/tex; mode=display">
+L_p \triangleq \sqrt{D_p \tau_p}\quad L_n \triangleq \sqrt{D_n \tau_n}</script><p>在物理意义上，$L_p$ 和 $L_n$ 代表了少数载流子在被湮灭之前扩散到多数载流子海洋中的平均距离。</p>
+<h3 id="准费米能级"><a href="#准费米能级" class="headerlink" title="准费米能级"></a>准费米能级</h3><p>当半导体存在载流子注入时，$np=n_i^2$ 不再成立，但是我们仍然有</p>
+<script type="math/tex; mode=display">
+n=n_i e^{\left(F_{N}-E_{i}\right) / k T}, \quad p=n_i e^{\left(E_{i}-F_{P}\right) / k T}</script><p>这里的 $F_{N}$ 和 $F_{P}$ 被称为准费米能级</p>
+<script type="math/tex; mode=display">
+F_N=E_i+kT\ln\left(\frac{n}{n_i}\right),\quad F_P=E_i-kT\ln\left(\frac{p}{n_i}\right)</script><h3 id="其他载流子输运过程"><a href="#其他载流子输运过程" class="headerlink" title="其他载流子输运过程"></a>其他载流子输运过程</h3><h4 id="俄歇效应-amp-碰撞离化"><a href="#俄歇效应-amp-碰撞离化" class="headerlink" title="俄歇效应&amp;碰撞离化"></a>俄歇效应&amp;碰撞离化</h4><h4 id="热离子发射"><a href="#热离子发射" class="headerlink" title="热离子发射"></a>热离子发射</h4><h4 id="量子隧穿"><a href="#量子隧穿" class="headerlink" title="量子隧穿"></a>量子隧穿</h4><h4 id="弹道输运"><a href="#弹道输运" class="headerlink" title="弹道输运"></a>弹道输运</h4><ul>
+<li>在介观物理学中，弹道传导是指 电荷载流子在介质中的传输，具有可忽略不计的 由散射引起的电阻率。</li>
+<li>当电子的平均自由路径电子的平均自由路径比介质的尺寸长（很多）时，就会出现弹道传输。电子通过的介质的尺寸。</li>
+<li>弹道传输通常在准一维结构中观察到。如碳纳米管或硅纳米线，因为在这些结构中存在极端的尺寸量化效应。这些材料中的极端尺寸量化效应。</li>
+<li>弹道传输与超导性不同。</li>
+</ul>
+<h2 id="第五章-PN结的静电特性"><a href="#第五章-PN结的静电特性" class="headerlink" title="第五章 PN结的静电特性"></a>第五章 PN结的静电特性</h2><h3 id="PN结的相关概念"><a href="#PN结的相关概念" class="headerlink" title="PN结的相关概念"></a>PN结的相关概念</h3><ul>
+<li>PN结：A P-N junction is formed when an n type material is fused together with a p type material creating a semiconductor diode.</li>
+<li>P type: negative ions + majority holes + minority electrons</li>
+<li>N type: positive ions + minority holes + majority electrons</li>
+<li>耗尽层/空间电荷区：电子和空穴在这里复合，载流子浓度几乎为0</li>
+<li>准中性区：几乎和原来一样，呈现中性</li>
+<li>N型掺杂区和P型掺杂区的接触界面称为冶金结界面</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/03/21/PWQSAxfHE4g97de.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="PN结的能带结构"><a href="#PN结的能带结构" class="headerlink" title="PN结的能带结构"></a>PN结的能带结构</h3><p><img src="https://s2.loli.net/2023/03/21/u6jUzHRAyoVQS3g.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/03/21/WHRjouetYwGcnpJ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>掺杂的电荷载流子沿载流子浓度梯度扩散</li>
+<li>施主/受主离子保持固定，形成一个内建电场</li>
+<li>在热平衡状态下，扩散电流与漂移电流相互补偿。</li>
+</ul>
+<h3 id="理想PN结"><a href="#理想PN结" class="headerlink" title="理想PN结"></a>理想PN结</h3><ul>
+<li>突变结：在交界面处，杂质浓度由 $N_A$ (p型)突变为 $N_D$ (n型)</li>
+<li>线性缓变结：杂质浓度从p区到n区是线性变化的</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/03/22/21qhZwoSNHpICcJ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="电势、电场与电荷密度"><a href="#电势、电场与电荷密度" class="headerlink" title="电势、电场与电荷密度"></a>电势、电场与电荷密度</h3><p><img src="https://s2.loli.net/2023/03/22/5AgVESZnGMXRdmN.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="内建电势差的计算"><a href="#内建电势差的计算" class="headerlink" title="内建电势差的计算"></a>内建电势差的计算</h3><script type="math/tex; mode=display">
+V_{bi}=\frac{kT}{q}\ln\frac{n(x_n)}{n(-x_p)}</script><ul>
+<li>对于轻掺杂突变结：<script type="math/tex; mode=display">
+n(x_n)=N_D\quad n(-x_p)=\frac{n_i^2}{N_A}</script>于是<script type="math/tex; mode=display">
+V_{bi}=\frac{kT}{q}\ln\frac{N_AN_D}{n_i^2}</script></li>
+<li>对于 $p^{+}n$ 型突变结<script type="math/tex; mode=display">
+(E_i-E_F)_{p-side}=\frac{E_G}{2}</script>于是<script type="math/tex; mode=display">
+V_{bi}=\frac{E_G}{2q}+\frac{kT}{q}\ln\frac{N_D}{n_i}</script></li>
+<li>对于 $n^{+}p$ 型突变结<script type="math/tex; mode=display">
+(E_F-E_i)_{n-side}=\frac{E_G}{2}</script>于是<script type="math/tex; mode=display">
+V_{bi}=\frac{E_G}{2q}+\frac{kT}{q}\ln\frac{N_A}{n_i}</script></li>
+<li>对于线性缓变结<script type="math/tex; mode=display">
+n(x_n)=\left.N_D\right|_{x=x_n}=\frac{aw}{2}\quad n(-x_p)=\frac{n_i^2}{p(-x_p)}=\frac{n_i^2}{\left.N_A\right|_{x=-x_p}}=\frac{2n_i^2}{aw}</script>于是<script type="math/tex; mode=display">
+V_{bi}=\frac{2kT}{q}\ln\frac{aW}{2n_i}=\frac{kT}{q}\ln\frac{\left.N_A\right|_{x=-x_p}\left.N_D\right|_{x=x_n}}{n_i^2}</script></li>
+</ul>
+<h3 id="泊松方程"><a href="#泊松方程" class="headerlink" title="泊松方程"></a>泊松方程</h3><script type="math/tex; mode=display">
+\frac{\mathrm{d} E}{\mathrm{d} x}=-\frac{\mathrm{d}^2 V}{\mathrm{d} x^2}=\frac{\rho}{K_s\varepsilon_0}</script><p>其中</p>
+<ul>
+<li>$\varepsilon_0=8.85\times 10^{-14}\mathrm{F}/\mathrm{cm}$ 是真空介电常数</li>
+<li>$K_s$ 是相对介电常数，对于硅，$K_s=11.9$</li>
+<li>$\rho$ 是载流子浓度</li>
+</ul>
+<h3 id="耗尽近似"><a href="#耗尽近似" class="headerlink" title="耗尽近似"></a>耗尽近似</h3><ul>
+<li>准中性区电荷密度为0</li>
+<li>耗尽层不存在自由载流子</li>
+</ul>
+<h3 id="突变结"><a href="#突变结" class="headerlink" title="突变结"></a>突变结</h3><ul>
+<li>耗尽层p区一侧电荷密度即为掺杂受主原子浓度 $N_A$，每个受主原子接收一个电子而变成带一个单位负电荷的阴离子</li>
+<li>耗尽层n区一侧电荷密度即为掺杂施主原子浓度 $N_D$，每个施主原子发出一个电子而变成带一个单位正电荷的阳离子</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/03/22/Gl8jesphHK1BQfu.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="电场强度分布"><a href="#电场强度分布" class="headerlink" title="电场强度分布"></a>电场强度分布</h4><script type="math/tex; mode=display">
+E(x)=\left\{\begin{array}{ll}
+-\frac{q N_{A}}{K_{s} \varepsilon_{0}}\left(x+x_{p}\right), & -x_{p} \leq x \leq 0 \\
+\frac{q N_{D}}{K_{s} \varepsilon_{0}}\left(x-x_{n}\right), & 0 \leq x \leq x_{n} \\
+0, & x \leq-x_{p}, x \geq x_{n}
+\end{array}\right.</script><ul>
+<li>其中 $N_Ax_p=N_Dx_n$，电荷守恒</li>
+<li>当 $x=0$ 即冶金结处，$E_m=-\frac{qN_Ax_p}{K_s\varepsilon_{0}}$</li>
+</ul>
+<h4 id="电势分布"><a href="#电势分布" class="headerlink" title="电势分布"></a>电势分布</h4><script type="math/tex; mode=display">
+V(x)=\left\{\begin{array}{ll}
+\frac{q N_{A}}{2 K_{s} \varepsilon_{0}}\left(x+x_{p}\right)^{2}, & -x_p<x<0 \\
+V_{b i}-\frac{q N_{D}}{2 K_{S} \varepsilon_{0}}\left(x_{n}-x\right)^{2}, & 0<x<+x_n
+\end{array}\right.</script><ul>
+<li>其中<script type="math/tex; mode=display">
+V_{b i}=\frac{q N_{A} X_{p}^{2}}{2 K_{s} \varepsilon_{0}}+\frac{q N_{D} X_{n}^{2}}{2 K_{s} \varepsilon_{0}}</script></li>
+</ul>
+<h4 id="耗尽层宽度"><a href="#耗尽层宽度" class="headerlink" title="耗尽层宽度"></a>耗尽层宽度</h4><p>联立</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+N_{A} x_{p}=N_{D} x_{n} \\
+V_{b i}=\frac{q N_{A} x_{p}^{2}}{2 K_{S} \varepsilon_{0}}+\frac{q N_{D} x_{n}^{2}}{2 K_{S} \varepsilon_{0}} \\
+\end{array}</script><p>解得</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+x_{n}=\sqrt{\frac{2 K_{s} \varepsilon_{0} V_{b i}}{q}\left(\frac{N_{A}}{N_{D}\left(N_{A}+N_{D}\right)}\right)} \\
+x_{p}=\sqrt{\frac{2 K_{s} \varepsilon_{0} V_{b i}}{q}\left(\frac{N_{D}}{N_{A}\left(N_{A}+N_{D}\right)}\right)} \\
+W = x_{n} + x_{p} = \sqrt{\frac{2 K_{s} \varepsilon_{0} V_{b i}}{q}\left(\frac{1}{N_{A}}+\frac{1}{N_{D}}\right)}
+\end{array}</script><h3 id="单边突变结"><a href="#单边突变结" class="headerlink" title="单边突变结"></a>单边突变结</h3><p>在 $p^{+}n$ 型结中，$N_A\gg N_D$，$W\approx x_n$，$x_p\approx 0$，</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+E(x)=\frac{q N_{D}}{K_{S} \varepsilon_{0}}(-W+x) \\
+V(x)=\frac{V_{b i}}{W}\left(2 x-\frac{x^{2}}{W}\right)
+\end{array}</script><h3 id="线性缓变结"><a href="#线性缓变结" class="headerlink" title="线性缓变结"></a>线性缓变结</h3><script type="math/tex; mode=display">
+N_D-N_A=ax</script><script type="math/tex; mode=display">
+\rho(x)=\left\{
+\begin{array}{ll}
+qax, & -\frac{W}{2}<x<\frac{W}{2}\\
+0, & 其他
+\end{array}
+\right.</script><script type="math/tex; mode=display">
+E(x)=-\frac{q a}{K_{s} \varepsilon_{0}}\left[\frac{(W / 2)^{2}-x^{2}}{2}\right]</script><script type="math/tex; mode=display">
+V(x)=\frac{q a}{6 K_{s} \varepsilon_{0}}\left[2\left(\frac{W}{2}\right)^{3}+3\left(\frac{W}{2}\right)^{2} x-x^{3}\right]</script><h2 id="第六章-偏置电压下的PN结"><a href="#第六章-偏置电压下的PN结" class="headerlink" title="第六章 偏置电压下的PN结"></a>第六章 偏置电压下的PN结</h2><h3 id="偏置电压的影响"><a href="#偏置电压的影响" class="headerlink" title="偏置电压的影响"></a>偏置电压的影响</h3><ul>
+<li>加入偏置电压后，电压几乎全部降落在耗尽层</li>
+</ul>
+<h4 id="电势、电场与电荷密度-1"><a href="#电势、电场与电荷密度-1" class="headerlink" title="电势、电场与电荷密度"></a>电势、电场与电荷密度</h4><p>对于突变结<br><img src="https://s2.loli.net/2023/03/24/EsfZbn8FNoTwAmR.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+W=x_{p}+x_{n}=\sqrt{\frac{2 K_{S} \varepsilon_{0}}{q}\left(V_{b i}-V_{A}\right)\left(\frac{1}{N_{A}}+\frac{1}{N_{D}}\right)} \\
+X_{p}=\frac{N_{D}}{N_{A}+N_{D}} W \quad X_{n}=\frac{N_{A}}{N_{A}+N_{D}} W
+\end{array}</script><p><img src="https://s2.loli.net/2023/03/24/tjdA6GwREL2ufbN.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>对于单边 $p^{+}n$ 型结</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+W \cong \sqrt{\frac{2 K_{S} \varepsilon_{0}}{q N_{D}}\left(V_{b i}-V_{A}\right)} \\
+E(0)=-\frac{2\left(V_{b i}-V_{A}\right)}{W} \cong-\sqrt{\frac{2 q N_{D}}{K_{S} \varepsilon_{0}}\left(V_{b i}-V_{A}\right)}
+\end{array}</script><p>对于线性缓变结</p>
+<script type="math/tex; mode=display">
+W \cong \left(\frac{12 K_{S} \varepsilon_{0}}{q a}\left(V_{b i}-V_{A}\right)\right)^{1/3}</script><h4 id="能带图"><a href="#能带图" class="headerlink" title="能带图"></a>能带图</h4><p><img src="https://s2.loli.net/2023/03/24/VE8jOAlDvmeLXrY.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="对漂移电流和扩散电流的影响"><a href="#对漂移电流和扩散电流的影响" class="headerlink" title="对漂移电流和扩散电流的影响"></a>对漂移电流和扩散电流的影响</h4><ul>
+<li>正偏电压作用下，耗尽层能带弯曲更小，多子扩散电流增强、少子漂移电流不变</li>
+<li>反偏电压作用下，耗尽层能带弯曲更大，多子扩散电流减弱、少子漂移电流不变</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/03/30/9PhxpnrloY8jeby.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="电流与偏置电压的关系"><a href="#电流与偏置电压的关系" class="headerlink" title="电流与偏置电压的关系"></a>电流与偏置电压的关系</h4><p>（Todo）</p>
+<p><img src="https://s2.loli.net/2023/03/24/PwDXR2uamrJhWvz.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="PN结定律"><a href="#PN结定律" class="headerlink" title="PN结定律"></a>PN结定律</h3><p>可以合理地假设能级 $F_{\mathrm{N}}$ 和 $F_{\mathrm{P}}$ 会单调地变化，从远离结的 $p$ 型区域内的 $E_{\mathrm{Fp}}$ 过渡到远离结的 $n$ 型区域内的 $E_{\mathrm{Fn}}$。能级的单调变化会使二极管内各处有 $F_{\mathrm{N}}-F_{\mathrm{P}} \leqslant E_{\mathrm{Fn}}-E_{\mathrm{Fp}}=q V_{\mathrm{A}}$。如果假设在耗尽层内上面的 $F_{\mathrm{N}}-F_{\mathrm{p}}$ 表达式中等号成立，可以推断出</p>
+<script type="math/tex; mode=display">
+n p=n_{\mathrm{i}}^{2} e^{q V_{\mathrm{A}} / k T} \quad-x_{\mathrm{p}} \leqslant x \leqslant x_{\mathrm{n}}</script><p>上式称为 <strong>pn 结定律</strong>。</p>
+<p><img src="https://s2.loli.net/2023/03/26/NW8vtw2jZHfGCPJ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="理想二极管分析"><a href="#理想二极管分析" class="headerlink" title="理想二极管分析"></a>理想二极管分析</h3><h4 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h4><ul>
+<li>二极管是长基区二极管（准中性区长度远大于少子扩散长度）</li>
+<li>二极管是一维的</li>
+<li>非简并掺杂突变结</li>
+<li>稳态<script type="math/tex; mode=display">
+\frac{\mathrm{d} n_{p}}{\mathrm{d} t}=\frac{\mathrm{d} p_{n}}{\mathrm{d} t}=0</script></li>
+<li>准中性区满足小注入条件<script type="math/tex; mode=display">
+\begin{array}{l}
+n \approx n_{0}=N_{D} \\
+p \approx p_{0}=N_{A} \\
+\end{array}</script></li>
+<li>忽略耗尽层中电子空穴对的产生和复合<script type="math/tex; mode=display">
+\frac{\mathrm{d} J_{n}}{\mathrm{d} x}=0, \quad \frac{\mathrm{d} J_{p}}{\mathrm{d} x}=0</script></li>
+<li>二极管内除了漂移、扩散和热复合-产生过程之外，没有其他过程。<script type="math/tex; mode=display">
+G_L=0</script></li>
+</ul>
+<h4 id="计算过程"><a href="#计算过程" class="headerlink" title="计算过程"></a>计算过程</h4><ol>
+<li><p>在准中性 P 区写出少子扩散方程，在准中性 N 区写出少子扩散方程</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\frac{\partial \Delta n_{p}}{\partial t}=D_{n} \frac{\partial^{2} \Delta n_{p}}{\partial x^{2}}-\frac{\Delta n_{p}}{\tau_{n}}+G_{L} \\
+\frac{\partial \Delta p_{n}}{\partial t}=D_{p} \frac{\partial^{2} \Delta p_{n}}{\partial x^{2}}-\frac{\Delta p_{n}}{\tau_{p}}+G_{L} \\
+\end{array}</script></li>
+<li><p>由“稳态”、“无其他过程”可得</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+D_{n} \frac{\partial^{2} \Delta n_{p}}{\partial x^{2}}-\frac{\Delta n_{p}}{\tau_{n}}=0 \\
+D_{p} \frac{\partial^{2} \Delta p_{n}}{\partial x^{2}}-\frac{\Delta p_{n}}{\tau_{p}}=0 \\
+\end{array}</script></li>
+<li><p>由“小注入条件”可得准中性 P 区的多子空穴浓度与准中性 N 区的多子电子浓度</p>
+<script type="math/tex; mode=display">
+p_p(-x_p)=N_A\quad n_n(x_n)=N_D</script></li>
+<li><p>在 $-x_p$ 与 $x_n$ 处运用 PN 结定律，可得</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+n_{p}\left(-x_{p}\right)=\frac{n_{i}^{2} e^{q V_{\mathrm{A}} / k T}}{N_{\mathrm{A}}} \quad p_{n}\left(x_{n}\right)=\frac{n_{i}^{2} e^{q V_{\mathrm{A}} / k T}}{N_{\mathrm{D}}} \\
+\Delta n_{p}\left(-x_{p}\right)=\frac{n_{i}^{2}}{N_{\mathrm{A}}}\left(e^{q V_{\mathrm{A}} / k T}-1\right) \quad \Delta p_{n}\left(x_{n}\right)=\frac{n_{i}^{2}}{N_{\mathrm{D}}}\left(e^{q V_{\mathrm{A}} / k T}-1\right) \\
+\end{array}</script></li>
+<li><p>由“长基区”条件可知</p>
+<script type="math/tex; mode=display">
+\Delta n_{p}\left(-\infty\right)=0 \quad \Delta p_{n}\left(+\infty\right)=0</script></li>
+<li><p>建立新坐标系，解得注入载流子浓度<br><img src="https://s2.loli.net/2023/03/26/lovSaCI7U3b5s1Y.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\Delta p_{n}\left(x^{\prime}\right)=\frac{n_i^2}{N_D}\left(e^{q V_{A} / k T}-1\right) e^{-x^{\prime} / L_{p}}, \quad x^{\prime}>0 \\
+\Delta n_{p}\left(x^{\prime\prime}\right)=\frac{n_i^2}{N_A}\left(e^{q V_{A} / k T}-1\right) e^{-x^{\prime \prime} / L_{n}}, \quad x^{\prime\prime}>0
+\end{array}</script><p><img src="https://s2.loli.net/2023/03/26/LPtHfBDpmXuklSC.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li><p>在耗尽层写出载流子连续性方程</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\frac{\partial n}{\partial t}=\frac{1}{q} \frac{\partial J_{n}(x)}{\partial x}-\frac{\Delta n}{\tau_{n}}+G_{L} \\
+\frac{\partial p}{\partial t}=-\frac{1}{q} \frac{\partial J_{p}(x)}{\partial x}-\frac{\Delta p}{\tau_{p}}+G_{L}
+\end{array}</script></li>
+<li><p>由于“稳态”“无 R-G 中心过程”“无光照”可知 $J_n$ 与 $J_p$ 不变</p>
+</li>
+<li><p>在准中性区写出总电流</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+J_{n}=q n \mu_{n} \varepsilon+q D_{n} \frac{\mathrm{d}n}{\mathrm{d}x} \\
+J_{p}=q p \mu_{p} \varepsilon-q D_{p} \frac{\mathrm{d}p}{\mathrm{d}x}
+\end{array}</script></li>
+<li><p>由于“准中性区无电压降落”，电场为 0，可得</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+J_{n}=q D_{n} \frac{\mathrm{d}n}{\mathrm{d}x},\quad (x\le -x_p) \\
+J_{p}=-q D_{p} \frac{\mathrm{d}p}{\mathrm{d}x},\quad (x\ge x_n)
+\end{array}</script></li>
+<li><p>将 6 的结果代入可得</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+J_{n}=-q D_{n} \frac{\mathrm{d} \Delta n_{p}\left(x^{\prime \prime}\right)}{\mathrm{d} x^{\prime \prime}}=q \frac{D_{n}}{L_{n}}\frac{n_i^2}{N_A}\left(e^{q V_{A} / k T}-1\right) e^{-x^{\prime \prime} / L_{n}} \\
+J_{p}=-q D_{p} \frac{\mathrm{d} \Delta p_{n}\left(x^{\prime}\right)}{\mathrm{d} x^{\prime}}=q \frac{D_{p}}{L_{p}} \frac{n_i^2}{N_D}\left(e^{q V_{A} / k T}-1\right) e^{-x^{\prime} / L_{p}}
+\end{array}</script></li>
+<li><p>由于 $J_n$ 与 $J_p$ 不变，相加得总的电流密度</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+J & =\left.J_{n}\right|_{x=-x_{p}}+\left.J_{p}\right|_{x=x_{n}}=\left.J_{n}\right|_{x^{\prime \prime}=0}+\left.J_{p}\right|_{x^{\prime}=0} \\
+& =q n_{\mathrm{i}}^{2}\left[\frac{D_{n}}{L_{n} N_{\mathrm{A}}}+\frac{D_{p}}{L_{p} N_{\mathrm{D}}}\right]\left(e^{q V_{\mathrm{A}} / k T}-1\right)
+\end{aligned}</script><p><img src="https://s2.loli.net/2023/03/26/nFW5DVlbm6A8SzL.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+</ol>
+<p>或者</p>
+<script type="math/tex; mode=display">
+I =\frac{-Q_{N}}{\tau_{n}}+\frac{Q_{P}}{\tau_{p}}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+Q_{P}=q A \int_{x_{n}}^{\infty} \Delta p_{n}(x) \mathrm{d} x = q A \frac{n_{i}^{2}}{N_{D}}\left(e^{q V_{A} / k T}-1\right) L_P\\
+Q_{N}=q A \int_{-\infty}^{-x_{p}} \Delta n_{p}(x) \mathrm{d} x = -q A \frac{n_{i}^{2}}{N_{A}}\left(e^{q V_{A} / k T}-1\right) L_N\\
+\end{array}</script><h3 id="理想二极管方程（肖克利方程）"><a href="#理想二极管方程（肖克利方程）" class="headerlink" title="理想二极管方程（肖克利方程）"></a>理想二极管方程（肖克利方程）</h3><script type="math/tex; mode=display">
+I =I_{0}\left(e^{q V_{A} / k T}-1\right)</script><p>其中</p>
+<script type="math/tex; mode=display">
+I_{0} =A q n_{i}^{2}\left(\frac{D_{p}}{L_{p} N_{D}}+\frac{D_{n}}{L_{n} N_{A}}\right)</script><ul>
+<li>在应用上，$I_0$ 取决于二极管本身的各种参数</li>
+<li>在非对称掺杂（单侧）P-N 结中，与较重掺杂侧相关的项可以忽略不计<ul>
+<li>p侧重掺杂：$I_{0} \cong A q n_{i}^{2}\left(\frac{D_{p}}{L_{p} N_{D}}\right)$</li>
+<li>n侧重掺杂：$I_{0} \cong A q n_{i}^{2}\left(\frac{D_{n}}{L_{n} N_{A}}\right)$</li>
+</ul>
+</li>
+</ul>
+<h3 id="正反偏对载流子浓度、电流密度的影响"><a href="#正反偏对载流子浓度、电流密度的影响" class="headerlink" title="正反偏对载流子浓度、电流密度的影响"></a>正反偏对载流子浓度、电流密度的影响</h3><p>（Todo）</p>
+<h3 id="非理想电压电流关系"><a href="#非理想电压电流关系" class="headerlink" title="非理想电压电流关系"></a>非理想电压电流关系</h3><h4 id="实际I-V曲线"><a href="#实际I-V曲线" class="headerlink" title="实际I-V曲线"></a>实际I-V曲线</h4><p><img src="https://s2.loli.net/2023/03/30/IWEc5kS6emQL7UZ.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/03/30/2Pjicuf7ovm3s5z.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="击穿电压"><a href="#击穿电压" class="headerlink" title="击穿电压"></a>击穿电压</h4><script type="math/tex; mode=display">
+V_{B R}=\frac{K_{S} \varepsilon_{0} E_{C R}^{2}}{2 q N}-V_{b i}</script><p>其中 $E_{C R}$ 是最大电场</p>
+<script type="math/tex; mode=display">
+E_{C R}=\sqrt{\frac{2 q N\left(V_{b i}+V_{B R}\right)}{K_{S} \varepsilon_{0}}}</script><p>击穿电压随掺杂浓度增加而减小，随带隙 $E_{G}$ 增加而增加<br><img src="https://s2.loli.net/2023/03/30/DtYaE5X6HkFbgZP.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="雪崩击穿"><a href="#雪崩击穿" class="headerlink" title="雪崩击穿"></a>雪崩击穿</h4><p>雪崩击穿是指在电场作用下，载流子能量增大，不断与晶体原子相碰，使共价键中的电子激发形成自由电子-空穴对。这种连锁反应使得阻挡层中的载流子的数量雪崩式地增加，流过PN结的电流就急剧增大击穿PN结，这种碰撞电离导致击穿称为雪崩击穿，也称为电子雪崩现象。</p>
+<ul>
+<li>$V_{BR}$ 随温度升高而增大，因为散射加剧，平均自由程减小了，需要更大的能量使雪崩发生</li>
+</ul>
+<h4 id="齐纳（量子隧穿）击穿"><a href="#齐纳（量子隧穿）击穿" class="headerlink" title="齐纳（量子隧穿）击穿"></a>齐纳（量子隧穿）击穿</h4><p>齐纳击穿是指在两侧高掺杂的pn结中，由于结很薄，即使外加电压并不高，就可产生很强的电场将结内共价键中的价电子拉出来，产生大量的电子-空穴对，使反向电流剧增。这种现象叫齐纳击穿。</p>
+<ul>
+<li>通常结宽度小于 10nm，$V_{BR}&lt;5V$</li>
+<li>$V_{BR}$ 随温度升高而减小，因为可用于隧穿的价带电子通量增加了</li>
+</ul>
+<h4 id="串联电阻效应"><a href="#串联电阻效应" class="headerlink" title="串联电阻效应"></a>串联电阻效应</h4><p>在准中性区域内存在着一个内在的电阻，由该区域的杂质浓度和尺寸来决定。在一个做好的器件中还存在着一个与二极管接触电极相关的微小残余电阻。这些加在一起组成了<strong>串联电阻</strong> $R_{\mathrm{S}}$。在小电流情况下，串联电阻上的压降 $I R_{\mathrm{S}}$，与耗尽层上的压降相比可以完全忽略不计，耗尽层上的压降就是熟知的“结”电压 $V_{\mathrm{J}}$在上述情况中，$V_{\mathrm{J}}=V_{\mathrm{A}}$，正如静电学和理想二极管推导中的一样。然而，当电流足够大以至于 $I R_{\mathrm{S}}$ 与 $V_{\mathrm{A}}$ 可比时，耗尽层上的压降将减少为</p>
+<script type="math/tex; mode=display">
+V_{\mathrm{J}}=V_{\mathrm{A}}-IR_{\mathrm{S}}</script><p>实际上等于消耗掉了部分外加电压，为达到与理想二极管相同的电流，实际器件需要更大的外加电压，因此其特性斜率会变缓</p>
+<p><img src="https://s2.loli.net/2023/04/02/w854Ybjt6W92CHk.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>画出正向偏置下伏安关系的半对数坐标图，将图中理想二极管相关范围内的直线外延到斜率变缓区域，并记下两个曲线之间的电压差与 $I$ 的对应关系。因为 $\Delta V=V_{\mathrm{A}}-V_{\mathrm{J}}=I R_{\mathrm{S}}$，可以利用 $\Delta V$ 与 $I$ 交化关系图中的直线斜率得到 $R_{\mathrm{S}}$。</p>
+<h4 id="大注入"><a href="#大注入" class="headerlink" title="大注入"></a>大注入</h4><p>在轻掺杂一侧的耗尽层边界处，当结的少数载流子的浓度接近于杂质浓度时，理想二极管公式的推导过程采用的小电流注入假设开始失效。在室温下的 Si 中，当外加电压低于 $V_{\mathrm{bi}}$ 零点几个伏特时通常会出现这种情况。随着外加电压进一步地增加，则会导致大电流注入。在大电流注入条件下，邻近耗尽层处的少数载流子和多数载流子浓度都会出现波动。<strong>多数载流子浓度必须增加</strong>以维持准中性区域保持近似中性。对大电流注入的分析会得出电流大致正比于 $\exp (q / 2 k T)$。也就是说，在正向偏置 $I-V$ 特性的半对数坐标图中，预计大电流注入出现在 $q / 2 k T$ 区域内。但是，很难观察到预测的大电流注入对应的 $q / 2 k T$ 区域，因为与串联电阻相关的斜率下降效应会掩盖这种关系。尽管如此，也应该注意到大电流注入引起了载流子浓度的增大，这会导致观测到的串联电阻值出现下降。将大电流注入导致的电阻率下降现象称为<strong>电导调制</strong>。</p>
+<h4 id="复合-产生电流"><a href="#复合-产生电流" class="headerlink" title="复合-产生电流"></a>复合-产生电流</h4><ul>
+<li>室温下 Si 二极管中，正向小偏压和全部反向偏压下的电流都远大于理想二极管理论的预测值。观察到的“额外”电流都来自于耗尽层中载流子的热复合-产生过程，而理想二极管公式的推导将该过程忽略掉了。</li>
+<li>当二极管处于<strong>反向偏置</strong>时，耗尽层中载流子浓度将会下降并低于其热平衡条件下的值，这导致了耗尽层内电子和空穴的<strong>产生</strong>。</li>
+<li>耗尽层内巨大的电场会很快将产生的载流子扫到准中性区域，因此<strong>增大了反向电流</strong>。</li>
+<li><strong>正向偏置</strong>增加了耗尽层内的载流子浓度且高于其热平衡值，这导致了该区域内载流子出现<strong>复合</strong>。</li>
+<li>复合-产生电流<script type="math/tex; mode=display">
+I_{\mathrm{R}-\mathrm{G}}=-\left.q A \int_{-x_{\mathrm{p}}}^{x_{\mathrm{n}}} \frac{\partial n}{\partial t}\right|_{\substack{\text { thermal } \\
+\mathrm{R}-\mathrm{G}}} \mathrm{d} x</script>其中<script type="math/tex; mode=display">
+\left.\frac{\partial n}{\partial t}\right|_{\substack{\text { thermal } \\
+\mathrm{R}-\mathrm{G}}}=-\frac{n p-n_{\mathrm{i}}^{2}}{\tau_{\mathrm{p}}\left(n+n_{1}\right)+\tau_{\mathrm{n}}\left(p+p_{1}\right)}</script></li>
+<li>反偏时，如果反偏电压大于几个 $kT/q$，绝大部分耗尽区内的载流子浓度都会变得很小。当载流子浓度变得可忽略不计时，<script type="math/tex; mode=display">
+I_{\mathrm{R}-\mathrm{G}}=-\frac{q A n_{\mathrm{i}}}{2 \tau_{0}} W</script>其中<script type="math/tex; mode=display">
+\tau_{0} \equiv \frac{1}{2}\left(\tau_{\mathrm{p}} \frac{n_{1}}{n_{\mathrm{i}}}+\tau_{\mathrm{n}} \frac{p_{1}}{n_{\mathrm{i}}}\right)=\frac{1}{2}\left(\tau_{\mathrm{p}} e^{\left(E_{\mathrm{T}}-E_{\mathrm{i}}\right) / k T}+\tau_{\mathrm{n}} e^{\left(E_{\mathrm{i}}-E_{\mathrm{T}}\right) / k T}\right)</script></li>
+<li>对于正向偏压，载流子浓度不能忽略不计，这里只能指出在正向偏压（大于几个 $kT/q$）下，预测 $I_{\mathrm{R}-\mathrm{G}}$ 粗略地按照 $\exp \left(q V_{\mathrm{A}} / \eta k T\right)$ 而变化，其中 $1&lt;\eta \leqslant 2$。估算出 $\eta$ 的典型值接近于 $2$，而且正向和反向偏压下统一的依赖关系可近似表达为<script type="math/tex; mode=display">
+I_{\mathrm{R}-\mathrm{G}}=\frac{q A n_{\mathrm{i}}}{2 \tau_{0}} W \frac{\left(e^{q V_{\mathrm{A}} / k T}-1\right)}{\left(1+\frac{V_{\mathrm{bi}}-V_{\mathrm{A}}}{k T / q} \frac{\sqrt{\tau_{\mathrm{n}} \tau_{\mathrm{p}}}}{2 \tau_{0}} e^{q V_{\mathrm{A}} / 2 k T}\right)}</script></li>
+</ul>
+<h3 id="窄基区二极管"><a href="#窄基区二极管" class="headerlink" title="窄基区二极管"></a>窄基区二极管</h3><ul>
+<li>当结的轻掺杂一侧准中性区域宽度与扩散长度同数量级或者更小时，则称这个二极管为<strong>窄基区二极管</strong>。</li>
+<li>分析一个 $p^{+}n$ 型突变结二极管，除了 $n$ 型准中性区域宽度可能相当于或小于一个少数载流子扩散长度之外，该二极管与理想二极管几乎完全相同。</li>
+<li>$x_{\mathrm{c}}$ 是冶金结到 $n$ 型一侧接触电极的距离，而 $x_{\mathrm{c}}^{\prime}=x_{\mathrm{c}}-x_{\mathrm{n}}$ 为 $n$ 型一侧的耗尽层边界到 $n$ 型一侧接触电极的距离。假设 $n$ 型一侧的接触为欧姆接触，可令 $x^{\prime}=x_{\mathrm{c}}^{\prime}$ 处的 $\Delta p_{\mathrm{n}}=0$。</li>
+<li>通常，接触电极与耗尽层边界之间的距离是有限的，该接触电极处的少数载流子浓度的大小依赖于接触电极处的载流子复合-产生率。在一个合格的或者是一个欧姆接触电极上，复合-产生率是很高的且少数载流子浓度保持在其热平衡值附近。</li>
+<li>引入边界条件<script type="math/tex; mode=display">
+\begin{array}{l}
+\Delta p_{n}\left(x^{\prime}=0\right)=\frac{n_{i}^{2}}{N_{\mathrm{D}}}\left(e^{q v_{\mathrm{A}} / k T}-1\right) \\
+\Delta p_{n}\left(x^{\prime}=x_{\mathrm{c}}^{\prime}\right)=0 \\
+\end{array}</script>解得<script type="math/tex; mode=display">
+\Delta p_{\mathrm{n}}\left(x^{\prime}\right)=\Delta p_{\mathrm{n}}(0)\left(\frac{e^{\left(x_{\mathrm{c}}^{\prime}-x^{\prime}\right) / L_{\mathrm{p}}}-e^{-\left(x_{\mathrm{c}}^{\prime}-x^{\prime}\right) / L_{\mathrm{p}}}}{e^{x_{\mathrm{c}}^{\prime} / L_{\mathrm{p}}}-e^{-x_{\mathrm{c}}^{\prime} / L_{\mathrm{p}}}}\right), \quad 0 \leqslant x^{\prime} \leqslant x_{\mathrm{c}}^{\prime}</script></li>
+<li>若用双曲正弦函数表示，<script type="math/tex; mode=display">
+\Delta p_{\mathrm{n}}\left(x^{\prime}\right)=\Delta p_{\mathrm{n}}(0) \frac{\sinh \left[\left(x_{\mathrm{c}}^{\prime}-x^{\prime}\right) / L_{\mathrm{P}}\right]}{\sinh \left[x_{\mathrm{c}}^{\prime} / L_{\mathrm{P}}\right]}</script>其中<script type="math/tex; mode=display">
+\begin{array}{c}
+\sinh (\xi) \equiv \frac{e^{\xi}-e^{-\xi}}{2}\\
+\cosh (\xi) \equiv \frac{e^{\xi}+e^{-\xi}}{2}
+\end{array}</script></li>
+<li>最终结果<script type="math/tex; mode=display">
+\begin{array}{l} 
+I_{\mathrm{DIFF}} \cong A J_{\mathrm{P}}\left(x^{\prime}=0\right)=-\left.q A D_{\mathrm{P}} \frac{\mathrm{d} \Delta p_{\mathrm{n}}}{\mathrm{d} x^{\prime}}\right|_{x^{\prime}=0} \\
+I_{\mathrm{DIFF}}=I_{0}^{\prime}\left(e^{q v_{\mathrm{A}} / k T}-1\right) \\
+I_{0}^{\prime} \equiv q A \frac{D_{\mathrm{P}}}{L_{\mathrm{P}}} \frac{n_{\mathrm{i}}^{2}}{N_{\mathrm{D}}} \frac{\cosh \left(x_{\mathrm{c}}^{\prime} / L_{\mathrm{P}}\right)}{\sinh \left(x_{\mathrm{c}}^{\prime} / L_{\mathrm{P}}\right)}
+\end{array}</script></li>
+</ul>
+<h4 id="极限情况"><a href="#极限情况" class="headerlink" title="极限情况"></a>极限情况</h4><ul>
+<li>本质上，可以将窄基区二极管的分析看作为理想二极管公式的通用表达形式，并且对任意厚度的准中性区域都适用。</li>
+<li>当 $x_{\mathrm{c}}^{\prime} \rightarrow +\infty$，则退化为理想二极管的情况。</li>
+<li>当 $x_{\mathrm{c}}^{\prime} \rightarrow 0$，可以将 $\Delta p_{\mathrm{n}}(x)$ 化简为<script type="math/tex; mode=display">
+\Delta p_{\mathrm{n}}\left(x^{\prime}\right)=\Delta p_{\mathrm{n}}(0)\left(1-\frac{x^{\prime}}{x_{\mathrm{c}}^{\prime}}\right)</script>非平衡载流子浓度成为位置的线性函数，就像用一条直线将边界条件设定的两个端点直接连接起来一样。在宽度小于一个扩散长度的区域内，<strong>忽略热复合-产生效应</strong>是合理的，这就直接<strong>导致了这个线性依赖关系</strong>。实际上，当准中性区宽度和扩散长度相比很小时，少数载流子扩散方程中的热复合-产生项可以忽略不计。</li>
+<li>当 $x_{\mathrm{c}}^{\prime} \rightarrow 0$，即 $x_{\mathrm{c}}^{\prime} / L_{\mathrm{p}} \ll 1$ 的极限，$I_{0}^{\prime} \rightarrow q A\left(n_{\mathrm{i}}^{2} / N_{\mathrm{D}}\right)\left(D_{\mathrm{p}} / x_{\mathrm{c}}^{\prime}\right)$。随着反向偏压的升高，耗尽层宽度将随之增加，则准中性区域的宽度 $x_{\mathrm{c}}^{\prime}=x_{\mathrm{c}}-x_{\mathrm{n}}$ 将减小。因此得出 $I_{\mathrm{DIFF}}\left(V_{\mathrm{A}}&lt;0\right) \cong-I_{0}^{\prime} \propto 1 / x_{\mathrm{c}}^{\prime}$ 不会出现饱和，但该电流会随着外加反向偏压而整体增大。</li>
+<li>如果 $x_{\mathrm{c}}^{\prime}$ 充分地小，可能有 $x_{\mathrm{c}}^{\prime} \rightarrow 0$。在这种情况下，器件的整个区域都将耗尽，称其为<strong>穿通</strong>。</li>
+<li>如果 $x_{\mathrm{c}}^{\prime} \rightarrow 0$，$I_{\mathrm{DIFF}}\left(V_{\mathrm{A}}&lt;0\right) \rightarrow-\infty$。但是因为耗尽近似是用来确定准中性区域的宽度和特性的，因此在极端情况 $x_{\mathrm{c}}^{\prime} \rightarrow 0$ 下，理论公式将变得无效。在经验和更精确的理论公式中，当窄基区二极管处于穿通电压条件时，如果器件内的电场不足以产生雪崩击穿，则扩散电流依然<strong>保持为有限值</strong>。</li>
+</ul>
+<h3 id="电荷控制模型"><a href="#电荷控制模型" class="headerlink" title="电荷控制模型"></a>电荷控制模型</h3><ul>
+<li>电荷控制模型方法是利用基区中积累的少数载流子电量计算BJT电流的方法，与上面的理想二极管分析方法并列。</li>
+<li><p>首先计算少子数量：</p>
+<script type="math/tex; mode=display">
+Q_{P}=q A \int_{x_{n}}^{\infty} \Delta p_{n}(x) \mathrm{d} x</script><p>合理地假设 $\Delta p_{n}(x)$ 在少子扩散长度内为一定值，大于少子扩散长度为 $0$，即简化为阶梯状，则积分可以近似为</p>
+<script type="math/tex; mode=display">
+Q_{P}=q A \Delta p_{n}\left(x_{n}\right) L_{P}</script><p>把少子扩散方程和电流密度方程联立</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\frac{\partial \Delta p_{n}}{\partial t}=D_{P} \frac{\partial^{2} \Delta p_{n}}{\partial x^{2}}-\frac{\Delta p_{n}}{\tau_{p}} \\
+J_{p}=-q D_{p} \frac{\partial \Delta p_{n}}{\partial x} \\
+\end{array}</script><p>最后得到</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d} Q_{P}}{\mathrm{d} t}=i_{\text{DIFF}}-\frac{Q_{P}}{\tau_{p}}</script><p>本质上这就是载流子连续性方程。稳态下等号左边是 $0$，可得</p>
+<script type="math/tex; mode=display">
+I_{\text {DIFF }}=q A \frac{L_{P}}{\tau_{p}} \frac{n_{i}^{2}}{N_{D}}\left(e^{q V_{A} / k T}-1\right)</script><p>注意这里使用了</p>
+<script type="math/tex; mode=display">
+\Delta p_{n}\left(x_{n}\right)=\frac{n_{i}^{2}}{N_{\mathrm{D}}}\left(e^{q V_{\mathrm{A}} / k T}-1\right)</script><p>这是前面运用 PN 结定律得到的结论。</p>
+</li>
+<li><p>对于窄基区，把少子寿命 $\tau_{p}$ 替换为少子迁移时间 $\tau_{tr}$，或者在结论里把 $L_N$ 替换成 $W_P^{\prime}$，把 $L_P$ 替换成 $W_N^{\prime}$</p>
+</li>
+<li><script type="math/tex; mode=display">
+\begin{array}{c}
+\tau_{t r, p} =\frac{Q_{P}}{I_{P}}=\frac{\left(W_{N}^{\prime}\right)^{2}}{2 D_{P}} \\
+\tau_{t r, n} =\frac{\left(W_{P}^{\prime}\right)^{2}}{2 D_{N}} \\
+\end{array}</script></li>
+<li><script type="math/tex; mode=display">
+\begin{array}{c}
+Q_{N} =-q A \frac{1}{2} \frac{n_{i}^{2}}{N_{A}}\left(e^{q V_{A} / k T}-1\right) W_{P}^{\prime} \\
+Q_{P} =q A \frac{1}{2} \frac{n_{i}^{2}}{N_{D}}\left(e^{q V_{A} / k T}-1\right) W_{N}^{\prime} \\
+\end{array}</script></li>
+<li><script type="math/tex; mode=display">
+I =\frac{-Q_{N}}{\tau_{t r, n}}+\frac{Q_{P}}{\tau_{t r, p}}</script></li>
+</ul>
+<h2 id="第七章-小信号导纳与瞬态响应"><a href="#第七章-小信号导纳与瞬态响应" class="headerlink" title="第七章 小信号导纳与瞬态响应"></a>第七章 小信号导纳与瞬态响应</h2><h3 id="阻抗"><a href="#阻抗" class="headerlink" title="阻抗"></a>阻抗</h3><p>阻抗是电路中电阻、电感、电容对<strong>交流电</strong>的阻碍作用的统称。阻抗是一个复数，<strong>实部称为电阻</strong>，<strong>虚部称为电抗</strong>。阻抗的大小是电压振幅与电流振幅的绝对值比率，阻抗的相位是电压与电流的相位差。阻抗的单位是欧姆，与电阻的单位相同。</p>
+<h4 id="三大元器件"><a href="#三大元器件" class="headerlink" title="三大元器件"></a>三大元器件</h4><ul>
+<li>电阻的阻抗 $Z_R=R$</li>
+<li>电容的阻抗 $Z_C=1/j\omega C$</li>
+<li><p>电感的阻抗 $Z_L=j\omega L$</p>
+</li>
+<li><p>容抗 $X_C=\operatorname{Im}(Z_C)=-1/\omega C$</p>
+</li>
+<li>感抗 $X_L=\operatorname{Im}(Z_L)=\omega L$</li>
+</ul>
+<h3 id="导纳"><a href="#导纳" class="headerlink" title="导纳"></a>导纳</h3><script type="math/tex; mode=display">
+\begin{array}{l}
+Y=1 / Z \\
+Y_{R}=1 / R=G \\
+Y_{C}=j \omega C \\
+Y_{L}=1 / j \omega L=-j / \omega L \\
+B_{C}=\operatorname{Im}\left(Y_{c}\right)=\omega C \\
+B_{L}=\operatorname{Im}\left(Y_{L}\right)=-\frac{1}{\omega L}
+\end{array}</script><h3 id="反偏结电容"><a href="#反偏结电容" class="headerlink" title="反偏结电容"></a>反偏结电容</h3><ul>
+<li>反偏时，载流子浓度在耗尽层两侧交替变化，耗尽层相当于一个电容，<script type="math/tex; mode=display">
+C_J=\frac{K_S\varepsilon_0 A}{W}</script></li>
+<li>准静态假设：为了满足摆动的要求，<strong>多数载流子</strong>必须快速地流入和流出这个受影响的区域，而且需要和交流信号保持间步。换句话说，假定载流子能够对交流信号做出及时的响应，就如该信号是直流偏压的情况。在这种情况下，称该器件随交流信号而准静态地变化。在直流响应的讨论中，注意到在准中性区内的多数载流子能够快速地重新排列，而且多数载流子在接触电极处得到补充或排除。Si中多数载流子的典型响应时间 $~10^{-10}$ 秒或更小，那么在通常的情况下这里提出的准静态假设可以适用到非常高的信号频率上。</li>
+<li>一般化地，假设一边重掺杂 $(x&lt;0)$ 而轻掺杂一边的杂质浓度服从指数关系:<script type="math/tex; mode=display">
+N_{\mathrm{B}}(x)=b x^m \quad x>0</script>其中在给定的分布下 $b&gt;0$ 且 $m$ 为常数。注意 $m=0$ 和 $m=1$ 分别对应于<strong>非对称突变结</strong>和<strong>单边线性缓变结</strong>。而且注意到允许出现负的 $m$ 值。$m&lt;0$ 的分布，即离结越远杂质浓度越低，称为<strong>超突变分布</strong>，可以通过离子注入和外延形成超突变结。</li>
+<li>在一个单边指数分布的 $pn$ 结二极管中，$m&gt;-2$ 时的耗尽层宽度关系式为<script type="math/tex; mode=display">
+W=\left[\frac{(m+2) K_{\mathrm{S}} \varepsilon_0}{q b}\left(V_{\mathrm{bi}}-V_{\mathrm{A}}\right)\right]^{1 /(m+2)}</script></li>
+<li>代入电容公式可得<script type="math/tex; mode=display">
+C_{\mathrm{J}}=\frac{K_{\mathrm{S}} \varepsilon_0 A}{\left[\frac{(m+2) K_{\mathrm{S}} \varepsilon_0}{q b}\left(V_{\mathrm{bi}}-V_{\mathrm{A}}\right)\right]^{1 /(m+2)}}</script>若引入 $V_A=0$ 时的电容<script type="math/tex; mode=display">
+\left.C_{\mathrm{J} 0} \equiv C_{\mathrm{J}}\right|_{V_{\mathrm{A}}=0}=\frac{K_{\mathrm{S}} \varepsilon_0 A}{\left[\frac{(m+2) K_{\mathrm{S}} \varepsilon_0}{q b} V_{\mathrm{bi}}\right]^{1 /(m+2)}}</script>则电容还可以写成<script type="math/tex; mode=display">
+C_{\mathrm{J}}=\frac{C_{\mathrm{J} 0}}{\left(1-\frac{V_{\mathrm{A}}}{V_{\mathrm{bi}}}\right)^{1 /(m+2)}}</script></li>
+</ul>
+<h3 id="变容二极管"><a href="#变容二极管" class="headerlink" title="变容二极管"></a>变容二极管</h3><p>上式描述的电容-电压变化关系的 pn 结二极管称为变容二极管。变容二极管广泛应用于参数放大、谐波发生、混频、检波和电压可变调制中。在这些应用中，通常期望在给定的电压范围内二极管表现出<strong>最大的电容比</strong>，这个优值指标称为<strong>调制率</strong>（TR）。反偏下 $-V_{\mathrm{A}} / V_{\mathrm{bi}}\gg 1$, 得到</p>
+<script type="math/tex; mode=display">
+T R \equiv \frac{C_{\mathrm{J}}\left(V_{\mathrm{A} 1}\right)}{C_{\mathrm{J}}\left(V_{\mathrm{A} 2}\right)} \cong\left(\frac{V_{\mathrm{A} 2}}{V_{\mathrm{A}}}\right)^{1 /(m+2)}</script><p>最大调制率对应于 $m$ 值最小的器件——线性缓变 $(m=1)$ 到突变 $(m=0)$，再到超突变 $(m&lt;0)$ 结，TR 逐渐增大。</p>
+<h3 id="单边突变结参数测量"><a href="#单边突变结参数测量" class="headerlink" title="单边突变结参数测量"></a>单边突变结参数测量</h3><p>对于单边突变结，$m=0$，$b=N_B$，于是有</p>
+<script type="math/tex; mode=display">
+\frac{1}{C_{\mathrm{J}}^{2}}=\frac{2}{q N_{\mathrm{B}} K_{\mathrm{S}} \varepsilon_{0} A^{2}}\left(V_{\mathrm{bi}}-V_{\mathrm{A}}\right)</script><p>作出 $1/C_{\mathrm{J}}^{2} - V_A$ 图，则斜率的倒数正比于轻掺杂一侧浓度 $N_B$，横轴截距为 $V_{\mathrm{bi}}$。又根据</p>
+<script type="math/tex; mode=display">
+V_{bi}=\frac{kT}{q}\ln\frac{N_AN_D}{n_i^2}</script><p>可以求出重掺杂一侧浓度。</p>
+<h3 id="反偏偏置电导"><a href="#反偏偏置电导" class="headerlink" title="反偏偏置电导"></a>反偏偏置电导</h3><p>反向偏置条件下，少数载流子数目太少，其对导纳的贡献可忽略不计。引入符号 $G_0$ 表示低频交流电导，交流电导等于微分直流电导，即</p>
+<script type="math/tex; mode=display">
+G_0=\frac{\mathrm{d}I}{\mathrm{d}V_A}</script><p>代入理想二极管方程得</p>
+<script type="math/tex; mode=display">
+G_0=\frac{q}{kT}(I+I_0)</script><ul>
+<li>当反向偏压大于几个 $\frac{kT}{q}$ 时，$I\rightarrow I_0$，则 $G_0\rightarrow 0$</li>
+<li>当反向偏压等于几个 $\frac{kT}{q}$ 时，$I_{R-G}$ 占主导，<script type="math/tex; mode=display">
+G_0=\frac{\mathrm{d}}{\mathrm{d} V_{\mathrm{A}}}\left(-\frac{q A n_{\mathrm{i}}}{2 \tau_0} W\right)=\frac{q A n_{\mathrm{i}} W / 2 \tau_0}{(m+2)\left(V_{\mathrm{bi}}-V_{\mathrm{A}}\right)}</script></li>
+</ul>
+<h3 id="正偏导纳"><a href="#正偏导纳" class="headerlink" title="正偏导纳"></a>正偏导纳</h3><ul>
+<li>正向偏置下，对于多数载流子来说没有出现什么新的机制，这些载流子仍然在耗尽层边界处移进和移出，从而引起<strong>结电容</strong>。上面推导出的 $C_{\mathrm{J}}$ 关系式可以不做任何修改，直接应用到正向偏置的情况。</li>
+<li>二极管正向偏置会在邻近耗尽层的准中性区内引起<strong>少数载流子的堆积</strong>。随着正向偏压的增加，该载流子的堆积会变得越来越明显。为了响应一个交流信号，过剩少数载流子需要在其直流值附近的分布涨落。</li>
+<li>如果少数载流子能够跟随信号准静态地变化，那么图中的载流子可以在两条直线之间上下变化。但是，少数载流子的补充和抽取并不像多数载流子变化得那样快，在角频率接近少数载流子寿命的倒数时，少数载流子电荷的涨落将很难与交流信号保持同步，结果是空间电荷表现为异步地变化，这个电荷异步涨落会增加测量电导而减小测量电容。</li>
+<li>因为少数载流子在耗尽层边界的积累是由扩散电流引起的，所以将少数载流子电荷的涨落导致的导纳称为扩散导纳 $Y_D$。通常给出<script type="math/tex; mode=display">
+Y_D=G_D+j\omega C_D</script>其中 $C_D$ 和 $G_D$ 分别是<strong>扩散电容</strong>和<strong>扩散电导</strong>。</li>
+</ul>
+<h4 id="求解"><a href="#求解" class="headerlink" title="求解"></a>求解</h4><p>将少子浓度变化分成直流分量和交流分量</p>
+<script type="math/tex; mode=display">
+\Delta p_{n}(x, t)=\Delta \bar{p}_{n}(x)+\tilde{p}_{n}(x, \omega) e^{j \omega t}</script><p>在准中性 P 区和 N 区写出少子扩散方程</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+0=D_{P} \frac{\partial^{2} \Delta \bar{p}_{n}(x)}{\partial x^{2}}-\frac{\Delta \bar{p}_{n}(x)}{\tau_{P}} \\
+0=D_{P} \frac{\partial^{2} \tilde{p}_{n}(x)}{\partial x^{2}}-\frac{\tilde{p}_{n}(x)}{\tau_{P} /\left(1+j \omega \tau_{P}\right)} \\
+\end{array}</script><p>边界条件</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\Delta \bar{p}_{n}(\infty)=0 \quad \Delta \bar{p}_{n}\left(x_{n}\right)=\frac{n_{i}^{2}}{N_{D}}\left(\mathrm{e}^{\mathrm{q} \mathrm{V}_{\mathrm{A}} / k T}-1\right) \\
+\tilde{p}_{n}(\infty)=0 \quad \tilde{p}_{n}\left(x_{n}\right)=\frac{n_{i}^{2}}{N_{D}}\left(\frac{\mathrm{q} v_{a}}{k T} \mathrm{e}^{\mathrm{q} \mathrm{V}_{\mathrm{A}} / k T}\right) \\
+\end{array}</script><p>解得直流分量（就是第六章得到的结果）</p>
+<script type="math/tex; mode=display">
+I_{D I F F}=q A \frac{D_{P}}{L_{P}} \frac{n_{i}^{2}}{N_{D}}\left(\mathrm{e}^{\mathrm{q} \mathrm{V}_{\mathrm{A}} / k T}-1\right)=q A \sqrt{\frac{D_{P}}{\tau_{P}}} \frac{n_{i}^{2}}{N_{D}}\left(\mathrm{e}^{\mathrm{q} V_{\mathrm{A}} / k T}-1\right)</script><p>解得交流分量</p>
+<script type="math/tex; mode=display">
+\begin{align}
+i_{d i f f} & = q A \sqrt{\frac{D_{P}}{\tau_{P}}} \sqrt{1+j \omega \tau_{P}} \frac{n_{i}^{2}}{N_{D}}\left(\frac{\mathrm{q} v_{a}}{k T} \mathrm{e}^{\mathrm{q} V_{\mathrm{A}} / k T}\right) \\
+& = \frac{\mathrm{q} v_{a}}{k T} I_{0} \mathrm{e}^{\mathrm{q} V_{\mathrm{A}} / k T} \sqrt{1+j \omega \tau_{P}} \\
+& = G_{0} \sqrt{1+j \omega \tau_{P}} v_{a} \\
+\end{align}</script><p>其中</p>
+<script type="math/tex; mode=display">
+G_{0}=\frac{q}{k T} I_{0} e^{q V_{A} / k T} \\</script><p>可得交流小信号导纳</p>
+<script type="math/tex; mode=display">
+\Rightarrow Y_{D}=i_{d i f f} / v_{a}=G_{0} \sqrt{1+j \omega \tau_{P}}</script><p>电导和电纳分量</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+G_{D}=\frac{G_{0}}{\sqrt{2}}\left(\sqrt{1+\omega^{2} \tau_{P}^{2}}+1\right)^{1 / 2} \\
+C_{D}=\frac{G_{0}}{\omega \sqrt{2}}\left(\sqrt{1+\omega^{2} \tau_{P}^{2}}-1\right)^{1 / 2}
+\end{array}</script><p>在低频下</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+G_{D}=G_{0} \\
+C_{D}=G_{0} \frac{\tau_{P}}{2}
+\end{array}</script><h3 id="瞬态关断"><a href="#瞬态关断" class="headerlink" title="瞬态关断"></a>瞬态关断</h3><p><img src="https://s2.loli.net/2023/04/05/OJRrDNhs86QuVnv.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>对于理想的开关电路，$t=0$ 之前在二极管两端加上正向偏置电压，有稳态正向电流 $I_F$ 流过二极管；在 $t=0$ 时刻电路中的开关快速移到右边。对于开关应用，希望二极管电流从 $I_{\mathrm{F}}$ 立刻下降到与所加反偏电压对应的小的稳态反偏电流上。而实际上观测到的结果如下图所示</p>
+<p><img src="https://s2.loli.net/2023/04/05/nLgT48HlOxQ1bqX.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>如果 $V_{\mathrm{R}} / R_{\mathrm{R}} \sim V_{\mathrm{F}} / R_{\mathrm{F}}$，在开关转换后的瞬间，反向电流的大小就与正向电流相当，而不是一个逐渐减少的电流。随后，在电流最终衰减到稳态值之前的有限时间内，流经二极管的电流基本上保持常数，大小为 $-I_R$ 。反向电流保持为常数的这段时间称为<strong>存贮时间</strong>或<strong>存贮延迟时间</strong>（$t_\mathrm{s}$）。当反向电流衰减到它最大数值的10%时所需的总时间定义为<strong>反向恢复时间</strong>（$t_{\mathrm{rr}}$），而<strong>恢复时间</strong>（$t_{\mathrm{r}}$）是 $t_{\mathrm{rr}}$ 和 $t_{\mathrm{s}}$ 之差。</p>
+<p><img src="https://s2.loli.net/2023/04/05/Sv9QLuGanzRg3hy.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>上图显示了与 $i-t$ 瞬态相对应的二极管瞬时电压 $\left(v_{\mathrm{A}}\right)$ 的变化。从图中可以看出</p>
+<ul>
+<li>在 $0&lt;t&lt;t_{\mathrm{s}}$ 区间结保持正偏，即使外加电压达到使二极管反偏的程度也仍然如此。</li>
+<li>在 $t=t_{\mathrm{s}}$ 点处 $v_{\mathrm{A}}=0$。</li>
+</ul>
+<p>可采用两种方法把准中性区内过剩少数载流子的电荷移走</p>
+<ul>
+<li>第一种方法是通过复合在原来位置消除载流子。显然，复合过程不可能立刻就完成，如果复合是移走载流子的惟一方式，那么从开态转换到关态所持续的时间与<strong>少数载流子寿命</strong>相同。</li>
+<li>第二种消除过剩载流子的方法是通过净载流子漂移完成。一旦撤除外部的维持偏压，这些少数载流子会流回结的另一边，也就是它们变成多数载流子的地方。可以想像，这种反向注入能以非常快的速度发生。然而，每秒钟能移走的少数载流子数量受到外部开关电路的限制。如果把二极管短路，可以实现非常快的瞬态过程，但这一方法很可能导致电流超出器件的容限从而损坏二极管。</li>
+<li>总之，有复合和反向电流两种机理来完成对过剩存贮电荷的消除，在不损坏器件的前提下，两种机理中没有一种能以足够快的速度把电荷完全消除，因此在从开态到关态的转换中会观察到延迟时间。</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/04/05/48HKPFSXa1cNBrn.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在耗尽区边界的少数载流子浓度超过平衡值时，就意味着结处于正向偏置状态。换个角度来讲，正是由于耗尽区边界和耗尽区内部过剩载流子的存在才使整个结保持正偏。只有当 $x=x_n$ 处的空穴浓度<strong>下降到平衡值以下</strong>时，二极管才会变成反偏。</p>
+<script type="math/tex; mode=display">
+\left.\frac{d \Delta p_{\mathrm{n}}}{d x}\right|_{x=x_{\mathrm{n}}}=-\frac{i}{q A D_{\mathrm{P}}}=\Delta p_{\mathrm{n}}(x) \text { 曲线上 } x=x_{\mathrm{n}} \text { 处的斜率 }</script><h4 id="存贮延迟时间计算"><a href="#存贮延迟时间计算" class="headerlink" title="存贮延迟时间计算"></a>存贮延迟时间计算</h4><p>由电荷控制模型知</p>
+<script type="math/tex; mode=display">
+\frac{d Q_p}{d t}=i-\frac{Q_p}{\tau_p}=-\left(I_R+\frac{Q_p}{\tau_p}\right) \quad 0^{+} \leq t \leq t_s</script><p>边界条件无法准确确定，我们假设当 $t=t_s$ 时 $Q_p=0$，得到</p>
+<script type="math/tex; mode=display">
+t_s \cong \tau_p \ln \left(1+\frac{I_F}{I_R}\right)</script><h3 id="瞬态开启"><a href="#瞬态开启" class="headerlink" title="瞬态开启"></a>瞬态开启</h3><p>当二极管电流从占主导地位的反偏值瞬间改变到一个常数值即正偏电流 $I_F$ 时，二极管两端的电压降 $v_{\mathrm{A}}(t)$ 从 $t=0$ 时的 $V_{\mathrm{OFF}}$ 单调上升到 $t=\infty$ 时的 $V_{\mathrm{ON}}$ 在响应的第一阶段，即从 $t=0$ 到 $v_{\mathrm{A}}=0$ 的过程极其短暂，用来把结电压提高到 $0 \mathrm{~V}$ 的少数几个少子迅速注人到耗尽区，多数载流子也迅速再分布以使耗尽区缩小到 0 偏压下的宽度。瞬态过程的第一部分非常短暂，以至于好像二极管是在 $t=0$ 时从 $i=0$ 触发到 $i=I_{\mathrm{F}}$ 的。</p>
+<p><img src="https://s2.loli.net/2023/04/05/jZ5fOz9U6t1uFB7.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/04/05/kdEuaMvS4miq6oe.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="压降的计算"><a href="#压降的计算" class="headerlink" title="压降的计算"></a>压降的计算</h4><p>由电荷控制模型</p>
+<script type="math/tex; mode=display">
+\frac{d Q_p}{d t}=i-\frac{Q_p}{\tau_p}=I_F-\frac{Q_p}{\tau_p}</script><p>解得</p>
+<script type="math/tex; mode=display">
+Q_p(t)=I_F \tau_p\left(1-e^{-t / \tau_p}\right)</script><p>在稳态时的条件</p>
+<script type="math/tex; mode=display">
+Q_p=I_{D I F F} \tau_p=I_0 \tau_p\left(e^{q V_A / k T}-1\right)</script><p>假设稳态条件对于非稳态也成立</p>
+<script type="math/tex; mode=display">
+Q_p(t)=I_0 \tau_p\left(e^{q V_A(t) / k T}-1\right)</script><p>联立得</p>
+<script type="math/tex; mode=display">
+V_A(t)=\frac{k T}{q} \ln \left[1+\frac{I_F}{I_0}\left(1-e^{-t / \tau_p}\right)\right]</script><h2 id="第八章-金属半导体接触"><a href="#第八章-金属半导体接触" class="headerlink" title="第八章 金属半导体接触"></a>第八章 金属半导体接触</h2><h3 id="MS接触特性"><a href="#MS接触特性" class="headerlink" title="MS接触特性"></a>MS接触特性</h3><ul>
+<li>理想的 MS 接触具有以下特点：<ul>
+<li>假定金属和半导体在原子尺度上紧密地接触，在两者之间不存在任何类型的夹层（例如氧化物）</li>
+<li>金属和半导体之间不存在互扩散或混合</li>
+<li>在 MS 界面没有吸附的杂质或表面电荷。</li>
+</ul>
+</li>
+<li>理想 MS 接触的能带图中，平带（零电场）条件存在于整个半导体中。此外，位于两个图中能带终止处的垂直线表示表面，图中斜线阴影部分表示几乎全部为电子填满的所允许的电子态。</li>
+</ul>
+<h3 id="金属和半导体能带相关的物理量"><a href="#金属和半导体能带相关的物理量" class="headerlink" title="金属和半导体能带相关的物理量"></a>金属和半导体能带相关的物理量</h3><p><img src="https://s2.loli.net/2023/04/12/mTatoEYep4ICvHw.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>垂直直线的顶部代表电子完全脱离材料本身所必须具有的最小能量，它称做<strong>真空能级</strong> $E_{0}$，真空能级和费米能级之间的能量差称为材料的<strong>功函数</strong>（$\Phi$）<ul>
+<li>金属功函数 $\Phi_{\mathrm{M}}$ 对于一定的金属来说是一个不变的基本参数。$\Phi_{\mathrm{M}}$ 的数值范围可以从 $3.66 \mathrm{eV}$（镁）到 $5.15 \mathrm{eV}$（镍）。</li>
+<li>半导体功函数 $\Phi_{\mathrm{s}}$ 则由两个不同的部分组成，它们是<script type="math/tex; mode=display">
+\Phi_{\mathrm{S}}=\chi+\left(E_{\mathrm{c}}-E_{\mathrm{F}}\right)_{\mathrm{FB}}</script></li>
+<li><strong>电子亲和势</strong> $\chi \equiv\left.\left(E_{0}-E_{\mathrm{c}}\right) \right|_{\mathrm{surface}}$，对于一定的半导体材料来说 $\chi$ 是一个恒定的基本参数。$\left(E_{\mathrm{c}}-E_{\mathrm{F}}\right)_{\mathrm{FB}}$ 是在平带或零电场条件下 $E_{\mathrm{c}}$ 和 $E_{\mathrm{F}}$ 之间的能量差，它是半导体掺杂的函数，是可计算的。</li>
+</ul>
+</li>
+</ul>
+<h3 id="MS接触"><a href="#MS接触" class="headerlink" title="MS接触"></a>MS接触</h3><p><img src="https://s2.loli.net/2023/04/12/sgwXUtbC8hHkvAp.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="n型半导体，-Phi-mathrm-M-gt-Phi-mathrm-S"><a href="#n型半导体，-Phi-mathrm-M-gt-Phi-mathrm-S" class="headerlink" title="n型半导体，$\Phi_{\mathrm{M}}&gt;\Phi_{\mathrm{S}}$"></a>n型半导体，$\Phi_{\mathrm{M}}&gt;\Phi_{\mathrm{S}}$</h4><ul>
+<li>假设 $\Phi_{\mathrm{M}}&gt;\Phi_{\mathrm{S}}$ 的金属和 $n$ 型半导体组合在一起，形成理想的 $\mathrm{MS}$ 接触。假定接触形成几乎是瞬时的，在接触过程中两种材料之间的电子转移可以忽略。图中各自独立的两个部分的能带图以公共的 $E_{0}$ 参考能级为基准而垂直地对齐，并简单地在界面处对接。应该强调的是，$\Phi_{\mathrm{M}}$ 和 $\chi$ 是材料的常数，在接触形成过程中保持不变。这样的接触是肖特基接触。</li>
+<li>由于 $E_{\mathrm{FS}} \neq E_{\mathrm{FM}}$，MS 接触特性明显处于非平衡态。为了保证费米能级一致，不随位置变化而改变，电子开始从半导体向金属内转移。半导体中的电子净损失会导致表面<strong>耗尽区和电子势垒增加</strong>，阻止电子从半导体向金属的转移，一直持续到通过界面的转移速率在两个方向上都相同，而且 $E_{\mathrm{F}}$ 在整个结构中都一样。</li>
+<li>最后，理想的 $\Phi_{\mathrm{M}}&gt;\Phi_{\mathrm{S}}$ 的金属与 $n$ 型半导体接触的平衡态能带图如图 (b) 所示。</li>
+<li>图中可以注意到 $\Phi_{\mathrm{Bn}}=\Phi_{\mathrm{M}}-\chi$ 被称<strong>为肖特基势垒</strong></li>
+<li>半导体一侧耗尽层势垒高度 $qV_{bi}=\Phi_{\mathrm{M}}-\Phi_{\mathrm{S}}=\Phi_{\mathrm{Bn}}-\left(E_{\mathrm{c}}-E_{\mathrm{F}}\right)_{\mathrm{FB}}$</li>
+</ul>
+<h4 id="n型半导体，-Phi-mathrm-M-lt-Phi-mathrm-S"><a href="#n型半导体，-Phi-mathrm-M-lt-Phi-mathrm-S" class="headerlink" title="n型半导体，$\Phi_{\mathrm{M}}&lt;\Phi_{\mathrm{S}}$"></a>n型半导体，$\Phi_{\mathrm{M}}&lt;\Phi_{\mathrm{S}}$</h4><ul>
+<li>这样的接触是欧姆接触</li>
+<li>电子开始从金属向半导体内转移。半导体结区一侧电子浓度进一步增加</li>
+<li>半导体一侧电子很容易到达金属一侧，金属一侧电子也很容易到达半导体一侧</li>
+</ul>
+<h4 id="p型半导体，-Phi-mathrm-M-lt-Phi-mathrm-S"><a href="#p型半导体，-Phi-mathrm-M-lt-Phi-mathrm-S" class="headerlink" title="p型半导体，$\Phi_{\mathrm{M}}&lt;\Phi_{\mathrm{S}}$"></a>p型半导体，$\Phi_{\mathrm{M}}&lt;\Phi_{\mathrm{S}}$</h4><p><img src="https://s2.loli.net/2023/04/12/WCqn7EYb4RhUucI.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>这样的接触是肖特基接触</li>
+<li>电子开始从金属向半导体内转移。半导体结区一侧电子和空穴复合，加宽耗尽层</li>
+<li>肖特基势垒 $\Phi_{\mathrm{Bp}}=\chi+E_G-\Phi_{\mathrm{M}}$</li>
+<li>半导体一侧耗尽层势垒高度 $qV_{bi}=\Phi_{\mathrm{S}}-\Phi_{\mathrm{M}}=\Phi_{\mathrm{Bp}}-\left(E_{\mathrm{F}}-E_{\mathrm{v}}\right)_{\mathrm{FB}}$</li>
+</ul>
+<h4 id="p型半导体，-Phi-mathrm-M-gt-Phi-mathrm-S"><a href="#p型半导体，-Phi-mathrm-M-gt-Phi-mathrm-S" class="headerlink" title="p型半导体，$\Phi_{\mathrm{M}}&gt;\Phi_{\mathrm{S}}$"></a>p型半导体，$\Phi_{\mathrm{M}}&gt;\Phi_{\mathrm{S}}$</h4><p><img src="https://s2.loli.net/2023/04/12/Pvr4xaZ8XMFO6sm.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>这样的接触是欧姆接触</li>
+<li>电子开始从半导体向金属内转移。半导体结区一侧空穴浓度进一步增加</li>
+<li>半导体一侧电子很容易到达金属一侧，金属一侧电子也很容易到达半导体一侧</li>
+</ul>
+<h3 id="耗尽近似-1"><a href="#耗尽近似-1" class="headerlink" title="耗尽近似"></a>耗尽近似</h3><p><img src="https://s2.loli.net/2023/04/12/v5PWFgNf2hoaeRQ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在紧邻 MS 界面的半导体中存在一个电子耗尽区。与 pn 结二极管类似，在 n 型半导体中耗尽区的宽度为 $x_{n}$，该耗尽区中具有施主离子产生的净正电荷。然而与 pn 结不同的是，没有 p 型一侧的负的受主电荷来平衡 n 型一侧的正的施主电荷。在 MS 接触中，负电荷（过剩电子）以类似 $\delta$ <strong>冲激函数</strong>的形式在直接紧邻界面的金属中堆积。</p>
+<script type="math/tex; mode=display">
+\rho \cong\left\{\begin{array}{ll}
+q N_{\mathrm{D}} & 0 \leqslant x \leqslant W \\
+0 & x>W
+\end{array}\right.</script><p>在 MS 接触的半导体一侧，电场和电荷密度通过泊松方程联系起来</p>
+<script type="math/tex; mode=display">
+\frac{d \mathscr{E}}{d x}=\frac{\rho}{K_{S} \varepsilon_{0}} \cong \frac{q N_{\mathrm{D}}}{K_{\mathrm{S}} \varepsilon_{0}} \quad \ldots 0 \leqslant x \leqslant W</script><p>代入边界条件 $\mathscr{E}(W)=0$ 解得</p>
+<script type="math/tex; mode=display">
+\mathscr{E}(x)=-\frac{q N_{\mathrm{D}}}{K_{\mathrm{S}} \varepsilon_{0}}(W-x) \quad \ldots 0 \leqslant x \leqslant W</script><p>积分可得电势分布</p>
+<script type="math/tex; mode=display">
+V(x)=-\frac{q N_{\mathrm{D}}}{2 K_{\mathrm{S}} \varepsilon_{0}}(W-x)^{2} \quad \ldots 0 \leqslant x \leqslant W</script><p>在 $x=0$ 处电势为 $V_A-V_{bi}$，代入得耗尽层宽度</p>
+<script type="math/tex; mode=display">
+W=\left[\frac{2 K_{\mathrm{S}} \boldsymbol{\varepsilon}_{0}}{\boldsymbol{q N}}\left(V_{\mathrm{Di}}-V_{\mathrm{A}}\right)\right]^{1 / 2}</script><h4 id="对于p型半导体"><a href="#对于p型半导体" class="headerlink" title="对于p型半导体"></a>对于p型半导体</h4><script type="math/tex; mode=display">
+\begin{array}{l}
+V(x)=\frac{q N_{A}}{2 K_{S} \varepsilon_{0}}(W-X)^{2} \\
+W=\sqrt{\frac{2 K_{S} \varepsilon_{0}\left(V_{A}+V_{b i}\right)}{q N_{A}}}
+\end{array}</script><h3 id="I-V特性"><a href="#I-V特性" class="headerlink" title="I-V特性"></a>I-V特性</h3><p><img src="https://s2.loli.net/2023/04/13/FRvUeM4HbiEV5fp.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>在 MS（n型）二极管中，正偏时 $E_c$ 升高，对半导体中的电子来说势垒相对较低，电流主要来源于从半导体进入到金属中的电子注入。</li>
+<li>在反偏条件下半导体一侧电子难以到达金属，电流主要来自于金属侧的电子获得热激发能量越过肖特基势垒。</li>
+<li>MS 二极管通常称为“多数载流子器件”</li>
+</ul>
+<p>考虑一个电子从半导体体内进入到耗尽区，如果该电子具有指向界面方向的速度 $v_{x}$，并且 $v_{x}$ 满足</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\mathrm{KE}_{\mathrm{x}}=\frac{1}{2} m_{\mathrm{n}}^{*} v_{\mathrm{x}}^{2} \geqslant q\left(V_{\mathrm{bi}}-V_{\mathrm{A}}\right) \\
+\left|v_{\mathrm{x}}\right| \geqslant v_{\mathrm{min}} \equiv\left[\frac{2 q}{m_{\mathrm{n}}^{*}}\left(V_{\mathrm{bi}}-V_{\mathrm{A}}\right)\right]^{1 / 2} \\
+\end{array}</script><p>正偏总电流表达式</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+I_{s \bullet \rightarrow M}=-q A \int_{-\infty}^{-v_{\min }} v_{x} n\left(v_{x}\right) d v_{x} \\
+n\left(v_{x}\right)=\left[\frac{4 \pi k T m_{n}^{* 2}}{h^{3}}\right] e^{\left(E_{F}-E_{c}\right) / k T} e^{-\left(m_{n}^{*} / 2 k T\right) v_{x}^{2}}
+\end{array}</script><p>积分得</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+I_{S \cdot \rightarrow M} & =\frac{4 \pi q m_{n}^{*} k^{2}}{h^{3}} A T^{2} e^{-\Phi_{B} / k T} e^{q V_{A} / k T} \\
+& =A J_{S} e^{q V_{A} / k T}
+\end{aligned}</script><p>其中</p>
+<script type="math/tex; mode=display">
+J_{S} \equiv 120 \frac{m_{n}^{*}}{m_{0}} T^{2} e^{-\Phi_{B} / k T} \mathrm{~A} / \mathrm{cm}^{2}</script><p>反偏热激发电流始终不变且在 $V=0$ 时与正偏电流抵消</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+I_{M \bullet \rightarrow S}=-I_{S \bullet \rightarrow M}\left(V_{A}=0\right) \\
+I=I_{S}\left(e^{q V_{A} / k T}-1\right) \text { where } I_{S}=A J_{S}
+\end{array}</script><h3 id="小信号电容"><a href="#小信号电容" class="headerlink" title="小信号电容"></a>小信号电容</h3><script type="math/tex; mode=display">
+\begin{array}{c}
+C=A \frac{K_{s} \varepsilon_{0}}{W}=A \frac{K_{s} \varepsilon_{0}}{\sqrt{\frac{2 K_{s} \varepsilon_{0}}{q N_{D}}\left(V_{b i}-V_{A}\right)}}=A \sqrt{\frac{q N_{D} K_{s} \varepsilon_{0}}{2\left(V_{b i}-V_{A}\right)}} \\
+\frac{1}{C^{2}}=\frac{2\left(V_{b i}-V_{A}\right)}{q N_{D} K_{s} \varepsilon_{0} A^{2}} \\
+q V_{\mathrm{bi}}=\Phi_{\mathrm{Bn}}-\left(E_{\mathrm{c}}-E_{\mathrm{F}}\right)_{\mathrm{FB}}=\Phi_{\mathrm{Bn}}-k T \ln \frac{N_{\mathrm{c}}}{N_{\mathrm{D}}}
+\end{array}</script><h3 id="实际欧姆接触与比接触电阻率"><a href="#实际欧姆接触与比接触电阻率" class="headerlink" title="实际欧姆接触与比接触电阻率"></a>实际欧姆接触与比接触电阻率</h3><ul>
+<li>由于费米能级钉扎效应的存在，实际的接触往往不能有低势垒</li>
+<li>通过重掺杂，减小耗尽层宽度，使量子隧穿容易发生</li>
+<li>$\rho_C$ 定义为每 $1\mathrm{cm}^2$ 的接触电阻</li>
+<li>对于理想欧姆接触，$\rho_C \propto e^{H\Psi_{B}/\sqrt{N_D}}$</li>
+<li>理想情况下欧姆接触电阻很小，压降可以忽略不计</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">大学学习生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E7%89%A9%E7%90%86/">物理</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86/">半导体物理</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/16/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">信号与系统笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/02/Java%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">Java学习笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', '1357310795/Blog-Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.12.3/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/anchor-js/4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.8/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

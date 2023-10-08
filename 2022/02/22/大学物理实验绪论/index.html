@@ -1,0 +1,775 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/doge.png">
+  <link rel="icon" href="/img/doge.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#e4ad97">
+  <meta name="description" content="">
+  <meta name="author" content="Teruteru">
+  <meta name="keywords" content="">
+  
+  <title>大学物理实验绪论笔记 - Teruteru的Hexo博客</title>
+
+  <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myiconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"teru.space","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/qixi1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="大学物理实验绪论笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-22 08:05" pubdate>
+        2022年2月22日 早上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      9.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      119
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">大学物理实验绪论笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年10月7日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h1 id="第一章-测量、误差和数据处理"><a href="#第一章-测量、误差和数据处理" class="headerlink" title="第一章 测量、误差和数据处理"></a>第一章 测量、误差和数据处理</h1><h2 id="1．测量与误差"><a href="#1．测量与误差" class="headerlink" title="1．测量与误差"></a>1．测量与误差</h2><h3 id="1-1-测量"><a href="#1-1-测量" class="headerlink" title="1.1 测量"></a>1.1 测量</h3><p>　　在科学实验中，一切物理量都是通过测量得到的．所谓测量，就是用一定的工具或仪器，通过一定的方法，直接或间接地与被测对象进行比较．著名物理学家伽利略有一句名言：“凡是可能测量的，都要进行测量，并且要把目前无法度量的东西变成可以测量的”．物理测量的内容很多，大至日、月、星辰，小到原子、分子．现在人们能观察和测量到的范围，在空间方面已小到 $10^{-14}\sim 10^{-15} \,\mathrm{cm}$ ，大到百亿光年，大小相差在 $10^{40}$ 倍以上．在时间方面已短到 $10^{-23}\sim 10^{-24} \,\mathrm{s}$ 的瞬间，长达百亿年，两者相差也在 $10^{40}$ 倍以上．在定量地验证理论方面，也需要进行大量的测量工作．因此可以说，测量是进行科学实验必不可少的极其重要的一环．<br>　　测量分直接测量和间接测量．直接测量是指把待测物理量直接与认定为标准的物理量相比较，例如用直尺测量长度和用天平测物体的质量．间接测量是指按一定的函数关系，由一个或多个直接测量量计算出另一个物理量，例如测物体密度时，先测出该物体的体积和质量，再用公式算出物体的密度．在物理实验中进行的测量，大多属于间接测量．一个测量数据不同于一个数值，它是由数值和单位两部分组成的．一个数值有了单位，才具有特定的物理意义，这时它才可以称之为一个物理量．因此测量所得的值（数据）应包括数值（大小）和单位，两者缺一不可．</p>
+<h3 id="1-2-误差"><a href="#1-2-误差" class="headerlink" title="1.2 误差"></a>1.2 误差</h3><p>　　从测量的要求来说，人们总希望测量的结果能很好地符合客观实际．但在实际测量过程中，由于测量仪器、测量方法、测量条件和测量人员的水平以及种种因素的局限，不可能使测量结果与客观存在的实际值（真值）完全相同，我们所测得的只能是某物理量的近似值．也就是说，任何一种测量结果的量值与真值之间总会或多或少地存在一定的差值，将其称为该测量值的测量误差，简称“误差”，误差的大小反映了测量的准确程度．测量误差的大小可以用绝对误差表示，也可用相对误差表示。</p>
+<script type="math/tex; mode=display">
+\begin{align}
+\text{绝对误差}&=\text{测量值}-\text{真值}\\
+\text{相对误差}& E=\frac{\text{绝对误差}}{\text{真值}}\times 100%
+\end{align}</script><p>　　测量总是存在着一定的误差，但实验者应该根据要求和误差限度来制订或选择合理的测量方案和仪器．不能不切合实际地要求实验仪器的精度越高越好；环境条件总是恒温、恒湿、越稳定越好；测量次数总是越多越好．一个优秀的实验工作者，应该是在一定的要求下，以最低的代价来取得最佳的实验结果．要做到既保证必要的实验精度，又合理地节省人力与物力．误差自始至终贯穿于整个测量过程之中，为此必须分析测量中可能产生各种误差的因素，尽可能消除其影响，并对测量结果中未能消除的误差做出评价．</p>
+<h3 id="1-3-误差的分类"><a href="#1-3-误差的分类" class="headerlink" title="1.3 误差的分类"></a>1.3 误差的分类</h3><p>　　误差的产生有多方面的原因，从误差的来源和性质上可分为“偶然误差”和“系统误差”两大类．</p>
+<h4 id="1-3-1-系统误差"><a href="#1-3-1-系统误差" class="headerlink" title="1.3.1 系统误差"></a>1.3.1 系统误差</h4><p>在相同条件下，多次测量同一物理量时，测量值对真值的偏离（包括大小和方向）总是相同的，这类误差称为系统误差．系统误差的来源大致有以下几种：</p>
+<ul>
+<li>理论公式的近似性：例如单摆的周期公式 $T=2\pi\sqrt{\frac{l}{g}}$ 成立的条件之一是摆角趋于零，而在实验中，摆角为零的条件是不现实的．</li>
+<li>仪器结构不完善：例如温度计的刻度不准，天平的两臂不等长，示零仪表存在灵敏阈等．</li>
+<li>环境条件的改变：例如在 $20℃$ 条件下校准的仪器拿到 $-20℃$ 环境中使用．</li>
+<li>测量者生理心理因素的影响：例如记录某一信号时有滞后或超前的倾向，对准标志线读数时总是偏左或偏右、偏上或偏下等．</li>
+</ul>
+<p>　　系统误差的特点是恒定性，不能用增加测量次数的方法使它减小．在实验中发现和消除系统误差是很重要的，因为它常常是影响实验结果准确程度的主要因素．能否用恰当的方法发现和消除系统误差，是测量者实验水平高低的反映，但是又没有一种普遍适用的方法去消除误差，主要靠对具体问题作具体的分析与处理，要靠实验经验的积累．</p>
+<h4 id="1-3-2-偶然误差"><a href="#1-3-2-偶然误差" class="headerlink" title="1.3.2 偶然误差"></a>1.3.2 偶然误差</h4><p>　　偶然误差是指在相同条件下，多次测量同一物理量，其测量误差的绝对值和符号以不可预知的方式变化．这种误差是由实验中多种因素的微小变动而引起的，例如实验装置和测量机构在各次调整操作上的变动，测量仪器指示数值的变动，以及观测者本人在判断和估计读数上的变动等等．这些因素的共同影响就使测量值围绕着测量的平均值发生涨落，这变化量就是各次测量的偶然误差．偶然误差的出现，就某一测量值来说是没有规律的，其大小和方向都是不能预知的，但对一个量进行足够多次的测量，则会发现它们的偶然误差是按一定的统计规律分布的，常见的分布有正态分布、均匀分布、t 分布等．<br>　　常见的一种情况是：正方向误差和负方向误差出现的次数大体相等，数值较小的误差出现的次数较多，数值很大的误差在没有错误的情况下通常不出现．这一规律在测量次数越多时表现得越明显，它就是一种最典型的分布规律——正态分布规律．</p>
+<h4 id="1-3-3-系统误差和偶然误差的关系"><a href="#1-3-3-系统误差和偶然误差的关系" class="headerlink" title="1.3.3 系统误差和偶然误差的关系"></a>1.3.3 系统误差和偶然误差的关系</h4><p>　　系统误差和偶然误差的区别不是绝对的，在一定条件下，它们可以相互转化．比如称量的砝码误差，对于制造厂家来说，它是偶然误差，对于使用者来说，它又是系统误差．又如测量对象的不均匀性（如小球直径、金属丝的直径等），既可以当作系统误差，又可以当作偶然误差．有时系统误差和偶然误差混在一起，也难于严格加以区分．例如测量者使用仪器时的估读误差往往既包含有系统误差，又包含有偶然误差．这里的系统误差是指他读数时总是有偏大或偏小的倾向，偶然误差是指他每次读数时偏大或偏小的程度又是互不相同的．</p>
+<h2 id="2．测量的不确定度和测量结果的表示"><a href="#2．测量的不确定度和测量结果的表示" class="headerlink" title="2．测量的不确定度和测量结果的表示"></a>2．测量的不确定度和测量结果的表示</h2><h3 id="2-1-测量的不确定度"><a href="#2-1-测量的不确定度" class="headerlink" title="2.1 测量的不确定度"></a>2.1 测量的不确定度</h3><p>　　测量误差存在于一切测量中，由于测量误差的存在而对被测量值不能确定的程度即为测量的不确定度，它给出测量结果不能确定的误差范围．一个完整的测量结果不仅要标明其量值大小，还要标出测量的不确定度，以表明该测量结果的可信赖程度．<br>　　目前世界上已普遍采用不确定度来表示测量结果的误差．我国从 1992 年 10 月开始实施的《测量误差和数据处理技术规范》中，也规定了使用不确定度评定测量结果的误差．<br>　　通常不确定度按计算方法分为两类，即用统计方法对具有随机误差性质的测量值计算获得的 $\mathrm{A}$ 类分量 $\Delta_{\mathrm{A}}$，以及用非统计方法计算获得的 $\mathrm{B}$ 类分量 $\Delta_{\mathrm{B}}$</p>
+<h3 id="2-2-偶然误差与不确定度的-mathrm-A-类分量"><a href="#2-2-偶然误差与不确定度的-mathrm-A-类分量" class="headerlink" title="2.2 偶然误差与不确定度的 $\mathrm{A}$ 类分量"></a>2.2 偶然误差与不确定度的 $\mathrm{A}$ 类分量</h3><h4 id="2-2-1-偶然误差的分布与标准偏差"><a href="#2-2-1-偶然误差的分布与标准偏差" class="headerlink" title="2.2.1 偶然误差的分布与标准偏差"></a>2.2.1 偶然误差的分布与标准偏差</h4><p>　　偶然性是偶然误差的特点．但是，在测量次数相当多的情况下，偶然误差仍服从一定的统计规律．在物理实验中，多次独立测量得到的数据一般可近似看作为正态分布，正态分布的特征可以用正态分布曲线形象地表示出来，如图 $1$ 所示．当测量次数 $n$ 趋于 $\infty$ 时，测量值 $x$ 将成为连续型随机变量，其概率密度分布为正态函数，形式为</p>
+<script type="math/tex; mode=display">
+f(x)=\frac{1}{\sigma \sqrt{2 \pi}} \exp \left(-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^{2}\right)</script><p><img src="https://s2.loli.net/2022/02/22/CbkwPKrZuIHnSU6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>其中，$\mu$ 表示 $x$ 出现概率最大的值，在消除系统误差后，$\mu$ 为真值。$\sigma$ 称为标准偏差，它反映了测量值的离散程度。</p>
+<p>定义 $\xi=\int_{x_{1}}^{x_{2}} f(x) \mathrm{d} x$，表示变量 $x$ 在 $\left(x_{1}, x_{2}\right)$ 区间出现的概率，称为置信概率。$x$ 出现在 $(\mu-\sigma, \mu+\sigma)$ 之间的概率为</p>
+<script type="math/tex; mode=display">
+\xi=\int_{\mu-\sigma}^{\mu+\sigma} f(x) \mathrm{d} x=0.683</script><p>说明对任一次测量，其测量值出现在 $(\mu-\sigma, \mu+\sigma)$ 区间的可能性为 $0.683$。为了给出更<br>高的置信水平，置信区间可扩展为 $(\mu-2\sigma, \mu+2\sigma)$ 和 $(\mu-3\sigma, \mu+3\sigma)$ ，其置信概率分别为</p>
+<script type="math/tex; mode=display">
+\xi=\int_{\mu-2\sigma}^{\mu+2\sigma} f(x) \mathrm{d} x=0.954 \text{和} \xi=\int_{\mu-3\sigma}^{\mu+3\sigma} f(x) \mathrm{d} x=0.997</script><h4 id="2-2-2-多次测量平均值的标准偏差和算术平均值标准误差"><a href="#2-2-2-多次测量平均值的标准偏差和算术平均值标准误差" class="headerlink" title="2.2.2 多次测量平均值的标准偏差和算术平均值标准误差"></a>2.2.2 多次测量平均值的标准偏差和算术平均值标准误差</h4><p>　　尽管一个物理量的真值 $\mu$ 是客观存在的，但由于随机误差的存在，企图得到真值的愿望仍不现实，我们只能估算 $\mu$ 值．根据偶然误差的特点，可以证明如果对一个物理量测量了相当多次后，分布曲线趋于对称分布，其算术平均值就是接近真值 $\mu$ 的最佳值．如对物理量 $x$ 测量 $n$ 次，每一次测量值为 $x_i$ ，则算术平均值 $\bar{x}$ 为</p>
+<script type="math/tex; mode=display">
+\bar{x}=\frac{1}{n}\sum \limits_{i=1}^{n}x_{i}</script><p> $x$ 的标准偏差可用贝塞尔公式估算为</p>
+<script type="math/tex; mode=display">
+\sigma_{x}=\sqrt{\frac{\sum_{i=1}^{n}\left(x_{i}-\bar{x}\right)^{2}}{n-1}}</script><p>其意义为任一次测量的结果落在 $(\bar{x}-\sigma_{x},\bar{x}+\sigma_{x})$ 区间的概率为0.683．<br>　　由于算术平均值是测量结果的最佳值，最接近真值，因此我们更希望知道 $x$ 对真值的离散程度．误差理论可以证明 $x$ 的标准误差为</p>
+<script type="math/tex; mode=display">
+\sigma_{\bar{x}}=\sqrt{\frac{\sum\left(\bar{x}-x_{i}\right)^{2}}{n(n-1)}}=\frac{\sigma_{x}}{\sqrt{n}}</script><p>上式说明，平均值的标准差是 $n$ 次测量中任意一次测量值标准差的 $\frac{1}{\sqrt{n}}$，显然 $\sigma_{\bar{x}}$ 小于 $\sigma_{x}$．$\sigma_{\bar{x}}$ 的意义是待测物理量处于 $\bar{x}\pm\sigma_{\bar{x}}$ 区间内的概率为 $0.683$．从上式中可以看出，当 $n$ 为无穷大时，$\sigma_{\bar{x}}=0$，即测量次数无穷多时，平均值就是真值．</p>
+<h4 id="2-2-3-有限次测量的情况和-t-因子"><a href="#2-2-3-有限次测量的情况和-t-因子" class="headerlink" title="2.2.3 有限次测量的情况和 $t$ 因子"></a>2.2.3 有限次测量的情况和 $t$ 因子</h4><p>　　值得注意的是测量次数相当多时，测量值才近似为正态分布，上述结果才成立．在测量次数较少的情况下，测量值的概率密度曲线将呈 $t$ 分布（图2）．测量次数较少时，$t$ 分布相比正态分布变得平坦，当测量次数较多时（例如多于 $10$ 次）$t$ 分布趋于正态分布，当测量次数趋于无限时，$t$ 分布过渡到正态分布．<br>　　对有限次测量的结果，要保持与正态分布同样的置信概率，显然要扩大置信区间，将置信区间乘以一个大于 $1$ 的 $t$ 因子，则的置信概率 $x=\bar{x} \pm t_{\xi} \sigma_{\bar{x}}=\bar{x} \pm t_{\xi}\left(\frac{\sigma_{x}}{\sqrt{n}}\right)$ 与正态分布的置信概率 $\xi$ 相同．在物理实验中，我们建议置信概率采用 $0.95$，因子 $t_{0.95}$ 和 $\frac{t_{0.95}}{\sqrt{n}}$ 的值见表1．</p>
+<script type="math/tex; mode=display">
+\begin{array}{|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline n & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 & 15 & 20 & \geqslant 100 \\
+\hline t_{0.95} & 4.30 & 3.18 & 2.78 & 2.57 & 2.45 & 2.36 & 2.31 & 2.26 & 2.14 & 2.09 & \leqslant 1.97 \\
+\hline \frac{t_{0.95}}{\sqrt{n}} & 2.48 & 1.59 & 1.204 & 1.05 & .926 & .834 & .770 & .715 & .553 & .467 & \leqslant .139 \\
+\hline
+\end{array}</script><h4 id="2-2-4-不确定度的-mathrm-A-类分量"><a href="#2-2-4-不确定度的-mathrm-A-类分量" class="headerlink" title="2.2.4 不确定度的 $\mathrm{A}$ 类分量"></a>2.2.4 不确定度的 $\mathrm{A}$ 类分量</h4><p>　　不确定度的 $\mathrm{A}$ 类分量 $\Delta_\mathrm{A}$ 是重复测量时用统计学方法计算的分量，当重复测量次数为 $n$ 时，$\Delta_{\mathrm{A}}=t_{\xi} \sigma_{\bar{x}}=\sigma_{x} \cdot \frac{t_{\xi}}{\sqrt{n}}$．当实验中取置信概率为 $0.95$，且 $n＝6$ 时，有 $\Delta_{\mathrm{A}}=1.05\sigma_{x}$．通常在大学物理实验中，当 $n＝6$ 时，由于有 $\frac{t_{0.95}}{\sqrt{n}}\approx 1$，取 $\Delta_{\mathrm{A}}=\sigma_{x}$ ，即在置信概率为 $0.95$ 的前提下，$\mathrm{A}$ 类不确定度 $\Delta_{\mathrm{A}}$ 可用测量值的标准偏差 $\sigma_{x}$ 估算．</p>
+<h3 id="2-3-不确定度的-mathrm-B-类分量"><a href="#2-3-不确定度的-mathrm-B-类分量" class="headerlink" title="2.3 不确定度的 $\mathrm{B}$ 类分量"></a>2.3 不确定度的 $\mathrm{B}$ 类分量</h3><p>　　不确定度的 $\mathrm{B}$ 类分量 $\Delta_\mathrm{B}$ 是用非统计方法计算的分量，如仪器误差等．一般而言，不确定度的 $\mathrm{B}$ 类分量 $\Delta_\mathrm{B}$ 记为仪器标定的最大允差 $\frac{\Delta_{\text{仪}}}{C}$，其中 $C$ 为置信系数，通常情况下 $C$ 取 $1$，即 $\Delta_\mathrm{B}=\Delta_{\text{仪}}$．某些常用实验仪器的最大允差 $\Delta_{\text{仪}}$ 见表2．</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\text { 表 } 2 \text { 常用实验仪器的最大允差 }\\
+
+\begin{array}{|c|c|c|c|}
+\hline 
+\text { 仪 器 名 称 } & \text { 量 程 } & \text { 最小分度值 } & \text { 最 大 允 差 } \\
+\hline 
+\text { 钢板尺 } & 
+\begin{array}{c} 150 \mathrm{~mm} \\ 500 \mathrm{~mm} \\ 1000 \mathrm{~mm} \end{array} &
+\begin{array}{c} 1 \mathrm{~mm} \\ 1 \mathrm{~mm} \\ 1 \mathrm{~mm} \end{array} &
+\begin{array}{c} \pm 0.10 \mathrm{~mm} \\ \pm 0.15 \mathrm{~mm} \\ \pm 0.20 \mathrm{~mm} \end{array} \\
+\hline 
+\text { 钢卷尺 } & 
+\begin{array}{c} 1 \mathrm{~m} \\ 2 \mathrm{~m} \end{array} &
+\begin{array}{c} 1 \mathrm{~mm} \\ 1 \mathrm{~mm} \end{array} &
+\begin{array}{c} \pm 0.8 \mathrm{~mm} \\ \pm 1.2 \mathrm{~mm} \end{array} \\
+\hline 
+\text { 游标卡尺 } &
+ 125 \mathrm{~mm} &
+\begin{array}{c} 0.02 \mathrm{~mm} \\ 0.05 \mathrm{~mm} \end{array} &
+\begin{array}{c} \pm 0.02 \mathrm{~mm} \\ \pm 0.05 \mathrm{~mm} \end{array} \\
+\hline 
+\text { 螺旋测径器 (千分尺) } & 0 \sim 25 \mathrm{~mm} & 0.01 \mathrm{~mm} & \pm 0.004 \mathrm{~mm} \\
+\hline 
+\text { 七级天平 (物理天平) } & 500 \mathrm{~g} & 0.05 \mathrm{~g} &
+\begin{array}{c} 0.08 \mathrm{~g}(\text { 接近满量程 }) \\ 0.06 \mathrm{~g}(1 / 2 \text { 量程附近 }) \\ 0.04 \mathrm{~g}(1 / 3 \text { 量程附近 }) \end{array} \\
+\hline 
+\text { 三级天平 (分析天平) } & 200 \mathrm{~g} & 0.1 \mathrm{~g} &
+\begin{array}{c} 1.3 \mathrm{mg}(\text { 接近满量程 }) \\ 1.0 \mathrm{mg}(1 / 2 \text { 量程附近 }) \\ 0.7 \mathrm{mg}(1 / 3 \text { 量程附近 }) \end{array} \\
+\hline 
+\text { 普通温度计 (水银或有机溶剂) } & 0 \sim 100^{\circ} \mathrm{C} & 1^{\circ} \mathrm{C} & \pm 1^{\circ} \mathrm{C} \\
+\text { 精密温度计 (水银) } & 0 \sim 100^{\circ} \mathrm{C} & 0.1^{\circ} \mathrm{C} & \pm 0.2^{\circ} \mathrm{C} \\
+\hline 
+\text { 电表 }(0.5 \text { 级 }) & & & 0.5 \% \times \text { 量程 } \\
+\text { 电表 }(0.1 \text { 级 }) & & & 0.1 \% \times \text { 量程 } \\
+\hline
+\end{array}\\
+\begin{array}{|l|l|}
+\hline
+\text { 数字万用电表 }& 
+\begin{array}{l} \alpha \% \cdot U_{x}+\beta \% \cdot U_{m} \text { (其中 } U_{x} \text { 表示测量值即读数, } U_{m} \text { 表示满 } \\
+\text { 度值即量程, } \alpha, \beta \text { 对不同的测量功能有不同的数值. 通常将 } \beta \% \\
+\text { 用 “字数” 表示, 如 “2 个字” 等) }
+\end{array} \\
+\hline
+\end{array}
+\end{array}</script><h3 id="2-4-测量结果的表示"><a href="#2-4-测量结果的表示" class="headerlink" title="2.4 测量结果的表示"></a>2.4 测量结果的表示</h3><h4 id="2-4-1-测量结果的表示"><a href="#2-4-1-测量结果的表示" class="headerlink" title="2.4.1 测量结果的表示"></a>2.4.1 测量结果的表示</h4><p>　　若用不确定度表征测量结果的可靠程度，则测量结果需写成下列标准形式</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+x=\bar{x} \pm u_{x} \\
+{u_r}_x=\frac{u_{x}}{\bar{x}} \times 100 \%
+\end{array}\right.\quad\quad(\star)</script><p>式中 $\bar{x}$ 为多次测量的平均值，$u$ 为合成不确定度，$u_r$ 为相对不确定度．合成不确定度 $u$ 由 $\mathrm{A}$ 类不确定度 $\Delta_{\mathrm{A}}$ 和 $\mathrm{B}$ 类不确定度 $\Delta_{\mathrm{B}}$ 采用均方根合成方式得到</p>
+<script type="math/tex; mode=display">
+u_x=\sqrt{\Delta_{\mathrm{A}}^2+\Delta_{\mathrm{B}}^2}</script><p>　　若 $A$ 类分量有 $n$ 个，$B$ 类分量有 $m$ 个，那么合成不确定度为</p>
+<script type="math/tex; mode=display">
+u_{x}=\sqrt{\sum_{i=1}^{n} \Delta_{\mathrm{A}_{i}}^{2}+\sum_{i=1}^{m} \Delta_{\mathrm{B}_{i}}^{2}}</script><h4 id="2-4-2-直接测量的不确定度计算过程"><a href="#2-4-2-直接测量的不确定度计算过程" class="headerlink" title="2.4.2 直接测量的不确定度计算过程"></a>2.4.2 直接测量的不确定度计算过程</h4><ul>
+<li>单次测量时，通常有三种情况：<ul>
+<li>仪器精度较低，偶然误差很小，多次测量读数相同，不必进行多次测量；</li>
+<li>对测量的准确程度要求不高，只测一次就够了；</li>
+<li>因测量条件的限制，不可能多次重复测量．</li>
+</ul>
+</li>
+</ul>
+<p>　　单次测量的结果也用 $(\star)$ 式表示测量结果．这时 $u$ 常用极限误差 $\Delta$ 表示．$\Delta$ 的取法一般有二种：一种是仪器标定的最大允差 $\Delta_{\text{仪}}$；另一种是根据不同仪器、测量对象、环境条件、仪器灵敏阈等估计一个极限误差．两者中取数值较大的作为 $\Delta$ 值．</p>
+<ul>
+<li>多次测量时，不确定度以下面的过程进行计算：<ul>
+<li>修正已知的系统误差，得到测量值（如螺旋测微器必须消除零误差）</li>
+<li>求测量数据的算术平均值：$\bar{x}=\frac{\sum x_{i}}{n}$</li>
+<li>用贝塞尔公式计算标准偏差：$\sigma_{x}=\sqrt{\frac{\sum\left(\bar{x}-x_{i}\right)^{2}}{n-1}}$</li>
+<li>标准偏差乘以一置信参数 $\frac{t_{0.95}}{\sqrt{n}}$，求得 $\Delta_{\mathrm{A}}$</li>
+<li>根据仪器标定的最大允差 $\Delta_{\text{仪}}$ 确定 $\Delta_{\mathrm{B}}$：$\Delta_{\mathrm{B}}=\Delta_{\text{仪}}$</li>
+<li>由 $\Delta_{\mathrm{A}}、\Delta_{\mathrm{B}}$ 计算合成不确定度：$u_x=\sqrt{\Delta_{\mathrm{A}}^2+\Delta_{\mathrm{B}}^2}$</li>
+<li>计算相对不确定度：${u_r}_x=\frac{u_{x}}{\bar{x}} \times 100 \%$</li>
+<li>给出测量结果：$\left\{\begin{array}{l}x=\bar{x} \pm u_{x} \\{u_r}_x=\frac{u_{x}}{\bar{x}} \times 100 \%\end{array}\right.$</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>例：在室温 $23℃$ 下，用共振干涉法测量超声波在空气中传播时的波长 $\lambda$ ，数据见表：</p>
+<script type="math/tex; mode=display">
+\begin{array}{|c|c|c|c|c|c|c|}
+\hline \mathrm{N} & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline \lambda(\mathrm{mm}) & 4.66 & 4.68 & 4.60 & 4.61 & 4.67 & 4.63 \\
+\hline
+\end{array}</script><p>试用不确定度表示测量结果．</p>
+<p>解：波长 $\lambda$ 的平均值为</p>
+<script type="math/tex; mode=display">
+\bar{\lambda}=\frac{1}{6} \sum_{i=1}^{6} \lambda_{i}=4.64\,(\mathrm{mm})</script><p>任意一次波长测量值的标准偏差为</p>
+<script type="math/tex; mode=display">
+\sigma_{\lambda}=\sqrt{\frac{\sum_{i=1}^{6}\left(\bar{\lambda}-\lambda_{i}\right)^{2}}{(6-1)}}=\sqrt{\frac{109 \times 10^{-4}}{5}} \approx 0.03\,(\mathrm{mm})</script><p>实验装置的游标示值误差为：$\Delta_{\text {仪}}=0.02 \mathrm{~mm} $<br>波长不确定度的 $\mathrm{A}$ 类分量为：$\Delta_{\mathrm{A}}=1.05 \sigma_{\lambda} \approx \sigma_{\lambda}=0.03 \mathrm{~mm}$<br>波长不确定度的 $\mathrm{B}$ 类分量为：$\Delta_{\mathrm{B}}=\Delta_{\text {仪}}=0.02 \mathrm{~mm}$<br>于是，波长的合成不确定度为</p>
+<script type="math/tex; mode=display">
+u_{\lambda}=\sqrt{\Delta_{A}^{2}+\Delta_{B}^{2}}=\sqrt{(0.03)^{2}+(0.02)^{2}} \approx 0.04 \quad(\mathrm{~mm})</script><p>相对不确定度为</p>
+<script type="math/tex; mode=display">
+u_{r \lambda}=\frac{u_{\lambda}}{\bar{\lambda}} \times 100 \%=0.9 \%</script><p>测量结果表达为</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\lambda=4.64 \pm 0.04(\mathrm{~cm}) \\
+u_{r \lambda}=0.9 \%
+\end{array}\right.</script><hr>
+<h4 id="2-4-3-间接测量不确定度的计算"><a href="#2-4-3-间接测量不确定度的计算" class="headerlink" title="2.4.3 间接测量不确定度的计算"></a>2.4.3 间接测量不确定度的计算</h4><p>　　间接测量量是由直接测量量根据一定的数学公式计算出来的．这样一来，直接测量量的不确定度就必然影响到间接测量量，这种影响的大小也可以由相应的数学公式计算出来．<br>　　设间接测量所用的数学公式可以用如下的函数形式表示</p>
+<script type="math/tex; mode=display">
+N=F(x,y,z,\cdots)</script><p>式中的 $N$ 是间接测量量，$x,y,z,\cdots$ 是直接测量量，它们是互相独立的量．设 $x,y,z,\cdots$ 的不确定度分别为 $u_x,u_y,u_z,\cdots$ ，它们必然影响间接测量量，使 $N$ 值也有相应的不确定度 $u$．由于不确定度都是微小的量，相当于数学中的“增量”，因此间接测量的不确定度的计算公式与数学中的全微分公式基本相同．不同之处是：1.要用不确定度 $u_x$ 等替代微分 $\mathrm{d}x$ 等；2.要考虑到不确定度合成的统计性质，一般是用“方和根”的方式进行合成．于是，在普通物理实验中用以下两式来简化地计算不确定度</p>
+<script type="math/tex; mode=display">
+\begin{array}{lr}
+u=\sqrt{\left(\frac{\partial F}{\partial x}\right)^{2}\left(u_{x}\right)^{2}+\left(\frac{\partial F}{\partial y}\right)^{2}\left(u_{y}\right)^{2}+\left(\frac{\partial F}{\partial z}\right)^{2}\left(u_{z}\right)^{2}+\cdots} & (\star)\\
+u_{r}=\frac{u_{N}}{\bar{N}}=\sqrt{\left(\frac{\partial \ln F}{\partial x}\right)^{2}\left(u_{x}\right)^{2}+\left(\frac{\partial \ln F}{\partial y}\right)^{2}\left(u_{y}\right)^{2}+\left(\frac{\partial \ln F}{\partial z}\right)^{2}\left(u_{z}\right)^{2}+\cdots} & \quad(\star\star)
+\end{array}</script><p>$(\star)$ 式适用于 $N$ 是和差形式的函数，$(\star\star)$ 式适用于 $N$ 是积商形式的函数．<br>　　用间接测量不确定度表示结果的计算过程如下：</p>
+<ul>
+<li>先写出（或求出）各直接测量量的不确定度.</li>
+<li>依据 $N=F(x,y,z,\cdots)$ 的关系求出 $\frac{\partial F}{\partial x}, \frac{\partial F}{\partial y} \cdots$，或 $\frac{\partial \ln F}{\partial x}, \frac{\partial \ln F}{\partial y} \cdots$</li>
+<li>用 $(\star)$ 式或 $(\star\star)$ 式求出 $u$ 和 $u_{r}$, 亦可用传递公式直接用各直接测量量不确定度进行计算 $u$ 和 $u_{r}$</li>
+<li>给出实验结果 $\left\{\begin{array}{l}N=\bar{N}+u \\ u_{r}=\frac{u}{\bar{N}} \times 100 \%\end{array}\right.$ ，其中 $\bar{N}=f(\bar{x}, \bar{y}, \bar{z}, \cdots)$</li>
+</ul>
+<hr>
+<p>例：已知金属环的内径 $D_1 = 2.880 \pm 0.004 \,\mathrm{cm}$，外径 $D_2 = 3.600 \pm 0.004 \,\mathrm{cm}$，高度 $H = 2.575 \pm 0.004 cm$，求金属环的体积，并用不确定度表示实验结果．</p>
+<p>解：求金属的体积</p>
+<script type="math/tex; mode=display">
+\bar{V}=\frac{\pi}{4}\left(D_{2}^{2}-D_{1}^{2}\right) H=\frac{\pi}{4} \times\left(3.600^{2}-2.880^{2}\right) \times 2.575=9.436 \mathrm{~cm}^{3}</script><p>求偏导：</p>
+<script type="math/tex; mode=display">
+\frac{\partial \ln V}{\partial D_{2}}=\frac{2 D_{2}}{D_{2}^{2}-D_{1}^{2}}, \frac{\partial \ln V}{\partial D_{1}}=\frac{-2 D_{1}}{D_{2}^{2}-D_{1}^{2}}, \frac{\partial \ln V}{\partial H}=\frac{1}{H}</script><script type="math/tex; mode=display">
+{u_{r}}_{V}=\frac{u_{V}}{\bar{V}}=\sqrt{\left(\frac{2 D_{2} u_{D_{2}}}{D_{2}^{2}-D_{1}^{2}}\right)^{2}+\left(\frac{-2 D_{1} u_{D_{1}}}{D_{2}^{2}-D_{1}^{2}}\right)^{2}+\left(\frac{u_{H}}{H}\right)^{2}}=0.008=0.8 \%</script><script type="math/tex; mode=display">
+u_{V}=\bar{V} {u_{r}}_{V}=9.436 \times 0.008 \approx 0.08 \mathrm{~cm}^{3}</script><p>实验结果：$\left\{\begin{array}{l}V=9.44 \pm 0.08 \mathrm{~cm}^{3} \\ {u_{r}}_{V}=0.8 \%\end{array}\right.$</p>
+<hr>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\text{表}3\ \text{常用函数的不确定度传递公式}\\
+\begin{array}{|c|c|}
+\hline \text { 测量关系 } & \text { 不确定度传递公式 } \\
+\hline N=x+y & u_{N}=\sqrt{u_{x}^{2}+u_{y}^{2}} \\
+\hline N=x-y & u_{N}=\sqrt{u_{x}^{2}+u_{y}^{2}} \\
+\hline N=k x & u_{N}=k u_{x},\, u_{r N}=\frac{u_{x}}{x}=u_{r x} \\
+\hline N=\sqrt[k] x & u_{r N}=\frac{1}{k} \cdot \frac{u_{x}}{x}=\frac{u_{r x}}{k} \\
+\hline N=x y & u_{r N}=\sqrt{u_{r x}^{2}+u_{r y}^{2}} \\
+\hline N=\frac{x}{y} & u_{r N}=\sqrt{u_{r x}^{2}+u_{r y}^{2}} \\
+\hline N=\frac{x^{k} \times y^{m}}{z^{n}} & u_{r N}=\sqrt{\left(k u_{r x}\right)^{2}+\left(m u_{r y}\right)^{2}+\left(n u_{r z}\right)^{2}} \\
+\hline N=\sin x & u_{N}=\left|\cos x\right| u_{x} \\
+\hline N=\ln x & u_{N}=u_{r x} \\
+\hline
+\end{array}
+\end{array}</script><h2 id="3．有效数字及其运算规则"><a href="#3．有效数字及其运算规则" class="headerlink" title="3．有效数字及其运算规则"></a>3．有效数字及其运算规则</h2><h3 id="3-1-有效数字的概念"><a href="#3-1-有效数字的概念" class="headerlink" title="3.1 有效数字的概念"></a>3.1 有效数字的概念</h3><p>　　任何一个物理量，其测量结果既然都包含误差，那么该物理量数值的尾数不应该任意取舍．在进行具体的数字运算前，按照一定的规则确定一致的位数，然后舍去某些数字后面多余的尾数的过程被称为数字修约，指导数字修约的具体规则被称为数字修约规则．根据数值修约规则（按国家标准文件：GB8170-87），测量结果只写到开始有误差的那一或两位数，以后的数按“$4$ 舍 $6$ 入 $5$ 看右，$5$ 后有数进上去，尾数为 $0$ 向左看，左数奇进偶舍弃”修约．对于“$5$”后尾数都为 $0$ 的情况，则看“$5$”前一位，前一位是奇数，则将 $5$ 进上，使有误差末位为偶数，若 $5$ 的前一位是偶数则将 $5$ 舍去．<br>　　我们把测量结果中可靠的几位数字加上有误差的一到两位数字称为测量结果的有效数字．或者说，有效数字中最后一到两位数字是不确定的．显然，有效数字是表示不确定度的一种粗略的方法，而不确定度则是对有效数字中最后一到两位数字不确定程度的定量描述，它们都表示含有误差的测量结果．<br>　　有效数字的位数与小数点的位置无关．如 $1.23$ 与 $123$ 都是三位有效数字．关于“$0$”是不是有效数字的问题，可以这样来判别：从左往右数，以第一个不为零的数字为起点，它左边的“$0$”不是有效数字，它右边的“$0$”是有效数字．例如 $0.0123$ 是三位有效数字，$0.01230$ 是四位有效数字．作为有效数字的“$0$”，不可以省略不写．例如，不能将 $1.3500\,\mathrm{cm}$ 写作 $1.35\,\mathrm{cm}$，因为它们的准确程度是不同的．<br>　　有效数字位数的多少，大致反映相对误差的大小．有效数字位数越多，则相对误差越小，测量结果的准确度越高．</p>
+<h3 id="3-2-数值书写规则"><a href="#3-2-数值书写规则" class="headerlink" title="3.2 数值书写规则"></a>3.2 数值书写规则</h3><p>　　测量结果的有效数字位数由不确定度来确定．由于不确定度本身只是一个估计值，一般情况下，不确定度的有效数字位数只取一到两位．测量值的末位须与不确定度的末位取齐．在初学阶段，可以认为有效数字只有最后一位是不确定的，相应地不确定度也只取一位有效数字，例如 $L=(1.00\pm 0.02)\,\mathrm{cm}$．一次直接测量结果的有效数字，由仪器极限误差或估计的不确定度来确定．多次直接测量算术平均值的有效数字，由计算得到平均值的不确定度来确定．间接测量结果的有效数字，也是先算出结果的不确定度，再由不确定度来确定．<br>　　当数值很大或很小时，用科学计数法来表示．如：某年我国人口为七亿五千万，极限误差为二千万，就应写作：$(7.5\pm 0.2)\times 10^4$ 万，其中 $(7.5\pm 0.2)$ 表明有效数字和不确定度，$10^4$ 万表示单位．又如，把 $(0.000623\pm 0.000003)\,\mathrm{m}$ 写作 $(6.23\pm 0.03)×10^{-4}\,\mathrm{m}$，看起来就简洁醒目了．</p>
+<h3 id="3-3-有效数字的运算规则"><a href="#3-3-有效数字的运算规则" class="headerlink" title="3.3 有效数字的运算规则"></a>3.3 有效数字的运算规则</h3><p>　　在有效数字运算过程中，为了不致因运算而引进“误差”或损失有效位数，影响测量结果的精度，统一规定有效数字的近似运算规则如下：</p>
+<ul>
+<li>诸量相加（或相减）时，其和（或差）数在小数点后所应保留的位数与诸数中小数点后位数最少的一个相同；</li>
+<li>诸量相乘（或除）后保留的有效数字，只须与诸因子中有效数字最少的一个相同．</li>
+<li>乘方与开方的有效数字与其底的有效数字位数相同．</li>
+<li>一般来说，函数运算的位数应根据误差分析来确定．在物理实验中，为了简便和统一起见，对常用的对数函数、指数函数和三角函数作如下规定：对数函数运算后的尾数取得与真数的位数相同；指数函数运算后的有效数字的位数可与指数的小数点后的位数相同（包括紧接小数点后的零）；三角函数的取位随弧度的有效数字而定；</li>
+<li>在运算过程中，我们可能碰到一种特定的数，它们叫作正确数．例如将半径化为直径 $d = 2r$ 时出现的倍数 $2$ ，它不是由测量得来的．还有实验测量次数 $n$，它总是正整数，没有可疑部分．正确数不适用有效数字的运算规则，只须由其他测量值的有效数字的多少来决定运算结果的有效数字；</li>
+<li>在运算过程中，我们还可能碰到一些常数，如 $\pi、g$ 之类，一般我们取这些常数与测量的有效数字的位数相同．例如：圆周长 $l=2\pi R$，当 $R＝2.356 \,\mathrm{mm}$ 时，此时 $\pi$ 应取 $3.142$．<br>　　在实际运算过程中，为减少舍入误差，其数值的修约可以暂时多保留一位，但运算得到最后结果时，再根据有效位数弃去多余的数字。如用计算器或计算软件程序进行计算，应将计算结果经修约后再记录下来。<br>　　有效数字的位数多寡决定于测量仪器，而不决定于运算过程．因此，选择计算工具时，应使其所给出的位数不少于应有的有效数字，否则将使测量结果精度降低，这是不允许的．相反，通过计算工具随意扩大测量结果的有效数字也是错误的，不要认为算出结果的位数越多越好．</li>
+</ul>
+<h2 id="4．实验数据处理与作图要求"><a href="#4．实验数据处理与作图要求" class="headerlink" title="4．实验数据处理与作图要求"></a>4．实验数据处理与作图要求</h2><p>　　处理实验数据的目的，在于通过必要的整理分析和归纳计算，得到实验的结论．</p>
+<h3 id="4-1-列表法处理数据"><a href="#4-1-列表法处理数据" class="headerlink" title="4.1 列表法处理数据"></a>4.1 列表法处理数据</h3><p>　　在记录和处理数据时，要将数据列成表格．数据表格可以简单而明确地表示出有关物理量之间的对应关系，便于检查、减少和避免错误，也可以及时发现问题和分析问题，有助于从中找出规律性的联系，求出经验公式等．<br>　　列表的要求是：简单明了，要标明各符号所代表物理量的意义，并写明单位；单位及量值的数量级写在标题栏中，不要重复记在各个数值上；表中所列数据要正确反映测量结果的有效数字；实验数据表格应包括各种要求的计算量、平均值和误差．</p>
+<h3 id="4-2-作图法处理数据"><a href="#4-2-作图法处理数据" class="headerlink" title="4.2 作图法处理数据"></a>4.2 作图法处理数据</h3><h4 id="4-2-1-作图法的作用和优点"><a href="#4-2-1-作图法的作用和优点" class="headerlink" title="4.2.1 作图法的作用和优点"></a>4.2.1 作图法的作用和优点</h4><p>　　作图法是一种被广泛用来处理实验数据的方法，它能直观地揭示出物理量之间的规律．特别是在还没有完全掌握有些科学实验的规律和结果，或还没有找出适当函数表达式时，用做实验曲线的方法来表示实验结果之间的函数关系，常常是一种很重要的方法．<br>　　作图法的目的是揭示和研究物理量之间的变化规律，找出对应的函数关系，求取经验公式或求出实验的某些结果．如直线方程 $y=mx+b$，就可根据曲线斜率求出 $m$ 值，从曲线截距获取 $b$ 值．此外还可从曲线上直接读取没有进行测量的对应于某 $x$ 的 $y$ 值（内插法），在一定条件下也可从曲线延伸部分读出原测量数据范围以外的量值（外推法）．实验曲线还可帮助发现实验中个别的测量错误．当被测量的函数为非线性关系时，一般求值较困难，而且也很难从曲线中判断结果是否正确，用作图法可进行置换变数处理，如 $PV=C$，可将 $P\sim V$ 图线改为 $P\sim \frac{1}{V}$ 图线</p>
+<h4 id="4-2-2-作图规则"><a href="#4-2-2-作图规则" class="headerlink" title="4.2.2 作图规则"></a>4.2.2 作图规则</h4><ul>
+<li>选用坐标：根据作图参量的性质，选用毫米直角坐标、双对数坐标、单对数坐标或其他坐标等．坐标的大小应根据测得数据的大小、有效数字多少以及结果的需要来确定．</li>
+<li>坐标轴的比例与标度：一般以横轴代表自变量，纵轴代表因变量．在坐标轴的末端（或中部）标明所代表的物理量及其单位．要适当选取横轴和纵轴的比例和坐标的起点，使曲线居中，并布满图的 $70－80\%$．标度时注意做到：<ul>
+<li>图上实验点的坐标读数的有效数字位数不能少于实验数据的有效数字位数．例如，对于直接测量的物理量，轴上最小格的标度不能大于测量仪器的最小刻度．</li>
+<li>标度的选择应使图线显示其特点，标度应划分得当，以不用计算就能直接读出图线上每一点的坐标为宜．故通常用 $1、2、5$，而不选用 $3、7、9$ 来标度．</li>
+<li>横轴和纵轴的标度可以不同，或者两轴的交点不为零以便调整图线的大小和位置．</li>
+<li>如果数据特别大或特别小，可以提出乘积因子，例如提出 $\times 10^3$ 或 $\times 10^{-2}$，放在坐标轴物理量单位符号前面．</li>
+</ul>
+</li>
+<li>曲线的标点与连线：用“$+$”标记标出各测量数据点的坐标，当一张图上要画几条曲线时，每条曲线可采用不同的标记如“$\times$”、“$\odot$”、“$\otimes$”、“$\oplus$”等以示区别．连线时应根据不同情况，把数据点连成直线或光滑曲线．曲线并不一定要通过所有的点，而要求曲线两旁偏差点有较均匀的分布．在画曲线时，发现个别偏离过大的数据点，应当舍去并进行分析或重新测量核对．校准曲线要通过校准点，连成折线．</li>
+<li>标写图名：一般在图上部附近空旷位置写出简洁完整的图名，下部标明班级、姓名和日期．字体一律用仿宋体．</li>
+<li>Origin 作图：目前普遍应用作图软件作图，建议采用Origin 作图．用Origin作图的具体方法可参见附录．</li>
+</ul>
+<h3 id="4-3-最小二乘法处理数据"><a href="#4-3-最小二乘法处理数据" class="headerlink" title="4.3 最小二乘法处理数据"></a>4.3 最小二乘法处理数据</h3><p>　　测量值的数据处理，一般包括两部分，即计算和图解．测量值的计算包括误差和确定精确度．最小二乘法是一系列近似计算中最为准确的一种，是所有从事科学研究的人员应该具备的必要知识．采用最小二乘法能从一组等精度的测量值中确定最佳值，该最佳值是各测量值的误差的平方和为最小的那个值．采用最小二乘法还能使估计曲线最好地拟合于各测量点．最小二乘法的原理和计算都比较繁复，在我们的物理实验中仅要求一般性的了解和掌握，这里仅介绍如何应用最小二乘法进行实验曲线的拟合．<br>　　实验曲线的拟合分两类，一是已知函数 $y=f(x)$的形式，要确定其中未定参量的最佳值；二是先确定函数 $y=f(x)$ 的具体形式，即确定表示函数关系的经验公式，然后再确定其中参量的最佳值．实际上，处理第二类曲线拟合问题所采用的方法仍与第一类相似．不同的地方是，首先要根据理论或从实验数据分布的变化趋势推测和选择合适的函数形式，然后再确定其中未定参量的最佳值．在物理实验中大多属于第一类，因此下面仅介绍已知函数关系，确定未定参量最佳值的方法．</p>
+<p>　　设已知函数的形式为</p>
+<script type="math/tex; mode=display">
+y=b_0+b_1 x</script><p>式中自变量只有 $x$ 一个，故称一元线性回归．实验得到的一组数据为</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+x=x_1+x_2+\cdots+x_i\\
+y=y_1+y_2+\cdots+y_i
+\end{array}</script><p>如果实验没有误差，把 $(x_1,y_1)$、$(x_2,y_2)$、$\cdots$、$(x_i,y_i)$ 代入函数式时，方程左右两边应该相等．但实际上，测量总存在误差，我们把这归结为 $y$ 的测量偏差，并记作 $\varepsilon_1$、$\varepsilon_2$、$\cdots$、$\varepsilon_1$ ，这样，公式就应改写成</p>
+<script type="math/tex; mode=display">
+\left\{
+\begin{array}{l}
+y_1-b_0-b_1 x_1=\varepsilon_1,\\
+y_2-b_0-b_1 x_2=\varepsilon_2,\\
+\cdots,\\
+y_i-b_0-b_i x_i=\varepsilon_i
+\end{array}
+\right. \quad (i=1,2,\cdots,n)</script><p>这样做的目的是利用方程组来确定未定参量 $b_0$ 和 $b_1$，同时希望总的偏差 $\varepsilon$ 为最小．根据误差理论可以推证：要满足以上要求，必须使各偏差的平方和为最小，即 $\sum\limits_{i=1}^n \varepsilon_i^2$ 最小．把各式平方相加，得</p>
+<script type="math/tex; mode=display">
+\sum\limits_{i=1}^n \varepsilon_i^2=\sum\limits_{i=1}^n (y_i-b_0-b_1 x_i)^2</script><p>把上式对 $b_0$ 和 $b_1$ 分别求偏导，当偏导分别为 $0$ 时，可以得到</p>
+<ul>
+<li>回归直线的斜率和截距的最佳估计值<script type="math/tex; mode=display">
+b_1=\frac{\overline{xy}-\bar{x}\cdot\bar{y}}{\overline{x^2}-\overline{x}^2},\quad b_0=\bar{y}-b_1\bar{x}</script></li>
+<li>各参量的标准误差<ul>
+<li>测量值 $y$ 的标准偏差为<script type="math/tex; mode=display">
+\sigma_{y}=\sqrt{\frac{\sum_{i=1}^{n} \varepsilon_{i}^{2}}{n-1}}</script></li>
+<li>$b_1$ 值的标准误差为<script type="math/tex; mode=display">
+\sigma_{b_{1}}=\frac{\sigma_{y}}{\sqrt{\overline{x^{2}}-\bar{x}^{2}}}</script></li>
+<li>$b_0$ 值的标准误差为<script type="math/tex; mode=display">
+\sigma_{b_{0}}=\sqrt{\overline{x^{2}}} \sigma_{b 1}</script></li>
+</ul>
+</li>
+<li>相关系数<br>在待定参量确定以后，还要算一下相关系数．对于一元线性回归，定义为<script type="math/tex; mode=display">
+\gamma=\frac{\overline{x y}-\bar{x} \cdot \bar{y}}{\sqrt{\left(\overline{x^{2}}-\bar{x}^{2}\right)\left(\overline{y^{2}}-\bar{y}^{2}\right)}}</script>$\gamma$ 值总是在 $0$ 与 $\pm 1$ 之间．$\gamma$ 值越接近 $1$，说明实验数据越符合求得的直线，或说明用线性函数进行回归比较合理．相反，如果 $\gamma$ 值远小于 $1$ 而接近于 $0$，说明用线性函数回归不妥，$x$ 与 $y$ 完全不相关，必须用其他函数重新试探．$\gamma&gt;0$ 回归直线的斜率为正，称为正相关．$\gamma&lt;0$ 回归直线的斜率为负，称为负相关．</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">大学学习生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E7%89%A9%E7%90%86/">物理</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%89%A9%E7%90%86/">物理</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AE%9E%E9%AA%8C/">实验</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/02/25/%E9%AB%98%E6%95%B0%E4%B8%8B%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">高数下笔记整理</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/18/%E7%94%B5%E8%B7%AF%E7%90%86%E8%AE%BA%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">电路理论笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', '1357310795/Blog-Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.12.3/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/anchor-js/4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.8/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

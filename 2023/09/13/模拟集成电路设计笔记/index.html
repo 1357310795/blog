@@ -1,0 +1,680 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/doge.png">
+  <link rel="icon" href="/img/doge.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#e4ad97">
+  <meta name="description" content="">
+  <meta name="author" content="Teruteru">
+  <meta name="keywords" content="">
+  
+  <title>模拟集成电路设计笔记 - Teruteru的Hexo博客</title>
+
+  <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myiconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"teru.space","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/76443599_p0-1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="模拟集成电路设计笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-09-13 10:01" pubdate>
+        2023年9月13日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.1k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      32
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">模拟集成电路设计笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年10月7日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="MOSFET"><a href="#MOSFET" class="headerlink" title="MOSFET"></a>MOSFET</h2><h3 id="MOSFET-结构"><a href="#MOSFET-结构" class="headerlink" title="MOSFET 结构"></a>MOSFET 结构</h3><p><img src="https://s2.loli.net/2023/10/04/1VyG4Y79w2UZDnp.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>源漏方向的栅的尺寸叫栅长 $L$，与之垂直方向的栅的尺寸叫做栅宽 $W$。由于在制造过程中，源/漏结的横向扩散，源漏之间实际的距离略小于 $L_{0}$。为了避免混淆，我们定义 $L_{\mathrm{eff}}=   L_{\mathrm{drawn}}-2 L_{\mathrm{D}}$，式中 $L_{\mathrm{cff}}$ 称为有效沟道长度，$L_{\mathrm{drawn}}$ 是沟道总长度，而 $L_{\mathrm{D}}$ 是横向扩散的长度。</p>
+<p><img src="https://s2.loli.net/2023/10/04/BMay24V1gWs6v8b.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在互补 $MOS$（CMOS）技术中同时用到 $NMOS$ 和 $PMOS$。从简单的角度来看，$PMOS$ 器件可通过将所有掺杂类型取反（包括衬底）来实现。但实际生产中，$NMOS$ 和 $PMOS$ 器件必须做在同一晶片上，也就是说做在相同的衬底上。由于这一原因，其中某一种类型的器件要做在一个“局部衬底”上，通常称为“<strong>阱</strong>”。现在大多数 $CMOS$ 工艺中，$PMOS$ 器件做在 n 阱中。注意 n 阱必须接一定的电位，以便 $PMOS$ 管的源偏结二极管在任何情况下都保持反偏。在大多数电路中，n 阱与<strong>最正的电源供给</strong>相连接。</p>
+<h3 id="I-V特性"><a href="#I-V特性" class="headerlink" title="I/V特性"></a>I/V特性</h3><p>阈值电压</p>
+<script type="math/tex; mode=display">
+\begin{align}
+V_{t} & = V_{g}|_{threshold} \\
+& = \left(V_{fb}+V_{s}+V_{ox}\right)|_{threshold}\\
+&=V_{fb}+2V_{B}-\frac{Q_s}{C_{ox}}\\
+&=V_{fb}+2V_{B}+\frac{qN_aW_{dep}}{C_{ox}}\\
+&=V_{fb}+2V_{B}+\frac{\sqrt{qN_a2\varepsilon_s2V_B}}{C_{ox}}\\
+\end{align}</script><ul>
+<li>截止区 $V_{GS}&lt;V_{th}$<script type="math/tex; mode=display">
+I_D=0</script></li>
+<li>弱反型/亚阈值区 $V_{GS}&lt;V_{th}$ 且 $V_{GS}\approx V_{th}$<script type="math/tex; mode=display">
+I_{D,wi}=I_{D,t}\frac{W}{L}e^{\frac{V_{GS}-V_{th}}{nU_T}},\quad U_T=kT/q\approx 26\mathrm{mV}</script></li>
+<li>线性区 $V_{GS}-V_{th}&gt;V_{DS}$<script type="math/tex; mode=display">
+I_{D} = \frac{W \mu_{n} C_{\mathrm{ox}}}{2 L}\left[2\left(V_{G S}-V_{th}\right) V_{D S}-V_{D S}^{2}\right]</script></li>
+<li>饱和区 $V_{GS}-V_{th}&lt;V_{DS}$<script type="math/tex; mode=display">
+I_{D}=\frac{W \mu_{n} C_{ox}}{2 L}\left(V_{G S}-V_{th}\right)^{2}(1+\lambda V_{DS})</script></li>
+</ul>
+<h3 id="小信号分析"><a href="#小信号分析" class="headerlink" title="小信号分析"></a>小信号分析</h3><h4 id="等效模型的参数"><a href="#等效模型的参数" class="headerlink" title="等效模型的参数"></a>等效模型的参数</h4><p>跨导是衡量栅极电压变化时漏极电流变化强度的指标</p>
+<ul>
+<li>决定 MOSFET 的增益和速度</li>
+<li>饱和区的跨导最高</li>
+<li>弱反转区的跨导效率最高，即 $g_m/I_D$</li>
+</ul>
+<p>饱和跨导 $g_{m}$</p>
+<script type="math/tex; mode=display">
+g_{m}=\frac{\partial I_{D}}{\partial V_{G S}}=\mu_{n} C_{o x} \frac{W}{L}\left(V_{G S}-V_{t h}\right)=\sqrt{\mu_{n} C_{o x} \frac{W}{L} 2 I_{D}}=\frac{2 I_{D}}{V_{G S}-V_{t h}}</script><p>体跨导 $g_{mb}$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+g_{m b} & =\frac{\partial I_{D}}{\partial V_{B S}} \\
+& =\mu_{n} C_{o x} \frac{W}{L}\left(V_{G S}-V_{t h}\right)\left(-\frac{\partial V_{t h}}{\partial V_{B S}}\right) \\
+& =g_{m}\left(\frac{\gamma}{2 \sqrt{\left|2 \varphi_{F}+V_{S B}\right|}}\right)
+\end{aligned}</script><p>输出电阻 $r_o$/输出电导 $g_o$</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+r_o & =\left(\frac{\partial I_{D}}{\partial V_{DS}}\right)^{-1} \\
+&=\frac{1}{\lambda I_D}=\frac{V_EL}{I_D}
+\end{aligned}</script><p>本征电容 $C_{gs}$、$C_{gd}$</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>工作区</th>
+<th>$C_{gs}$</th>
+<th>$C_{gd}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>截止</td>
+<td>$WL_{ov}C_{ox}$</td>
+<td>$WL_{ov}C_{ox}$</td>
+</tr>
+<tr>
+<td>线性</td>
+<td>$\frac{WLC_{ox}}{2}+WL_{ov}C_{ox}$</td>
+<td>$\frac{WLC_{ox}}{2}+WL_{ov}C_{ox}$</td>
+</tr>
+<tr>
+<td>饱和</td>
+<td>$\frac{2WLC_{ox}}{3}+WL_{ov}C_{ox}$</td>
+<td>$WL_{ov}C_{ox}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>其中</p>
+<ul>
+<li>$L$ 是有效沟道长度</li>
+<li>$L_{ov}$ 是漏源扩散到栅氧化层下面的长度</li>
+</ul>
+<p>寄生电容</p>
+<script type="math/tex; mode=display">
+C_{s b}=\frac{C_{s b 0}}{\sqrt{1+\frac{V_{S B}}{\psi_{0}}}} \quad C_{d b}=\frac{C_{d b 0}}{\sqrt{1+\frac{V_{D B}}{\psi_{0}}}}</script><p>或者见 <a target="_blank" rel="noopener" href="http://http://47.100.52.206//2023/09/13/%E6%95%B0%E5%AD%97%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/#%E6%89%A9%E6%95%A3%E7%94%B5%E5%AE%B9">http://http://47.100.52.206//2023/09/13/%E6%95%B0%E5%AD%97%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/#%E6%89%A9%E6%95%A3%E7%94%B5%E5%AE%B9</a></p>
+<h4 id="简化模型"><a href="#简化模型" class="headerlink" title="简化模型"></a>简化模型</h4><p><img src="https://s2.loli.net/2023/10/05/ezrMQSpKZWA6FLo.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+i_{ds}=g_m\cdot v_{gs}+g_{mb}\cdot v_{bs}+\frac{1}{r_o}\cdot v_{ds}</script><h4 id="完整模型"><a href="#完整模型" class="headerlink" title="完整模型"></a>完整模型</h4><p><img src="https://s2.loli.net/2023/10/04/MOJuqhY2Xm5fzji.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="单级放大器"><a href="#单级放大器" class="headerlink" title="单级放大器"></a>单级放大器</h2><h3 id="共源放大器"><a href="#共源放大器" class="headerlink" title="共源放大器"></a>共源放大器</h3><p>共源（CS）放大器；输入应用于栅极(G)，输出取自漏极(D)，源极(S)是输入和输出的共同参考点（小信号共地）</p>
+<p><img src="https://s2.loli.net/2023/10/05/HQBGtgey65LUrIO.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="接电阻的共源放大器"><a href="#接电阻的共源放大器" class="headerlink" title="接电阻的共源放大器"></a>接电阻的共源放大器</h3><ul>
+<li>电阻负载具有有限阻抗，从而降低了小信号增益</li>
+<li>难以制造物理尺寸合理的大型电阻器</li>
+<li>难以制造具有严格控制值的电阻器（用于精确增益）</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/10/05/81Dr2ULsW4OY7B3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>小信号等效电路中：</p>
+<ul>
+<li>跨导<script type="math/tex; mode=display">
+g_{m}=\mu_{n} C_{o x} \frac{W}{L}\left(V_{G S}-V_{t h}\right)=\sqrt{\mu_{n} C_{o x} \frac{W}{L} 2 I_{D}}=\frac{2 I_{D}}{V_{G S}-V_{t h}}</script></li>
+<li>输出电阻<script type="math/tex; mode=display">
+r_{o}=\frac{1}{\lambda I_{D}}=\frac{V_{E} L}{I_{D}}</script></li>
+<li>电压增益<script type="math/tex; mode=display">
+A_{v}=\frac{V_{\text {out }}}{\boldsymbol{V}_{\text {in }}}=G_{m}\left(Z_{\text {out }} \| Z_{\text {load }}\right)=-g_{m}\left(r_{o} \| R_{D}\right)=-g_{m} \frac{r_{o} R_{D}}{r_{O}+R_{D}}</script></li>
+</ul>
+<h3 id="接线性区MOSFET的共源放大器"><a href="#接线性区MOSFET的共源放大器" class="headerlink" title="接线性区MOSFET的共源放大器"></a>接线性区MOSFET的共源放大器</h3><p><img src="https://s2.loli.net/2023/10/05/Qn5XZGfz38Iq7cA.png" srcset="/img/loading.gif" lazyload alt=""><br>线性MOSFET相当于电阻</p>
+<p>参数</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+g_{m}=\mu_{n} C_{o x} \frac{W}{L}\left(V_{G S}-V_{t h}\right)=\sqrt{\mu_{n} C_{o x} \frac{W}{L} 2 I_{D}}=\frac{2 I_{D}}{V_{G S}-V_{t h}} \\
+r_{o}=\frac{1}{\lambda I_{D}}=\frac{V_{E} L}{I_{D}} \\
+R_{\text {on2 } }=\frac{1}{\mu_{p} C_{o x}(W / L)_{2}\left(V_{D D}-V_{b}-\left|V_{\text {thp }}\right|\right)} \\
+A_{v}=\frac{V_{\text {out }}}{V_{\text {in }}}=G_{m}\left(Z_{\text {out }} \| Z_{\text {load }}\right)=-g_{m}\left(r_{o} \| R_{\text {on2 } }\right)=-g_{m} \frac{r_{o} R_{\text {on2 } }}{r_{o}+R_{\text {on2 } }}
+\end{array}</script><h3 id="接饱和区MOSFET的共源放大器"><a href="#接饱和区MOSFET的共源放大器" class="headerlink" title="接饱和区MOSFET的共源放大器"></a>接饱和区MOSFET的共源放大器</h3><p><img src="https://s2.loli.net/2023/10/05/cdXVUPope2hIyYW.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>从 $V_{out}$ 向上看，饱和的MOSFET也相当于一个电阻：</p>
+<script type="math/tex; mode=display">
+r_{D} =\left(\frac{1}{g_{m 2}+g_{m b 2}}\right) \| r_{o 2} \approx \frac{1}{g_{m 2}+g_{m b 2}}</script><p>于是 NMOS 的电压增益</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+A_{v} & =\frac{V_{\text {out }}}{V_{\text {in }}}=G_{m}\left(Z_{\text {out }} \| Z_{\text {load }}\right)=-g_{m 1}\left(r_{o} \| r_{D}\right) \approx-g_{m 1} r_{D} \\
+& \approx-\frac{g_{m 1}}{g_{m 2}+g_{m b 2}}
+\end{aligned}</script><p>PMOS 是共源接法，没有体偏效应，电压增益</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+A_{v} & =\frac{V_{\text {out }}}{V_{\text {in }}}=G_{m}\left(Z_{\text {out }} \| Z_{\text {load }}\right)=-g_{m 1}\left(r_{o} \| r_{D}\right) \approx-g_{m 1} r_{D} \\
+& \approx-\frac{g_{m 1}}{g_{m 2}}=-\frac{\sqrt{\mu_{n} C_{o x}(W / L)_{1}}}{\sqrt{\mu_{p} C_{o x}(W / L)_{2}}}
+\end{aligned}</script><h3 id="接电流源的共源放大器"><a href="#接电流源的共源放大器" class="headerlink" title="接电流源的共源放大器"></a>接电流源的共源放大器</h3><p><img src="https://s2.loli.net/2023/10/05/8lcebATam5sqIdv.png" srcset="/img/loading.gif" lazyload alt=""><br>注意在交流通路中，电流源是短路</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+g_{m}=\mu_{n} C_{o x} \frac{W}{L}\left(V_{G S}-V_{t h}\right)=\sqrt{\mu_{n} C_{o x} \frac{W}{L} 2 I_{D}}=\frac{2 I_{D}}{V_{G S}-V_{\text {th }}} \\
+r_{o}=\frac{1}{\lambda I_{D}}=\frac{V_{E} L}{I_{D}} \\
+A_{v}=\frac{V_{\text {out }}}{V_{\text {in }}}=G_{m}\left(Z_{\text {out }} \| Z_{\text {load }}\right)=-g_{m} r_{o}=-\frac{2 V_{E} L}{V_{G S}-V_{\text {th }}}
+\end{array}</script><h3 id="像反相器的共源放大器"><a href="#像反相器的共源放大器" class="headerlink" title="像反相器的共源放大器"></a>像反相器的共源放大器</h3><p><img src="https://s2.loli.net/2023/10/05/LEc79pMWUQ6qz1e.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+A_{v}=\frac{V_{\text {out }}}{V_{\text {in }}}=G_{m}\left(Z_{\text {out }} \| Z_{\text {load }}\right)=-\left(g_{m 1}+g_{m 2}\right)\left(r_{o 1} \| r_{o 2}\right)</script><h3 id="单一增益频率"><a href="#单一增益频率" class="headerlink" title="单一增益频率"></a>单一增益频率</h3><p>单位增益频率 $f_T$，也称为过渡频率。它被定义为共源放大器的 <strong>短路</strong> <strong>电流增益</strong> 变为 1 的频率。</p>
+<p><img src="https://s2.loli.net/2023/10/05/uMqi4hb1yxnC7Ak.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+I_{o}=g_{m} V_{g s}-s C_{g d} V_{g s} \approx g_{m} V_{g s} \\
+V_{g s}=\frac{I_{i}}{s\left(C_{g s}+C_{g d}\right)} \\
+\frac{I_{o}}{I_{i}}=\frac{g_{m}}{s\left(C_{g s}+C_{g d}\right)} \\
+\left|\frac{I_{o}}{I_{i}}\right|=\frac{g_{m}}{\omega\left(C_{g s}+C_{g d}\right)} \\
+\omega_{T}=g_{m} /\left(C_{g s}+C_{g d}\right) \\
+f_{T}=\omega_{T} / 2 \pi=\frac{g_{m}}{2 \pi\left(C_{g s}+C_{g d}\right)}
+\end{array}</script><h3 id="输入输出范围"><a href="#输入输出范围" class="headerlink" title="输入输出范围"></a>输入输出范围</h3><ul>
+<li>在放大器中，放大MOSFET或MOSFET电流源需要保持在饱和区域中以获得最佳性能。</li>
+<li>电压余量问题：当没有足够的电压余量来保证放大MOSFET或MOSFET电流源保持在饱和区域，通常出现在 40nm 以下制程以及 Vdd 较低时。</li>
+<li>输入范围为 $V_{max}-V_{th}$，其中最小输入电压限制为 $V_{th}$，以确保 M1 保持导通，最大输入电压限制为 $V_{max}$，对应于 $V_{DS}(M1)= V_{dsat}$ 的输入电压</li>
+<li>输出范围为 $V_{DD}-2*V_{dsat}$, 其中最小输入电压限制为 $V{dsat}$，以确保 $V_{DS}(M1)\ge V_{dsat}$，最大输入电压限制为 $V_{DD}-V_{dsat}$，以确保 $|V_{DS}(M2)|&gt;=V_{dsat}$</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/10/05/jqedgyJFOrYcla9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="带源衰减的共源放大器"><a href="#带源衰减的共源放大器" class="headerlink" title="带源衰减的共源放大器"></a>带源衰减的共源放大器</h3><ul>
+<li>如果输入信号超出输入范围，工作点可能会偏离原始/所需的直流偏置点太远，从而离开所需的饱和区域并产生失真</li>
+<li>源衰减：在源和地之间插入阻抗（这是一个负反馈！）以扩展输入范围</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/10/05/OdSQhRk8jLJBnDK.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://s2.loli.net/2023/10/05/pT4VqI5dMP7ythZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>考虑上沟道长度调制和体偏效应，跨导</p>
+<script type="math/tex; mode=display">
+G_{m}=\frac{I_{\text {out }}}{V_{\text {in }}}=\frac{g_{m} r_{O}}{R_{S}+\left[1+\left(g_{m}+g_{m b}\right) R_{S}\right] r_{O}}</script><p>在输出端增加测试电压 $V_{X}$，计算输出阻抗：<br><img src="https://s2.loli.net/2023/10/05/hkUc9CXtHDiVsZT.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+R_{out}=r_O+R_S+(g_m+g_{mb})r_OR_S</script>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">大学学习生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E7%94%B5%E8%B7%AF/">电路</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/09/13/%E6%95%B0%E5%AD%97%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数字集成电路设计笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/09/13/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">数字信号处理笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', '1357310795/Blog-Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.12.3/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/anchor-js/4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.8/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

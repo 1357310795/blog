@@ -1,0 +1,931 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/doge.png">
+  <link rel="icon" href="/img/doge.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#e4ad97">
+  <meta name="description" content="">
+  <meta name="author" content="Teruteru">
+  <meta name="keywords" content="">
+  
+  <title>数电笔记 - Teruteru的Hexo博客</title>
+
+  <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myiconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"teru.space","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/99815360_p0.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="数电笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-08-06 11:11" pubdate>
+        2022年8月6日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      170
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数电笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年10月7日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="Chapter-1-Introductory-Concepts"><a href="#Chapter-1-Introductory-Concepts" class="headerlink" title="Chapter 1 Introductory Concepts"></a>Chapter 1 Introductory Concepts</h2><h3 id="Analog-amp-Digital-Quantity"><a href="#Analog-amp-Digital-Quantity" class="headerlink" title="Analog &amp; Digital Quantity"></a>Analog &amp; Digital Quantity</h3><ul>
+<li>An analog quantity is one having continuous values. </li>
+<li>A digital quantity is one having a discrete set of values. </li>
+</ul>
+<h3 id="Sampled-Value"><a href="#Sampled-Value" class="headerlink" title="Sampled Value"></a>Sampled Value</h3><p>Sampled-value representation of the analog quantity</p>
+<ul>
+<li>Discrete in time domain</li>
+<li>Continues values</li>
+</ul>
+<h3 id="Binary-Digits"><a href="#Binary-Digits" class="headerlink" title="Binary Digits"></a>Binary Digits</h3><p>Each of the two digits in the binary system, 1 and 0, is called a <strong>bit</strong>, which is a contraction of the words binary digit.</p>
+<h3 id="Logical-Levels"><a href="#Logical-Levels" class="headerlink" title="Logical Levels"></a>Logical Levels</h3><p>Digital electronics involves circuits and systems in which there are only two possible states. These states are represented by two different voltage levels: a <strong>HIGH</strong> and a <strong>LOW</strong>. </p>
+<h3 id="Digital-Waveforms"><a href="#Digital-Waveforms" class="headerlink" title="Digital Waveforms"></a>Digital Waveforms</h3><p>Digital waveforms consist of voltage levels that are changing back and forth between the HIGH and LOW levels or states.</p>
+<h4 id="Ideal-Pulse"><a href="#Ideal-Pulse" class="headerlink" title="Ideal Pulse"></a>Ideal Pulse</h4><p>The Pulse As indicated in Figure 1-6, a pulse has two edges: a <strong>leading edge</strong> that occurs first at time $t_0$ and a <strong>trailing edge</strong> that occurs last at time $t_1$. For a positive-going pulse, the leading edge is a rising edge, and the trailing edge is a falling edge. The pulses in Figure 1-6 are ideal because the rising and falling edges are assumed to change in zero time (instantaneously). In practice, these transitions never occur instantaneously, although for most digital work you can assume ideal pulses.</p>
+<p><img src="https://s2.loli.net/2022/09/18/j4tNXpGTEo5S2gW.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="Nonideal-Pulse"><a href="#Nonideal-Pulse" class="headerlink" title="Nonideal Pulse"></a>Nonideal Pulse</h4><ul>
+<li>The time required for a pulse to go from its LOW level to its HIGH level is called the <strong>rise time</strong> ($t_r$)</li>
+<li>The time required for the transition from the HIGH level to the LOW level is called the <strong>fall time</strong> ($t_f$)</li>
+<li>In practice, it is common to measure rise time from 10% of the pulse <strong>amplitude</strong> (height from baseline) to 90% of the pulse amplitude and to measure the fall time from 90% to 10% of the pulse amplitude, as indicated in Figure 1-7. </li>
+<li>The bottom 10% and the top 10% of the pulse are <strong>not included</strong> in the rise and fall times because of the nonlinearities in the waveform in these areas. </li>
+<li>The <strong>pulse width</strong> ($t_w$) is a measure of the duration of the pulse and is often defined as the time interval between the 50% points on the rising and falling edges, as indicated in Figure 1-7.</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/09/18/5S7kJncO3BqvAN9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="Waveform-Characteristics"><a href="#Waveform-Characteristics" class="headerlink" title="Waveform Characteristics"></a>Waveform Characteristics</h4><ul>
+<li>A periodic pulse waveform is one that repeats itself at a fixed interval, called a <strong>period</strong> ($T$). </li>
+<li>The <strong>frequency</strong> ($f$) is the rate at which it repeats itself and ismeasured in hertz ($\mathrm{Hz}$). </li>
+<li>The <strong>duty cycle</strong> is the ratio of the pulse width ($t_{W}$) to the period ($T$) . It can be expressed as a percentage.<script type="math/tex; mode=display">
+\text { Duty cycle }=\left(\frac{t_{W}}{T}\right) 100 \%</script></li>
+</ul>
+<h3 id="The-Clock"><a href="#The-Clock" class="headerlink" title="The Clock"></a>The Clock</h3><p>In digital systems, all waveforms are synchronized with a basic timing wave-form called the <strong>clock</strong>. The clock is a periodic waveform in which each interval between pulses (the period) equals the time for one bit.</p>
+<h3 id="Timing-Diagrams（时序图）"><a href="#Timing-Diagrams（时序图）" class="headerlink" title="Timing Diagrams（时序图）"></a>Timing Diagrams（时序图）</h3><ul>
+<li>A timing diagram is a graph of digital waveforms showing the actual time relationship of two or more waveforms and how each waveform changes in relation to the others. </li>
+<li>By looking at a timing diagram, you can determine the states (HIGH or LOW) of all the waveforms at any specified point in time and the exact time that a wave-form changes state relative to the other waveforms.</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/09/18/GKH7cAVS8vkbJXj.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Data-Transfer"><a href="#Data-Transfer" class="headerlink" title="Data Transfer"></a>Data Transfer</h3><h4 id="Serial-transfer（串行传输）"><a href="#Serial-transfer（串行传输）" class="headerlink" title="Serial transfer（串行传输）"></a>Serial transfer（串行传输）</h4><p>When bits are transferred in <strong>serial</strong> from one point to another, they are sent one bit at a time along a single conductor. To transfer n bits in series, it takes n time intervals.</p>
+<h4 id="Parallel-transfer（并行传输）"><a href="#Parallel-transfer（并行传输）" class="headerlink" title="Parallel transfer（并行传输）"></a>Parallel transfer（并行传输）</h4><p>When bits are transferred in <strong>parallel</strong> form, all the bits in a group are sent out on separate lines at the same time. There is one line for each bit. To transfer n bits in parallel, it takes one time interval.</p>
+<h3 id="Basic-Logic-Operations"><a href="#Basic-Logic-Operations" class="headerlink" title="Basic Logic Operations"></a>Basic Logic Operations</h3><p><img src="https://s2.loli.net/2022/09/18/iC69FNB34Z2aOy8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="Chapter-2-Number-Systems-Operation-and-Codes"><a href="#Chapter-2-Number-Systems-Operation-and-Codes" class="headerlink" title="Chapter 2 Number Systems, Operation and Codes"></a>Chapter 2 Number Systems, Operation and Codes</h2><h3 id="Number-Systems"><a href="#Number-Systems" class="headerlink" title="Number Systems"></a>Number Systems</h3><h4 id="Decimal-Numbers"><a href="#Decimal-Numbers" class="headerlink" title="Decimal Numbers"></a>Decimal Numbers</h4><p>略</p>
+<h4 id="Binary-Numbers"><a href="#Binary-Numbers" class="headerlink" title="Binary Numbers"></a>Binary Numbers</h4><p>略（LSB、MSB）</p>
+<h4 id="Binary-to-Decimal-Conversion"><a href="#Binary-to-Decimal-Conversion" class="headerlink" title="Binary-to-Decimal Conversion"></a>Binary-to-Decimal Conversion</h4><p>略</p>
+<h4 id="Decimal-to-Binary-Conversion"><a href="#Decimal-to-Binary-Conversion" class="headerlink" title="Decimal-to-Binary Conversion"></a>Decimal-to-Binary Conversion</h4><p>略</p>
+<h4 id="Converting-Decimal-Fractions-to-Binary"><a href="#Converting-Decimal-Fractions-to-Binary" class="headerlink" title="Converting Decimal Fractions to Binary"></a>Converting Decimal Fractions to Binary</h4><p>略</p>
+<h3 id="Binary-Arithmetic"><a href="#Binary-Arithmetic" class="headerlink" title="Binary Arithmetic"></a>Binary Arithmetic</h3><p>略</p>
+<h3 id="Signed-Numbers"><a href="#Signed-Numbers" class="headerlink" title="Signed Numbers"></a>Signed Numbers</h3><h4 id="The-Sign-Bit"><a href="#The-Sign-Bit" class="headerlink" title="The Sign Bit"></a>The Sign Bit</h4><p>The left-most bit in a signed binary number is the <strong>sign bit</strong>, which tells you whether the number is positive or negative.<br><strong>A 0 sign bit indicates a positive number, and a 1 sign bit indicates a negative number.</strong></p>
+<h4 id="Sign-Magnitude-Form"><a href="#Sign-Magnitude-Form" class="headerlink" title="Sign-Magnitude Form"></a>Sign-Magnitude Form</h4><p>When a signed binary number is represented in sign-magnitude, the left-most bit is the sign bit and the remaining bits are the magnitude bits.<br><strong>In the sign-magnitude form, a negative number has the same magnitude bits as the corresponding positive number but the sign bit is a 1 rather than a zero.</strong></p>
+<h3 id="★Complements-of-Binary-Numbers"><a href="#★Complements-of-Binary-Numbers" class="headerlink" title="★Complements of Binary Numbers"></a>★Complements of Binary Numbers</h3><h4 id="1’s-Complement-Code"><a href="#1’s-Complement-Code" class="headerlink" title="1’s Complement (Code)"></a>1’s Complement (Code)</h4><p>The <strong>1’s complement（反数）</strong> of a binary number is found by changing all 1s to 0s and all 0s to 1s.</p>
+<h4 id="2’s-Complement-Code"><a href="#2’s-Complement-Code" class="headerlink" title="2’s Complement (Code)"></a>2’s Complement (Code)</h4><p>The <strong>2’s complement（补数）</strong> of a binary number is found by adding 1 to the LSB of the 1’s complement.</p>
+<h4 id="1’s-Complement-Form（反码）"><a href="#1’s-Complement-Form（反码）" class="headerlink" title="1’s Complement Form（反码）"></a>1’s Complement Form（反码）</h4><p>Positive numbers in 1’s complement form are represented the same way as the positive sign-magnitude numbers. Negative numbers, however, are the 1’s complements of the corresponding positive numbers.（或者符号位不变，其他位取反）</p>
+<h4 id="2’s-Complement-Form（补码）"><a href="#2’s-Complement-Form（补码）" class="headerlink" title="2’s Complement Form（补码）"></a>2’s Complement Form（补码）</h4><p>Positive numbers in 2’s complement form are represented the same way as in the signmagnitude and 1’s complement forms. Negative numbers are the 2’s complements of the corresponding positive numbers.（或者符号位不变，其他位取反+1）</p>
+<h3 id="Arithmetic-Operations-With-Signed-Numbers"><a href="#Arithmetic-Operations-With-Signed-Numbers" class="headerlink" title="Arithmetic Operations With Signed Numbers"></a>Arithmetic Operations With Signed Numbers</h3><p>略</p>
+<h3 id="Hexademical-Numbers"><a href="#Hexademical-Numbers" class="headerlink" title="Hexademical Numbers"></a>Hexademical Numbers</h3><h4 id="Binary-to-Hexadecmal-Conversion"><a href="#Binary-to-Hexadecmal-Conversion" class="headerlink" title="Binary-to-Hexadecmal Conversion"></a>Binary-to-Hexadecmal Conversion</h4><p>略</p>
+<h4 id="Hexadecirmmal-to-Binary-Conversion"><a href="#Hexadecirmmal-to-Binary-Conversion" class="headerlink" title="Hexadecirmmal-to-Binary Conversion"></a>Hexadecirmmal-to-Binary Conversion</h4><p>略</p>
+<h4 id="Hexadecimal-to-Decimal-Conversion"><a href="#Hexadecimal-to-Decimal-Conversion" class="headerlink" title="Hexadecimal-to-Decimal Conversion"></a>Hexadecimal-to-Decimal Conversion</h4><p>略</p>
+<h4 id="Decimal-to-Hexadecimal-Conversion"><a href="#Decimal-to-Hexadecimal-Conversion" class="headerlink" title="Decimal-to-Hexadecimal Conversion"></a>Decimal-to-Hexadecimal Conversion</h4><p>略</p>
+<h4 id="Hexadecimal-Arithmetic-Operations"><a href="#Hexadecimal-Arithmetic-Operations" class="headerlink" title="Hexadecimal Arithmetic Operations"></a>Hexadecimal Arithmetic Operations</h4><p>略</p>
+<h3 id="Octal-Numbers"><a href="#Octal-Numbers" class="headerlink" title="Octal Numbers"></a>Octal Numbers</h3><h4 id="Octal-to-Decimal-Conversion"><a href="#Octal-to-Decimal-Conversion" class="headerlink" title="Octal-to-Decimal Conversion"></a>Octal-to-Decimal Conversion</h4><p>略</p>
+<h4 id="Decimal-to-Octal-Conversion"><a href="#Decimal-to-Octal-Conversion" class="headerlink" title="Decimal-to-Octal Conversion"></a>Decimal-to-Octal Conversion</h4><p>略</p>
+<h4 id="Octal-to-Binary-Conversion"><a href="#Octal-to-Binary-Conversion" class="headerlink" title="Octal-to-Binary Conversion"></a>Octal-to-Binary Conversion</h4><p>略</p>
+<h4 id="Binary-to-Octal-Conversion"><a href="#Binary-to-Octal-Conversion" class="headerlink" title="Binary-to-Octal Conversion"></a>Binary-to-Octal Conversion</h4><p>略</p>
+<h3 id="Binary-Coded-Decimal"><a href="#Binary-Coded-Decimal" class="headerlink" title="Binary Coded Decimal"></a>Binary Coded Decimal</h3><h4 id="The-8421-BCD-Code"><a href="#The-8421-BCD-Code" class="headerlink" title="The 8421 BCD Code"></a>The 8421 BCD Code</h4><p>The 8421 code is a type of <strong>BCD (binary coded decimal) code</strong>. Binary coded decimal means that <strong>each decimal digit</strong>, 0 through 9, is represented by a binary code of four bits. The designation 8421 indicates the binary weights of the four bits. The ease of conversion between 8421 code numbers and the familiar decimal numbers is the main advantage of this code.</p>
+<h4 id="BCD-Addition"><a href="#BCD-Addition" class="headerlink" title="BCD Addition"></a>BCD Addition</h4><p>BCD is a numerical code and can be used in arithmetic operations. Addition is the most important operation because the other three operations (subtraction, multiplication, and division) can be accomplished by the use of addition. Here is how to add two BCD<br>numbers:</p>
+<ol>
+<li>Add the two BCD numbers, using the rules for binary addition in Section 2–4.</li>
+<li>If a 4-bit sum is <strong>equal to or less than 9</strong>, it is a <strong>valid</strong> BCD number.</li>
+<li>If a 4-bit sum is <strong>greater than 9</strong>, or if a carry out of the 4-bit group is generated, it is an invalid result. <strong>Add 6 (0110) to the 4-bit sum in order to skip the six invalid states and return the code to 8421.</strong> If a carry results when 6 is added, simply add the carry to the next 4-bit group. （无效再加6，如果在加6时产生进位，只需将进位加到下一个4位组。）</li>
+</ol>
+<h3 id="Digital-Codes"><a href="#Digital-Codes" class="headerlink" title="Digital Codes"></a>Digital Codes</h3><h4 id="The-Gray-Code"><a href="#The-Gray-Code" class="headerlink" title="The Gray Code"></a>The Gray Code</h4><p>The Gray code is <strong>unweighted</strong> and is <strong>not an arithmetic code</strong>; that is, there are no specific weights assigned to the bit positions. The important feature of the Gray code is that <strong>it exhibits only a single bit change from one code word to the next in sequence</strong>. This property is important in many applications, such as shaft position encoders, where error susceptibility increases with the number of bit changes between adjacent numbers in a sequence.</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\text{Four-bit Gray code}\\
+\begin{array}{ccc|ccc}
+\hline \text { Decimal } & \text { Binary } & \text { Gray Code } & \text { Decimal } & \text { Binary } & \text { Gray Code } \\
+\hline 0 & 0000 & 0000 & 8 & 1000 & 1100 \\
+1 & 0001 & 0001 & 9 & 1001 & 1101 \\
+2 & 0010 & 0011 & 10 & 1010 & 1111 \\
+3 & 0011 & 0010 & 11 & 1011 & 1110 \\
+4 & 0100 & 0110 & 12 & 1100 & 1010 \\
+5 & 0101 & 0111 & 13 & 1101 & 1011 \\
+6 & 0110 & 0101 & 14 & 1110 & 1001 \\
+7 & 0111 & 0100 & 15 & 1111 & 1000 \\
+\hline
+\end{array}
+\end{array}</script><h4 id="Binary-to-Gray-Code-Conversion"><a href="#Binary-to-Gray-Code-Conversion" class="headerlink" title="Binary-to-Gray Code Conversion"></a>Binary-to-Gray Code Conversion</h4><p>Conversion between binary code and Gray code is sometimes useful. The following rules explain how to convert from a binary number to a Gray code word:</p>
+<ol>
+<li>The most significant bit (left-most) in the Gray code is the same as the corresponding MSB in the binary number.</li>
+<li>Going from left to right, add each adjacent pair of binary code bits to get the next Gray code bit. Discard carries.（相邻两个相加得到格雷码对应位）</li>
+</ol>
+<script type="math/tex; mode=display">
+\begin{array}{lllll}
+&1- + \rightarrow &0- + \rightarrow &1- + \rightarrow &1- + \rightarrow &0\quad\quad \text{Binary}\\
+&\downarrow &\downarrow &\downarrow&\downarrow&\downarrow\\
+&1&1&1&0&1\quad\quad \text{Gray}
+\end{array}</script><h4 id="Gray-to-Binary-Code-Conversion"><a href="#Gray-to-Binary-Code-Conversion" class="headerlink" title="Gray-to-Binary Code Conversion"></a>Gray-to-Binary Code Conversion</h4><p>To convert from Gray code to binary, use a similar method; however, there are some differences. The following rules apply:</p>
+<ol>
+<li>The most significant bit (left-most) in the binary code is the same as the corresponding bit in the Gray code.</li>
+<li>Add each binary code bit generated to the Gray code bit in the next adjacent position. Discard carries.</li>
+</ol>
+<p><img src="https://s2.loli.net/2022/09/22/pRG3NKvWFPVIreA.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Error-Codes"><a href="#Error-Codes" class="headerlink" title="Error Codes"></a>Error Codes</h3><h4 id="Parity-Method-for-Error-Detection（错误检测的奇偶校验法）"><a href="#Parity-Method-for-Error-Detection（错误检测的奇偶校验法）" class="headerlink" title="Parity Method for Error Detection（错误检测的奇偶校验法）"></a>Parity Method for Error Detection（错误检测的奇偶校验法）</h4><p>Many systems use a parity bit as a means for bit error detection. Any group of bits contain either an even or an odd number of 1s. A parity bit is attached to a group of bits to make the total number of 1s in a group always even or always odd. An even parity bit makes the total number of 1s even, and an odd parity bit makes the total odd.（even parity bit 使总的 1 的个数（包括校验位）是偶数）</p>
+<h2 id="Chapter-3-Logic-Gates"><a href="#Chapter-3-Logic-Gates" class="headerlink" title="Chapter 3 Logic Gates"></a>Chapter 3 Logic Gates</h2><h3 id="The-inverter-NOT-circuit-（逆变器-非门）"><a href="#The-inverter-NOT-circuit-（逆变器-非门）" class="headerlink" title="The inverter (NOT circuit)（逆变器/非门）"></a>The inverter (NOT circuit)（逆变器/非门）</h3><p>The inverter (NOT circuit) performs the operation called inversion or complementation. The inverter changes one logic level to the opposite level. In terms of bits, it changes a 1 to a 0 and a 0 to a 1.</p>
+<h4 id="Standard-Symbols-amp-Truth-Table"><a href="#Standard-Symbols-amp-Truth-Table" class="headerlink" title="Standard Symbols &amp; Truth Table"></a>Standard Symbols &amp; Truth Table</h4><p><a target="_blank" rel="noopener" href="http://47.100.52.206/short/gwqs"><img src="/img/数电/inverter.drawio.png" srcset="/img/loading.gif" lazyload></a></p>
+<h4 id="The-Negation-and-Polarity-Indicators"><a href="#The-Negation-and-Polarity-Indicators" class="headerlink" title="The Negation and Polarity Indicators"></a>The Negation and Polarity Indicators</h4><p>The negation indicator is a “bubble” ($\circ$) that indicates inversion or complementation when it appears on the input or output of any logic element, as shown in Figure 3–1(a) for the inverter. Generally, inputs are on the left of a logic symbol and the output is on the right.<br>When appearing on the input, the bubble means that a 0 is the active or asserted input state, and the input is called an active-LOW input. When appearing on the output, the bubble means that a 0 is the active or asserted output state, and the output is called an active-LOW output. The absence of a bubble on the input or output means that a 1 is the active or asserted state, and in this case, the input or output is called active-HIGH.</p>
+<h3 id="The-AND-Gate"><a href="#The-AND-Gate" class="headerlink" title="The AND Gate"></a>The AND Gate</h3><p>An AND gate produces a HIGH output only when all of the inputs are HIGH. When any of the inputs is LOW, the output is LOW.</p>
+<h4 id="Standard-Symbols-amp-Truth-Table-1"><a href="#Standard-Symbols-amp-Truth-Table-1" class="headerlink" title="Standard Symbols &amp; Truth Table"></a>Standard Symbols &amp; Truth Table</h4><p><a target="_blank" rel="noopener" href="http://47.100.52.206/short/gwqs"><img src="/img/数电/and.drawio.png" srcset="/img/loading.gif" lazyload></a></p>
+<h3 id="The-OR-Gate"><a href="#The-OR-Gate" class="headerlink" title="The OR Gate"></a>The OR Gate</h3><p>An OR gate produces a HIGH on the output when any of the inputs is HIGH. The output is<br>LOW only when all of the inputs are LOW.</p>
+<h4 id="Standard-Symbols-amp-Truth-Table-2"><a href="#Standard-Symbols-amp-Truth-Table-2" class="headerlink" title="Standard Symbols &amp; Truth Table"></a>Standard Symbols &amp; Truth Table</h4><p><a target="_blank" rel="noopener" href="http://47.100.52.206/short/gwqs"><img src="/img/数电/or.drawio.png" srcset="/img/loading.gif" lazyload></a></p>
+<h3 id="The-NAND-Gate"><a href="#The-NAND-Gate" class="headerlink" title="The NAND Gate"></a>The NAND Gate</h3><p>The term NAND is a contraction of NOT-AND and implies an AND function with a complemented (inverted) output. The standard logic symbol for a 2-input NAND gate and its equivalency to an AND gate followed by an inverter.</p>
+<h4 id="Standard-Symbols-amp-Truth-Table-3"><a href="#Standard-Symbols-amp-Truth-Table-3" class="headerlink" title="Standard Symbols &amp; Truth Table"></a>Standard Symbols &amp; Truth Table</h4><p><a target="_blank" rel="noopener" href="http://47.100.52.206/short/gwqs"><img src="/img/数电/nand.drawio.png" srcset="/img/loading.gif" lazyload></a></p>
+<h3 id="The-NOR-Gate"><a href="#The-NOR-Gate" class="headerlink" title="The NOR Gate"></a>The NOR Gate</h3><p>The term NOR is a contraction of NOT-OR and implies an OR function with an inverted (complemented) output. The standard logic symbol for a 2-input NOR gate and its equivalent OR gate followed by an inverter</p>
+<h4 id="Standard-Symbols-amp-Truth-Table-4"><a href="#Standard-Symbols-amp-Truth-Table-4" class="headerlink" title="Standard Symbols &amp; Truth Table"></a>Standard Symbols &amp; Truth Table</h4><p><a target="_blank" rel="noopener" href="http://47.100.52.206/short/gwqs"><img src="/img/数电/nor.drawio.png" srcset="/img/loading.gif" lazyload></a></p>
+<h3 id="The-Exclusive-OR-Gate"><a href="#The-Exclusive-OR-Gate" class="headerlink" title="The Exclusive-OR Gate"></a>The Exclusive-OR Gate</h3><p>The output of an exclusive-OR gate is HIGH only when the two inputs are at opposite logic levels.</p>
+<h4 id="Standard-Symbols-amp-Truth-Table-5"><a href="#Standard-Symbols-amp-Truth-Table-5" class="headerlink" title="Standard Symbols &amp; Truth Table"></a>Standard Symbols &amp; Truth Table</h4><p><a target="_blank" rel="noopener" href="http://47.100.52.206/short/gwqs"><img src="/img/数电/xor.drawio.png" srcset="/img/loading.gif" lazyload></a></p>
+<h3 id="The-Exclusive-NOR-Gate"><a href="#The-Exclusive-NOR-Gate" class="headerlink" title="The Exclusive-NOR Gate"></a>The Exclusive-NOR Gate</h3><p>The bubble on the output of the XNOR symbol indicates that its output is opposite that of the XOR gate. When the two input logic levels are opposite, the output of the exclusive-NOR gate is LOW.</p>
+<h4 id="Standard-Symbols-amp-Truth-Table-6"><a href="#Standard-Symbols-amp-Truth-Table-6" class="headerlink" title="Standard Symbols &amp; Truth Table"></a>Standard Symbols &amp; Truth Table</h4><p><a target="_blank" rel="noopener" href="http://47.100.52.206/short/gwqs"><img src="/img/数电/xnor.drawio.png" srcset="/img/loading.gif" lazyload></a></p>
+<h2 id="Chapter-4-Boolean-Algebra-and-Logic-Simplification"><a href="#Chapter-4-Boolean-Algebra-and-Logic-Simplification" class="headerlink" title="Chapter 4 Boolean Algebra and Logic Simplification"></a>Chapter 4 Boolean Algebra and Logic Simplification</h2><h3 id="Terms-in-Boolean-Algebra"><a href="#Terms-in-Boolean-Algebra" class="headerlink" title="Terms in Boolean Algebra"></a>Terms in Boolean Algebra</h3><ul>
+<li>A <strong>variable</strong>（变量） is a symbol (usually an italic uppercase letter or word) used to represent an action, a condition, or data. Any single variable can have only a 1 or a 0 value. </li>
+<li>The <strong>complement</strong>（补） is the inverse of a variable and is indicated by a bar over the variable (overbar). For example, the complement of the variable $A$ is $\bar{A}$. The complement of the variable A is read as “not A” or “A bar.”</li>
+<li>A <strong>literal</strong>（字） is a variable or the complement of a variable.</li>
+</ul>
+<h3 id="Boolean-Operations-and-Expressions"><a href="#Boolean-Operations-and-Expressions" class="headerlink" title="Boolean Operations and Expressions"></a>Boolean Operations and Expressions</h3><h4 id="Boolean-Addition"><a href="#Boolean-Addition" class="headerlink" title="Boolean Addition"></a>Boolean Addition</h4><p>A <strong>sum term</strong> is a sum of literals. In logic circuits, a sum term is produced by an OR operation with no AND operations involved.</p>
+<h4 id="Boolean-Multiplication"><a href="#Boolean-Multiplication" class="headerlink" title="Boolean Multiplication"></a>Boolean Multiplication</h4><p>A <strong>product term</strong> is the product of literals. In logic circuits, a product term is produced by an AND operation with no OR operations involved.</p>
+<h3 id="Laws-of-Boolean-Algebra"><a href="#Laws-of-Boolean-Algebra" class="headerlink" title="Laws of Boolean Algebra"></a>Laws of Boolean Algebra</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th><div align="center">Laws</div></th>
+<th><div align="center">Equation</div></th>
+<th><div align="center">For</div></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><div align="center">Commutative Laws<br/>交换律</div></td>
+<td><div align="center">$\begin{array}{c}A + B = B + A\\AB=BA\end{array}$</div></td>
+<td>Addition and Multiplication</td>
+</tr>
+<tr>
+<td><div align="center">Associative Laws<br/>结合律</div></td>
+<td><div align="center">$\begin{array}{c}A+(B+C)=(A+B)+C\\A(BC)=(AB)C\end{array}$</div></td>
+<td>Addition and Multiplication</td>
+</tr>
+<tr>
+<td><div align="center">Distributive Law<br/>分配律</div></td>
+<td><div align="center">$\begin{array}{c}A(B + C) = AB + AC\\(A+B)C = AC + BC\end{array}$</div></td>
+<td><div align="center">/</div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Rules-of-Boolean-Algebra"><a href="#Rules-of-Boolean-Algebra" class="headerlink" title="Rules of Boolean Algebra"></a>Rules of Boolean Algebra</h3><script type="math/tex; mode=display">
+\begin{array}{c}
+\text{Basic rules of Boolean algebra}\\
+\hline
+\begin{array}{l\quad l}
+1.  A+0=A &7.  A \cdot A=A\\
+2.  A+1=1 &8.  A \cdot \bar{A}=0 \\
+3.  A \cdot 0=0 &9.  \bar{\bar{A}}=A \\
+4.  A \cdot 1=A &10.  A+A B=A \\
+5.  A+A=A &11.  A+\bar{A} B=A+B\\ 
+6.  A+\bar{A}=1 &12.  (A+B)(A+C)=A+B C \\
+\end{array}
+\end{array}</script><ul>
+<li>$AB+\bar{A}C+BC=AB+\bar{A}C$</li>
+</ul>
+<h4 id="DeMorgan’s-Theorems（德摩根定律）"><a href="#DeMorgan’s-Theorems（德摩根定律）" class="headerlink" title="DeMorgan’s Theorems（德摩根定律）"></a>DeMorgan’s Theorems（德摩根定律）</h4><ul>
+<li>First theorem<br>The complement of a product of variables is equal to the sum of the complements of the variables.<br>The complement of two or more ANDed variables is equivalent to the OR of the complements of the individual variables.<script type="math/tex; mode=display">
+\overline{XY}=\bar{X}+\bar{Y}</script></li>
+<li>Second theorem<br>The complement of a sum of variables is equal to the product of the complements of the variables.<br>The complement of two or more ORed variables is equivalent to the AND of the complements of the individual variables.<script type="math/tex; mode=display">
+\overline{X+Y}=\bar{X}\bar{Y}</script></li>
+</ul>
+<h3 id="Standard-Forms-of-Boolean-Expressions"><a href="#Standard-Forms-of-Boolean-Expressions" class="headerlink" title="Standard Forms of Boolean Expressions"></a>Standard Forms of Boolean Expressions</h3><p><strong>SOP找1，POS找0</strong></p>
+<h4 id="The-Sum-of-Products-SOP-Form"><a href="#The-Sum-of-Products-SOP-Form" class="headerlink" title="The Sum-of-Products (SOP) Form"></a>The Sum-of-Products (SOP) Form</h4><p>When two or more product terms are summed by Boolean addition, the resulting expression is a sum-of-products (SOP).<br>In an SOP expression, a single overbar cannot extend over more than one variable; however, more than one variable in a term can have an overbar.</p>
+<h4 id="Domain-of-a-Boolean-Expression"><a href="#Domain-of-a-Boolean-Expression" class="headerlink" title="Domain of a Boolean Expression"></a>Domain of a Boolean Expression</h4><p>The domain of a general Boolean expression is the set of variables contained in the expression in either complemented or uncomplemented form.</p>
+<h4 id="The-Standard-SOP-Form"><a href="#The-Standard-SOP-Form" class="headerlink" title="The Standard SOP Form"></a>The Standard SOP Form</h4><p>A standard SOP expression is one in which all the variables in the domain appear in each product term in the expression.<br>Any nonstandard SOP expression (referred to simply as SOP) can be converted to the standard form using Boolean algebra.</p>
+<h4 id="Converting-Product-Terms-to-Standard-SOP"><a href="#Converting-Product-Terms-to-Standard-SOP" class="headerlink" title="Converting Product Terms to Standard SOP"></a>Converting Product Terms to Standard SOP</h4><p>Each product term in an SOP expression that does not contain all the variables in the domain can be expanded to standard form to include all variables in the domain and their complements.<br>Step 1: Multiply each nonstandard product term by a term made up of the sum of a missing variable and its complement. This results in two product terms. As you know, you can multiply anything by 1 without changing its value.（缺失变量的项乘以 $1$，$1$ 变成 $A+\bar{A}$，再用分配律展开）<br>Step 2: Repeat Step 1 until all resulting product terms contain all variables in the domain in either complemented or uncomplemented form. In converting a product term to standard form, the number of product terms is doubled for each missing variable.</p>
+<h4 id="Binary-Representation-of-a-Standard-Product-Term"><a href="#Binary-Representation-of-a-Standard-Product-Term" class="headerlink" title="Binary Representation of a Standard Product Term"></a>Binary Representation of a Standard Product Term</h4><p>The product term has a binary value 使对应的 Term 值为 1</p>
+<h4 id="The-Product-of-Sums-POS-Form"><a href="#The-Product-of-Sums-POS-Form" class="headerlink" title="The Product-of-Sums (POS) Form"></a>The Product-of-Sums (POS) Form</h4><p>When two or more sum terms are multiplied, the resulting expression is a product-of-sums (POS).<br>In a POS expression, a single overbar cannot extend over more than one variable; however, more than one variable in a term can have an overbar.</p>
+<h4 id="The-Standard-POS-Form"><a href="#The-Standard-POS-Form" class="headerlink" title="The Standard POS Form"></a>The Standard POS Form</h4><p>A standard POS expression is one in which all the variables in the domain appear in each sum term in the expression.<br>Any nonstandard POS expression (referred to simply as POS) can be converted to the standard form using Boolean algebra.</p>
+<h4 id="Converting-a-Sum-Term-to-Standard-POS"><a href="#Converting-a-Sum-Term-to-Standard-POS" class="headerlink" title="Converting a Sum Term to Standard POS"></a>Converting a Sum Term to Standard POS</h4><p>Each sum term in a POS expression that does not contain all the variables in the domain can be expanded to standard form to include all variables in the domain and their complements.<br>Step 1: Add to each nonstandard product term a term made up of the product of the missing variable and its complement. This results in two sum terms. As you know, you can add 0 to anything without changing its value.（缺失变量的项加上 $0$，$0$ 变成 $A\cdot\bar{A}$，再用 $A + BC = (A + B)(A + C)$ 展开）<br>Step 2: Apply rule 12 : $A + BC = (A + B)(A + C)$<br>Step 3: Repeat Step 1 until all resulting sum terms contain all variables in the domain in either complemented or uncomplemented form.</p>
+<h4 id="Binary-Representation-of-a-Standard-Sum-Term"><a href="#Binary-Representation-of-a-Standard-Sum-Term" class="headerlink" title="Binary Representation of a Standard Sum Term"></a>Binary Representation of a Standard Sum Term</h4><p>The sum term has a binary value 使对应的 Term 值为 0</p>
+<h4 id="Converting-Standard-SOP-to-Standard-POS"><a href="#Converting-Standard-SOP-to-Standard-POS" class="headerlink" title="Converting Standard SOP to Standard POS"></a>Converting Standard SOP to Standard POS</h4><p>The binary values of the product terms in a given standard SOP expression are not present in the equivalent standard POS expression. Also, the binary values that are not represented in the SOP expression are present in the equivalent POS expression.<br>Step 1: Evaluate each product term in the SOP expression. That is, <strong>determine the binary numbers</strong> that represent the product terms.（积的binary value是让积为1的数）<br>Step 2: Determine all of the binary numbers <strong>not included</strong> in the evaluation in Step 1.<br>Step 3: Write the equivalent sum term <strong>for each binary number from Step 2</strong> and express in POS form.</p>
+<h4 id="Converting-SOP-Expressions-to-Truth-Table-Format"><a href="#Converting-SOP-Expressions-to-Truth-Table-Format" class="headerlink" title="Converting SOP Expressions to Truth Table Format"></a>Converting SOP Expressions to Truth Table Format</h4><ul>
+<li>First in constructing a truth table is to list all possible combinations of binary values of the variables in the expression. </li>
+<li>Next, convert the SOP expression to standard form if it is not already. </li>
+<li>Finally, place a 1 in the output column (X) for each binary value that makes the standard SOP expression a 1 and place a 0 for all the remaining binary values.</li>
+</ul>
+<h4 id="Converting-POS-Expressions-to-Truth-Table-Format"><a href="#Converting-POS-Expressions-to-Truth-Table-Format" class="headerlink" title="Converting POS Expressions to Truth Table Format"></a>Converting POS Expressions to Truth Table Format</h4><ul>
+<li>First list all the possible combinations of binary values of the variables just as was done for the SOP expression. </li>
+<li>Next, convert the POS expression to standard form if it is not already. </li>
+<li>Finally, place a 0 in the output column (X) for each binary value that makes the expression a 0 and place a 1 for all the remaining binary values.</li>
+</ul>
+<h4 id="Determining-Standard-Expressions-from-a-Truth-Table"><a href="#Determining-Standard-Expressions-from-a-Truth-Table" class="headerlink" title="Determining Standard Expressions from a Truth Table"></a>Determining Standard Expressions from a Truth Table</h4><p>To determine the standard SOP expression represented by a truth table, list the binary values of the input variables for which the output is 1. Convert each binary value to the corresponding product term by replacing each 1 with the corresponding variable and each 0 with the corresponding variable complement.</p>
+<p>To determine the standard POS expression represented by a truth table, list the binary values for which the output is 0. Convert each binary value to the corresponding sum term by replacing each 1 with the corresponding variable complement and each 0 with the corresponding variable.</p>
+<h3 id="The-Karnaugh-Map（卡诺图）"><a href="#The-Karnaugh-Map（卡诺图）" class="headerlink" title="The Karnaugh Map（卡诺图）"></a>The Karnaugh Map（卡诺图）</h3><p>A Karnaugh map provides a <strong>systematic</strong> method for simplifying Boolean expressions and, if properly used, will produce the simplest SOP or POS expression possible, known as the minimum expression.</p>
+<p>A Karnaugh map is similar to a truth table because it presents all of the possible values of input variables and the resulting output for each value. Instead of being organized into columns and rows like a truth table, the Karnaugh map is <strong>an array of cells</strong> in which <strong>each cell represents a binary value of the input variables</strong>. The cells are arranged in a way so that simplification of a given expression is simply a matter of properly grouping the cells. Karnaugh maps can be used for expressions with two, three, four, and five variables, but we<br>will discuss only 3-variable and 4-variable situations to illustrate the principles. </p>
+<h4 id="The-3-Variable-Karnaugh-Map"><a href="#The-3-Variable-Karnaugh-Map" class="headerlink" title="The 3-Variable Karnaugh Map"></a>The 3-Variable Karnaugh Map</h4><p><img src="https://s2.loli.net/2022/09/29/euHL3arcTJnVQwo.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="The-4-Variable-Karnaugh-Map"><a href="#The-4-Variable-Karnaugh-Map" class="headerlink" title="The 4-Variable Karnaugh Map"></a>The 4-Variable Karnaugh Map</h4><p><img src="https://s2.loli.net/2022/09/29/Dp9ZaonmEUje75W.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="Cell-Adjacency"><a href="#Cell-Adjacency" class="headerlink" title="Cell Adjacency"></a>Cell Adjacency</h4><p>The cells in a Karnaugh map are arranged so that there is <strong>only a single-variable change</strong> between adjacent cells. Adjacency is defined by a single-variable change.</p>
+<ul>
+<li>A cell is not adjacent to the cells that diagonally touch any of its corners.（对角线不相邻）</li>
+<li>Also, the cells in the top row are adjacent to the corresponding cells in the bottom row.（首尾行相连）</li>
+<li>And the cells in the outer left column are adjacent to the corresponding cells in the outer right column.（首尾列相邻）</li>
+<li>This is called “wrap-around” adjacency（“环绕式”邻接） because you can think of the map as wrapping around from top to bottom to form a cylinder or from left to right to form a cylinder. </li>
+</ul>
+<h4 id="Karnaugh-Map-SOP-Minimization"><a href="#Karnaugh-Map-SOP-Minimization" class="headerlink" title="Karnaugh Map SOP Minimization"></a>Karnaugh Map SOP Minimization</h4><p>A minimized SOP expression contains the fewest possible terms with the fewest possible variables per term.</p>
+<h5 id="Steps-One-Mapping-a-Standard-SOP-Expression"><a href="#Steps-One-Mapping-a-Standard-SOP-Expression" class="headerlink" title="Steps One : Mapping a Standard SOP Expression"></a>Steps One : Mapping a Standard SOP Expression</h5><p>Determine the <strong>binary value</strong> of each product term in the standard SOP expression. As each product term is evaluated, place a 1 on the Karnaugh map in the cell having the same value as the product term.<br>For an SOP expression in standard form, a 1 is placed on the Karnaugh map for each product term in the expression. Each 1 is placed in a cell corresponding to the value of a product term. </p>
+<h5 id="Step-Two-Grouping-the-1s"><a href="#Step-Two-Grouping-the-1s" class="headerlink" title="Step Two : Grouping the 1s"></a>Step Two : Grouping the 1s</h5><ol>
+<li>A group must <strong>contain either 1, 2, 4, 8, or 16 cells</strong>, which are all powers of two. In the case of a 3-variable map, 2^3 = 8 cells is the maximum group.（总数是 2 的幂）</li>
+<li>Each cell in a group must <strong>be adjacent to one or more cells in that same group</strong>, but all cells in the group do not have to be adjacent to each other.（长方形）</li>
+<li>Always include the largest possible number of 1s in a group in accordance with rule 1.（长方形最大化）</li>
+<li>Each 1 on the map must be included in at least one group. The 1s already in a group can be included in another group as long as the overlapping groups include noncommon 1s.（所有 1 都要进组，可以进多组）</li>
+</ol>
+<h5 id="Step-Three-Determining-the-Minimum-SOP-Expression-from-the-Map"><a href="#Step-Three-Determining-the-Minimum-SOP-Expression-from-the-Map" class="headerlink" title="Step Three : Determining the Minimum SOP Expression from the Map"></a>Step Three : Determining the Minimum SOP Expression from the Map</h5><ol>
+<li>Each group of cells containing 1s creates one product term composed of all variables that occur in only one form (either uncomplemented or complemented) within the group. Variables that occur both uncomplemented and complemented within the group are eliminated. These are called <strong>contradictory variables</strong></li>
+<li>Determine the minimum product term for each group.<ul>
+<li>For a 3-variable map:<ul>
+<li>A 1-cell group yields a 3-variable product term</li>
+<li>A 2-cell group yields a 2-variable product term</li>
+<li>A 4-cell group yields a 1-variable term</li>
+<li>An 8-cell group yields a value of 1 for the expression</li>
+</ul>
+</li>
+<li>For a 4-variable map:<ul>
+<li>A 1-cell group yields a 4-variable product term</li>
+<li>A 2-cell group yields a 3-variable product term</li>
+<li>A 4-cell group yields a 2-variable product term</li>
+<li>An 8-cell group yields a 1-variable term</li>
+<li>A 16-cell group yields a value of 1 for the expression</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h5 id="“Don’t-Care”-Conditions"><a href="#“Don’t-Care”-Conditions" class="headerlink" title="“Don’t Care” Conditions"></a>“Don’t Care” Conditions</h5><p>Sometimes a situation arises in which some input variable combinations are not allowed. The “don’t care” terms can be used to advantage on the Karnaugh map. For each “don’t care” term, an X is placed in the cell. When grouping the 1s, the Xs can be treated <strong>as 1s</strong> to make a larger grouping or <strong>as 0s</strong> if they cannot be used to advantage. The larger a group, the simpler the resulting term will be.</p>
+<h4 id="Karnaugh-Map-POS-Minimization"><a href="#Karnaugh-Map-POS-Minimization" class="headerlink" title="Karnaugh Map POS Minimization"></a>Karnaugh Map POS Minimization</h4><h5 id="Steps-One-Mapping-a-Standard-POS-Expression"><a href="#Steps-One-Mapping-a-Standard-POS-Expression" class="headerlink" title="Steps One : Mapping a Standard POS Expression"></a>Steps One : Mapping a Standard POS Expression</h5><p>Determine the <strong>binary value</strong> of each sum term in the standard POS expression. This is the binary value that makes the term equal to 0. As each sum term is evaluated, <strong>place a 0</strong> on the Karnaugh map in the corresponding cell.<br>For a POS expression in standard form, a 0 is placed on the Karnaugh map for each sum term in the expression. Each 0 is placed in a cell corresponding to the value of a sum term.</p>
+<h5 id="Step-Two-Grouping-the-1s-1"><a href="#Step-Two-Grouping-the-1s-1" class="headerlink" title="Step Two : Grouping the 1s"></a>Step Two : Grouping the 1s</h5><p>The process for minimizing a POS expression is basically the same as for an SOP expression except that you <strong>group 0s</strong> to produce minimum sum terms instead of grouping 1s to produce minimum product terms.</p>
+<h5 id="Step-Three-Determining-the-Minimum-POS-Expression-from-the-Map"><a href="#Step-Three-Determining-the-Minimum-POS-Expression-from-the-Map" class="headerlink" title="Step Three : Determining the Minimum POS Expression from the Map"></a>Step Three : Determining the Minimum POS Expression from the Map</h5><h4 id="Converting-Between-POS-and-SOP-Using-the-Karnaugh-Map"><a href="#Converting-Between-POS-and-SOP-Using-the-Karnaugh-Map" class="headerlink" title="Converting Between POS and SOP Using the Karnaugh Map"></a>Converting Between POS and SOP Using the Karnaugh Map</h4><p>略</p>
+<h2 id="Chapter-5-Combinational-Logic-Analysis"><a href="#Chapter-5-Combinational-Logic-Analysis" class="headerlink" title="Chapter 5 Combinational Logic Analysis"></a>Chapter 5 Combinational Logic Analysis</h2><p>略</p>
+<h2 id="Chapter-6-Functions-of-Combinational-Logic"><a href="#Chapter-6-Functions-of-Combinational-Logic" class="headerlink" title="Chapter 6 Functions of Combinational Logic"></a>Chapter 6 Functions of Combinational Logic</h2><h3 id="The-Half-Adder"><a href="#The-Half-Adder" class="headerlink" title="The Half-Adder"></a>The Half-Adder</h3><p>The half-adder accepts two binary digits on its inputs and produces two binary digits on its outputs——a sum bit($\Sigma$) and a carry bit($C_{\mathrm{out}}$).</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+C_\mathrm{out} = AB\\
+\Sigma=A\oplus B
+\end{array}</script><h3 id="The-Full-Adder"><a href="#The-Full-Adder" class="headerlink" title="The Full-Adder"></a>The Full-Adder</h3><p>The full-adder accepts two input bits and an input carry($C_{\mathrm{in}}$) and generates a sum output and an output carry.</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+C_\mathrm{out} = AB+(A\oplus B) C_{\mathrm{in}}\\
+\Sigma=(A\oplus B)\oplus C_{\mathrm{in}}
+\end{array}</script><h3 id="Parallel-Binary-Adders"><a href="#Parallel-Binary-Adders" class="headerlink" title="Parallel Binary Adders"></a>Parallel Binary Adders</h3><p>Two or more full-adders are connected to form <strong>parallel binary adders</strong>.</p>
+<h4 id="Four-Bit-Parallel-Adders"><a href="#Four-Bit-Parallel-Adders" class="headerlink" title="Four-Bit Parallel Adders"></a>Four-Bit Parallel Adders</h4><p>A group of four bits is called a <strong>nibble</strong>. A basic 4-bit parallel adder is implemented with four full-adder stages as shown in Figure 6–9. Again, the LSBs (A1 and B1) in each number being added go into the right-most full-adder; the higher-order bits are applied as shown to the successively higher-order adders, with the MSBs (A4 and B4) in each number being applied to the left-most full-adder. The carry output of each adder is connected to the carry input of the next higher-order adder as indicated. These are called <strong>internal carries</strong>.</p>
+<p><img src="https://s2.loli.net/2022/10/10/w5PoRmdLv9ycHjr.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="Adder-Expansion"><a href="#Adder-Expansion" class="headerlink" title="Adder Expansion"></a>Adder Expansion</h4><p>The 4-bit parallel adder can be expanded to handle the addition of two 8-bit numbers by<br>using two 4-bit adders.</p>
+<h3 id="The-Ripple-Carry-Adder（串行进位加法器）"><a href="#The-Ripple-Carry-Adder（串行进位加法器）" class="headerlink" title="The Ripple Carry Adder（串行进位加法器）"></a>The Ripple Carry Adder（串行进位加法器）</h3><p>A ripple carry adder is one in which the carry output of each full-adder is connected to the carry input of the next higher-order stage (a stage is one full-adder). The sum and the output carry of any stage cannot be produced until the input carry occurs; this causes a time delay in the addition process.</p>
+<h3 id="The-Look-Ahead-Carry-Adder（超前进位加法器）"><a href="#The-Look-Ahead-Carry-Adder（超前进位加法器）" class="headerlink" title="The Look-Ahead Carry Adder（超前进位加法器）"></a>The Look-Ahead Carry Adder（超前进位加法器）</h3><p>The look-ahead carry adder anticipates the output carry of each stage, and based on the inputs, produces the output carry by either carry generation or carry propagation.</p>
+<p>原理略</p>
+<h3 id="Comparators"><a href="#Comparators" class="headerlink" title="Comparators"></a>Comparators</h3><p>The basic function of a comparator is to compare the magnitudes of two binary quantities to determine the relationship of those quantities. In its simplest form, a comparator circuit determines whether two numbers are equal.</p>
+<h4 id="Equality"><a href="#Equality" class="headerlink" title="Equality"></a>Equality</h4><p>In order to produce a single output indicating an equality or inequality of two numbers, an AND gate can be combined with XNOR gates, as shown in Figure 6–19. The output of each exclusive-NOR gate is applied to the AND gate input. When the two input bits for each exclusive-NOR are equal, the corresponding bits of the numbers are equal, producing a 1 on both inputs to the AND gate and thus a 1 on the output. When the two numbers are not equal, one or both sets of corresponding bits are unequal, and a 0 appears on at least one input to the AND gate to produce a 0 on its output. Thus, the output of the AND gate indicates equality (1) or inequality (0) of the two numbers. </p>
+<h4 id="Inequality"><a href="#Inequality" class="headerlink" title="Inequality"></a>Inequality</h4><p>略</p>
+<h4 id="芯片实现"><a href="#芯片实现" class="headerlink" title="芯片实现"></a>芯片实现</h4><p>Use <strong>74HC85</strong> comparators to compare the magnitudes of two 8-bit numbers.<br><img src="https://s2.loli.net/2022/10/15/g5bmvUJceWfLTqD.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Decoders"><a href="#Decoders" class="headerlink" title="Decoders"></a>Decoders</h3><p>A decoder is a digital circuit that detects the presence of a specified combination of bits (code) on its inputs and indicates the presence of that code by a specified output level. In its general form, a decoder has $n$ input lines to handle $n$ bits and from one to $2^n$ output lines to indicate the presence of one or more $n$-bit combinations.</p>
+<h4 id="The-4-Bit-Decoder"><a href="#The-4-Bit-Decoder" class="headerlink" title="The 4-Bit Decoder"></a>The 4-Bit Decoder</h4><p>In order to decode all possible combinations of four bits, sixteen decoding gates are required ($2^4 = 16$). This type of decoder is commonly called either a <strong>4-line-to-16-line decoder</strong> because there are four inputs and sixteen outputs or a 1-of-16 decoder because for any given code on the inputs, one of the sixteen outputs is activated.</p>
+<h5 id="芯片实现-1"><a href="#芯片实现-1" class="headerlink" title="芯片实现"></a>芯片实现</h5><p>The <strong>74HC154</strong> is a good example of a fixed-function IC decoder. There is an <strong>enable function (EN)</strong> provided on this device, which is implemented with a NOR gate used as a negative-AND. A LOW level on each chip select input, CS1 and CS2, is required in order to make the enable gate output (EN) HIGH. The enable gate output is connected to an input of each NAND gate in the decoder, so it must be HIGH for the NAND gates to be enabled. If the enable gate is not activated by a LOW on both inputs, then all sixteen decoder outputs (OUT) will be HIGH regardless of the states of the four input variables.（CS1 和 CS2 全 0 才能激活芯片，未激活时输入全为 1）</p>
+<p><img src="https://s2.loli.net/2022/10/15/QauG2pgvtAhFqJZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>Since the 74HC154 can handle only four bits, two decoders must be used to form a<br>5-bit expansion. </p>
+<p><img src="https://s2.loli.net/2022/10/15/4EI59cLxuyY7lh1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="The-BCD-to-Decimal-Decoder"><a href="#The-BCD-to-Decimal-Decoder" class="headerlink" title="The BCD-to-Decimal Decoder"></a>The BCD-to-Decimal Decoder</h4><p>The BCD-to-decimal decoder converts each BCD code (8421 code) into one of ten possible decimal digit indications. It is frequently referred as a 4-line-to-10-line decoder or a 1-of-10 decoder</p>
+<h5 id="芯片实现-2"><a href="#芯片实现-2" class="headerlink" title="芯片实现"></a>芯片实现</h5><p>The 74HC42 is a fixed-function IC decoder with four BCD inputs and ten active-LOW decimal outputs. </p>
+<p><img src="https://s2.loli.net/2022/10/15/6kKRoQb1esNUMpy.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="The-BCD-to-7-Segment-Decoder"><a href="#The-BCD-to-7-Segment-Decoder" class="headerlink" title="The BCD-to-7-Segment Decoder"></a>The BCD-to-7-Segment Decoder</h4><p>The BCD-to-7-segment decoder accepts the BCD code on its inputs and provides outputs to drive 7-segment display devices to produce a decimal readout.</p>
+<h5 id="芯片实现-3"><a href="#芯片实现-3" class="headerlink" title="芯片实现"></a>芯片实现</h5><p>The <strong>74HC47</strong> is an example of an IC device that decodes a BCD input and drives a 7-segment display. In addition to its decoding and segment drive capability, the 74HC47 has several additional features as indicated by the $\bar{LT}$, $\bar{RBI}$, $\bar{BI}/\bar{RBO}$ functions in the logic symbol of Figure 6–34. As indicated by the bubbles on the logic symbol, all of the outputs (a through g) are active-LOW as are the $\bar{LT}$ (lamp test), $\bar{RBI}$ (ripple blanking input), and $\bar{BI}/\bar{RBO}$ (blanking input/ripple blanking output) functions. The outputs can drive a common-anode 7-segment display directly. Recall that 7-segment displays were discussed in Chapter 4. In addition to decoding a BCD input and producing the appropriate 7-segment outputs, the 74HC47 has lamp test and zero suppression capability.（$\bar{LT}$ 灯管检查，全部都输出 1；$\bar{RBI}$ 为 active 时且 BCD 输入为 0 时，全部输出 0，同时 $\bar{RBO}$ 输出 active）</p>
+<h5 id="Zero-Suppression-for-a-4-Digit-Display"><a href="#Zero-Suppression-for-a-4-Digit-Display" class="headerlink" title="Zero Suppression for a 4-Digit Display"></a>Zero Suppression for a 4-Digit Display</h5><ul>
+<li><p>leading zero suppression<br><img src="https://s2.loli.net/2022/10/15/GUhyPOemaAIKSJT.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+<li><p>trailing zero suppression<br><img src="https://s2.loli.net/2022/10/15/BtbHkxncp9mdfL5.png" srcset="/img/loading.gif" lazyload alt=""></p>
+</li>
+</ul>
+<h3 id="Encoders"><a href="#Encoders" class="headerlink" title="Encoders"></a>Encoders</h3><h4 id="The-Octal-to-Binary-Priority-Encoder"><a href="#The-Octal-to-Binary-Priority-Encoder" class="headerlink" title="The Octal-to-Binary Priority Encoder"></a>The Octal-to-Binary Priority Encoder</h4><p>The <strong>74F148</strong> is a 8-Line-to-3-line priority encoder that has eight active-LOW inputs and three active-LOW binary outputs. The device can be used for converting octal inputs to a 3-bit binary code.</p>
+<p><img src="https://s2.loli.net/2022/10/21/xulXUsToM4YABpq.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>$\bar{EI}$：Enable Input. When inactive, all outputs are deactivated.（激活芯片）</li>
+<li>$\bar{EO}$：Enable output. $\bar{EO}$ is active if $\bar{EI}$ is active and none of the inputs is active.（指示芯片激活且没输入）</li>
+<li>$\bar{GS}$：Gate Strobe. $\bar{GS}$ is active if $\bar{EI}$ is active and any of the inputs is active.（指示芯片激活且有输入）</li>
+</ul>
+<h5 id="Expansion-16-4-Priority-Encoder"><a href="#Expansion-16-4-Priority-Encoder" class="headerlink" title="Expansion: 16-4 Priority Encoder"></a>Expansion: 16-4 Priority Encoder</h5><p><img src="https://s2.loli.net/2022/10/21/pDKmBJt83GvASPg.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="The-Decimal-to-BCD-Priority-Encoder"><a href="#The-Decimal-to-BCD-Priority-Encoder" class="headerlink" title="The Decimal-to-BCD Priority Encoder"></a>The Decimal-to-BCD Priority Encoder</h4><p>This type of encoder performs the same basic encoding function as previously discussed. A priority encoder also offers additional flexibility in that it can be used in applications that require priority detection. The priority function means that the encoder will produce a BCD output corresponding to the <strong>highest-order decimal digit input that is active</strong> and will ignore any other lower-order active inputs. For instance, if the 6 and the 3 inputs are both active, the BCD output is 0110 (which represents decimal 6).</p>
+<h5 id="芯片实现-4"><a href="#芯片实现-4" class="headerlink" title="芯片实现"></a>芯片实现</h5><p>The <strong>74HC147</strong> is a priority encoder with active-LOW inputs (0) for decimal digits 1 through 9 and active-LOW BCD outputs. A BCD zero output is represented when none of the inputs is active.</p>
+<p><img src="https://s2.loli.net/2022/10/15/VwC2Q3Kx7DITo4H.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Code-Converters"><a href="#Code-Converters" class="headerlink" title="Code Converters"></a>Code Converters</h3><h4 id="BCD-to-Binary-Conversion"><a href="#BCD-to-Binary-Conversion" class="headerlink" title="BCD-to-Binary Conversion"></a>BCD-to-Binary Conversion</h4><p>Steps:</p>
+<ol>
+<li>Determine the value or weight of each bit in the BCD number, and represent it by a binary number</li>
+<li>Add all the weights that the corresponding bits are 1s</li>
+<li>The result of this addition is the binary equivalent of the BCD number</li>
+</ol>
+<h5 id="芯片实现-5"><a href="#芯片实现-5" class="headerlink" title="芯片实现"></a>芯片实现</h5><p><img src="https://s2.loli.net/2022/10/21/1zOiHwha3GPUrkb.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Binary-to-Gray-Conversion"><a href="#Binary-to-Gray-Conversion" class="headerlink" title="Binary-to-Gray Conversion"></a>Binary-to-Gray Conversion</h3><p><img src="https://s2.loli.net/2022/10/21/lHZuk9A7OaKrFim.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Gray-to-Binary-Conversion"><a href="#Gray-to-Binary-Conversion" class="headerlink" title="Gray-to-Binary Conversion"></a>Gray-to-Binary Conversion</h3><p><img src="https://s2.loli.net/2022/10/21/ZE4vT1sp6ejonMD.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Multiplexers-Data-Selectors"><a href="#Multiplexers-Data-Selectors" class="headerlink" title="Multiplexers (Data Selectors)"></a>Multiplexers (Data Selectors)</h3><p>A multiplexer (MUX) is a device that allows digital information <strong>from several sources</strong> to be routed <strong>onto a single line</strong> for transmission over that line to a common destination. The basic multiplexer has several data-input lines and a single output line. It also has data-select inputs, which permit digital data on any one of the inputs to be switched to the output line. Multiplexers are also known as data selectors.</p>
+<h4 id="Logic-expression"><a href="#Logic-expression" class="headerlink" title="Logic expression"></a>Logic expression</h4><script type="math/tex; mode=display">
+Y=D_{0} \bar{S}_{1} \bar{S}_{0}+D_{1} \bar{S}_{1} S_{0}+D_{2} S_{1} \bar{S}_{0}+D_{3} S_{1} S_{0}</script><h4 id="芯片实现-6"><a href="#芯片实现-6" class="headerlink" title="芯片实现"></a>芯片实现</h4><p>An MSI 8-input Multiplexer (<strong>74HC151</strong>)<br><img src="https://s2.loli.net/2022/10/21/8jqhml32SxkfwMY.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>The <strong>74HC153</strong> is a dual four-input data selector/multiplexer.<br><img src="https://s2.loli.net/2022/10/21/CR6iLApZKbJsl5M.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="Expansion-16-inputs-multiplexer"><a href="#Expansion-16-inputs-multiplexer" class="headerlink" title="Expansion: 16-inputs multiplexer"></a>Expansion: 16-inputs multiplexer</h4><p><img src="https://s2.loli.net/2022/10/21/8aOIFSdcAGjvM5z.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Demultiplexers-Data-Distributors"><a href="#Demultiplexers-Data-Distributors" class="headerlink" title="Demultiplexers (Data Distributors)"></a>Demultiplexers (Data Distributors)</h3><p>A demultiplexer (DEMUX) basically reverses the multiplexing function. It takes digital information from one line and distributes it to a given number of output lines. For this reason, the demultiplexer is also known as a data distributor. As you will learn, decoders can also be used as demultiplexers.</p>
+<h4 id="芯片实现-7"><a href="#芯片实现-7" class="headerlink" title="芯片实现"></a>芯片实现</h4><p>An MSI 4-16 Demultiplexer (<strong>74HC154</strong>)<br><img src="https://s2.loli.net/2022/10/21/cHetsUbKRgENajS.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Parity-Generators-Checkers"><a href="#Parity-Generators-Checkers" class="headerlink" title="Parity Generators/Checkers"></a>Parity Generators/Checkers</h3><p>An MSI 9-bit Parity Generator/Checker-<strong>74LS280</strong>（生成校验码）<br>This particular device can be used to check for odd or even parity on a 9-bit code (eight data bits and one parity bit), or it can be used to generate a parity bit for a binary code with up to nine bits. The inputs are A through I; when there is an even number of 1s on the inputs, the $\Sigma$ Even output is HIGH and the $\Sigma$ Odd output is LOW.</p>
+<p><img src="https://s2.loli.net/2022/10/21/kH8YD2PV61dBXUt.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>When this device is used as an <strong>even parity checker</strong>, the number of input bits should always be even; and when a parity error occurs, the $\Sigma$ Even output goes LOW and the $\Sigma$ Odd output goes HIGH. When it is used as an <strong>odd parity checker</strong>, the number of input bits should always be odd; and when a parity error occurs, the $\Sigma$ Odd output goes LOW and the $\Sigma$ Even output goes HIGH.</li>
+<li>If this device is used as an <strong>even parity generator</strong>, the parity bit is taken at the $\Sigma$ Odd output because this output is a 0 if there is an even number of input bits and it is a 1 if there is an odd number. When used as an <strong>odd parity generator</strong>, the parity bit is taken at the $\Sigma$ Even output because it is a 0 when the number of inputs bits is odd.</li>
+</ul>
+<h2 id="Chapter-7-Latches-Flip-Flops-and-Timers"><a href="#Chapter-7-Latches-Flip-Flops-and-Timers" class="headerlink" title="Chapter 7 Latches, Flip-Flops, and Timers"></a>Chapter 7 Latches, Flip-Flops, and Timers</h2><h3 id="Bistable-devices（双稳态）"><a href="#Bistable-devices（双稳态）" class="headerlink" title="Bistable devices（双稳态）"></a>Bistable devices（双稳态）</h3><p>Bistable devices have two stable states, called <strong>SET</strong> and <strong>RESET</strong>; they can retain either of these states indefinitely, making them useful as storage devices. </p>
+<h3 id="Monostable-devices（单稳态）"><a href="#Monostable-devices（单稳态）" class="headerlink" title="Monostable devices（单稳态）"></a>Monostable devices（单稳态）</h3><p>The monostable multivibrator, commonly known as the one-shot, has only one stable state. </p>
+<h3 id="Astable-devices（无稳态）"><a href="#Astable-devices（无稳态）" class="headerlink" title="Astable devices（无稳态）"></a>Astable devices（无稳态）</h3><p>The astable multivibrator has no stable state and is used primarily as an oscillator, which is a self-sustained waveform generator. </p>
+<h3 id="Latches"><a href="#Latches" class="headerlink" title="Latches"></a>Latches</h3><p>The latch(锁存器) is a type of <strong>temporary storage device</strong> that has two stable states (bistable) and is normally placed in a category separate from that of flip-flops. Latches are similar to flip-flops because they are bistable devices that can reside in either of two states using a feedback arrangement, in which the outputs are connected back to the opposite inputs. The main difference between latches and flip-flops is in the method used for changing their state.</p>
+<h4 id="The-S-R-SET-RESET-Latch"><a href="#The-S-R-SET-RESET-Latch" class="headerlink" title="The S-R (SET-RESET) Latch"></a>The S-R (SET-RESET) Latch</h4><p>A latch is a type of bistable logic device or multivibrator. An active-HIGH input S-R (SET-RESET) latch is formed with <strong>two cross-coupled NOR gates</strong>; an active-LOW input S-R latch is formed with <strong>two cross-coupled NAND gates</strong>. Notice that the output of each gate is connected to an input of the opposite gate. This produces the regenerative feedback（负反馈） that is characteristic of all latches and flip-flops.</p>
+<h5 id="Truth-table-for-an-active-LOW-input-bar-S-bar-R-latch"><a href="#Truth-table-for-an-active-LOW-input-bar-S-bar-R-latch" class="headerlink" title="Truth table for an active-LOW input $\bar{S}-\bar{R}$ latch"></a>Truth table for an active-LOW input $\bar{S}-\bar{R}$ latch</h5><p><img src="https://s2.loli.net/2022/10/20/NY2MwIZAhinlOPr.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="The-Gated-S-R-Latch"><a href="#The-Gated-S-R-Latch" class="headerlink" title="The Gated S-R Latch"></a>The Gated S-R Latch</h4><p>A gated latch requires an enable input, <strong>EN</strong> (G is also used to designate an enable input). The logic diagram and logic symbol for a gated S-R latch are shown in Figure 7–8. The S and R inputs control the state to which the latch will go when a HIGH level is applied to the EN input.<br>The latch will not change until EN is HIGH; but as long as it remains HIGH, the output is controlled by the state of the S and R inputs. The gated latch is a level-sensitive device. In this circuit, the invalid state occurs when both S and R are simultaneously HIGH and EN is also HIGH.<br><img src="https://s2.loli.net/2022/10/24/NUhVr3qzXnD2Esf.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="The-Gated-D-Latch"><a href="#The-Gated-D-Latch" class="headerlink" title="The Gated D Latch"></a>The Gated D Latch</h4><p>Another type of gated latch is called the <strong>D latch</strong>. It differs from the S-R latch because it has only one input in addition to EN. This input is called the D (data) input. The following figure contains a logic diagram and logic symbol of a D latch. When the D input is HIGH and the EN input is HIGH, the latch will set. When the D input is LOW and EN is HIGH, the latch will reset. Stated another way, the output Q follows the input D when EN is HIGH.</p>
+<p><img src="https://s2.loli.net/2022/10/24/5sUqfYSFdToKEZ4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="芯片实现-8"><a href="#芯片实现-8" class="headerlink" title="芯片实现"></a>芯片实现</h5><p>An example of a gated D latch is the <strong>74HC75</strong> represented by the logic symbol in Figure 7–12(a). The device has four latches. Notice that each active-HIGH EN input is shared by two latches and is designated as a control input (C). The truth table for each latch is shown in Figure 7–12(b). The X in the truth table represents a “don’t care” condition. In this case, when the EN input is LOW, it does not matter what the D input is because the outputs are unaffected and remain in their prior states.</p>
+<p><img src="https://s2.loli.net/2022/10/24/ShfNy3OVLHtEAZP.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Flip-Flops"><a href="#Flip-Flops" class="headerlink" title="Flip-Flops"></a>Flip-Flops</h3><p>Flip-flops are synchronous bistable devices（同步双稳态设备）, also known as bistable multivibrators（双稳态多纤颤器）. In this case, the term synchronous means that the output changes state only at a specified point (leading or trailing edge) on the triggering input called the clock (CLK), which is designated as a control input, C; that is, changes in the output occur in synchronization with the clock. Flip-flops are edge-triggered or edge-sensitive whereas gated latches are level-sensitive.</p>
+<h4 id="Edge-triggered-flip-flop"><a href="#Edge-triggered-flip-flop" class="headerlink" title="Edge-triggered flip-flop"></a>Edge-triggered flip-flop</h4><p>An edge-triggered flip-flop changes state either at the <strong>positive edge</strong> (<strong>rising edge</strong>) or at the <strong>negative edge</strong> (<strong>falling edge</strong>) of the clock pulse and is sensitive to its inputs only at this transition of the clock. Two types of edge-triggered flip-flops are covered in this section: D and J-K. The logic symbols for these flip-flops are shown in Figure 7–13. Notice that each type can be either positive edge-triggered (no bubble at C input) or negative edge-triggered (bubble at C input). The key to identifying an edge-triggered flip-flop by its logic symbol is the small triangle inside the block at the clock (C) input. This triangle is called the dynamic input indicator.</p>
+<h4 id="The-D-Flip-Flop"><a href="#The-D-Flip-Flop" class="headerlink" title="The D Flip-Flop"></a>The D Flip-Flop</h4><p>The D input of the D flip-flop is a synchronous input because data on the input are transferred to the flip-flop’s output <strong>only on the triggering edge of the clock pulse</strong>. </p>
+<ul>
+<li>When D is HIGH, the Q output goes HIGH on the triggering edge of the clock pulse, and the flip-flop is <strong>SET</strong>. </li>
+<li>When D is LOW, the Q output goes LOW on the triggering edge of the clock pulse, and the flip-flop is <strong>RESET</strong>.<br><img src="https://s2.loli.net/2022/10/27/qnpfhsTeVAuW69g.png" srcset="/img/loading.gif" lazyload alt=""></li>
+</ul>
+<h4 id="The-J-K-Flip-Flop"><a href="#The-J-K-Flip-Flop" class="headerlink" title="The J-K Flip-Flop"></a>The J-K Flip-Flop</h4><p>The J and K inputs of the J-K flip-flop are <strong>synchronous inputs</strong> because data on these inputs are transferred to the flip-flop’s output only <strong>on the triggering edge of the clock pulse</strong>. </p>
+<ul>
+<li>When J is HIGH and K is LOW, the Q output goes HIGH on the triggering edge of the clock pulse, and the flip-flop is <strong>SET</strong>. </li>
+<li>When J is LOW and K is HIGH, the Q output goes LOW on the triggering edge of the clock pulse, and the flip-flop is <strong>RESET</strong>. </li>
+<li>When both J and K are LOW, the output does <strong>not change</strong> from its prior state. </li>
+<li>When J and K are both HIGH, the flip-flop changes state. This called the <strong>toggle mode</strong>.</li>
+</ul>
+<p><img src="https://s2.loli.net/2022/10/27/6JOZhzix1vFgMnf.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="Edge-Triggered-Operation（内部实现）"><a href="#Edge-Triggered-Operation（内部实现）" class="headerlink" title="Edge-Triggered Operation（内部实现）"></a>Edge-Triggered Operation（内部实现）</h4><h5 id="D-Flip-Flop"><a href="#D-Flip-Flop" class="headerlink" title="D Flip-Flop"></a>D Flip-Flop</h5><p><img src="https://s2.loli.net/2022/10/27/EI95FBdvriwz3le.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="J-K-Flip-Flop"><a href="#J-K-Flip-Flop" class="headerlink" title="J-K Flip-Flop"></a>J-K Flip-Flop</h5><p><img src="https://s2.loli.net/2022/10/27/gTZjkNlv4S38AWB.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="Asynchronous-Preset-and-Clear-Inputs（不由时钟控制）"><a href="#Asynchronous-Preset-and-Clear-Inputs（不由时钟控制）" class="headerlink" title="Asynchronous Preset and Clear Inputs（不由时钟控制）"></a>Asynchronous Preset and Clear Inputs（不由时钟控制）</h5><p><img src="https://s2.loli.net/2022/10/27/8pXxvtbmjMJkdhP.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="芯片实现-9"><a href="#芯片实现-9" class="headerlink" title="芯片实现"></a>芯片实现</h4><p>（Todo）</p>
+<h4 id="Flip-Flop-Applications"><a href="#Flip-Flop-Applications" class="headerlink" title="Flip-Flop Applications"></a>Flip-Flop Applications</h4><h5 id="Parallel-Data-Storage"><a href="#Parallel-Data-Storage" class="headerlink" title="Parallel Data Storage"></a>Parallel Data Storage</h5><p><img src="https://s2.loli.net/2022/10/27/5NDdUAlF8pBqKec.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="Frequency-Division"><a href="#Frequency-Division" class="headerlink" title="Frequency Division"></a>Frequency Division</h5><p><img src="https://s2.loli.net/2022/10/27/WOGfyLTsM5R9Ibz.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="Counting"><a href="#Counting" class="headerlink" title="Counting"></a>Counting</h5><p><img src="https://s2.loli.net/2022/10/27/IDnExA5BdqipQVT.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="One-Shots"><a href="#One-Shots" class="headerlink" title="One-Shots"></a>One-Shots</h3><p>The one-shot, also known as a <strong>monostable multivibrator</strong>（单稳态多谐振荡器）, is a device with only one stable state. A one-shot is normally in its stable state and will change to its unstable state only when triggered. Once it is triggered, the one-shot remains in its unstable state <strong>for a predetermined length of time</strong> and then automatically returns to its stable state. The time that the device stays in its unstable state determines the pulse width of its output.</p>
+<p>（Todo）</p>
+<h3 id="The-Astable-Multivibrator"><a href="#The-Astable-Multivibrator" class="headerlink" title="The Astable Multivibrator"></a>The Astable Multivibrator</h3><p>An astable multivibrator is a device that has <strong>no stable states</strong>; it changes <strong>back and forth</strong> (oscillates（震荡）) between two unstable states without any external triggering. The resulting output is typically a square wave that is used as a clock signal in many types of sequential logic circuits. Astable multivibrators are also known as <strong>pulse oscillators</strong>.</p>
+<h3 id="The-555-Timer"><a href="#The-555-Timer" class="headerlink" title="The 555 Timer"></a>The 555 Timer</h3><h4 id="Intro"><a href="#Intro" class="headerlink" title="Intro"></a>Intro</h4><p>The 555 timer is a versatile and widely used IC device because it can be configured in two different modes as either a monostable multivibrator (one-shot) or as an astable multivibrator (pulse oscillator)（非稳态多谐振荡器）.</p>
+<p><img src="https://s2.loli.net/2022/10/27/IUnEBfQeWTVDFor.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="Monostable-One-Shot-Operation"><a href="#Monostable-One-Shot-Operation" class="headerlink" title="Monostable (One-Shot) Operation"></a>Monostable (One-Shot) Operation</h4><p><img src="https://s2.loli.net/2022/10/27/E1wW8gDRdusZbPn.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>The pulse width of the output is determined by the time constant of $R_1$ and $C_1$ according to the following formula: $t_{W}=1.1 R_1 C_1$</li>
+<li><strong>Before</strong> a trigger pulse is applied, the <strong>output is LOW</strong> and the discharge transistor $Q_1$ is on, keeping $C_1$ <strong>discharged</strong>. </li>
+<li>When a negative-going trigger pulse is applied at $t_0$, the <strong>output goes HIGH</strong> and the discharge transistor turns off, allowing capacitor $C_1$ to begin charging through $R_1$. </li>
+<li>When $C_1$ charges to $1/3 V_{CC}$, the <strong>output goes back LOW</strong> at $t_1$ and $Q_1$ turns on immediately, discharging $C_1$.</li>
+</ul>
+<h4 id="As-an-Astable-Multivibrator"><a href="#As-an-Astable-Multivibrator" class="headerlink" title="As an Astable Multivibrator"></a>As an Astable Multivibrator</h4><p><img src="https://s2.loli.net/2022/10/27/5iDJ4vzdU9MP6Bl.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="Chapter-8-Counters"><a href="#Chapter-8-Counters" class="headerlink" title="Chapter 8 Counters"></a>Chapter 8 Counters</h2><h3 id="Asynchronous-Counters"><a href="#Asynchronous-Counters" class="headerlink" title="Asynchronous Counters"></a>Asynchronous Counters</h3><p>The term asynchronous refers to events that do not have a fixed time relationship with each other and, generally, <strong>do not occur at the same time</strong>. An asynchronous counter is one in which the flip-flops (FF) within the counter do not change states at exactly the same time because they do not have a common clock pulse.</p>
+<h4 id="A-2-Bit-Asynchronous-Binary-Counter"><a href="#A-2-Bit-Asynchronous-Binary-Counter" class="headerlink" title="A 2-Bit Asynchronous Binary Counter"></a>A 2-Bit Asynchronous Binary Counter</h4><p><img src="https://s2.loli.net/2022/10/31/jpIAiFnRCaGHEO9.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2022/10/31/qVWDdwET5jotAiC.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="A-3-Bit-Asynchronous-Binary-Counter"><a href="#A-3-Bit-Asynchronous-Binary-Counter" class="headerlink" title="A 3-Bit Asynchronous Binary Counter"></a>A 3-Bit Asynchronous Binary Counter</h4><p><img src="https://s2.loli.net/2022/11/07/v5PYlHSKRFXgh1x.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="Propagation-Delay（传播时延）"><a href="#Propagation-Delay（传播时延）" class="headerlink" title="Propagation Delay（传播时延）"></a>Propagation Delay（传播时延）</h4><p>Asynchronous counters are commonly referred to as <strong>ripple counters</strong> for the following reason: The effect of the input clock pulse is first “felt” by FF0. This effect cannot get to FF1 immediately because of the propagation delay through FF0. Then there is the propagation delay through FF1 before FF2 can be triggered. Thus, the effect of an input clock pulse “ripples” through the counter, taking some time, due to propagation delays, to reach the last flip-flop.</p>
+<p>This <strong>cumulative delay</strong> of an asynchronous counter is a <strong>major disadvantage</strong> in many applications because it limits the rate at which the counter can be clocked and creates decoding problems. The maximum cumulative delay in a counter must be less than the period of the clock waveform.</p>
+<h4 id="Asynchronous-Decade-Counters"><a href="#Asynchronous-Decade-Counters" class="headerlink" title="Asynchronous Decade Counters"></a>Asynchronous Decade Counters</h4><p>The <strong>modulus</strong>（模） of a counter is the number of unique states through which the counter will sequence. The maximum possible number of states (maximum modulus) of a counter is $2^n$, where $n$ is the number of flip-flops in the counter. Counters can be designed to have a number of states in their sequence that is less than the maximum of $2^n$. This type of sequence is called a <strong>truncated sequence</strong>.</p>
+<h4 id="Partial-Decoding"><a href="#Partial-Decoding" class="headerlink" title="Partial Decoding"></a>Partial Decoding</h4><p><img src="https://s2.loli.net/2022/10/31/QYu9ovtfMnXEaFI.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="芯片实现-10"><a href="#芯片实现-10" class="headerlink" title="芯片实现"></a>芯片实现</h4><p>（Todo）</p>
+<h3 id="Synchronous-Counters"><a href="#Synchronous-Counters" class="headerlink" title="Synchronous Counters"></a>Synchronous Counters</h3><p>The term synchronous refers to events that have a fixed time relationship with each other. A synchronous counter is one in which all the flip-flops in the counter are <strong>clocked at the same time</strong> by a common clock pulse. J-K flip-flops are used to illustrate most synchronous counters. D flip-flops can also be used but generally require more logic because of having no direct toggle or no-change states.</p>
+<h4 id="A-2-Bit-Synchronous-Binary-Counter"><a href="#A-2-Bit-Synchronous-Binary-Counter" class="headerlink" title="A 2-Bit Synchronous Binary Counter"></a>A 2-Bit Synchronous Binary Counter</h4><p><img src="https://s2.loli.net/2022/10/31/yNfHen3EzxoWLh2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="A-3-Bit-Synchronous-Binary-Counter"><a href="#A-3-Bit-Synchronous-Binary-Counter" class="headerlink" title="A 3-Bit Synchronous Binary Counter"></a>A 3-Bit Synchronous Binary Counter</h4><p><img src="https://s2.loli.net/2022/10/31/5yMEwfpruHaV2md.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="A-4-Bit-Synchronous-Binary-Counter"><a href="#A-4-Bit-Synchronous-Binary-Counter" class="headerlink" title="A 4-Bit Synchronous Binary Counter"></a>A 4-Bit Synchronous Binary Counter</h4><p><img src="https://s2.loli.net/2022/11/07/Ne93OL5m8rl4STV.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="芯片实现-11"><a href="#芯片实现-11" class="headerlink" title="芯片实现"></a>芯片实现</h4><p>The <strong>74HC163</strong> is an example of an integrated circuit 4-bit synchronous binary counter.<br><img src="https://s2.loli.net/2022/11/07/84YlfZnxyCT2gNA.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>When a LOW is applied to the $\overline{LOAD}$ input, the counter will assume the state of the data inputs on the next clock pulse.</li>
+<li>there is an active-LOW clear input ($\overline{CLR}$), which synchronously resets all four flip-flops in the counter.</li>
+<li>There are two enable inputs, $ENP$ and $ENT$. These inputs must both be HIGH for the counter to sequence through its binary states. When at least one input is LOW, the counter is disabled. </li>
+<li>The ripple clock output ($RCO$) goes HIGH when the counter reaches the last state in its sequence of fifteen, called the terminal count($TC = 15$).</li>
+</ul>
+<h4 id="A-synchronous-BCD-decade-counter"><a href="#A-synchronous-BCD-decade-counter" class="headerlink" title="A synchronous BCD decade counter"></a>A synchronous BCD decade counter</h4><p><img src="https://s2.loli.net/2022/11/07/6dWDrUhoQYb9KGS.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Up-Down-Synchronous-Counters"><a href="#Up-Down-Synchronous-Counters" class="headerlink" title="Up/Down Synchronous Counters"></a>Up/Down Synchronous Counters</h3><p>An <strong>up/down counter</strong> is one that is capable of progressing in either direction through a certain sequence. An up/down counter, sometimes called a bidirectional counter, can have any specified sequence of states.</p>
+<h4 id="A-basic-3-bit-up-down-synchronous-counter"><a href="#A-basic-3-bit-up-down-synchronous-counter" class="headerlink" title="A basic 3-bit up/down synchronous counter"></a>A basic 3-bit up/down synchronous counter</h4><p><img src="https://s2.loli.net/2022/11/07/Aj9I5yXxCShf4BZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="芯片实现-12"><a href="#芯片实现-12" class="headerlink" title="芯片实现"></a>芯片实现</h4><p><img src="https://s2.loli.net/2022/11/07/Aelo4yRxqOgwnE1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>The 74HC190, an example of an integrated circuit up/down synchronous decade counter.</li>
+<li>The direction of the count is determined by the level of the up/down input ($D/\overline{U}$). When this input is HIGH, the counter counts down; when it is LOW, the counter counts up. </li>
+<li>Also, this device can be preset to any desired BCD digit as determined by the states of the data inputs when the $\overline{LOAD}$ input is LOW.</li>
+<li>The $MAX/MIN$ output produces a HIGH pulse when the terminal count nine (1001) is reached in the UP mode or when the terminal count zero (0000) is reached in the DOWN mode. </li>
+</ul>
+<h3 id="Design-of-Synchronous-Counters"><a href="#Design-of-Synchronous-Counters" class="headerlink" title="Design of Synchronous Counters"></a>Design of Synchronous Counters</h3><h4 id="Step-1-State-Diagram"><a href="#Step-1-State-Diagram" class="headerlink" title="Step 1: State Diagram"></a>Step 1: State Diagram</h4><p>A state diagram shows the progression of states through which the counter advances when it is clocked.</p>
+<p><img src="https://s2.loli.net/2022/11/22/BdFlHniQaA3be4g.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="Step-2-Next-State-Table"><a href="#Step-2-Next-State-Table" class="headerlink" title="Step 2: Next-State Table"></a>Step 2: Next-State Table</h4><p>Once the sequential circuit is defined by a state diagram, the second step is to derive a next-state table, which lists each state of the counter (present state) along with the corresponding next state. The next state is the state that the counter goes to from its present<br>state upon application of a clock pulse. </p>
+<p><img src="https://s2.loli.net/2022/11/22/LdxDECJg4hwXF1j.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="Step-3-Flip-Flop-Transition-Table"><a href="#Step-3-Flip-Flop-Transition-Table" class="headerlink" title="Step 3: Flip-Flop Transition Table"></a>Step 3: Flip-Flop Transition Table</h4><p>All possible output transitions are listed by showing the Q output of the flip-flop going from present states to next states. QN is the present state of the flip-flop (before a clock pulse) and QN + 1 is the next state (after a clock pulse). For each output transition, the J and K inputs that will cause the transition to occur are listed. An X indicates a “don’t care” </p>
+<p><img src="https://s2.loli.net/2022/11/22/8bNt9YdrASzuj4i.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2022/11/22/gwvjX7yD8Ib9tZE.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="Step-4-Karnaugh-Maps"><a href="#Step-4-Karnaugh-Maps" class="headerlink" title="Step 4: Karnaugh Maps"></a>Step 4: Karnaugh Maps</h4><p>Karnaugh maps can be used to determine the logic required for the J and K inputs of each flip-flop in the counter. There is a Karnaugh map for the J input and a Karnaugh map for the K input of each flip-flop. In this design procedure, each cell in a Karnaugh map represents one of the present states in the counter sequence listed in Next-State Table.</p>
+<h4 id="Step-5-Logic-Expressions-for-Flip-Flop-Inputs"><a href="#Step-5-Logic-Expressions-for-Flip-Flop-Inputs" class="headerlink" title="Step 5: Logic Expressions for Flip-Flop Inputs"></a>Step 5: Logic Expressions for Flip-Flop Inputs</h4><p>From the Karnaugh maps you obtain the expressions for the J and K inputs of each flip-flop</p>
+<h4 id="Step-6-Counter-Implementation"><a href="#Step-6-Counter-Implementation" class="headerlink" title="Step 6: Counter Implementation"></a>Step 6: Counter Implementation</h4><p>The final step is to implement the combinational logic from the expressions for the J and K inputs and connect the flip-flops<br><img src="https://s2.loli.net/2022/11/22/Gn3tyYs9XgLFhMl.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Design-of-Synchronous-Counters（方法二）"><a href="#Design-of-Synchronous-Counters（方法二）" class="headerlink" title="Design of Synchronous Counters（方法二）"></a>Design of Synchronous Counters（方法二）</h3><h4 id="Step-1-State-Diagram-1"><a href="#Step-1-State-Diagram-1" class="headerlink" title="Step 1: State Diagram"></a>Step 1: State Diagram</h4><h4 id="Step-2-Next-State-Table-1"><a href="#Step-2-Next-State-Table-1" class="headerlink" title="Step 2: Next-State Table"></a>Step 2: Next-State Table</h4><h4 id="Step-3-Karnaugh-Maps-for-Next-State-of-Counter"><a href="#Step-3-Karnaugh-Maps-for-Next-State-of-Counter" class="headerlink" title="Step 3: Karnaugh Maps for Next State of Counter"></a>Step 3: Karnaugh Maps for Next State of Counter</h4><p><img src="https://s2.loli.net/2022/11/22/RHn3ds9PzmEQ652.png" srcset="/img/loading.gif" lazyload alt=""><br>用上一个状态的输出Q（有UP/DOWN的话再加Y）导出下一个状态的每个Qn</p>
+<script type="math/tex; mode=display">
+Q_{i}^{n+1}=f(Q_{0}^n,Q_{1}^n,\cdots,Q_{k}^n,Y)</script><h4 id="Step-4-Logic-Expressions-for-Flip-Flop-Inputs"><a href="#Step-4-Logic-Expressions-for-Flip-Flop-Inputs" class="headerlink" title="Step 4: Logic Expressions for Flip-Flop Inputs"></a>Step 4: Logic Expressions for Flip-Flop Inputs</h4><script type="math/tex; mode=display">
+Q_{i}^{n+1}=J_{i} \bar{Q}_{i}^{n}+\bar{K}_{i} Q_{i}^{n}=J_{i} \bar{Q}_{i}+\bar{K}_{i} Q_{i}</script><p>先把 $Q_{i}^{n+1}$ 化成 SOP 形式，再与上式比较，得出 $J_i$ 与 $K_i$</p>
+<h3 id="Cascaded-Counters"><a href="#Cascaded-Counters" class="headerlink" title="Cascaded Counters"></a>Cascaded Counters</h3><h4 id="Asynchronous-Cascading"><a href="#Asynchronous-Cascading" class="headerlink" title="Asynchronous Cascading"></a>Asynchronous Cascading</h4><p><img src="https://s2.loli.net/2022/11/22/4YaqCbVAdI2KHxw.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2022/11/22/rRmcwf2njyaT7oe.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="Synchronous-Cascading"><a href="#Synchronous-Cascading" class="headerlink" title="Synchronous Cascading"></a>Synchronous Cascading</h4><p><img src="https://s2.loli.net/2022/11/22/j568bkaIRVDuGzh.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Decoding-Glitches"><a href="#Decoding-Glitches" class="headerlink" title="Decoding Glitches"></a>Decoding Glitches</h3><p>The propagation delays（传播延时） due to the ripple effect in <strong>asynchronous counters</strong> create transitional states in which the counter outputs are changing at slightly different times. These transitional states produce undesired voltage spikes of short duration (glitches) on the outputs of a decoder connected to the counter. The glitch problem can also occur to some degree with synchronous counters because the propagation delays from the clock to the Q outputs of each flip-flop in a counter can vary slightly.</p>
+<p>One way to eliminate the glitches is to enable the decoded outputs at a time after the glitches have had time to disappear. This method is known as <strong>strobing</strong> and can be accomplished in the case of an active-HIGH clock by using the LOW level of the clock to enable<br>the decoder.</p>
+<p><img src="https://s2.loli.net/2022/11/22/rqQv2CWxR8pLkPX.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Counter-Applications"><a href="#Counter-Applications" class="headerlink" title="Counter Applications"></a>Counter Applications</h3><p>电子表从01到12的计数<br><img src="https://s2.loli.net/2022/11/22/yAZtvDm5SoU6NlY.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">大学学习生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E7%94%B5%E8%B7%AF/">电路</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%94%B5%E8%B7%AF/">电路</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/08/06/%E6%A8%A1%E7%94%B5%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">模电笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/02/25/%E9%AB%98%E6%95%B0%E4%B8%8B%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/">
+                        <span class="hidden-mobile">高数下笔记整理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', '1357310795/Blog-Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.12.3/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/anchor-js/4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.8/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

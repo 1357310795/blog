@@ -1,0 +1,1146 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/doge.png">
+  <link rel="icon" href="/img/doge.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#e4ad97">
+  <meta name="description" content="">
+  <meta name="author" content="Teruteru">
+  <meta name="keywords" content="">
+  
+  <title>数字信号处理笔记 - Teruteru的Hexo博客</title>
+
+  <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myiconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"teru.space","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/76443599_p0-1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="数字信号处理笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-09-13 10:01" pubdate>
+        2023年9月13日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      177 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      2
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">数字信号处理笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年10月7日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="置顶"><a href="#置顶" class="headerlink" title="置顶"></a>置顶</h2><h3 id="复数相关"><a href="#复数相关" class="headerlink" title="复数相关"></a>复数相关</h3><h4 id="形式转换"><a href="#形式转换" class="headerlink" title="形式转换"></a>形式转换</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+z=a+bj\\
+z=r(\cos\theta+j\sin\theta)\\
+z=re^{j\theta}
+\end{array}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+a=r\cos\theta,\ b=r\sin\theta\\
+r=|a^2+b^2|,\ \theta=\arctan\frac{b}{a}\\
+\end{array}</script><p>一些性质</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+e^{j\omega}+e^{-j\omega}=2\cos\omega,\ e^{j\omega}-e^{-j\omega}=2j\sin\omega
+\end{array}</script><p>转换为幅度相位形式</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+e^{-j\omega_1}+e^{-j\omega_2}=2\cos\frac{\omega_2-\omega_1}{2}e^{-j\frac{\omega_1+\omega_2}{2}}\\
+e^{-j\omega_1}-e^{-j\omega_2}=2j\sin\frac{\omega_2-\omega_1}{2}e^{-j\frac{\omega_1+\omega_2}{2}}
+\end{array}</script><h2 id="第一章-离散时间信号和系统基础"><a href="#第一章-离散时间信号和系统基础" class="headerlink" title="第一章 离散时间信号和系统基础"></a>第一章 离散时间信号和系统基础</h2><h3 id="信号的表示"><a href="#信号的表示" class="headerlink" title="信号的表示"></a>信号的表示</h3><p>离散时间信号在数学上表示成数的序列。序列 $x$ 记作</p>
+<script type="math/tex; mode=display">
+x=\{x[n]\},\quad-\infty<n<+\infty</script><p>其中 $n$ 是整数，$x[n]$ 是序列的第 $n$ 个数，也称为序列的第 $n$ 个样本。为了方便，$x[n]$ 往往就表示整个序列。</p>
+<ul>
+<li>当 $n$ 不为整数时，$x[n]$ 的取值不是零，而是无定义。</li>
+<li>序列的能量定义成<script type="math/tex; mode=display">
+E=\sum_{n=-\infty}^{\infty}|x[n]|^{2}=\sum_{n=-\infty}^{\infty} x[n] x^{*}[n]</script>其中 $x^{*}[n]=\operatorname{Re}{x[n]}-\operatorname{jIm}{x[n]}$，称为 $x[n]$ 的共轭。</li>
+</ul>
+<h3 id="信号的分类"><a href="#信号的分类" class="headerlink" title="信号的分类"></a>信号的分类</h3><p>序列一般按长度分成如下几类：</p>
+<ul>
+<li><strong>有限长序列</strong>： $x[n]$ 的样本值在有限长区间 $N_{1} \leqslant n \leqslant N_{2}$ 之内不全为零，其他区间全为零，其中 $N_{1}$ 和 $N_{2}$ 是有限整数。</li>
+<li><strong>右边序列</strong>： $x[n]$ 的样本值在区间 $n \geqslant N_{1}$ 之内不全为零，在 $n&lt;N_{1}$ 区间全为零。</li>
+<li><strong>左边序列</strong>： $x[n]$ 的样本值在区间 $n \leqslant N_{2}$ 之内不全为零，在 $n&gt;N_{2}$ 区间全为零。</li>
+<li><strong>双边序列</strong>： $x[n]$ 的样本值在整个 $-\infty \leqslant n \leqslant \infty$ 区间都不全为零，可以看成是由一个右边序列加一个左边序列得到的。</li>
+<li>对于在区间 $n &lt;0$ 取值全为零的序列，我们称之为<strong>因果序列</strong>，它可以是右边序列或有限长序列。反之，凡是在 $n&lt;0$ 存在非零值的序列，就不是因果序列。</li>
+<li>将序列样本值不全为零的区间简称为序列的<strong>非零区间</strong>。</li>
+</ul>
+<h3 id="信号的基本运算"><a href="#信号的基本运算" class="headerlink" title="信号的基本运算"></a>信号的基本运算</h3><ul>
+<li>移位 $y[n]=x\left[n-n_{0}\right]$</li>
+<li>反转 $y[n]=x[-n]$</li>
+<li>标加 $y[n]=a+x[n]$</li>
+<li>矢加 $y[n]=x[n]+h[n]$</li>
+<li>标乘 $y[n]=a \cdot x[n]$</li>
+<li>矢乘 $y[n]=x[n] \cdot h[n]$</li>
+</ul>
+<h4 id="卷积"><a href="#卷积" class="headerlink" title="卷积"></a>卷积</h4><script type="math/tex; mode=display">
+y[n]=x[n] * h[n]=\sum_{k=-\infty}^{\infty} x[k] h[n-k]</script><ul>
+<li>满足交换律<br>即<script type="math/tex; mode=display">
+\begin{aligned}
+x[n] * h[n] & =h[n] * x[n] \\
+\sum_{k=-\infty}^{\infty} x[k] h[n-k] & =\sum_{k=-\infty}^{\infty} x[n-k] h[k]
+\end{aligned}</script></li>
+<li>满足分配律<script type="math/tex; mode=display">
+x[n] *\left(h_{1}[n]+h_{2}[n]\right)=x[n] * h_{1}[n]+x[n] * h_{2}[n]</script></li>
+<li>满足结合律<script type="math/tex; mode=display">
+\left(x[n] * h_{1}[n]\right) * h_{2}[n]=x[n] *\left(h_{1}[n] * h_{2}[n]\right)</script></li>
+<li>如果 $x[n]$ 的非零区间是 $N_{0} \leqslant n \leqslant N_{1}$，长度为 $L_{0}$，$h[n]$ 的非零区间是 $N_{2} \leqslant n \leqslant N_{3}$，长度为 $L_{1}$，则 $x[n] * h[n]$ 的非零区间是 $N_{0}+N_{2} \leqslant n \leqslant N_{1}+N_{3}$，长度为 $L_{0}+L_{1}-1$。</li>
+</ul>
+<h4 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h4><p>两个序列的互相关运算定义成</p>
+<script type="math/tex; mode=display">
+r_{x h}[n]=\sum_{k=-\infty}^{\infty} x^{*}[k] h[k+n]</script><p>容易证明互相关与卷积有如下关系</p>
+<script type="math/tex; mode=display">
+r_{x h}[n]=x^{*}[-n] * h[n]</script><p>需要注意的是互相关不满足交换律。<br>一个序列的自相关运算定义成</p>
+<script type="math/tex; mode=display">
+r_{x x}[n]=\sum_{k=-\infty}^{\infty} x^{*}[k] x[k+n]</script><h3 id="基本序列"><a href="#基本序列" class="headerlink" title="基本序列"></a>基本序列</h3><h4 id="单位样本序列"><a href="#单位样本序列" class="headerlink" title="单位样本序列"></a>单位样本序列</h4><script type="math/tex; mode=display">
+\delta[n]=\left\{\begin{array}{ll}
+1, & n=0 \\
+0, & n \neq 0
+\end{array}\right.</script><p>任何序列都可以表示成单位样本序列移位的加权和，即</p>
+<script type="math/tex; mode=display">
+x[n]=\sum_{k=-\infty}^{\infty} x[k] \delta[n-k]</script><h4 id="单位阶跃序列"><a href="#单位阶跃序列" class="headerlink" title="单位阶跃序列"></a>单位阶跃序列</h4><script type="math/tex; mode=display">
+u[n]=\left\{\begin{array}{ll}
+1,& n \geqslant 0 \\
+0,& n<0
+\end{array}\right.</script><p>单位阶跃序列与单位样本序列间具有如下关系</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\delta[n]=u[n]-u[n-1] \\
+u[n]=\sum_{k=0}^{\infty} \delta[n-k] \\
+u[n]=\sum_{k=-\infty}^{n} \delta[k]
+\end{array}</script><p>所以 $\delta[n]$ 是 $u[n]$ 的差分，$u[n]$ 是 $\delta[n]$ 的累加。</p>
+<h4 id="矩形序列"><a href="#矩形序列" class="headerlink" title="矩形序列"></a>矩形序列</h4><script type="math/tex; mode=display">
+R_{N}[n]=\left\{\begin{array}{l}
+1,0 \leqslant n \leqslant N-1 \\
+0,\quad \mathrm{其他}
+\end{array}\right.</script><h4 id="指数序列"><a href="#指数序列" class="headerlink" title="指数序列"></a>指数序列</h4><script type="math/tex; mode=display">
+x[n]=a^{n}</script><p>其中 $a$ 为常数。<br>如果 $a$ 是实数，则序列为实指数序列，如图 $1.1-4(d)$ 和 $(e)$ 所示，当 $|a| \neq 1$ 时，序列的幅度按指数增长或衰减。<br>如果 $a$ 是复数，即 $a=r \mathrm{e}^{\mathrm{j} \omega_{0}}$，其中 $r$ 和 $\omega_{0}$ 是实常数，则序列为复指数序列。当 $a$ 是幅度为 $1$ 的复数，即 $a=\mathrm{e}^{\mathrm{j} \omega_{0}}$ 时，$x[n]=\mathrm{e}^{\mathrm{j} \omega_{0} n}=\cos \left(\omega_{0} n\right)+\mathrm{j} \sin \left(\omega_{0} n\right)$</p>
+<h4 id="余弦序列（正弦序列）"><a href="#余弦序列（正弦序列）" class="headerlink" title="余弦序列（正弦序列）"></a>余弦序列（正弦序列）</h4><script type="math/tex; mode=display">
+x[n]=A \cos \left(\omega_{0} n+\phi\right)</script><p>其中，$A$、$\omega_{0}$ 和 $\phi$ 是常数。$A$ 为幅度，$\omega_{0}$ 为数字频率，单位是 $\mathrm{rad}$，$\phi$ 为初始相位，单位也是 $\mathrm{rad}$</p>
+<p>为了数学推导方便，常常将余弦序列和正弦序列表示成复指数序列的加权和的形式，即</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+A \cos \left(\omega_{0} n+\phi\right)=\frac{A}{2}\left(\mathrm{e}^{\mathrm{j} \phi} \mathrm{e}^{\mathrm{j} \omega_{0} n}+\mathrm{e}^{-\mathrm{j} \phi} \mathrm{e}^{-\mathrm{j} \omega_{0} n}\right) \\
+A \sin \left(\omega_{0} n+\phi\right)=\frac{A}{2 \mathrm{j}}\left(\mathrm{e}^{\mathrm{j} \phi} \mathrm{e}^{\mathrm{j} \omega_{0} n}-\mathrm{e}^{-\mathrm{j} \phi} \mathrm{e}^{-\mathrm{j} \omega_{0} n}\right)
+\end{array}</script><h3 id="序列的性质"><a href="#序列的性质" class="headerlink" title="序列的性质"></a>序列的性质</h3><h4 id="周期性"><a href="#周期性" class="headerlink" title="周期性"></a>周期性</h4><p>如果序列满足 $x[n]=x[n+N]$，$-\infty&lt;n&lt;\infty$ 其中 $N$ 为整数，则 $x[n]$ 是周期序列，周期为 $N$。</p>
+<ul>
+<li>连续时间余弦信号是周期信号，但余弦序列不一定是周期序列</li>
+</ul>
+<p>余弦序列满足</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+A \cos \left(\omega_{0} n+\phi\right) & =A \cos \left(\omega_{0} n+\phi+2 \pi k\right) \\
+& =A \cos \left[\omega_{0}\left(n+2 \pi k / \omega_{0}\right)+\phi\right]
+\end{aligned}</script><p>其中 $k$ 为整数。根据定义，序列的周期必须是整数。所以当 $k$ 取某个整数能使 $2 \pi k / \omega_{0}$ 是整数的情况下，该余弦序列才是周期的；而如果无论 $k$ 取何值，都不能使 $2 \pi k / \omega_{0}$ 是整数，则该余弦序列就不是周期序列。具体来说，分成三种情况：</p>
+<ul>
+<li>$2 \pi / \omega_{0}$ 是整数 $N$ 时，$k$ 取 $1$ 就能使 $2 \pi k / \omega_{0}$ 为整数，所以序列是周期的，且周期为 $2 \pi /\omega_{0}=N$</li>
+<li>$2 \pi / \omega_{0}$ 是有理数 $P / Q$ 时，其中 $P$ 和 $Q$ 是互素的整数，$k$ 取 $Q$ 就能使 $2 \pi k / \omega_{0}$ 为整数 $P$，所以序列也是周期的，周期为 $\left(2 \pi / \omega_{0}\right) \cdot Q=P$。</li>
+<li>$2 \pi / \omega_{0}$ 是无理数时，序列是非周期序列。</li>
+</ul>
+<h4 id="奇偶对称性"><a href="#奇偶对称性" class="headerlink" title="奇偶对称性"></a>奇偶对称性</h4><p>一个实数序列如果满足如下的对称特性则称为偶序列</p>
+<script type="math/tex; mode=display">
+x[n]=x[-n]</script><p>如果满足如下的反对称特性则称为奇序列。</p>
+<script type="math/tex; mode=display">
+x[n]=-x[-n]</script><p>任何一个实数序列都可以分解成一个偶序列 $x_{\mathrm{e}}[n]$ 和一个奇序列 $x_{\mathrm{o}}[n]$ 之和，即</p>
+<script type="math/tex; mode=display">
+x[n]=x_{\mathrm{e}}[n]+x_{\mathrm{o}}[n]</script><p>其中 $x_{\mathrm{e}}[n]$ 和 $x_{\mathrm{o}}[n]$ 可以从原序列通过以下运算得到</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+x_{e}[n]=\frac{x[n]+x[-n]}{2} \\
+x_{\mathrm{o}}[n]=\frac{x[n]-x[-n]}{2}
+\end{array}</script><p> $x_{\mathrm{e}}[n]$ 和 $x_{0}[n]$ 分别称为 $x[n]$ 的<strong>对称分量</strong>和<strong>反对称分量</strong>。</p>
+<h4 id="共轭对称性"><a href="#共轭对称性" class="headerlink" title="共轭对称性"></a>共轭对称性</h4><p>一个复数序列如果满足</p>
+<script type="math/tex; mode=display">
+x[n]=x^{*}[-n]</script><p>则称为<strong>共轭对称序列</strong>。</p>
+<ul>
+<li>共轭对称序列的实部是偶序列，虚部是奇序列。</li>
+<li>共轭对称序列的幅度是偶序列，相位是奇序列。</li>
+</ul>
+<p>复数序列如果满足</p>
+<script type="math/tex; mode=display">
+x[n]=-x^{*}[-n]</script><p>则称为<strong>共轭反对称序列</strong>。</p>
+<ul>
+<li>共轭反对称序列的实部是奇序列，虚部是偶序列。</li>
+</ul>
+<p>任何复数序列都可以分解成一个共轭对称序列 $x_{\mathrm{e}}[n]$ 和一个共轭反对称序列 $x_{\mathrm{o}}[n]$ 之和，即</p>
+<script type="math/tex; mode=display">
+x[n]=x_{\mathrm{e}}[n]+x_{\mathrm{o}}[n]</script><p>其中 $x_{\mathrm{e}}[n]$ 和 $x_{\mathrm{o}}[n]$ 可以从原序列通过以下运算得到</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+x_{\mathrm{e}}[n]=\frac{x[n]+x^{*}[-n]}{2} \\
+x_{\mathrm{o}}[n]=\frac{x[n]-x^{*}[-n]}{2}
+\end{array}</script><p> $x_{\mathrm{e}}[n]$ 和 $x_{\mathrm{o}}[n]$ 分别称为 $x[n]$ 的<strong>共轭对称分量</strong>和<strong>共轭反对称分量</strong>。</p>
+<h3 id="离散时间系统的基础概念"><a href="#离散时间系统的基础概念" class="headerlink" title="离散时间系统的基础概念"></a>离散时间系统的基础概念</h3><p>在数学上，离散时间系统可以定义成一种变换或算子，它把输入的离散时间信号 $x[n]$ 映射成输出的离散时间信号 $y[n]$，记作</p>
+<script type="math/tex; mode=display">
+y[n]=T\{x[n]\}</script><p>也可以用图 $1.2-1$ 所示的框图表示。<br>其中输入信号称为激励，输出信号称为响应。如果输入信号是单位样本序列，即 $x[n]=\delta[n]$，则相应的输出信号称为单位脉冲响应，用 $h[n]$ 表示，即</p>
+<script type="math/tex; mode=display">
+h[n]=\mathrm{T}\{\delta[n]\}</script><p>另外，我们定义系统对单位阶跃序列的响应为单位阶跃响应，用 $s[n]$ 表示，即</p>
+<script type="math/tex; mode=display">
+s[n]=\mathrm{T}\{u[n]\}</script><h3 id="离散时间系统的分类"><a href="#离散时间系统的分类" class="headerlink" title="离散时间系统的分类"></a>离散时间系统的分类</h3><h4 id="无记忆和有记忆系统"><a href="#无记忆和有记忆系统" class="headerlink" title="无记忆和有记忆系统"></a>无记忆和有记忆系统</h4><p>一个系统，如果任一时刻 $n$ 的输出（简称当前输出）都只和时刻 $n$ 的输入（简称当前输入）有关，则该系统称为无记忆系统。</p>
+<h4 id="线性和非线性系统"><a href="#线性和非线性系统" class="headerlink" title="线性和非线性系统"></a>线性和非线性系统</h4><p>一个系统, 如果满足如下的叠加性质</p>
+<script type="math/tex; mode=display">
+\mathrm{T}\left\{a x_1[n]+b x_2[n]\right\}=a \mathrm{~T}\left\{x_1[n]\right\}+b \mathrm{~T}\left\{x_2[n]\right\}</script><p>其中 $a$ 和 $b$ 是任意常数，则该系统称为线性系统。</p>
+<h4 id="时不变和时变系统"><a href="#时不变和时变系统" class="headerlink" title="时不变和时变系统"></a>时不变和时变系统</h4><p>一个系统，$\mathrm{T}\{x[n]\}=y[n]$，如果满足</p>
+<script type="math/tex; mode=display">
+\mathrm{T}\left\{x\left[n-n_0\right]\right\}=y\left[n-n_0\right]</script><p>其中，$n_0$ 为任意整数，即输入序列的任意移位引起输出序列相同方式的移位，则该系统称为时不变系统，又称移不变系统。</p>
+<h4 id="因果和非因果系统"><a href="#因果和非因果系统" class="headerlink" title="因果和非因果系统"></a>因果和非因果系统</h4><p>输出变化不会发生在输入变化之前的系统称为因果系统，即当前输出样本只取决于当前及以前的输入样本，而和以后的输入样本无关。这也就意味着，如果 $n \leqslant n_0$ 时 $x_1[n]=x_2[n]$，则有 $n \leqslant n_0$ 时 $\mathrm{T}\left\{x_1[n]\right\}=\mathrm{T}\left\{x_2[n]\right\}$。</p>
+<h4 id="稳定和不稳定系统"><a href="#稳定和不稳定系统" class="headerlink" title="稳定和不稳定系统"></a>稳定和不稳定系统</h4><p>对任意的有界输入都产生有界输出的系统称为稳定系统，即当 $|x[n]|&lt;\infty, \forall n$ 时，$|\mathrm{T}\{x[n]\}|&lt;\infty, \forall n$。一个不稳定系统可能使输出无限制增长，以至于产生溢出，所以是没有实用价值的。需要注意的是，一个不稳定的系统可能会对某些有界输入产生有界输出。</p>
+<h3 id="线性时不变系统"><a href="#线性时不变系统" class="headerlink" title="线性时不变系统"></a>线性时不变系统</h3><p>线性时不变（LTI）系统是既满足线性性质也满足时不变性质的系统。</p>
+<p>LTI 系统有一个重要特性，就是输出 $y[n]$ 可表示成输入 $x[n]$ 与单位脉冲响应 $h[n]$ 的卷积，即</p>
+<script type="math/tex; mode=display">
+y[n]=\sum_{k=-\infty}^{\infty} x[k] h[n-k]=\sum_{k=-\infty}^{\infty} x[n-k] h[k]</script><p>因此系统的输入/输出映射关系完全由 $h[n]$ 表征。</p>
+<h3 id="LTI系统的性质"><a href="#LTI系统的性质" class="headerlink" title="LTI系统的性质"></a>LTI系统的性质</h3><ul>
+<li>根据卷积的交换律，将输入信号与单位脉冲响应互换，输出信号不变</li>
+<li>根据卷积的结合律和交换律，两个系统级联，可以交换级联顺序而使输出不变，还可将级联系统等效为一个系统</li>
+<li>根据卷积的分配律，两个系统并联，可以等效为一个系统</li>
+</ul>
+<h3 id="LTI系统的分类"><a href="#LTI系统的分类" class="headerlink" title="LTI系统的分类"></a>LTI系统的分类</h3><h4 id="因果系统"><a href="#因果系统" class="headerlink" title="因果系统"></a>因果系统</h4><p>LTI 系统是因果系统的<strong>充要条件</strong>是，单位脉冲响应是一个因果序列，即</p>
+<script type="math/tex; mode=display">
+h[n]=0, n<0</script><h4 id="稳定系统"><a href="#稳定系统" class="headerlink" title="稳定系统"></a>稳定系统</h4><p>LTI 系统是稳定系统的<strong>充要条件</strong>是，单位脉冲响应是一个绝对可和的序列，即</p>
+<script type="math/tex; mode=display">
+\sum_{n=-\infty}^{\infty}|h[n]|<\infty</script><p><img src="https://s2.loli.net/2023/09/16/2le8TXOQZEs5z9W.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="有限脉冲响应和无限脉冲响应系统"><a href="#有限脉冲响应和无限脉冲响应系统" class="headerlink" title="有限脉冲响应和无限脉冲响应系统"></a>有限脉冲响应和无限脉冲响应系统</h4><p>我们定义单位脉冲响应有限长的 LTI 系统为有限脉冲响应（FIR）系统，单位脉冲响应无限长的 LTI 系统为无限脉冲响应（IIR）系统。这两类系统在系统特性、设计和实现方法等各方面都有很大区别，所以我们通常将它们分开讨论。</p>
+<h4 id="常用的LTI系统"><a href="#常用的LTI系统" class="headerlink" title="常用的LTI系统"></a>常用的LTI系统</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>方程</th>
+<th>单位冲激响应</th>
+<th>分类</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>理想延迟系统</td>
+<td><script type="math/tex">y[n]=x\left[n-n_{\mathrm{d}}\right]</script></td>
+<td><script type="math/tex">h[n]=\delta\left[n-n_{\mathrm{d}}\right]</script></td>
+<td>FIR，因果，稳定</td>
+</tr>
+<tr>
+<td>累加器系统</td>
+<td><script type="math/tex">y[n]=\sum_{k=\infty}^0 x[n-k]</script></td>
+<td><script type="math/tex">h[n]=\sum_{k=\infty}^0 \delta[n-k]=u[n]</script></td>
+<td>IIR，因果，不稳定</td>
+</tr>
+<tr>
+<td>滑动平均系统</td>
+<td><script type="math/tex">y[n]=\frac{1}{M_1+M_2+1_k} \sum_{k=-M_1}^{M_2} x[n-k]</script></td>
+<td><script type="math/tex">h[n]=\frac{1}{M_1+M_2+1_k} \sum_{k=-M_1}^{M_2} \delta[n-k]= \begin{cases}\frac{1}{M_1+M_2+1}, & -M_1 \leqslant n \leqslant M_2 \\ 0, & \text { 其他 }\end{cases}</script></td>
+<td>FIR，非因果，稳定</td>
+</tr>
+<tr>
+<td>后向差分系统</td>
+<td><script type="math/tex">y[n]=x[n]-x[n-1]</script></td>
+<td><script type="math/tex">h[n]=\delta[n]-\delta[n-1]</script></td>
+<td>FIR，因果，稳定</td>
+</tr>
+<tr>
+<td>前向差分系统</td>
+<td><script type="math/tex">y[n]=x[n+1]-x[n]</script></td>
+<td><script type="math/tex">h[n]=\delta[n+1]-\delta[n]</script></td>
+<td>FIR，非因果，稳定</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="线性常系数差分方程"><a href="#线性常系数差分方程" class="headerlink" title="线性常系数差分方程"></a>线性常系数差分方程</h3><p>LTI系统中有一类重要的子系统，这类系统的输入 $x[n]$ 和输出 $y[n]$ 之间满足如下的 $N$ 阶线性常系数差分方程</p>
+<script type="math/tex; mode=display">
+\sum_{k=0}^N a_k y[n-k]=\sum_{k=0}^M b_k x[n-k]</script><p>其中，$M$ 和 $N$ 是<strong>有限</strong>整数。所谓常系数，是指系数里没有 $n$ 这样的变系数，所谓线性，是指输入和输出都只有一次幂，且没有相互交叉的乘积项。</p>
+<ul>
+<li>差分方程的求和项数是有限的，而用卷积表示的输入和输出间的映射关系式可能包含无穷项求和</li>
+<li>差分方程中可以包含递归项 $y[n-k], k&gt;0$，而卷积和式中则没有。</li>
+<li>不是所有的 LTI 系统都可以用差分方程表示, 比如理想选频滤波器等</li>
+<li>差分方程描述的系统也不一定是 LTI 系统。</li>
+</ul>
+<h2 id="第二章-z-变换"><a href="#第二章-z-变换" class="headerlink" title="第二章 z 变换"></a>第二章 z 变换</h2><h3 id="z-变换的定义"><a href="#z-变换的定义" class="headerlink" title="z 变换的定义"></a>z 变换的定义</h3><h4 id="双边"><a href="#双边" class="headerlink" title="双边"></a>双边</h4><p>序列 $x(n)$ 的 $z$ 变换 $X(z)$ 定义为</p>
+<script type="math/tex; mode=display">
+X(z)=\mathscr{Z}\{x[n]\}=\sum_{n=-\infty}^{\infty} x(n) z^{-n}</script><p>式中 $z$ 是一个连续复变量。上式定义的 $z$ 变换称作双边 $z$ 变换</p>
+<ul>
+<li>序列的 $z$ 变换是复变量 $z^{-1}$ 的幂级数，其系数是序列 $x(n)$ 在各 $n$ 时的值，有时也把 $X(z)$ 称为序列 $x(n)$ 的生成函数。</li>
+<li>$z$ 变换也并不是对于所有序列或所有 $z$ 值都是收敛的。对于序列 $x(n)$，使 $z$ 变换收敛的 $z$ 值之集合称为收敛域（ROC）</li>
+</ul>
+<h4 id="单边"><a href="#单边" class="headerlink" title="单边"></a>单边</h4><p>单边 $z$ 变换定义为</p>
+<script type="math/tex; mode=display">
+X(z)=\sum_{n=0}^{\infty} x(n) z^{-n}</script><ul>
+<li>对于因果信号 $x(n)$，由于 $n&lt;0$ 时 $x(n)=0$，单边和双边 $z$ 变换相等，否则不相等。</li>
+<li>$x(n)$ 的单边 z 变换等于 $x(n)\cdot u(n)$ 的双边 z 变换，收敛域位于最大模值极点所在圆的外边</li>
+<li>单边 z 变换的幂级数展开式中不包括 z 的正幂次项</li>
+<li>不是每一个 z 函数都能是一个单边 z 变换</li>
+<li>若将一个 z 的有理函数写成 z 的多项式之比，若该有理函数是一个单边变换，其分子的阶次不能高于分母阶次。</li>
+</ul>
+<h3 id="收敛域"><a href="#收敛域" class="headerlink" title="收敛域"></a>收敛域</h3><p>离散信号傅里叶变换的收敛条件是序列绝对可和，则 $z$ 变换收敛要求</p>
+<script type="math/tex; mode=display">
+\sum_{n=-\infty}^{\infty}\left|x(n) z^{-n}\right|<\infty</script><ul>
+<li>由于序列 $x(n)$ 乘上了实指数 $z^{-n}$，因此即使序列的傅里叶变换不满足收敛条件，但其 $z$ 变换仍可能收敛。</li>
+<li>单位阶跃序列 $\varepsilon(n)$ 不满足绝对可和，因而其傅里叶变换不能直接由级数收敛求得。然而当 $|z|&gt;1$ 时，$z^{-n} \varepsilon(n)$ 满足绝对可和，因而 $\varepsilon(n)$ 的 $z$ 变换收敛，其收敛域为 $1&lt;|z|&lt;\infty$</li>
+<li>某个 $z$ 点是否在收敛域内只与模 $|z|$ 有关。</li>
+<li>如果某个 $z$ 在收敛域内，则位于同一个圆（以原点为中心，以 $|z|$ 为半径）上的所有 $z$ 也都在收敛域内。</li>
+<li>如果 $x(n)$ 的 $z$ 变换收敛域包括单位圆，则 $x(n)$ 的傅里叶变换也收敛。</li>
+<li>收敛域内不包括任何极点。这是由于 $X(z)$ 在极点处，其值无穷大，$z$ 变换不收敛。故收敛域不包括极点，而常常以 $X(z)$ 的极点作为收敛域的边界。</li>
+<li>如果 $x(n)$ 是有限长序列，那么收敛域是整个 $z$ 平面，可能除去原点（$z=0$）和/或无穷远（$z=\infty$）。</li>
+<li>如果 $x(n)$ 的 $z$ 变换<strong>有理</strong>，则其收敛域被极点所界定，或延伸到无穷远。</li>
+<li>如果 $x(n)$ 的 $z$ 变换<strong>有理</strong>，并且 $x(n)$ 是<strong>右边序列</strong>，那么收敛域位于最外层极点的外边。如果 $x(n)$ 是因果序列，那么收敛域包括无穷远处。</li>
+<li>如果 $x(n)$ 的 $z$ 变换<strong>有理</strong>，并且 $x(n)$ 是<strong>左边序列</strong>，那么收敛域位于最里层非零极点的里边。如果 $x(n)$ 是反因果序列，那么收敛域包括原点。</li>
+</ul>
+<h4 id="收敛模式总结"><a href="#收敛模式总结" class="headerlink" title="收敛模式总结"></a>收敛模式总结</h4><p><img src="https://s2.loli.net/2023/05/20/sTCJPEKm9dXtQxe.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>因果序列的 ROC 总是包含 $z=+\infty$</li>
+<li>绝对可和序列的 ROC 总是包含 $|z|=1$</li>
+</ul>
+<h3 id="零点和极点"><a href="#零点和极点" class="headerlink" title="零点和极点"></a>零点和极点</h3><p>当 $\mathrm{z}$ 变换收敛并且可以表示成一个简单的有理函数，即</p>
+<script type="math/tex; mode=display">
+X(z)=\frac{\sum_{k=0}^{M} b_{k} z^{-k}}{\sum_{k=0}^{N} a_{k} z^{-k}}=\frac{P(z)}{Q(z)}</script><ul>
+<li>使 $X(z)=0$ 的 $z$，称为 $X(z)$ 的<strong>零点</strong></li>
+<li>使 $X(z)$ 无穷大的 $z$，称为 $X(z)$ 的<strong>极点</strong>。</li>
+<li>上式中，$P(z)$ 有 $M$ 个根是 $X(z)$ 的零点，$Q(z)$ 有 $N$ 个根是 $X(z)$ 的极点。这些根位于 $z$ 平面的非零区域（包括 $\infty$，不包括原点）。</li>
+<li>除此之外，若 $M&gt;N$，则还有 $M-N$ 阶极点在 $z=0$；若 $M&lt;N$，则还有 $N-M$ 阶零点在 $z=0$。</li>
+<li>也就是说，$z$ 变换在 $z$ 平面内总是<strong>具有相同数目的零点和极点</strong>。</li>
+<li>无论 $z$ 变换以何种形式给出，只要分子和分母的根的个数不相等，就需将 $z =0$ 和 $z=+\infty$ 分别带入检测遗漏的零点或极点。</li>
+<li>对于系数全部为实数的 $z$ 变换，其复数零点或极点一定是以两两互为共轭的形式成对出现的，而实数零点和极点则可以单独存在。</li>
+<li>在 $z$ 变换的收敛域图上，常常用“o”标出零点，用“×”标出极点。</li>
+<li>非全零的有限长因果序列 $x[n]$ 的 $z$ 变换在 $z=0$ 处一定是极点</li>
+<li>收敛域里可以有零点，不能有极点</li>
+</ul>
+<h3 id="有理分式求零极点的步骤"><a href="#有理分式求零极点的步骤" class="headerlink" title="有理分式求零极点的步骤"></a>有理分式求零极点的步骤</h3><ol>
+<li>上下乘以 $z$ 的幂次使所有 $z$ 的幂次为非负，设此时分子最高次是 $A$，分母最高次是 $B$</li>
+<li>求出分子的 $A$ 个多项式零点，注意 $(z^n-1)$ 的零点是 $\omega_{n}^k, \quad k=0,1,2,\cdots, n-1$</li>
+<li>同理求出分母的 $B$ 个多项式零点</li>
+<li>若 $A&lt;B$，则还有 $B-A$ 个零点在 $z=+\infty$</li>
+<li>若 $A&gt;B$，则还有 $A-B$ 个极点在 $z=+\infty$</li>
+<li>比较所有零极点，若有相同，则抵消</li>
+<li>写出最终答案，须标明阶数，画图也要标明阶数</li>
+</ol>
+<h3 id="常见序列的-z-变换及收敛域"><a href="#常见序列的-z-变换及收敛域" class="headerlink" title="常见序列的 z 变换及收敛域"></a>常见序列的 z 变换及收敛域</h3><p><img src="https://s2.loli.net/2023/09/26/EYdnwJpb3Q9WGUy.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="单位取样序列"><a href="#单位取样序列" class="headerlink" title="单位取样序列"></a>单位取样序列</h4><script type="math/tex; mode=display">
+\mathscr{Z}[\delta(n)]=\sum_{n=0}^{\infty} \delta(n) z^{n}=1, \quad 0 \leqslant|z| \leqslant \infty</script><h4 id="单位阶跃序列-1"><a href="#单位阶跃序列-1" class="headerlink" title="单位阶跃序列"></a>单位阶跃序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+\mathscr{Z}[\varepsilon(n)]=\frac{z}{z-1}=\frac{1}{1-z^{-1}}, \quad|z|>1 \\
+\mathscr{Z}[-\varepsilon(-n-1)]=1-\frac{1}{1-z}=\frac{z}{z-1}=\frac{1}{1-z^{-1}}, \quad|z|<1
+\end{array}</script><h4 id="斜变序列"><a href="#斜变序列" class="headerlink" title="斜变序列"></a>斜变序列</h4><script type="math/tex; mode=display">
+\begin{array}{l}
+\mathscr{Z}[n \varepsilon(n)]=\sum_{n=0}^{\infty} n z^{-n}=\frac{z}{(z-1)^{2}}, \quad|z|>1 \\
+\mathscr{Z}\left[n^{2} \varepsilon(n)\right]=\frac{z(z+1)}{(z-1)^{3}}, \quad|z|>1 \\
+\mathscr{Z}\left[n^{3} \varepsilon(n)\right]=\frac{z\left(z^{2}+4 z+1\right)}{(z-1)^{4}}, \quad|z|>1
+\end{array}</script><script type="math/tex; mode=display">
+\mathscr{Z}[-n \varepsilon(-n-1)]=\frac{z}{(z-1)^{2}}, \quad|z|<1</script><h4 id="单边指数序列"><a href="#单边指数序列" class="headerlink" title="单边指数序列"></a>单边指数序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+\mathscr{Z}\left[a^{n} \varepsilon(n)\right]=\frac{1}{1-a z^{-1}}=\frac{z}{z-a}, \quad|z|>|a| \\
+\mathscr{Z}\left[-a^{n} \varepsilon(-n-1)\right]=\frac{1}{1-a z^{-1}}=\frac{z}{z-a}, \quad|z|<|a| \\
+\mathscr{Z}\left[n a^{n} \varepsilon(n)\right]=\frac{a z^{-1}}{\left(1-a z^{-1}\right)^{2}}=\frac{a z}{(z-a)^{2}}, \quad|z|>|a| \\
+\mathscr{Z}\left[n^{2} a^{n} \varepsilon(n)\right]=\frac{a z(z+a)}{(z-a)^{3}}, \quad|z|>|a|
+\end{array}</script><h4 id="双边指数序列"><a href="#双边指数序列" class="headerlink" title="双边指数序列"></a>双边指数序列</h4><script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{Z}\left[b^{|n|}\right] & =\frac{1}{1-b z^{-1}}-\frac{1}{1-b^{-1} z^{-1}} \\
+& =\frac{b^{2}-1}{b} \frac{z}{(z-b)\left(z-b^{-1}\right)}, \quad|b|<|z|<\left|b^{-1}\right|
+\end{aligned}</script><h4 id="正弦余弦序列"><a href="#正弦余弦序列" class="headerlink" title="正弦余弦序列"></a>正弦余弦序列</h4><script type="math/tex; mode=display">
+\begin{aligned}
+\mathscr{Z}\left[\cos \left(\omega_{0} n\right) \cdot \varepsilon(n)\right] & =\frac{1}{2}\left[\frac{z}{z-\mathrm{e}^{\mathrm{j} \omega_{0}}}+\frac{z}{z-\mathrm{e}^{-\mathrm{j} \omega_{0}}}\right] \\
+& =\frac{z\left(z-\cos \omega_{0}\right)}{z^{2}-2 z \cos \omega_{0}+1}, \quad|z|>1
+\end{aligned}</script><script type="math/tex; mode=display">
+\begin{align}
+\mathscr{Z}\left[\sin \left(\omega_{0} n\right) \cdot \varepsilon(n)\right] & = \frac{1}{2 \mathrm{j}}\left[\frac{z}{z-\mathrm{e}^{\mathrm{j} \omega_{0}}}-\frac{z}{z-\mathrm{e}^{-\mathrm{j} \omega_{0}}}\right] \\ & = \frac{z \sin \omega_{0}}{z^{2}-2 z \cos \omega_{0}+1}, \quad|z|>1 \\
+\end{align}</script><script type="math/tex; mode=display">
+\begin{array}{c}
+\mathscr{Z}\left[\cos \left(\omega_{0} n\right) \cdot \varepsilon(-n-1)\right]=\frac{-z\left(z-\cos \omega_{0}\right)}{z^{2}-2 z \cos \omega_{0}+1}, \quad|z|<1 \\
+\mathscr{Z}\left[\sin \left(\omega_{0} n\right) \cdot \varepsilon(-n-1)\right]=-\frac{z \sin \omega_{0}}{z^{2}-2 z \cos \omega_{0}+1}, \quad|z|<1 \\
+\end{array}</script><script type="math/tex; mode=display">
+\begin{align}
+\mathscr{Z}\left[\beta^{n} \cos \left(\omega_{0} n\right) \cdot \varepsilon(n)\right] & = \frac{1-\beta z^{-1} \cos \omega_{0}}{1-2 \beta z^{-1} \cos \omega_{0}+\beta^{2} z^{-2}} \\ & = \frac{z\left(z-\beta \cos \omega_{0}\right)}{z^{2}-2 \beta z \cos \omega_{0}+\beta^{2}}, \quad|z|>|\beta| \\
+\end{align}</script><script type="math/tex; mode=display">
+\begin{align}
+\mathscr{Z}\left[\beta^{n} \sin \left(\omega_{0} n\right) \cdot \varepsilon(n)\right] & = \frac{\beta z^{-1} \sin \omega_{0}}{1-2 \beta z^{-1} \cos \omega_{0}+\beta^{2} z^{-2}} \\ & = \frac{\beta z \sin \omega_{0}}{z^{2}-2 \beta z \cos \omega_{0}+\beta^{2}}, \quad|z|>|\beta| \\
+\end{align}</script><h3 id="z-反变换"><a href="#z-反变换" class="headerlink" title="z 反变换"></a>z 反变换</h3><p>从给定的 $z$ 变换闭式 $X(z)$ 及收敛域还原出原序列 $x[n]$ 的过程称为 $z$ 反变换，表示为</p>
+<script type="math/tex; mode=display">
+x[n]=\mathscr{Z}^{-1}\{X(z)\}</script><p>求 $x$ 反变换的方法通常有四种：围线积分法（留数法）、观察法、部分分式展开法和幂级数展开法。对于在离散时间 $LTI$ 系统分析中遇到的典型序列和 $x$ 变换，后面三种方法已经足够了。</p>
+<h4 id="幂级数展开法"><a href="#幂级数展开法" class="headerlink" title="幂级数展开法"></a>幂级数展开法</h4><p>从 $z$ 变换的定义中可以看出，$X(z)$ 定义为 $z^{-1}$ 的幂级数</p>
+<script type="math/tex; mode=display">
+X(z)=\sum_{n=-\infty}^{\infty} x(n) z^{-n}</script><p>因此，只要在给定的收敛域内把 $X(z)$ 展成 $z^{-1}$ 的幂级数，则序列值 $x(n)$ 就是 $z^{-n}$ 项的系数。</p>
+<h4 id="部分分式展开法"><a href="#部分分式展开法" class="headerlink" title="部分分式展开法"></a>部分分式展开法</h4><p>在一般情况下，序列的 $z$ 变换可以表示为 $z$ 的有理分式，即</p>
+<script type="math/tex; mode=display">
+X(z)=\frac{N(z)}{M(z)}=\frac{b_{r} z^{r}+b_{r-1} z^{r-1}+\cdots+b_{1} z+b_{0}}{a_{k} z^{k}+a_{k-1} z^{k-1}+\cdots+a_{1} z+a_{0}}</script><p>求 $z$ 反变换的部分分式展开法，类似于拉氏反变换中的部分分式展开法，将 $X(z)$ 展开成一些简单的部分分式之和，然后分别求出各个分式的 $z$ 反变换，把各反变换相加，便得到 $x(n)$。</p>
+<h4 id="常用z反变换"><a href="#常用z反变换" class="headerlink" title="常用z反变换"></a>常用z反变换</h4><p><img src="https://s2.loli.net/2023/05/29/aEVGM3LmA8zN9jZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://s2.loli.net/2023/05/29/hp8izjWfwOdY9uH.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="z-变换的性质（双边性质）"><a href="#z-变换的性质（双边性质）" class="headerlink" title="z 变换的性质（双边性质）"></a>z 变换的性质（双边性质）</h3><h4 id="线性性质"><a href="#线性性质" class="headerlink" title="线性性质"></a>线性性质</h4><script type="math/tex; mode=display">
+a x[n]+b y[n] \stackrel{\mathscr{Z}}{\longrightarrow} a X(z)+b Y(z),\quad \mathrm{ROC 包含} R_{x} \cap R_{y}</script><p>其中 $a,b$ 为任意常数。ROC 一般为两个序列的 ROC 的交集。如果线性组合使得引入的某些零点抵消了极点，则 ROC 可能扩大。这一性质在 $\mathrm{z}$ 反变换中已经用过。</p>
+<h4 id="移位性质"><a href="#移位性质" class="headerlink" title="移位性质"></a>移位性质</h4><script type="math/tex; mode=display">
+x\left[n-n_{0}\right] \stackrel{\mathscr{Z}}{\longrightarrow} z^{-n_{0}} X(z),\quad \mathrm{ROC}=R_{x}</script><p>其中 $n_{0}$ 为任意整数。其 ROC 同原序列的 ROC，除了可能加上或去除 $z=0$ 或 $z=\infty$ 以外。例如，$\mathscr{Z}{\delta[n]}=1$，在 $z$ 平面处处收敛，而 $\mathscr{Z}{\delta[n-1]}=z^{-1}$，在 $z=0$ 处不收敛。</p>
+<h4 id="乘以指数序列（z域尺度变换性质）"><a href="#乘以指数序列（z域尺度变换性质）" class="headerlink" title="乘以指数序列（z域尺度变换性质）"></a>乘以指数序列（z域尺度变换性质）</h4><script type="math/tex; mode=display">
+a^{n} x[n] \stackrel{\mathscr{Z}}{\longrightarrow} X\left(\frac{z}{a}\right),\quad \mathrm{ROC}=|a| R_{x}</script><p>其中 $a$ 为任意常数。</p>
+<h4 id="线性加权（-z-域微分性质）"><a href="#线性加权（-z-域微分性质）" class="headerlink" title="线性加权（$z$ 域微分性质）"></a>线性加权（$z$ 域微分性质）</h4><script type="math/tex; mode=display">
+n x[n] \stackrel{\mathscr{Z}}{\longrightarrow}-z \cdot \frac{\mathrm{d}}{\mathrm{d} z} X(z),\quad \mathrm{ROC}=R_{x}</script><h4 id="取共轭"><a href="#取共轭" class="headerlink" title="取共轭"></a>取共轭</h4><script type="math/tex; mode=display">
+x^{*}[n] \stackrel{\mathscr{Z}}{\longrightarrow} X^{*}\left(z^{*}\right),\quad \mathrm{ROC}=R_{x}</script><ul>
+<li>实序列的 $\mathrm{z}$ 变换的复数零点一定以两两互为共轭的形式成对出现</li>
+<li>对于实数零点，其共轭就等于其本身，所以实数零点可以单独存在</li>
+<li>复数极点也以共轭对的形式成对出现</li>
+</ul>
+<h4 id="反转"><a href="#反转" class="headerlink" title="反转"></a>反转</h4><script type="math/tex; mode=display">
+x[-n] \stackrel{\mathscr{Z}}{\longrightarrow} X\left(\frac{1}{z}\right),\quad \mathrm{ROC}=\frac{1}{R_{x}}</script><p>由于自变量取倒数，所以零点和极点取倒数，ROC 的边界也取倒数。需要注意的是，序列反转后如果类型改变了，则收敛域的特点也应相应地改变。</p>
+<h4 id="卷积性质"><a href="#卷积性质" class="headerlink" title="卷积性质"></a>卷积性质</h4><script type="math/tex; mode=display">
+x[n] * y[n] \stackrel{\mathscr{P}}{\longrightarrow} X(z) Y(z),\quad \mathrm{ROC 包含} R_{x} \cap R_{y}</script><p>ROC 是两个 ROC 的交集。如果一个 $\mathrm{z}$ 变换的极点和另一个 $\mathrm{z}$ 变换的零点互相抵消，则 ROC 可能扩大。</p>
+<h4 id="初值定理"><a href="#初值定理" class="headerlink" title="初值定理"></a>初值定理</h4><p>如果 $x[n]$ 是因果序列，那么 $x[0]=\lim _{z \rightarrow \infty} X(z)$。</p>
+<h4 id="终值定理"><a href="#终值定理" class="headerlink" title="终值定理"></a>终值定理</h4><p>如果 $x[n]$ 是因果序列，且 $X(z)$ 的极点处于单位圆 $|z|=1$ 以内（单位圆上最多在 $z=1$ 处有一阶极点），那么</p>
+<script type="math/tex; mode=display">
+\lim _{n \rightarrow \infty} x[n]=\lim _{z \rightarrow 1}[(z-1) X(z)]</script><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><script type="math/tex; mode=display">
+\begin{array}{|c|c|c|}
+\hline \text { 性质 } & \text { 时域 } & \text { z域 } & \text { 收敛域 } \\
+\hline \text { z变换 } & x(n) & \sum_{n=-\infty}^{\infty} x(n) z^{-n} \\
+\hline \text { z反变换 } &  & X(z) \\
+\hline \text { 线性 } & a x_{1}(n)+b x_{2}(n) & a X_{1}(z)+b X_{2}(z) & \max \left\{R_{x_{11}}, R_{x_{21}}\right\}<|z|<\min \left\{R_{x_{12}}, R_{x_{22}}\right\} \\
+\hline \text { 共轭 } & x^{*}(n) & X^{*}\left(z^{*}\right) & R_{x_{1}}<|z|<R_{x_{2}} \\
+\hline \text { 时域反向 } & x(-n) & X\left(z^{-1}\right) & R_{x_{1}}<\left|z^{-1}\right|<R_{x_{2}} \\
+\hline \text { 指数 } & a^{n} x(n) & X\left(a^{-1} z\right) & |a| R_{x_{1}}<|z|<|a| R_{x_{2}} \\
+\hline \text { z域反向 } & (-1)^{n} x(n) & X(-z) & R_{x_{1}}<|z|<R_{x_{2}} \\
+\hline \text {  } & n x(n) & -z \frac{\mathrm{d}}{\mathrm{d} z} X(z) & R_{x_{1}}<|z|<R_{x_{2}} \\
+\hline \text { 时移 } & x\left(n-n_{0}\right) & z^{-n_{0}} X(z) & R_{x_{1}}<|z|<R_{x_{2}} \\
+\hline \text { 频移 } & \mathrm{e}^{\mathrm{j} \omega_{0} n} x(n) & X\left(\mathrm{e}^{-\mathrm{j} \omega_{0}} \cdot z\right) & R_{x_{1}}<|z|<R_{x_{2}} \\
+\hline \text { z域尺度变换 } & z_{0}^{n} x(n) & X\left(\frac{z}{z_{0}}\right) & R_{x_{1}}<\left|\frac{z}{z_{0}}\right|<R_{x_{2}} \\
+\hline \text { 时域实部 } & \operatorname{Re}[x(n)] & \frac{1}{2}\left[X(z)+X^{*}\left(z^{*}\right)\right] & R_{x_{1}}<|z|<R_{x_{2}} \\
+\hline \text { 时域虚部 } & \operatorname{Im}[x(n)] & \frac{j}{2}\left[X(z)-X^{*}\left(z^{*}\right)\right] & R_{x_{1}}<|z|<R_{x_{2}} \\
+\hline \text { 时域求和 } & \sum_{k=0}^{n} x(k) & \frac{z}{z-1} X(z) &  \\
+\hline \text { 时域卷积 } & x_{1}(n) * x_{2}(n) & X_{1}(z) \cdot X_{2}(z) & \max \left\{R_{x_{11}}, R_{x_{21}}\right\}<|z|<\min \left\{R_{x_{12}}, R_{x_{22}}\right\} \\
+\hline \text { 时域相乘 } & x_{1}(n) \cdot x_{2}(n) & \frac{1}{2 \pi \mathrm{j}}{ }_{C} \oint X_{1}(v) X_{2}\left(\frac{z}{v}\right) v^{-1} \mathrm{~d} v &  \\
+\hline 
+\end{array}</script><ul>
+<li>初值定理：若 $x(n)$ 为因果序列<script type="math/tex; mode=display">
+x(0)=\lim _{z \rightarrow \infty} X(z)</script></li>
+<li>初值定理：若 $x(n)$ 为非因果序列<script type="math/tex; mode=display">
+x(0)=\lim _{z \rightarrow 0} X(z)</script></li>
+<li>终值定理：若 $x(n)$ 为因果序列<script type="math/tex; mode=display">
+x(\infty)=\lim _{z \rightarrow 1}[(z-1) X(z)]</script></li>
+<li>帕斯瓦尔定理：<script type="math/tex; mode=display">
+\sum_{n=-\infty}^{\infty} x_{1}(n) x_{2}^{*}(n)=\frac{1}{2 \pi \mathrm{j}} \oint_{C} X_{1}(z) X_{2}^{*}\left(\frac{1}{z^{*}}\right) z^{-1} \mathrm{~d} z</script></li>
+</ul>
+<h2 id="第三章-傅里叶变换和离散傅里叶级数（DFS）"><a href="#第三章-傅里叶变换和离散傅里叶级数（DFS）" class="headerlink" title="第三章 傅里叶变换和离散傅里叶级数（DFS）"></a>第三章 傅里叶变换和离散傅里叶级数（DFS）</h2><p>我们称离散时间信号的傅里叶变换为<strong>离散时间傅里叶变换</strong>（DTFT），简称傅里叶变换。</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>很多序列都能用 $\left\{\mathrm{e}^{\mathrm{j} \omega n}\right\}$ 作为基函数进行正交展开，表示成如下的傅里叶积分形式</p>
+<script type="math/tex; mode=display">
+x[n]=\frac{1}{2 \pi} \int_{-\pi}^{\pi} X\left(\mathrm{e}^{\mathrm{j} \omega}\right) \mathrm{e}^{\mathrm{j} \omega n} \mathrm{~d} \omega</script><p>上式称为<strong>傅里叶反变换</strong>，它将序列 $x[n]$ 表示成频率在 $-\pi$ 和 $\pi$ 之间的复指数序列的加权求积分。实际上积分范围选任何 $2 \pi$ 间隔都是可以的。</p>
+<script type="math/tex; mode=display">
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\sum_{n=-\infty}^{\infty} x[n] \mathrm{e}^{-\mathrm{j} \omega n}</script><p>上式是权重 $X\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 的计算公式，称为<strong>傅里叶正变换</strong>。</p>
+<ul>
+<li>傅里叶正变换和反变换又分别记作<script type="math/tex; mode=display">
+\begin{array}{c}
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\mathscr{F}\{x[n]\} \\
+x[n]=\mathscr{F}^{-1}\left\{X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right\}
+\end{array}</script></li>
+</ul>
+<h3 id="幅度谱和相位谱"><a href="#幅度谱和相位谱" class="headerlink" title="幅度谱和相位谱"></a>幅度谱和相位谱</h3><p>我们将 $X\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 称为离散时间信号的<strong>傅里叶频谱</strong>，或简单地称为频谱。一般来说，$X\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 是 $\omega$ 的复值函数，可以表示成</p>
+<script type="math/tex; mode=display">
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=X_{\mathrm{R}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)+\mathrm{j} X_{\mathrm{I}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left|X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right| \mathrm{e}^{\mathrm{j} \sphericalangle X\left(\mathrm{e}^{\mathrm{j} \omega}\right)}</script><p>其中，$X_{\mathrm{R}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 和 $X_{\mathrm{I}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 分别是 $X\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 的实部和虚部。$\left|X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|$ 和 $\sphericalangle X\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 分别称为<strong>幅度谱</strong>和<strong>相位谱</strong>或<strong>幅度</strong>和<strong>相位</strong>。相位 $\sphericalangle X\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 不是唯一的，因为对任意 $\omega$，都可以加 $2 \pi$ 的任意整数倍到 $\sphericalangle X\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 上，而不会影响 $X\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 的值，即</p>
+<script type="math/tex; mode=display">
+\left|X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right| \mathrm{e}^{\mathrm{j}\left[\sphericalangle X\left(\mathrm{e}^{\mathrm{j} \omega}\right)+2 \pi k\right]}=\left|X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right| \mathrm{e}^{\mathrm{j} \sphericalangle X\left(\mathrm{e}^{\mathrm{j} \omega}\right)}</script><p>其中 $k$ 是整数。当 $\sphericalangle X\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 的取值仅限在 $(-\pi$，$\pi]$ 时，称作<strong>主值相位</strong>，记作 $\operatorname{ARG}\left[X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right]$ 而把在 $\omega \in[0,\pi)$ 内取值连续的相位函数称作<strong>连续相位</strong>，记作 $\arg \left[X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right]$。<br>作为复指数序列的权重，当 $X\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 是复数函数时，幅度 $\left|X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|$ 的作用是对复指数序列幅度的加权，相位 $\sphericalangle X\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 的作用是决定复指数序列的初始相位。</p>
+<h3 id="周期性-1"><a href="#周期性-1" class="headerlink" title="周期性"></a>周期性</h3><p>使傅里叶变换无限项求和收敛就是使</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\sum_{n=-\infty}^{\infty}|x[n]|<\infty \\
+\left|X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|=\left|\sum_{n=-\infty}^{\infty} x[n] \mathrm{e}^{-\mathrm{j} \omega n}\right| \leqslant \sum_{n=-\infty}^{\infty}\left|x[n] \mathrm{e}^{-\mathrm{j} \omega n}\right|=\sum_{n=-\infty}^{\infty}|x[n]|<\infty
+\end{array}</script><p>所以<strong>序列绝对可和</strong>是傅里叶变换存在的<strong>充分条件</strong>，但不是必要条件。</p>
+<ul>
+<li>有些序列不是绝对可和但是平方可和，即<script type="math/tex; mode=display">
+\sum_{n=-\infty}^{\infty}|x[n]|^{2}<\infty</script>也能有傅里叶变换表示，例如，<script type="math/tex; mode=display">
+x[n]=\frac{\sin \left(\omega_{\mathrm{c}} n\right)}{\pi n},-\infty<n<\infty</script></li>
+<li>还有一些序列，例如；$u[n]$、$\mathrm{e}^{\mathrm{j} \omega n}$，$-\infty&lt;n&lt;\infty$ 和 $x[n]=1$，$-\infty&lt;n&lt;\infty$ 等，既非绝对可和也非平方可和，若<strong>在频域引入冲激函数</strong> $\delta(\omega)$，它们也可以有傅里叶变换表示。</li>
+</ul>
+<h3 id="矩形窗"><a href="#矩形窗" class="headerlink" title="矩形窗"></a>矩形窗</h3><p>长度为 $M+1$ 的矩形序列 $w_{\mathrm{R}}[n]=\left\{\begin{array}{ll}1,&amp; 0 \leqslant n \leqslant M \ 0,&amp; \mathrm{ 其他 }\end{array}\right.$ 称为<strong>矩形窗</strong></p>
+<script type="math/tex; mode=display">
+W_{\mathrm{R}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{\sin (\omega(M+1) / 2)}{\sin (\omega / 2)} \mathrm{e}^{-\mathrm{j} \omega M / 2}</script><p>将其简写成</p>
+<script type="math/tex; mode=display">
+W_{\mathrm{R}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=W(\omega) \mathrm{e}^{-\mathrm{j} \omega M / 2}</script><p>其中</p>
+<script type="math/tex; mode=display">
+W(\omega)=\frac{\sin (\omega(M+1) / 2)}{\sin (\omega / 2)}</script><p>是一个实函数，取值可以大于等于或小于零，称之为<strong>广义幅度</strong>，其绝对值就是幅度谱 $\left|W_{\mathrm{R}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|$。</p>
+<p>由于使 $W(\omega)=0$ 的最小频率值为 $\omega=   \pm 2 \pi /(M+1)$，所以 $\left|W_{\mathrm{R}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|$ 即 $|W(\omega)|$ 的<strong>主瓣宽</strong>（离原点最近的两个零值点之间的距离）为 $4 \pi /(M+1)$，$M$ 越大主瓣宽越小，也就是说时域宽度和频域主瓣的宽度是反比关系。容易得出主瓣的峰值幅度是 $\left.W(\omega)\right|_{\omega=0}=M+1$。</p>
+<p>再根据使 $W(\omega)=0$ 的第二个频率是 $\omega= \pm 4 \pi /(M+1)$，得出旁瓣宽是主瓣宽的一半，由此推断第一旁瓣的峰值幅度为 $|W(\omega)|_{\omega=3 \pi /(M+1)}=1 / \sin \left(\frac{3 \pi}{2(M+1)}\right)$，$M$ 较大时，该值约为 $\frac{2(M+1)}{3 \pi}$，所以第一旁瓣与主瓣峰值幅度比约为 $2 /(3 \pi)$，是一个与 $M$ 无关的常数。</p>
+<p>相位是 $\omega$ 的线性函数，即是斜率为 $-M / 2$ 且经过原点的直线。但是由于在某些区间 $W(\omega)&lt;0$，又因 $-1=\mathrm{e}^{j \pi}$，即符号的变化对应于相位差 $\pi$，所以在 $W   (\omega)$ 的符号发生改变的频率处相位函数有一个 $\pi$ 的突变。</p>
+<p><img src="https://s2.loli.net/2023/10/05/r9mQ8M3XwYPBiuK.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="常见非周期序列的傅里叶变换"><a href="#常见非周期序列的傅里叶变换" class="headerlink" title="常见非周期序列的傅里叶变换"></a>常见非周期序列的傅里叶变换</h3><h4 id="单位样值序列"><a href="#单位样值序列" class="headerlink" title="单位样值序列"></a>单位样值序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=\delta(n) \\
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\operatorname{DTFT}[\delta(n)]=\sum_{n=-\infty}^{\infty} \delta(n) \mathrm{e}^{-\mathrm{j} \omega n}=1
+\end{array}</script><h4 id="双边矩形序列"><a href="#双边矩形序列" class="headerlink" title="双边矩形序列"></a>双边矩形序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=\left\{\begin{array}{ll}
+1,& |n| \leqslant N_{1} \\
+0,& |n|>N_{1}
+\end{array}\right. \\
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{\sin \omega\left(N_{1}+\frac{1}{2}\right)}{\sin \frac{\omega}{2}}
+\end{array}</script><h4 id="单边矩形序列"><a href="#单边矩形序列" class="headerlink" title="单边矩形序列"></a>单边矩形序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+R_{M}[n]=\left\{\begin{array}{ll}
+1, & 0 \leqslant n \leqslant M-1 \\
+0, & \text { 其他 }
+\end{array}\right.\\
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{\sin (\omega M / 2)}{\sin (\omega / 2)} \mathrm{e}^{-\mathrm{j} \omega(M-1) / 2}
+\end{array}</script><h4 id="实指数序列"><a href="#实指数序列" class="headerlink" title="实指数序列"></a>实指数序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=a^{n} \varepsilon(n),\quad|a|<1 \\
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\sum_{n=-\infty}^{\infty} a^{n} \varepsilon(n) \mathrm{e}^{-\mathrm{j} \omega n}=\sum_{n=0}^{\infty}\left(a \mathrm{e}^{-\mathrm{j} \omega}\right)^{n}=\frac{1}{1-a \mathrm{e}^{-\mathrm{j} \omega}}
+\end{array}</script><h4 id="非因果实指数序列"><a href="#非因果实指数序列" class="headerlink" title="非因果实指数序列"></a>非因果实指数序列</h4><script type="math/tex; mode=display">
+\begin{array}{l}
+x(n)=a^{n} \varepsilon(-n),\quad|a|>1 \\
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\sum_{n=-\infty}^{0} a^{n} \mathrm{e}^{-\mathrm{j} \omega n}=\frac{1}{1-a^{-1} \mathrm{e}^{\mathrm{j} \omega}}
+\end{array}</script><h4 id="双边指数序列-1"><a href="#双边指数序列-1" class="headerlink" title="双边指数序列"></a>双边指数序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=a^{|n|},\quad|a|<1 \\
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{1}{1-a \mathrm{e}^{-\mathrm{j} \omega}}+\frac{1}{1-a \mathrm{e}^{\mathrm{j} \omega}}-1=\frac{1-a^{2}}{1-2 a \cos \omega+a^{2}}
+\end{array}</script><h4 id="复指数序列"><a href="#复指数序列" class="headerlink" title="复指数序列"></a>复指数序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x[n]=e^{j\omega_0 n} \\
+X\left(e^{j w}\right)=\sum_{k=-\infty}^{+\infty} 2 \pi \delta\left(\omega-\omega_{0}+2 \pi k\right)
+\end{array}</script><h4 id="实指数子序列"><a href="#实指数子序列" class="headerlink" title="实指数子序列"></a>实指数子序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x[n]=a^{n} R_N[n],\quad|a|<1 \\
+\begin{align}
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right) 
+& = \sum_{n = -\infty}^{\infty} a^{n} R_N[n] \mathrm{e}^{-\mathrm{j} \omega n} \\
+& = \sum_{n = 0}^{N-1}\left(a \mathrm{e}^{-\mathrm{j} \omega}\right)^{n} \\
+& = \frac{1-a^{N}\mathrm{e}^{-\mathrm{j} \omega N}}{1-a \mathrm{e}^{-\mathrm{j} \omega}}\\
+\end{align}
+\end{array}</script><h4 id="常数序列"><a href="#常数序列" class="headerlink" title="常数序列"></a>常数序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=1,\quad-\infty<n<\infty \\
+D T F T[1]=2 \pi \sum_{m=-\infty}^{\infty} \delta(\omega-2 m \pi)
+\end{array}</script><h4 id="冲激函数"><a href="#冲激函数" class="headerlink" title="冲激函数"></a>冲激函数</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=\delta(n) \\
+X\left(e^{j w}\right)=\sum_{n=-\infty}^{\infty} x(n) e^{-j n w}=\sum_{n=-\infty}^{\infty} \delta(n) e^{-j n w}=1 \\
+\end{array}</script><h4 id="符号函数"><a href="#符号函数" class="headerlink" title="符号函数"></a>符号函数</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+\operatorname{sgn}(n)=\left\{\begin{array}{c}
+1, n>0 \\
+0, n=0 \\
+-1, n<0
+\end{array}\right. \\
+S\left(e^{j w}\right)=\frac{1+e^{-j w}}{1-e^{-j w}} \\
+\end{array}</script><h4 id="阶跃序列"><a href="#阶跃序列" class="headerlink" title="阶跃序列"></a>阶跃序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=u(n) \\
+X\left(e^{j w}\right)=\frac{1}{1-e^{-j w}}+\pi \sum_{m=-\infty}^{\infty} \delta(w-2 m \pi) \\
+\end{array}</script><h4 id="抽样信号"><a href="#抽样信号" class="headerlink" title="抽样信号"></a>抽样信号</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x[n]=\frac{\sin \left(\omega_{\mathrm{c}} n\right)}{\pi n} \\
+X\left(e^{j w}\right)=
+\left\{\begin{array}{l}
+1, \quad|\omega| \leqslant \omega_{\mathrm{c}} \\
+0, \quad|\omega|>\omega_{\mathrm{c}}
+\end{array}\right.
+\end{array}</script><h3 id="常见周期序列的傅里叶变换"><a href="#常见周期序列的傅里叶变换" class="headerlink" title="常见周期序列的傅里叶变换"></a>常见周期序列的傅里叶变换</h3><h4 id="正负交替序列"><a href="#正负交替序列" class="headerlink" title="正负交替序列"></a>正负交替序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=(-1)^{n} \\
+2 \pi \sum_{l=-\infty}^{\infty} \delta(\omega-\pi-2 \pi l) \\
+\end{array}</script><h4 id="三角函数序列"><a href="#三角函数序列" class="headerlink" title="三角函数序列"></a>三角函数序列</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=\cos \omega_{0} n \\
+X\left(e^{j \omega}\right)=\sum_{l=-\infty}^{\infty} 2 \pi \cdot \frac{1}{2} \delta\left(\omega-\omega_{0}-2 \pi l\right)+\sum_{l=-\infty}^{\infty} 2 \pi \cdot \frac{1}{2} \delta\left(\omega+\omega_{0}-2 \pi l\right) \\
+\end{array}</script><h4 id="周期样值信号"><a href="#周期样值信号" class="headerlink" title="周期样值信号"></a>周期样值信号</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+x(n)=\sum_{k=-\infty}^{\infty} \delta(n-kN) \\
+X\left(e^{j \omega}\right)=\sum_{k=-\infty}^{\infty} \frac{2 \pi}{N} \delta\left(\omega-k \frac{2 \pi}{N}\right)
+\end{array}</script><h3 id="傅里叶变换与z变换的关系"><a href="#傅里叶变换与z变换的关系" class="headerlink" title="傅里叶变换与z变换的关系"></a>傅里叶变换与z变换的关系</h3><p>对于离散信号，将复变量 $z$ 表示成极坐标形式</p>
+<script type="math/tex; mode=display">
+z=r \mathrm{e}^{\mathrm{j} \omega}</script><p>代入定义可得</p>
+<script type="math/tex; mode=display">
+X(z)=X\left(r \mathrm{e}^{\mathrm{j} \omega}\right)=D T F T\left\{x(n) r^{-n}\right\}</script><p>指数加权因子 $r^{-n}$ 可以随 $n$ 衰减或递增，这取决于 $r$ 大于或小于 $1$。如果 $r=1$，即 $|z|=1$ 时，序列的 $z$ 变换即等于其傅里叶变换</p>
+<script type="math/tex; mode=display">
+\left.X(z)\right|_{z=\mathrm{e}^{\mathrm{j} \omega}}=\operatorname{DTFT}\{x(n)\}=X\left(\mathrm{e}^{\mathrm{j} \omega}\right)</script><ul>
+<li>$z$ 变换是对序列 $x[n]r^{-n}$ 做傅里叶变换</li>
+<li>傅里叶变换为 $z$ 变换的一个特例，即在复数 $z$ 平面中，半径为 $1$ 的圆上的 $z$ 变换。</li>
+<li>在 $z$ 平面上，这个圆称为<strong>单位圆</strong>。</li>
+<li>离散信号的傅里叶变换即在 $z$ 平面单位圆上的 $z$ 变换。而傅里叶变换的推广，即由 $z$ 平面的单位圆推广至整个 $z$ 平面，则成为 $z$ 变换。</li>
+<li>对于有些不是绝对可加，傅里叶变换不收敛的序列，只要适当选择 $|z│=r$ 的大小，$z$ 变换就可以收敛，例如 $x[n] = u[n]$</li>
+<li>存在 $z$ 变换不收敛，而傅里叶变换表示存在的情况，例如抽样信号序列</li>
+</ul>
+<h3 id="傅里叶变换的性质"><a href="#傅里叶变换的性质" class="headerlink" title="傅里叶变换的性质"></a>傅里叶变换的性质</h3><h4 id="线性性质-1"><a href="#线性性质-1" class="headerlink" title="线性性质"></a>线性性质</h4><script type="math/tex; mode=display">
+a x[n]+b y[n] \stackrel{\mathscr{F}}{\longrightarrow} a X\left(\mathrm{e}^{\mathrm{j} \omega}\right)+b Y\left(\mathrm{e}^{\mathrm{j} \omega}\right)</script><p>其中，$a$ 和 $b$ 是任意常数。</p>
+<h4 id="时域移位性质"><a href="#时域移位性质" class="headerlink" title="时域移位性质"></a>时域移位性质</h4><script type="math/tex; mode=display">
+x\left[n-n_{0}\right] \stackrel{\mathscr{F}}{\longrightarrow} \mathrm{e}^{-\mathrm{j} \omega n_{0}} X\left(\mathrm{e}^{\mathrm{j} \omega}\right)</script><p>其中 $n_{0}$ 是任意整数。</p>
+<h4 id="频域移位性质"><a href="#频域移位性质" class="headerlink" title="频域移位性质"></a>频域移位性质</h4><script type="math/tex; mode=display">
+\mathrm{e}^{\mathrm{j} \omega_{0} n} x[n] \stackrel{\mathscr{F}}{\longrightarrow} X\left(\mathrm{e}^{\mathrm{j}\left(\omega-\omega_{0}\right)}\right)</script><h4 id="频域微分性质"><a href="#频域微分性质" class="headerlink" title="频域微分性质"></a>频域微分性质</h4><script type="math/tex; mode=display">
+n x[n] \stackrel{\mathscr{F}}{\longrightarrow} \frac{\mathrm{d} X\left(\mathrm{e}^{\mathrm{j} \omega}\right)}{\mathrm{d} \omega}</script><h4 id="时域卷积性质"><a href="#时域卷积性质" class="headerlink" title="时域卷积性质"></a>时域卷积性质</h4><script type="math/tex; mode=display">
+x[n] * y[n] \stackrel{\mathscr{F}}{\longrightarrow} X\left(\mathrm{e}^{\mathrm{j} \omega}\right) Y\left(\mathrm{e}^{\mathrm{j} \omega}\right)</script><h4 id="频域卷积（时域调制或加窗）性质"><a href="#频域卷积（时域调制或加窗）性质" class="headerlink" title="频域卷积（时域调制或加窗）性质"></a>频域卷积（时域调制或加窗）性质</h4><script type="math/tex; mode=display">
+x[n] y[n] \stackrel{\mathscr{F}}{\longrightarrow} \frac{1}{2 \pi} \int_{-\pi}^{\pi} X\left(\mathrm{e}^{\mathrm{j} \theta}\right) Y\left(\mathrm{e}^{\mathrm{j}(\omega-\theta)}\right) \mathrm{d} \theta</script><h4 id="帕斯瓦尔定理"><a href="#帕斯瓦尔定理" class="headerlink" title="帕斯瓦尔定理"></a>帕斯瓦尔定理</h4><script type="math/tex; mode=display">
+\sum_{n=-\infty}^{\infty} x[n] y^{*}[n]=\frac{1}{2 \pi} \int_{-\pi}^{\pi} X\left(\mathrm{e}^{\mathrm{j} \omega}\right) Y^{*}\left(\mathrm{e}^{\mathrm{j} \omega}\right) \mathrm{d} \omega</script><h4 id="对称性质"><a href="#对称性质" class="headerlink" title="对称性质"></a>对称性质</h4><script type="math/tex; mode=display">
+\begin{array}{l}
+x^{*}[\mathrm{n}] \stackrel{\mathscr{F}}{\longrightarrow} X^{*}\left(\mathrm{e}^{-\mathrm{j} \omega}\right) \\
+x^{*}[-n] \stackrel{\mathscr{F}}{\longrightarrow} X^{*}\left(\mathrm{e}^{\mathrm{j} \omega}\right)
+\end{array}</script><p>再利用线性性质可以得到</p>
+<script type="math/tex; mode=display">
+\begin{array}{l} 
+\operatorname{Re}\{x[n]\}=\frac{x[n]+x^{*}[n]}{2} X_{\mathrm{e}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{X\left(\mathrm{e}^{\mathrm{j} \omega}\right)+X^{*}\left(\mathrm{e}^{-\mathrm{j} \omega}\right)}{2} \\
+\mathrm{j} \operatorname{Im}\{x[n]\}=\frac{x[n]-x^{*}[n]}{2} X_{\mathrm{o}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{X\left(\mathrm{e}^{\mathrm{j} \omega}\right)-X^{*}\left(\mathrm{e}^{-\mathrm{j} \omega}\right)}{2} \\
+x_{\mathrm{e}}[n]=\frac{x[n]+x^{*}[-n]}{2} X_{\mathrm{R}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{X\left(\mathrm{e}^{\mathrm{j} \omega}\right)+X^{*}\left(\mathrm{e}^{\mathrm{j} \omega}\right)}{2} \\
+x_{\mathrm{o}}[n]=\frac{x[n]-x^{*}[-n]}{2} X_{1}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{X\left(\mathrm{e}^{\mathrm{j} \omega}\right)-X^{*}\left(\mathrm{e}^{\mathrm{j} \omega}\right)}{2}
+\end{array}</script><p>容易看出，</p>
+<ul>
+<li>$X_{e}\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 满足 $X_{\mathrm{e}}^{*}\left(\mathrm{e}^{-\mathrm{j} \omega}\right)=X_{\mathrm{e}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)$，与共轭对称序列的特点相似，我们称这种函数为<strong>共轭对称函数</strong>。</li>
+<li>$X_{0}\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 满足 $X_{0}^{*}\left(\mathrm{e}^{-\mathrm{j} \omega}\right)=-X_{0}\left(\mathrm{e}^{\mathrm{j} \omega}\right)$，称为<strong>共轭反对称函数</strong>。</li>
+</ul>
+<p>容易证明</p>
+<script type="math/tex; mode=display">
+X_{e}\left(\mathrm{e}^{\mathrm{j} \omega}\right)+X_{\mathrm{o}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=X\left(\mathrm{e}^{\mathrm{j} \omega}\right)</script><p>即任意傅里叶变换函数 $X\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 都能表示成一个共轭对称函数和一个共轭反对称函数之和，分别称为 $X\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 的<strong>共轭对称分量</strong>和<strong>共轭反对称分量</strong>。具有共轭对称或反对称特性的实函数称为<strong>偶函数</strong>或<strong>奇函数</strong>。</p>
+<ul>
+<li><strong>序列的实部</strong>的傅里叶变换是该序列傅里叶变换的<strong>共轭对称分量</strong></li>
+<li>任意<strong>实序列</strong>的傅里叶变换一定是<strong>共轭对称函数</strong></li>
+<li>序列的<strong>共轭对称分量</strong>的傅里叶变换是序列傅里叶变换的<strong>实部</strong></li>
+<li>任意<strong>共轭对称序列</strong>（包括偶序列）的傅里叶变换一定是<strong>实函数</strong></li>
+<li>任意<strong>纯虚序列</strong>的傅里叶变换一定是<strong>共轭反对称函数</strong></li>
+<li>任意<strong>共轭反对称序列</strong>的傅里叶变换一定是<strong>纯虚函数</strong></li>
+<li>特别注意：序列的虚部也是实数，<strong>序列的虚部</strong>的傅里叶变换一定是<strong>共轭对称函数</strong></li>
+</ul>
+<p><img src="https://s2.loli.net/2023/10/05/GThVIXAau8FQ65c.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="DFS-的定义"><a href="#DFS-的定义" class="headerlink" title="DFS 的定义"></a>DFS 的定义</h3><p>一个周期为 $N$ 的周期序列 $\tilde{x}[n]$，对于任一整数 $n$ 和 $r$，有 $\tilde{x}[n]=\tilde{x}[n+r N]$。由于其既非绝对可和又非平方可和，所以将其代入式 $(3.1-2)$ 求傅里叶变换不收敛。如果我们引入冲激函数 $\delta(\omega)$，仍然可以构造周期序列的傅里叶变换的函数表达式。那么如何确定由 $\delta(\omega)$ 的加权和所表示的周期序列的傅里叶变换函数呢？这就需要借助离散傅里叶级数（DFS）的计算。</p>
+<p>如果我们将周期为 $N$ 的序列 $\tilde{x}[n]$ 分解成<strong>若干复指数序列</strong>的加权求和，则各复指数序列的周期的最小公倍数应该是 $N$。根据复指数序列的周期与频率的关系，我们得到每个复指数序列的频率 $\omega_{k}$ 与整个序列的周期 $N$ 之间满足</p>
+<script type="math/tex; mode=display">
+2 \pi / \omega_{k}=N / k,\quad k=1,2,\cdots,\infty</script><p>所以复指数序列的频率只能是</p>
+<script type="math/tex; mode=display">
+\omega_{k}=2 \pi k / N,\quad k=1,\cdots,\infty</script><p>利用数字频率以 $2 \pi$ 为周期，且频率 $2 \pi$ 等效于频率 $0$，所以独立的频率只有以下 $N$ 个</p>
+<script type="math/tex; mode=display">
+\omega_{k}=2 \pi k / N,\quad k=0,1,\cdots,N-1</script><p>引入记号</p>
+<script type="math/tex; mode=display">
+W_{N}=\mathrm{e}^{-\mathrm{j}(2 \pi / N)}</script><p>则 DFS 正变换</p>
+<script type="math/tex; mode=display">
+\tilde{X}[k]=\sum_{n=0}^{N-1} \tilde{x}[n] W_{N}^{k n}</script><p>DFS 反变换</p>
+<script type="math/tex; mode=display">
+\tilde{x}[n]=\frac{1}{N} \sum_{k=0}^{N-1} \tilde{X}[k] W_{N}^{-k n}</script><ul>
+<li>DFS 正变换是权重 $\tilde{X}[k]$ 的计算公式</li>
+<li>DFS 反变换将周期为 $N$ 的序列表示成 $N$ 个频率在 $[0,2 \pi)$ 区间等间隔分布的复指数序列的加权和。</li>
+</ul>
+<h3 id="周期信号的傅里叶变换（傅里叶变换和傅里叶级数的关系）"><a href="#周期信号的傅里叶变换（傅里叶变换和傅里叶级数的关系）" class="headerlink" title="周期信号的傅里叶变换（傅里叶变换和傅里叶级数的关系）"></a>周期信号的傅里叶变换（傅里叶变换和傅里叶级数的关系）</h3><p>对于周期为 $N$，DFS 系数为 $\widetilde{X}[k]$ 的周期序列，如果我们将其傅里叶变换看作是在频率 $\omega_{k}=2 \pi k / N,k=0,1,\cdots,N-1$ 处强度正比于 $\tilde{X}[k]$ 的脉冲串，则其傅里叶变换定义成</p>
+<script type="math/tex; mode=display">
+\tilde{X}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\sum_{k=-\infty}^{\infty} \frac{2 \pi}{N} \tilde{X}[k] \delta\left(\omega-\frac{2 \pi k}{N}\right)</script><p>上式表明周期序列只包括 $N$ 个幅值非零的频率成分，这些频率在 $[0,2\pi)$ 内等间隔均匀分布。周期序列的傅里叶变换是用冲激函数的形式表示这些频率成分的，而 DFS 是将傅里叶变换频率轴归一化并将冲激串的强度表示成序列的形式。</p>
+<ul>
+<li>周期信号的傅里叶变换也以 $2\pi$ 为周期，这与周期信号的 DFS 以 $N$ 为周期是一致的。</li>
+<li>上式计算的时候注意傅里叶级数 $\widetilde{X}[k]$ 要代入完整的，不能只有一个主周期。</li>
+</ul>
+<h3 id="DFS-的性质"><a href="#DFS-的性质" class="headerlink" title="DFS 的性质"></a>DFS 的性质</h3><h4 id="线性性质-2"><a href="#线性性质-2" class="headerlink" title="线性性质"></a>线性性质</h4><script type="math/tex; mode=display">
+a \tilde{x}[n]+b \tilde{y}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} a \tilde{X}[k]+b \tilde{Y}[k]</script><p>其中，$a$ 和 $b$ 为任意常数。当 $\tilde{x}[n]$ 和 $\tilde{y}[n]$ 周期不一致时，将二者周期的最小公倍数作为周期计算 DFS，也满足线性性质。</p>
+<h4 id="时域移位性质-1"><a href="#时域移位性质-1" class="headerlink" title="时域移位性质"></a>时域移位性质</h4><script type="math/tex; mode=display">
+\tilde{x}\left[n-n_{0}\right] \stackrel{\mathrm{DFS}}{\longrightarrow} W_{N}^{k n_{0}} \tilde{X}[k]</script><p>其中，$n_{0}$ 是任意整数。</p>
+<h4 id="频域移位性质-1"><a href="#频域移位性质-1" class="headerlink" title="频域移位性质"></a>频域移位性质</h4><script type="math/tex; mode=display">
+W_{N}^{-n l} \tilde{x}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \tilde{X}[k-l]</script><p>其中，$l$ 是任意整数。</p>
+<h4 id="对偶性质"><a href="#对偶性质" class="headerlink" title="对偶性质"></a>对偶性质</h4><script type="math/tex; mode=display">
+\tilde{X}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} N \tilde{x}[-n]</script><p>注意两侧的 $n$ 是不同的自变量</p>
+<h4 id="对称性质-1"><a href="#对称性质-1" class="headerlink" title="对称性质"></a>对称性质</h4><p>根据 DFS 的定义式可以得到以下两个变换对</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\tilde{x}^{*}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \tilde{X}^{*}[-k] \\
+\tilde{x}^{*}[-n] \stackrel{\mathrm{DFS}}{\longrightarrow} \tilde{X}^{*}[k] \\
+\end{array}</script><p>再利用 DFS 的线性性质，有</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\operatorname{Re}\{\tilde{x}[n]\}=\frac{1}{2}\left(\tilde{x}[n]+\tilde{x}^{*}[n]\right) \stackrel{\mathrm{DFS}}{\longrightarrow} \tilde{X}_{\mathrm{e}}[k]=\frac{1}{2}\left(\tilde{X}[k]+\tilde{X}^{*}[-k]\right)\\
+\operatorname{jIm}\{\tilde{x}[n]\}=\frac{1}{2}\left(\tilde{x}[n]-\tilde{x}^{*}[n]\right) \stackrel{\mathrm{DFS}}{\longrightarrow} \tilde{X}_{\mathrm{o}}[k]=\frac{1}{2}\left(\tilde{X}[k]-\tilde{X}^{*}[-k]\right) \\
+\tilde{x}_{\mathrm{e}}[n]=\frac{1}{2}\left(\tilde{x}[n]+\tilde{x}^{*}[-n]\right) \stackrel{\operatorname{DFS}}{\longrightarrow} \operatorname{Re}\{\tilde{X}[k]\}=\frac{1}{2}\left(\tilde{X}[k]+\tilde{X}^{*}[k]\right) \\
+\tilde{x}_{\mathrm{o}}[n]=\frac{1}{2}\left(\tilde{x}[n]-\tilde{x}^{*}[-n]\right) \stackrel{\mathrm{DFS}}{\longrightarrow} \mathrm{j} \operatorname{Im}\{\tilde{X}[k]\}=\frac{1}{2}\left(\tilde{X}[k]-\tilde{X}^{*}[k]\right) \\
+\end{array}</script><ul>
+<li>周期序列的<strong>实部</strong>的 DFS 是该周期序列 DFS 的<strong>共轭对称分量</strong></li>
+<li>任意<strong>实周期序列</strong>的 DFS 一定是<strong>共轭对称序列</strong></li>
+<li>周期序列的<strong>共轭对称分量</strong>的 DFS 是该周期序列 DFS 的<strong>实部</strong></li>
+<li>任意<strong>共轭对称周期序列</strong>的 DFS 一定是<strong>实序列</strong></li>
+</ul>
+<p><img src="https://s2.loli.net/2023/10/06/t9kqvjz7yZLXOWK.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="周期卷积性质"><a href="#周期卷积性质" class="headerlink" title="周期卷积性质"></a>周期卷积性质</h4><p>我们定义两个周期为 $N$ 的周期序列 $\tilde{x}_{1}[n]$ 和 $\tilde{x}_{2}[n]$ 的周期卷积为</p>
+<script type="math/tex; mode=display">
+\tilde{x}[n]=\tilde{x}_{1}[n] \circledast \tilde{x}_{2}[n]=\sum_{m=0}^{N-1} \tilde{x}_{1}[m] \tilde{x}_{2}[n-m]</script><p>周期卷积与非周期序列的卷积十分相似，区别是周期卷积的两个序列均为周期的，周期为 $N$，求和只在 $1$ 个周期上进行。很容易证明周期卷积的结果也是周期为 $N$ 的序列，即</p>
+<script type="math/tex; mode=display">
+\tilde{x}[n+r N]=\tilde{x}[n]</script><p>周期卷积也满足交换律，即</p>
+<script type="math/tex; mode=display">
+\tilde{x}_{1}[n] \circledast \tilde{x}_{2}[n]=\tilde{x}_{2}[n] \circledast \tilde{x}_{1}[n]=\sum_{m=0}^{N-1} \tilde{x}_{2}[m] \tilde{x}_{1}[n-m]</script><p>时域周期卷积性质：</p>
+<script type="math/tex; mode=display">
+\tilde{x}[n] \circledast \tilde{y}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \tilde{X}[k] \tilde{Y}[k]</script><p>频域周期卷积性质：</p>
+<script type="math/tex; mode=display">
+\tilde{x}[n] \tilde{y}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \frac{1}{N}\tilde{X}[k] \circledast \tilde{Y}[k]</script><p>Todo：卷积和周期卷积的关系</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">大学学习生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E7%94%B5%E8%B7%AF/">电路</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/09/13/%E6%A8%A1%E6%8B%9F%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">模拟集成电路设计笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/04/20/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">半导体器件原理笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', '1357310795/Blog-Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.12.3/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/anchor-js/4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.8/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

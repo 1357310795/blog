@@ -1,0 +1,753 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/doge.png">
+  <link rel="icon" href="/img/doge.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#e4ad97">
+  <meta name="description" content="">
+  <meta name="author" content="Teruteru">
+  <meta name="keywords" content="">
+  
+  <title>离散（图论）笔记 - Teruteru的Hexo博客</title>
+
+  <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myiconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"teru.space","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/76443599_p0-1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="离散（图论）笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-09-16 23:03" pubdate>
+        2022年9月16日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      57
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">离散（图论）笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年10月7日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="第一章-基本概念"><a href="#第一章-基本概念" class="headerlink" title="第一章 基本概念"></a>第一章 基本概念</h2><h3 id="图的概念"><a href="#图的概念" class="headerlink" title="图的概念"></a>图的概念</h3><h4 id="相关定义与性质"><a href="#相关定义与性质" class="headerlink" title="相关定义与性质"></a>相关定义与性质</h4><ul>
+<li>二元组 $(V(G),E(G))$ 称为<strong>图</strong>。其中 $V(G)$ 是非空集合，称为<strong>结点集</strong>，$E(G)$ 是 $V(G)$ 诸结点之间<strong>边的集合</strong>。常用 $G=(V,E)$ 表示图。</li>
+<li>图可以分为<strong>有限图</strong>与<strong>无限图</strong>两类。</li>
+<li>本书只讨论有限图，即 $V$ 和 $E$ 都是有限集。</li>
+<li>图 $G$ 的边可以是有方向的，也可以是无方向的。它们分称为<strong>有向边</strong>（或弧）和<strong>无向边</strong>，用 $e_{k}=\left(v_{i},v_{j}\right)$ 表示。这时我们说 $v_{i}$ 与 $v_{j}$ 是<strong>相邻结点</strong>；$e_{k}$ 分别与 $v_{i}$，$v_{j}$ 相关联。</li>
+<li>如果 $e_{k}$ 是有向边，称 $v_{i}$ 是 $e_{k}$ 的<strong>始点</strong>，$v_{j}$ 是 $e_{k}$ 的<strong>终点</strong>；并称 $v_{i}$ 是 $v_{j}$ 的<strong>直接前趋</strong>，$v_{j}$ 是 $v_{i}$ 的<strong>直接后继</strong>。</li>
+<li>如果 $e_{k}$ 是无向边，则称 $v_{i}$，$v_{j}$ 是 $e_{k}$ 的两个<strong>端点</strong>。</li>
+<li>全部由有向边构成的图叫<strong>有向图</strong>；只由无向边组成的图叫<strong>无向图</strong>；既有有向边又有无向边构成的图称为<strong>混合图</strong>。</li>
+<li>只与一个结点相关联的边称为<strong>自环</strong>，在同一对结点之间可以存在多条边，称之为<strong>重边</strong>。含有重边的图叫<strong>多重图</strong>。</li>
+<li>$G=(V,E)$ 的某结点 $v$ 所关联的边数称为该结点的<strong>度</strong>，用 $d(v)$ 表示。如果 $v$ 带有自环，则自环对 $d(v)$ 的贡献为 $2$。</li>
+<li>关联于同一对结点的多条边（有向边应同向）称为<strong>平行边</strong></li>
+<li>平行边的条数称为边的<strong>重数</strong></li>
+<li>不含平行边（任意两结点间最多只有一条边）和自环的<strong>无向图或有向图</strong>称为<strong>简单图</strong></li>
+<li>没有任何边的简单图叫<strong>空图</strong>，用 $N_{n}$ 表示</li>
+<li>只含一个结点的空图称为<strong>平凡图</strong></li>
+<li>任何两结点间都有边的简单图称为<strong>完全图</strong>，用 $K_{n}$ 表示。$K_{n}$ 中每个结点的度都是 $n-1$。</li>
+<li>$K_{n}$ 的边数是 $\frac{1}{2} n(n-1)$</li>
+<li>一个简单有向图，其中每一对不同的顶点都只有一对边相连，称为<strong>完全有向图</strong></li>
+<li>每个结点的度都相同的图，若其度均为 $k$，则称为 <strong>k-正则图</strong>。完全图是(n-1)-正则图</li>
+<li>有向图中由于各边都是有向边，因此每个结点 $v$ 还有其<strong>正度</strong> $\left(d^{+}(v)\right)$ 和<strong>负度</strong> $\left(d^{-}(v)\right)$。$d^{+}(v)$ 的值是以 $v$ 为始点的边的数目，$d^{-}(v)$ 是以 $v$ 为终点的边的数目。显然有 $d^{+}(v)+d^{-}(v)=d(v)$。</li>
+<li><strong>握手定理</strong>：设 $G=(V,E)$ 有 $n$ 个结点，$m$ 条边，则<script type="math/tex; mode=display">
+\sum_{v \in V(G)} d(v)=2 m</script></li>
+<li>$G$ 中度为奇数的结点必为偶数个</li>
+<li>有向图 $G$ 中正度之和等于负度之和。</li>
+<li>非空简单无向图中一定存在度相同的结点。</li>
+<li>如果图 $G=(V,E)$ 的每条边 $e_{k}=\left(v_{i},v_{j}\right)$ 都赋以一个实数 $w_{k}$ 作为该边的权，则称 $G$ 是<strong>赋权图</strong>。特别地，如果这些权都是正实数，就称 $G$ 是<strong>正权图</strong>。</li>
+<li>给定 $G=(V,E)$，如果存在另一个图 $G^{\prime}=\left(V^{\prime},E^{\prime}\right)$，满足 $V^{\prime} \subseteq V$，$E^{\prime} \subseteq E$，则称 $G^{\prime}$ 是 $G$ 的一个<strong>子图</strong>。<ul>
+<li>如果 $V^{\prime}=V$，就称 $G^{\prime}$ 是 $G$ 的<strong>支撑子图</strong>或<strong>生成子图</strong>（只能删除边，结点不变）</li>
+<li>如果 $V^{\prime} \subseteq V$，且 $E^{\prime}$ 包含了 $G$ 在结点子集 $V^{\prime}$ 之间的所有边，则称 $G^{\prime}$ 是 $G$ 的<strong>导出子图</strong>。（删除结点及其关联的边）</li>
+<li>如果 $V^{\prime}=V$，$E^{\prime}=E$ 或者 $E^{\prime}=\varnothing$，则称为<strong>平凡子图</strong>。</li>
+</ul>
+</li>
+<li>给定两个图 $G_{1}=\left(V_{1},E_{1}\right)$，$G_{2}=\left(V_{2},E_{2}\right)$。<ul>
+<li>$G_{1}$ 和 $G_{2}$ 的<strong>并</strong> $G_{1} \cup G_{2}=(V,E)$，其中 $V=V_{1} \cup V_{2}$，$E=E_{1} \cup E_{2}$</li>
+<li>$G_{1}$ 和 $G_{2}$ 的<strong>交</strong> $G_{1} \cap G_{2}=(V,E)$，其中 $V=V_{1} \cap V_{\cdot 2}$，$E=E_{1} \cap E_{2}$</li>
+<li>$G_{1}$ 和 $G_{2}$ 的<strong>对称差</strong> $G_{1} \oplus G_{2}= (V,E)$，其中 $V=V_{1} \cup V_{2}$，$E=E_{1} \oplus E_{2}$</li>
+</ul>
+</li>
+<li>在 $G$ 中删去一个子图 $H$，指删掉 $H$ 中的各条边，记作 $G-H$<ul>
+<li>特别地，对于简单图 $G$，称 $K_{n}-G$ 为 $G$ 的<strong>补图</strong>，记作 $\bar{G}$。</li>
+</ul>
+</li>
+<li>从 $G$ 中删去某个结点 $v$ 及其关联的边所得的图记作 $G-v$<ul>
+<li>$G-v$ 是 $G$ 的导出子图</li>
+</ul>
+</li>
+<li>从 $G$ 中删去某特定的边 $e = (u, v)$ 所得的图记作 $G-e$<ul>
+<li>$G-e$ 是 $G$ 的支撑子图</li>
+</ul>
+</li>
+<li>在 $G$ 中增加某条边 $e_{i j}$，可记作 $G+e_{i j}$</li>
+<li>如果 $G$ 是无向图，则 $\Gamma(v)={u \mid (v,u) \in E}$ 称为 $v$ 的<strong>邻点集</strong></li>
+<li>设 $v$ 是有向图 $G$ 的一个结点，则<script type="math/tex; mode=display">
+\Gamma^{+}(v)=\{u \mid(v,u) \in E\}</script>称为 $v$ 的<strong>直接后继集</strong>或<strong>外邻集</strong><script type="math/tex; mode=display">
+\Gamma^{-}(v)=\{u \mid(u,v) \in E\}</script>称为 $v$ 的<strong>直接前趋集</strong>或<strong>内邻集</strong></li>
+<li>两个图 $G_{1}=\left(V_{1},E_{1}\right)$，$G_{2}=\left(V_{2},E_{2}\right)$，如果 $V_{1}$ 和 $V_{2}$ 存在双射函数 $\mathrm{f}$，且 $(u,v) \in E_{1}$，当且仅当 $(f(u),f(v)) \in E_{2}$ 时，并且这两条边的重数相同，称 $G_{1}$ 和 $G_{2}$ <strong>同构</strong>，记作： $\boldsymbol{G}_{\mathbf{1}} \cong \boldsymbol{G}_{\mathbf{2}}$</li>
+<li>$G_{1} \cong G_{2}$ 的<strong>必要条件</strong>：<ul>
+<li>$\left|V\left(G_{1}\right)\right|=\left|V\left(G_{2}\right)\right|$，$\left|E\left(G_{1}\right)\right|=\left|E\left(G_{2}\right)\right|$</li>
+<li>$G_{1}$ 和 $G_{2}$ 结点度的非增序列相同</li>
+<li>存在同构的导出子图</li>
+</ul>
+</li>
+</ul>
+<h3 id="度序列可图性判断"><a href="#度序列可图性判断" class="headerlink" title="度序列可图性判断"></a>度序列可图性判断</h3><!-- ![](https://s2.loli.net/2022/10/25/cnF4LTJVuC6vw5G.png) -->
+<h3 id="图的代数表示"><a href="#图的代数表示" class="headerlink" title="图的代数表示"></a>图的代数表示</h3><h4 id="邻接矩阵"><a href="#邻接矩阵" class="headerlink" title="邻接矩阵"></a>邻接矩阵</h4><ul>
+<li>邻接矩阵表示了结点之间的邻接关系。</li>
+<li>有向图的邻接矩阵 $\boldsymbol{A}$ 是一个 $n$ 阶方阵，其元素为<script type="math/tex; mode=display">
+a_{i j}=\left\{
+\begin{array}{ll}
+1,& \left(v_{i},v_{j}\right) \in E \\
+0,& \text { 其他 }
+\end{array}
+\right.</script></li>
+<li>邻接矩阵 $\boldsymbol{A}$ 第 $i$ 行非零元的数目恰是 $v_i$ 的正度，第 $j$ 列非零元的数目是 $v_j$ 的负度。</li>
+<li>邻接矩阵可以表示自环，但无法表示重边。</li>
+<li>无向图的邻接矩阵，是一个对称矩阵</li>
+</ul>
+<h4 id="权矩阵"><a href="#权矩阵" class="headerlink" title="权矩阵"></a>权矩阵</h4><ul>
+<li>赋权图常用权矩阵 $\boldsymbol{A}$ 进行表示。其元素<script type="math/tex; mode=display">
+a_{i j}=
+\left\{
+\begin{array}{ll}
+w_{i j},& \left(v_{i},v_{j}\right) \in E \\
+0,& \text { 其他 }
+\end{array}\right.</script></li>
+<li>权矩阵实际即为带权值的邻接矩阵</li>
+<li>无向图的权矩阵，是一个对称矩阵</li>
+</ul>
+<h4 id="关联矩阵"><a href="#关联矩阵" class="headerlink" title="关联矩阵"></a>关联矩阵</h4><ul>
+<li>关联矩阵表示结点与边之间的关联关系。</li>
+<li>有向图 $\boldsymbol{G}$ 的关联矩阵 $\boldsymbol{B}$ 是 $n \times m$ 的矩阵，当给定结点和边的编号之后，其元素<script type="math/tex; mode=display">
+b_{i j}=\left\{\begin{aligned}
+1,& e_{j}=\left(v_{i},v_{k}\right) \in E \\
+-1,& e_{j}=\left(v_{k},v_{i}\right) \in Es\ \\
+0, & \text { 其他 }
+\end{aligned}\right.</script></li>
+<li>每列两个非零元：-1，1</li>
+<li>可以表示重边，但无法表示自环</li>
+<li>第 $i$ 行非零元的数目恰是结点 $v_{i}$ 的度，其中 $1$ 元的数目是 $d^{+}\left(v_{i}\right)$，$-1$ 元的数目是 $d^{-}\left(v_{i}\right)$。</li>
+<li>类似地，无向图也有其关联矩阵 $\boldsymbol{B}$，但其中不含 $-1$ 元素。</li>
+</ul>
+<h4 id="邻接表"><a href="#邻接表" class="headerlink" title="邻接表"></a>邻接表</h4><p>（Todo）</p>
+<h2 id="第二章-道路与回路"><a href="#第二章-道路与回路" class="headerlink" title="第二章 道路与回路"></a>第二章 道路与回路</h2><p><strong>有向图</strong> $G=(V,E)$ 中，若边序列 $P=\left(e_{i 1},e_{i 2},\cdots,e_{i q}\right)$，其中 $e_{i k}=\left(v_{l},v_{j}\right)$ 满足 $v_{l}$ 是 $e_{i k-1}$ 的终点，$v_{j}$ 是 $e_{i k+1}$ 的始点，就称 $P$ 是 $G$ 的一条<strong>有向道路</strong>。如果 $e_{i q}$ 的终点也是 $e_{i 1}$ 的始点，则称 $P$ 是 $G$ 的一条<strong>有向回路</strong>。边的数目 $q$ 是道路（回路）的长度。</p>
+<ul>
+<li>如果 $P$ 中的边没有重复出现，则分别称为<strong>简单有向道路</strong>和<strong>简单有向回路</strong>。</li>
+<li>如果在 $P$ 中结点也不重复出现，又分别称它们是<strong>初级有向道路</strong>和<strong>初级有向回路</strong>，简称为路和回路。</li>
+<li>显然，初级有向道路（回路）一定是简单有向道路（回路）。</li>
+<li>需要注意的是回路中的结点<strong>除始点和终点外</strong>不重复出现</li>
+</ul>
+<p><strong>无向图</strong> $G=(V,E)$ 中，若点边交替序列 $P=\left(v_{i 1},e_{i 1},v_{i 2},e_{i 2},\cdots,e_{i q-1},v_{i q}\right)$ 满足 $v_{i k},v_{i k+1}$ 是 $e_{i k}$ 的两个端点，则称 $P$ 是 $G$ 中的一条<strong>链</strong>，或<strong>道路</strong>。如果 $v_{i q}=v_{i 1}$，则称 $P$ 是 $G$ 中的一个<strong>圈</strong>，或<strong>回路</strong>。边的数目 $q$ 称为道路（回路）的长度。</p>
+<ul>
+<li>如果 $P$ 中没有重复出现的边，称之为<strong>简单道路</strong>或<strong>简单回路</strong></li>
+<li>若其中结点也不重复，又称之为<strong>初级道路</strong>或<strong>初级回路</strong></li>
+<li><p>需要注意的是回路中是的结点是<strong>除始点和终点外</strong>不重复出现</p>
+</li>
+<li><p>设连通图 $G=(V,E)$ 有 $k$ 个度为奇数的结点，则 $E(G)$ 可以划分为 $k/2$ 条简单道路。</p>
+</li>
+</ul>
+<h3 id="弦"><a href="#弦" class="headerlink" title="弦"></a>弦</h3><p>设 $C$ 是简单图 $G$ 中含结点数大于 $3$ 的一个初级回路，如果结点 $v_{i}$ 和 $v_{j}$ 在 $\mathrm{C}$ 中不相邻，而边 $\left(v_{i},v_{j}\right) \in \mathrm{E}(\mathrm{G})$，则称 $\left(v_{i},v_{j}\right)$ 是 $\mathrm{C}$ 的一条<strong>弦</strong>。</p>
+<ul>
+<li>若对于每一个 $v_{k} \in \mathrm{V}(\mathrm{G})$，都有 $\mathrm{d}\left(v_{k}\right) \geq 3$，则 $\mathrm{G}$ 中必含带弦的回路。</li>
+<li>在简单图中，若 $n\ge 4$ 且 $m\ge 2n-3$，则 $G$ 中含有带弦的回路。</li>
+</ul>
+<h3 id="极长初级道路"><a href="#极长初级道路" class="headerlink" title="极长初级道路"></a>极长初级道路</h3><p>在简单图 $\mathrm{G}=(\mathrm{V},\mathrm{E})$ 中，$\mathrm{E} \neq \varnothing$，设 $P=\left(v_{0},v_{1},\cdots,v_{l}\right)$ 为 $\mathrm{G}$ 中一条初级道路，若路径的始点和终点两个端点 $v_{0}$ 和 $v_{l}$ 不与初级道路本身结点集以外的任何结点相邻，这样的初级道路称为<strong>极长初级道路</strong></p>
+<ul>
+<li>有向图中，初级道路始点的直接前驱集（内邻集），终点的直接后继集（外邻集），都在初级道路本身上。</li>
+<li>任何一条初级道路，如果不是极长初级道路，则至少有一个端点与初级道路本身以外的结点相邻，则将该结点及其相关联的边扩到新的初级道路中来，得到更新的初级道路。继续上述过程，直到变成极长初级道路为止。<ul>
+<li>由一条道路扩大的极长道路不一定唯一</li>
+<li>极长初级道路不一定是图中的最长初级道路</li>
+</ul>
+</li>
+</ul>
+<h3 id="二分图"><a href="#二分图" class="headerlink" title="二分图"></a>二分图</h3><p>$\mathrm{G}=(\mathrm{V},\mathrm{E})$ 是无向图，如果 $\mathrm{V}(\mathrm{G})$ 可以划分为子集 $X$ 和 $Y$，使得所有 $e=(u,v) \in E(G)$，$u$ 和 $v$ 分属于 $\mathrm{X}$ 和 $\mathrm{Y}$，则称 $\mathrm{G}$ 为二分图。</p>
+<ul>
+<li>二分图的子集 $X$，$Y$ 可能不唯一。</li>
+<li>如果二分图 $G$ 中存在回路，则它们是由偶数条边组成的。</li>
+<li>$\mathrm{G}=(\mathrm{V},\mathrm{E})$ 是二分图，$\mathrm{V}(\mathrm{G})$ 划分为子集 $X$ 和 $Y$，$X$ 中任一结点与 $Y$ 中每一个结点有且只有唯一一条边相连，则称 $G$ 为<strong>完全二分图</strong>（完全偶图），记作 $\boldsymbol{K}_{m,n}$，$m=|X|$，$n=|Y|$。</li>
+<li>含 $K_{3}$ 子图的图一定不是二分图</li>
+<li>$K_{n}$ 不是二分图（$n \geq 3$）</li>
+</ul>
+<h3 id="图的连通性"><a href="#图的连通性" class="headerlink" title="图的连通性"></a>图的连通性</h3><p>设 $G$ 是<strong>无向图</strong>，若 $G$ 的任意两结点之间都存在道路，就称 $G$ 是<strong>连通图</strong>，否则称为<strong>非连通图</strong>。<br>如果 $G$ 是<strong>有向图</strong>，不考虑其边的方向，即视之为无向图，若它是连通的，则称 $G$ 是 <strong>（弱）连通图</strong>。<br>若连通子图 $H$ 不是 $G$ 的任何连通子图的真子图，则称 $H$ 是 $G$ 的<strong>极大连通子图</strong>，或称<strong>连通支</strong>。</p>
+<ul>
+<li>显然 $G$ 的<strong>每个连通支都是它的导出子图</strong>。</li>
+<li>任何非连通图都是 $2$ 个以上连通支的并集</li>
+<li>设 $G$ 是简单无向图，当 $m&gt;\frac{1}{2}(n−1)(n−2)$ 时 $G$ 是连通图。</li>
+<li>$G=(V, E)$ 是连通图，则 $m\ge n-1$</li>
+</ul>
+<h3 id="两点距离"><a href="#两点距离" class="headerlink" title="两点距离"></a>两点距离</h3><p>若 $G$ 的任意两结点 $u,v$ 之间连通，则称 $u,v$ 之间的最短道路为<strong>短程线</strong>，该短程线的长度称为 $u,v$ 之间的<strong>距离</strong>，记作 $d(u,v)$。若 $u,v$ 之间不连通，则 $d(u,v)=\infty$</p>
+<h3 id="割点和割边"><a href="#割点和割边" class="headerlink" title="割点和割边"></a>割点和割边</h3><p>$G$ 图中，一结点 $u$，$G$ 减去 $u$ 后，图的连通分支数上升，则称 $u$ 为图 $G$ 的<strong>割点</strong>。<br>$G$ 图中，一边 $e$，$G$ 减去 $e$ 后，图的连通分支数上升，则称 $e$ 为图 $G$ 的<strong>割边/桥</strong>。</p>
+<h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><p>在连通图 $G$ 中，若其不含回路，且在任意两结点之间都只有唯一的一条初级道路，就称 $G$ 为<strong>树</strong>。</p>
+<ul>
+<li>树是含边数最少的连通图（极小连通子图）。</li>
+</ul>
+<h3 id="欧拉道路与回路"><a href="#欧拉道路与回路" class="headerlink" title="欧拉道路与回路"></a>欧拉道路与回路</h3><p>无向连通图 $G=(V,E)$ 中的一条经过所有边的简单回路（道路）称为 $G$ 的<strong>欧拉回路（道路）</strong>。</p>
+<ul>
+<li>具有欧拉回路的图称为<strong>欧拉图</strong></li>
+<li>无向连通图 $G$ 存在欧拉回路的充要条件是 $G$ 中各结点的度都是偶数。</li>
+<li>若无向连通图 $G$ 中只有 $2$ 个度为奇的结点，则 $G$ 存在欧拉道路。</li>
+<li>若有向连通图 $G$ 中各结点的正、负度相等，则 $G$ 存在有向欧拉回路。</li>
+<li>$K_{n, m}$ 中含有欧拉道路当且仅当 $n, m$ 均为偶数</li>
+</ul>
+<h3 id="哈密顿道路与回路"><a href="#哈密顿道路与回路" class="headerlink" title="哈密顿道路与回路"></a>哈密顿道路与回路</h3><p>无向图的一条过全部结点的初级回路（道路）称为 $G$ 的哈密顿回路（道路），简记为 $H$ 回路（道路）。</p>
+<ul>
+<li>具有哈密顿回路的图也称为哈密顿图 </li>
+<li>约定：平凡图是哈密顿图</li>
+<li>哈密顿通路是经过所有结点中长度最短的通路</li>
+<li>哈密顿回路是经过所有结点中长度最短的回路</li>
+<li>如果简单图 $G$ 的任意两结点 $v_{i},v_{j}$ 之间恒有 $d\left(v_{i}\right)+d\left(v_{j}\right) \geqslant n-1$，则 $G$ 中存在哈密顿道路。</li>
+<li>若简单图 $G$ 的任意两结点 $v_{i}$ 和 $v_{j}$ 之间恒有 $d\left(v_{i}\right)+d\left(v_{j}\right) \geqslant n$，则 $G$ 中存在哈密顿回路。</li>
+<li>若简单图 $G$ 每个结点的度都大于等于 $\frac{n}{2}$，则 $G$ 有 $H$ 回路。</li>
+<li>设 $G$ 是简单图，$v_{i},v_{j}$ 是不相邻结点，且满足 $d\left(v_{i}\right)+d\left(v_{j}\right) \geqslant n_{\circ}$ 则 $G$ 存在 $H$ 回路的充要条件是 $G+\left(v_{i},v_{j}\right)$ 有 $H$ 回路。</li>
+<li>如无向图 $G=(V,E)$ 是 $H$ 图，$V_{1}$ 是 $V$ 的任意非空子集，则 $p\left(G-V_{1}\right) \leq\left|V_{1}\right|$，其中 $p\left(G-V_{1}\right)$ 是从 $\mathrm{G}$ 中删除 $V_{1}$ 后的连通支的数目。</li>
+<li>如无向图 $G=(V,E)$ 存在 $\mathrm{H}$ 道路，$V_{1}$ 是 $V$ 的任意非空子集，则 $p\left(G-V_{1}\right) \leq\left|V_{1}\right|+1$。</li>
+<li>有割点的图一定不是 $H$ 图</li>
+<li>如无向图 $G=(V,E)$ 是二分图，<ul>
+<li>两边结点数不相同，则 $G$ 不存在 $H$ 回路</li>
+<li>两边结点数不相同也不相差 $1$，则 $G$ 不存在 $H$ 道路</li>
+</ul>
+</li>
+<li>$K_{n, m}$ 中含有哈密顿道路当且仅当 $|n-m| \leq 1$</li>
+<li>$K_{n, m}$ 中含有哈密顿回路当且仅当 $n=m$</li>
+</ul>
+<h3 id="闭合图"><a href="#闭合图" class="headerlink" title="闭合图"></a>闭合图</h3><p>若 $v_{i}$ 和 $v_{j}$ 是简单图 $G$ 的不相邻结点，且满足 $d\left(v_{i}\right)+d\left(v_{j}\right) \geqslant n$，则令 $G^{\prime}=G+\left(v_{i},v_{j}\right)$，对 $G^{\prime}$ 重复上述过程，直至不再有这样的结点对为止。最终得到的图称为 $G$ 的<strong>闭合图</strong>，记作 $C(G)$。</p>
+<ul>
+<li>简单图 $G$ 的闭合图 $C(G)$ 是唯一的。</li>
+<li>简单图 $G$ 存在哈密顿回路的充要条件是其闭合图存在哈密顿回路。</li>
+<li>设 $G(n \geqslant 3)$ 是简单图，若 $C(G)$ 是完全图，则 $G$ 有 $H$ 回路。</li>
+</ul>
+<h2 id="第三章-树"><a href="#第三章-树" class="headerlink" title="第三章 树"></a>第三章 树</h2><ul>
+<li>给定一个图 $G=(V,E)$，如果它不含任何回路，我们就叫它是<strong>（树）林</strong></li>
+<li>如果 $G$ 又是连通的，即这个林只有一个连通支，就称它是<strong>树</strong>。</li>
+<li>一个不含任何回路的连通图称为<strong>树</strong>，用 $T$ 表示。$T$ 中的边称为<strong>树枝</strong>，度为 $1$ 的结点称为<strong>树叶</strong>。</li>
+<li>树的每条边都不会属于任何回路。这样的边叫<strong>割边</strong>。</li>
+<li>设 $e$ 是 $G$ 的一条边，若 $G^{\prime}=G-e$ 比 $G$ 的连通支数增加，则称 $e$ 是 $G$ 的一条<strong>割边</strong>。</li>
+<li>$e=(u,v)$ 是<strong>割边</strong>，当且仅当 $e$ 不属于 $G$ 的任何回路。</li>
+<li>设 $T$ 是结点数为 $n \geqslant 2$ 的树，则下列性质等价：<ul>
+<li>$T$ 连通且无回路。</li>
+<li>$T$ 连通且每条边都是割边。</li>
+<li>$T$ 连通且有 $n-1$ 条边。</li>
+<li>$T$ 有 $n-1$ 条边且无回路。</li>
+<li>$T$ 的任意两结点间有唯一道路。</li>
+<li>$T$ 无回路，但在任两结点间加上一条边后恰有一个回路。</li>
+</ul>
+</li>
+<li>树 $T$ 中一定存在树叶结点。</li>
+</ul>
+<h3 id="生成树"><a href="#生成树" class="headerlink" title="生成树"></a>生成树</h3><ul>
+<li>如果 $T$ 是图 $G$ 的支撑子图，而且又是一棵树，则称 $T$ 是 $G$ 的一棵<strong>支撑树</strong>，或称<strong>生成树</strong>，又简称为 $G$ 的树。</li>
+<li>任何无向连通图 $G$ 都含有生成树。</li>
+<li>在赋权连通图 $G$ 中，其总长最小和最大的生成树，就被称为<strong>最短树</strong>和<strong>最长树</strong>，亦或称为<strong>最小生成树</strong>和<strong>最大生成树</strong>。</li>
+</ul>
+<h4 id="Kruskal算法"><a href="#Kruskal算法" class="headerlink" title="Kruskal算法"></a>Kruskal算法</h4><p>略</p>
+<h4 id="Prime算法"><a href="#Prime算法" class="headerlink" title="Prime算法"></a>Prime算法</h4><p>略</p>
+<h3 id="二叉树"><a href="#二叉树" class="headerlink" title="二叉树"></a>二叉树</h3><ul>
+<li>除叶子结点外，其余结点的正度最多为 $2$ 的外向树称为<strong>二叉树</strong>；</li>
+<li>二叉树的结点集是有限集合，它或者为空，或者由根结点及两棵互不相交的左右子树的结点集构成，该左右子树也均为二叉树</li>
+<li>左子树为根结点左侧分叉的子树，右子树为根结点右侧分叉的子树，其<strong>严格区分</strong>，即使只有一棵子树也要说明是左子树还是右子树；左右子树交换位置，得到一棵新的二叉树</li>
+<li>若设二叉树的深度为 $h$，除第 $h$ 层外，其它各层 $1~h-1$ 的结点数都达到最大个数，第 $h$ 层所有的结点都连续集中在最左边，这就是<strong>完全二叉树</strong>。</li>
+<li>一棵高度（即结点层数）为 $k$，并具有 $2^k−1$ 个结点的二叉树，称为<strong>满二叉树</strong></li>
+<li>如果二叉树 $T$ 的每个叶子结点 $v_i$ 都赋予一个正实数 $w_i$，则称 $T$ 为<strong>赋权二叉树</strong></li>
+<li>给定叶子结点数目以及每个叶子结点对应的权值，可以构造许多不同的赋权二叉树。在这些二叉树中，带权路径总长最小的二叉树，称为<strong>最优二叉树</strong></li>
+</ul>
+<h3 id="Huffman算法"><a href="#Huffman算法" class="headerlink" title="Huffman算法"></a>Huffman算法</h3><p>略</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">大学学习生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%A6%BB%E6%95%A3/">离散</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/17/%E6%A6%82%E7%8E%87%E7%BB%9F%E8%AE%A1%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">概率统计笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/15/%E7%90%86%E8%AE%BA%E5%8A%9B%E5%AD%A6%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">理论力学笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', '1357310795/Blog-Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.12.3/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/anchor-js/4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.8/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

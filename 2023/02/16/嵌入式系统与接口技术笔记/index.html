@@ -1,0 +1,1398 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/doge.png">
+  <link rel="icon" href="/img/doge.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#e4ad97">
+  <meta name="description" content="">
+  <meta name="author" content="Teruteru">
+  <meta name="keywords" content="">
+  
+  <title>嵌入式系统与接口技术笔记 - Teruteru的Hexo博客</title>
+
+  <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myiconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"teru.space","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/76443599_p0-1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="嵌入式系统与接口技术笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-02-16 10:09" pubdate>
+        2023年2月16日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      17.3k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      186
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">嵌入式系统与接口技术笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年10月7日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="第一章-嵌入式系统概论"><a href="#第一章-嵌入式系统概论" class="headerlink" title="第一章 嵌入式系统概论"></a>第一章 嵌入式系统概论</h2><h3 id="控制器"><a href="#控制器" class="headerlink" title="控制器"></a>控制器</h3><ul>
+<li>控制器在计算机<strong>指令</strong>的控制下进行工作。计算机指令是一种经过<strong>编码</strong>的操作命令。它指定需要进行的操作，支配计算机中信息的传递以及计算机与I/O设备间的传递。</li>
+<li>控制器对指令进行<strong>译码</strong>，并根据指令的操作要求指挥所有其它部件的工作，为此它根据指令生成一系列时序控制信号，控制其它单元工作。</li>
+<li>控制器不断地从存储器中<strong>读取指令</strong>，然后分析指令的含义（译码），并执行指令的操作，执行完成以后又从存储器中读取下一条指令。</li>
+<li>控制器内部的主要功能部件：<ul>
+<li><strong>指令寄存器</strong>：存放由存储器取得的指令。</li>
+<li><strong>译码器</strong>：将指令中的操作码翻译成控制信号。</li>
+<li><strong>时序节拍发生器</strong>：产生时序脉冲节拍信号，使计算机有节奏、有次序地工作。</li>
+<li><strong>操作控制部件</strong>：将控制信号组合起来，控制各个部件完成相应的操作。</li>
+<li><strong>指令计数器</strong>：计算并指出下一条指令的地址。</li>
+</ul>
+</li>
+<li>一条计算机指令的功能是有限的，完成复杂的运算功能需要将多条指令组合起来构成一个指令序列。这样的一个完成某种功能的指令序列成为<strong>程序</strong>。</li>
+<li>指令在计算机中用二进制的代码（<strong>机器码</strong>）表示，以便于硬件的识别。</li>
+<li>程序在执行前存储在主存储器中，控制器通常按指令的顺序自动地从存储器中取出指令并依次执行，或者根据指令决定执行的顺序（如跳转指令等）。</li>
+<li>运算器和控制器一起构成了计算机的中央处理器，它是计算机的核心部件。</li>
+<li>通常还把CPU、存储器和输入/输出接口电路和在一起构成的电路系统称为<strong>主机</strong>（也即微型计算机）</li>
+</ul>
+<h3 id="总线"><a href="#总线" class="headerlink" title="总线"></a>总线</h3><ul>
+<li>连接计算机各个部分的方式可以采用<strong>总线</strong>的方式。</li>
+<li>总线是计算机中连接各个功能模块的纽带，是计算机各模块之间进行信息传输的<strong>公共线路</strong></li>
+<li>连接在总线上的模块分为发送模块和接收模块，构成信息的发送方和接收方。</li>
+<li>总线上的设备可分为主设备和从设备两大类<ul>
+<li>总线主设备：能够启动总线服务的设备（如CPU）</li>
+<li>总线从设备：只能等待启动命令的被动型设备。</li>
+</ul>
+</li>
+<li>按物理特性分类：<ul>
+<li>电缆式：通常采用扁平电缆连接线路板</li>
+<li>主板式：在主机板上采用插槽方式供功能板插入。</li>
+<li>背板式：在机箱中设置一个专门的总线插槽板。</li>
+</ul>
+</li>
+<li>按连线的数量分类：<ul>
+<li>串行总线：用一条数据线进行数据传输。</li>
+<li>并行总线：一般有8位、16位、32位、64位总线。</li>
+</ul>
+</li>
+<li>按连接的对象分类：<ul>
+<li>片总线：用于集成电路内部各功能单元的信息通路，属芯片级总线</li>
+<li>系统总线（也称内总线）：用于计算机内部各插件板（部件）之间的互连，属板级总线。常用的总线标准有ISA、EISA、PCI、PCI-E等</li>
+<li>外总线：用于计算机之间或主机与外设之间的通信，属设备级总线。常用的总线标准有RS-232C、RS-485、IEEE-488、USB总线等</li>
+</ul>
+</li>
+<li>数据传输方向<ul>
+<li>单工：单向传输总线。</li>
+<li>双工：双向传输总线。<ul>
+<li>半双工：只能在两个方向上轮流传输信息。</li>
+<li>全双工：可在两个方向上同时传输信息。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>定时（时钟）特征<ul>
+<li>同步：数据传输速率是固定的。</li>
+<li>异步：数据传输速率是可变的。</li>
+</ul>
+</li>
+</ul>
+<h3 id="总线结构"><a href="#总线结构" class="headerlink" title="总线结构"></a>总线结构</h3><h4 id="单总线结构"><a href="#单总线结构" class="headerlink" title="单总线结构"></a>单总线结构</h4><p><img src="https://s2.loli.net/2023/02/16/rpeFxfjPE1UVKMw.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>各模块之间的信息传递都通过单总线进行。</li>
+<li>优点：控制简单，易于扩充配置I/O设备。</li>
+<li>缺点：所有设备都连在一组总线上，总线只能分时工作，使数据传输量受限。</li>
+</ul>
+<h4 id="面向CPU的双总线结构"><a href="#面向CPU的双总线结构" class="headerlink" title="面向CPU的双总线结构"></a>面向CPU的双总线结构</h4><p><img src="https://s2.loli.net/2023/02/16/YX6VAv3JHKfOxs7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>通过存储总线使CPU对主存进行读/写操作。通过I/O总线让CPU与I/O设备进行数据交换。</li>
+<li>优点：提高了微机系统数据传输效率。</li>
+<li>缺点：外设和主存之间没有直接通路，要通过CPU进行信息交换，降低了CPU的工作效率。</li>
+</ul>
+<h4 id="面向主存的双总线结构"><a href="#面向主存的双总线结构" class="headerlink" title="面向主存的双总线结构"></a>面向主存的双总线结构</h4><p><img src="https://s2.loli.net/2023/02/16/4f7T6oKGm8hP9R5.png" srcset="/img/loading.gif" lazyload alt=""><br>结合了以上2种结构的特点。提高了信息传送效率，同时也不降低CPU的工作效率。</p>
+<h3 id="微机的性能指标"><a href="#微机的性能指标" class="headerlink" title="微机的性能指标"></a>微机的性能指标</h3><ul>
+<li>主频：计算机的晶振频率，反映时钟周期的大小。</li>
+<li>字长：CPU的数据位数，反映CPU并行处理能力。</li>
+<li>内存容量：能存储信息的字节数。</li>
+<li>存取周期：主存储器完成一次读写所需的时间。</li>
+<li>响应时间：用户向计算机系统发出一个请求后，到系统对该请求做出响应并获得其结果所需的等待时间。</li>
+<li>吞吐率：系统响应用户请求的速率。</li>
+<li>运算速度：微机每秒所能执行的指令数。</li>
+<li>MIPS（Million Instruction Per second)：反映计算机每秒可执行的指令数。</li>
+</ul>
+<h3 id="输入输出设备的寻址"><a href="#输入输出设备的寻址" class="headerlink" title="输入输出设备的寻址"></a>输入输出设备的寻址</h3><h4 id="统一编址法"><a href="#统一编址法" class="headerlink" title="统一编址法"></a>统一编址法</h4><ul>
+<li>存储器映像的外设寻址</li>
+<li>将接口中的控制寄存器、数据寄存器、状态寄存器和内存单元一样看待</li>
+<li>接口与存储器采用不同的地址</li>
+<li>可以利用访存指令进行输入输出操作</li>
+</ul>
+<h4 id="单独编址法"><a href="#单独编址法" class="headerlink" title="单独编址法"></a>单独编址法</h4><h3 id="中断方式"><a href="#中断方式" class="headerlink" title="中断方式"></a>中断方式</h3><ul>
+<li>中断是在发生了一个外部的事件时调用相应的处理程序的过程</li>
+<li>中断服务程序与中断时CPU正在运行的程序是相互独立的，相互不传递数据。</li>
+<li>中断处理中的问题<ul>
+<li>设备识别方式</li>
+<li>中断处理程序入口地址的形成</li>
+<li>中断裁决</li>
+<li>中断屏蔽</li>
+</ul>
+</li>
+<li>简单的中断处理过程<br><img src="https://s2.loli.net/2023/02/16/cOu8lCvUngJF46M.png" srcset="/img/loading.gif" lazyload alt=""></li>
+</ul>
+<h3 id="计算机软件系统"><a href="#计算机软件系统" class="headerlink" title="计算机软件系统"></a>计算机软件系统</h3><ul>
+<li>系统软件：使计算机系统功能完整，并为应用提供了一个平台。</li>
+<li>应用软件：面向用户应用的功能软件，专门为解决某个应用领域中的具体任务而开发。</li>
+<li>虚拟机：指通过软件模拟的具有完整硬件系统功能的、运行在一个完全隔离环境中的完整计算机系统。</li>
+</ul>
+<h3 id="定点数的编码"><a href="#定点数的编码" class="headerlink" title="定点数的编码"></a>定点数的编码</h3><ul>
+<li>定点数：小数点位置固定不变的数</li>
+<li>定点整数：小数点定在最低位数的右面</li>
+<li>定点小数：小数点固定在最高位数的后面，即纯小数表示</li>
+</ul>
+<h3 id="浮点数的编码"><a href="#浮点数的编码" class="headerlink" title="浮点数的编码"></a>浮点数的编码</h3><ul>
+<li>组成：阶码E，尾数M，符号位S</li>
+<li>E的编码：移码或补码<ul>
+<li>移码：将数据的二进制编码加上一个常数（通常是 $2^{n-1}$）后的二进制代码作为该数据的编码。移码的特点：保持了数据原有的大小顺序，便于数据比较。</li>
+</ul>
+</li>
+<li>S与M的编码：原码或补码</li>
+</ul>
+<h4 id="规格化浮点数（IEEE754）的编码"><a href="#规格化浮点数（IEEE754）的编码" class="headerlink" title="规格化浮点数（IEEE754）的编码"></a>规格化浮点数（IEEE754）的编码</h4><ul>
+<li>IEEE 754规范是一种用于表示浮点数的二进制格式。它包括三个组成部分：符号位、指数位和尾数位。</li>
+<li>符号位用1位表示，表示数值的<strong>正负性</strong>，0表示正数，1表示负数。</li>
+<li>指数位用k位表示。指数位表示浮点数的<strong>数量级</strong>，允许对非常大或非常小的数字进行表示。指数位采用<strong>偏移编码</strong>方式表示，即指数的真实值加上一个偏移量，以便在表示负指数时不需要使用符号位。因此，全0表示偏移量，全1表示最大偏移量。</li>
+<li><p>尾数位用n位表示，n是尾数的位数。尾数位表示浮点数的<strong>有效数字</strong>。尾数位也称为尾数或有效位。尾数位中的数字采用二进制小数形式表示。</p>
+</li>
+<li><p>单精度浮点数采用的是<strong>8位</strong>指数位，<strong>23位</strong>尾数位。</p>
+</li>
+<li>双精度浮点数采用的是<strong>11位</strong>指数位，<strong>52位</strong>尾数位。</li>
+<li>在单精度浮点数中，指数位偏移量为127。<ul>
+<li>对于一个非负指数，真实指数值加上偏移量就是该指数的编码值</li>
+<li>对于一个负指数，真实指数值加上偏移量的补码就是该指数的编码值。</li>
+</ul>
+</li>
+<li>采用偏移编码的好处是，可以使用无符号整数来表示指数，简化了计算机硬件的设计和实现。此外，偏移编码还可以方便地处理各种特殊情况，如指数为0、最大值、最小值等。</li>
+</ul>
+<h4 id="浮点数的表示范围"><a href="#浮点数的表示范围" class="headerlink" title="浮点数的表示范围"></a>浮点数的表示范围</h4><ul>
+<li>浮点数的溢出表现为阶码的溢出。浮点数的上溢：数据太大，以至于大于阶码所能表示的数据；浮点数的下溢：数据太小，以至于小于阶码所能表示的数值</li>
+<li>浮点数表示法可以扩大数值表示的范围；浮点数表示法未增加表示数值的个数；绝对值越大，浮点数分布越稀疏；阶码位数越多，数据表示的范围就越大；尾数位数越多，数据表示的精度越高</li>
+</ul>
+<h2 id="第二章-8086微机系统原理和结构"><a href="#第二章-8086微机系统原理和结构" class="headerlink" title="第二章 8086微机系统原理和结构"></a>第二章 8086微机系统原理和结构</h2><h3 id="8086-CPU-特性"><a href="#8086-CPU-特性" class="headerlink" title="8086 CPU 特性"></a>8086 CPU 特性</h3><ul>
+<li>Intel公司于1977年推出</li>
+<li>数据总线：16位</li>
+<li>地址总线：20位</li>
+<li>引脚功能复用</li>
+<li>单总线、累加器结构</li>
+<li>可控三态电路</li>
+<li>总线分时复用</li>
+</ul>
+<h4 id="流水线技术"><a href="#流水线技术" class="headerlink" title="流水线技术"></a>流水线技术</h4><p>从8086/8088开始，CPU采用了一种新的结构来并行地完成这些工作。执行单元负责执行指令，总线接口单元负责取指令、取操作数和写结果。它们独立地、并行地完成各自相应的工作。当EU执行指令时，BIU便“预取”下一条要执行的指令，所以大多数情况下取指令的时间可“省掉”，从而加快了程序的运行速度。这种结果称为流水线结构。</p>
+<p><img src="https://s2.loli.net/2023/05/15/Yn6HQZDedtWbN2v.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="8086的引脚定义及其功能"><a href="#8086的引脚定义及其功能" class="headerlink" title="8086的引脚定义及其功能"></a>8086的引脚定义及其功能</h3><p><img src="https://s2.loli.net/2023/03/29/GimCMY7X2e8IN6c.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>8086CPU是具有40条引出线的、采用双列直插式封装的集成电路芯片。为减少芯片的引脚数，以减少体积，8086CPU的许多引脚都具有双重定义和功能，采用分时复用方式工作，即在不同时刻，引脚上的信号具有不同的意义。</p>
+<ul>
+<li>每根引脚只传送一种信息</li>
+<li>引脚电平的高低代表不同的信号，如 $M/\overline{IO}$，在为低电平时，表示当前访问的是存储器；为高电平时，则表示访问输入/输出接口。</li>
+<li>在不同的时间范围，引脚传送不同的信息，即分时复用。如 $AD0\sim AD15$，在某一时刻传送地址的低16位信号；另一时刻则传送16位数据。</li>
+<li>在引脚作为输入端或输出端时传送不同的信息。如 $RQ/\overline{GT_0}$ 端，作为输入端时，输入的是总线请求信号；为输出端时，则输出总线请求允许信号。</li>
+<li>当CPU工作在不同模式时，引脚具有不同的名称和定义。8086微处理器有两种工作模式，最大模式和最小模式。两种工作模式下的引脚定义有一些区别，上图所示右边括号中的引脚名称就是CPU工作在最大模式时对应引脚的含义。</li>
+</ul>
+<h4 id="地址-数据总线"><a href="#地址-数据总线" class="headerlink" title="地址/数据总线"></a>地址/数据总线</h4><ul>
+<li>8086有20位地址线，16位数据线，采用分时复用方式，共同占用20根引脚。</li>
+<li>AD0~AD15地址、数据分时复用的双向信号线，三态。当 $ALE=1$ 时，这些引脚上传输的是地址信号；当 $\overline{DEN}=0$ 时，这些引脚上传输的是数据信号。</li>
+<li>A16~A19/S3~S6分时复用的地址/状态信号线，三态输出。在8086访问存储器时，读/写总线周期的第一个机器周期T1，从这4个引脚上送出最高4位地址A16~A19。而在总线周期的其他机器周期，这4个引脚送出状态信号S3~S6。这些状态信号里，S6始终为低电平；S5指示标志寄存器的中断允许标志位IP的状态；S4、S3的组合指示CPU当前正在使用的段寄存器。</li>
+<li>当CPU访问I/O端口时，这4根引脚不使用，全部为低电平。</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>S4</th>
+<th>S3</th>
+<th>正在使用的段寄存器</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>ES</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>SS</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>CS或未使用</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>DS</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="控制总线"><a href="#控制总线" class="headerlink" title="控制总线"></a>控制总线</h4><ul>
+<li>$MN/\overline{MX}$ 工作方式控制输入。为高电平时，表示CPU工作在最小模式；为低电平时，表示CPU处于最大模式。</li>
+<li>$\overline{RD}$ 读选通信号，三态，低电平有效。当其有效时，表示CPU正在对存储器或IO接口进行读操作。</li>
+<li>READY“准备好”信号输入引脚，高电平有效。它是由被访问的内存或 IO 设备发出的响应信号，当其有效时，表示存储器或I/O设备已准备好，CPU可以进行数据传送。若存储器或IO设备未准备好，则READY信号为低电平。CPU在T3周期采样READY信号，若其为低电平，CPU自动插入等待周期Tw（1个或多个），直到READY变为高电平后，CPU才脱离等待状态，完成数据传送过程。</li>
+<li>INTR可屏蔽中断请求输入信号，高电子有效。CPU在每条指令的最后一个周期采样该信号，以决定是否进入中断响应周期。这个引脚上的中断请求信号可用软件屏蔽。</li>
+<li>$\overline{TEST}$ 测试信号输入引脚，低电平有效。当CPU执行 WAIT 指令时，每隔5个时钟周期对此引脚进行一次测试。若为高电平，CPU则继续处于空转状态进行等待，直到TEST引脚变为低电平后，CPU才结束等待状态，继续执行下一条指令。</li>
+<li>NMI非屏蔽中断请求输入信号，上升沿触发。这个引脚上的中断请求信号不能用软件屏蔽，CPU在当前指令执行结束后就进入中断过程。</li>
+<li>RESET系统复位输入信号，高电平有效。为使CPU完成内部复位过程，该信号至少要在4个时钟周期内保持有效。当RESET返回低电平时，CPU将重新启动。</li>
+<li>$\overline{\mathrm{BHE}} / \mathrm{S}_{7}$ 分时复用的控制 $/$ 状态信号线，三态输出。在总线周期的第一个时钟周期输出 $\overline{\mathrm{BHE}}$ 信号，其他时钟周期输出状态信号 $\mathrm{S} 7$。$\overline{\mathrm{BHE}}$ 信号的意义是：当 $\overline{\mathrm{BHE}}$ 为低电平时，表示可使用高 $8$ 位数据线 $\mathrm{AD} 8 \sim \mathrm{AD} 15$；否则只使用低 $8$ 位数据线 $AD0 AD7$。$\overline{\mathrm{BHE}}$ 信号和地址信号一样需要锁存，它同最低位地址信号 $\mathrm{A} 0$ 的状态组合在一起表示的功能见下表。</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>$\overline{\mathrm{BHE}}$</th>
+<th>$\mathrm{A} 0$</th>
+<th>使用的数据线</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>读或写偶地址的一个字</td>
+<td>0</td>
+<td>0</td>
+<td>AD15~AD0</td>
+</tr>
+<tr>
+<td>读或写偶地址的一个字节</td>
+<td>1</td>
+<td>0</td>
+<td>AD7~AD0</td>
+</tr>
+<tr>
+<td>读或写奇地址的一个字节</td>
+<td>0</td>
+<td>1</td>
+<td>AD15~AD8</td>
+</tr>
+<tr>
+<td>/</td>
+<td>1</td>
+<td>1</td>
+<td>无效</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="最小工作模式"><a href="#最小工作模式" class="headerlink" title="最小工作模式"></a>最小工作模式</h4><ul>
+<li>两种工作模式可以通过在 $\mathrm{MN} / \overline{\mathrm{MX}}$ 输入引脚加上不同的电平来进行选择。当 $\mathrm{MN} / \overline{\mathrm{MX}} =1$ 时，$8086$ 工作在最小模式；当 $\mathrm{MN} / \overline{\mathrm{MX}}=0$ 时，$8086$ 工作在最大模式。两种工作模式下的部分引脚具有不同的功能。</li>
+<li>$\overline{\mathrm{INTA}}$ 中断响应输出端。当 $CPU$ 响应从 $\overline{\mathrm{INTA}}$ 端输入的中断请求时，由 $\overline{\mathrm{INTA}}$ 端输出两个连续的负脉冲，可用做外部中断源的中断向量码的读选通信号。</li>
+<li>$ALE$ 地址锁存允许信号，三态输出，高电平有效。当它为高电平时，表明 $CPU$ 地址线上有有效地址。可利用它的下降沿将地址信号 $A0~A19$ 和 $\overline{\mathrm{BHE}}$ 信号锁存到地址锁存器中。</li>
+<li>$\overline{\mathrm{DEN}}$ 数据允许信号，三态，低电平有效。该信号有效时，表示数据总线上有有效数据。它在每次访问内存或 $\mathrm{I} / \mathrm{O}$ 接口以及在中断响应期间有效。它常用做数据总线驱动器的片选信号。</li>
+<li>$\mathrm{DT} / \overline{\mathrm{R}}$ 数据传送方向控制信号，三态。用于确定数据传送的方向。高电平时，$\mathrm{CPU}$ 向存储器或 $\mathrm{I} / \mathrm{O}$ 端口发送数据；低电平时，$\mathrm{CPU}$ 从存储器或 $\mathrm{I} / \mathrm{O}$ 接口接收数据。此信号用于控制总线收发器的传送方向。</li>
+<li>$\mathrm{M} / \overline{\mathrm{IO}}$ 输入 $/$ 输出 $/$ 存储器控制信号，三态。用来区分当前操作是访问存储器还是访问 $\mathrm{I} / \mathrm{O}$ 端口。引脚输出为高电平时，表示访问存储器；为低电平时，则表示访问 $\mathrm{I} / \mathrm{O}$ 端口。</li>
+<li>$\overline{W R}$ 写信号输出，三态。此引脚输出为低电平时，表示 $\mathrm{CPU}$ 正在对存储器或 $\mathrm{I} / \mathrm{O}$ 端口进行写操作。</li>
+<li>$HOLD$ 总线保持请求信号输入，高电平有效。当某一总线主控设备要占用系统总线时，通过此引脚向 $CPU$ 提出请求。</li>
+<li>$HLDA$ 总线保持响应信号输出，高电平有效。这是 $CPU$ 对 $HOLD$ 请求的响应信号，当 $CPU$ 收到有效的 $HOLD$ 信号后，就会对其做出响应：一方面使 $CPU$ 的所有三态输出的地址信号、数据信号和相应的控制信号变为高阻状态 $($ 浮动状态 $)$；同时还输出一个有效的 $HLDA$，表示处理器现在已放弃对总线的控制。当 $CPU$ 检测到 $HOLD$ 信号变低电平后，就立即使 $HLDA$ 变低电平，同时恢复对总线的控制。</li>
+</ul>
+<h3 id="最小工作模式总线结构"><a href="#最小工作模式总线结构" class="headerlink" title="最小工作模式总线结构"></a>最小工作模式总线结构</h3><p><img src="https://s2.loli.net/2023/03/29/4edNXL7CoRk3u6f.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="锁存器"><a href="#锁存器" class="headerlink" title="锁存器"></a>锁存器</h3><p>地址锁存器是一个暂存器，它根据控制信号的状态，将总线上地址代码暂存起来。 8086/8088数据和地址总线采用分时复用操作方法，即用同一总线既传输数据又传输地址。当微处理器与存储器交换信号时，首先由CPU发出存储器地址，同时发出允许锁存信号ALE给锁存器，当锁存器接到该信号后将地址/数据总线上的地址锁存在总线上，随后才能传输数据。</p>
+<h3 id="最小工作模式时序"><a href="#最小工作模式时序" class="headerlink" title="最小工作模式时序"></a>最小工作模式时序</h3><ul>
+<li>微处理器是在统一的时钟信号 CLK 控制下，按照一定的时序来工作的。 8086 的时钟频率为 MHz, 故一个时钟周期等于 200ns</li>
+<li>CPU 的时序分为两种：时钟周期和总线周期。</li>
+<li>8086CPU 与内存或接口间的通信都是通过总线来进行的，如将一个字节写入内存单元，或从内存某单元读一个字节到 CPU，这种通过总线对存储器或 I/O 接口进行一次访问所需的时间叫做一个<strong>总线周期</strong>，一个总线周期包括多个<strong>时钟周期</strong>。CPU 每执行一条指令至少要访问一次存储器（取指令），即至少要进行一次读存储器操作，占用一个读总线周期。</li>
+<li>一般地，一条指令的执行需要若干个总线周期才能完成。而一个总线周期又由若干个时钟周期构成。微处理器在运行过程中是按照一个统一的时钟一步步地执行每一个操作的。每个时钟脉冲的持续时间就称为一个时钟周期。<strong>8086 CPU 的一个读（或写）总线周期至少包括 4 个时钟周期</strong>。显然，时钟周期越短，CPU 执行的速度就越快。典型的总线周期如下图所示</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/04/01/BKUolIqLv7zENkO.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>8086 的数据总线和部分地址总线是分时复用的。在一个总线周期内，先利用总线传送地址，将地址锁存后，再利用同一总线传送数据。</li>
+<li>在 T1 期间，BIU 部分将要访问的存储单元或输入/输出端口地址送上总线<ul>
+<li>若为读周期，则在第二个时钟周期将总线置为高阻缓冲状态，以使 CPU 有时间从输出地址方式转换为输人数据方式。之后在 T3 到 T4 期间从总线读入数据到 CPU</li>
+<li>若为写周期，则 CPU 就不必转换工作方式，在地址锁存后直接输出数据到总线上。</li>
+</ul>
+</li>
+<li>只有在指令流队列出现2个以上空单元时要填补指令流队列或在执行指令的过程中需要申请一个总线周期时，BIU 部分才会进入执行总线周期的状态。在两个总线周期之间，有时可能会出现一些总线上没有信息传送的时钟周期，此时的总线状态称为<strong>空闲状态</strong>。</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/04/01/nZUcrVJMzDWRE9m.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>在 T1 期间，地址/状态复用信号线 A19/S6~A16/S3 和地址/数据复用信号线 AD15~AD0 分别送出地址 A19~A16 和 A15~A0，与此同时送出地址锁存允许信号 ALE。$\overline{BHE}$ 的状态由 $\overline{BHE}/S7$ 端输出。</li>
+<li>外部电路在 T1 后期利用 ALE 的下降沿把地址信号锁存到地址锁存器中，从而在锁存器的输出端得到完整的 20 位地址信号 A19~A0。</li>
+<li>读总线周期中，CPU 在 T3 到 T4 期间读入总线上的数据。在写总线周期中，CPU 从 T2 开始把数据送到总线上并维持到 T4。</li>
+<li>某些情况下，当内存或接口的速度比较慢，使得在 4 个时钟周期里不能完成读/写操作时，可通过时钟发生器产生一个低电平信号送到 8086 的 READY 端。8086 在每个总线周期的 T3 开始处都要检查 READY 的状态。若此时 READY 为低电平，则CPU不执行 T4，而是在 T3 之后插入一个等待时钟周期 Tw，以等待存储器或 I/O 接口完成读/写操作。</li>
+<li>在 Tw 的开始时刻，CPU 还要检查 READY 状态，若仍为低电平，则再插入一个 Tw。</li>
+<li>此过程一直进行到某个 Tw 开始时，READY 已经变为高电平，这时下一个时钟周期就是总线周期的最后一个时钟周期 T4。</li>
+<li>利用 READY 信号，CPU可以插入若干个 Tw，使总线周期延长，达到可靠地读/写内存和 I/O 接口的目的。</li>
+</ul>
+<h3 id="编址"><a href="#编址" class="headerlink" title="编址"></a>编址</h3><p>8086系统中，输入输出端口采用独立编址方式，内存空间00000H ~FFFFFH（1MB），使用 A0~A19 全部 20 根地址线寻址。I/O地址空间0000H~FFFFH（64KB），使用 A0~A15 共 16 根地址线寻址。8086允许有 65536（64K）个 8 位的I/O端口，两个编号相邻的 8 位端口可以组合成一个16位的端口。</p>
+<h3 id="寻址方式"><a href="#寻址方式" class="headerlink" title="寻址方式"></a>寻址方式</h3><ol>
+<li>立即寻址：直接指出操作数的数据，即操作数是立即数，例如 MOV AX, 2233H</li>
+<li>直接寻址（存储器寻址）：指令中的操作数是存储器操作数，例如 MOV AX, [1234H]</li>
+<li>寄存器寻址：指令中的操作数为寄存器，例如 MOV SS, AX</li>
+<li>寄存器间接寻址：寄存器的内容是操作数的偏移地址，例如 MOV AX, [SI]</li>
+<li>寄存器相对寻址：在寄存器间接寻址中，地址加了一个偏移量，例如 MOV AL, [BX+5]</li>
+<li>基址-变址寻址：由一个基址寄存器（BX, BP）的内容和一个变址寄存器（SI, DI）的内容相加形成操作数的偏移地址，例如 MOV AX, [BX+SI]</li>
+<li>基址-变址-相对寻址：由一个基址寄存器（BX, BP）的内容、一个变址寄存器（SI, DI）的内容和一个偏移量相加形成操作数的偏移地址，例如 MOV AX, [DI+BX+06H]</li>
+<li>隐含寻址：有些指令的操作数为一个，其实另一个是被隐藏了，系统规定了另一个操作数所在的寄存器，例如 MUL BL 表示将AL中的内容与BL中的内容相乘，结果放到AX寄存器中</li>
+</ol>
+<h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><ul>
+<li>8086CPU 有 14 个寄存器，每个寄存器有一个名称。这些寄存器是:AX、BX、CX、DX、SI、DI、SP、BP、IP、CS、SS、DS、ES、PSW。</li>
+<li>8086CPU 的所有寄存器都是 16 位的，可以存放两个字节。</li>
+<li>寄存器复位的状态：</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>寄存器</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标志寄存器FR</td>
+<td>0000H</td>
+</tr>
+<tr>
+<td>指令寄存器IP</td>
+<td>0000H</td>
+</tr>
+<tr>
+<td>代码段寄存器CS</td>
+<td>FFFFH</td>
+</tr>
+<tr>
+<td>数据段寄存器DS</td>
+<td>0000H</td>
+</tr>
+<tr>
+<td>堆栈段寄存器SS</td>
+<td>0000H</td>
+</tr>
+<tr>
+<td>附加段寄存器ES</td>
+<td>0000H</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="通用寄存器"><a href="#通用寄存器" class="headerlink" title="通用寄存器"></a>通用寄存器</h4><ul>
+<li>AX、BX、CX、DX 这 4 个寄存器通常用来存放一般性的数据，被称为<strong>通用寄存器</strong>。</li>
+<li>8086CPU 的上一代 CPU 中的寄存器都是 8 位的，为了保证兼容，使原来基于上代 CPU 编写的程序稍加修改就可以运行在 8086 之上，8086CPU 的 AX、BX、CX、DX 这 4 个寄存器都可<strong>分为两个可独立</strong>使用的 8 位寄存器来用</li>
+<li>AX的低8位（0位~7位）构成了AL寄存器，高8位（8位~15位）构成了AH寄存器。AH和AL寄存器是可以独立使用的8位寄存器。</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/03/26/pzOeUcA6gWkmrMV.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>AX称为<strong>累加器</strong>，常用于存放算术逻辑运算中的操作数。所有的IO指令都使用累加器与外设接口传送信息；MUL乘法指令，8位默认操作数就在AL寄存器中，16位默认操作数就在AX中</li>
+<li>BX称为<strong>基地址寄存器</strong>，常用来存放访问内存时的基地址。AX，BX，CX，DX中只有BX可以存地址，也就是只有它可以加中括号</li>
+<li>CX称为<strong>计数寄存器</strong>，在循环和串操作指令中用做计数器。通常会把循环次数放在CX中。</li>
+<li>DX称为<strong>数据寄存器</strong>，在寄存器间接寻址的IO指令中存放IO端口的地址。如果想组成32位，就需要DX寄存器，比如两个16位数相乘，高16位数据放在DX中，低16位数据放在AX中；对端口进行操作时，如果直接给出立即数，只能为 00-FF，大的就要放在DX中</li>
+</ul>
+<h4 id="段寄存器"><a href="#段寄存器" class="headerlink" title="段寄存器"></a>段寄存器</h4><ul>
+<li>段寄存器也是通用寄存器</li>
+<li>段地址在 8086CPU 的段寄存器中存放。</li>
+<li>8086CPU 有 4 个段寄存器:CS、DS、SS、ES。</li>
+<li>当8086CPU要访问内存时由这4个段寄存器提供内存单元的段地址。</li>
+<li>CS 和 IP 是 8086CPU 中两个最关键的寄存器，它们指示了 CPU 当前要读取指令的地址。CS 为代码段寄存器，IP 为指令指针寄存器。</li>
+<li>在 8086PC 机中，任意时刻，设 CS 中的内容为 M，IP 中的内容为 N，8086CPU 将从内存 Mx16+N 单元开始，读取一条指令并执行。也可以这样表述：8086 机中，任意时刻，CPU 将 CS:IP 指向的内容当作指令执行。</li>
+<li>8086CPU 加电启动或复位后（即刚开始工作时）CS 和 IP 被设置为 CS=FFFFH，IP=0000H，即在 8086PC 机刚启动时，CPU 从内存 FFFF0H 单元中读取指令执行，FFFF0H 单元中的指令是 8086PC机开机后执行的第一条指令</li>
+<li>用户程序不能直接访问IP，即指令中的操作数不能是IP。</li>
+</ul>
+<h4 id="其他通用寄存器"><a href="#其他通用寄存器" class="headerlink" title="其他通用寄存器"></a>其他通用寄存器</h4><ul>
+<li>源变址寄存器SI存放偏移地址，功能与BX相同，SI不能被拆分成两个小寄存器，BX就可以</li>
+<li>目标变址寄存器DI存放偏移地址，功能与BX相同，DI不能被拆分成两个小寄存器，BX就可以</li>
+<li>变址寄存器常常在变址寻址方式中作为索引指针。在字符串操作指令中，要求用SI作为源变址寄存器，存放源操作数的偏移地址；DI作为目标变址寄存器，存放目标操作数的偏移地址。</li>
+<li>BP存放偏移地址，主要用于存放指向栈底的偏移地址，段寄存器使用SS（注意不是DS），可同SI或DI组合使用，不可以和BX一起使用</li>
+<li>SP存放偏移地址，主要用于存放指向栈顶的偏移地址，段寄存器使用SS</li>
+<li>CS:IP 指向下一条要执行的指令</li>
+<li>DS:BX/SI/DI 指向一个数据</li>
+<li>SS:SP 指向堆栈栈顶</li>
+<li>SS:BP 指向堆栈栈底</li>
+</ul>
+<h4 id="标志寄存器"><a href="#标志寄存器" class="headerlink" title="标志寄存器"></a>标志寄存器</h4><p>FLAGS称为标志寄存器或程序状态字(PSW)，是一个16位寄存器，但只使用了其中的9位，包括6个状态标志位和3个控制标志位。</p>
+<p><img src="https://s2.loli.net/2023/03/29/L1Tgd3bkDAYiw8y.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>CF进位标志位。在进行加（减）法运算时，若最高位向更高位有进（借）位时CF=1，否则CF=0。</li>
+<li>PF奇偶标志位。当运算结果的低8位中“1”的个数为偶数时PF=1，为奇数时PF=0。</li>
+<li>AF辅助进位标志位。在加（减）法操作中，若b3向b4有进位(借位)时AF=1，否则AF=0。用DAA和DAS指令可测试这个标志位，以便在BCD加法或减法之后调整AL中的值。</li>
+<li>ZF零标志位。当运算结果各位均为零时ZF=1，否则ZF=0。</li>
+<li>SP符号标志位。当运算结果的最高位（字节操作时是b7，字操作时是 b15）为1时SF=1，否则SF=0。即它和运算结果的最高位相同。因为在补码运算时最高位为符号位，SF=1表示结果为负;SF=0表示结果为正。</li>
+<li>OF溢出标志位。当算术运算的结果超出了带符号数的范围，即溢出时OF=1，否则OF=0。8位带符号数的范围是-128~+127，16位带符号数的范围是-32768~+32767。</li>
+<li>TF陷井标志位，也称为跟踪标志位。TF=1时，CPU处于单步执行指令的工作方式。这种方式便于进行程序的调试，每执行一条指令，自动产生一次单步中断，从而使用户能逐条地检查指令。</li>
+<li>IF中断允许标志位。IP=1时，CPU可以响应可屏蔽中断请求；IF=0时，则CPU禁止响应可屏蔽中断请求。IP的状态对不可屏蔽中断及内部中断没有影响。</li>
+<li><p>DF方向标志位。DF=1时，串操作按减地址方式进行，也就是说，从高地址开始，每处理一个元素，地址指针就自动减1（或减2）；DF=0时，串操作按增地址方式进行。</p>
+</li>
+<li><p>比较大小：</p>
+<ul>
+<li>对有符号数：<ul>
+<li>无溢出时（OF=0）：<ul>
+<li>若 ZF=1，则两数相等</li>
+<li>若 ZF=0 且 SF=0，则被减数大</li>
+<li>若 ZF=0 且 SF=1，则减数大</li>
+</ul>
+</li>
+<li>有溢出时（OF=1）：<ul>
+<li>若 SF=1，则被减数大</li>
+<li>若 SF=0，则减数大</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>对无符号数：<ul>
+<li>若ZF=1，则两数相等</li>
+<li>若CF=0，则被减数大</li>
+<li>若CF=1，则减数大</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="字的存储"><a href="#字的存储" class="headerlink" title="字的存储"></a>字的存储</h4><ul>
+<li>字：记为word，一个字由两个字节组成，这两个字节分别称为这个字的高位字节和低位字节。</li>
+<li>一个字可以存在一个16位寄存器中，这个字的高位字节和低位字节自然就存在这个寄存器的高8位寄存器和低8位寄存器中。</li>
+</ul>
+<h3 id="物理地址"><a href="#物理地址" class="headerlink" title="物理地址"></a>物理地址</h3><ul>
+<li>CPU 访问内存单元时，要给出内存单元的地址。</li>
+<li>所有的内存单元构成的存储空间是一个一维的线性空间，每一个内存单元在这个空间中都有唯一的地址，我们将这个唯一的地址称为<strong>物理地址</strong>。</li>
+<li>CPU通过地址总线<strong>送入存储器</strong>的，必须是一个内存单元的<strong>物理地址</strong>。在CPU向地址总线上发出物理地址之前，必须要在内部先形成这个物理地址。不同的CPU可以有不同的形成物理地址的方式。</li>
+<li>8086CPU 有20位地址总线，可以传送20位地址，达到1MB寻址能力。</li>
+<li>8086CPU 又是16位结构，在内部一次性处理、传输、暂时存储的地址为16位。于是 8086CPU 采用一种在内部<strong>用两个16位地址合成的方法来形成一个20位的物理地址</strong>。</li>
+<li>当8086CPU要读写内存时<ol>
+<li>CPU中的相关部件提供两个16位的地址，一个称为段地址，另一个称为偏移地址</li>
+<li>段地址和偏移地址通过内部总线送入一个称为地址加法器的部件</li>
+<li>地址加法器将两个16位地址合成为一个20位的物理地址<strong>（物理地址=段地址×16+偏移地址）</strong></li>
+<li>地址加法器通过内部总线将20位物理地址送入输入输出控制电路</li>
+<li>输入输出控制电路将20位物理地址送上地址总线</li>
+<li>20位物理地址被地址总线传送到存储器</li>
+</ol>
+</li>
+<li>内存在物理上并没有分段，段的划分来自于CPU，由于8086CPU 用“基础地址(段地址×16)+偏移地址=物理地址”的方式给出内存单元的物理地址，使得我们可以用分段的方式来管理内存。</li>
+<li>地址 10000H~100FFH 的内存单元组成一个段，该段的起始地址（基础地址）为10000H，段地址为1000H，大小为100H；我们也可以认为地址10000H~1007FH、10080H~100FFH 的内存单元组成两个段，它们的起始地址（基础地址）为：10000H和10080H，段地址为：1000H和1008H，大小都为80H</li>
+<li>或者说，<strong>CPU可以用不同的段地址和偏移地址形成同一个物理地址</strong>。</li>
+<li>段地址x16必然是16的倍数，所以一个段的起始地址也一定是16的倍数；偏移地址为16位，16位地址的寻址能力为64KB，所以一个段的长度最大为64KB。</li>
+</ul>
+<h3 id="代码段"><a href="#代码段" class="headerlink" title="代码段"></a>代码段</h3><ul>
+<li>对于8086PC机，在编程时，可以根据需要，将一组内存单元定义为一个段。我们可以将长度为 $N(N\le 64\mathrm{KB})$ 的一组代码，存在一组地址连续、起始地址为 16 的倍数的内存单元中，我们可以认为，这段内存是用来存放代码的，从而定义了一个<strong>代码段</strong>。</li>
+<li>CPU 并不会知道我们将一段内存当作代码段，就自动地将我们定义的代码段中的指令当作指令来执行。CPU只认被 CS:IP 指向的内存单元中的内容为指令。</li>
+</ul>
+<h3 id="内存访问"><a href="#内存访问" class="headerlink" title="内存访问"></a>内存访问</h3><ul>
+<li>内存是字节单元，8086的一个字要用内存中两个地址连续的单元来存放，低位字节放在低地址单元中，高位字节放在高地址单元中。</li>
+<li>8086CPU中有一个 DS 寄存器，通常用来存放要访问的数据的<strong>段地址</strong></li>
+<li>使用 mov 指令读取内存时，只需提供偏移地址，而段地址是由 DS 寄存器提供的</li>
+<li>8086CPU 不支持直接把数据放进段寄存器，对 DS 赋值需要用通用寄存器中转，比如<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-keyword">mov</span> <span class="hljs-built_in">bx</span>, <span class="hljs-number">1000H</span><br><span class="hljs-keyword">mov</span> <span class="hljs-built_in">ds</span>, <span class="hljs-built_in">bx</span><br></code></pre></td></tr></table></figure></li>
+<li>读写内存操作可以这样写：<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs x86asm"><span class="hljs-keyword">mov</span> <span class="hljs-built_in">ax</span>, [<span class="hljs-number">0</span>]<br><span class="hljs-keyword">mov</span> [<span class="hljs-number">0</span>], <span class="hljs-built_in">cx</span><br></code></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="数据段"><a href="#数据段" class="headerlink" title="数据段"></a>数据段</h3><ul>
+<li>对于8086PC机，在编程时，可以根据需要，将一组内存单元定义为一个段。我们可以将一组长度为 $N(N\le 64\mathrm{KB})$、地址连续、起始地址为16的倍数的内存单元当作专门存储数据的内存空间，从而定义了一个<strong>数据段</strong>。</li>
+<li>CPU 并不会知道我们将一段内存当作数据段，CPU只认被 DS 指向的内存单元中的段作为数据。</li>
+</ul>
+<h3 id="栈段"><a href="#栈段" class="headerlink" title="栈段"></a>栈段</h3><ul>
+<li>对于8086PC机，在编程时，可以根据需要，将一组内存单元定义为一个段。我们可以将一组长度为 $N(N\le 64\mathrm{KB})$、地址连续、起始地址为16的倍数的内存单元当作栈空间来使用，从而定义了一个<strong>栈段</strong>。</li>
+<li>栈底放在高地址处，栈顶在低地址处。</li>
+<li>CPU 并不会知道我们将一段内存当作栈空间，CPU只认被 SS:SP 指向的内存单元中的值作为栈顶。</li>
+<li>栈里的数据是16位的，占两个内存单元</li>
+<li>push指令执行时，先将SP=SP-2，再将要入栈的内容送入SS:SP指向的内存处，此时SS:SP指向新栈顶</li>
+<li>pop指令执行时，先将SS:SP指向的数据送出，再SP=SP+2，此时SS:SP指向新栈顶</li>
+<li>8086CPU 不保证我们对栈的操作不会超界。这也就是说，8086CPU 只知道栈顶在何处，而不知道我们安排的栈空间有多大。这点就好像CPU只知道当前要执行的指令在何处，而不知道要执行的指令有多少。</li>
+<li>我们在编程的时候要自己操心栈顶超界的问题，要根据可能用到的最大栈空间，来安排栈的大小，防止入栈的数据太多而导致的超界；执行出栈操作的时候也要注意，以防栈空的时候继续出栈而导致的超界。</li>
+</ul>
+<h3 id="中断系统"><a href="#中断系统" class="headerlink" title="中断系统"></a>中断系统</h3><ul>
+<li>8086CPU具有一个简单而灵活的中断系统，可处理256种不同的中断请求。</li>
+<li>根据中断源是来自CPU内部还是<strong>外部</strong>，通常将所有中断源分为两类：外部中断源和内部中断源，对应的中断称为<strong>外部中断</strong>或<strong>内部中断</strong>。</li>
+<li>外部中断中，通过可屏蔽中断请求引脚输入的中断请求信号称作<strong>可屏蔽中断</strong>请求，对这种中断请求CPU可响应，也可不响应，具体取决于标志寄存器中IF标志位的状态。通过<strong>不可屏蔽中断</strong>请求引脚输入的中断请求信号称作不可屏蔽中断请求，这种中断请求CPU必须响应。</li>
+<li><strong>硬件中断</strong>和<strong>软件中断</strong>是指引起中断的原因，硬件中断是由<strong>外设</strong>引发的，软件中断是执行<strong>中断指令</strong>产生的</li>
+<li>为了解决多个中断同时申请时响应的先后顺序问题，系统将所有的中断划分为四级，以0级为最高，依次降低，不同级别的中断同时申请时，CPU根据级别高低依次决定响应顺序。<ul>
+<li>0 级——除单步中断以外的所有内部中断。</li>
+<li>1 级——不可屏蔽中断。</li>
+<li>2 级——可屏蔽中断。</li>
+<li>3 级——单步中断。</li>
+</ul>
+</li>
+</ul>
+<h4 id="中断的优先级"><a href="#中断的优先级" class="headerlink" title="中断的优先级"></a>中断的优先级</h4><ul>
+<li>在实际系统中，常常遇到<strong>多个中断源</strong>同时请求中断的情况，这时 CPU 必须确定首先为哪一个中断源服务，以及服务的次序。解决的方法是排好中断处理的优先次序，即<strong>优先级</strong>，又称优先权。先响应优先级最高的中断请求。</li>
+<li>另外，当 CPU 正在处理中断时，也要能响应优先级更高的中断请求，而屏蔽掉同级或较低级的中断请求即所谓<strong>多重中断</strong>的问题。</li>
+</ul>
+<h5 id="软件查询确定中断优先级"><a href="#软件查询确定中断优先级" class="headerlink" title="软件查询确定中断优先级"></a>软件查询确定中断优先级</h5><p>软件查询中断方式，是将各个外设的中断请求信号通过或门后，送到 CPU 的 INTR 端，同时把几个外设的中断请求状态位组成一个端口，赋以<strong>端口号</strong>，如下图所示。任一外设有中断请求，CPU 响应中断后进入中断处理子程序，用软件读取端口内容，<strong>逐位查询端口</strong>的每位状态，查到哪个外设有请求中断，就转入哪个外设的中断服务程序。查询程序的次序，决定了外设优先级别的高低，先测试的中断源优先级别最高。当然在软件查询程序中也可用移位或屏蔽法来改变端口各位的测试次序，但查询时间较长，对中断源较多的情况不合适。</p>
+<p><img src="https://s2.loli.net/2023/04/01/shb2cmE1BYpQzOd.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="硬件查询确定优先级——菊花链法"><a href="#硬件查询确定优先级——菊花链法" class="headerlink" title="硬件查询确定优先级——菊花链法"></a>硬件查询确定优先级——菊花链法</h5><ul>
+<li>菊花链法是采用硬件查询优先的方式，它是在每个外设的对应接口上连接一个逻辑电路构成一个链来控制中断响应信号的通路，下图给出了它的原理图。</li>
+<li>当任一外部设备申请中断后，中断请求信号送到 CPU INTR 端， CPU 发出 $\overline{INTA}$ 断响应信号。当前一组的外设没有发出中断申请时，$\overline{INTA}$ 信号会沿着菊花链线路向后传递到发出中断请求的接口。当某一级的外设发出了中断申请，此级的逻辑电路就阻塞了 $\overline{INTA}$ 的通路，后面的外设接口不能接收到 $\overline{INTA}$ 信号。此级接口收到 $\overline{INTA}$ 信号后撤销中断请求信号，向总线发送中断类型号，从而 CPU 可以转入中断处理。</li>
+<li>当多个外设接口同时申请中断时，显然最接近 CPU 的接口优先得到中断响应。菊花链的排列，使外设接口不会竞争中断响应信号 $\overline{INTA}$，从硬件线路上就决定了越靠近 CPU 外设接口，优先级越高，其中断优先得到响应。</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/04/01/8NodQJRqcEkeSaA.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="中断优先级编码电路——矢量中断优先级"><a href="#中断优先级编码电路——矢量中断优先级" class="headerlink" title="中断优先级编码电路——矢量中断优先级"></a>中断优先级编码电路——矢量中断优先级</h5><p>（Todo）</p>
+<h4 id="中断的嵌套"><a href="#中断的嵌套" class="headerlink" title="中断的嵌套"></a>中断的嵌套</h4><ul>
+<li>当 CPU 执行优先级较低的中断服务程序时，允许响应优先级比它高的中断源请求中断，而挂起正在处理的中断，这就是<strong>中断嵌套</strong>或称<strong>多重中断</strong>。此时，CPU 将暂时中断正在进行着的级别较低的中断服务程序，优先为级别高的中断服务，待优先级高的中断服务结束后，再返回到刚才被中断的较低优先级的那一级，继续为它进行中断服务。</li>
+<li>多重中断的响应与单级中断的区别有以下几点：<ul>
+<li>加入<strong>屏蔽本级和较低级中断请求</strong>的环节。这是为了防止在进行中断处理时，不致受到来自本级和较低级中断的干扰，并允许优先级比它高的中断源进行中断。</li>
+<li>在进行中断服务之前，要<strong>开中断</strong>。因为如果中断仍然处于禁止状态，则将阻碍较高级中断的中断请求和响应，所以必须在保护现场、屏蔽本级及较低级中断完成之后，开中断，以便允许进行中断嵌套。</li>
+<li>中断服务程序结束之后，为了使恢复现场过程不致受到任何中断请求的干扰，必须安排并执行<strong>关中断</strong>指令，将中断关闭，才能恢复现场。</li>
+<li>恢复现场后，应该安排并执行<strong>开中断</strong>指令，重新开中断，以便允许任何其他等待着的中断请求有可能被 CPU 响应。应当指出，只有在执行了紧跟在开中断指令后面的一条指令以后，CPU 才重新开中断。一般紧跟在开中断指令后的是返回指令 RET, 它将把原来被中断的服务程序的断点地址弹回 IP:CS, 然后 CPU 才能开中断，响应新的中断请求。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/04/01/4WDtgmanNK2friu.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="内部中断"><a href="#内部中断" class="headerlink" title="内部中断"></a>内部中断</h4><p>内部中断源是来自CPU内部的中断事件，这些事件都是特定事件，一旦发生，CPU即调用预定的中断服务程序去处理。内部中断主要有以下几种情况：</p>
+<ul>
+<li>除法错误<br>当执行除法指令时，如果除数为0或商数超过了最大值，CPU会自动产生类型为0的除法错误中断。</li>
+<li>软件中断<br>执行软件中断指令时，会产生软件中断。8086系统中，设置了三条中断指令，分别是:<ul>
+<li>中断指令INT n：用户可以用INTn指令来产生一个类型为n的中断，以便让CPU执行n号中断的中断服务程序。</li>
+<li>断点中断INT 3：执行断点指令INT 3，将引起类型为3的断点中断，这是调试程序专用的中断。</li>
+<li>溢出中断INTO：如果标志寄存器中溢出标志位OF为1，在执行了INTO指令后，产生类型为4的溢出中断。</li>
+</ul>
+</li>
+<li>单步中断<br>当标志寄存器的标志位TF置1时，8086CPU处于单步工作方式。CPU每执行完一条当标志寄存器的标志位TF置1时，8086CPU处于单步工作方式。CPU每执行完一条指令，自动产生类型为1的单步中断，直到将TF置0为止。单步中断和断点中断一般仅在调试程序时使用。调试程序通过为系统提供这两种中断的中断服务程序的方式，在发生断点或单步中断后获得CPU控制权，从而可以检查被调试程序（中断前CPU运行的程序）之状态。</li>
+</ul>
+<h4 id="类型号-amp-向量表"><a href="#类型号-amp-向量表" class="headerlink" title="类型号&amp;向量表"></a>类型号&amp;向量表</h4><ul>
+<li>为了标记中断源，人们给系统中的每个中断源指定了一个唯一的编号，称为<strong>中断类型号</strong>。CPU 对中断源的识别就是获取当前中断源的中断类型号，在 8086 系统中的实现如下所述：<ul>
+<li>可屏蔽中断（硬件中断）：所有通过可屏蔽中断请求引脚向 CPU 发送的中断请求，都必须由中断控制器 8259A 管理。CPU 在准备响应其中断请求时，会给 8259A 发一个中断响应信号，8259A 收到这一信号后，会将发出中断申请外设的中断类型号通过系统数据总线发送给 CPU</li>
+<li>软件中断：在中断指令 INT n 中，参数 n 即为中断类型号。</li>
+<li>除上面两种情况外，其余中断都是固定类型号，主要是内部中断：如除法错（类型 0）、单步中断（类型 1）、断点中断 INT（类型 3）、溢出中断 INTO（类型 4）等。外部中断中不可屏蔽中断的类型号也是固定的（类型 2）</li>
+</ul>
+</li>
+<li>8086 系统中，中断类型号范围为 0~FFH, 即最多有 256 个中断源。</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/04/01/CzjlFDGi3atovPX.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="中断处理过程"><a href="#中断处理过程" class="headerlink" title="中断处理过程"></a>中断处理过程</h4><p><img src="https://s2.loli.net/2023/03/31/hrjP2XeOFSkWp74.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>中断处理的过程就是 CPU 运行中断服务程序的过程，这一步骤对所有中断源都一样。</li>
+<li>所谓<strong>中断服务程序</strong>，就是为实现中断源所期望达到的功能而编写的处理程序。中断服务程序一般由 4 部分组成：<strong>保护现场、中断服务、恢复现场、中断返回</strong>。</li>
+<li>保护现场，是因为有些寄存器可能在主程序被打断时存放有用的内容，为了保证返回后不破坏主程序在断点处的状态，应将有关寄存器的内容压入堆栈保存。</li>
+<li>中断服务部分是整个中断服务程序的核心，其代码完成与外设的数据交换。</li>
+<li>恢复现场是指中断服务程序完成后，把原先压入堆栈的寄存器内容再弹回到 CPU 相应的寄存器中。有了保护现场和恢复现场的操作，就可保证在返回断点后，正确无误地继续执行原先被打断的程序。</li>
+<li>中断服务程序的最后部分是一条中断返回指令 IRET，该指令完成如下功能：<ul>
+<li>从栈顶弹出一个字到 IP</li>
+<li>再从栈顶弹出一个字到 CS</li>
+<li>再从栈顶弹出一个字到 FLAGS</li>
+</ul>
+</li>
+</ul>
+<h4 id="中断请求"><a href="#中断请求" class="headerlink" title="中断请求"></a>中断请求</h4><h5 id="外部中断源的中断请求"><a href="#外部中断源的中断请求" class="headerlink" title="外部中断源的中断请求"></a>外部中断源的中断请求</h5><ul>
+<li>当外部设备要求 CPU 为它服务时，需要发一个中断请求信号给 CPU 进行中断请求。</li>
+<li>8086 CPU 有两根外部中断请求引脚 INTR、NMI 供外设向其发送中断请求信号用，这两根引脚的区别在于 CPU 响应中断的条件不同。</li>
+<li>CPU 在执行完每条指令后，都要检测中断请求输入引脚，看是否有外设的中断请求信号。根据优先级，CPU <strong>先检查 NMI</strong> 引脚，<strong>再检查 INTR</strong> 引脚。</li>
+<li>INTR 引脚上的中断请求称为<strong>可屏蔽中断请求</strong>，CPU 是否响应这种请求取决于标志寄存器的 IF 标志位的值。IF=1 为允许中断，CPU 可以响应 INTR 上的中断请求；IF=0 为禁止中断，CPU 将不理会 INTR 上的中断请求。</li>
+<li>NMI 引脚上的中断请求称为<strong>不可屏蔽中断请求</strong>（或非屏蔽中断请求），这种中断请求 CPU 必须响应，它不能被 IF 标志位所禁止。不可屏蔽中断请求通常用于处理应急事件。</li>
+<li>由于外部中断源有很多，而 CPU 的可屏蔽中断请求引脚只有一根，为了使得多个中断源合理共用一根中断请求引脚，引入 8259A 中断控制器，由它先对多路外部中断请求进行排队，根据预先设定的优先级决定在有中断请求冲突时，允许哪一个中断源向 CPU 发送中断请求。</li>
+<li>PC 系列机中，RAM 奇偶校验错、I/O 通道校验错和协处理器 8087 运算错等都能够产生不可屏蔽中断请求。</li>
+</ul>
+<h5 id="内部中断源的中断请求"><a href="#内部中断源的中断请求" class="headerlink" title="内部中断源的中断请求"></a>内部中断源的中断请求</h5><ul>
+<li>CPU 的中断源除了外部硬件中断源外，还有内部中断源。内部中断请求不需要使用 CPU的引脚，它由 CPU 在下列两种情况下自动触发<ul>
+<li>其一是在系统运行程序时，内部某些特殊事件发生（如除数为 0，运算溢出或单步跟踪及断点设置等）</li>
+<li>其二是 CPU 执行了软件中断指令 INT n。所有的内部中断都是不可屏蔽的，即不受 IF 限制。</li>
+</ul>
+</li>
+</ul>
+<h4 id="中断响应"><a href="#中断响应" class="headerlink" title="中断响应"></a>中断响应</h4><h5 id="可屏蔽外部中断请求的中断响应"><a href="#可屏蔽外部中断请求的中断响应" class="headerlink" title="可屏蔽外部中断请求的中断响应"></a>可屏蔽外部中断请求的中断响应</h5><ul>
+<li>可屏蔽外部中断请求中断响应的特点是：<ul>
+<li>由于外设不知道自己的中断请求能否被响应，所以 CPU 必须发信号（用 $\overline{INTA}$ 引脚）通知其中断请求已被响应。</li>
+<li>由与多个外设共用一根可屏蔽中断请求引脚，CPU 必须从中断控制器处取得中断请求外设的标识，即<strong>中断类型号</strong>。</li>
+</ul>
+</li>
+<li>当 CPU 检测到外设有中断请求（即 INTR 为高电平）时，CPU 又处于允许中断状态，CPU 就进入中断响应周期。在中断响应周期中，CPU 自动完成如下操作：<ol>
+<li>连续发出两个中断响应信号 $\overline{INTA}$，完成一个中断响应周期。</li>
+<li><strong>关中断</strong>，即将 IF 标志位 置0，以避免在中断过程中或进入中断服务程序后，再次被其他可屏蔽中断源中断。</li>
+<li>保护处理机的现行状态，即<strong>保护现场</strong>。包括将<strong>断点地址</strong>（即下条要取出指令的段基址和偏移量，在 CS:IP 内）及<strong>标志寄存器</strong> FLAGS 内容<strong>压入堆栈</strong>。</li>
+<li>在中断响应周期的第二个总线周期中，中断控制器已将发出中断请求外设的中断类型号送到了系统数据总线上，CPU <strong>读取此中断类型号</strong>，并根据此中断类型号查找中断向量表，找到中断服务程序的入口地址，将入口地址中的段基址及偏移量分别装入 CS、IP，一旦装入完毕，中断服务程序就开始执行。</li>
+</ol>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/03/31/dNoO6UwWGXymP28.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h5 id="不可屏蔽外部中断请求的中断响应"><a href="#不可屏蔽外部中断请求的中断响应" class="headerlink" title="不可屏蔽外部中断请求的中断响应"></a>不可屏蔽外部中断请求的中断响应</h5><ul>
+<li>NMI 上中断请求的响应过程要简单一些。只要 NMI 上有中断请求信号（由低向高的正跳变，两个以上时钟周期），CPU 就会自动产生类型号为 2 的中断，并准备转入相应的中断服务程序。</li>
+<li>与可屏蔽中断请求的响应过程相比，它省略了第 1 步及第 4 步中的从数据线上读中断类型号，其余步骤相同。</li>
+<li>NMI 上中断请求的优先级比 INTR 上中断请求的优先级高，故这两个引脚上同时有中断请求时，CPU <strong>先响应 NMI 上的中断请求</strong>。</li>
+</ul>
+<h5 id="内部中断的中断响应"><a href="#内部中断的中断响应" class="headerlink" title="内部中断的中断响应"></a>内部中断的中断响应</h5><ul>
+<li>内部中断是由 CPU 内部特定事件或程序中使用 INT 指令触发<ul>
+<li>若由事件触发，则中断类型号是固定的</li>
+<li>若由 INT 指令触发，则 INT 指令后的参数即为中断类型号</li>
+</ul>
+</li>
+<li>故中断发生时 CPU 已得到中断类型号，从而准备转入相应中断服务程序中去。除不用检测 NMI 引脚外，其余与不可屏蔽外部中断请求的中断响应相同。</li>
+</ul>
+<h3 id="伪指令"><a href="#伪指令" class="headerlink" title="伪指令"></a>伪指令</h3><h3 id="编译指令"><a href="#编译指令" class="headerlink" title="编译指令"></a>编译指令</h3><p><img src="https://s2.loli.net/2023/03/29/8kQeJK6ln5jysgS.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="数据传送指令"><a href="#数据传送指令" class="headerlink" title="数据传送指令"></a>数据传送指令</h4><h5 id="mov"><a href="#mov" class="headerlink" title="mov"></a>mov</h5><p>mov 寄存器, 数据<br>mov 寄存器, 寄存器<br>mov 寄存器, 内存单元<br>mov 内存单元, 寄存器<br>mov 内存单元, 段寄存器<br>mov 段寄存器, 寄存器<br>mov 段寄存器, 内存单元<br>mov 寄存器, 段寄存器</p>
+<h5 id="push"><a href="#push" class="headerlink" title="push"></a>push</h5><p>push 寄存器<br>push 段寄存器<br>push 内存单元</p>
+<h5 id="pop"><a href="#pop" class="headerlink" title="pop"></a>pop</h5><p>pop 寄存器<br>pop 段寄存器<br>pop 内存单元</p>
+<h4 id="输入输出指令"><a href="#输入输出指令" class="headerlink" title="输入输出指令"></a>输入输出指令</h4><h4 id="地址传送指令"><a href="#地址传送指令" class="headerlink" title="地址传送指令"></a>地址传送指令</h4><h4 id="标志传送指令"><a href="#标志传送指令" class="headerlink" title="标志传送指令"></a>标志传送指令</h4><h4 id="加法指令"><a href="#加法指令" class="headerlink" title="加法指令"></a>加法指令</h4><h5 id="add"><a href="#add" class="headerlink" title="add"></a>add</h5><p>add 寄存器, 数据<br>add 寄存器, 寄存器<br>add 寄存器, 内存单元<br>add 内存单元, 寄存器</p>
+<h4 id="减法指令"><a href="#减法指令" class="headerlink" title="减法指令"></a>减法指令</h4><h5 id="sub"><a href="#sub" class="headerlink" title="sub"></a>sub</h5><p>sub 寄存器, 数据<br>sub 寄存器, 寄存器<br>sub 寄存器, 内存单元<br>sub 内存单元, 寄存器</p>
+<h4 id="乘法指令"><a href="#乘法指令" class="headerlink" title="乘法指令"></a>乘法指令</h4><h4 id="除法指令"><a href="#除法指令" class="headerlink" title="除法指令"></a>除法指令</h4><h4 id="十进制调整指令"><a href="#十进制调整指令" class="headerlink" title="十进制调整指令"></a>十进制调整指令</h4><h4 id="逻辑运算指令"><a href="#逻辑运算指令" class="headerlink" title="逻辑运算指令"></a>逻辑运算指令</h4><h4 id="串操作指令"><a href="#串操作指令" class="headerlink" title="串操作指令"></a>串操作指令</h4><p>略</p>
+<h4 id="控制调整指令"><a href="#控制调整指令" class="headerlink" title="控制调整指令"></a>控制调整指令</h4><h4 id="处理器控制指令"><a href="#处理器控制指令" class="headerlink" title="处理器控制指令"></a>处理器控制指令</h4><h2 id="第三章-8086汇编语言程序设计"><a href="#第三章-8086汇编语言程序设计" class="headerlink" title="第三章 8086汇编语言程序设计"></a>第三章 8086汇编语言程序设计</h2><h2 id="第四章-存储系统"><a href="#第四章-存储系统" class="headerlink" title="第四章 存储系统"></a>第四章 存储系统</h2><h2 id="第五章-典型接口芯片原理和应用"><a href="#第五章-典型接口芯片原理和应用" class="headerlink" title="第五章 典型接口芯片原理和应用"></a>第五章 典型接口芯片原理和应用</h2><h3 id="接口概述"><a href="#接口概述" class="headerlink" title="接口概述"></a>接口概述</h3><ul>
+<li>把信息从外部设备送入 CPU 的接口称为<strong>输入接口</strong>，而把信息输出到外部设备的接口则称为<strong>输出接口</strong>。</li>
+<li>I/O接口电路是外设和计算机之间传送信息的交换部件，也称界面，它使两者之间很好地协调工作。外设一般都要通过接口电路才能和主机相连。</li>
+<li>在需要从外设<strong>输入数据</strong>时，通常外设的速度相对于 CPU 要慢得多，这意味着数据在外部总线上保持的时间相对较长，所以要求输入接口必须要具有对数据的控制能力，即要在外部数据准备好，CPU 可以读时才允许将数据送上系统数据总线。</li>
+<li>大多数外设都具有<strong>数据保持能力</strong>（即 CPU 没有读取时，外设能够保持数据不变），通常可以仅用三态门缓冲器（简称<strong>三态门</strong>）作为输入接口。当三态门的控制端信号有效时，三态门导通，该外设就与数据总线连通，CPU 将外设准备好的数据读入；当控制端信号无效时，三态门断开，该外设就从数据总线脱离，数据总线又可用于其他信息的传送。</li>
+<li>对没有数据保持能力的外设，可在外设与接口之间增加一个锁存器，用外设提供的数据准备好信号把数据保存到锁存器中。</li>
+<li>在<strong>数据输出</strong>时，同样应考虑外设与 CPU 速度的配合问题。要使数据能正确写入外设，CPU 输出的数据一定要能够保持一段时间。一般 CPU 送到总线上的数据只能保持几个微秒甚至更短的时间。相对于慢速的外设，数据在总线上几乎是一闪而逝。因此，要求输出接口必须要具有数据的锁存能力，这通常是由锁存器来实现的。CPU 输出的数据通过总线锁存到锁存器中，并一直保持到被外设取走。</li>
+<li>三态门缓冲器和锁存器的控制端一般与 I/O 地址译码输出信号线相连，当 CPU 执行 I/O 指令时，指令中指定的 I/O 地址经译码后即可使控制信号有效，打开三态门（对外设读时）或将数据锁入锁存器（对外设写时）。</li>
+</ul>
+<h3 id="三态缓冲器芯片-74LS244-amp-74LS245"><a href="#三态缓冲器芯片-74LS244-amp-74LS245" class="headerlink" title="三态缓冲器芯片 74LS244 &amp; 74LS245"></a>三态缓冲器芯片 74LS244 &amp; 74LS245</h3><p>连接在总线上的缓冲器都具有三态输出能力。</p>
+<ul>
+<li>在CPU或I/O接口电路需要输入输出数据时，在它的使能控制端EN（或G）作用一个低电平脉冲，使它的内部的各缓冲单元[寄存器]接通，即处在输出0或1的透明状态。数据被送上总线。</li>
+<li>当使能脉冲撤除后，它处于<strong>高阻态</strong>。这时，各缓冲单元像一个断开的开关，等于将它所连接的电路从总线脱开。</li>
+<li>74LS244和74LS245就是最常用的数据缓冲器。除缓冲作用外，它们还能<strong>提高总线的驱动能力</strong>。</li>
+</ul>
+<h4 id="244"><a href="#244" class="headerlink" title="244"></a>244</h4><p><img src="https://s2.loli.net/2023/05/11/DvrT8IKbyYkiuUd.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>8个三态缓冲单元，分成两组，分别由门控信号 $\overline{1G}$ 和 $\overline{2G}$ 控制。$\overline{1G}$ 和 $\overline{2G}$ 为低电平时，数据传送；高电平时，输出高阻态。</li>
+<li>单向缓冲器，只能从A端到Y端。</li>
+</ul>
+<h4 id="245"><a href="#245" class="headerlink" title="245"></a>245</h4><p><img src="https://s2.loli.net/2023/05/11/pl4ieV3ZE8ScJW6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>8个双向、三态缓冲器。</li>
+<li>门控信号输入端 $\bar{G}$</li>
+<li>方向控制端 DIR，高电平时，数据从 A 端传向 B 端；低电平时，从 B 端传向 A 端。</li>
+</ul>
+<h4 id="锁存器74LS373"><a href="#锁存器74LS373" class="headerlink" title="锁存器74LS373"></a>锁存器74LS373</h4><ul>
+<li>锁存器具有暂存数据的能力，能将数据锁住，在输出控制信号的作用下将数据传送出去。74LS373是一种常用的8D锁存器，它可以直接挂在总线上，并具有三态总线驱动能力。</li>
+<li>两个控制输入端：输入使能端G和允许输出端 $\overline{OE}$。</li>
+<li>$\overline{OE}$ 为低时：G为高时，D端数据到O端；G为低时，O端将是前面锁存的数据，不受D端的变化影响。</li>
+<li>$\overline{OE}$ 为高时：输出将呈高阻态。</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>$\overline{OE}$</th>
+<th>G</th>
+<th>D</th>
+<th>O</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>低</td>
+<td>高</td>
+<td>高</td>
+<td>高</td>
+</tr>
+<tr>
+<td>低</td>
+<td>高</td>
+<td>低</td>
+<td>低</td>
+</tr>
+<tr>
+<td>低</td>
+<td>低</td>
+<td>X</td>
+<td>锁存</td>
+</tr>
+<tr>
+<td>高</td>
+<td>X</td>
+<td>X</td>
+<td>高阻态</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://s2.loli.net/2023/05/11/NLTJutRljQZW6F8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="I-O端口及其寻址方式"><a href="#I-O端口及其寻址方式" class="headerlink" title="I/O端口及其寻址方式"></a>I/O端口及其寻址方式</h3><ul>
+<li>CPU与外设通信时，传送的信息主要包括数据信息、状态信息和控制信息。</li>
+<li>这些信息分别进入不同的寄存器，通常将这些寄存器和它们的控制逻辑统称为I/O端口（Port），CPU可对端口中的信息直接进行读写。</li>
+<li><strong>数据端口</strong>（Data Port）用来存放CPU与外设之间交换的数据，长度一般为1-2个字节，主要起缓冲作用。</li>
+<li><strong>状态端口</strong>（Status Port）用来指示外设的当前状态。每种状态用1位表示，由CPU读取。几种最常用的状态位有：<ul>
+<li>准备就绪位(Ready)<ul>
+<li>输入端口：1：数据寄存器已准备好数据，等待CPU读取，取走后清0。</li>
+<li>输出端口：1：输出数据寄存器已空，可以接收下一个数据；新数据到达后，位清0。</li>
+</ul>
+</li>
+<li>忙碌位(Busy)<br>表明外设是否能接收数据。1：外设忙，暂时不允许CPU送新的数据过来。0：外设已空闲，允许CPU发送下一个数据。</li>
+<li>错误位(Error)<br>1：指示在数据传送过程中出现错误。CPU进行相应的处理，如重新传送或中止操作等。</li>
+</ul>
+</li>
+<li><strong>命令端口</strong>（Command Port）也称为控制端口（Control Port），用来存放CPU向接口发出的各种命令和控制字，以便控制接口和设备的动作。<ul>
+<li>常见的命令信息有启动位、停止位、允许中断位等。</li>
+<li>接口芯片不同，控制字的格式和内容是各不相同的，常见的控制字有方式控制字、操作命令字等。</li>
+</ul>
+</li>
+<li>在微机系统中，CPU通过接口和外设交换数据时，只有输入（IN）和输出（OUT）两种指令，所以只能把状态信息和命令信息当作数据来传送，并且将状态信息作为输入数据，控制信息作为输出数据，于是三种信息都可以通过数据总线来传送了。</li>
+<li>I/O端口的寻址方法<ul>
+<li>存储器映像寻址方式（Memory Mapped I/O）：将I/O端口地址作为存储器地址，采用存储器访问指令进行操作</li>
+<li>I/O单独编址方式：采用IN、OUT指令操作</li>
+</ul>
+</li>
+</ul>
+<h3 id="CPU与外设间的数据传送方式"><a href="#CPU与外设间的数据传送方式" class="headerlink" title="CPU与外设间的数据传送方式"></a>CPU与外设间的数据传送方式</h3><p>软件实现：程序控制方式、中断方式。<br>硬件实现：DMA方式。</p>
+<ul>
+<li>查询方式效率低。查询方式须反复查询外设的状态，查询等待过程会占去CPU的绝大部分时间，而真正用于数据交换的数据却很少，使CPU的利用率变得很低。为了提高CPU的利用率和进行实时数据处理，CPU常采用中断方式与外设交换数据。</li>
+<li>中断方式效率高。采用中断方式，CPU执行主程序，只有当输入设备将数据准备好，或输出设备的数据缓冲器已空时，才向CPU发出中断请求。</li>
+<li>CPU响应中断后，暂停执行当前的程序，转去执行管理外设的中断服务程序，用输入或输出指令在CPU和外设之间进行一次数据交换。</li>
+<li>等输入/输出操作完成之后，CPU又回去执行原来的程序。</li>
+</ul>
+<h4 id="程序控制方式-无条件方式（同步传送方式）"><a href="#程序控制方式-无条件方式（同步传送方式）" class="headerlink" title="程序控制方式-无条件方式（同步传送方式）"></a>程序控制方式-无条件方式（同步传送方式）</h4><ul>
+<li>最简单的传送方式，主要用于对简单的外设进行操作，或者外设的定时是固定的或已知的场合；</li>
+<li>程序可以不必检查外设的状态，而在需要进行I/O操作时，直接执行I/O指令。</li>
+</ul>
+<h4 id="程序控制方式-条件传送（查询式传送）"><a href="#程序控制方式-条件传送（查询式传送）" class="headerlink" title="程序控制方式-条件传送（查询式传送）"></a>程序控制方式-条件传送（查询式传送）</h4><ul>
+<li>一般情况下，CPU在执行I/O时，很难保证输入设备总是准备好数据，或是输出设备已经处在接收数据状态。CPU必须先确认外设已处于准备传送数据状态，才能进行传送。</li>
+<li>确认过程：CPU必须先执行一条输入指令，从外设的状态口读取当前的状态。如果外设未准备好或处于忙碌状态，则程序要转回去反复执行读状态指令，不断检测外设的状态；直到外设准备就绪为止，然后CPU才可以进行正常的I/O操作。</li>
+</ul>
+<h3 id="可编程计数器-定时器-8253"><a href="#可编程计数器-定时器-8253" class="headerlink" title="可编程计数器/定时器 8253"></a>可编程计数器/定时器 8253</h3><h4 id="定时信号的产生"><a href="#定时信号的产生" class="headerlink" title="定时信号的产生"></a>定时信号的产生</h4><ul>
+<li>软件定时<br>设计一个延时子程序，子程序中全部指令执行时间的总和就是该子程序的延时时间。简单，易实现，但需了解延时子程序中每条指令执行时间；定时时间不精确；仅适用于延时时间较短、重复次数有限的场合；占用CPU大量的时间，降低CPU的利用率。</li>
+<li>硬件定时<br>利用专用的硬件定时/计数器，在简单软件控制下产生准确的延时时间。通过软件确定定时/计数器的工作方式、设置计数初值并启动计数器工作；当计数到给定值时，便自动产生定时信号；成本不高，程序简单，几乎不占用CPU资源；适合长时间、多次重复定时，也适合延时时间较短的场合。</li>
+</ul>
+<h4 id="8253的外部引脚及特性"><a href="#8253的外部引脚及特性" class="headerlink" title="8253的外部引脚及特性"></a>8253的外部引脚及特性</h4><ul>
+<li>三通道的 16 位定时/计数器</li>
+<li>计数器的工作方式及计数常数分别由软件编程选择</li>
+<li>可进行二进制或十进制计数或定时操作</li>
+<li>最高计数频率为 2 MHz</li>
+<li>使用单电源 +5V 供电</li>
+<li>输入/输出均与 TTL 电平兼容</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/05/11/O6QNGenzfH7CiM8.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>GATE0 为门控信号，用于启动或禁止计数器的减1操作</li>
+<li>OUT0 为计数器输出信号</li>
+<li>CLK0 为计数器的时钟信号输入端</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>$\overline{CS}$</th>
+<th>$\overline{RD}$</th>
+<th>$\overline{WR}$</th>
+<th>$A_0A_1$</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>00</td>
+<td>写入计数器0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>01</td>
+<td>写入计数器1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>10</td>
+<td>写入计数器2</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>11</td>
+<td>写入控制寄存器</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>00</td>
+<td>读计数器0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>01</td>
+<td>读计数器1</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>10</td>
+<td>读计数器2</td>
+</tr>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>11</td>
+<td>无操作</td>
+</tr>
+<tr>
+<td>1</td>
+<td>×</td>
+<td>×</td>
+<td>××</td>
+<td>禁止使用</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>××</td>
+<td>无操作</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="控制过程"><a href="#控制过程" class="headerlink" title="控制过程"></a>控制过程</h4><p><img src="https://s2.loli.net/2023/05/11/hmTNcUFVtKLHXDl.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>计数器0、1和2共3个相同的16位减1计数器；互相独立工作；每个计数器都包括一个16位的初值寄存器、一个计数执行单元和一个输出锁存器</li>
+<li>计数器工作过程：置入初值→计数执行单元对输入脉冲CLK进行减1计数直至0 →从OUT端输出一个信号；整个过程可以重复进行、可按二进制/十进制计数；计数过程中，计数器还受到门控信号GATE的控制</li>
+<li>控制寄存器存放操作方式控制字，决定计数器的工作方式；控制字是在8253初始化时用输出指令写入控制寄存器的，寄存器只能写入，不能读出</li>
+<li>数据总线缓冲器 8位，双向，三态；8253和CPU数据总线间的接口</li>
+<li>控制芯片的工作状态。选片有效时，读/写控制逻辑从系统总线接收输入信号，经过逻辑组合，产生对各部分的控制信号；无效(高电平)时，8253与总线断开</li>
+</ul>
+<h4 id="控制字"><a href="#控制字" class="headerlink" title="控制字"></a>控制字</h4><p><img src="https://s2.loli.net/2023/05/11/doHmQni7kBOUyGE.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="可编程外围接口芯片-8255A"><a href="#可编程外围接口芯片-8255A" class="headerlink" title="可编程外围接口芯片 8255A"></a>可编程外围接口芯片 8255A</h3><h4 id="控制引脚定义"><a href="#控制引脚定义" class="headerlink" title="控制引脚定义"></a>控制引脚定义</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>$A_1$</th>
+<th>$A_0$</th>
+<th>定义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>选择A口</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>选择B口</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>选择C口</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>选择控制寄存器</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="控制逻辑"><a href="#控制逻辑" class="headerlink" title="控制逻辑"></a>控制逻辑</h4><p><img src="https://s2.loli.net/2023/05/11/gqdVTybvRnfNsr3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="与系统总线的连接"><a href="#与系统总线的连接" class="headerlink" title="与系统总线的连接"></a>与系统总线的连接</h4><p><img src="https://s2.loli.net/2023/05/11/fYAnzINPtqE7mcg.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="基本输入-输出方式（方式0）"><a href="#基本输入-输出方式（方式0）" class="headerlink" title="基本输入/输出方式（方式0）"></a>基本输入/输出方式（方式0）</h4><ul>
+<li>A口、C口的高4位，B口、C口的低4位可分别定义为输入或输出，它们互相独立，故共有16种不同的组合。例如，可定义A口和C口高4位为输入口，B口和C口低4位为输出口</li>
+<li>定义为输出的口均有锁存数据的能力，而定义为输入的口则无锁存能力</li>
+<li>在方式0下，C口有按位进行置位和复位的能力</li>
+</ul>
+<h4 id="选通的输入-输出方式（方式1）"><a href="#选通的输入-输出方式（方式1）" class="headerlink" title="选通的输入/输出方式（方式1）"></a>选通的输入/输出方式（方式1）</h4><ul>
+<li>A、B、C 3个口被分为两组</li>
+<li>A组：A口和C口的高4位，A口可由编程任意设定为输入口或输出口，C口的高4位则用作A口输入/输出操作的控制和同步信号</li>
+<li>B组包括B口和C口的低4位，B口可由编程任意设定为输入口或输出口，C口的低4位则用作B口输入/输出操作的控制和同步信号</li>
+<li>A口和B口的输入数据和输出数据都被锁存</li>
+</ul>
+<h4 id="双向传输方式（方式2）"><a href="#双向传输方式（方式2）" class="headerlink" title="双向传输方式（方式2）"></a>双向传输方式（方式2）</h4><ul>
+<li>A口可以工作在方式0、方式1或方式2，B口、C口只能工作于方式0或方式1</li>
+<li>外设能利用8位数据线与CPU进行双向通信，此时A口既作为输入口又作为输出口</li>
+<li>利用C口的5根线来提供双向传输所需的控制信号</li>
+<li>当A口工作于方式2时，B口可以工作在方式0或方式1，而C口剩下的3根线可作为输入/输出线使用或用做B口方式1之下的控制信号线。</li>
+</ul>
+<h4 id="控制字-1"><a href="#控制字-1" class="headerlink" title="控制字"></a>控制字</h4><p>方式控制字</p>
+<p><img src="https://s2.loli.net/2023/05/11/9axiFHDQ2RISAeC.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>C口的位控制字（单独改变C口某一位的值）</p>
+<p><img src="https://s2.loli.net/2023/05/11/h2RYUel7t6ypbWD.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="状态字"><a href="#状态字" class="headerlink" title="状态字"></a>状态字</h4><p><img src="https://s2.loli.net/2023/05/11/6dtjhrkCW2HKavR.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="串口通信"><a href="#串口通信" class="headerlink" title="串口通信"></a>串口通信</h3><h4 id="数据传送的方向"><a href="#数据传送的方向" class="headerlink" title="数据传送的方向"></a>数据传送的方向</h4><ul>
+<li>单工（Simplex）：通信是单向的。</li>
+<li>半双工（Half duplex）：半双工指A能发信号给B，B也能发信号给A，但这两个过程不能同时进行，A或B发送完后要切换到接受状态。典型例子就是对讲机。</li>
+<li>全双工（Duplex）：在A给B发信号的同时，B也可以给A发信号。典型的例子就是打电话。</li>
+</ul>
+<h4 id="数据传送速度"><a href="#数据传送速度" class="headerlink" title="数据传送速度"></a>数据传送速度</h4><ul>
+<li>波特率——单位时间传送的位数，单位bps(bit/s) 。</li>
+<li>波特率因子K——每Bit占用的时钟周期数。K=接收或发送时钟频率/波特率，可取1，16，32，64</li>
+</ul>
+<h3 id="RS-232C-串行接口"><a href="#RS-232C-串行接口" class="headerlink" title="RS-232C 串行接口"></a>RS-232C 串行接口</h3>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">大学学习生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E7%94%B5%E5%AD%90/">电子</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%B3%BB%E7%BB%9F/">系统</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/02/24/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">量子力学笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/16/%E4%BF%A1%E5%8F%B7%E4%B8%8E%E7%B3%BB%E7%BB%9F%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">信号与系统笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', '1357310795/Blog-Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.12.3/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/anchor-js/4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.8/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

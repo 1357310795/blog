@@ -1,0 +1,1481 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/doge.png">
+  <link rel="icon" href="/img/doge.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#e4ad97">
+  <meta name="description" content="">
+  <meta name="author" content="Teruteru">
+  <meta name="keywords" content="">
+  
+  <title>半导体器件原理笔记 - Teruteru的Hexo博客</title>
+
+  <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myiconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"teru.space","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/76443599_p0-1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="半导体器件原理笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2023-04-20 22:07" pubdate>
+        2023年4月20日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      10.2k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      129
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">半导体器件原理笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年10月7日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="置顶"><a href="#置顶" class="headerlink" title="置顶"></a>置顶</h2><h3 id="符号含义对照表"><a href="#符号含义对照表" class="headerlink" title="符号含义对照表"></a>符号含义对照表</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>名称/解释</th>
+<th>PPT<br>任鹏鹏</th>
+<th>半导体物理与器件<br>Neamen</th>
+<th>半导体器件基础<br>Pierret</th>
+<th>现代VLSI器件基础<br>Yuan Taur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>金属表面积累的电荷</td>
+<td>$Q_m$</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>半导体内的空间电荷</td>
+<td>$Q_s$</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>氧化层厚度</td>
+<td>$t_{ox}$</td>
+<td>$t_{ox}$</td>
+<td>$x_o$</td>
+<td>$t_{ox}$</td>
+</tr>
+<tr>
+<td>表面势</td>
+<td>$V_s$</td>
+<td>$\phi_{s}$</td>
+<td>$\phi_{S}$</td>
+<td>$\Psi_{s}$</td>
+</tr>
+<tr>
+<td>栅电压</td>
+<td>$V_g$</td>
+<td>$V_{G}$</td>
+<td>$V_{G}$</td>
+<td>$V_g$</td>
+</tr>
+<tr>
+<td>受主杂质浓度</td>
+<td>$N_A$</td>
+<td>$N_a$</td>
+<td>$N_A$</td>
+<td>$N_a$</td>
+</tr>
+<tr>
+<td>金属-半导体功函数差</td>
+<td></td>
+<td>$\phi_{ms}$</td>
+<td></td>
+<td>$\phi_{ms}$</td>
+</tr>
+<tr>
+<td>半导体内部本征费米能级</td>
+<td>$E_{i0}/E_{Fi}$</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>半导体内部本征费米能级与费米能级的势垒高度</td>
+<td>$V_{B}$</td>
+<td>$\phi_{fp}/\phi_{fn}$</td>
+<td>$\phi_{F}$</td>
+<td>$\Psi_{B}$</td>
+</tr>
+<tr>
+<td>德拜长度（p型）</td>
+<td>$L_D$</td>
+<td></td>
+<td></td>
+<td>$L_D$</td>
+</tr>
+<tr>
+<td>半导体介电常数</td>
+<td>$\varepsilon_s$</td>
+<td>$\epsilon_s$</td>
+<td>$K_S$</td>
+</tr>
+<tr>
+<td>氧化层介电常数</td>
+<td></td>
+<td></td>
+<td>$K_O$</td>
+</tr>
+<tr>
+<td>半导体表面面电荷密度</td>
+<td>$Q_s$</td>
+<td></td>
+<td></td>
+<td>$Q_s$</td>
+</tr>
+<tr>
+<td>反型层面电荷密度</td>
+<td></td>
+<td></td>
+<td></td>
+<td>$Q_i$</td>
+</tr>
+<tr>
+<td>空间电荷宽度</td>
+<td>$d$</td>
+<td>$x_{d}$</td>
+<td>$W$</td>
+<td>$W_d$</td>
+</tr>
+<tr>
+<td>最大空间电荷宽度</td>
+<td>$d_{max}$</td>
+<td>$x_{dT}$</td>
+<td>$W_T$</td>
+<td>$W_{dm}$</td>
+</tr>
+<tr>
+<td>阈值电压</td>
+<td>$V_t$</td>
+<td></td>
+<td>$V_T$</td>
+<td>$V_T$</td>
+</tr>
+<tr>
+<td>平带电压</td>
+<td>$V_{fb}$</td>
+<td>$V_{FB}$</td>
+<td></td>
+<td>$V_{fb}$</td>
+</tr>
+<tr>
+<td>氧化层降落电压</td>
+<td>$V_{ox}$</td>
+<td>$V_{ox}$</td>
+<td>$V_O$</td>
+<td>$V_{ox}$</td>
+</tr>
+<tr>
+<td>单位面积氧化层电容</td>
+<td>$C_{ox}$</td>
+<td>$C_{ox}$</td>
+<td>$C_{O}$</td>
+<td>$C_{ox}$</td>
+</tr>
+<tr>
+<td>平带电容</td>
+<td>$C_{FB}$</td>
+<td>$C_{FB}$</td>
+<td></td>
+<td>$C_{fb}$</td>
+</tr>
+<tr>
+<td>单位面积可移动电荷</td>
+<td></td>
+<td></td>
+<td></td>
+<td>$Q_{m}$</td>
+</tr>
+<tr>
+<td>单位面积氧化层陷阱电荷</td>
+<td></td>
+<td></td>
+<td></td>
+<td>$Q_{ot}$</td>
+</tr>
+<tr>
+<td>单位面积氧化层固定电荷</td>
+<td></td>
+<td></td>
+<td></td>
+<td>$Q_{f}$</td>
+</tr>
+<tr>
+<td>单位面积界面陷阱电荷</td>
+<td></td>
+<td></td>
+<td></td>
+<td>$Q_{it}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="MOSCAP"><a href="#MOSCAP" class="headerlink" title="MOSCAP"></a>MOSCAP</h2><h3 id="理想MOS结构的定义"><a href="#理想MOS结构的定义" class="headerlink" title="理想MOS结构的定义"></a>理想MOS结构的定义</h3><ul>
+<li>MOS 电容是一个简单的两端器件，由<strong>硅衬底</strong>和<strong>金属极板</strong>之间夹一薄层 $\mathrm{SiO}_{2}$ 层（$0.01 \mu \mathrm{m} \sim 1.0 \mu \mathrm{m}$）组成，最通用的极板材料是<strong>铝</strong>和<strong>重掺杂多晶硅</strong>，第二层金属层一般沿半导体背面，作为硅衬底的电接触。连到极板的电极和极板本身称为<strong>栅</strong>，硅端接地并简称为<strong>背接触</strong>或<strong>衬底接触</strong>。</li>
+<li>理想 MOS 结构具有下列明显特点：<ul>
+<li>金属栅足够厚，在交流和直流偏置条件下可以看作为一个<strong>等电势区</strong></li>
+<li>氧化层是一个完美的<strong>绝缘体</strong>，在所有静态偏置条件下没有电流流过氧化层</li>
+<li>在氧化层中或氧化层-半导体界面没有电荷中心</li>
+<li>半导体<strong>均匀掺杂</strong></li>
+<li>半导体足够厚，不管加什么栅电压，在达到背接触之前总有一个<strong>零电场区域</strong>（即所谓硅体区）</li>
+<li>半导体与器件背面金属之间处于<strong>欧姆接触</strong></li>
+<li>MOS 电容是<strong>一维结构</strong>，假设所有变量仅是坐标 $x$ 的函数</li>
+<li>$\Phi_{\mathrm{M}}=\Phi_{\mathrm{S}}=\chi+\left(E_{\mathrm{c}}-E_{\mathrm{F}}\right)_{\mathrm{FB}}$</li>
+</ul>
+</li>
+</ul>
+<h3 id="理想MOS能带图"><a href="#理想MOS能带图" class="headerlink" title="理想MOS能带图"></a>理想MOS能带图</h3><p><img src="https://s2.loli.net/2023/04/20/zDirXCnVWZgoPBd.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="理想MOS电荷块图"><a href="#理想MOS电荷块图" class="headerlink" title="理想MOS电荷块图"></a>理想MOS电荷块图</h3><ul>
+<li>平衡条件下在理想MOS结构中任何地方都没有电荷</li>
+<li>当在MOS电容上加电压后，在金属–氧化层附近的金属中以及氧化层-半导体界面处会出现电荷</li>
+<li>金属表面积累的电荷设为 $Q_m$，半导体内的空间电荷设为 $Q_s$</li>
+<li>半导体中自由载流子密度要低得多，对应 $Q_s$ 电荷量需要分布在一定厚度的表面层内，这个带电的表面层叫做<strong>空间电荷层</strong>。</li>
+<li>方形化分布近似或块近似不是MOS电容中准确的电荷分布，只是一种定性表示</li>
+<li>由于在金属和半导体内部电场为零，根据高斯定律，在器件中的电荷总和必须为零。因此，在建立电荷块图时，代表正电荷的面积应该与代表负电荷的面积相等。</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/04/20/JsBibOkLHhq1WYe.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="表面势"><a href="#表面势" class="headerlink" title="表面势"></a>表面势</h3><p>半导体表面与体内的电势差为表面势，用 $V_s$ 或者 $\varphi_s$ 表示</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+E_c(x)=E_{c0}-qV(x)\\
+V_s=-(E_{is}-E_{i0})/q
+\end{array}</script><p>注意“s”是“surface”，surface指半导体与氧化物的界面处😅</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>#1</th>
+<th>#2</th>
+<th>#3</th>
+<th>#4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>半导体类型</td>
+<td>p型</td>
+<td>p型</td>
+<td>n型</td>
+<td>n型</td>
+</tr>
+<tr>
+<td>偏置电压 $V_{g}$</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+</tr>
+<tr>
+<td>金属一侧积累电荷 $Q_m$</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+</tr>
+<tr>
+<td>半导体一侧积累电荷 $Q_s$</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+</tr>
+<tr>
+<td>表面势 $V_{s}$</td>
+<td>+</td>
+<td>-</td>
+<td>+</td>
+<td>-</td>
+</tr>
+<tr>
+<td>能带弯曲</td>
+<td>↓</td>
+<td>↑</td>
+<td>↓</td>
+<td>↑</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img src="https://s2.loli.net/2023/05/13/1TV5kwgrEbLZzcv.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/05/13/5urEhZBewDJcp8n.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="理想MOS能带弯曲"><a href="#理想MOS能带弯曲" class="headerlink" title="理想MOS能带弯曲"></a>理想MOS能带弯曲</h3><ul>
+<li>假设在正常工作情况下，MOS 电容背面接地，$V_{\mathrm{G}}$ 定义为加到栅上的直流偏置。</li>
+<li>当 $V_{\mathbf{G}} \neq 0$ 时，注意到首先半导体中的费米能级不受偏置的影响，而且随位置变化保持不变。这是由于假设在所有静态偏置条件下没有电流流过器件导致的；其次，半导体体内始终保持平衡，与 MOS 电容栅上加电压与否无关。</li>
+<li>如同 $p n$ 结一样，所加偏置会引起器件两端费米能级分开 $q V_{G}$，即<script type="math/tex; mode=display">
+E_{\mathrm{F}}(\mathrm{金属})-E_{\mathrm{F}}(\mathrm{半导体})=-q V_{\mathrm{G}}</script>由于器件的背接触接地，因此半导体一边的能级在位置上是固定的，而金属一边的能级当 $V_{\mathrm{G}}&gt;0$ 时向下移动，当 $V_{\mathrm{G}}&lt;0$ 时向上移动。</li>
+<li>从另外一个角度来看，$V_{\mathrm{G}} \neq 0$ 会导致器件内部的电势差，引起 $E_{\mathrm{c}}\left(E_{\mathrm{v}}\right)$ 能带弯曲<ul>
+<li>由于金属是等势区，金属中没有能带弯曲</li>
+<li>在氧化层和半导体中，当 $V_{\mathrm{G}}&gt;0$ 时能带应向上倾斜（从栅到背接触方向电场增加），而 $V_{\mathrm{C}}&lt;0$ 时能带会向下倾斜</li>
+<li>在氧化层中利用泊松方程，并假设氧化层是一个理想绝缘体，没有载流子或电荷中心，可以得到 $\mathrm{d} \mathscr{E}_{\mathrm{oxide}} / \mathrm{d} x=0$，$\mathscr{E}_{\mathrm{oxide}}=$ 常数，因此在氧化层中能带倾斜的斜率是一个常数</li>
+<li>在半导体中的能带弯曲在函数形式上就更为复杂，但由理想情况假设，在能带达到背接触之前能带弯曲应该消失（即 $\mathscr{B} \rightarrow 0$）</li>
+</ul>
+</li>
+</ul>
+<h4 id="n型正偏置（积累）"><a href="#n型正偏置（积累）" class="headerlink" title="n型正偏置（积累）"></a>n型正偏置（积累）</h4><p>假设硅衬底为 $n$ 型，首先考虑正偏置情况，$V_{\mathrm{G}}&gt;0$ 会使金属中的 $E_{\mathrm{F}}$ 相对半导体中的 $E_{\mathrm{F}}$ 降低，导致在绝缘体和半导体中能带有正的倾斜斜率。由图可以推断出在半导体中的电子浓度 $n=n_{\mathrm{i}} \exp \left[\left(E_{\mathrm{F}}-E_{\mathrm{i}}\right) / k T\right]$ 由体内向氧化层-半导体界面增加，这种在氧化层-半导体界面附近多数载流子浓度大于半导体体内浓度的情况一般称为<strong>积累</strong>。<br>从电荷的角度来看，当 $V_{\mathrm{G}}&gt;0$ 时，MOS 电容栅上有正电荷。为了保持电荷平衡，必须将带负电的电子吸引到半导体-绝缘体界面。这样得到的结论与前面用能带图得到的一样，因此可以近似得到器件中电荷与位置的函数。</p>
+<p><img src="https://s2.loli.net/2023/04/21/q8xeuwZDMf1tF57.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="n型较小负偏置（耗尽）"><a href="#n型较小负偏置（耗尽）" class="headerlink" title="n型较小负偏置（耗尽）"></a>n型较小负偏置（耗尽）</h4><p>下面考虑 MOS 电容栅上加较小的负偏置的情况，较小的 $V_{\mathrm{G}}&lt;0$ 会使金属中的 $E_{\mathrm{F}}$ 相对半导体中 $E_{\mathrm{F}}$ 稍有升高，在绝缘体和半导体中能带将向较小的负向倾斜，作为多数载流子的电子的浓度在氧化层一半导体界面附近降低，电子被耗尽。<br>从电荷的角度考虑也可以得到类似的结论，$V_{\mathrm{G}}&lt;0$ 意味着在栅上加了负电荷，会将电子从氧化层半导体界面排斥开，留下带正电的施主杂质离子。氧化层-绝缘层界面处电子和空穴浓度均小于背景掺杂浓度 $N_{\mathrm{A}}$、$N_{\mathrm{D}}$，显然可以称为<strong>耗尽</strong>情况。</p>
+<p><img src="https://s2.loli.net/2023/04/21/HZnK57O6NrLgECw.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="n型较大负偏置（反型）"><a href="#n型较大负偏置（反型）" class="headerlink" title="n型较大负偏置（反型）"></a>n型较大负偏置（反型）</h4><p>最后，假设在 MOS 电容栅上加越来越大的负偏置。随着 $V_{\mathrm{G}}$ 继续负向增大，在半导体表面处能带会越来越弯曲，在表面的空穴浓度 $\left(p_{\mathrm{s}}\right)$ 将持续地增加，从小于 $n_{\mathrm{i}}$（对应于表面 $E_{\mathrm{i}}&lt;E_{\mathrm{F}}$）到等于 $n_{\mathrm{i}}$（对应于表面 $E_{\mathrm{i}}=E_{\mathrm{F}}$）直到大于 $n_{\mathrm{i}}$（对应于表面 $E_{\mathrm{i}}    &gt;E_{\mathrm{F}}$），最终</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\left.E_{\mathrm{i}} \mathrm{(表面}\right)-E_{\mathrm{i}}(\mathrm{体内})=2\left[E_{\mathrm{F}}-E_{\mathrm{i}}(\mathrm{体内)}]\right. \\
+p_{\mathrm{s}}=n_{\mathrm{i}} e^{\left[E_{\mathrm{i}} \mathrm{(surface)}-E_{\mathrm{F}}\right] / k T}=n_{\mathrm{i}} e^{\left.\left[E_{\mathrm{F}}-E_{\mathrm{i}} \mathrm{(bulk}\right)\right] / k T}=n_{\mathrm{bulk}}=N_{\mathrm{D}}
+\end{array}</script><p><img src="https://s2.loli.net/2023/04/21/KqQwR4SOYfH7NI9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>开始反型时，表面处的电子浓度等于体内的空穴浓度。这种情况称为<strong>阈值反型点</strong>，所加的电压称为<strong>阈值电压</strong> $V_T$。</li>
+<li>很明显，当 $V_{\mathrm{G}}=V_{\mathrm{T}}$、$p_{\mathrm{s}}=N_{\mathrm{D}}$ 时，表面不再耗尽。</li>
+<li>而且当进一步增加负偏置 $\left(V_{\mathrm{G}}&lt;V_{\mathrm{T}}\right)$ 时，$p_{\mathrm{s}}$ 将超过 $n_{\mathrm{bulk}}=N_{\mathrm{D}}$，表面区域的性质将从 $n$ 型变为 $p$ 型。与所观察到的特性变化相一致，$V_{\mathrm{G}}&lt;V_{\mathrm{T}}$ 的情况下，表面少数载流子浓度超过衬底多数载流子浓度，这种情况称为<strong>反型</strong>。</li>
+<li>反型时，表面处导带的变化<strong>只是栅压的函数</strong>。然而，表面电子浓度是表面势的指数函数。表面势每增加数伏特，将使电子浓度以 $10$ 的幂次方增加，但是空间电荷宽度几乎不改变（e的负指数级别，看成不变）。在这种情况下，空间电荷区已经达到了最大宽度。</li>
+<li>在反型转变点，最大空间电荷宽度 $x_{d T}=\left(\frac{4 \epsilon_{s} \phi_{f p}}{e N_{a}}\right)^{1 / 2}$，其中 $\phi_{f p}$ 是 $E_{F i}$ 和 $E_{F}$ 之间的势垒高度（正数），$\epsilon_{s}$ 是半导体的介电常数，$N_{a}$ 是杂质受主浓度</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>总之，我们现在可以区分出三个物理上截然不同的偏置区一积累、耗尽、反型。对于理想 $n$ 型器件，$V_{\mathrm{G}}&gt;0$，出现积累；$V_{\mathrm{T}}&lt;V_{\mathrm{G}}&lt;0$，出现耗尽；$V_{\mathrm{G}}&lt;V_{\mathrm{T}}$，出现反型。对于 $p$ 型器件简单地将电压极性变反即可。当 $V_{\mathrm{G}}=0$ 时，半导体中没有能带弯曲或称为“平带”，可以标为积累和耗尽之间的分界线。$V_{\mathrm{G}}=V_{\mathrm{T}}$ 的分界线可以简单地称为耗尽-反型过渡点。</p>
+<p><img src="https://s2.loli.net/2023/04/21/k7oCJclfg9jLSGv.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://s2.loli.net/2023/04/22/X4Rx8kUL7r56zNK.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>n型</p>
+<p><img src="https://s2.loli.net/2023/04/22/fsJ6mORZ3wElQTM.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="空间电场"><a href="#空间电场" class="headerlink" title="空间电场"></a>空间电场</h3><p><img src="https://s2.loli.net/2023/04/22/AMqniE28DyRTlhd.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>对于一维 p 型半导体</p>
+<script type="math/tex; mode=display">
+E^{2}(x)=\left(\frac{2 k T}{q}\right)^{2}\left(\frac{q^{2} p_{p 0}}{2 \varepsilon_{s} k T}\right)\left\{\left[\exp \left(-\frac{q V}{k T}\right)+\frac{q V}{k T}-1\right]+\frac{n_{p 0}}{p_{p 0}}\left[\exp \left(\frac{q V}{k T}\right)-\frac{q V}{k T}-1\right]\right\}</script><p>如果令 F 函数</p>
+<script type="math/tex; mode=display">
+F\left(\frac{q V}{k T},\frac{n_{p 0}}{p_{p 0}}\right)=\left\{\left[\exp \left(-\frac{q V}{k T}\right)+\frac{q V}{k T}-1\right]+\frac{n_{p 0}}{p_{p 0}}\left[\exp \left(\frac{q V}{k T}\right)-\frac{q V}{k T}-1\right]\right\}^{\frac{1}{2}}</script><p>德拜长度</p>
+<script type="math/tex; mode=display">
+L_{D}=\left(\frac{\varepsilon_{s} k T}{q^{2} p_{p 0}}\right)^{1 / 2}</script><p>于是电场可以表示为</p>
+<script type="math/tex; mode=display">
+E(x)= \pm \frac{\sqrt{2} k T}{q L_{D}} F\left(\frac{q V(x)}{k T}, \frac{n_{p 0}}{p_{p 0}}\right)</script><p>表面势为正，能带下弯，电场指向半导体内部为正方向</p>
+<h3 id="空间电荷密度"><a href="#空间电荷密度" class="headerlink" title="空间电荷密度"></a>空间电荷密度</h3><p><img src="https://s2.loli.net/2023/06/13/j4hiJrnouC8m3Ue.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+Q_{s}=-\varepsilon_{s} E_{s}=\mp \frac{\sqrt{2} \varepsilon_{s} k T}{q L_{D}} F\left(\frac{q V_{s}}{k T}, \frac{n_{p 0}}{p_{p 0}}\right)</script><h4 id="平带（-V-g-0-）"><a href="#平带（-V-g-0-）" class="headerlink" title="平带（$V_g=0$）"></a>平带（$V_g=0$）</h4><script type="math/tex; mode=display">
+Q_s=0</script><h4 id="积累（-V-g-lt-0-）"><a href="#积累（-V-g-lt-0-）" class="headerlink" title="积累（$V_g&lt;0$）"></a>积累（$V_g&lt;0$）</h4><p>此时 $\frac{n_{p 0}}{p_{p 0}}\Rightarrow 0$，$V_s&lt;0$，化简得</p>
+<script type="math/tex; mode=display">
+Q_{s} \propto \exp \left(-q V_{s} / 2 k T\right)</script><h4 id="耗尽（-V-g-gt-0-）"><a href="#耗尽（-V-g-gt-0-）" class="headerlink" title="耗尽（$V_g&gt;0$）"></a>耗尽（$V_g&gt;0$）</h4><p>此时 $\frac{n_{p 0}}{p_{p 0}}\Rightarrow 0$，$V_s$ 大于 $0$ 但是接近 $0$，化简得</p>
+<script type="math/tex; mode=display">
+Q_{s}=-\frac{\sqrt{2} \varepsilon_{s} k T}{q L_{D}}\left(\frac{q V_{s}}{k T}\right)^{\frac{1}{2}}=-q N_{A}\left(\frac{2 \varepsilon_{s}}{q} \frac{V_{s}}{N_{A}}\right)^{\frac{1}{2}}=-\left(2 \varepsilon_{s} q N_{A} V_{s}\right)^{1 / 2}</script><h4 id="弱反型（-2V-B-gt-V-s-gt-V-B-）"><a href="#弱反型（-2V-B-gt-V-s-gt-V-B-）" class="headerlink" title="弱反型（$2V_B&gt;V_s&gt;V_B$）"></a>弱反型（$2V_B&gt;V_s&gt;V_B$）</h4><p>同上</p>
+<h4 id="强反型（-V-s-gt-2V-B-）"><a href="#强反型（-V-s-gt-2V-B-）" class="headerlink" title="强反型（$V_s&gt;2V_B$）"></a>强反型（$V_s&gt;2V_B$）</h4><p>同上</p>
+<script type="math/tex; mode=display">
+\begin{array}{c} 
+d=d_{\max }=\left(\frac{2 \varepsilon_{s}}{q} \frac{2 V_{B}}{N_{A}}\right)^{1 / 2} \\
+Q_{s} \propto \exp \left(q V_{s} / 2 k T\right)
+\end{array}</script><h4 id="深耗尽（非平衡）"><a href="#深耗尽（非平衡）" class="headerlink" title="深耗尽（非平衡）"></a>深耗尽（非平衡）</h4><script type="math/tex; mode=display">
+Q_{s}=-\frac{\sqrt{2} \varepsilon_{s} k T}{q L_{D}}\left(\frac{q V_{s}}{k T}\right)^{\frac{1}{2}}</script><h3 id="能带图"><a href="#能带图" class="headerlink" title="能带图"></a>能带图</h3><h4 id="金属-半导体功函数差"><a href="#金属-半导体功函数差" class="headerlink" title="金属-半导体功函数差"></a>金属-半导体功函数差</h4><p><img src="https://s2.loli.net/2023/05/13/ORoiT7VzdNW8n3e.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\phi_{m s} \equiv\left[\phi_{m}^{\prime}-\left(\chi^{\prime}+\frac{E_{g}}{2 e}+\phi_{f p}\right)\right] \\
+\phi_{m s}=\phi_{m}^{\prime}-\left(\chi^{\prime}+\frac{E_{g}}{2 e}-\phi_{f n}\right)
+\end{array}</script><h4 id="平带电压"><a href="#平带电压" class="headerlink" title="平带电压"></a>平带电压</h4><p><img src="https://s2.loli.net/2023/05/13/maGyA8ikFbJQ7gD.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>平带电压的定义为当半导体内没有<strong>能带弯曲</strong>时所加的栅压，此时净空间电荷为零。由于功函数差和在氧化物中可能存在的陷阱电荷，此时穿过氧化物的电<br>压不一定为零。</p>
+<p>氧化物中的净固定电荷在位置上表现得十分靠近氧化物-半导体界面。在我们对 MOS 结构的分析中将假设单位面积的等价陷阱电荷 $Q_{s s}^{\prime}$ 位于氧化物中且直接与氧化物一半导体界面相邻。这时，我们将忽略任何其他可能存在于器件中的氧化物类型的电荷。参数 $Q_{s s}^{\prime}$ 通常称为<strong>单位面积电荷数</strong>。于是 MOS 器件的平带电压</p>
+<script type="math/tex; mode=display">
+V_{F B}=\phi_{m s}-\frac{Q_{s s}^{\prime}}{C_{\mathrm{ox}}}</script><p>其中 $C_{\mathrm{ox}}$ 为单位面积的<strong>栅氧化层电容</strong></p>
+<h3 id="V-g-与-V-s-的关系"><a href="#V-g-与-V-s-的关系" class="headerlink" title="$V_g$ 与 $V_s$ 的关系"></a>$V_g$ 与 $V_s$ 的关系</h3><p>在理想结构中，$V_{G}$ 部分降落在氧化层中，部分降落在半导体中，用符号来表示，有</p>
+<script type="math/tex; mode=display">
+V_{\mathrm{G}}=V_{\mathrm{O}}+V_{\mathrm{S}}</script><p>在理想绝缘体中没有载流子或电荷中心，因此有</p>
+<script type="math/tex; mode=display">
+V_{\mathrm{O}}=\int_{-x_{\mathrm{o}}}^{0} \mathscr{E}_{\mathrm{O}} \mathrm{d} x=x_{\mathrm{o}} \mathscr{E}_{\mathrm{O}}</script><p>其中 $x_{\mathrm{o}}$ 为氧化层厚度</p>
+<p>对于垂直于两种不同材料之间界面的电场，根据大家熟知的边界条件，有</p>
+<script type="math/tex; mode=display">
+\left.\left(D_{\mathrm{S}}-D_{\mathrm{O}}\right)\right|_{O-S} \mathrm{interface}=Q_{\mathrm{O}-\mathrm{S}}</script><p>其中 $D=\varepsilon E$ 是电位移矢量，$Q_{\mathrm{O}-\mathrm{S}}$ 是界面处单位面积电荷，由于理想结构中 $Q_{\mathrm{O}-\mathrm{S}}=0$，有</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+D_{\mathrm{O}}=D_{\mathrm{S} \mid x=0} \\
+\mathscr{E}_{\mathrm{O}}=\frac{K_{\mathrm{S}}}{K_{\mathrm{O}}} \mathscr{E}_{\mathrm{S}} \\
+V_{\mathrm{O}}=\frac{K_{\mathrm{S}}}{K_{\mathrm{O}}} x_{\mathrm{o}} \mathscr{E}_{\mathrm{S}} \\
+\end{array}</script><p>其中 $K_{\mathrm{S}}$ 是半导体介电常数，$K_{\mathrm{O}}$ 是氧化层介电常数，$\mathscr{E}_{\mathrm{S}}$ 是氧化层-半导体界面处半导体中的电场</p>
+<p>在半导体作高斯面，包围住所有电荷，可得</p>
+<script type="math/tex; mode=display">
+-D_{\mathrm{S} \mid x=0} = Q_S</script><p>即</p>
+<script type="math/tex; mode=display">
+-\mathscr{E}_{\mathrm{S}}K_{\mathrm{S}} = Q_S</script><p>代回可得</p>
+<script type="math/tex; mode=display">
+\begin{align}
+V_{\mathrm{O}} & = \frac{-Q_S x_{\mathrm{o}}}{K_{\mathrm{O}}}\\
+& = -\frac{Q_S}{C_O}
+\end{align}</script><p>其中 $C_O$ 是绝缘层的单位面积电容</p>
+<p>最终得到</p>
+<script type="math/tex; mode=display">
+V_G=-\frac{Q_S}{C_O}+V_S</script><p>另一方面，$\mathscr{E}_{\mathrm{S}}$ 可以看成是一个已知的 $V_{\mathrm{S}}$ 的函数，由耗尽近似可得</p>
+<script type="math/tex; mode=display">
+\mathscr{E}_{\mathrm{S}}=\left[\frac{2 q N_{\mathrm{A}}}{K_{\mathrm{S}} \varepsilon_{0}} V_{\mathrm{S}}\right]^{1 / 2}</script><p>于是</p>
+<script type="math/tex; mode=display">
+V_{\mathrm{G}}=V_{\mathrm{S}}+\frac{K_{\mathrm{S}}}{K_{\mathrm{O}}} x_{\mathrm{o}} \sqrt{\frac{2 q N_{\mathrm{A}}}{K_{\mathrm{S}} \varepsilon_{0}} V_{\mathrm{S}}} \quad\left(0 \leqslant \phi_{\mathrm{S}} \leqslant 2 \phi_{\mathrm{F}}\right)</script><h3 id="MOSCAP-电容"><a href="#MOSCAP-电容" class="headerlink" title="MOSCAP 电容"></a>MOSCAP 电容</h3><script type="math/tex; mode=display">
+\begin{align}
+C & = \frac{\mathrm{d} Q_{\mathrm{M}}}{\mathrm{d} V_{\mathrm{G}}} \\
+& = -\frac{\mathrm{d} Q_{\mathrm{s}}}{\mathrm{d} V_{\mathrm{G}}} \\
+& = \frac{-\mathrm{d} Q_{\mathrm{s}}}{-\frac{\mathrm{d} Q_{\mathrm{s}}}{C_{O}}+\mathrm{d} V_{\mathrm{s}}} \\
+& = 1 /\left(\frac{1}{C_{O}}+\frac{1}{C_{\mathrm{s}}}\right)
+\end{align}</script><p>其中</p>
+<script type="math/tex; mode=display">
+C_{\mathrm{s}}=-\frac{\mathrm{d} Q_{\mathrm{s}}}{\mathrm{d} V_{\mathrm{s}}}=\left|\frac{\mathrm{d} Q_{\mathrm{s}}}{\mathrm{d} V_{\mathrm{s}}}\right|</script><p>上式表明 MOSCAP 结构电容相当于绝缘层电容和半导体空间电荷层电容的串联。</p>
+<p><img src="https://s2.loli.net/2023/06/13/12ytzDeGjE6VoWT.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="阈值电压和其表面势的关系"><a href="#阈值电压和其表面势的关系" class="headerlink" title="阈值电压和其表面势的关系"></a>阈值电压和其表面势的关系</h3><script type="math/tex; mode=display">
+\begin{align}
+V_{t} & = V_{g}|_{threshold} \\
+& = \left(V_{fb}+V_{s}+V_{ox}\right)|_{threshold}\\
+&=V_{fb}+2V_{B}-\frac{Q_s}{C_{ox}}\\
+&=V_{fb}+2V_{B}+\frac{qN_aW_{dep}}{C_{ox}}\\
+&=V_{fb}+2V_{B}+\frac{\sqrt{qN_a2\varepsilon_s2V_B}}{C_{ox}}\\
+\end{align}</script><h3 id="非理想效应（四种缺陷）"><a href="#非理想效应（四种缺陷）" class="headerlink" title="非理想效应（四种缺陷）"></a>非理想效应（四种缺陷）</h3><h4 id="固定栅氧化层电荷"><a href="#固定栅氧化层电荷" class="headerlink" title="固定栅氧化层电荷"></a>固定栅氧化层电荷</h4><p>电容-电压特性曲线可用来确定等价固定氧化层电荷。对于给定的 $MOS$ 结构，$\phi_{ms}$ 和 $C_{ox}$ 是已知的，所以理想平带电压和平带电容可以求出。平带电压的实验值可以从电容-电压特性曲线测出，从而固定氧化层电荷能够被确定。电容-电压测量方法是表征 MOS 器件很有用的判别工具。</p>
+<p>固定栅氧化层电荷会使得C-V曲线向左或向右平移，具体取决于电荷的正负性和大小。</p>
+<ul>
+<li>如果固定栅氧化层电荷为正，那么C-V曲线会向左平移，表示需要更小的栅压才能使半导体表面反型</li>
+<li>如果固定栅氧化层电荷为负，那么C-V曲线会向右平移，表示需要更大的栅压才能使半导体表面反型</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/06/13/xrOWhZ5SDYgofGM.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="界面陷阱电荷"><a href="#界面陷阱电荷" class="headerlink" title="界面陷阱电荷"></a>界面陷阱电荷</h4><p>半导体在界面处周期性突然中止，以便允许的电子能级存在于禁带中。这些允许的能态称为界面态。与固定氧化层电荷相比，电荷在半导体和界面态之间流动。这些界面态中的净电荷是带隙中费米能级位置的函数。</p>
+<p><img src="https://s2.loli.net/2023/05/14/EnYWhGuxRM7peFy.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>通常，受主态存在于能带的上半部分，而施主态存在于能带的下半部分。若费米能级低于受主态，那么受主态是中性的，一旦费米能级位于其上时它将是负电性的。若费米能级高于施主态，那么施主态是中性的，一旦费米能级位于其下时它将是正电性的。因此界面电荷是 MOS 电容器栅压的函数。</p>
+<p><img src="https://s2.loli.net/2023/06/13/X4TAINL3zeS2Vm7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>界面态使得C-V曲线变得更加平坦</p>
+<p><img src="https://s2.loli.net/2023/06/13/YSmjvpeBdRXOIZn.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="氧化层中可动电荷"><a href="#氧化层中可动电荷" class="headerlink" title="氧化层中可动电荷"></a>氧化层中可动电荷</h4><p>氧化层中可动电荷是指在氧化层内部或表面可以移动的离子电荷，通常是由钠离子或其他杂质离子组成的。</p>
+<h4 id="氧化层中陷阱电荷"><a href="#氧化层中陷阱电荷" class="headerlink" title="氧化层中陷阱电荷"></a>氧化层中陷阱电荷</h4><p>氧化层中陷阱电荷是指在氧化层内部存在的能够俘获或释放载流子的缺陷电荷，通常是由辐射、热载流子注入或其他工艺引起的。</p>
+<h3 id="计算题解题步骤"><a href="#计算题解题步骤" class="headerlink" title="计算题解题步骤"></a>计算题解题步骤</h3><ol>
+<li>先算 $V_B$<br>$V_B=\frac{kT}{q}\ln\left(\frac{N_{A \text{or} D}}{n_i}\right)$</li>
+<li>算平带电压<script type="math/tex; mode=display">
+V_{F B}=\phi_{m s}-\frac{Q_{s s}^{\prime}}{C_{\mathrm{ox}}}</script></li>
+<li>算阈值电压<script type="math/tex; mode=display">
+V_{t}=V_{fb}+2V_{B}+\frac{\sqrt{qN_a2\varepsilon_s2V_B}}{C_{ox}}</script></li>
+</ol>
+<h2 id="MOSFET"><a href="#MOSFET" class="headerlink" title="MOSFET"></a>MOSFET</h2><h3 id="结构与参数"><a href="#结构与参数" class="headerlink" title="结构与参数"></a>结构与参数</h3><p><img src="https://s2.loli.net/2023/05/05/kLrfw6mW2eXZJS1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>电场调节作用</li>
+<li><strong>多子器件</strong></li>
+<li>一种载流子（单极）</li>
+<li>输入阻抗高</li>
+<li>电压控制器件</li>
+<li>噪声低，抗辐射能力强</li>
+<li>工艺要求高</li>
+<li>频率范围小，功耗低</li>
+<li>集成度高</li>
+</ul>
+<h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p><img src="https://s2.loli.net/2023/05/19/m9HouLSqplgJFK7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>共有四种 MOSFET 器件。</p>
+<ul>
+<li>图 10.34 是 n 沟道增强型 MOSFET。增强的含义为氧化层下面的半导体衬底在零栅压时<strong>不是反型</strong>的。需要加正偏栅压才能产生电子反型层，从而把 n 型源区和 n 型漏区连接起来。载流子从源端流向漏端。对于这类 n 沟道器件，电子从源端流向漏端，因此习惯意义上的电流将进入漏端而流出源端。其电流符号也在图中有所表示。</li>
+<li>图 10.35 是 n 沟道耗尽型 MOSFET。栅压为零时氧化层下面<strong>已经存在 n 型沟道区</strong>。我们已经知道 p 型衬底 MOS 器件的阈值电压可以为负，这意味着在零栅压时电子反型层已经存在了。这种器件也被认为是耗尽型器件。图中的 n 沟道可以是电子反型层或是特意掺杂的 n 区。n 沟耗尽型 MOSFET 的习惯意义上的电流符号如图 10.35 所示。</li>
+<li>图 10.36(a) 和图 10.36(b) 分别为 p 沟道增强型 MOSFET 和 p 沟道耗尽型 MOSFET。在 p 沟道增强型器件中，必须加负栅压才能产生空穴反型层，从而连接 p 型的源区和漏区。空穴从源流向漏，因此习惯上的电流将流入源区而流出漏区。零栅压时耗尽型器件已经存在 p 沟道区了。电流符号如图 10.38 所示。</li>
+</ul>
+<p><img src="/img/circuit/%E5%90%84%E7%A7%8D%E5%9C%BA%E6%95%88%E5%BA%94%E7%AE%A1%E6%AF%94%E8%BE%83.drawio.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>NMOSFET</th>
+<th>PMOSFET</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>衬底掺杂</td>
+<td>p</td>
+<td>n</td>
+</tr>
+<tr>
+<td>源漏掺杂</td>
+<td>n</td>
+<td>p</td>
+</tr>
+<tr>
+<td>源端</td>
+<td>接衬底</td>
+<td>接衬底</td>
+</tr>
+<tr>
+<td>漏端</td>
+<td>接正电压</td>
+<td>接负电压</td>
+</tr>
+<tr>
+<td>电流流向</td>
+<td>D-&gt;S</td>
+<td>S-&gt;D</td>
+</tr>
+<tr>
+<td>沟道载流子</td>
+<td>电子</td>
+<td>空穴</td>
+</tr>
+<tr>
+<td>载流子运动方向</td>
+<td>S-&gt;D</td>
+<td>S-&gt;D</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>NMOS增强型</th>
+<th>NMOS耗尽型</th>
+<th>PMOS增强型</th>
+<th>PMOS耗尽型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>阈值电压</td>
+<td>大于0</td>
+<td>小于0</td>
+<td>小于0</td>
+<td>大于0</td>
+</tr>
+<tr>
+<td>工作区域</td>
+<td>$V\ge V_T$</td>
+<td>$V\ge V_T$</td>
+<td>$V\le V_T$</td>
+<td>$V\le V_T$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="电流电压关系（输出特性）"><a href="#电流电压关系（输出特性）" class="headerlink" title="电流电压关系（输出特性）"></a>电流电压关系（输出特性）</h3><h4 id="通断"><a href="#通断" class="headerlink" title="通断"></a>通断</h4><ul>
+<li>对于 n 沟道增强型 MOSFET，加一小于阈值电压的栅源电压以及一非常小的漏源电压。源和衬底（或称体区）接地。在这种偏置下，没有电子反型层，漏到衬底的 pn 结是反偏的，漏电流为零（忽略 pn 结漏电流）。</li>
+<li>当所加栅压 $V_{GS}&gt;V_{T}$，电子反型层产生了，当加一较小的漏电压时，反型层中的电子将从源端流向正的漏端。习惯上的电流流入漏极而流出源极。在这种理想情况下，没有电流从氧化层向栅极流过。</li>
+</ul>
+<h4 id="沟道电导"><a href="#沟道电导" class="headerlink" title="沟道电导"></a>沟道电导</h4><p>对于较小的 $V_{D S}$，沟道区具有电阻的特性，因此可得：</p>
+<script type="math/tex; mode=display">
+I_{D}=g_{d} V_{D S}</script><p>式中 $g_{d}$ 为在 $V_{D S}$ 趋近于零时的<strong>沟道电导</strong>。沟道电导可以由下式表达：</p>
+<script type="math/tex; mode=display">
+g_{d}=\frac{W}{L} \cdot \mu_{n}\left|Q_{n}^{\prime}\right|</script><p>式中 $\mu_{n}$ 为反型层中的电子迁移率。$\left|Q_{n}^{\prime}\right|$ 为单位面积的反型层电荷数量。反型层电荷是栅压的函数；因此，基本 MOS 晶体管的工作机理为<strong>栅压对沟道电导的调制</strong>作用。而沟道电导决定漏电流。我们可以先假设迁移率为一常数</p>
+<p><img src="https://s2.loli.net/2023/05/19/ZNlp9GvSsxUKVF7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>当 $V_{GS}&lt;V_{T}$ 时，漏电流为零。</li>
+<li>当 $V_{GS}&gt;V_{T}$ 时，沟道<strong>反型层电荷密度增大</strong>，从而增大沟道电导。</li>
+<li>当 $V_{GS}$ 增大到漏端的氧化层压降等于 $V_{T}$ 时，漏极处的反型层电荷密度为零。此时，漏极处的电导为零，这意味着 $I_{D}-V_{DS}$ 的特性曲线的斜率为零。</li>
+<li>定义<script type="math/tex; mode=display">
+V_{DS}\text{(sat)}=V_{GS}-V_{T}</script>式中 $V_{DS}\text{(sat)}$ 为在漏极处产生零反型层电荷密度的漏源电压。假设沟道长度的变化 $\Delta L$ 相对于初始沟道长度 $L$ 而言很小，那么当 $V_{DS}&gt;V_{DS}\text{(sat)}$ 时漏电流为一常数。</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/05/19/ea9D8H6xw7kAnVG.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="I-D-V-DS-V-GS-关系"><a href="#I-D-V-DS-V-GS-关系" class="headerlink" title="$I_D-V_{DS}/V_{GS}$ 关系"></a>$I_D-V_{DS}/V_{GS}$ 关系</h4><p><img src="https://s2.loli.net/2023/05/19/ubZ9VOJYMzlKh6F.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://s2.loli.net/2023/06/12/MZl1rx8LV247QWX.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>$I_D-V_{GS}$ 关系中，一条直线可以近似通过图中各点。在低 $V_{GS}$ 值处点与直线的偏离是由于亚阈值电导的影响，在高 $V_{GS}$ 值处，点与直线的偏离是由于迁移率成为栅压的函数。</li>
+</ul>
+<p>在非饱和区，n 沟道 MOSFET 的理想电流-电压关系：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+I_{D}=\frac{W \mu_{n} C_{\mathrm{ox}}}{2 L}\left[2\left(V_{G S}-V_{T}\right) V_{D S}-V_{D S}^{2}\right] \\
+I_{D}=\frac{k_{n}^{\prime}}{2} \cdot \frac{W}{L} \cdot\left[2\left(V_{G S}-V_{T}\right) V_{D S}-V_{D S}^{2}\right] \\
+I_{D}=K_{n}\left[2\left(V_{G S}-V_{T}\right) V_{D S}-V_{D S}^{2}\right]
+\end{array}</script><p>在饱和区，理想的电流-电压关系为：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+I_{D}=\frac{W \mu_{n} C_{ox}}{2 L}\left(V_{G S}-V_{T}\right)^{2} \\
+I_{D}=\frac{k_{n}^{\prime}}{2} \cdot \frac{W}{L} \cdot\left(V_{G S}-V_{T}\right)^{2} \\
+I_{D}=K_{n}\left(V_{G S}-V_{T}\right)^{2}
+\end{array}</script><ul>
+<li>$k_{n}^{\prime}=\mu_{n} C_{\mathrm{ox}}$ 称为 n 沟道 MOSFET 的器件<strong>跨导参数</strong>，单位为 $\mathrm{A} / \mathrm{V}^{2}$</li>
+<li>$K_{n}=\left(W \mu_{n} C_{\mathrm{ox}}\right) / 2 L=\left(k_{n}^{\prime} / 2\right) \cdot(W / L)$ 称为 $\mathrm{n}$ 沟道 MOSFET 的器件<strong>跨导系数</strong>，单位也为 $\mathrm{A} / \mathrm{V}^{2}$</li>
+</ul>
+<p>p 沟道 MOSFET 的电流-电压关系为：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+I_{D}=\frac{W \mu_{p} C_{0 \mathrm{x}}}{2 L}\left[2\left(V_{S G}+V_{T}\right) V_{S D}-V_{S D}^{2}\right] \\
+I_{D}=\frac{k_{p}^{\prime}}{2} \cdot \frac{W}{L} \cdot\left[2\left(V_{S G}+V_{T}\right) V_{S D}-V_{S D}^{2}\right]=K_{p}\left[2\left(V_{S G}+V_{T}\right) V_{S D}-V_{S D}^{2}\right]
+\end{array}</script><p>在饱和区</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+I_{D}(\mathrm{sat})=\frac{W \mu_{p} C_{\mathrm{ox}}}{2 L}\left(V_{S G}+V_{T}\right)^{2} \\
+I_{D}=\frac{k_{p}^{\prime}}{2} \cdot \frac{W}{L} \cdot\left(V_{S G}+V_{T}\right)^{2}=K_{p}\left(V_{S G}+V_{T}\right)^{2}
+\end{array}</script><ul>
+<li>$k_{p}^{\prime}=\mu_{p} C_{\mathrm{ox}}$ 称为 p 沟道 MOSFET 的器件<strong>跨导参数</strong></li>
+<li>$K_{p}=\left(W \mu_{p} C_{\mathrm{ox}}\right) / 2 L=\left(k_{p}^{\prime} / 2\right) \cdot(W / L)$ 称为 $\mathrm{p}$ 沟道 MOSFET 的<strong>跨导系数</strong></li>
+<li>源漏饱和电压为 $V_{S D}(\mathrm{sat})=V_{S G}+V_{T}$</li>
+</ul>
+<h4 id="定量推导"><a href="#定量推导" class="headerlink" title="定量推导"></a>定量推导</h4><ol>
+<li>假设<ul>
+<li>沟道中的电流是由漂移而非扩散产生的。</li>
+<li>栅氧化层中无电流。</li>
+<li>利用缓变沟道近似，$\partial \mathrm{E}_{y} / \partial y \gg \partial \mathrm{E}_{x} / \partial x$，这个近似意味着 $\mathrm{E}_{x}$ 为一常数。</li>
+<li>任何固定氧化层电荷等价于在氧化层-半导体界面处的电荷密度。</li>
+<li>沟道中载流子迁移率为常数。</li>
+</ul>
+</li>
+<li>欧姆定律：<script type="math/tex; mode=display">
+J_{x}=\sigma \mathrm{E}_{x}</script>式中 $\sigma=e \mu_{n} n(y)$ 为<strong>沟道电导率</strong>，$\mathrm{E}_{x}$ 为漏源电压产生的沟道方向的<strong>电场</strong>，$\mu_{n}$ 为<strong>电子迁移率</strong>，$n(y)$ 为反型层中的<strong>电子浓度</strong>。</li>
+<li>在 $y$ 和 $z$ 方向上的沟道截面对 $J_{x}$ 进行积分可以得到总沟道电流<script type="math/tex; mode=display">
+I_{x}=\int_{y} \int_{z} J_{x} \mathrm{~d} y \mathrm{~d} z</script></li>
+<li>计算单位面积的反型层电荷（此时为一负值）<script type="math/tex; mode=display">
+Q_{n}^{\prime}=-\int \operatorname{en}(y) \mathrm{d} y</script>可以化简总沟道电流<script type="math/tex; mode=display">
+I_x=-W\mu_n Q_{n}^{\prime} E_x</script>其中 $W$ 是沟道宽度</li>
+<li>根据高斯定理<script type="math/tex; mode=display">
+\oint_{s} \epsilon \mathrm{E}_{n} \mathrm{~d} S=-\epsilon_{\mathrm{ox}} \mathrm{E}_{\mathrm{ox}} W \mathrm{~d} x=Q_{T}</script>式中 $\epsilon_{\mathrm{ox}}$ 为氧化层介电常数。$Q_{T}$ 为封闭表面中的总电荷，$E_{n}$ 为通过表明 $S$ 电场的向外的分量。总电荷还可以写成：<script type="math/tex; mode=display">
+Q_{T}=\left[Q_{s s}^{\prime}+Q_{n}^{\prime}+Q_{S D}^{\prime}(\max )\right] W \mathrm{~d} x</script>联立得<script type="math/tex; mode=display">
+-\epsilon_{\mathrm{ox}} \mathrm{E}_{\mathrm{ox}}=Q_{s s}^{\prime}+Q_{n}^{\prime}+Q_{S D}^{\prime}(\max )</script></li>
+<li>可得（具体见课表）<script type="math/tex; mode=display">
+I_{x}=-W \mu_{n} C_{\mathrm{ox}} \frac{\mathrm{d} V_{x}}{\mathrm{~d} x}\left[\left(V_{G S}-V_{x}\right)-V_{T}\right]</script></li>
+<li>沿沟道长度进行积分，可得<script type="math/tex; mode=display">
+I_{D}=\frac{W \mu_{n} C_{\mathrm{ox}}}{2 L}\left[2\left(V_{G S}-V_{T}\right) V_{D S}-V_{D S}^{2}\right]</script>上式在 $V_{G S} \geqslant V_{T}$ 且 $0 \leqslant V_{D S} \leqslant V_{D S}\text{(sat)}$ 时成立。</li>
+<li>当 $V_{D S} &gt; V_{D S}\text{(sat)}$ 时，<script type="math/tex; mode=display">
+I_{D}(\mathrm{sat})=\frac{W \mu_{n} C_{\mathrm{ox}}}{2 L}\left(V_{G S}-V_{T}\right)^{2} \\</script></li>
+</ol>
+<h3 id="阈值电压的调节方法"><a href="#阈值电压的调节方法" class="headerlink" title="阈值电压的调节方法"></a>阈值电压的调节方法</h3><h3 id="跨导"><a href="#跨导" class="headerlink" title="跨导"></a>跨导</h3><p>MOSFET 的跨导定义为相对于栅压的漏电流的改变，或者写为：</p>
+<script type="math/tex; mode=display">
+g_{m}=\frac{\partial I_{D}}{\partial V_{G S}}</script><p>跨导有时也称为<strong>晶体管增益</strong>。</p>
+<ul>
+<li>工作在非饱和区的 n 沟道 MOSFET，跨导：<script type="math/tex; mode=display">
+g_{m L}=\frac{\partial I_{D}}{\partial V_{G S}}=\frac{W \mu_{n} C_{\mathrm{ox}}}{L} \cdot V_{D S}</script>在非饱和区，跨导随 $V_{D S}$ 线性变化，而与 $V_{G S}$ 无关。</li>
+<li>工作于饱和区的 n 沟道 MOSFET，由电流-电压特性得跨导为：<script type="math/tex; mode=display">
+g_{m s}=\frac{\partial I_{D}(\mathrm{sat})}{\partial V_{G S}}=\frac{W \mu_{n} C_{\mathrm{ox}}}{L}\left(V_{G S}-V_{T}\right)</script>在饱和区，跨导随 $V_{G S}$ 线性变化，而与 $V_{D S}$ 无关。</li>
+</ul>
+<p>跨导是器件结构、载流子迁移率和阈值电压的函数。随着器件沟道宽度的增加、沟道长度的增加或氧化层厚度的减小，跨导都会增大。在 MOSFET 电路设计中，晶体管的尺寸，尤其是沟道宽度 $W$，是一个重要的工程设计参数。</p>
+<h3 id="非理想效应"><a href="#非理想效应" class="headerlink" title="非理想效应"></a>非理想效应</h3><h4 id="衬底偏置效应（体效应）"><a href="#衬底偏置效应（体效应）" class="headerlink" title="衬底偏置效应（体效应）"></a>衬底偏置效应（体效应）</h4><p>当衬底偏置电压增加时，<strong>NMOSFET的阈值电压会减小，而PMOSFET的阈值电压会增大</strong>（绝对值都是增大）。这是因为衬底偏置电压会改变沟道区域的电势，影响栅极对沟道的控制能力。</p>
+<p>当源-衬底的电压不为 $0$ 时，需要 $V_S=2V_B+V_{SB}$ 才能达到反型条件。定义体效应系数 $\gamma$</p>
+<script type="math/tex; mode=display">
+\gamma=\frac{\sqrt{2 e \epsilon_{s} N_{a}}}{C_{\mathrm{ox}}}</script><p>因此阈值电压的改变量可以表达为：</p>
+<script type="math/tex; mode=display">
+\Delta V_{T}=\gamma\left[\sqrt{2 V_{B}+V_{S B}}-\sqrt{2 V_{B}}\right]</script><h4 id="非零漏电导效应（沟道长度调制效应）"><a href="#非零漏电导效应（沟道长度调制效应）" class="headerlink" title="非零漏电导效应（沟道长度调制效应）"></a>非零漏电导效应（沟道长度调制效应）</h4><p>非零漏电导效应（沟道长度调制效应）是指MOSFET在饱和区工作时，由于漏极电压的增大，导致沟道的夹断点向源极方向移动，使得有效沟道长度减小，从而使漏极电流增大的效应。这个效应会导致MOSFET的电流-电压特性曲线在饱和区上翘，而不是水平的</p>
+<p><img src="https://s2.loli.net/2023/06/13/1z65jqSZeoGNIV7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="亚阈区现象"><a href="#亚阈区现象" class="headerlink" title="亚阈区现象"></a>亚阈区现象</h4><p>MOSFET的亚阈区现象是指MOSFET的栅极电压低于阈值电压时，半导体表面没有形成导电沟道，但仍有一股较小的电流通过器件，称为亚阈电流。这个电流是由源区注入到衬底表面的少数载流子，并扩散到漏区所形成的，本质上是少数载流子的扩散电流。亚阈电流随着栅极电压的增加而指数式增加，其大小与衬底掺杂浓度、半导体表面电容、表面态密度和温度等因素有关。亚阈区工作状态具有<strong>低电压</strong>和<strong>低功耗</strong>的优点，在逻辑开关和存储器等大规模集成电路中有重要应用。</p>
+<p>弱反型时（$V_B&lt;V_{S}&lt;2V_B$）半导体表面浓度低，$I_{DS}$ 与 $e^{qV_s/kT}$ 成正比</p>
+<p>亚阈值导电由于其指数级的增长方式，会使得器件会有较大的增益，然而由于其电流较小，使得电路的速度时极其有限的。</p>
+<p>定义亚阈摆幅 Subthreshold Swing</p>
+<script type="math/tex; mode=display">
+S S \equiv \frac{\mathrm{d} V_{G S}}{\mathrm{d}\left(\log I_{D S}\right)}=\frac{\mathrm{d} V_{G S}}{\mathrm{d} V_{S}} \frac{d V_{S}}{\mathrm{d}\left(\log I_{D S}\right)} \cong\left(1+\frac{C_{d}}{C_{o x}}\right) \ln 10 \frac{k T}{q}</script><ul>
+<li>极限值 60mV/dec</li>
+<li>SS 越小越好，减小 SS 的方法：薄栅HK、轻掺杂、高质量界面</li>
+</ul>
+<h4 id="非常数表面迁移率效应"><a href="#非常数表面迁移率效应" class="headerlink" title="非常数表面迁移率效应"></a>非常数表面迁移率效应</h4><p>总结：当栅极电压增加时，表面电场也增加，使得载流子与界面发生更多的散射，从而降低了迁移率。当漏极电压增加时，沟道区域的水平电场也增加，使得载流子速度趋于饱和，从而降低了沟道电导率。</p>
+<p>对输出特性的影响</p>
+<ul>
+<li>线性区：$V_{GS}$ 较小时，斜率增加等间距；$V_{GS}$ 较大时，曲线密集</li>
+<li>饱和区：$V_{GS}$ 较大时，$I_{D,\text{sat}}$ 随 $V_{GS}$ 增加不按平方规律</li>
+</ul>
+<p>对转移特性的影响<br>$g_m$ 随着电压增加而下降</p>
+<h4 id="击穿"><a href="#击穿" class="headerlink" title="击穿"></a>击穿</h4><ul>
+<li>两种击穿模式：OFF STATE Breakdown；ON STATE Breakdown</li>
+<li>三种击穿路径：漏-衬底；漏-源；漏-栅极</li>
+</ul>
+<h5 id="漏-衬底击穿"><a href="#漏-衬底击穿" class="headerlink" title="漏-衬底击穿"></a>漏-衬底击穿</h5><ul>
+<li>就是pn结的反向击穿（雪崩击穿），电流几乎快速增大，很容易烧毁器件</li>
+<li>解决方法：增加耗尽区宽度，如降低掺杂</li>
+</ul>
+<h5 id="漏-源击穿"><a href="#漏-源击穿" class="headerlink" title="漏-源击穿"></a>漏-源击穿</h5><p>耗尽区碰到源区，源漏之间就不需要开启就形成了通路：源漏势垒穿通</p>
+<ul>
+<li>穿通击穿的击穿点软，击穿过程中，电流有逐步增大的特征，这是因为耗尽层扩展较宽，产生电流较大。</li>
+<li>穿通击穿一般不会出现破坏性击穿。</li>
+<li>穿通击穿一般发生在沟道体内</li>
+</ul>
+<h5 id="栅击穿"><a href="#栅击穿" class="headerlink" title="栅击穿"></a>栅击穿</h5><p>多晶硅内产生导电细丝</p>
+<h4 id="等比例缩小"><a href="#等比例缩小" class="headerlink" title="等比例缩小"></a>等比例缩小</h4><p>MOSFET等比例缩小的原则是指在保持器件内部电场强度不变的前提下，将MOSFET的横向尺寸、纵向尺寸以及工作电压按照同一个比例因子k进行缩小，同时提高衬底的掺杂浓度。这样可以提高MOSFET的速度、降低功耗、增加集成密度，同时保证器件的可靠性和热稳定性。这种原则也被称为恒定电场比例缩小或CE准则。</p>
+<p><img src="https://s2.loli.net/2023/06/13/Hup9YyzTXGV8inC.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>恒定电场：</p>
+<ul>
+<li>尺寸缩小 k 倍</li>
+<li>电压降低 k 倍</li>
+<li>电流 $I_{DS}$ 降低为原来的 k 倍，电流密度增加为原来的 k 倍</li>
+<li>速度增加 $1/k$ 倍</li>
+<li>功耗降低 $k^2$</li>
+<li>电源电压下降，导致电路动态范围及噪声容限减小</li>
+<li>阈值电压减小，导致较大的亚阈值电流</li>
+</ul>
+<h4 id="VT-roll-off（短沟道效应）"><a href="#VT-roll-off（短沟道效应）" class="headerlink" title="VT roll-off（短沟道效应）"></a>VT roll-off（短沟道效应）</h4><ul>
+<li>当MOSFET的沟道长度小于3微米时，由于源极和漏极的耗尽层相互影响，沟道区的电势分布不再是一维的，而是二维的。这会导致沟道区的电场增大，载流子的迁移率和速度受到影响。</li>
+<li>短沟道效应会引起一些不利的现象，如阈值电压 $V_T$ 随沟道长度降低而降低（$V_{DS}$ 越高越严重）、漏致势垒降低、亚阈特性退化、热载流子效应等。这些现象会影响MOSFET的性能和可靠性。</li>
+<li>为了减小短沟道效应的影响，需要在器件结构上进行改进，如采用轻掺杂漏极结构(LDD)、绝缘衬底上硅结构(SOI)、薄氧栅等。</li>
+</ul>
+<h4 id="窄沟道效应"><a href="#窄沟道效应" class="headerlink" title="窄沟道效应"></a>窄沟道效应</h4><ul>
+<li>当MOSFET的沟道宽度约等于源和漏结的耗尽层宽度时，即为所谓“窄沟道”器件。在器件结构的尺寸缩小时，不仅沟道长度变短，宽度也将按同比例在缩小，于是就会出现窄沟道器件。</li>
+<li>窄沟道效应会导致MOSFET的阈值电压随着沟道宽度的变窄而增大。这是由于栅极的“边缘场”或者场区离子注入的侧向扩散影响了场氧化层下的表面耗尽区的空间电荷。</li>
+<li>窄沟道效应和短沟道效应有时可以相互补偿，从而使得小尺寸器件的阈值电压与大尺寸器件的一样。为了减小窄沟道效应的影响，需要在器件结构或工艺上进行改进。</li>
+</ul>
+<h4 id="DIBL效应（漏致势垒降低效应）"><a href="#DIBL效应（漏致势垒降低效应）" class="headerlink" title="DIBL效应（漏致势垒降低效应）"></a>DIBL效应（漏致势垒降低效应）</h4><ul>
+<li>当MOSFET的沟道长度很短时，漏PN结上的反偏会对源PN结发生影响，使漏、源之间的势垒高度降低，从而有电子从源PN结注入沟道区，使漏电流增大。这种由漏极导致的势垒下降现象称为DIBL效应。</li>
+<li>DIBL效应会导致MOSFET的阈值电压随着漏极电压的增加而下降，从而影响器件的性能和可靠性。例如增加亚阈特性、热载流子效应、热噪声等。</li>
+<li>为了抑制DIBL效应，需要在器件结构或工艺上进行改进，例如采用轻掺杂漏极结构(LDD)、绝缘衬底上硅结构(SOI)、多栅极结构(FinFET)等。</li>
+</ul>
+<h4 id="亚表面穿通效应"><a href="#亚表面穿通效应" class="headerlink" title="亚表面穿通效应"></a>亚表面穿通效应</h4><p>MOSFET的亚表面穿通效应是指当MOSFET的沟道长度缩小到一定程度时，源极和漏极之间的耗尽区会相互接触，导致电子可以从源极直接穿透到漏极，而不受栅极电压的控制。这样，MOSFET就无法完全截止，会产生较大的亚阈值泄漏电流。亚表面穿通效应会降低MOSFET的开关性能和功耗效率，是一种不利的短沟道效应。</p>
+<p><img src="https://s2.loli.net/2023/06/13/G8mgdr4FJ9IMBCS.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="等效电路"><a href="#等效电路" class="headerlink" title="等效电路"></a>等效电路</h3><h4 id="低频"><a href="#低频" class="headerlink" title="低频"></a>低频</h4><p><img src="https://s2.loli.net/2023/06/13/OiWZtgXfVHr9smx.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="高频"><a href="#高频" class="headerlink" title="高频"></a>高频</h4><p><img src="https://s2.loli.net/2023/06/13/sSQlqMtFchb9fa1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="计算题解题步骤-1"><a href="#计算题解题步骤-1" class="headerlink" title="计算题解题步骤"></a>计算题解题步骤</h3><ol>
+<li>确定 $V_{GS}$、$V_{DS}$、$V_{T}$<ul>
+<li>如果 $V_{GS}-V_T&lt;0$，则 MOSFET 处于截止状态，没有电流通过。</li>
+<li>如果 $0&lt;V_{GS}-V_T&lt;V_{DS}$，则 MOSFET 处于非饱和区（线性区），电流与 $V_{DS}$ 成线性关系。<script type="math/tex; mode=display">
+\begin{align}
+I_{D} & = \frac{W \mu_{n} C_{\mathrm{ox}}}{2 L}\left[2\left(V_{G S}-V_{T}\right) V_{D S}-V_{D S}^{2}\right] \\
+&\approx \frac{W \mu_{n} C_{\mathrm{ox}}}{L}\left(V_{G S}-V_{T}\right) V_{D S}
+\end{align}</script></li>
+<li>如果 $V_{GS}-V_T&gt;V_{DS}$，则 MOSFET 处于饱和区，电流与 $V_{GS}$ 成平方关系。<script type="math/tex; mode=display">
+I_{D}=\frac{W \mu_{n} C_{ox}}{2 L}\left(V_{G S}-V_{T}\right)^{2}</script></li>
+</ul>
+</li>
+<li>跨导参数<script type="math/tex; mode=display">
+\begin{array}{c}
+k_{n}^{\prime}=\mu_{n} C_{\mathrm{ox}}\\
+k_{p}^{\prime}=\mu_{p} C_{\mathrm{ox}}
+\end{array}</script></li>
+<li>跨导系数<script type="math/tex; mode=display">
+\begin{array}{c}
+K_{n}=\left(W \mu_{n} C_{\mathrm{ox}}\right) / 2 L=\left(k_{n}^{\prime} / 2\right) \cdot(W / L)\\
+K_{p}=\left(W \mu_{p} C_{\mathrm{ox}}\right) / 2 L=\left(k_{p}^{\prime} / 2\right) \cdot(W / L)
+\end{array}</script></li>
+<li>跨导<br>非饱和区<script type="math/tex; mode=display">
+g_{m L}=\frac{\partial I_{D}}{\partial V_{G S}}=\frac{W \mu_{n} C_{\mathrm{ox}}}{L} \cdot V_{D S}</script>饱和区<script type="math/tex; mode=display">
+g_{m s}=\frac{\partial I_{D}(\mathrm{sat})}{\partial V_{G S}}=\frac{W \mu_{n} C_{\mathrm{ox}}}{L}\left(V_{G S}-V_{T}\right)</script></li>
+</ol>
+<h2 id="BJT"><a href="#BJT" class="headerlink" title="BJT"></a>BJT</h2><h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><p>BJT相比MOSFET有以下几个优势</p>
+<ul>
+<li>BJT的开关速度更快，适合高频应用。</li>
+<li>BJT的驱动电压更低，只需0.7V左右，而MOSFET需要几伏的栅极电压。</li>
+<li>BJT的输出电阻更高，可以提供更大的跨导和增益。</li>
+<li>BJT的噪声更小，适合低信噪比的放大器。</li>
+<li>BJT的价格更便宜，种类更多，选择性更大。</li>
+</ul>
+<h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><p>双极晶体管基本结构：由三个掺杂不同的扩散区形成两个背对背pn结。三个区对应晶体管的三个电极：发射极、基极、集电极；相应称为发射结、集电结。根据三个电极掺杂类型不同分为两类：npn型和pnp型。</p>
+<p>BJT在基区传输电流，依靠少子传输，故是少子器件</p>
+<h3 id="合金结晶体管"><a href="#合金结晶体管" class="headerlink" title="合金结晶体管"></a>合金结晶体管</h3><ul>
+<li>非对称的几何结构</li>
+<li>掺杂浓度依次从发射极、基极、集电极降低</li>
+<li>基极层做的很薄</li>
+<li>基区无电场，电子容易湮灭</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/06/11/86OBbNTYWKgJIVL.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="扩散结晶体管"><a href="#扩散结晶体管" class="headerlink" title="扩散结晶体管"></a>扩散结晶体管</h3><ul>
+<li>非对称的几何结构</li>
+<li>掺杂浓度依次从发射极、基极、集电极降低</li>
+<li>基极层做的很薄</li>
+<li>集电结面积往往远大于发射结面积</li>
+<li>基区有电场，电子可以漂移</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/06/11/vklbe4NSwJayRKG.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="三种接法"><a href="#三种接法" class="headerlink" title="三种接法"></a>三种接法</h3><p><img src="https://s2.loli.net/2023/06/11/1cJwhYtxDRuz4LC.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>共射电路既能放大电流又能放大电压，输入电阻居三种电路之中，输出电阻较大，频带较窄。常作为低频电压放大电路的单元电路。</li>
+<li>共集电路只能放大电流不能放大电压，是三种接法中输入电阻最大，输出电阻最小的电路，并具有电压跟随的特点。常用于电压放大电路的输入级和输出级，在功率放大电路中也常采用射极输出的形式。</li>
+<li>共基电路只能放大电压不能放大电流，具有电流跟随的特点；输入电阻小，电压放大倍数、输出电阻与共射电路相当，是三种接法中高频特性最好的电路。常作为宽频带放大电路。</li>
+</ul>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>$A_\mathrm{v}$</th>
+<th>$A_\mathrm{i}$</th>
+<th>$R_\mathrm{i}$</th>
+<th>$R_\mathrm{o}$</th>
+<th>频带</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>共射</td>
+<td>大</td>
+<td>$\beta$</td>
+<td>中</td>
+<td>大</td>
+<td>窄</td>
+</tr>
+<tr>
+<td>共集</td>
+<td>小于 1</td>
+<td>$1+\beta$</td>
+<td>大</td>
+<td>小</td>
+<td>中</td>
+</tr>
+<tr>
+<td>共基</td>
+<td>大</td>
+<td>$\alpha$</td>
+<td>小</td>
+<td>大</td>
+<td>宽</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="能带图-amp-工作原理"><a href="#能带图-amp-工作原理" class="headerlink" title="能带图&amp;工作原理"></a>能带图&amp;工作原理</h3><p><img src="https://s2.loli.net/2023/06/11/Fn2ECRayiHrUNYj.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>BJT工作基础：非平衡少子的扩散运动</p>
+<p>需要满足的三个工作条件：</p>
+<ul>
+<li>$W_b \ll L_{nb}$</li>
+<li>发射结正偏</li>
+<li>集电结反偏</li>
+</ul>
+<p>晶体管放大原理</p>
+<ul>
+<li>发射结正偏：N+区大量电子注入到基区（P区）</li>
+<li>基区宽度远小于电子的扩散长度：则注入电子除少部分被复合外，绝大部分会扩散到集电结耗尽区边界处</li>
+<li>集电结反偏：较宽的空间电荷区内有很强电场，因而扩散到集电结边缘的电子会立即被强电场扫入集电区，形成集电区电流</li>
+<li>注入电子电流（源于正偏发射结），远大于集电结的反向饱和电流（集电结反偏），构成集电极电流的主要部分</li>
+</ul>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li>共基极电流放大系数<script type="math/tex; mode=display">
+\alpha=\left.\frac{I_{c}}{I_{e}}\right|_{V_{V_{b}=0}}<1 \quad \alpha \approx 1</script><script type="math/tex; mode=display">
+\begin{aligned}
+\alpha & =\frac{I_{c}}{I_{e}}=\frac{I_{n e}}{I_{e}} \cdot \frac{I_{n c}}{I_{n e}} \cdot \frac{I_{c}}{I_{n c}} \\
+& =\gamma \cdot \beta^{*} \cdot \alpha^{*}
+\end{aligned}</script>其中：</li>
+<li>发射效率（注入比）<script type="math/tex; mode=display">
+\gamma=\frac{I_{n e}}{I_{e}}=\frac{I_{n e}}{I_{n e}+I_{p e}}=\frac{1}{1+I_{p e} / I_{n e}} \rightarrow 1</script></li>
+<li>基区传输系数<script type="math/tex; mode=display">
+\beta^{*}=\frac{I_{n c}}{I_{n e}}=\frac{I_{n e}-I_{v b}}{I_{n e}}=1-\frac{I_{v b}}{I_{n e}} \rightarrow 1 \quad \text { (当 } W_{b}<<L_{n b} \text { 时) }</script></li>
+<li><p>集电区倍增因子 $\alpha^{*}$</p>
+</li>
+<li><p>共发射极电流放大系数</p>
+<script type="math/tex; mode=display">
+\beta=\left.\frac{I_{c}}{I_{b}}\right|_{V_{c b}=0}=\frac{I_{c}}{I_{e}-I_{c}}=\frac{\alpha}{1-\alpha}>1</script></li>
+</ul>
+<h3 id="电流传输情况"><a href="#电流传输情况" class="headerlink" title="电流传输情况"></a>电流传输情况</h3><p><img src="https://s2.loli.net/2023/06/11/PyugWvYwhJmpCxf.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/06/11/sQcHeP4ln9m57q6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>内部：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+I_{e}=I_{n e}+I_{p e} \\
+I_{c}=I_{n c}+I_{c b o} \\
+I_{b}=I_{p e}+I_{v b}-I_{c b o}
+\end{array}\right.</script><p>外部：</p>
+<script type="math/tex; mode=display">
+I_e=I_b+I_c</script><h3 id="少子浓度"><a href="#少子浓度" class="headerlink" title="少子浓度"></a>少子浓度</h3><h4 id="特殊点分布"><a href="#特殊点分布" class="headerlink" title="特殊点分布"></a>特殊点分布</h4><p>发射结正偏（VBE&gt;0），发射结反偏（VBC&lt;0）<br><img src="https://s2.loli.net/2023/06/12/XtoWp1qRrCuIZEF.png" srcset="/img/loading.gif" lazyload alt=""><br>A点：<br>由PN结定律</p>
+<script type="math/tex; mode=display">
+n(x'=0) p(x'=0)=n_{\mathrm{i}}^{2} e^{q V_{\mathrm{A}} / k T}</script><p>n是多子，$n=(x’=0)=N_{D}$，故</p>
+<script type="math/tex; mode=display">
+\begin{align}
+p(x' = 0) & = \frac{n_{\mathrm{i}}^{2}}{N_{D}} e^{q V_{\mathrm{BE}} / k T}\\
+&= p_{E0} e^{q V_{\mathrm{BE}} / k T}
+\end{align}</script><p>BCD点：同理</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+n_B(x = 0) = n_{B0} e^{q V_{\mathrm{BE}} / k T}\\
+n_B(x = x_B) = n_{B0} e^{q V_{\mathrm{BC}} / k T} \approx 0\\
+p_C(x'' = 0) = p_{C0} e^{q V_{\mathrm{BC}} / k T} \approx 0\\
+\end{array}</script><h4 id="基区分布"><a href="#基区分布" class="headerlink" title="基区分布"></a>基区分布</h4><p>由少子扩散方程，简化得</p>
+<script type="math/tex; mode=display">
+D_{n} \frac{\partial^{2} \Delta n_{B}}{\partial x^{2}}-\frac{\Delta n_{B}}{\tau_{n}}=0</script><p>边界条件</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+&\begin{array}{c}
+n_B(x = 0) = n_{B0} e^{q V_{\mathrm{BE}} / k T}\\
+n_B(x = x_B) = n_{B0} e^{q V_{\mathrm{BC}} / k T} \approx 0\\
+\end{array}\\
+\Rightarrow \ \ 
+&\begin{array}{c}
+\Delta n_B(x = 0) = n_{B0}\left(e^{q V_{\mathrm{BE}} / k T}-1\right)\\
+\Delta n_B(x = x_B) = -n_{B0}\\
+\end{array}
+\end{aligned}</script><p>解得</p>
+<script type="math/tex; mode=display">
+\delta n_{B}(x)=\frac{n_{B 0}\left\{\left[\exp \left(\frac{e V_{B E}}{k T}\right)-1\right] \sinh \left(\frac{x_{B}-x}{L_{B}}\right)-\sinh \left(\frac{x}{L_{B}}\right)\right\}}{\sinh \left(\frac{x_{B}}{L_{B}}\right)}</script><p>考虑到基区宽度 $x_B$ 比少子扩散长度 $L_B$ 小很多，则有近似</p>
+<script type="math/tex; mode=display">
+\delta n_{B}(x) \approx \frac{n_{B 0}}{x_{B}}\left\{\left[\exp \left(\frac{e V_{B E}}{k T}\right)-1\right]\left(x_{B}-x\right)-x\right\}</script><script type="math/tex; mode=display">
+n_{B}(x) = n_{B0}(x) + \delta n_{B}(x) = n_{B 0}\exp \left(\frac{e V_{B E}}{k T}\right)\left(1-\frac{x}{W_B}\right)</script><p>线性衰减，物理含义：就是不考虑复合。</p>
+<h4 id="发射区分布"><a href="#发射区分布" class="headerlink" title="发射区分布"></a>发射区分布</h4><p>边界条件</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+p_{E}(x=-\infty)=p_{\mathrm{E} 0} \\
+p_{E}\left(x=-x_{1}\right)=p_{E 0} \cdot \exp \left(\frac{q V_{B E}}{k T}\right) \\
+\delta p_{E}(x=-\infty)=0 \\
+\delta p_{E}\left(x=-x_{1}\right)=p_{E 0} \cdot\left[\exp \left(\frac{q V_{B E}}{k T}\right)-1\right]
+\end{array}</script><p>解得</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\delta p(x)=p_{E 0} \cdot\left[\exp \left(\frac{q V_{B E}}{k T}\right)-1\right] \cdot \exp \left(\frac{x_{1}+x}{L_{p}}\right) \\
+p_{E}(x)=p_{E 0} \cdot\left[\exp \left(\frac{q V_{B E}}{k T}\right)-1\right] \cdot \exp \left(\frac{x_{1}+x}{L_{p}}\right)+p_{E 0} \quad W_{E}>L_{p} \\
+p_{E}(x)=p_{E 0} \cdot \exp \left(\frac{q V_{B E}}{k T}\right) \cdot\left[1+\frac{x+x_{1}}{W_{E}}\right] \quad W_{E}<<L_{p}
+\end{array}</script><h4 id="集电区分布"><a href="#集电区分布" class="headerlink" title="集电区分布"></a>集电区分布</h4><p>边界条件</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+p_{C}(x=+\infty)=p_{C 0} \\
+p_{C}\left(x=x_{2}\right)=p_{C 0} \cdot \exp \left(\frac{q V_{B C}}{k T}\right) \\
+\delta p_{C}(x=+\infty)=0 \\
+\delta p_{C}\left(x=x_{2}\right)=p_{C 0} \cdot\left[\exp \left(\frac{q V_{B C}}{k T}\right)-1\right] \approx-p_{C 0}
+\end{array}</script><p>解得</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\delta p(x)=p_{C 0} \cdot \exp \left(\frac{-\left(x-x_{2}\right)}{L_{p}}\right)\\
+p(x)=p_{C 0} \cdot\left[1-\exp \left(\frac{-\left(x-x_{2}\right)}{L_{p}}\right)\right]
+\end{array}</script><h3 id="电流密度的计算"><a href="#电流密度的计算" class="headerlink" title="电流密度的计算"></a>电流密度的计算</h3><p><img src="https://s2.loli.net/2023/06/12/DCrFOS2MKhRPULT.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+J_{n b}(x)=-\frac{q D_{n b} n_{p b}^{0}}{W_{b}} \exp \left(q V_{b e} / k T\right) \\
+J_{p e}(x)=-\frac{q D_{p e} \cdot p_{E 0}}{L_{p E}} \cdot\left[\exp \left(\frac{q V_{B E}}{k T}\right)-1\right] \cdot \exp \left(\frac{x_{1}+x}{L_{p E}}\right) \\
+J_{p c}(x)=\frac{q D_{p c} \cdot p_{c 0}}{L_{p c}} \cdot \exp \left(\frac{-\left(x-x_{2}\right)}{L_{p c}}\right)
+\end{array}</script><p><img src="https://s2.loli.net/2023/06/12/wJhSBrWo71UVATZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="理想BJT的电流-电压方程"><a href="#理想BJT的电流-电压方程" class="headerlink" title="理想BJT的电流-电压方程"></a>理想BJT的电流-电压方程</h3><p><img src="https://s2.loli.net/2023/06/12/zLjx8fBFVvec4Gd.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="输入输出特性"><a href="#输入输出特性" class="headerlink" title="输入输出特性"></a>输入输出特性</h3><h4 id="共基极"><a href="#共基极" class="headerlink" title="共基极"></a>共基极</h4><p><img src="https://s2.loli.net/2023/06/12/MUxyZK3TXAmCHoB.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="共射极"><a href="#共射极" class="headerlink" title="共射极"></a>共射极</h4><p><img src="https://s2.loli.net/2023/06/12/8jIY9DElFJ4OKvU.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="四种工作模式下的少子分布"><a href="#四种工作模式下的少子分布" class="headerlink" title="四种工作模式下的少子分布"></a>四种工作模式下的少子分布</h3><p><img src="https://s2.loli.net/2023/06/12/mHkSxpt29fJWRK1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="非理想特性"><a href="#非理想特性" class="headerlink" title="非理想特性"></a>非理想特性</h3><h4 id="结面积导致的非理想效应"><a href="#结面积导致的非理想效应" class="headerlink" title="结面积导致的非理想效应"></a>结面积导致的非理想效应</h4><p>发射区载流子向非本征基区流动，损失较多</p>
+<h4 id="厄利效应（基区宽度调制效应）"><a href="#厄利效应（基区宽度调制效应）" class="headerlink" title="厄利效应（基区宽度调制效应）"></a>厄利效应（基区宽度调制效应）</h4><p>基宽调制是由于集电结的反向偏压会影响基区的有效宽度，当集电结的反向偏压增加时，基区的有效宽度减小，导致发射结注入的少子在基区中复合的概率减小，从而增加了集电极电流。基宽调制会影响BJT的输出特性和放大系数，因为它使得集电极电流不仅与发射结正向偏压有关，还与集电结反向偏压有关。基宽调制与基区面积成反比，因此基区面积越小，基宽调制越明显。</p>
+<h4 id="复合效应"><a href="#复合效应" class="headerlink" title="复合效应"></a>复合效应</h4><p>发射结复合电流是指 发射区扩散到基区的电子与基区的空穴复合而产生的电流。它是基极电流的一部分，也是发射极电流的损失。发射结复合电流与发射区和基区的掺杂浓度、发射结正向偏压、基区宽度等因素有关。发射结复合电流越小，BJT的电流放大系数越高。</p>
+<h4 id="Kirk效应（基区展宽效应）"><a href="#Kirk效应（基区展宽效应）" class="headerlink" title="Kirk效应（基区展宽效应）"></a>Kirk效应（基区展宽效应）</h4><p>在大电流工作时，集电结反向偏置的耗尽层向基区侵入，使得有效的基区宽度减小的一种现象。（大量注入的电子进入集电结，集电结空间电荷区展宽，α和β都变小）</p>
+<p>这种效应会导致BJT的电流增益下降和早饱和现象，影响BJT的高频功率性能。</p>
+<p>抑制Kirk效应的措施主要是限制集电极电流密度，提高集电区的掺杂浓度，减小集电区的厚度等。</p>
+<h4 id="集边效应（基极电阻自偏压效应）"><a href="#集边效应（基极电阻自偏压效应）" class="headerlink" title="集边效应（基极电阻自偏压效应）"></a>集边效应（基极电阻自偏压效应）</h4><p>发射极电流集边效应，是指 BJT 在大电流工作时，发射极电流集中到发射结的周围边缘（周围是无效的，中间才有效），减小了发射结的有效面积。这种效应是由于基极电阻所引起的，它会影响 BJT 的发射极注射效率、电流放大系数、频率特性 等性能。限制或者削弱发射极电流集边效应的措施有限制电流容量、提高基区掺杂浓度、提高发射极周长/面积比等方法。</p>
+<h3 id="Ebers-Moll-模型"><a href="#Ebers-Moll-模型" class="headerlink" title="Ebers-Moll 模型"></a>Ebers-Moll 模型</h3><p>发射结的正向电子电流 $I_F$，集电结的反向空穴电流 $I_R$</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+I_{F}=I_{\mathrm{F0}}{ }^{*}\left[\exp \left(q V_{\mathrm{BE}} / kT\right)-1\right] \\
+I_{\mathrm{R}}=I_{\mathrm{R0}}{ }^{*}\left[\exp \left(qV V_{\mathrm{BC}} / kT\right)-1\right]
+\end{array}</script><p>其中</p>
+<ul>
+<li>$\alpha_{F}$：正向有源状态下的共基级电流增益</li>
+<li>$\alpha_{R}$：反向有源状态下的共基级电流增益</li>
+<li>$\alpha_{F}I_{F0}=\alpha_{R}I_{R0}$</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/06/12/fFM47JsgtWCe8qP.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+I_{C}=\alpha_{F} I_{F0}\left[\exp \left(\frac{e V_{B E}}{k T}\right)-1\right]-I_{R0}\left[\exp \left(\frac{e V_{B C}}{k T}\right)-1\right] \\
+I_{E}=\alpha_{R} I_{R0}\left[\exp \left(\frac{e V_{B C}}{k T}\right)-1\right]-I_{F0}\left[\exp \left(\frac{e V_{B E}}{k T}\right)-1\right]
+\end{array}</script><p><img src="https://s2.loli.net/2023/06/12/qDrCIGFh4kQfNg7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="存储器"><a href="#存储器" class="headerlink" title="存储器"></a>存储器</h2><h3 id="分类-1"><a href="#分类-1" class="headerlink" title="分类"></a>分类</h3><p>按速度分：<br><img src="https://s2.loli.net/2023/06/11/RqlDIn1AeagoCfU.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>按易失性分：<br><img src="https://s2.loli.net/2023/06/11/iDAcU1bo6uJ4q9V.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="SRAM"><a href="#SRAM" class="headerlink" title="SRAM"></a>SRAM</h3><p><img src="https://s2.loli.net/2023/06/11/CxQHAMyteDpNwdR.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>读操作：首先对 $BL$ 和 $\overline{BL}$ 进行预充电，使它们都为高电平。然后根据要读取的地址，选通对应的 $WL$，使其为高电平。这样，选中的存储单元就与 $BL$ 和 $\overline{BL}$ 连通，根据其存储的数据，会使 $BL$ 和 $\overline{BL}$ 中的一个下降电压（0），另一个保持不变（1）。这样就形成了一个电压差，通过外围放大电路输出，就可以读取到存储单元中的数据。</li>
+<li>写操作：首先根据要写入的数据，对 $BL$ 和 $\overline{BL}$ 进行设置，使它们互为反相（0和1）。然后根据要写入的地址，选通对应的 $WL$，使其为高电平（1）。这样，选中的存储单元就与 $BL$ 和 $\overline{BL}$ 连通，根据 $BL$ 和 $\overline{BL}$ 的电压差，会使存储单元中的数据反转（0变1或1变0）。这样就完成了写入操作。</li>
+<li>保持操作：当不进行读写操作时，对 $BL$ 和 $\overline{BL}$ 保持高电平（1），对 $WL$ 保持低电平（0）。这样，所有的存储单元都与 $BL$ 和 $\overline{BL}$ 断开，保持原来的数据不变。</li>
+</ul>
+<h3 id="DRAM"><a href="#DRAM" class="headerlink" title="DRAM"></a>DRAM</h3><p><img src="https://s2.loli.net/2023/06/11/XoKq2l8FIVZH95P.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>读操作：首先对 $BL$ 进行预充电，使它为中间电平（VDD/2）。然后根据要读取的地址，选通对应的 $WL$，使其为高电平（VDD）。这样，选中的存储单元就与 $BL$ 连通，根据其存储的数据（电容上的电荷），会使 $BL$ 的电压上升或下降一定幅度。这样就形成了一个小信号，通过外围放大电路输出，就可以读取到存储单元中的数据。由于读取过程会破坏电容上的电荷，所以需要在读取后对电容进行恢复充电。</li>
+<li>写操作：首先根据要写入的数据，对 $BL$ 进行设置，使它为高电平（VDD）或低电平（0）。然后根据要写入的地址，选通对应的 $WL$，使其为高电平（VDD）。这样，选中的存储单元就与 $BL$ 连通，根据 $BL$ 的电压差，会使存储单元中的数据反转（0变1或1变0）。这样就完成了写入操作。</li>
+<li>保持操作：当不进行读写操作时，对 $WL$ 保持低电平（0），对 $BL$ 保持高阻态。这样，所有的存储单元都与 $BL$ 断开，保持原来的数据不变。但是由于电容会有漏电流，导致电荷逐渐衰减，所以需要定期对所有的存储单元进行刷新操作，即重新读取并恢复每个存储单元中的数据。</li>
+</ul>
+<h3 id="FLASH"><a href="#FLASH" class="headerlink" title="FLASH"></a>FLASH</h3><p>FLASH存储的原理是利用浮栅场效应管（Floating Gate MOSFET）来存储电荷，从而表示二进制数据。FLASH存储器有两种主要类型：NOR Flash和NAND Flash。</p>
+<p>NOR Flash的结构类似于NOR门，每个存储单元都直接连接到地址线和数据线，可以实现随机访问和执行就地（XIP）。NOR Flash的容量较小，读取速度较快，但是写入和擦除速度较慢，成本较高，一般用于存储程序代码。</p>
+<p>NAND Flash的结构类似于NAND门，每个存储单元都串联在一起形成一个字符串，然后通过选通晶体管连接到位线（bitline）。NAND Flash不能实现随机访问和执行就地（XIP），只能按页（page）或块（block）进行读写和擦除操作。NAND Flash的容量较大，写入和擦除速度较快，但是读取速度较慢，成本较低，一般用于存储大容量的数据。</p>
+<p>FLASH存储器的读写和擦除操作都是通过控制栅极（control gate）和衬底（substrate）之间的电压差来实现的。</p>
+<ul>
+<li>读操作：根据要读取的地址，选通对应的控制栅极，使其为高电平或低电平，然后测量位线上的电流或电压变化，判断浮栅中是否有电荷，从而读取出数据。</li>
+<li>写操作：根据要写入的数据，对位线进行设置，使其为高电平或低电平，然后对选中的控制栅极施加<strong>高电压</strong>，使得电子通过<strong>热电子注入</strong>或Fowler-Nordheim<strong>隧穿效应进入浮栅</strong>中，从而改变浮栅中的电荷状态。</li>
+<li>擦除操作：对选中的控制栅极施加低电压或接地，然后对衬底施加高电压，使得浮栅中的电子通过Fowler-Nordheim隧穿效应离开浮栅中，从而恢复浮栅中的电荷状态。</li>
+</ul>
+<p>FLASH存储器的优点是非易失性、低功耗、高密度、可重复擦写等；缺点是有限的擦写次数、需要刷新操作、存在坏块问题等。</p>
+<h2 id="先进晶体管"><a href="#先进晶体管" class="headerlink" title="先进晶体管"></a>先进晶体管</h2><h3 id="应变工程"><a href="#应变工程" class="headerlink" title="应变工程"></a>应变工程</h3><ul>
+<li><strong>源漏嵌入SiC应变技术</strong>：通过在<strong>NMOS</strong>的源漏区域外延生长SiC应变材料，利用硅和碳的晶格常数不同，对沟道和衬底硅产生<strong>拉应力</strong>，改变硅导带的能带结构，降低电子的电导有效质量和散射概率，从而提高NMOS的速度。</li>
+<li><strong>源漏嵌入SiGe应变技术</strong>：通过在<strong>PMOS</strong>的源漏区域外延生长SiGe应变材料，利用锗和硅的晶格常数不同，对沟道和衬底硅产生<strong>压应力</strong>，改变硅价带的能带结构，降低空穴的电导有效质量，从而提高PMOS的速度。</li>
+</ul>
+<h3 id="HKMG"><a href="#HKMG" class="headerlink" title="HKMG"></a>HKMG</h3><h4 id="Why"><a href="#Why" class="headerlink" title="Why"></a>Why</h4><p>随着工艺的演进，tox 越来越小，导致栅氧化层漏电越来越严重。高 K 金属栅的引入，可以明显提高氧化层的物理厚度，抑制漏电。</p>
+<h4 id="How"><a href="#How" class="headerlink" title="How"></a>How</h4><p>在早期的时候，栅极采用的是铝金属栅极。采用的相关配套的结构是铝金属/纯二氧化硅；后来经过发展采用了多晶硅栅，采用的结构仍然是多晶硅栅/纯二氧化硅；后来又经过一段发展，便成为了多晶硅栅/SiON；然后在进入45nm以后技术节点的时候采用了HKMG。</p>
+<p>原来是用铪基材料代替了SiON，但是铪基材料与多晶硅栅的兼容性一直是一个问题，所以需要采用金属栅。</p>
+<p>高K介质的选择：</p>
+<ul>
+<li>需要与 Si 衬底形成稳定的界面</li>
+<li>热稳定性好，形成非晶</li>
+<li>需要与 Si 衬底形成较大的带边偏移量，减少漏电</li>
+<li>HfO2 和 La2O3 是比较理想的高 K 介质</li>
+</ul>
+<p>金属栅极的选择主要因素包括：</p>
+<ul>
+<li>金属栅极的功函数</li>
+<li>较高的热稳定性</li>
+<li>较低的界面态密度</li>
+<li>HKMG整合工艺</li>
+<li>金属栅有效功函数的调制</li>
+<li>金属栅极的制备方法</li>
+</ul>
+<h3 id="FinFET"><a href="#FinFET" class="headerlink" title="FinFET"></a>FinFET</h3><p>器件的漏电路径发生在远离沟道的地方，</p>
+<ul>
+<li>采用 UTB 结构或者双栅结构，可以阻断电流泄漏路径</li>
+<li>采用薄硅衬底，可以显著抑制漏电</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/06/11/ixshK4XTq2o67VQ.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/06/11/oNM4ZjRxflm28pG.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>FinFET 器件的 SS 理论上可以达到极限 60mV/dec</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">大学学习生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E7%89%A9%E7%90%86/">物理</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86/">半导体物理</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/09/13/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数字信号处理笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/02/24/%E9%87%8F%E5%AD%90%E5%8A%9B%E5%AD%A6%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">量子力学笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', '1357310795/Blog-Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.12.3/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/anchor-js/4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.8/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

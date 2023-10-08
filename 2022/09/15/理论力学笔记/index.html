@@ -1,0 +1,1823 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/doge.png">
+  <link rel="icon" href="/img/doge.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#e4ad97">
+  <meta name="description" content="">
+  <meta name="author" content="Teruteru">
+  <meta name="keywords" content="">
+  
+  <title>理论力学笔记 - Teruteru的Hexo博客</title>
+
+  <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myiconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"teru.space","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/Onimai-2.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="理论力学笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-09-15 16:22" pubdate>
+        2022年9月15日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      31.7k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      427
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">理论力学笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年10月7日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="期末总结"><a href="#期末总结" class="headerlink" title="期末总结"></a>期末总结</h2><h3 id="刚体平面运动学重要公式"><a href="#刚体平面运动学重要公式" class="headerlink" title="刚体平面运动学重要公式"></a>刚体平面运动学重要公式</h3><h4 id="相对刚体运动任意点的速度"><a href="#相对刚体运动任意点的速度" class="headerlink" title="相对刚体运动任意点的速度"></a>相对刚体运动任意点的速度</h4><script type="math/tex; mode=display">
+\vec{v}_{P}=\vec{v}_{P}^{\mathrm{r}}+\vec{v}_{\mathrm{t}P}^{\mathrm{e}}+\vec{v}_{\omega P}^{\mathrm{e}}</script><ul>
+<li>$\vec{v}_{P}^{\mathrm{r}}$ 是点 $P$ 相对于动基的相对速度</li>
+<li>$\vec{v}_{\mathrm{t}P}^{\mathrm{e}}$ 是平移牵连速度，等于基点的绝对速度</li>
+<li>$\vec{v}_{\omega P}^{\mathrm{e}}$ 是转动牵连速度，其中 $\omega$ 是连体基相对于参考基的角速度，转动牵连速度方向垂直于 $P$ 相对于基点的矢径 $\rho_{P}$，向着转动箭头的方向，大小 $\omega \rho_{P}$</li>
+</ul>
+<h4 id="相对刚体运动任意点的加速度"><a href="#相对刚体运动任意点的加速度" class="headerlink" title="相对刚体运动任意点的加速度"></a>相对刚体运动任意点的加速度</h4><script type="math/tex; mode=display">
+\vec{a}_{P}=\vec{a}_{P}^{\mathrm{r}}+\vec{a}_{\mathrm{t} P}^{\mathrm{e}}+\vec{a}_{\omega P}^{\mathrm{e}}+\vec{a}_{\alpha P}^{\mathrm{e}}+\vec{a}_{P}^{\mathrm{C}}</script><ul>
+<li>$\vec{a}_{P}^{\mathrm{r}}$ 是点 $P$ 相对于动基的相对加速度</li>
+<li>$\vec{a}_{\mathrm{t} P}^{\mathrm{e}}$ 是平移牵连加速度，等于基点的绝对加速度</li>
+<li>$\vec{a}_{\omega P}^{\mathrm{e}}$ 是转动牵连向心加速度，方向从 $P$ 指向动基基点，大小 $\omega^{2} \rho_{P}$，其中 $\omega$ 是连体基相对于参考基的角速度</li>
+<li>$\vec{a}_{\alpha P}^{\mathrm{e}}$ 是转动牵连切向加速度，方向向着 $\alpha$ 转动箭头的方向，大小 $\alpha \rho_{P}$，其中 $\alpha$ 是连体基相对于参考基的角加速度</li>
+<li>$\vec{a}_{P}^{\mathrm{C}}$ 是科氏加速度，方向把相对速度 $\vec{v}_{P}^{\mathrm{r}}$ 沿 $\omega$ 的反向转 $90$ 度，大小 $2 \omega v_{P}^{\mathrm{r}}$，其中 $\omega$ 是连体基相对于参考基的角速度，$v_{P}^{\mathrm{r}}$ 是点 $P$ 相对于动基的相对速度</li>
+<li>若动点 $P$ 的相对运动是圆周运动，$\vec{a}_{P}^{\mathrm{r}}$ 还可分解为 $\vec{a}_{\tau P}^{\mathrm{r}}+\vec{a}_{n P}^{\mathrm{r}}$，$\vec{a}_{n P}^{\mathrm{r}}$ 是法向相对加速度，方向指向圆周运动的圆心，大小 ${\vec{v}_{P}^{\mathrm{r}}}^2/r$；$\vec{a}_{\tau P}^{\mathrm{r}}$ 是切向相对加速度，方向垂直于法向相对加速度，大小未知。</li>
+</ul>
+<h3 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h3><h4 id="达朗贝尔原理"><a href="#达朗贝尔原理" class="headerlink" title="达朗贝尔原理"></a>达朗贝尔原理</h4><ol>
+<li>达朗贝尔原理解决平衡问题（主要是各种杆）</li>
+<li>分析系统特征，确定未知数个数小于等于 3</li>
+<li>若未知数大于 3 了，先用第三章的知识找出杆的加速度之间的关系</li>
+<li>对每个刚体受力分析，确定每个刚体质心的加速度</li>
+<li>写出达朗贝尔惯性力（公式+图 缺一不可）</li>
+<li>按照平面一般力系平衡条件解题</li>
+</ol>
+<h4 id="虚位移"><a href="#虚位移" class="headerlink" title="虚位移"></a>虚位移</h4><h5 id="坐标法"><a href="#坐标法" class="headerlink" title="坐标法"></a>坐标法</h5><ol>
+<li>虚位移原理解决平衡问题</li>
+<li>取独立位形坐标（广义坐标），写出各点的坐标与广义坐标的关系</li>
+<li>写出附加几何关系</li>
+<li>全部取等时变分（微分）</li>
+</ol>
+<h5 id="速度法"><a href="#速度法" class="headerlink" title="速度法"></a>速度法</h5><ol>
+<li>取独立位形坐标的导数（广义速度），写出各点的速度与广义速度的关系</li>
+<li>写出附加方程（如速度投影定理）</li>
+<li>微分直接写成变分</li>
+</ol>
+<h4 id="虚位移原理"><a href="#虚位移原理" class="headerlink" title="虚位移原理"></a>虚位移原理</h4><ol>
+<li>根据主动力找到需要的虚位移</li>
+<li>根据虚位移原理写成方程</li>
+<li>将方程里的所有虚位移用独立坐标的虚位移表示</li>
+<li>解方程</li>
+</ol>
+<h2 id="第一章-数学基础"><a href="#第一章-数学基础" class="headerlink" title="第一章 数学基础"></a>第一章 数学基础</h2><h3 id="矩阵的定义"><a href="#矩阵的定义" class="headerlink" title="矩阵的定义"></a>矩阵的定义</h3><ul>
+<li>手写时矩阵加下划线 $\underline{A}$</li>
+</ul>
+<h3 id="矩阵的基础运算"><a href="#矩阵的基础运算" class="headerlink" title="矩阵的基础运算"></a>矩阵的基础运算</h3><p>略</p>
+<h3 id="矩阵的导数"><a href="#矩阵的导数" class="headerlink" title="矩阵的导数"></a>矩阵的导数</h3><h4 id="矩阵对时间的导数"><a href="#矩阵对时间的导数" class="headerlink" title="矩阵对时间的导数"></a>矩阵对时间的导数</h4><p>矩阵的元素如果为时间 $t$ 的函数，记为 $A_{i j}(t)$，该矩阵可记为 $\boldsymbol{A}(t)$。它对时间的导数为一个同阶矩阵，其各元素为原矩阵相应元素 $A_{i j}(t)$ 对时间的导数，即</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d}}{\mathrm{d} t} \boldsymbol{A} \stackrel{\text { def }}{=}\left(\frac{\mathrm{d} A_{i j}}{\mathrm{~d} t}\right)_{m \times n}</script><p>为了书写简洁，标量对时间的导数，用该标量的字母上加一点表示，即上式可简写为</p>
+<script type="math/tex; mode=display">
+\dot{\boldsymbol{A}}=\left(\dot{A}_{i j}\right)_{m \times n}</script><p>基本性质：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\frac{\mathrm{d}}{\mathrm{d} t}(\boldsymbol{A}+\boldsymbol{B})=\left(\frac{\mathrm{d}}{\mathrm{d} t} \boldsymbol{A}\right)+\left(\frac{\mathrm{d}}{\mathrm{d} t} \boldsymbol{B}\right)=\dot{\boldsymbol{A}}+\dot{\boldsymbol{B}} \\
+\frac{\mathrm{d}}{\mathrm{d} t}(\alpha \boldsymbol{A})=\frac{\mathrm{d} \alpha}{\mathrm{d} t} \boldsymbol{A}+\alpha\left(\frac{\mathrm{d}}{\mathrm{d} t} \boldsymbol{A}\right)=\dot{\alpha} \boldsymbol{A}+\alpha \dot{\boldsymbol{A}} \\
+\frac{\mathrm{d}}{\mathrm{d} t}(\boldsymbol{A} \boldsymbol{B})=\left(\frac{\mathrm{d}}{\mathrm{d} t} \boldsymbol{A}\right) \boldsymbol{B}+\boldsymbol{A}\left(\frac{\mathrm{d}}{\mathrm{d} t} \boldsymbol{B}\right)=\dot{\boldsymbol{A}} \boldsymbol{B}+\boldsymbol{A} \dot{\boldsymbol{B}}
+\end{array}</script><h3 id="矢量"><a href="#矢量" class="headerlink" title="矢量"></a>矢量</h3><h4 id="几何矢量的定义与运算"><a href="#几何矢量的定义与运算" class="headerlink" title="几何矢量的定义与运算"></a>几何矢量的定义与运算</h4><ul>
+<li><strong>矢量</strong> $\vec{a}$ 是一个具有方向与大小的量。</li>
+<li>它的大小称为<strong>模</strong>，记为 $|\vec{a}|$，或简写为 $a$。</li>
+<li>模为 $1$ 的矢量称为<strong>单位矢量</strong>。</li>
+<li>模为 $0$ 的矢量称为<strong>零矢量</strong>，记为 $\vec{0}$。</li>
+<li>矢量在几何上可用一个带箭头的线段来描述，线段的长度表示它的模，箭头在空间的指向为它的方向。利用这种方式描述的矢量又称为<strong>几何矢量</strong>。</li>
+</ul>
+<h4 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h4><h5 id="点积"><a href="#点积" class="headerlink" title="点积"></a>点积</h5><h5 id="叉积"><a href="#叉积" class="headerlink" title="叉积"></a>叉积</h5><h5 id="混合积"><a href="#混合积" class="headerlink" title="混合积"></a>混合积</h5><h4 id="矢量基与基矢量"><a href="#矢量基与基矢量" class="headerlink" title="矢量基与基矢量"></a>矢量基与基矢量</h4><p>首先构造一个参考空间，用过点 $O$ 的三个正交的单位矢量 $\vec{e}_{1}$，$\vec{e}_{2}$，$\vec{e}_{3}$ 依次按右手法则构成一个坐标系，称之为<strong>矢量基</strong>（简称<strong>基</strong>）。点 $O$ 称为该矢量基的<strong>基点</strong>。这三个正交的单位矢量称为这个基的<strong>基矢量</strong>。根据三个基矢量的右旋正交性，有如下的关系式：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\vec{e}_{\alpha} \cdot \vec{e}_{\beta}=\delta_{\alpha \beta} \\
+\vec{e}_{\alpha} \times \vec{e}_{\beta}=\varepsilon_{\alpha \beta \gamma} \vec{e}_{\gamma}
+\end{array}</script><p>其中，$\delta_{\alpha \beta}$ 称为克罗内克符号，即</p>
+<script type="math/tex; mode=display">
+\delta_{\alpha \beta}=\left\{\begin{array}{ll}
+1,& \text { 当 } \alpha=\beta \\
+0,& \text { 当 } \alpha \neq \beta
+\end{array} \quad(\alpha,\beta=1,2,3)\right.</script><p>而 $\varepsilon_{\alpha \beta \gamma}$ 称为里奇符号，即</p>
+<script type="math/tex; mode=display">
+\varepsilon_{\alpha \beta \gamma}=\left\{\begin{array}{ll}
++1,& \text { 当 } \alpha,\beta,\gamma \text { 依次循环 } \\
+-1,& \text { 其余 }
+\end{array}(\alpha,\beta,\gamma=1,2,3 \text {，且 } \alpha \neq \beta \neq \gamma)\right.</script><p>性质</p>
+<ul>
+<li><script type="math/tex; mode=display">
+\vec{\boldsymbol{e}} \cdot \vec{\boldsymbol{e}}^{\mathrm{T}}=\boldsymbol{I}_{3}（单位阵）</script></li>
+<li><script type="math/tex; mode=display">
+\vec{\boldsymbol{e}} \times \vec{\boldsymbol{e}}^{\mathrm{T}}=\left(\begin{array}{ccc}
+\vec{0} & \vec{e}_{3} & -\vec{e}_{2} \\
+-\vec{e}_{3} & \vec{0} & \vec{e}_{1} \\
+\vec{e}_{2} & -\vec{e}_{1} & \vec{0}
+\end{array}\right)</script></li>
+</ul>
+<h3 id="矢量的代数描述"><a href="#矢量的代数描述" class="headerlink" title="矢量的代数描述"></a>矢量的代数描述</h3><p>在某个矢量基 $\vec{\boldsymbol{e}}$ 上，根据矢量和的定义，任意矢量 $\vec{a}$ 可通过如图 $1-6$ 所示三个相互正交的矢量 $a_{1} \vec{e}_{1},a_{2} \vec{e}_{2},a_{3} \vec{e}_{3}$ 的和来描述，即有矢量关系式：</p>
+<script type="math/tex; mode=display">
+\vec{a}=a_{1} \vec{e}_{1}+a_{2} \vec{e}_{2}+a_{3} \vec{e}_{3}</script><p>矢量 $a_{1} \vec{e}_{1},a_{2} \vec{e}_{2},a_{3} \vec{e}_{3}$ 分别为与相应的基矢量方向一致的三个矢量，称它们为矢量 $\vec{a}$ 对于相应基矢量的三个<strong>分矢量</strong>，或简称为<strong>分量</strong>。三个标量系数 $a_{1},a_{2},a_{3}$ 分别称为矢量 $\vec{a}$ 在三个基矢量上的<strong>坐标</strong>。不考虑正负号，它们也分别为三个分矢量的模。这三个坐标构成一个标量列阵称为矢量 $\vec{a}$ 在该矢量基上的<strong>坐标阵</strong>，记为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{a} \stackrel{\text { def }}{=}\left(\begin{array}{l}
+a_{1} \\
+a_{2} \\
+a_{3}
+\end{array}\right)=\left(\begin{array}{lll}
+a_{1} & a_{2} & a_{3}
+\end{array}\right)^{\mathrm{T}}</script><p>矢量 $\vec{a}$ 的三个坐标还可定义一个反对称方阵，记为</p>
+<script type="math/tex; mode=display">
+\tilde{\boldsymbol{a}}\stackrel{\text { def }}{=}\left(\begin{array}{ccc}
+0 & -a_{3} & a_{2} \\
+a_{3} & 0 & -a_{1} \\
+-a_{2} & a_{1} & 0
+\end{array}\right)</script><p>称此方阵为矢量 $\vec{a}$ 在该矢量基上的<strong>坐标方阵</strong>。</p>
+<script type="math/tex; mode=display">
+\tilde{\boldsymbol{a}}^{\mathrm{T}}=-\tilde{\boldsymbol{a}}</script><h4 id="几何矢量和代数矢量的关系"><a href="#几何矢量和代数矢量的关系" class="headerlink" title="几何矢量和代数矢量的关系"></a>几何矢量和代数矢量的关系</h4><p>几何矢量 $\vec{a}$ 可表达为基 $\vec{\boldsymbol{e}}$ 与其上的坐标阵 $\boldsymbol{a}$ 间矩阵积的关系，即</p>
+<script type="math/tex; mode=display">
+\vec{a}=\vec{\boldsymbol{e}}^{\mathrm{T}} \boldsymbol{a}=\boldsymbol{a}^{\mathrm{T}} \vec{\boldsymbol{e}}</script><p>几何矢量 $\vec{a}$ 的坐标阵 $\boldsymbol{a}$ 可表达成矢量基 $\vec{e}$ 与该矢量点积的关系，即</p>
+<script type="math/tex; mode=display">
+\boldsymbol{a}=\vec{a} \cdot \vec{\boldsymbol{e}}=\vec{\boldsymbol{e}} \cdot \vec{a}</script><h3 id="矢径"><a href="#矢径" class="headerlink" title="矢径"></a>矢径</h3><p>为了描述空间上某一点 $P$ 的位置。过基点 $O$ 定义一个参考基 $\vec{\boldsymbol{e}}$。点 $P$ 在该基的三个坐标分别为 $r_{1},r_{2},r_{3}$。基点 $O$ 指向点 $P$ 的矢量，称为点 $P$ 的矢径，记为 $\vec{r}_{p}$。矢径 $\vec{r}_{p}$ 坐标阵为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{r}_{P}=\left(r_{1},r_{2},r_{3}\right)^{\mathrm{T}}</script><p>可见，点 $\boldsymbol{P}$ 的三个坐标分别等于点 $\boldsymbol{P}$ 矢径 $\vec{r}_{P}$ 的三个坐标。</p>
+<h3 id="几何矢量和代数矢量的关系-1"><a href="#几何矢量和代数矢量的关系-1" class="headerlink" title="几何矢量和代数矢量的关系"></a>几何矢量和代数矢量的关系</h3><ul>
+<li>矢量在几何上是一客观存在的量，与矢量基是否存在无关。</li>
+<li>然而根据定义，矢量的坐标阵与矢量基有关。</li>
+</ul>
+<p>设有两个不同的矢量基 $\vec{\boldsymbol{e}}^{\mathrm{r}},\vec{\boldsymbol{e}^{\mathrm{b}}}$。矢量 $\vec{a}$ 在这两个基上的坐标阵分别记为 $\boldsymbol{a}^{\mathrm{r}}$ 与 $\boldsymbol{a}^{\mathrm{b}}$，它们上标分别为对应基的标号。则有</p>
+<script type="math/tex; mode=display">
+\vec{a}=\boldsymbol{a}^{\mathrm{rT}} \vec{\boldsymbol{e}}^{\mathrm{r}}=\boldsymbol{a}^{\mathrm{bT}} \vec{\boldsymbol{e}}^{\mathrm{b}}</script><p>或</p>
+<script type="math/tex; mode=display">
+\vec{a}=\vec{\boldsymbol{e}}^{\mathrm{rT}} \boldsymbol{a}^{\mathrm{r}}=\vec{\boldsymbol{e}}^{\mathrm{bT}} \boldsymbol{a}^{\mathrm{b}}</script><h3 id="矢量的运算与坐标阵运算间的关系"><a href="#矢量的运算与坐标阵运算间的关系" class="headerlink" title="矢量的运算与坐标阵运算间的关系"></a>矢量的运算与坐标阵运算间的关系</h3><script type="math/tex; mode=display">
+\begin{array}{|c|c|}
+\hline \text { 矢量运算式 } & \text { 坐标阵运算式 } \\
+\hline \vec{a}=\vec{b} & \boldsymbol{a}=\boldsymbol{b} \\
+\hline \vec{c}=\alpha \vec{a} & \boldsymbol{c}=\alpha \boldsymbol{a} \\
+\hline \vec{c}=\vec{a}+\vec{b} & \boldsymbol{c}=\boldsymbol{a}+\boldsymbol{b} \\
+\hline \alpha=\vec{a} \cdot \vec{b}=\vec{b} \cdot \vec{a} & \alpha=\boldsymbol{a}^{\mathrm{T}} \boldsymbol{b}=\boldsymbol{b}^{\mathrm{T}} \boldsymbol{a} \\
+\hline \vec{c}=\vec{a} \times \vec{b}=-\vec{b} \times \vec{a} & \boldsymbol{c}=\tilde{\boldsymbol{a}} \boldsymbol{b}=-\tilde{\boldsymbol{b}} \boldsymbol{a} \\
+\hline
+\end{array}</script><h3 id="矢量和矢径的关系"><a href="#矢量和矢径的关系" class="headerlink" title="矢量和矢径的关系"></a>矢量和矢径的关系</h3><p>矢量 $\vec{a}$ 由 $Q$ 指向 $P$，矢量 $\vec{a}$ 和矢径 $\vec{r}_{Q}$,$\vec{r}_{P}$ 的关系为 </p>
+<script type="math/tex; mode=display">
+\vec{a}=\vec{r}_{P}-\vec{r}_{Q}</script><script type="math/tex; mode=display">
+\boldsymbol{a}=\boldsymbol{r}_{P}-\boldsymbol{r}_{Q}</script><h3 id="矢量对时间的导数"><a href="#矢量对时间的导数" class="headerlink" title="矢量对时间的导数"></a>矢量对时间的导数</h3><p>在时刻 $t$，该矢量的大小与方向为 $\vec{a}(t)$，到时刻 $t+\Delta t$，该矢量的大小与方向为 $\vec{a}(t+\Delta t)$，定义矢量在时刻 $t$ 对时间的导数是另一个矢量，记为 $\frac{\mathrm{d} \vec{a}}{\mathrm{d} t}$，且</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d}}{\mathrm{d} t} \vec{a}\stackrel{\mathrm{def}}{=}  \lim_{\Delta t \rightarrow 0} \frac{\vec{a}(t+\Delta t)-\vec{a}(t)}{\Delta t}</script><p>定义 $\frac{ { }^{\mathrm{r}}\mathrm{d}}{\mathrm{d} t} \vec{a}$ 为矢量 $\vec{a}$ 在参考基 $\vec{e}^{\mathrm{r}}$ 上对时间的导数。</p>
+<ul>
+<li>基矢量在自身基下对时间的导数为零矢量</li>
+<li>标量对时间的导数与基无关</li>
+<li>矢量 $\vec{a}$ 在基 $\vec{e}^{\mathrm{r}}$ 上对时间的导数为一矢量，它在该基的坐标阵等于矢量 $\vec{a}$ 在基 $\vec{e}$ 的坐标阵对时间的导数。<script type="math/tex; mode=display">
+\frac{ { }^{\mathrm{r}} \mathrm{d}}{\mathrm{d} t} \vec{a}=\dot{\boldsymbol{a}}^{\mathrm{rT}} \vec{\boldsymbol{e}}^{\mathrm{r}} =\vec{\boldsymbol{e}}^{\mathrm{rT}} \dot{\boldsymbol{a}}^{\mathrm{r}}</script></li>
+</ul>
+<h3 id="矢量导数运算与坐标阵导数运算的关系"><a href="#矢量导数运算与坐标阵导数运算的关系" class="headerlink" title="矢量导数运算与坐标阵导数运算的关系"></a>矢量导数运算与坐标阵导数运算的关系</h3><script type="math/tex; mode=display">
+\begin{array}{c|c}
+\hline \text { 矢量运算式 } & \text { 坐标阵运算式 } \\
+\hline \frac{\mathrm{d}}{\mathrm{d} t}(\alpha \vec{a})=\dot{\alpha} \vec{a}+\alpha \dot{\vec{a}} & \frac{\mathrm{d}}{\mathrm{d} t}(\alpha \boldsymbol{a})=\dot{\alpha} \boldsymbol{a}+\alpha \dot{\boldsymbol{a}} \\
+\hline \frac{\mathrm{d}}{\mathrm{d} t}(\vec{a}+\vec{b})=\dot{\vec{a}}+\dot{\vec{b}} & \frac{\mathrm{d}}{\mathrm{d} t}(\boldsymbol{a}+\boldsymbol{b})=\dot{\boldsymbol{a}}+\dot{\boldsymbol{b}} \\
+\hline \frac{\mathrm{d}}{\mathrm{d} t}(\vec{a} \cdot \vec{b})=\dot{\vec{a}} \vec{b}+\vec{a} \dot{\vec{b}} & \frac{\mathrm{d}}{\mathrm{d} t}\left(\boldsymbol{a}^{\mathrm{T}} \boldsymbol{b}\right)=\dot{\boldsymbol{a}}^{\mathrm{T}} \boldsymbol{b}+\boldsymbol{a}^{\mathrm{T}} \dot{\boldsymbol{b}} \\
+\hline \frac{\mathrm{d}}{\mathrm{d} t}(\vec{a} \times \vec{b})=\dot{\vec{a}} \times \vec{b}+\vec{a} \times \dot{\vec{b}} & \frac{\mathrm{d}}{\mathrm{d} t}(\tilde{\boldsymbol{a}} \boldsymbol{b})=\dot{\tilde{\boldsymbol{a}}} \boldsymbol{b}+\tilde{\boldsymbol{a}} \dot{\boldsymbol{b}} \\
+\hline
+\end{array}</script><script type="math/tex; mode=display">
+\dot{\tilde{\boldsymbol{a}}}=\tilde{\dot{\boldsymbol{a}}}</script><h3 id="方向余弦阵"><a href="#方向余弦阵" class="headerlink" title="方向余弦阵"></a>方向余弦阵</h3><p>对于两个不同的矢量基 $\vec{e}^{r}$ 与 $\vec{e}^{b}$，即</p>
+<script type="math/tex; mode=display">
+\vec{\boldsymbol{e}}^{\mathrm{r}}=\left(\begin{array}{ccc}
+\vec{e}_{1}^{\mathrm{r}} & \vec{e}_{2}^{\mathrm{r}} & \vec{e}_{3}^{\mathrm{r}}
+\end{array}\right)^{\mathrm{T}},\quad
+\vec{\boldsymbol{e}}^{\mathrm{b}}=\left(\begin{array}{lll}
+\vec{e}_{1}^{\mathrm{b}} & \vec{e}_{2}^{\mathrm{b}} & \vec{e}_{3}^{\mathrm{b}}
+\end{array}\right)^{\mathrm{T}}</script><p>定义以下 $3 \times 3$ 阶方阵为基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 相对于基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的方向余弦阵：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{A}^{\mathrm{rb}}\stackrel{\mathrm{def}}{=}\vec{\boldsymbol{e}}^{\mathrm{r}} \cdot \vec{\boldsymbol{e}}^{\mathrm{bT}}
+=\left(\begin{array}{lll}
+A_{11} & A_{12} & A_{13} \\
+A_{21} & A_{22} & A_{23} \\
+A_{31} & A_{32} & A_{33}
+\end{array}\right)=\left(\begin{array}{ccc}
+\vec{e}_{1}^{\mathrm{r}} \cdot \vec{e}_{1}^{\mathrm{b}} & \vec{e}_{1}^{\mathrm{r}} \cdot \vec{e}_{2}^{\mathrm{b}} & \vec{e}_{1}^{\mathrm{r}} \cdot \vec{e}_{3}^{\mathrm{b}} \\
+\vec{e}_{2}^{\mathrm{r}} \cdot \vec{e}_{1}^{\mathrm{b}} & \vec{e}_{2}^{\mathrm{r}} \cdot \vec{e}_{2}^{\mathrm{b}} & \vec{e}_{2}^{\mathrm{r}} \cdot \vec{e}_{3}^{\mathrm{b}} \\
+\vec{e}_{3}^{\mathrm{r}} \cdot \vec{e}_{1}^{\mathrm{b}} & \vec{e}_{3}^{\mathrm{r}} \cdot \vec{e}_{2}^{\mathrm{b}} & \vec{e}_{3}^{\mathrm{r}} \cdot \vec{e}_{3}^{\mathrm{b}}
+\end{array}\right)</script><p>如果所定义的参考基 $\vec{\boldsymbol{e}}^{r}$ 为公认或在约定的情况下，基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 相对于基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的方向余弦阵 $\boldsymbol{A}^{\mathrm{rb}}$ 有时可简写为 $\boldsymbol{A}^{\mathrm{b}}$ 或 $\boldsymbol{A}$。</p>
+<ul>
+<li>方向余弦阵 $\boldsymbol{A}^{\mathrm{rb}}$ 元素排列表<script type="math/tex; mode=display">
+\begin{array}{c|ccc} 
+\boldsymbol{A}^{\mathrm{rb}}&  \vec{e}_{1}^{\mathrm{b}}  &  \vec{e}_{2}^{\mathrm{b}}  &  \vec{e}_{3}^{\mathrm{b}}  \\
+\hline 
+\vec{e}_{1}^{\mathrm{r}}  &  A_{11}  &  A_{12}  &  A_{13}  \\
+\vec{e}_{2}^{\mathrm{r}}  &  A_{21}  &  A_{22}  &  A_{23}  \\
+\vec{e}_{3}^{\mathrm{r}}  &  A_{31}  &  A_{32}  &  A_{33} 
+\end{array}</script></li>
+</ul>
+<h4 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h4><ul>
+<li><script type="math/tex; mode=display">
+\vec{\boldsymbol{e}}^{\mathrm{r}}=\boldsymbol{A}^{\mathrm{rb}} \vec{\boldsymbol{e}}^{\mathrm{b}}
+,\quad 
+\vec{\boldsymbol{e}}^{\mathrm{b}}=\left(\boldsymbol{A}^{\mathrm{rb}}\right)^{\mathrm{T}} \vec{\boldsymbol{e}}^{\mathrm{r}}</script></li>
+<li>方向余弦矩阵的 9 个元素中只有 3 个是独立的。</li>
+<li>方向余弦阵的行列式等于 1<script type="math/tex; mode=display">
+\operatorname{det}\left(\boldsymbol{A}^{\mathrm{rb}}\right) = 1</script></li>
+<li>基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 相对于基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的方向余弦阵 $\boldsymbol{A}^{\mathrm{rb}}$ 和基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 相对于基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 的方向余弦阵 $\boldsymbol{A}^{\mathrm{br}}$ 互为转置。<script type="math/tex; mode=display">
+\left(\boldsymbol{A}^{\mathrm{rb}}\right)^{\mathrm{T}}=\left(\vec{\boldsymbol{e}}^{\mathrm{T}} \cdot \vec{\boldsymbol{e}}^{\mathrm{bT}}\right)^{\mathrm{T}}=\left(\vec{\boldsymbol{e}}^{\mathrm{bT}}\right)^{\mathrm{T}} \cdot \vec{\boldsymbol{e}}^{\mathrm{rT}}=\vec{\boldsymbol{e}}^{\mathrm{b}} \cdot \vec{\boldsymbol{e}}^{\mathrm{rT}}=\boldsymbol{A}^{\mathrm{br}}</script></li>
+<li>当两个基的基矢量的方向两两一致，则它们的方向余弦阵为三阶单位阵。<script type="math/tex; mode=display">
+\boldsymbol{A}^{\mathrm{rr}}=\vec{\boldsymbol{e}}^{\mathrm{r}} \cdot \vec{\boldsymbol{e}}^{\mathrm{rT}}=\boldsymbol{I}_{3}</script></li>
+<li>若有三个基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$，$\vec{\boldsymbol{e}}^{\mathrm{b}}$ 与 $\vec{\boldsymbol{e}}^{\mathrm{s}}$，令 $\vec{\boldsymbol{e}}^{\mathrm{s}}$ 相对于 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 和 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 相对于 $\vec{\boldsymbol{e}}^{\mathrm{s}}$ 的方向余弦阵分别为 $\boldsymbol{A}^{\mathrm{rs}}$ 和 $\boldsymbol{A}^{\mathrm{sb}}$，有<script type="math/tex; mode=display">
+\boldsymbol{A}^{\mathrm{rb}}=\boldsymbol{A}^{\mathrm{rs}} \boldsymbol{A}^{\mathrm{sb}}</script><script type="math/tex; mode=display">
+\vec{\boldsymbol{e}}^{\mathrm{r}}=\boldsymbol{A}^{\mathrm{rs}} \vec{\boldsymbol{e}}^{\mathrm{s}}=\boldsymbol{A}^{\mathrm{rs}} \boldsymbol{A}^{\mathrm{sb}} \vec{\boldsymbol{e}}^{\mathrm{b}}</script></li>
+</ul>
+<h4 id="不同基下坐标阵之间的关系"><a href="#不同基下坐标阵之间的关系" class="headerlink" title="不同基下坐标阵之间的关系"></a>不同基下坐标阵之间的关系</h4><ul>
+<li>矢量 $\vec{a}$ 的两个<strong>坐标阵</strong>间关系式为<script type="math/tex; mode=display">
+\boldsymbol{a}^{\mathrm{r}}=\boldsymbol{A}^{\mathrm{rb}} \boldsymbol{a}^{\mathrm{b}}</script></li>
+<li>矢量 $\vec{a}$ 的两个<strong>坐标方阵</strong>间的关系为<script type="math/tex; mode=display">
+\tilde{\boldsymbol{a}}^{\mathrm{r}}=\boldsymbol{A}^{\mathrm{rb}} \tilde{\boldsymbol{a}}^{\mathrm{b}} \boldsymbol{A}^{\mathrm{br}}</script></li>
+</ul>
+<h3 id="平面矢量"><a href="#平面矢量" class="headerlink" title="平面矢量"></a>平面矢量</h3><p>定义一参考平面，用一个二维的矢量基描述，即 $\vec{\boldsymbol{e}}=\left(\vec{x},\vec{y}\right)^{\mathrm{T}}$，其中 $\vec{x}$ 与 $\vec{y}$ 为基矢量, 基点为 $O$。该参考平面的法线方向记为 $\vec{z}$。参考平面内任意矢量 $\vec{a}$ 和任意点 $P$ 的矢径 $\bar{\boldsymbol{r}}_{P}$ 均为该平面内的矢量，称为<strong>平面矢量</strong>。</p>
+<p>定义平面矢量 $\vec{a}$ 在二维参考基 $\vec{e}$ 的坐标阵 $a=\left(a_x,a_y\right)^{\mathrm{T}}$，任意矢量 $\vec{a}$ 可表示为</p>
+<script type="math/tex; mode=display">
+\vec{a}=a_x \vec{x}+a_y\vec{y}=\boldsymbol{a}^{\mathrm{T}} \vec{\boldsymbol{e}}=\vec{\boldsymbol{e}}^{\mathrm{T}} \boldsymbol{a}</script><p>基矢量 $\vec{x}$ 与 $\vec{y}$ 的坐标阵分别为 $x=\left(1,0\right)^{\mathrm{T}}$ 与 $y=\left(0,1\right)^{\mathrm{T}}$。</p>
+<h3 id="平面矢量的叉积"><a href="#平面矢量的叉积" class="headerlink" title="平面矢量的叉积"></a>平面矢量的叉积</h3><p>对于任意两个平面矢量 $\vec{a}$ 与 $\vec{b}$ 的叉积 $\vec{d}=\vec{a} \times \vec{b}$，按定义，$\vec{d}$ 始终是一个垂直参考平面的矢量。平面矢量可认为是空间矢量的特殊情况，即平面矢量的 $\vec{z}$ 方向的分量始终为零矢量。在三维基下写出矢量 $\vec{d}$ 的运算坐标式 $\boldsymbol{d}=$ $\tilde{\boldsymbol{a}} \boldsymbol{b}$, 展开有</p>
+<script type="math/tex; mode=display">
+\left(\begin{array}{l}
+0 \\
+0 \\
+d
+\end{array}\right)=\left(\begin{array}{ccc}
+0 & 0 & a_y \\
+0 & 0 & -a_x \\
+-a_y & a_x & 0
+\end{array}\right)\left(\begin{array}{l}
+b_x \\
+b_y \\
+0
+\end{array}\right)=\left(\begin{array}{c}
+0 \\
+0 \\
+a_x b_y-a, b_x
+\end{array}\right)</script><p>可见矢量 $\vec{d}$ 的模为 $d=a_x b_y-a_y b_x$。引入一个特殊的符号</p>
+<script type="math/tex; mode=display">
+\tilde{\boldsymbol{I}} \stackrel{\text { def }}{=}\left(\begin{array}{cc}
+0 & -1 \\
+1 & 0
+\end{array}\right)</script><p>回到二维的矢量基，不难验证，矢量 $\vec{d}$ 的模可表示为</p>
+<script type="math/tex; mode=display">
+d=a_x b_y-a_y b_x=(\tilde{\boldsymbol{I}} \boldsymbol{a})^{\mathrm{T}} \boldsymbol{b}</script><p>这样，任意两个平面矢量 $\vec{a}$ 与 $\vec{b}$ 的叉积可表示为</p>
+<script type="math/tex; mode=display">
+\vec{d}=\vec{a} \times \vec{b}=-\vec{b} \times \vec{a} \Rightarrow \boldsymbol{d}=(\tilde{\boldsymbol{I}} \boldsymbol{a})^{\mathrm{T}} \boldsymbol{b} \vec{z}=-(\tilde{\boldsymbol{I}} \boldsymbol{b})^{\mathrm{T}} \boldsymbol{a} \bar{\boldsymbol{z}}</script><h3 id="法向量和平面矢量的叉积"><a href="#法向量和平面矢量的叉积" class="headerlink" title="法向量和平面矢量的叉积"></a>法向量和平面矢量的叉积</h3><p>考虑法矢量 $\vec{z}$ 与平面矢量 $\vec{a}$ 的叉积，记为 $\hat{\vec{a}}=\vec{z} \times \vec{a}$。按定义它是一平面矢量，其模与矢量 $\vec{a}$ 相同，方向是矢量 $\vec{a}$ 绕矢量 $\vec{z}$ 正向旋转，垂直于矢量 $\vec{a}$，故有</p>
+<script type="math/tex; mode=display">
+\begin{array}{ll}
+\vec{a} \cdot \hat{\vec{a}}=\vec{a} \cdot(\vec{z} \times \vec{a})=0 \\
+\vec{a} \times \hat{\vec{a}}=\vec{a} \times(\vec{z} \times \vec{a})=a^2 \vec{z}
+\end{array}</script><p>矢量 $\hat{\vec{a}}$ 也可表示为</p>
+<script type="math/tex; mode=display">
+\hat{\vec{a}}=\vec{z} \times \vec{a}=-a_y \vec{x}+a_x \vec{y}</script><p>将矢量 $\hat{\vec{a}}$ 的坐标阵记为 $\hat{\boldsymbol{a}}$，有 $\hat{\boldsymbol{a}}=\left(-a, a_x\right)^{\mathrm{T}}$。可得矢量 $\hat{\vec{a}}$ 与 $\vec{a}$ 的坐标阵间的关系为</p>
+<script type="math/tex; mode=display">
+\hat{\boldsymbol{a}}=\tilde{\boldsymbol{I}} \boldsymbol{a}</script><h2 id="第二章-静力学"><a href="#第二章-静力学" class="headerlink" title="第二章 静力学"></a>第二章 静力学</h2><h3 id="力的基本性质"><a href="#力的基本性质" class="headerlink" title="力的基本性质"></a>力的基本性质</h3><p>力是物体之间的相互作用，能使物体的运动状态发生改变，或使物体变形。在理论力学中讨论的主要对象为质点质点系。刚体或刚体系，则力的作用效果只改变其运动状态。在我国法定计量单位中，力的单位为牛顿(N)，$1 N=1 kg\cdot m/s^3$。</p>
+<ul>
+<li>力的<strong>三要素</strong>：力对物体的作用效果取决于力的大小、方向与作用点。</li>
+<li>力的<strong>平行四边形法则</strong>：两个力作用于同一个点的效应可与作用点不变的一个力等效。该力称为两力的合力，该合力的大小与方向以两力的有向线段为边构成的平行四边形的对角线确定。</li>
+<li>作用某点的两个力大小相等、方向相反，其合力为零。称这两力为<strong>平衡力系</strong>。如果物体上仅受到此两力作用，物体将处于平衡或做匀速直线运动状态。（平衡力系不一定要在同一点上。刚体在同一线上就行）</li>
+<li>两个力作用于同一个点的效应可与作用点不变的一个力等效。该力称为两力的<strong>合力</strong>，该合力的大小与方向以两力的有向线段为边构成的平行四边形的对角线确定。</li>
+<li><strong>二力平衡</strong>公理：作用于同一<strong>刚体</strong>的两个力使其<strong>平衡</strong>的充分必要条件是两力处在同一直线，且大小相等、方向相反。</li>
+<li><strong>增减平衡力系</strong>公理：在一个力系上加减一个平衡力系不改变原力系对刚体的作用效果。</li>
+<li>作用力与反作用力同时存在，大小相等、方向相反，沿同一作用线分别作用在不同的物体上。</li>
+</ul>
+<h3 id="力的可传性"><a href="#力的可传性" class="headerlink" title="力的可传性"></a>力的可传性</h3><ul>
+<li>力在刚体上的作用点可沿作用线移至刚体内的任意点而不改变该力对刚体作用的效果。此性质称为<strong>力的可传性</strong>。</li>
+<li>将只需表示作用线，无需表示作用点的矢量称为<strong>滑移矢量</strong>。那么作用于<strong>刚体</strong>上的力是一个滑移矢量。考虑到这个性质，力的三要素可改为：大小、方向与作用线。</li>
+<li>对于变形体，力的作用效果与作用点有密切关系，作用点的位置不能随意改变。此时力是一个<strong>定位矢量</strong>。</li>
+</ul>
+<h3 id="力系的分类"><a href="#力系的分类" class="headerlink" title="力系的分类"></a>力系的分类</h3><p>如果在 $n$ 个点 $P_{i}(i=1,2,\cdots,n)$ 上，作用有 $n$ 个力 $\vec{F}_{i}(i=1,2,\cdots,n)$，它们构成一个力系，记为 $\left(\vec{F}_{1},\vec{F}_{2},\cdots,\vec{F}_{n}\right)$。</p>
+<ul>
+<li>作用线在三维空间分布的力系称为空间力系。对于空间力系，如果这些力的作用线可以汇交于一点，该力系称为<strong>空间汇交力系</strong></li>
+<li>作用线相互平行的力系称为<strong>空间平行力系</strong></li>
+<li>其余称为<strong>空间一般力系</strong></li>
+<li>作用线均在同一个平面的力系称为<strong>平面力系</strong>。对于平面力系也可分出平面汇交力系、平面平行力系与平面一般力系。</li>
+</ul>
+<h3 id="汇交力系的合成"><a href="#汇交力系的合成" class="headerlink" title="汇交力系的合成"></a>汇交力系的合成</h3><p>对于由 $n$ 个力构成的汇交力系 $\left(\vec{F}_{1},\vec{F}_{2},\cdots,\vec{F}_{n}\right)$，令其汇交点为 $O$。由力的性质可知，有一个作用点为汇交点 $O$ 的力与其等效，该力为此汇交力系的合力，记为 $\vec{F}_{O}$，有</p>
+<script type="math/tex; mode=display">
+\vec{F}_{0}=\sum_{i=1}^{n} \vec{F}_{i}</script><p>汇交力系合力的坐标等于力系各力对应坐标的代数和。</p>
+<ul>
+<li>力系的矢量和是<strong>自由矢量</strong>，只有大小和方向（区别于合力）</li>
+<li>汇交力系合力不是客观存在的力，是<strong>定位矢量</strong></li>
+</ul>
+<h3 id="力矩"><a href="#力矩" class="headerlink" title="力矩"></a>力矩</h3><h4 id="力对点的矩"><a href="#力对点的矩" class="headerlink" title="力对点的矩"></a>力对点的矩</h4><p>为了描述力对刚体的转动效应，需引入力对点的矩（简称为<strong>力矩</strong>）的概念。将作用在点 $P$ 上的力 $\vec{F}$ 对某点 $O$ 的矩记为 $\vec{M}_{O}(\vec{F})$，它的定义为</p>
+<script type="math/tex; mode=display">
+\vec{M}_{O}(\vec{F}) \stackrel{\text { def }}{=} \vec{r} \times \vec{F}</script><p>其中点 $O$ 称为力矩的矩心，$\vec{r}$ 为矩心 $O$ 指向作用点 $P$ 的矢径。显然，力矩为一定位矢量，其与矩心 $O$ 绑定。它的方向垂直于矢量 $\vec{r}$ 与 $\vec{F}$ 组成的平面，模</p>
+<script type="math/tex; mode=display">
+M_{O}(\vec{F})=\left|\vec{M}_{O}(\vec{F})\right|=F r \sin \theta=F d</script><p>其中 $F$ 与 $r$ 分别为矢量 $\vec{F}$ 与 $\vec{r}$ 的模，$\theta$ 为两矢量的夹角，$d$ 为矩心到 $\vec{F}$ 作用线的距离。如果有一个参考基 $\vec{e}=\left(\vec{x},\vec{y},\vec{z}\right)^{\mathrm{T}}$，力矩在该基的坐标式可表示为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{M}_{O}(\vec{F})=\tilde{\boldsymbol{r}} \boldsymbol{F}</script><p>令 $\boldsymbol{r}=\left(x,y,z\right)^{\mathrm{T}}$，$\tilde{\boldsymbol{r}}$ 为 $\vec{r}$ 的坐标方阵，$\boldsymbol{F}=\left(F_{x},F_{y},F_{z}\right)^{\mathrm{T}}$。定义 $M_{O x}(\vec{F})$，$M_{O y}(\vec{F})$ 与 $M_{O z}(\vec{F})$ 为力矩矢量 $\vec{M}_{O}(\vec{F})$ 在参考基上的坐标，即</p>
+<script type="math/tex; mode=display">
+\boldsymbol{M}_{O}(\vec{F})=\left(M_{Ox}(\vec{F}),M_{Oy}(\vec{F}),M_{Oz}(\vec{F})\right)^{\mathrm{T}}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\left(\begin{array}{l}
+M_{Ox}(\vec{F}) \\
+M_{Oy}(\vec{F}) \\
+M_{Oz}(\vec{F})
+\end{array}\right)=\left(\begin{array}{ccc}
+0 & -z & y \\
+z & 0 & -x \\
+-y & x & 0
+\end{array}\right)\left(\begin{array}{c}
+F_{x} \\
+F_{y} \\
+F_{z}
+\end{array}\right)=
+\left(\begin{array}{c}
+y F_{z}-z F_{y} \\
+z F_{x}-x F_{z} \\
+x F_{y}-y F_{x}
+\end{array}\right)</script><p>称三标量坐标 $M_{Ox}(\vec{F})$，$M_{Oy}(\vec{F})$ 与 $M_{Oz}(\vec{F})$ 分别为力对 $Ox$，$Oy$ 与 $Oz$ 轴的矩。它们将用来描述力对刚体绕相应轴转动的效应。力对轴的矩可能为正或负，正表示分矢量 $M_{Ox}(\vec{F}) \vec{x}$ 的方向与轴 $\vec{x}$ 的正向一致，其余类推。</p>
+<h4 id="力对轴的矩"><a href="#力对轴的矩" class="headerlink" title="力对轴的矩"></a>力对轴的矩</h4><ul>
+<li>力对<strong>与其垂直的某轴</strong>的矩，等于该力乘其到此轴的距离，正负号按右手法则确定，与轴正向一致为正。</li>
+<li>力对<strong>与其相交的某轴</strong>的矩等于 $0$</li>
+<li>力对轴的矩是<strong>标量</strong>。</li>
+<li><strong>力对空间中任意点的矩，在通过该点的某一轴上的分量的大小，正好等于力对该轴之矩的大小。</strong></li>
+</ul>
+<h4 id="力矩的计算"><a href="#力矩的计算" class="headerlink" title="力矩的计算"></a>力矩的计算</h4><p><strong>先分解再求矩</strong></p>
+<ul>
+<li>力对点的矩等于该力的三个分矢量对该点矩的矢量和</li>
+<li>力对 $z$ 轴的矩等于该力的三个分矢量对该轴矩的代数和</li>
+</ul>
+<h4 id="对于平面问题"><a href="#对于平面问题" class="headerlink" title="对于平面问题"></a>对于平面问题</h4><p>令 $\boldsymbol{r}=\left(x,y\right)^{\mathrm{T}}$，$\boldsymbol{F}=\left(F_{x},F_{y}\right)^{\mathrm{T}}$，有</p>
+<script type="math/tex; mode=display">
+M_{O}(\vec{F})=M_{Oz}(\vec{F})=(\tilde{\boldsymbol{I}} \boldsymbol{r})^{\mathrm{T}} \boldsymbol{F}=x F_{y}-y F_{x}</script><h3 id="力偶"><a href="#力偶" class="headerlink" title="力偶"></a>力偶</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p><strong>大小相等、方向相反、作用线相互平行</strong>的两力称为力偶。可见力偶为一特殊的力系。如图中的力 $\vec{F}$ 与 $\vec{F}^{\prime}$ 构成一力偶 $\left(\vec{F},\vec{F}^{\prime}\right)$。</p>
+<ul>
+<li>两个力的作用线所决定的平面称为<strong>力偶作用面</strong></li>
+<li>两个作用线的<strong>垂直</strong>距离 $d$ 称为<strong>力偶臂</strong>。</li>
+<li>力偶对刚体作用取决于力 $\vec{F}$ 对 $\vec{F}^{\prime}$ 作用点力矩的大小、作用面的方位与力偶的转动方向，它们称为<strong>力偶的三要素</strong>。</li>
+<li>对于力偶，$\vec{F}^{\prime}=-\vec{F}$，有 $\vec{F}+\vec{F}^{\prime}=\vec{0}$。但由于两力的作用线不重合，对于刚体这两个力<strong>不是平衡力系</strong>，也不能用一个力与其等效。</li>
+<li>力偶的作用效果是改变刚体转动状态，或引起变形体扭曲。</li>
+</ul>
+<h4 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h4><p>记力 $\vec{F}$ 的作用点为 $P$，$\vec{F}^{\prime}$ 的作用点为 $Q$。任意选定空间中点 $O$ 为矩心。定义点 $Q$ 指向点 $P$ 的矢量为 $\vec{r}=\overrightarrow{QP}$，力偶两力对<strong>任意点</strong>之矩的矢量和恒等于矢量积 $\vec{r} \times \vec{F}$，与矩心的选取无关。将该矢量积定义为力偶 $\left(\vec{F},\vec{F}^{\prime}\right)$ 的力偶矩矢量，简称为<strong>力偶矩</strong>，记为 $\vec{M}$，即</p>
+<script type="math/tex; mode=display">
+\vec{M} \stackrel{\text { def }}{=} \vec{r} \times \vec{F}</script><h4 id="性质-1"><a href="#性质-1" class="headerlink" title="性质"></a>性质</h4><ul>
+<li>力偶矩矢量沿力偶作用面的法线，方向沿力 $\vec{F}$ 转到 $\vec{F}^{\prime}$ 的右手法则为正向。</li>
+<li>力偶矩矢量的模为<script type="math/tex; mode=display">
+M=F d</script>即等于力与力偶臂的乘积。力偶矩矢量涵盖了力偶的三要素，因此可用该矢量描述一力偶。</li>
+</ul>
+<p>力偶矩矢量式在某参考基的坐标式为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{M}=\tilde{\boldsymbol{r}} \boldsymbol{F}</script><ul>
+<li>力偶矩矢量与矩心无关，则作用于同一刚体的力偶，当力偶矩矢量沿其作用线<strong>直线移动</strong>或<strong>平行移动</strong>时不影响力偶对刚体作用的效果。</li>
+<li>可见力偶矩矢量是一<strong>自由矢量</strong>。</li>
+<li><p>由此可以推断，<strong>在保持力偶矩大小与方向不变的条件下</strong>，对于任意力偶，</p>
+<ul>
+<li>在其作用面内随意<strong>改变构成力偶的两力之方向</strong></li>
+<li>或<strong>同比增大（减小）力</strong>与<strong>减小（增大）力偶臂</strong></li>
+<li>或将<strong>力偶作用面平行移动</strong></li>
+</ul>
+<p>都不影响力偶对刚体的作用效果。此性质称为力偶的<strong>等效性</strong>。</p>
+</li>
+</ul>
+<h3 id="力偶系及其合成"><a href="#力偶系及其合成" class="headerlink" title="力偶系及其合成"></a>力偶系及其合成</h3><p>任意两个力偶可以合成一个合力偶，合力偶矩等于两个力偶矩的矢量和。（因为力偶是自由矢量）</p>
+<h3 id="力作用线平移"><a href="#力作用线平移" class="headerlink" title="力作用线平移"></a>力作用线平移</h3><p>与力偶不同，力是滑移矢量而不是自由矢量，其作用线如果作平行移动，会改变它对刚体的作用效果。<br>平移力的作用线，必须相应增加一个<strong>力偶</strong>（不是力矩）才可能与原来的力等效，该力偶的力偶矩矢量等于原力对平移（终）点的矩。</p>
+<h3 id="力系的主矢与主矩"><a href="#力系的主矢与主矩" class="headerlink" title="力系的主矢与主矩"></a>力系的主矢与主矩</h3><p>考虑一个空间任意力系 $\left(\vec{F}_{1}, \vec{F}_{2}, \cdots, \vec{F}_{n}\right)$。定义该力系所有力的矢量和称为该力系的<strong>主矢</strong>，记为</p>
+<script type="math/tex; mode=display">
+\vec{F}_{\mathrm{R}} \stackrel{\text { def }}{=} \sum_{i=1}^{n} \vec{F}_{i}</script><p>设定任意点 $O$ 为矩心，力系所有力对此点力矩的矢量和称为该力系对点 $O$ 的<strong>主矩</strong>，记为</p>
+<script type="math/tex; mode=display">
+\vec{M}_{O}=\sum_{i=1}^{n} \vec{M}_{O}\left(\vec{F}_{i}\right)=\sum_{i=1}^{n} \vec{r}_{i} \times \vec{F}_{i}</script><p>主矢与主矩是两个矢量（计算量，不对应客观存在的物理量），它们是描述该力系的<strong>特征量</strong>。后者与矩心的选取有关。以点 $O$ 为基点选定一个参考基，主矢与主矩的坐标计算式分别为</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\boldsymbol{F}_{\mathrm{R}}=\sum_{i=1}^{n} \boldsymbol{F}_{i} \\
+\boldsymbol{M}_{O}=\sum_{i=1}^{n} \boldsymbol{M}_{O}\left(\vec{F}_{i}\right)=\sum_{i=1}^{n} \tilde{\boldsymbol{r}}_{i} \boldsymbol{F}_{i}
+\end{array}</script><ul>
+<li>主矢没有作用线、没有作用点，不是一个力</li>
+<li>主矩是力矩的矢量和，是一个<strong>定位矢量</strong></li>
+</ul>
+<h3 id="空间一般力系的简化"><a href="#空间一般力系的简化" class="headerlink" title="空间一般力系的简化"></a>空间一般力系的简化</h3><p>考虑一空间任意力系 $\left(\vec{F}_{1},\vec{F}_{2},\cdots,\vec{F}_{n}\right)$ 与任意给定点 $O$（称为<strong>简化中心</strong>）。如果将力系中力 $\vec{F}_{i}(i=1,2,\cdots,n)$ 平移到该点，由本节 $1$ 可知，有等效关系 $\vec{F}_{i}=\left(\vec{F}_{i}^{\prime},\vec{M}_{i}\right)$，其中</p>
+<script type="math/tex; mode=display">
+\vec{F}_{i}^{\prime}=\vec{F}_{i},\vec{M}_{i}=\vec{M}_{o}\left(\vec{F}_{i}\right) \quad(i=1,2,\cdots,n)</script><p>于是力系 $\left(\vec{F}_{1},\vec{F}_{2},\cdots,\vec{F}_{n}\right)$ 将与一个汇交于点 $O$ 的力系 $\left(\vec{F}_{1}^{\prime},\vec{F}_{2}^{\prime},\cdots,\vec{F}_{n}^{\prime}\right)$ 和一个力偶系 $\left(\vec{M}_{1},\vec{M}_{2},\cdots,\vec{M}_{n}\right)$ 等效。而汇交力系与力偶系可以分别合成，将合力与合力偶矩分别记为 $\vec{F}_{O}$ 与 $\vec{M}$，则有</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\vec{F}_{O}=\sum_{i=1}^{n} \vec{F}_{i}^{\prime}=\sum_{i=1}^{n} \vec{F}_{i}\\
+\vec{M}=\sum_{i=1}^{n} \vec{M}_{i}=\sum_{i=1}^{n} \vec{M}_{O}(\vec{F}_{i})
+\end{array}</script><p>我们发现</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\vec{F}_{O}=\vec{F}_{\mathrm{R}} \\
+\vec{M}=\vec{M}_{O}
+\end{array}</script><p>于是：空间任意力系可简化为一个力偶 $\vec{M}$ 与一个作用点在简化中心 $O$ 的力 $\vec{F}_{O}$，该力偶矩矢量等于力系对简化中心的主矩 $\vec{M}_{O}$，该力矢量等于力系的主矢 $\vec{F}_{\mathrm{R}}$。<br>同一个力系可以向不同的简化中心进行简化，向点 $O$ 的简化结果可表示为</p>
+<script type="math/tex; mode=display">
+\left(\vec{F}_{1},\vec{F}_{2},\cdots,\vec{F}_{n}\right)=\left(\vec{F}_{O},\vec{M}^{O}\right)</script><h3 id="相关量的比较"><a href="#相关量的比较" class="headerlink" title="相关量的比较"></a>相关量的比较</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>主矢 $\vec{F}_{\mathrm{R}}$</th>
+<th>简化力矢量 $\vec{F}_{O}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>性质</td>
+<td>一个数学概念</td>
+<td>一个力</td>
+</tr>
+<tr>
+<td>矢量分类</td>
+<td>自由矢量</td>
+<td>滑移矢量</td>
+</tr>
+<tr>
+<td>相同点</td>
+<td>大小方向相同</td>
+<td>大小方向相同</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>主矩 $\vec{M}_{O}$</th>
+<th>简化力偶矩矢量 $\vec{M}^{O}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>性质</td>
+<td>一个数学概念</td>
+<td>一个力偶矩矢量</td>
+</tr>
+<tr>
+<td>矢量分类</td>
+<td>定位矢量</td>
+<td>自由矢量</td>
+</tr>
+<tr>
+<td>相同点</td>
+<td>大小方向相同</td>
+<td>大小方向相同</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="力系简化结果与简化中心的关系"><a href="#力系简化结果与简化中心的关系" class="headerlink" title="力系简化结果与简化中心的关系"></a>力系简化结果与简化中心的关系</h3><p>将力系 $\left(\vec{F}_{1},\vec{F}_{2},\cdots,\vec{F}_{n}\right)$ 对两个简化中心 $O$ 与 $C$ 分别进行简化，有</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\left(\vec{F}_{1},\vec{F}_{2},\cdots,\vec{F}_{n}\right)=\left(\vec{F}_{O},\vec{M}^{O}\right) \\
+\left(\vec{F}_{1},\vec{F}_{2},\cdots,\vec{F}_{n}\right)=\left(\vec{F}_{C},\vec{M}^{C}\right)
+\end{array}</script><ul>
+<li>简化力的关系<script type="math/tex; mode=display">
+\vec{F}_{O}=\vec{F}_{C}=\vec{F}_{\mathrm{R}}</script></li>
+<li>简化力偶的关系<script type="math/tex; mode=display">
+\vec{M}^{C}=\vec{M}^{O}+\vec{M}^{\prime}=\vec{M}^{O}+\vec{r}_{C O} \times \vec{F}_{O}=\vec{M}^{O}+\vec{r}_{C O} \times \dot{F}_{\mathrm{R}}</script></li>
+<li>任意一力系对不同点的主矩间的关系<script type="math/tex; mode=display">
+\vec{M}_{C}=\vec{M}_{O}+\vec{r}_{C O} \times \vec{F}_{\mathrm{R}}</script></li>
+<li>任意力系对某点的简化力与力偶之点积为不变量<script type="math/tex; mode=display">
+\vec{M}^{C} \cdot \vec{F}_{C}=\vec{M}^{O} \cdot \vec{F}_{O}</script></li>
+<li>任意一力系对不同点的主矩与其主矢的点积为不变量<script type="math/tex; mode=display">
+\vec{M}_{C} \cdot \vec{F}_{\mathrm{R}}=\vec{M}_{O} \cdot \vec{F}_{\mathrm{R}}</script></li>
+</ul>
+<h3 id="力系简化的几种结果"><a href="#力系简化的几种结果" class="headerlink" title="力系简化的几种结果"></a>力系简化的几种结果</h3><p>力系对点 $O$ 简化，$\left(\vec{F}_{1},\vec{F}_{2},\cdots,\vec{F}_{n}\right)=\left(\vec{F}_{O},\vec{M}^{O}\right)$，有如下几种可能：</p>
+<ul>
+<li>$\vec{F}_{O}=\vec{0},\vec{M}^{O}=\vec{0}$<br>该力系的特征量为：$\vec{F}_{\mathrm{R}}=\vec{0}$，$\vec{M}_{O}=\vec{0}$。该力系对其他任意点 $C$ 的主矩均为零矢量，即 $\vec{M}_{C}=\vec{0}$。因此，向其他中心简化，简化力与力偶矩也均为零矢量。这个简化结果<strong>与简化中心无关</strong>。这种简化结果称为<strong>力系平衡</strong>。</li>
+<li>$\vec{F}_{O}=\vec{0},\vec{M}^{O} \neq \vec{0}$<br>该力系的特征量为：$\vec{F}_{\mathrm{R}}=\vec{0}$，$\vec{M}_{O} \neq \vec{0}$。该力系对其他任意点 $C$ 的主矩有 $\vec{M}_{C}=\vec{M}_{O} \neq \vec{0}$。由此可知，向其他中心 $C$ 简化，有 $\vec{F}_{C}=\vec{0}$，$\vec{M}^{C}=\vec{M}^{O}$。即该力系可简化为一个<strong>合力偶</strong>，且<strong>与简化中心无关</strong>。</li>
+<li>$\vec{F}_{O} \neq \vec{0},\vec{M}^{O}=\vec{0}$<br>该力系的特征量为 $\vec{F}_{\mathrm{R}} \neq \vec{0}$，$\vec{M}_{O}=\vec{0}$。当其他简化中心 $C$ 在 $\vec{F}_{O}$ 作用线外，该力系对其的主矩有 $\vec{M}_{C} \neq \vec{M}_{O}=   \vec{0}$。由此可知，该力系向其他中心 $C$ 简化，$\vec{F}_{C} \neq \vec{0}$，$\vec{M}^{C}$ 不一定 $=\vec{0}$。可见，该力系只有<strong>向部分的点简化</strong>才可能简化为一个<strong>合力</strong>。</li>
+<li>$\vec{F}_{O} \neq \vec{0},\vec{M}^{O} \neq \vec{0}$，且不变量 $\vec{M}^{O} \cdot \vec{F}_{O} \neq 0$<br>该力系的特征量为 $\vec{F}_{\mathrm{R}} \neq \vec{0}$，$\vec{M}_{O} \neq \vec{0}$，且 $\vec{M}_{O} \cdot \vec{F}_{\mathrm{R}} \neq 0$。此情况还能简化，可找到简化中心 $C$，使 $\vec{F}_{C},\vec{M}^{C}$ 平行。$C$ 点满足 $\vec{r}_{O C}=\vec{F}_{O} \times \vec{M}_{O} / F_{O}^{2}$，$\vec{M}_{C}=\vec{F}_{O}\left(\vec{M}_{O} \cdot \vec{F}_{O}\right) / F_{O}^{2}$。这种特殊的力系简化结果称为<strong>力螺旋</strong>。</li>
+<li>$\vec{F}_{O} \neq \vec{0},\vec{M}^{O} \neq \vec{0}$，且不变量 $\vec{M}^{O} \cdot \vec{F}_{O} = 0$<br>由力线平移的原理知，该力系最终可简化为作用于点 $C$ 的一个<strong>合力</strong>。$C$ 点满足 $\vec{r}_{O C}=\vec{F}_{O} \times \vec{M}_{O} / F_{O}^{2}$</li>
+</ul>
+<p>总结：</p>
+<script type="math/tex; mode=display">
+\begin{array}{|c|c|c|c|c|c|}
+\hline \text { 力系特征量 } & \text { 平衡 } & \text { 合力偶 } & \text { 合力 } & \text { 合力 } & \text { 力螺旋 } \\
+\hline F_{\mathrm{R}} & 0 & =0 & \neq 0 & \neq 0 & \neq 0 \\
+\hline M_{O} & 0 & \neq 0 & 0 & \neq 0 & \neq 0 \\
+\hline \text { 与简化中心关联否 } & \text { 无 } & \text { 无 } & \text { 有 } & \text { 有 } & \text { 有 } \\
+\hline \text { 条件 } & & & & \vec{M}_{O} \cdot \vec{F}_{\mathrm{R}}=0 & \vec{M}_{O} \cdot \vec{F}_{\mathrm{R}} \neq 0 \\
+\hline
+\end{array}</script><h3 id="平行力系的简化"><a href="#平行力系的简化" class="headerlink" title="平行力系的简化"></a>平行力系的简化</h3><p>该平行力系的主矢 $\vec{F}_{\mathrm{R}}$ 为</p>
+<script type="math/tex; mode=display">
+\vec{F}_{\mathrm{R}}=\left(\sum_{i=1}^{n} F_{i}\right) \vec{b}</script><p>对于点 $O$，该力系的主矩为</p>
+<script type="math/tex; mode=display">
+\vec{M}_{O}=\sum_{i=1}^{n} \vec{r}_{i} \times \vec{F}_{i}=\left(\sum_{i=1}^{n} F_{i} \vec{r}_{i}\right) \times \vec{b}</script><p>将该平行力系向点 $O$ 简化。</p>
+<ul>
+<li>当 $F_{\mathrm{R}}=0$，该平行力系或平衡，或可简化为力偶，该力偶与简化中心无关，力偶矩矢量等于主矩 $\vec{M}_{g}$。</li>
+<li>一般情况下，令 $\left(\vec{F}_{1},\vec{F}_{2},\cdots,\vec{F}_{n}\right)=\left(\vec{F}_{O},\vec{M}^{O}\right)$，有 $\vec{M}^{O} \cdot \vec{F}_{O}=0$，即 $\vec{M}^{O} \perp \vec{F}_{O}$，可简化为一合力。该合力的简化中心 $C$ 称为<strong>平行力系的中心</strong>。$C$ 的位置<script type="math/tex; mode=display">
+\vec{r}_{C}=\frac{1}{F_{\mathrm{R}}}\left(\sum_{i=1}^{n} F_{i} \vec{r}_{i}\right)</script></li>
+</ul>
+<h3 id="重心"><a href="#重心" class="headerlink" title="重心"></a>重心</h3><p>考虑由 $n$ 个质点构成的质点系，各质点的质量分别为 $m_{i}(i=1,2,\cdots,n)$。如果将地球的半径视为无穷大，令重力加速度矢量为 $\vec{g}$。各质点所受的重力为 $\vec{F}_{i}=m_{i} \vec{g}$，故作用于质点上的重力是典型的平行力系，它的中心称为<strong>重心</strong>（<strong>质心</strong>），记为 $C$。作用于重心的合力</p>
+<script type="math/tex; mode=display">
+\vec{F}_{C}=\sum_{i=1}^{n} m_{i} \vec{g}=m \vec{g}</script><p>其中 $m=\sum_{i=1}^{n} m_{i}$ 为质点系的总质量。将质点系重心与各质点的矢径分别记为 $\vec{r}_{C}$ 与 $\vec{r}_{i}$</p>
+<script type="math/tex; mode=display">
+\vec{r}_{C}=\frac{1}{m}\sum_{i=1}^{n} m_{i} \vec{r}_{i}</script><p>重心矢径的坐标阵为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{r}_{C}=\frac{1}{m}\sum_{i=1}^{n} m_{i} \boldsymbol{r}_{i}</script><h3 id="平面力系的简化"><a href="#平面力系的简化" class="headerlink" title="平面力系的简化"></a>平面力系的简化</h3><p>通过以上分析，可得到如下结论：任意平面力系可简化为一个平行该平面的法矢量的力偶 $\vec{M}^{O}$ 与一个作用点在简化中心 $O$ 的平面力 $\vec{F}_{O}$，该力偶矩矢量的模等于力系对过点 $O$ 的法矢量轴的矩之代数和，该力矢量等于力系的主矢 $\vec{F}_{\mathrm{R}}$。</p>
+<h3 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h3><h4 id="相关定义"><a href="#相关定义" class="headerlink" title="相关定义"></a>相关定义</h4><ul>
+<li>现把空间中位置不受限制的研究对象称为<strong>自由物体</strong>（简称为自由体）</li>
+<li>反之在空间中位置受到限制的研究对象称为<strong>非自由物体</strong>（简称为非自由体）</li>
+<li>将那些对非自由体运动的限制称为<strong>约束</strong></li>
+<li>一个自由体运动形式的可能性有无穷多，但是实际表现的真实运动取决于其所受的力，这些力称为<strong>主动力</strong></li>
+<li>一个非自由体可能的运动形式是有限的，将约束对非自由体的作用力称为<strong>约束力</strong>或<strong>约束反力</strong>。</li>
+<li>将只对非自由体运动形式可能性加以限制的约束称为<strong>理想约束</strong>。相应的约束力称为<strong>理想约束力</strong>。</li>
+<li>除此以外的相互作用力称为<strong>非理想约束力</strong>（例如摩擦）。</li>
+<li>一般情况下约束的约束力包括理想约束力与非理想约束力两部分。</li>
+</ul>
+<h3 id="常见理想约束"><a href="#常见理想约束" class="headerlink" title="常见理想约束"></a>常见理想约束</h3><h4 id="柔索约束"><a href="#柔索约束" class="headerlink" title="柔索约束"></a>柔索约束</h4><p>细长的系绳、链条、传动胶带等均属柔索。由于柔索只能受拉力的作用，柔索的作用是限制物体有伸长它的趋势。可得到如下结论：柔索的约束力（记为 $\vec{F}_{T}$）作用于物体的接触点，沿柔索而背离物体的方向。由于柔索的细长性，故约束力 $\vec{F}_{T}$ 可认为是一集中力。<br>由于系绳不能受压，故柔索无法限制物体向它缩短的方向运动。称这种只限制物体单侧运动的约束为<strong>单面约束</strong>。</p>
+<h4 id="支撑面约束"><a href="#支撑面约束" class="headerlink" title="支撑面约束"></a>支撑面约束</h4><p>一个光滑的支承面限制物体的运动方向均沿它们的公法线，约束力的指向为被限制运动趋势的反向。不难看出，支承面约束为单面约束。</p>
+<h4 id="平面圆柱铰约束"><a href="#平面圆柱铰约束" class="headerlink" title="平面圆柱铰约束"></a>平面圆柱铰约束</h4><p>平面圆柱铰约束力的作用线必通过轴心，可以用作用于该点，且设定正向的两个<strong>相互垂直</strong>的分力描述。</p>
+<h4 id="平面滑移约束"><a href="#平面滑移约束" class="headerlink" title="平面滑移约束"></a>平面滑移约束</h4><p>滑块的约束力可用作用在此质点上的一个垂直于滑移方向的力来描述。</p>
+<h4 id="齿轮副和齿轮-齿条约束"><a href="#齿轮副和齿轮-齿条约束" class="headerlink" title="齿轮副和齿轮-齿条约束"></a>齿轮副和齿轮-齿条约束</h4><p>一对齿轮的啮合称为齿轮副，当一齿轮的半径为无穷大时成为齿轮-齿条的啮合。两齿表面曲线接触点的公法线 $n-n$ 与节圆的公切线的夹角 $\theta$ 称为啮合角。同样可以用约束力的两个相互垂直的分量来替代待定的约束力，$\tan \theta=\left|\frac{\vec{F}_{y}}{\vec{F}_{x}}\right|$</p>
+<h4 id="球铰约束"><a href="#球铰约束" class="headerlink" title="球铰约束"></a>球铰约束</h4><p>支座对球部件的约束力通过球心，可用<strong>三个相互垂直的分量</strong>替代待定的该约束力</p>
+<h4 id="固定端约束"><a href="#固定端约束" class="headerlink" title="固定端约束"></a>固定端约束</h4><ul>
+<li>非自由体受到的约束力为空间力系，向某点简化可由一个空间力与一个空间力偶等效。该简化力与力偶的大小与方向是末知的。可用设定正向的力的三个分量和力偶矩矢量的三个分量来描述。</li>
+<li>对于平面问题，即固定端约束限制非自由体在平面内移动与转动。约束力是一平面力系，向某点简化，可得到一个平面力 $\vec{F}_{A}$ 与垂直于运动平面的力偶 $M_{1}$。可用设定<strong>正向的两个力的分量</strong>和<strong>力偶矩矢量的一个分量</strong>来描述。</li>
+</ul>
+<h4 id="二力杆"><a href="#二力杆" class="headerlink" title="二力杆"></a>二力杆</h4><p>如果不计杆件的质量，杆件上除了两边的<strong>球铰</strong>或<strong>平面圆柱铰</strong>外没有其他力的作用，称这种构件为二力杆。（只有两端<strong>点</strong>受力就是二力杆）</p>
+<ul>
+<li>如果二力杆处于平衡状态，不管杆件为直杆还是曲杆，两力必大小相等、方向相反，且共线。</li>
+<li>如果杆件为直杆，将其切断。切断面必存在力 $\vec{F}_{A B}$ 与 $\vec{F}_{A B}^{\prime}$，成为二力杆的内力，它们大小相等、方向相反。根据切断部分平衡的条件，内力 $\vec{F}_{A B}$ 与 $\vec{F}_{A B}^{\prime}$ 分别和约束力 $\vec{F}_{A}$ 与 $\vec{F}_{B}$ 构成平衡力系，即<script type="math/tex; mode=display">
+\vec{F}_{A}=\vec{F}_{A B},\ \vec{F}_{B}=\vec{F}_{A B}^{\prime}</script></li>
+</ul>
+<h3 id="力系的平衡"><a href="#力系的平衡" class="headerlink" title="力系的平衡"></a>力系的平衡</h3><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+\text { 各种力系独立的平衡方程 }\\
+\begin{array}{c|c|c|c|c}
+\hline & \text { 一般力系 } & \text { 汇交力系 } & \text { 力偶系 } & \text { 平行力系 } \\
+\hline \text { 空间力系 } & 6 & 3 & 3 & 3 \\
+\hline \text { 平面力系 } & 3 & 2 & 1 & 2 \\
+\hline
+\end{array}
+\end{array}</script><h4 id="空间一般力系"><a href="#空间一般力系" class="headerlink" title="空间一般力系"></a>空间一般力系</h4><p>空间一般力系的平衡方程：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\sum_{i=1}^{n} \vec{F}_{i x}=0, \quad \sum_{i=1}^{n} \vec{F}_{i y}=0, \quad \sum_{i=1}^{n} \vec{F}_{i z}=0 \\
+\sum_{i=1}^{n} M_{\theta_{x}}\left(\vec{F}_{i}\right)=0, \quad \sum_{i=1}^{n} M_{\theta_{y}}\left(\vec{F}_{i}\right)=0, \quad \sum_{i=1}^{n} M_{\theta_{z}}\left(\vec{F}_{i}\right)=0
+\end{array}</script><p>事实上，$6$ 个独立的平衡方程可以都取力矩式，每个力矩式可对应不同的点与不同的坐标方向。这种平衡方程称为<strong>六矩式平衡方程</strong>。当然也可取 $5$ 或 $4$ 或 $3$ 个独立的力矩式与 $1$ 或 $2$ 或 $3$ 个力平衡方程一起作为系统的平衡方程。后者的平衡方程称为<strong>五或四或三矩式平衡方程</strong>。具体如何选，应以每个方程的未知量尽可能少为原则，使求解未知量的工作尽可能简洁。</p>
+<h4 id="平面一般力系"><a href="#平面一般力系" class="headerlink" title="平面一般力系"></a>平面一般力系</h4><p>平面一般力系的平衡方程为 3 个</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{n} F_{i x}=0, \quad \sum_{i=1}^{n} F_{i y}=0, \quad \sum_{i=1}^{n} M_{O_{z}}\left(\vec{F}_{i}\right)=0</script><p>事实上，$3$ 个独立的平衡方程可以都取力矩式，每个力矩可对不同的点取。这种平衡方程称为<strong>三矩式平衡方程</strong>。也可取 $2$ 或 $1$ 个独立的力矩式与 $1$ 或 $2$ 个力平衡方程一起作为系统的平衡方程。后者的平衡方程称为<strong>两或一矩式平衡方程</strong>。具体如何选，应以每个方程的未知量尽可能少为原则，使求解未知量的工作尽可能简洁。</p>
+<h4 id="静定与静不定问题"><a href="#静定与静不定问题" class="headerlink" title="静定与静不定问题"></a>静定与静不定问题</h4><p>对于一个平衡力系，通常部分力（偶）是未知的。利用平衡方程，由已知力（偶）求未知力（偶）是静力学的典型问题。如果未知力（偶）的个数等于独立的平衡方程个数，那么由上述的方程组可解得这些未知量。这类静力学问题称为<strong>静定问题</strong>。如果未知力（偶）的个数大于独立的平衡方程个数，那么由上述的方程组无法全部得到这些未知量。这类静力学问题称为<strong>静不定问题</strong>（超静定问题）。需增加其他附加条件才能解决，如变形条件等，这已超出理论力学的范畴。</p>
+<h4 id="静定问题解决思路"><a href="#静定问题解决思路" class="headerlink" title="静定问题解决思路"></a>静定问题解决思路</h4><ol>
+<li>选取刚体作为研究对象</li>
+<li>建立参考基</li>
+<li>分析系统的约束，确定未知数个数</li>
+<li>分析系统的类型，确定平衡方程个数</li>
+<li>列方程</li>
+<li>解方程</li>
+</ol>
+<h4 id="刚体系的平衡"><a href="#刚体系的平衡" class="headerlink" title="刚体系的平衡"></a>刚体系的平衡</h4><p>刚体系是由刚体组成的系统。当系统在主动力与约束力的共同作用下处于平衡状态时，有可能出现未知约束力的个数大于平衡方程个数的情况，即出现所谓”静不定”问题。然而，对于某些刚体系，如果合理地将其<strong>分解为若干个分系统</strong>，对于这些分系统的静平衡问题可能为静定。那么整个系统的“静不定”问题将迎刃而解。</p>
+<p>在分解分系统时不要忘记子系统间的约束力</p>
+<h3 id="摩擦与摩擦力"><a href="#摩擦与摩擦力" class="headerlink" title="摩擦与摩擦力"></a>摩擦与摩擦力</h3><h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><ul>
+<li>通常两个相互接触物体的接触面并非绝对光滑，当它们有相对运动趋势或在相对运动的过程中，已经知道接触面间的理想约束力沿两接触面的公法线，而在接触面的公切面上存在阻碍两物体相对运动的力，这种力称为<strong>摩擦力</strong>。</li>
+<li>摩擦力的物理本质很复杂。它与两物体的材料、表面的情况与相对运动性态有关。</li>
+<li>发生在两物体相对滑动和有此种趋势的摩擦力称为<strong>滑动摩擦力</strong></li>
+<li>发生在两物体相对滚动和有此种趋势的摩擦力称为<strong>滚动摩擦力</strong></li>
+</ul>
+<h4 id="干摩擦"><a href="#干摩擦" class="headerlink" title="干摩擦"></a>干摩擦</h4><p>当有一水平力 $\vec{F}$ 作用于物体时，物体有运动的趋势。如果该力比较小，物体并不运动。根据牛顿定律，作用于物体上的摩擦力 $\vec{F}_{\mathrm{f}}$ 与 $\vec{F}$ 大小相等，方向相反。这种作用于静止物体上的摩擦力，称为<strong>静滑动摩擦力</strong>，简称<strong>静摩擦力</strong>。当力 $F$ 增加时，静摩擦力 $F_{\mathrm{f}}$ 也等值增加。当力 $F$ 达到一定的数值时，物体开始滑动。这个现象说明，静摩擦力有一个极限值，称为<strong>极限静摩擦力</strong>，简称<strong>极限摩擦力</strong>，记为 $F_{\mathrm{m}}$。由此可得到结论：维持物体平衡的实际静摩擦力只能在零与 $F_{\mathrm{m}}$ 之间，即</p>
+<script type="math/tex; mode=display">
+0 \leqslant F_{\mathrm{f}} \leqslant F_{\mathrm{m}}</script><p>库仑通过大量实验，总结得到如下库仑摩擦定律：在其他条件相同的情况下，极限摩擦力的大小 $F_{\mathrm{m}}$ 与接触物体间的理想约束力 $F_{\mathrm{N}}$ 成正比。即</p>
+<script type="math/tex; mode=display">
+F_{\mathrm{m}}=f_{\mathrm{s}}F_{\mathrm{N}}</script><p>应该指出上式为一近似公式，其中比例常数 $f_{\mathrm{s}}$ 称为<strong>静摩擦因数</strong>。它取决于接触物体的材料，接触面的物理状态，如光滑程度、温度与湿度等。</p>
+<h4 id="滑动摩擦（干摩擦）"><a href="#滑动摩擦（干摩擦）" class="headerlink" title="滑动摩擦（干摩擦）"></a>滑动摩擦（干摩擦）</h4><p>作用于正在滑动物体上的摩擦力 $\vec{F}_{\mathrm{f}}$，称为<strong>动滑动摩擦力</strong>，简称<strong>动摩擦力</strong>。它的大小是末知的。通过实验可得到近似公式，即</p>
+<script type="math/tex; mode=display">
+F_{\mathrm{f}}=f F_{\mathrm{N}}</script><p>其中比例常数 $f$ 称为<strong>动摩擦因数</strong>。实验证明其略小于 $f_{\mathrm{s}}$。它不仅取决于接触物体的材料与接触面的物理状态，而且与物体相对运动速度有关（通常在工程中不考虑这个因素）。</p>
+<h4 id="黏性摩擦力"><a href="#黏性摩擦力" class="headerlink" title="黏性摩擦力"></a>黏性摩擦力</h4><p>工程中另一种滑动摩擦力是发生在有润滑的滑动摩擦现象中。由于润滑剂的作用，通常它们的极限摩擦力很小，动摩擦力与物体相对运动速度成正比，方向与相对运动速度向反，即</p>
+<script type="math/tex; mode=display">
+\vec{F}=-\vec{cv}</script><p>这种摩擦力称为<strong>黏性摩擦力</strong>，其中比例常数 $c$ 称为<strong>黏性摩擦系数</strong>。</p>
+<h4 id="摩擦角"><a href="#摩擦角" class="headerlink" title="摩擦角"></a>摩擦角</h4><p>对于干摩擦，摩擦力 $\vec{F}_{\mathrm{f}}$ 与理想约束力 $\vec{F}_{\mathrm{N}}$ 的合力 $\vec{F}_{1}$ 为接触面的非理想约束力。当摩擦力为极限静摩擦力时，合力 $\vec{F}_{1}$ 的极限位置与接触面法线的夹角称为<strong>摩擦角</strong>，记为 $\varphi_{m}$，有</p>
+<script type="math/tex; mode=display">
+\tan \varphi_{\mathrm{m}}=\frac{F_{\mathrm{m}}}{F_{\mathrm{N}}}=f_{\mathrm{s}}</script><p>可见，摩擦角的正切等于静摩擦因数。</p>
+<p>主动力的合力 $\vec{F}_{2}$ 不管其大小如何，只要其落在摩擦角 $\varphi_{\mathrm{m}}$ 的范围内，那么物体不可能运动。这种现象称为<strong>摩擦自锁</strong>。如果接触面各方向的静摩擦因数均相等，与法线成 $\varphi_{\mathrm{m}}$ 的直线绕法线构成的圆雉称为<strong>摩擦锥</strong>。主动力只要落在此锥内，不管其大小如何，物体保持静止状态。</p>
+<h4 id="滚动摩擦"><a href="#滚动摩擦" class="headerlink" title="滚动摩擦"></a>滚动摩擦</h4><p><img src="https://s2.loli.net/2022/10/23/4um7tRVIeFoCsdp.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>在重力 $\vec{G}$ 和推力 $\vec{F}$ 的作用下，圆柱与水平面间局部变形将产生一种阻碍圆柱运动的平面力系。将这些阻力向点 $A$ 进行简化，可到一力 $\vec{F}_{A}$ 与力偶 $\vec{M}_{\mathrm{f}}$。前者又可分解为垂直于平面的法向力 $\vec{F}_{\mathrm{N}}$ 与平行于平面的切向力 $\vec{F}_{\mathrm{f}}$。显然 $\vec{F}_{\mathrm{N}}$ 为理想约束力，力 $\vec{F}_{\mathrm{f}}$ 具有滑动摩擦力的性质。力偶 $\vec{M}_{\mathrm{f}}$ 为滚动摩擦所特有，称该力偶矩为<strong>滚动阻力偶矩</strong>。</p>
+<p>当 $F$ 增大时，摩擦力 $F_{\mathrm{f}}$ 与滚动阻力偶矩 $M_{\mathrm{f}}$ 均相应增加。当摩擦力 $F_{\mathrm{f}}$ 达到极限值 $F_{\mathrm{m}}$ 时，圆柱将开始滑动。或者会出现这样的情况：当 $F$ 增加，滚动阻力偶矩 $M_{\mathrm{f}}$ 达到极限值 $M_{\mathrm{m}}$ 时，圆柱将开始滚动。通过实验测试，滚动阻力偶矩的极限值 $M_{\mathrm{m}}$ 与约束力 $F_{\mathrm{N}}$ 成正比，即有</p>
+<script type="math/tex; mode=display">
+M_{\mathrm{m}}=\delta F_{\mathrm{N}}</script><p>其中 $\delta$ 称为<strong>滚阻系数</strong>。很多情况是滑动摩擦因数较大，圆柱在滚动前不会发生滑动，即在 $M_{\mathrm{f}}$ 达到极限值 $M_{\mathrm{m}}$ 时，还没有达到极限值 $F_{\mathrm{m}}$。这种只滚不滑的滚动称为<strong>纯滚动</strong>。</p>
+<p>当 $F$ 再增大时，出现物体又滚又滑的情况。</p>
+<p>在圆柱将要滚动的临界状态下，如果将上述的阻力向点 $B$ 简化，使得</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{n} M_{B_{z}}\left(\vec{F}_{i}\right)=0,\ \delta F_{\mathrm{N}}=F_{r}</script><p>这样上述的阻力被简化为作用于点 $B$ 的一个合力。由此可见，<strong>滚阻系数的物理意义</strong>是摩擦力简化为一个合力时的简化中心 $B$ 到 $A$ 的距离。</p>
+<h4 id="含摩擦力的系统平衡类问题解题思路"><a href="#含摩擦力的系统平衡类问题解题思路" class="headerlink" title="含摩擦力的系统平衡类问题解题思路"></a>含摩擦力的系统平衡类问题解题思路</h4><ol>
+<li>假设系统平衡</li>
+<li>列方程</li>
+<li>观察补充条件（二力杆等）</li>
+<li>解方程</li>
+<li>判断摩擦力是否超过最大值</li>
+</ol>
+<h2 id="第三章-刚体平面运动学"><a href="#第三章-刚体平面运动学" class="headerlink" title="第三章 刚体平面运动学"></a>第三章 刚体平面运动学</h2><h3 id="平面刚体"><a href="#平面刚体" class="headerlink" title="平面刚体"></a>平面刚体</h3><p>令固定的参考平面为 $S_{0}$，沿该平面的垂直方向，将刚体向该平面投影，得到一个外形一定的该刚体的投影面（阴影区）。刚体在作平面运动时，该投影面形状不变，且此“刚性”投影面在参考平面 $S_{0}$ 上作相应的运动。刚体上任意一条与参考平面 $S_{0}$ 垂直的直线与该投影面均有一交点 $Q$。显然，在刚体作平面运动的过程中，刚体在此直线上的所有点的运动与该交点 $Q$ 的运动一致。因此在研究刚体平面运动时，可以将刚体的刚性投影面作为研究对象，而且只需在参考平面为 $S_{0}$ 的二维空间 $(\vec{x}-\vec{y})$ 中进行分析。为了叙述简洁，以后将作平面运动刚体的刚性投影面就简称为<strong>平面刚体</strong>。</p>
+<h3 id="刚体的连体基"><a href="#刚体的连体基" class="headerlink" title="刚体的连体基"></a>刚体的连体基</h3><p>以刚体上一点 $C$ 为基点构造一个正交基与该刚体固结，称此基为该刚体的<strong>连体基</strong>，记为 $\vec{\boldsymbol{e}}^{\mathrm{b}}=\left(\vec{x}^{\mathrm{b}},\vec{y}^{\mathrm{b}},\vec{z}^{\mathrm{b}}\right)^{\mathrm{T}}$。</p>
+<p>考察一刚体位置与姿态的参考物或为“绝对”空间，或为与其邻接的其他刚体。在数学上也可用固结于“绝对”空间坐标系或邻接刚体的连体基来表示，这个参考基记为 $\vec{\boldsymbol{e}}^{r}=\left(\vec{x}^{\mathrm{r}},\vec{y}^{\mathrm{r}},\vec{z}^{\mathrm{r}}\right)^{\mathrm{T}}$，基点为 $O$。</p>
+<p>刚体在参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 上的位置与姿态称为刚体相对于参考基 $\vec{\boldsymbol{e}}^{r}$ 的<strong>位形</strong>。从几何上可知，如果刚体的位形已知，那么刚体上任意点的位置是完全确定的。由于刚体位形与该刚体连体基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 的位形一致，因此只要实现对刚体连体基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 位形的描述，即达到了对该刚体位形描述的目的。<br>连体基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 的位形有两个要素，即基点 $C$ 在参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的位置与 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 相对参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的姿态。前者可利用 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 基点 $O$ 指向 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 的基点 $C$ 的矢径 $\vec{\boldsymbol{r}}_{C}$ 来描述，后者用基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 相对于基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的方向余弦阵 $\boldsymbol{A}^{\mathrm{rb}}$</p>
+<h3 id="平面刚体的连体基"><a href="#平面刚体的连体基" class="headerlink" title="平面刚体的连体基"></a>平面刚体的连体基</h3><p>根据刚体平面运动的特点，在建立刚体连体基和参考基时，只需用二维基来描述，分别记为 $\vec{\boldsymbol{e}}^{\mathrm{b}}=\left(\vec{x}^{\mathrm{b}},\vec{y}^{\mathrm{b}}\right)^{\mathrm{T}}$ 与 $\vec{\boldsymbol{e}}^{\mathrm{r}}=\left(\vec{x}^{\mathrm{r}},\vec{y}^{\mathrm{r}}\right)^{\mathrm{T}}$。<br>基点 $C$ 关于 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 基点 $O$ 的矢径 $\vec{r}_{C}$ 在参考基 $\vec{e}^{r}$ 坐标阵为 $r_{C}=\left(x_{C},y_{C}\right)^{\mathrm{T}}$，$x_{C}$ 与 $y_{C}$ 为基点 $C$ 在参考基 $\vec{e}^{\mathrm{r}}$ 上的坐标。定义连体基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 的基矢量 $\vec{x}^{\mathrm{b}}$ 与参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的基矢量 $\vec{x}^{\mathrm{r}}$ 的夹角为 $\varphi$，且以基矢量 $\vec{x}^{\mathrm{b}}$ 逆时针方向旋转为正。这样连体基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 相对于参考基 $\vec{\boldsymbol{e}}$ 的方向余弦阵为</p>
+<script type="math/tex; mode=display">
+A^{\mathrm{rb}}=\left(\begin{array}{cc}
+\cos \varphi & -\sin \varphi \\
+\sin \varphi & \cos \varphi
+\end{array}\right)</script><p>可见，夹角 $\varphi$ 确定了连体基相对于参考基的姿态，故称此角为连体基的<strong>姿态角</strong>。这样连体基的基点坐标与姿态角等三个标量完全能描述连体基（即刚体）的位形。</p>
+<p><strong>平面平动参考基</strong> $\vec{\boldsymbol{e}}^{\mathrm{S}}$，基点 $C$ 与刚体固结，$\vec{x}^{\mathrm{S}},\vec{y}^{\mathrm{S}}$ 分别平行于 $\vec{x}^{\mathrm{r}},\vec{y}^{\mathrm{r}}$</p>
+<p>定义列阵</p>
+<script type="math/tex; mode=display">
+\boldsymbol{q}=\left(
+\boldsymbol{r}_{C}^{\mathrm{T}},\varphi
+\right)^{\mathrm{T}}
+=\left(
+x_{C},y_{C},\varphi
+\right)^{\mathrm{T}}</script><p>为刚体的<strong>位形坐标阵</strong>，或简称刚体的坐标阵。</p>
+<ul>
+<li>刚体位形与该刚体连体基的位形一致，刚体上连体基的选取是任意的</li>
+<li>不同的连体基描述同一个刚体的位形坐标的表达式不同，但相互有一定的关系</li>
+<li>合理设定连体基可得到比较简洁的位形坐标的时间历程表达式</li>
+</ul>
+<h3 id="两连体基之间的关系"><a href="#两连体基之间的关系" class="headerlink" title="两连体基之间的关系"></a>两连体基之间的关系</h3><p>两连体基基点矢径间的关系</p>
+<script type="math/tex; mode=display">
+\boldsymbol{r}_{2}=\boldsymbol{r}_{1}+\boldsymbol{A}^{1} \boldsymbol{\rho}^{1}</script><script type="math/tex; mode=display">
+\left(\begin{array}{l}
+x_{2} \\
+y_{2}
+\end{array}\right)=\left(\begin{array}{l}
+x_{1} \\
+y_{1}
+\end{array}\right)+\left(\begin{array}{cc}
+\cos \varphi_{1} & -\sin \varphi_{1} \\
+\sin \varphi_{1} & \cos \varphi_{1}
+\end{array}\right)\left(\begin{array}{l}
+x_{C_{2}}^{\prime} \\
+y_{C_{2}}^{\prime}
+\end{array}\right)</script><p>两连体基姿态角的关系</p>
+<script type="math/tex; mode=display">
+\varphi_{2}=\varphi_{1}+\theta（常数）</script><h3 id="刚体的运动分类"><a href="#刚体的运动分类" class="headerlink" title="刚体的运动分类"></a>刚体的运动分类</h3><h4 id="平移运动"><a href="#平移运动" class="headerlink" title="平移运动"></a>平移运动</h4><p>考虑刚体在运动过程中，姿态保持不变的情况，即姿态角始终为常数。$\varphi(t)=\varphi_{0}=$ 常数。</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\boldsymbol{q}\left(t_{1}\right)=\left(\begin{array}{ll}\boldsymbol{r}_{C}^{\mathrm{T}}\left(t_{1}\right) & \varphi\left(t_{1}\right)\end{array}\right)^{\mathrm{T}}=\left(\begin{array}{lll}x_{1} & y_{1} & \varphi_{0}\end{array}\right)^{\mathrm{T}} \\
+\boldsymbol{q}\left(t_{2}\right)=\left(\begin{array}{ll}\boldsymbol{r}_{C}^{\mathrm{T}}\left(t_{2}\right) & \varphi\left(t_{2}\right)\end{array}\right)^{\mathrm{T}}=\left(\begin{array}{lll}x_{2} & y_{2} & \varphi_{0}\end{array}\right)^{\mathrm{T}} 
+\end{array}</script><p>称这类运动为刚体的<strong>平移运动</strong>，简称为<strong>平移</strong>。由上图不难得到如下结论：刚体作平移运动时，不同瞬时刚体连体基或固结在刚体上的任意直线均保持平行。<br>对于基点作直线运动的刚体平移运动称为<strong>直线平移运动</strong>，此外称为刚体作<strong>曲线平移运动</strong></p>
+<ul>
+<li>平移运动<strong>不一定</strong>是平面运动，平面运动<strong>不一定</strong>是平移运动</li>
+</ul>
+<h4 id="定轴转动"><a href="#定轴转动" class="headerlink" title="定轴转动"></a>定轴转动</h4><p>刚体在运动过程中，刚体上某点在参考基上的位置始终保持不变。如果取该点为连体基的基点，则基点的矢径为常矢径，$\vec{r}_{c}(t)=\vec{r}_{0}$，其在参考基的坐标阵为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{r}_{C}(t)=\boldsymbol{r}_{0}= 常数</script><script type="math/tex; mode=display">
+\begin{array}{c}
+\boldsymbol{q}\left(t_{1}\right)=\left(\begin{array}{lll}
+\boldsymbol{r}_{C}^{\mathrm{T}}\left(t_{1}\right) & \varphi\left(t_{1}\right)
+\end{array}\right)^{\mathrm{T}}=\left(\begin{array}{lll}
+x_{0} & y_{0} & \varphi_{1}
+\end{array}\right)^{\mathrm{T}} \\
+\boldsymbol{q}\left(t_{2}\right)=\left(\begin{array}{lll}
+\boldsymbol{r}_{C}^{\mathrm{T}}\left(t_{2}\right) & \varphi\left(t_{2}\right)
+\end{array}\right)^{\mathrm{T}}=\left(\begin{array}{lll}
+x_{0} & y_{0} & \varphi_{2}
+\end{array}\right)^{\mathrm{T}}
+\end{array}</script><p>可见，每个瞬时刚体绕过基点 $C$ 且垂直运动平面的轴作定轴转动，简称为刚体绕基点 $C$ 的<strong>定轴转动</strong>。</p>
+<ul>
+<li>定轴转动<strong>一定</strong>是平面运动</li>
+</ul>
+<h4 id="平面一般运动"><a href="#平面一般运动" class="headerlink" title="平面一般运动"></a>平面一般运动</h4><p>根据这个原理，刚体运动的前后两个位形为刚体先随基点由Ⅰ平移到Ⅱ，再绕过基点的定轴转动到Ⅲ。或刚体在Ⅰ先绕过基点的定轴转动到Ⅱ，再随基点由Ⅱ平移到Ⅲ。因此有如下结论：对于刚体平面运动的两个位形，可以通过刚体随基点的平移与刚体绕过基点的定轴转动来实现。将此结论称为<strong>刚体平面运动的分解</strong>。</p>
+<h3 id="刚体的角速度与角加速度"><a href="#刚体的角速度与角加速度" class="headerlink" title="刚体的角速度与角加速度"></a>刚体的角速度与角加速度</h3><p>如果在时间 $t$ 到 $t+\Delta t$，刚体的姿态角由 $\varphi$ 到 $\varphi+\Delta \varphi$，那么刚体在时间 $t$ 到 $t+\Delta t$ 间姿态角改变的平均速率为 $\Delta \varphi / \Delta t$。当 $\Delta t$ 趋于无限小时，上述平均速率的极限称为刚体在瞬时 $t$ 绕点 $C$ 定轴转动的<strong>角速度</strong>，记为 $\omega$，有</p>
+<script type="math/tex; mode=display">
+\omega=\lim_{\Delta t \rightarrow 0} \frac{\Delta \varphi}{\Delta t}</script><p>即刚体定轴转动的角速度为刚体姿态角对时间的导数，有</p>
+<script type="math/tex; mode=display">
+\omega=\frac{\mathrm{d} \varphi}{\mathrm{d} t}=\dot{\varphi}</script><p>定义角速度对时间的导数为刚体绕点 $C$ 定轴转动的<strong>角加速度</strong>，记为 $\alpha$，即</p>
+<script type="math/tex; mode=display">
+\alpha=\dot{\omega}=\ddot{\varphi}</script><p>已知刚体运动平面法向的单位矢量</p>
+<script type="math/tex; mode=display">
+\vec{z}=\vec{x}^{\mathrm{b}} \times \vec{y}^{\mathrm{b}}=\vec{x}^{\mathrm{s}} \times \vec{y}^{\mathrm{s}}</script><p>连体基的基矢量 $\vec{x}^{\mathrm{l}}$ 逆时针旋转的姿态角为正，即刚体的定轴转动绕矢量 $\vec{z}$ 的正向为正。为此定义刚体绕点 $C$ 的定轴转动的角速度矢量为</p>
+<script type="math/tex; mode=display">
+\vec{\omega}=\omega \vec{z}=\dot{\varphi} \vec{z}</script><p>绕点 $C$ 定轴转动的角加速度矢量为</p>
+<script type="math/tex; mode=display">
+\vec{\alpha}=\alpha \vec{z}=\ddot{\varphi} \vec{z}</script><p>考虑刚体的两个不同连体基，有</p>
+<script type="math/tex; mode=display">
+\omega=\frac{\mathrm{d} \varphi_{1}}{\mathrm{d} t}=\frac{\mathrm{d} \varphi_{2}}{\mathrm{d} t},\quad \alpha=\frac{\mathrm{d}^{2} \varphi_{1}}{\mathrm{d} t^{2}}=\frac{\mathrm{d}^{2} \varphi_{2}}{\mathrm{d} t^{2}}</script><p>由此可得如下结论：<strong>刚体的角速度矢量和角加速度矢量与连体基基点的选取无关</strong>。根据这个结论，对于刚体绕某基点转动角速度矢量与角加速度矢量统称为<strong>刚体的角速度矢量与角加速度矢量</strong>。</p>
+<h3 id="连体基姿态的变化"><a href="#连体基姿态的变化" class="headerlink" title="连体基姿态的变化"></a>连体基姿态的变化</h3><p>连体基的基矢量 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 在参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 上对时间的导数，等于该基相对于参考基的角速度矢量与其的叉积。</p>
+<script type="math/tex; mode=display">
+\frac{ {}^{\mathrm{r}}\mathrm{d}}{\mathrm{d} t}\left(\begin{array}{l}
+\vec{x}^{\mathrm{b}} \\
+\vec{y}^{\mathrm{b}}
+\end{array}\right)=\vec{\omega}^{\mathrm{rb}} \times\left(\begin{array}{l}
+\vec{x}^{\mathrm{b}} \\
+\vec{y}^{\mathrm{b}}
+\end{array}\right)</script><p>或写成矩阵简式</p>
+<script type="math/tex; mode=display">
+\frac{ {}^{\mathrm{r}}\mathrm{d}}{\mathrm{d} t} \vec{\boldsymbol{e}}^{\mathrm{b}}=\vec{\omega}^{\mathrm{rb}} \times \vec{\boldsymbol{e}}^{\mathrm{b}}</script><h3 id="矢量在不同基上对时间的导数"><a href="#矢量在不同基上对时间的导数" class="headerlink" title="矢量在不同基上对时间的导数"></a>矢量在不同基上对时间的导数</h3><p>任意矢量在基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 对时间的导数，等于它在 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 上对时间的导数加上基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 相对于基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的角速度矢量 $\vec{\omega}^{\mathrm{rb}}$ 与该矢量的叉积。</p>
+<script type="math/tex; mode=display">
+\frac{ { }^{\mathrm{r}} \mathrm{d}}{\mathrm{d} t} \vec{\boldsymbol{b}}=\frac{ { }^{\mathrm{b}} \mathrm{d}}{\mathrm{d} t} \vec{\boldsymbol{b}}+\vec{\omega}^{\mathrm{rb}} \times \vec{\boldsymbol{b}}</script><p>如果记 $\frac{ { }^{\mathrm{r}} \mathrm{d}}{\mathrm{d} t}(\cdot) \stackrel{\mathrm{def}}{=}\mathring{\cdot}$，$\frac{ { }^{\mathrm{b}}\mathrm{d}}{\mathrm{d} t}(\cdot) \stackrel{\mathrm{def}}{=}\dot{\cdot}$，上式可改写为</p>
+<script type="math/tex; mode=display">
+\dot{\vec{b}}=\mathring{\vec{b}}+\vec{\omega}^{\mathrm{rb}} \times \vec{b}</script><p>特殊情况，当矢量 $\vec{b}$ 与刚体（或连体基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$）固结时，则上式的第一项为零，有</p>
+<script type="math/tex; mode=display">
+\dot{\vec{b}}=\vec{\omega}^{\mathrm{rb}} \times \vec{b}</script><h3 id="角速度矢量在不同基上对时间的导数"><a href="#角速度矢量在不同基上对时间的导数" class="headerlink" title="角速度矢量在不同基上对时间的导数"></a>角速度矢量在不同基上对时间的导数</h3><p>由此可得到结论：连体基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 相对于参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的角速度矢量 $\vec{\omega}$ 在基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 与基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 对时间的导数相等。</p>
+<script type="math/tex; mode=display">
+\frac{ { }^{\mathrm{r}}\mathrm{d}}{\mathrm{d} t} \vec{\omega}=\frac{ { }^{\mathrm{b}} \mathrm{d}}{\mathrm{d} t} \vec{\omega}+\vec{\omega} \times \vec{\omega}=\frac{ { }^{\mathrm{b}} \mathrm{d}}{\mathrm{d} t} \vec{\omega}</script><h3 id="矢量在不同基上对时间的二阶导数"><a href="#矢量在不同基上对时间的二阶导数" class="headerlink" title="矢量在不同基上对时间的二阶导数"></a>矢量在不同基上对时间的二阶导数</h3><p>任意矢量在两个基下二阶导数间的关系：</p>
+<script type="math/tex; mode=display">
+\frac{ { }^{\mathrm{r}}\mathrm{d}^{2}}{\mathrm{d} t^{2}} \vec{b}=
+\frac{ { }^{\mathrm{r}}\mathrm{d}}{\mathrm{d} t}\left(\frac{ { }^{\mathrm{b}}\mathrm{d}}{\mathrm{d} t}\vec{b} +\vec{\omega} \times \vec{b}
+\right)=
+\frac{ { }^{\mathrm{r}}\mathrm{d}}{\mathrm{d} t}\left(\frac{ { }^{\mathrm{b}}\mathrm{d}}{\mathrm{d} t}\vec{b}\right)+
+\left(\frac{ { }^{\mathrm{r}}\mathrm{d}}{\mathrm{d} t}\vec{\omega}\right)
+\times \vec{b}+\vec{\omega} \times \frac{ { }^{\mathrm{r}} \mathrm{d}}{\mathrm{d} t} \vec{b}</script><p>用简写的符号：</p>
+<script type="math/tex; mode=display">
+\ddot{\vec{b}}=\mathring{\mathring{\vec{b}}}+\vec{\alpha} \times \vec{b}+\vec{\omega} \times(\vec{\omega} \times \vec{b})+2 \vec{\omega} \times \mathring{\vec{b}}</script><p>特殊情况，当矢量 $\vec{b}$ 与刚体（或连体基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$）固结，上式变为</p>
+<script type="math/tex; mode=display">
+\ddot{\vec{b}}=\vec{\alpha} \times \vec{b}+\vec{\omega} \times(\vec{\omega} \times \vec{b})</script><h3 id="角速度矢量的叠加原理"><a href="#角速度矢量的叠加原理" class="headerlink" title="角速度矢量的叠加原理"></a>角速度矢量的叠加原理</h3><p>基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 相对于基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的角速度矢量等于该基相对于基 $\vec{\boldsymbol{e}}^{\mathrm{u}}$ 与基 $\vec{\boldsymbol{e}}^{\mathrm{u}}$ 相对于基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 两个角速度矢量的和。该公式可推广到有限个基相对角速度矢量的叠加。</p>
+<script type="math/tex; mode=display">
+\vec{\omega}^{\mathrm{rb}}=\vec{\omega}^{\mathrm{ru}}+\vec{\omega}^{\mathrm{ub}}</script><p>对于平面运动，有</p>
+<script type="math/tex; mode=display">
+\omega^{\mathrm{rb}}=\omega^{\mathrm{ru}}+\omega^{\mathrm{ub}}</script><p>角加速度的矢量叠加公式：</p>
+<script type="math/tex; mode=display">
+\vec{\alpha}^{\mathrm{rb}}=\vec{\alpha}^{\mathrm{ru}}+\vec{\alpha}^{\mathrm{ub}}</script><p>对于平面运动，有</p>
+<script type="math/tex; mode=display">
+\alpha^{\mathrm{rb}}=\alpha^{\mathrm{ru}}+\alpha^{\mathrm{ub}}</script><h3 id="刚体绕平行轴转动的合成"><a href="#刚体绕平行轴转动的合成" class="headerlink" title="刚体绕平行轴转动的合成"></a>刚体绕平行轴转动的合成</h3><p>考察绕平行轴转动刚体的姿态变化时，定义：</p>
+<ul>
+<li>相对于地球不动的参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 称为<strong>定基</strong></li>
+<li>相对定基运动的基作平面运动的基 $\vec{\boldsymbol{e}}^{\mathrm{u}}$ 称为<strong>动基</strong></li>
+<li>绕平行轴转动刚体的<strong>连体基</strong>为 $\vec{\boldsymbol{e}}^{\mathrm{b}}$</li>
+<li>（在<strong>定基</strong>上考察<strong>刚体</strong>运动）$\vec{\boldsymbol{e}}^{\mathrm{b}}$ 相对于 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的角速度和角加速度 $\vec{\omega}^{\mathrm{a}}=\omega^{\mathrm{a}} \vec{z}$ 与 $\vec{\alpha}^{\mathrm{a}}=\alpha^{\mathrm{a}} \vec{z}$ 分别称为刚体的<strong>绝对角速度</strong>与<strong>绝对角加速度</strong>（上标 $\mathrm{a}$ 表示“绝对”）</li>
+<li>（在<strong>动基</strong>上考察<strong>刚体</strong>运动）$\vec{\boldsymbol{e}}^{\mathrm{b}}$ 相对于 $\vec{\boldsymbol{e}}^{\mathrm{u}}$ 的角速度和角加速度 $\vec{\omega}^{\mathrm{r}}=\omega^{\mathrm{r}} \vec{z}$ 与 $\vec{\alpha}^{\mathrm{r}}=\alpha^{\mathrm{r}} \vec{z}$ 分别称为刚体的<strong>相对角速度</strong>与<strong>相对角加速度</strong>（上标 $\mathrm{r}$ 表示“相对”）</li>
+<li>（在<strong>定基</strong>上考察<strong>动基</strong>运动）$\vec{\boldsymbol{e}}^{\mathrm{u}}$ 相对于 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的角速度和角加速度 $\vec{\omega}^{\mathrm{ru}}=\omega^{\mathrm{ru}} \vec{z}$ 与 $\vec{\alpha}^{\mathrm{ru}}=\alpha^{\mathrm{ru}} \vec{z}$ 分别称为动基的<strong>绝对角速度</strong>与<strong>绝对角加速度</strong>。<br>换一种方法，如果在<strong>另一个平行宇宙</strong>刚体与动基固接，在<strong>定基</strong>上考察<strong>刚体</strong>运动（此时的运动称为<strong>牵连运动</strong>），角速度和角加速度 $\vec{\omega}^{\mathrm{e}}=\omega^{\mathrm{e}} \vec{z}$ 与 $\vec{\alpha}^{\mathrm{e}}=\alpha^{\mathrm{e}} \vec{z}$ 分别称为刚体的<strong>牵连角速度</strong>与<strong>牵连角加速度</strong>（上标 $\mathrm{e}$ 表示“牵连”）。显然有 $\vec{\omega}^{\mathrm{ru}}=\vec{\omega}^{\mathrm{e}}$、$\vec{\alpha}^{\mathrm{ru}}=\vec{\alpha}^{\mathrm{e}}$</li>
+<li>★<strong>刚体绕平行轴转动合成定理</strong>：对于作绕平行轴转动的刚体，刚体的绝对角速度等于该刚体相对于动基的相对角速度与牵连角速度之和，绝对角加速度等于该刚体相对于动基的相对角加速度与牵连角加速度之和。<script type="math/tex; mode=display">
+\begin{array}{c}
+\vec{\omega}^{\mathrm{a}}=\vec{\omega}^{\mathrm{r}}+\vec{\omega}^{\mathrm{e}}
+\\
+\vec{\alpha}^{\mathrm{a}}=\vec{\alpha}^{\mathrm{r}}+\vec{\alpha}^{\mathrm{e}}
+\end{array}</script></li>
+</ul>
+<p><img src="/img/drawio/三个基的关系.drawio.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="基点的位置、速度与加速度"><a href="#基点的位置、速度与加速度" class="headerlink" title="基点的位置、速度与加速度"></a>基点的位置、速度与加速度</h3><h4 id="直角坐标系"><a href="#直角坐标系" class="headerlink" title="直角坐标系"></a>直角坐标系</h4><ul>
+<li>连体基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 的基点在参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的位置可用 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的基点 $O$ 指向 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 的基点 $C$ 的矢径 $\vec{r}_{C}$ 来表示。通常取矢径 $\vec{r}_{C}$ 在 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 上的坐标为<strong>基点的位置</strong>坐标阵 $\boldsymbol{r}_{C}$，即<script type="math/tex; mode=display">
+\boldsymbol{r}_{C}=\left(\begin{array}{ll}
+x_{C} & y_{C}
+\end{array}\right)^{\mathrm{T}}</script></li>
+<li>当刚体在参考平面 $\left(x^{\mathrm{r}}-y^{\mathrm{r}}\right)$ 上作平面运动时，基点 $C$ 在该平面上画出一条平面<strong>有向曲线</strong>，即矢径 $\vec{r}_{C}$ 的矢端轨迹，称该曲线为基点 $C$ 的<strong>绝对轨迹</strong>。</li>
+<li>基点 $C$ 在基 $\vec{e}^{r}$ 上的<strong>速度矢量</strong>记为 $\vec{v}_{C}$，它是矢径 $\vec{r}_{C}$ 在 $\vec{\boldsymbol{e}}^{r}$ 上对时间的导数，即<script type="math/tex; mode=display">
+\vec{v}_{C} \stackrel{\mathrm{def}}{=} \frac{ { }^{\mathrm{r}} \mathrm{d}}{\mathrm{d} t} \vec{r}_{C}=\dot{\vec{r}}_{C}</script></li>
+<li>基点 $C$ 在基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 上的加速度矢量记为 $\vec{a}_{C}$，它是速度矢量 $\vec{v}_{C}$ 在 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 上对时间的一阶导数。它也为矢径 $\vec{r}_{C}$ 在 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 上对时间的二阶导数，有<script type="math/tex; mode=display">
+\vec{a}_{C} \stackrel{\mathrm{def}}{=} \frac{ {}^{\mathrm{r}}\mathrm{d}}{\mathrm{d} t} \vec{v}_{C}=\dot{\vec{v}}_{C}=\ddot{\vec{r}}_{C}</script></li>
+</ul>
+<h4 id="极坐标系"><a href="#极坐标系" class="headerlink" title="极坐标系"></a>极坐标系</h4><p><img src="https://s2.loli.net/2022/11/06/R1sMlyQoqw4BIcd.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>如图所示，定义平面极坐标基 $\vec{\boldsymbol{e}}^{\mathrm{P}}=\left(\begin{array}{ll}\vec{e}_{\rho} &amp; \vec{e}_{\tau}\end{array}\right)^{\mathrm{T}}$，其中基矢量 $\vec{e}_{\rho}$ 为矢径 $\vec{\rho}_{C}$ 的单位矢量，基矢量 $\vec{e}_{\tau}$ 为右旋垂直于 $\vec{e}_{\rho}$ 的单位矢量。显然，角 $\theta$ 为基 $\vec{\boldsymbol{e}}^{\mathrm{P}}$ 相对于基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的姿态角，基 $\vec{\boldsymbol{e}}^{\mathrm{P}}$ 的方向余弦阵为</p>
+<script type="math/tex; mode=display">
+A^{\mathrm{rP}}=\left(\begin{array}{cc}
+\cos \theta & -\sin \theta \\
+\sin \theta & \cos \theta
+\end{array}\right)</script><p>基 $\vec{\boldsymbol{e}}^{\mathrm{P}}$ 的角速度矢量为 $\vec{\omega}^{\mathrm{P}}=\dot{\theta} \vec{z}$<br>基点矢径 $\vec{\rho}_{C}$ 在基 $\vec{\boldsymbol{e}}^{\mathrm{P}}$ 的坐标阵为 $\boldsymbol{\rho}_{C}^{\mathrm{P}}=\left(\begin{array}{ll}\rho_{C} &amp; 0\end{array}\right)^{\mathrm{T}}$，而 $\vec{\rho}_{C}=\rho_{C} \vec{e}_{\rho}$</p>
+<p>基点 $C$ 的绝对速度为</p>
+<script type="math/tex; mode=display">
+\vec{v}_{C}=\frac{ {}^{\mathrm{r}} \mathrm{d}}{\mathrm{d} t} \vec{r}_{C}=\frac{ {}^{\mathrm{r}} \mathrm{d}}{\mathrm{d} t} \vec{rho}_{C}=\frac{ {}^{\mathrm{p}} \mathrm{d}}{\mathrm{d} t} \vec{\rho}_{C}+\vec{\omega}^{\mathrm{p}} \times \vec{\rho}_{C}</script><p>其中，</p>
+<script type="math/tex; mode=display">
+\frac{ { }^{\mathrm{p}} \mathrm{d}}{\mathrm{d} t} \vec{\rho}_{C}=\dot{\rho}_{C} \vec{e}_{\rho}, \quad\vec{\omega}^{\mathrm{p}} \times \vec{\rho}_{C}=\dot{\theta} \vec{z} \times \vec{\rho}_{C}=\dot{\theta} \rho_{C} \vec{e}_{\tau}</script><p>可得</p>
+<script type="math/tex; mode=display">
+\vec{v}_{C}=\dot{\rho}_{C} \vec{e}_{\rho}+\dot{\theta} \rho_{c} \vec{e}_{\tau}</script><p>令 $\vec{v}_{C}$ 在基 $\vec{\boldsymbol{e}}^{\mathrm{p}}$ 的坐标阵为 $\boldsymbol{v}_{C}^{\mathrm{P}}=\left(\begin{array}{ll}v_{C{\rho}} &amp; v_{C{\tau}}\end{array}\right)^{\mathrm{T}}$，其中称 $v_{C{\rho}}$ 为点 $C$ 的<strong>径向速度</strong>，$v_{C{\tau}}$ 为点 $C$ 的<strong>切向速度</strong>。对照上式有</p>
+<script type="math/tex; mode=display">
+v_{C{\rho}}=\dot{\rho}_{C},\quad v_{C{\tau}}=\dot{\theta} \rho_{C}</script><p>基点 $C$ 的绝对加速度为</p>
+<script type="math/tex; mode=display">
+\vec{a}_{C}=\left(\ddot{\rho}_{C}-\dot{\theta}^{2} \rho_{C}\right) \vec{e}_{\rho}+\left(\ddot{\theta} \rho_{C}+2 \dot{\theta} \dot{\rho}_{C}\right) \vec{e}_{\tau}</script><p>令 $\vec{a}_{C}$ 在基 $\vec{\boldsymbol{e}}^{\mathrm{p}}$ 的坐标阵为 $\boldsymbol{a}_{C}^{\mathrm{p}}=\left(\begin{array}{ll}a_{C {\rho}} &amp; a_{C \tau}\end{array}\right)^{\mathrm{T}}$，其中称 $a_{C{\rho}}$ 为点 $C$ 的<strong>径向加速度</strong>，$a_{C{\tau}}$ 为点 $C$ 的<strong>切向加速度</strong>。对照上式有</p>
+<script type="math/tex; mode=display">
+a_{C \rho}=\ddot{\rho}_{C}-\dot{\theta}^{2} \rho_{C},\quad a_{C \tau}=\ddot{\theta} \rho_{C}+2 \dot{\theta} \dot{\rho}_{C}</script><h4 id="两基坐标阵之间的关系"><a href="#两基坐标阵之间的关系" class="headerlink" title="两基坐标阵之间的关系"></a>两基坐标阵之间的关系</h4><script type="math/tex; mode=display">
+\boldsymbol{r}_{C}=\boldsymbol{A}^{\mathrm{rp}} \boldsymbol{\rho}_{C}^{\mathrm{p}}, \quad \boldsymbol{v}_{C}=\boldsymbol{A}^{\mathrm{rP}} \boldsymbol{v}_{C}^{\mathrm{p}}, \quad \boldsymbol{a}_{C}=\boldsymbol{A}^{\mathrm{rP}} \boldsymbol{a}_{C}^{\mathrm{p}}</script><script type="math/tex; mode=display">
+\boldsymbol{\rho}_{C}^{\mathrm{P}}=\left(\boldsymbol{A}^{\mathrm{rP}}\right)^{\mathrm{T}} \boldsymbol{r}_{C}, \quad \boldsymbol{v}_{C}^{\mathrm{p}}=\left(\boldsymbol{A}^{\mathrm{rP}}\right)^{\mathrm{T}} \boldsymbol{v}, \quad \boldsymbol{a}_{C}^{\mathrm{p}}=\left(\boldsymbol{A}^{\mathrm{rP}}\right)^{\mathrm{T}} \boldsymbol{a}</script><h4 id="位形速度阵"><a href="#位形速度阵" class="headerlink" title="位形速度阵"></a>位形速度阵</h4><p>定义列阵</p>
+<script type="math/tex; mode=display">
+\dot{\boldsymbol{q}}=\left(
+\boldsymbol{v}_{C}^{\mathrm{T}},\omega
+\right)^{\mathrm{T}}
+=\left(
+v_{Cx},v_{Cy},\omega
+\right)^{\mathrm{T}}</script><p>为刚体的<strong>位形速度阵</strong></p>
+<h3 id="刚体上给定点的位置"><a href="#刚体上给定点的位置" class="headerlink" title="刚体上给定点的位置"></a>刚体上给定点的位置</h3><p>点 $P$ 为固结于刚体的任意点，简称为该刚体的给定点。$\vec{\rho}_{P}$ 为基点 $C$ 指向 $P$ 的矢径。$\vec{r}_{P}$ 为基点 $O$ 指向点 $P$ 的矢径，该矢径的矢端轨迹为点 $P$ 的<strong>绝对轨迹</strong>。给定点 $P$ 的两矢径间有如下关系</p>
+<script type="math/tex; mode=display">
+\vec{r}_{P}=\vec{r}_{C}+\vec{\rho}_{P}</script><p>该矢量表达式在参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的坐标式为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{r}_{P}=\boldsymbol{r}_{C}+\boldsymbol{\rho}_{P}</script><ul>
+<li>其中 $\boldsymbol{r}_{P}=\left(\begin{array}{lll}x_{P} &amp; y_{P}\end{array}\right)^{\mathrm{T}}$ 与 $\boldsymbol{r}_{C}=\left(\begin{array}{ll}x_{C} &amp; y_{C}\end{array}\right)^{\mathrm{T}}$ 分别为矢径 $\vec{r}_{P}$ 与 $\vec{r}_{C}$ 在参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的坐标阵，也是点 $P$ 与基点 $C$ 在该基的位置坐标。</li>
+<li>$\boldsymbol{\rho}_{P}$ 为矢径 $\vec{\rho}_{P}$ 在参考基 $\vec{\boldsymbol{e}}^\mathrm{r}$ 的坐标阵，令该矢径在连体基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 的坐标阵为 $\rho_{P}^{\prime}$。</li>
+<li>令 $\boldsymbol{\rho}_{P}^{\prime}=\left(x^{\prime}_{P} \quad y^{\prime}_{P}\right)^{\mathrm{T}}$，它是点 $P$ 在刚体上的位置坐标，是与时间无关的常值阵。</li>
+<li>矢径 $\vec{\rho}_{P}$ 的两坐标阵有如下的关系：<script type="math/tex; mode=display">
+\boldsymbol{\rho}_{P}=\boldsymbol{A}^{\mathrm{rb}} \boldsymbol{\rho}_{P}^{\prime}</script></li>
+<li>结论：当刚体上的点 $P$ 给定后，点 $P$ 在参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的位置仅与连体基的基点的位置与姿态角有关。</li>
+<li>给定点 $P$ 在参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 上坐标 $\left(x_{P},y_{P}\right)$ 与时间的关系，称为点 $P$ 的<strong>运动方程</strong>，即<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+x_{P}=x_{P}(t) \\
+y_{P}=y_{P}(t)
+\end{array}\right.</script></li>
+</ul>
+<h3 id="刚体上给定点的速度"><a href="#刚体上给定点的速度" class="headerlink" title="刚体上给定点的速度"></a>刚体上给定点的速度</h3><p>一刚体在参考平面 $\left(x^{r}-y^{r}\right)$ 上作平面运动。参考基 $\vec{\boldsymbol{e}}^{r}$ 的基点为 $O$。刚体连体基 $\vec{\boldsymbol{e}}^{b}$ 的基点为 $C$。刚体在运动时，连体基基点 $C$ 的矢径为 $\vec{r}_{C}$，速度矢量为 $\vec{v}_{C}$。连体基 $\vec{\boldsymbol{e}}^{b}$ 相对于参考基 $\vec{\boldsymbol{e}}^{r}$ 的角速度矢量为 $\vec{\omega}$ 它也是刚体的角速度矢量。对于给定点 $P$，$\vec{r}_{P}$ 为基点 $O$ 指向点 $P$ 的矢径。它在参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 上对时间的导数为该点的<strong>绝对速度</strong>，记为 $\vec{v}_{P}$，即</p>
+<script type="math/tex; mode=display">
+\vec{v}_{P} \stackrel{\mathrm{def}}{=} \frac{ {}^{\mathrm{r}}\mathrm{d}}{\mathrm{d}t} \vec{r}_{P}=\dot{\vec{r}}_{P}</script><p>易知</p>
+<script type="math/tex; mode=display">
+\vec{v}_{P}=\vec{v}_{C}+\vec{\omega} \times \vec{\rho}_{P}</script><ul>
+<li>结论：当刚体上的点 $P$ 给定后，对于刚体的当前位形，点 $P$ 的绝对速度仅与连体基基点的绝对速度和刚体的角速度有关。</li>
+</ul>
+<h4 id="刚体作平移运动"><a href="#刚体作平移运动" class="headerlink" title="刚体作平移运动"></a>刚体作平移运动</h4><p>刚体作平移时，刚体上任意点的绝对速度与基点的绝对速度一致。</p>
+<script type="math/tex; mode=display">
+\vec{v}_{P}=\vec{v}_{C}</script><h4 id="刚体绕点-C-作定轴转动"><a href="#刚体绕点-C-作定轴转动" class="headerlink" title="刚体绕点 C 作定轴转动"></a>刚体绕点 C 作定轴转动</h4><p>刚体绕基点作定轴转动时，刚体上任意点的绝对速度方向垂直矢径 $\vec{\rho}_{P}$，大小与该点的矢径之模成正比。</p>
+<script type="math/tex; mode=display">
+v_{P}=\omega \rho_{P}</script><h4 id="牵连速度"><a href="#牵连速度" class="headerlink" title="牵连速度"></a>牵连速度</h4><p>给定点 $P$ 的速度可以看成两个速度的矢量和。</p>
+<ul>
+<li>定义<strong>平移牵连速度</strong><script type="math/tex; mode=display">
+\vec{v}_{tP}^{\mathrm{e}}=\vec{v}_{C}</script></li>
+<li>定义<strong>转动牵连速度</strong><script type="math/tex; mode=display">
+\vec{v}_{\omega P}^{\mathrm{e}}=\omega \rho_{P}</script></li>
+<li>定义点 $P$ 的<strong>牵连速度</strong><script type="math/tex; mode=display">
+\vec{v}_{P}^{\mathrm{e}}=\vec{v}_{tP}^{\mathrm{e}}+\vec{v}_{\omega P}^{\mathrm{e}}</script>于是：固结在刚体上任意点的绝对速度等于因刚体的一般运动导致该点的牵连速度</li>
+</ul>
+<h4 id="刚体速度投影定理"><a href="#刚体速度投影定理" class="headerlink" title="刚体速度投影定理"></a>刚体速度投影定理</h4><p>（Todo）</p>
+<h3 id="刚体上给定点的加速度"><a href="#刚体上给定点的加速度" class="headerlink" title="刚体上给定点的加速度"></a>刚体上给定点的加速度</h3><p>一刚体在参考平面 $\left(x^{\mathrm{r}}-y^{\mathrm{r}}\right)$ 上作平面运动。参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的基点为 $O$。刚体连体基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 的基点为 $C$。刚体在运动时，连体基基点 $C$ 的矢径为 $\vec{r}_{C}$，基点 $C$ 的速度矢量为 $\vec{v}_{C}$，加速度矢量为 $\vec{a}_{C}$。连体基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 相对于参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的角速度矢量为 $\vec{\omega}$，角加速度矢量为 $\vec{\alpha}$。它们也是刚体的角速度矢量与角加速度矢量。对于给定点 $P$，$\vec{r}_{P}$ 为基点 $O$ 指向点 $P$ 的矢径，$\vec{\rho}_{P}$ 为基点 $C$ 指向点 $P$ 的矢径，$\vec{a}_{P}$ 为该点的绝对加速度，则点 $P$ 的加速度为</p>
+<script type="math/tex; mode=display">
+\vec{a}_{P}=\vec{a}_{C}+\vec{\alpha} \times \vec{\rho}_{P}+\vec{\omega} \times\left(\vec{\omega} \times \vec{\rho}_{P}\right)</script><ul>
+<li>若刚体平动，$\vec{a}_{P}=\vec{a}_{C}$</li>
+<li>若刚体绕基点作定轴转动，<script type="math/tex; mode=display">
+\begin{align}
+\vec{a}_{P}
+& = \vec{a}_{\alpha P} + \vec{a}_{\omega P} \\
+& = \alpha \vec{z} \times \vec{\rho}_{P}-\omega^{2} \vec{\rho}_{P}
+\end{align}</script>其中 $\vec{a}_{\alpha P}$ 称为点 $P$ 的切向加速度，$\vec{a}_{\omega P}$ 称为点 $P$ 的向心加速度。由于切向加速度与向心加速度相互垂直，易知点 $P$ 的绝对加速度的模为<script type="math/tex; mode=display">
+a_{P}=\sqrt{a_{\alpha P}^{2}+a_{\omega P}^{2}}=\rho_{P} \sqrt{\alpha^{2}+\omega^{4}}</script></li>
+</ul>
+<h4 id="牵连加速度"><a href="#牵连加速度" class="headerlink" title="牵连加速度"></a>牵连加速度</h4><ul>
+<li>定义<strong>平移牵连加速度</strong><script type="math/tex; mode=display">
+\vec{a}_{tP}^{\mathrm{e}}\stackrel{\text { def }}{=}\ddot{\vec{r}_C}=\vec{a}_C</script></li>
+<li>定义<strong>转动牵连切向加速度</strong><script type="math/tex; mode=display">
+\vec{a}_{\alpha P}^{\mathrm{e}}\stackrel{\text { def }}{=} \vec{\alpha} \times \vec{\rho}_{P}=\alpha \vec{z} \times \vec{\rho}_{P}</script></li>
+<li>定义<strong>转动牵连向心加速度</strong><script type="math/tex; mode=display">
+\vec{a}_{\omega P}^{e} \stackrel{\text { def }}{=} \vec{\omega} \times\left(\vec{\omega} \times \vec{\rho}_{P}\right)=-\omega^{2} \vec{\rho}_{P}</script></li>
+<li>定义点 $P$ 的<strong>牵连加速度</strong><script type="math/tex; mode=display">
+\vec{a}_{P}^{\mathrm{e}}\stackrel{\text { def }}{=} \vec{a}_{tP}^{\mathrm{e}}+\vec{a}_{\alpha P}^{\mathrm{e}}+\vec{a}_{\omega P}^{e}</script>于是，固结在刚体上任意点的绝对加速度等于因刚体的一般运动导致该点的牵连加速度</li>
+</ul>
+<h3 id="刚体的瞬时速度中心"><a href="#刚体的瞬时速度中心" class="headerlink" title="刚体的瞬时速度中心"></a>刚体的瞬时速度中心</h3><p>对于给定瞬时，通常在刚体<strong>或在其延伸部分</strong>存在一个特殊的给定点 $S$，该点的绝对速度为零，称该点为该瞬时刚体的瞬时速度中心，简称为<strong>瞬心</strong>。<br>易知瞬心 $S$ 矢径 $\vec{\rho}_{S}$ 与刚体基点 $C$ 的速度矢量及角速度矢量间的关系为</p>
+<script type="math/tex; mode=display">
+\vec{\rho}_{S}=\frac{\vec{\omega} \times \vec{v}_{C}}{\omega^{2}}</script><ul>
+<li>某瞬时刚体上各点的速度分布如同刚体绕瞬心作定轴转动的速度分布。故过瞬心垂直运动平面的转轴称为刚体的<strong>瞬时转动轴</strong>。</li>
+</ul>
+<h4 id="矢量几何方法确定瞬心"><a href="#矢量几何方法确定瞬心" class="headerlink" title="矢量几何方法确定瞬心"></a>矢量几何方法确定瞬心</h4><ul>
+<li>如果刚体上 $A$ 与 $B$ 两点的速度方向已知，但不平行，那么过 $A$ 与 $B$ 两点作垂直各自速度矢量的直线，它们的交点为该瞬时的瞬心</li>
+<li>如果刚体上 $A$ 与 $B$ 两点的速度大小已知，相互平行且垂直于 $A$，$B$ 两点的连线，则速度矢量端点的连线与 $A$，$B$ 连线的交点为该瞬时的瞬心</li>
+<li>如果刚体上 $A$ 与 $B$ 两点的速度大小相等（此时速度方向一定相同），或 $A$ 与 $B$ 两点的速度相互平行但与 $A$，$B$ 两点的连线不垂直（此时速度大小一定相同），那么无法得到交点，该瞬时的速度中心在无限远处，这时刚体作<strong>瞬时平移</strong></li>
+</ul>
+<h4 id="瞬心的定轨迹与动轨迹"><a href="#瞬心的定轨迹与动轨迹" class="headerlink" title="瞬心的定轨迹与动轨迹"></a>瞬心的定轨迹与动轨迹</h4><p>刚体在运动过程中，瞬心在刚体上的位置通常在不断地改变。不同瞬时<strong>刚体上</strong>瞬心的位置分别在 $S_{0},S_{1},\ldots,S$。这些在运动刚体上的不同瞬时瞬心点的轨迹称为<strong>瞬心动轨迹</strong>。</p>
+<p>令某瞬时点 $S^{\prime}$ 为参考平面上的一点，它与刚体上的瞬心 $S$ 重合。在刚体的运动过程中，不同瞬时在参考平面上的点分别为 $S_{0}^{\prime},S_{1}^{\prime},\ldots,S^{\prime}$。$S^{\prime}$ 在参考平面上的轨迹称为<strong>瞬心定轨迹</strong>，点 $S^{\prime}$ 称为瞬心定轨迹的<strong>定轨迹点</strong>。</p>
+<h3 id="相对刚体运动任意点的位置、速度与加速度"><a href="#相对刚体运动任意点的位置、速度与加速度" class="headerlink" title="相对刚体运动任意点的位置、速度与加速度"></a>相对刚体运动任意点的位置、速度与加速度</h3><p>在刚体的运动平面上，建立参考基 $O-\vec{\boldsymbol{e}}^{\mathrm{r}}$，刚体的连体基为 $C-\vec{\boldsymbol{e}}^{\mathrm{b}}$。考虑相对此刚体运动的一点 $P$。为了与固结在刚体上的给定点有所区别，简称其为<strong>动点</strong>。考察该点运动可以在参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 上进行，也可在作平面运动刚体的连体基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 上进行。将参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 简称为<strong>定基（系）</strong>，连体基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 简称为<strong>动基（系）</strong>。在定基上考察到的动点运动为该点的<strong>绝对运动</strong>，在动基上考察到的动点运动为该点相对于动基的<strong>相对运动</strong>。</p>
+<p>令动点 $P$ 相对基点 $O$ 的<strong>矢径</strong>为 $\vec{r}_{P}$。随着时间的变化，$\vec{r}_{P}$ 矢端的轨迹描述了动点 $P$ 的<strong>绝对运动</strong>。矢径 $\vec{r}_{P}$ 在定基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 上对时间的一阶与二阶导数为动点 $P$ 的<strong>绝对速度</strong>与<strong>绝对加速度</strong>，分别记为</p>
+<script type="math/tex; mode=display">
+\vec{v}_{P} \stackrel{\mathrm{def}}{=} \frac{ {}^{\mathrm{r}} \mathrm{d}\vec{r}_{P}}{\mathrm{d} t}=\dot{\vec{r}}_{p},\quad
+\vec{a}_{P} \stackrel{\mathrm{def}}{=} \frac{ {}^{\mathrm{r}} \mathrm{d}^{2} \vec{r}_{P}}{\mathrm{d} t^{2}}=\ddot{\vec{r}}_{P}</script><p>其中点 $P$ 的绝对速度 $\vec{v}_{P}$ 与 $\vec{r}_{P}$ 矢端的轨迹相切。<br>令动点 $P$ 相对动基基点 $C$ 的<strong>矢径</strong>为 $\vec{\rho}_{P}$。随着时间的变化，在动基上考察到的 $\vec{\rho}_{P}$ 矢端的轨迹描述了动点 $P$ 的相对于动基的<strong>相对运动</strong>。矢径 $\vec{\rho}_{P}$ 在动基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 上对时间的一阶与二阶导数为动点 $P$ 的<strong>相对速度</strong>与<strong>相对加速度</strong>，分别记为</p>
+<script type="math/tex; mode=display">
+\vec{v}_{P}^{\mathrm{r}} \stackrel{\mathrm{def}}{=} \frac{ { }^{\mathrm{b}} \mathrm{d} \vec{\rho}}{\mathrm{d} t}=\dot{\vec{\rho}}_{P},\quad
+\vec{a}_{P}^{\mathrm{r}} \stackrel{\mathrm{def}}{=} \frac{ { }^{\mathrm{b}} \mathrm{d}^{2} \vec{\rho}_{P}}{\mathrm{d} t^{2}}=\mathring{\mathring{\vec{\rho}}}_{P}</script><p>其中点 $P$ 的相对速度 $\vec{v}_{P}^{\mathrm{r}}$ 与 $\vec{\rho}_{P}$ 矢端的轨迹相切。</p>
+<h3 id="相对刚体运动任意点的位置"><a href="#相对刚体运动任意点的位置" class="headerlink" title="相对刚体运动任意点的位置"></a>相对刚体运动任意点的位置</h3><p>动点 $P$ 的两矢径间有如下关系</p>
+<script type="math/tex; mode=display">
+\vec{r}_{P}=\vec{r}_{C}+\vec{\rho}_{P}</script><p>该矢量表达式在参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的坐标式为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{r}_{P}=\boldsymbol{r}_{C}+\boldsymbol{\rho}_{P}</script><ul>
+<li>其中 $\boldsymbol{r}_{P}=\left(\begin{array}{lll}x_{P} &amp; y_{P}\end{array}\right)^{\mathrm{T}}$ 与 $\boldsymbol{r}_{C}=\left(\begin{array}{ll}x_{C} &amp; y_{C}\end{array}\right)^{\mathrm{T}}$ 分别为矢径 $\vec{r}_{P}$ 与 $\vec{r}_{C}$ 在参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的坐标阵，也是点 $P$ 与基点 $C$ 在该基的位置坐标。</li>
+<li>$\boldsymbol{\rho}_{P}$ 为矢径 $\vec{\rho}_{P}$ 在参考基 $\vec{\boldsymbol{e}}^\mathrm{r}$ 的坐标阵，令该矢径在连体基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 的坐标阵为 $\rho_{P}^{\prime}$。</li>
+<li>令 $\boldsymbol{\rho}_{P}^{\prime}=\left(x^{\prime}_{P} \quad y^{\prime}_{P}\right)^{\mathrm{T}}$，它是点 $P$ 在刚体上的位置坐标，<strong>两坐标是时变的</strong>。</li>
+<li>矢径 $\vec{\rho}_{P}$ 的两坐标阵有如下的关系：<script type="math/tex; mode=display">
+\boldsymbol{\rho}_{P}=\boldsymbol{A}^{\mathrm{rb}} \boldsymbol{\rho}_{P}^{\prime}</script>或者写成<script type="math/tex; mode=display">
+\left(\begin{array}{l}
+x_{P} \\
+y_{P}
+\end{array}\right)=\left(\begin{array}{l}
+x_{C} \\
+y_{C}
+\end{array}\right)+\left(\begin{array}{cc}
+\cos \varphi & -\sin \varphi \\
+\sin \varphi & \cos \varphi
+\end{array}\right)\left(\begin{array}{l}
+x_{P}^{\prime} \\
+y_{P}^{\prime}
+\end{array}\right)</script></li>
+<li>结论：点 $P$ 在参考基 $\vec{\boldsymbol{e}}^{\mathrm{r}}$ 的位置仅与连体基的基点的位置与姿态角有关。</li>
+</ul>
+<h3 id="相对刚体运动任意点的速度-1"><a href="#相对刚体运动任意点的速度-1" class="headerlink" title="相对刚体运动任意点的速度"></a>相对刚体运动任意点的速度</h3><p>如果在动基 $\vec{\boldsymbol{e}}^{\mathrm{b}}$ 上考察动点 $P$ 的相对运动，令此瞬时在动基上与点 $P$ 位置一致的点为 $P^{\prime}$。点 $P^{\prime}$ 为动基的给定点，它随动基作“牵连”运动，称给定点 $P^{\prime}$ 为动点 $P$ 的<strong>牵连点</strong>，该点的牵连速度为</p>
+<script type="math/tex; mode=display">
+\vec{v}_{P^{\prime}}^{\mathrm{e}}=\vec{v}_{t P^{\prime}}^{\mathrm{e}}+\vec{v}_{\omega P^{\prime}}^{\mathrm{e}}=\vec{v}_{C}+\vec{\omega} \times \vec{\rho}_{P^{\prime}}</script><p>考虑到 $\vec{\rho}_{P}=\vec{\rho}_{P^{\prime}}$，由此得到点 $P$ 的绝对速度</p>
+<script type="math/tex; mode=display">
+\vec{v}_{P}=\vec{v}_{P}^{\mathrm{r}}+\vec{v}_{\mathrm{t}P}^{\mathrm{e}}+\vec{v}_{\omega P}^{\mathrm{e}}=\vec{v}_{P}^{\mathrm{r}}+\vec{v}_{P}^{\mathrm{e}}</script><p>由上式可得到如下结论：动点 $P$ 的绝对速度等于该点相对动基的相对速度与它对应的牵连点随动基的牵连速度之矢量和。</p>
+<h3 id="相对刚体运动任意点的加速度-1"><a href="#相对刚体运动任意点的加速度-1" class="headerlink" title="相对刚体运动任意点的加速度"></a>相对刚体运动任意点的加速度</h3><p>定义</p>
+<script type="math/tex; mode=display">
+\vec{a}_{P}^{\mathrm{C}} \stackrel{\mathrm{def}}{=} 2 \vec{\omega} \times \vec{v}_{P}^{\mathrm{r}}=2 \omega \vec{z} \times \vec{v}_{P}^{\mathrm{r}}</script><p>为动点 $P$ 的<strong>科氏加速度</strong>，科氏加速度是动基的转动与动点相对运动相互耦合引起的加速度。科氏加速度在运动平面内且<strong>垂直于相对速度矢量</strong>。它的模为</p>
+<script type="math/tex; mode=display">
+a_{P}^{\mathrm{C}}=2 \omega v_{P}^{\mathrm{r}}</script><p>于是动点 $P$ 的加速度</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\vec{a}_{P}&=\vec{a}_{P}^{\mathrm{r}}+\vec{a}_{\mathrm{t} P}^{\mathrm{e}}+\vec{a}_{\alpha P}^{\mathrm{e}}+\vec{a}_{\omega P}^{\mathrm{e}}+\vec{a}_{P}^{\mathrm{C}}\\
+&=\vec{a}_{P}^{\mathrm{r}}+\vec{a}_{P}^{\mathrm{e}}+\vec{a}_{P}^{\mathrm{C}}
+\end{aligned}</script><p>由此可得到如下结论：动点的绝对加速度等于该点的相对动基的相对加速度；科氏加速度与它对应的牵连点的牵连加速度之矢量和。</p>
+<h3 id="刚体系运动学矢量瞬时分析方法"><a href="#刚体系运动学矢量瞬时分析方法" class="headerlink" title="刚体系运动学矢量瞬时分析方法"></a>刚体系运动学矢量瞬时分析方法</h3><p>（Todo）</p>
+<h2 id="第五章-刚体系运动学计算机辅助分析"><a href="#第五章-刚体系运动学计算机辅助分析" class="headerlink" title="第五章 刚体系运动学计算机辅助分析"></a>第五章 刚体系运动学计算机辅助分析</h2><h3 id="描述系统位形的坐标阵"><a href="#描述系统位形的坐标阵" class="headerlink" title="描述系统位形的坐标阵"></a>描述系统位形的坐标阵</h3><p>对于 $N$ 个刚体作平面运动的刚体系，首先在系统的运动平面上定义一公共参考基，记为 $\vec{e}=\left(\begin{array}{ll}\vec{x} &amp; \vec{y}\end{array}\right)^{\mathrm{T}}$，基点记为 $O$。在刚体 $B_{i}(i=1,\cdots,N)$ 上取某一点 $C_{i}$ 为基点建立一连体基 $\vec{e}^{i}=\left(\begin{array}{ll}\vec{x}^{i} &amp; \vec{y}^{i}\end{array}\right)^{\mathrm{T}}$。将该基点相对于公共参考基基点 $O$ 的矢径记为 $\vec{r}_{i}$，它在基 $\vec{\boldsymbol{e}}$ 的坐标阵为 $\boldsymbol{r}_{i}=\left(\begin{array}{ll}x_{i} &amp; y_{i}\end{array}\right)^{\mathrm{T}}$。连体基 $\boldsymbol{e}^{i}$ 的基矢量 $\vec{x}^{i}$ 与公共参考基 $\vec{\boldsymbol{e}}$ 的基矢量 $\vec{x}$ 正向的夹角为该刚体的姿态角 $\varphi_{i}$。坐标阵 $\boldsymbol{r}_{i}$ 与姿态角 $\varphi_{i}$ 确定了刚体 $B_{i}$ 的位形，它们构成 $B_{i}$ 的位形坐标列阵，记为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{q}_{\mathrm{i}}=\left(\begin{array}{ll}
+\boldsymbol{r}_{i}^{\mathrm{T}} & \boldsymbol{\varphi}_{i}
+\end{array}\right)^{\mathrm{T}}=\left(\begin{array}{lll}
+x_{i} & y_{i} & \varphi_{i}
+\end{array}\right)^{\mathrm{T}} \quad(i=1,\cdots,N)</script><p>组集这 $N$ 个列阵，构成了描述该刚体系位形的坐标列阵：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{q}=\left(\begin{array}{lll}
+\boldsymbol{q}_{1}^{\mathrm{T}} & \cdots & \boldsymbol{q}_{N}^{\mathrm{T}}
+\end{array}\right)^{\mathrm{T}}</script><p>这些坐标的特点是它们都相对同一个参考系，称 $\boldsymbol{q}$ 为刚体系的<strong>笛卡儿位形坐标阵</strong>。该坐标阵坐标个数为 $n=3 N$。</p>
+<h3 id="系统约束方程"><a href="#系统约束方程" class="headerlink" title="系统约束方程"></a>系统约束方程</h3><ul>
+<li>对于刚体系，刚体间存在约束，一个刚体的运动部分牵制了另一刚体的运动。将这种限制邻接刚体运动的约束称为<strong>铰</strong>。</li>
+<li>这种定义比工程中实际的铰具有更广泛的含义。邻接刚体由于有约束存在，描述它们的位形坐标间将不完全独立。在运动过程中，它们之间存在某些关系。</li>
+<li>这些关系的解析表达式构成<strong>位形约束方程</strong>，简称<strong>约束方程</strong>。</li>
+<li>描述该刚体系位形的独立数是不变的。这个不变数称为该系统的<strong>自由度数</strong>（简称<strong>自由度</strong>），记为 $\delta$。</li>
+<li>任意一个刚体系如果自由度为 $\delta$，则该系统只需 $\delta$ 个坐标即完全能描述该系统的位形。这 $\delta$ 个坐标称为该系统的<strong>独立坐标</strong>或<strong>广义坐标</strong>，它们构成该系统的<strong>独立坐标阵</strong>或<strong>广义坐标阵</strong>，记为 $\boldsymbol{w}$。其余的坐标构成的坐标阵称为<strong>非独立坐标阵</strong>，记为 $\boldsymbol{u}$。</li>
+<li>系统约束方程组一般可表达为<script type="math/tex; mode=display">
+\boldsymbol{\Phi} \stackrel{\mathrm{def}}{=} \boldsymbol{\Phi}(\boldsymbol{q})=\mathbf{0}</script>或显含时间 $t$<script type="math/tex; mode=display">
+\boldsymbol{\Phi} \stackrel{\mathrm{def}}{=} \boldsymbol{\Phi}(q,t)=\mathbf{0}</script>其中<script type="math/tex; mode=display">
+\boldsymbol{\Phi}=\left(\begin{array}{lll}
+\Phi_{1} & \cdots & \Phi_{s}
+\end{array}\right)^{\mathrm{r}}</script>$s$ 为约束方程的个数。这种只含坐标与时问的约束方程描述的约束称为<strong>完整约束</strong>。通常约束方程为系统位形坐标的非线性代数方程。</li>
+<li>有些约束的约束方程可能还与坐标的一阶导数有关，即<script type="math/tex; mode=display">
+\boldsymbol{\Phi}=\boldsymbol{\Phi}(\dot{\boldsymbol{q}},\boldsymbol{q},t)=\mathbf{0}</script>当这些约束方程不可积时，这种约束称为<strong>非完整约束</strong>。</li>
+<li>不显含时间的约束方程称为<strong>定常的</strong>，反之称为<strong>非定常的</strong>。有时约束方程为一不等式方程，这种约束称为<strong>单面约束</strong>，故通常以等式约束方程描述的约束为<strong>双面约束</strong>。工程中大多数运动副均为完整约束，如不特别指出，本书所提的约束均指这种约束。</li>
+<li>对于只含完整约束的刚体系，系统的自由度数等于系统的坐标数减去系统独立的约束方程的个数。如果上述的 $s$ 个完整约束的约束方程相互独立，系统的坐标数为 $n$，即有<script type="math/tex; mode=display">
+\delta=n-s</script>对于受完整约束的同一刚体系，系统自由度数与位形坐标的定义无关。</li>
+</ul>
+<h3 id="约束方程的建立方法"><a href="#约束方程的建立方法" class="headerlink" title="约束方程的建立方法"></a>约束方程的建立方法</h3><p>约束方程的建立通常有两种方法。一种是总体法，另一种为局部法。</p>
+<ul>
+<li>总体法是按刚体系总体的几何关系写出系统位形坐标的约束方程。<ul>
+<li>依赖技巧、方程少</li>
+</ul>
+</li>
+<li>局部法从每个铰所关联的刚体偶对局部出发，根据铰的性质建立邻接刚体的坐标间的约束方程。<ul>
+<li>程式化、方程多</li>
+</ul>
+</li>
+</ul>
+<h3 id="速度约束方程"><a href="#速度约束方程" class="headerlink" title="速度约束方程"></a>速度约束方程</h3><p>系统的速度约束方程</p>
+<script type="math/tex; mode=display">
+\dot{\boldsymbol{\Phi}} \stackrel{\mathrm{def}}{=} \boldsymbol{\Phi}_{q} \dot{\boldsymbol{q}}+\boldsymbol{\Phi}_{t}=\mathbf{0}</script><p>或改写为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{\Phi}_{q} \dot{\boldsymbol{q}}=-\boldsymbol{\Phi}_{t}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\boldsymbol{\Phi}_{t}=\left(\begin{array}{lll}
+\frac{\partial \Phi_{1}}{\partial t} & \cdots & \frac{\partial \Phi_{s}}{\partial t}
+\end{array}\right)^{\mathrm{T}} \in R^{s \times 1}</script><p>而</p>
+<script type="math/tex; mode=display">
+\boldsymbol{\Phi}_{q}=\left(\begin{array}{lll}
+\frac{\partial \Phi_{1}}{\partial q_{1}} & \cdots & \frac{\partial \Phi_{1}}{\partial q_{n}} \\
+\frac{\partial \Phi_{s}}{\partial q_{1}} & \cdots & \frac{\partial \Phi_{s}}{\partial q_{n}}
+\end{array}\right) \in R^{n \times s}</script><p>为约束方程的雅可比矩阵，或简称<strong>约束方程的雅可比</strong>。它与 $\boldsymbol{\Phi}_{t}$ 的元素均为系统坐标与时间的函数。位形坐标阵的导数 $\dot{\boldsymbol{q}}=\left(\begin{array}{lll}\dot{\boldsymbol{q}}_{1}^{\mathrm{T}} &amp; \cdots &amp; \dot{\boldsymbol{q}}_{N}^{\mathrm{T}}\end{array}\right)^{\mathrm{T}}$ 称为系统的<strong>位形速度阵</strong>（简称<strong>位形速度</strong>），其中</p>
+<script type="math/tex; mode=display">
+\dot{\boldsymbol{q}}_{i}=\left(\begin{array}{ll}
+\dot{\boldsymbol{r}}_{i}^{\mathrm{T}} & \dot{\varphi}_{i}
+\end{array}\right)^{\mathrm{T}}=\left(\begin{array}{ll}
+\boldsymbol{v}_{i}^{\mathrm{T}} & \omega_{i}
+\end{array}\right)^{\mathrm{T}} \quad(i=1,\cdots,N)</script><p>式中，坐标阵 $\boldsymbol{v}_{\mathrm{i}}$ 为刚体 $B_{i}$ 基点速度矢量的坐标阵，$\omega_{i}$ 为刚体的角速度。</p>
+<ul>
+<li>对于定常系统，雅可比矩阵不显含时间 $t$，有 $\boldsymbol{\Phi}_{t}=\mathbf{0}$，此时该代数方程组为齐次的。</li>
+</ul>
+<h3 id="加速度约束方程"><a href="#加速度约束方程" class="headerlink" title="加速度约束方程"></a>加速度约束方程</h3><script type="math/tex; mode=display">
+\ddot{\boldsymbol{\Phi}}\stackrel{\mathrm{def}}{=}\boldsymbol{\Phi}_\boldsymbol{q} \ddot{\boldsymbol{q}}-\boldsymbol{\gamma}=\mathbf{0}</script><p>或改写为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{\Phi}_{\boldsymbol{q}} \ddot{\boldsymbol{q}}=\gamma</script><p>考虑到 $\boldsymbol{\Phi}_{t \boldsymbol{q}}=\boldsymbol{\Phi}_{\boldsymbol{q} t}$ 有</p>
+<script type="math/tex; mode=display">
+\boldsymbol{\gamma} \stackrel{\mathrm{def}}{=}-\left(\boldsymbol{\Phi}_{\boldsymbol{q}} \dot{\boldsymbol{q}}\right)_{\boldsymbol{q}} \dot{\boldsymbol{q}}-2 \boldsymbol{\Phi}_{\boldsymbol{q} t} \dot{\boldsymbol{q}}-\boldsymbol{\Phi}_{u} \in R^{s \times 1}</script><p>其元素为系统坐标及其导数和时间的函数。位形坐标阵的二阶导数 $\ddot{\boldsymbol{q}}=\left(\ddot{\boldsymbol{q}}_{1}^{\mathrm{T}}\cdots \quad \ddot{\boldsymbol{q}}_{\mathrm{N}}^{\mathrm{T}}\right)^{\mathrm{T}}$ 称为系统的<strong>位形加速度阵</strong>（简称<strong>位形加速度</strong>），其中</p>
+<script type="math/tex; mode=display">
+\ddot{\boldsymbol{q}}_{i}=\left(\begin{array}{ll}
+\ddot{\boldsymbol{r}}_{i}^{\mathrm{T}} & \ddot{\varphi}_{i}
+\end{array}\right)^{\mathrm{T}}=\left(\begin{array}{ll}
+\boldsymbol{a}_{i}^{\mathrm{T}} & \alpha_{i}
+\end{array}\right)^{\mathrm{T}} \quad(i=1,\cdots,N)</script><p>式中，坐标阵 $\boldsymbol{a}_{i}$ 为刚体 $B_{i}$ 基点加速度矢量的坐标阵，$\alpha_{i}$ 为刚体的角加速度。故方程式称为系统的加速度约束方程，它们为系统位形加速度的线性代数方程组。</p>
+<h3 id="附加驱动约束方法"><a href="#附加驱动约束方法" class="headerlink" title="附加驱动约束方法"></a>附加驱动约束方法</h3><ul>
+<li>确定系统自由度</li>
+<li>写出系统位形坐标</li>
+<li>写出系统的主约束方程和驱动约束方程</li>
+<li>求约束方程的雅可比<script type="math/tex; mode=display">
+\boldsymbol{\Phi}_{q}=\left(\begin{array}{lll}
+\frac{\partial \Phi_{1}}{\partial q_{1}} & \cdots & \frac{\partial \Phi_{1}}{\partial q_{n}} \\
+\frac{\partial \Phi_{s}}{\partial q_{1}} & \cdots & \frac{\partial \Phi_{s}}{\partial q_{n}}
+\end{array}\right)</script></li>
+<li>写出速度约束方程的右项<script type="math/tex; mode=display">
+\boldsymbol{\Phi}_{t}=\left(\begin{array}{lll}
+\frac{\partial \Phi_{1}}{\partial t} & \cdots & \frac{\partial \Phi_{s}}{\partial t}
+\end{array}\right)^{\mathrm{T}}</script></li>
+<li>写出加速度约束方程的右项（定常约束）<script type="math/tex; mode=display">
+\boldsymbol{\gamma} =-\left(\boldsymbol{\Phi}_{\boldsymbol{q}} \dot{\boldsymbol{q}}\right)_{\boldsymbol{q}} \dot{\boldsymbol{q}}</script></li>
+<li>直接写出速度约束方程/加速度约束方程并求解</li>
+</ul>
+<h2 id="第六章-矢量动力学基础"><a href="#第六章-矢量动力学基础" class="headerlink" title="第六章 矢量动力学基础"></a>第六章 矢量动力学基础</h2><h3 id="转动惯量"><a href="#转动惯量" class="headerlink" title="转动惯量"></a>转动惯量</h3><p>在刚体上过点 $O$ 建立一连体基 $\vec{\boldsymbol{e}}$，质点 $P_{k}$ 相对于 $O$ 的矢径为 $\vec{\boldsymbol{r}}_{k}$，其在该基上的坐标阵为 $\boldsymbol{\boldsymbol{r}}_{k}=\left(\begin{array}{lll}x_{k} &amp; y_{k} &amp; z_{k}\end{array}\right)^{\mathrm{T}}$，定义</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+J_{Ox} \stackrel{\mathrm{def}}{=} \sum_{k} m_{k}\left(y_{k}^{2}+z_{k}^{2}\right)=\sum_{k} m_{k} \rho_{kx}^{2} \\
+J_{Oy} \stackrel{\mathrm{def}}{=} \sum_{k} m_{k}\left(z_{k}^{2}+x_{k}^{2}\right)=\sum_{k} m_{k} \rho_{ky}^{2} \\
+J_{Oz} \stackrel{\mathrm{def}}{=} \sum_{k} m_{k}\left(x_{k}^{2}+y_{k}^{2}\right)=\sum_{k} m_{k} \rho_{kz}^{2}
+\end{array}</script><p>其中 $\rho_{k x}$，$\rho_{k y}$ 与 $\rho_{k z}$ 分别为质点 $P_{k}$ 到 $O x$，$O y$ 与 $O z$ 轴的距离。称 $J_{Ox}$，$J_{Oy}$，与 $J_{Oz}$ 分别为刚体关于 $O x$，$O y$ 与 $O z$ 轴的<strong>转动惯量</strong>，单位为 $\mathrm{kg} \cdot \mathrm{m}^{2}$。</p>
+<ul>
+<li>转动惯量的另一种表达方法为<script type="math/tex; mode=display">
+J_{Ox} \stackrel{\mathrm{def}}{=} m \rho_{x}^{2},\quad J_{Oy} \stackrel{\mathrm{def}}{=} m \rho_{y}^{2},\quad J_{Oz} \stackrel{\mathrm{def}}{=} m \rho_{z}^{2}</script><ul>
+<li>其中，$m$ 为刚体的质量，$\rho_{x}$，$\rho_{y}$ 与 $\rho_{z}$ 分别称为刚体对 $O x$，$O y$ 与 $O z$ 轴的<strong>回转半径</strong>。</li>
+</ul>
+</li>
+</ul>
+<h3 id="常用转动惯量"><a href="#常用转动惯量" class="headerlink" title="常用转动惯量"></a>常用转动惯量</h3><p><img src="/img/drawio/常用的转动惯量.drawio.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="惯性积"><a href="#惯性积" class="headerlink" title="惯性积"></a>惯性积</h3><p>对于过刚体上点 $O$ 的连体基，定义如下与转动惯量有相同量纲的量：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+J_{Oxy}=J_{Oyx} \stackrel{\mathrm{def}}{=} \sum_{k} m_{k} x_{k} y_{k} \\
+J_{Oyz}=J_{Ozy} \stackrel{\mathrm{def}}{=} \sum_{k} m_{k} y_{k} z_{k} \\
+J_{Ozx}=J_{Oxz} \stackrel{\mathrm{def}}{=} \sum_{k} m_{k} z_{k} x_{k}
+\end{array}</script><ul>
+<li>称 $J_{Oxy}$ 与 $J_{Oyx}$ 为刚体关于 $O x y$ 平面的惯性积</li>
+<li>称 $J_{Oyz}$ 与 $J_{Ozy}$ 为刚体关于 $O y z$ 平面的惯性积</li>
+<li>称 $J_{Ozx}$ 与 $J_{Oxz}$ 为刚体关于 $O x z$ 平面的惯性积</li>
+<li>刚体的转动惯量（或回转半径）与惯性积和基点位置及其连体基的指向有关。</li>
+</ul>
+<h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><ul>
+<li>转动惯量为恒正的物理量，惯性积则可为正负或为零。</li>
+<li>如果惯性积 $J_{Oxz}$ 与 $J_{Oyz}$ 为零，则称 $O z$ 轴为刚体的<strong>惯量主轴</strong>。同理……</li>
+<li>对于有质量对称轴的刚体，则该对称轴为刚体的主轴</li>
+<li>对于有质量对称面的刚体，垂直于该平面的任意轴为该刚体的主轴</li>
+<li>对于刚体上的点 $O$ 至少存在一个连体基，该基的三根轴同时为刚体的主轴，该基称为刚体的<strong>惯量主轴连体基</strong>。</li>
+<li>关于主轴连体基三轴的转动惯量称为刚体的<strong>主转动惯量</strong>。</li>
+<li>过刚体质心的主轴连体基称为<strong>中心惯量主轴连体基</strong>，关于该基三轴的转动惯量称为刚体的<strong>中心主转动惯量</strong>。</li>
+</ul>
+<h3 id="转动惯量的平行轴定理"><a href="#转动惯量的平行轴定理" class="headerlink" title="转动惯量的平行轴定理"></a>转动惯量的平行轴定理</h3><script type="math/tex; mode=display">
+\begin{array}{c}
+J_{Oz}=J_{Cz}+mh_z^2\\
+J_{Ox}=J_{Cx}+mh_x^2\\
+J_{Oy}=J_{Cy}+mh_y^2\\
+\end{array}</script><p>刚体转动惯量的平行轴定理：刚体对任意轴的转动惯量等于它对<strong>过质心</strong>的平行轴转动惯量加上刚体的质量与两轴垂直距离平方的乘积。</p>
+<h3 id="动量"><a href="#动量" class="headerlink" title="动量"></a>动量</h3><p>考虑有 $n$ 个质点构成的质点系。以固定点 $O$ 为基点建立惯性基 $\vec{\boldsymbol{e}}$。设 $\vec{r}_{k}$ 为系内任意质点 $P_{k}$ 相对 $O$ 的矢径，$m_{k}$ 为 $P_{k}$ 的质量。令 $\vec{r}_{C}$ 为该质点系的质心 $C$ 相对 $O$ 的矢径。</p>
+<p>质点 $P_{k}$ 的动量记为 $\vec{p}_{k}$，定义为</p>
+<script type="math/tex; mode=display">
+\vec{p}_{k} \stackrel{\mathrm{def}}{=} m_{k} \dot{\vec{r}}_{k}=m_{k} \vec{v}_{k}</script><p>质点系动量记为 $\vec{p}$，它为所有质点动量的矢量和</p>
+<script type="math/tex; mode=display">
+\vec{p}=\sum_{k=1}^{n} m_{k} \dot{\vec{r}}_{k}=m \dot{\vec{r}}_{C}=m \dot{v}_{C}</script><p>由上式可知，<strong>质点系动量</strong> $\vec{p}$ 为系统的质量与系统质心速度 $\vec{v}_{c}$ 的乘积。它相当于将系统质量集中在质心的一个质点的动量。</p>
+<p>动量的三个坐标与质心速度矢量三个坐标间的关系：</p>
+<script type="math/tex; mode=display">
+p_{\mathrm{x}}=m \dot{x}_{C}=m v_{Cx},\quad p_{\mathrm{y}}=m \dot{y}_{C}=m v_{Cy},\quad p_{\mathrm{z}}=m \dot{z}_{C}=m v_{Cz}</script><p>分别称为质点系 $x$，$y$ 与 $z$ 方向的动量。</p>
+<h3 id="质点系动量定理"><a href="#质点系动量定理" class="headerlink" title="质点系动量定理"></a>质点系动量定理</h3><script type="math/tex; mode=display">
+\dot{\vec{p}}=\vec{F}_{\mathrm{R}}</script><p>质点系动量定理：质点系的动量对时间的绝对导数等于外力系的主矢。上式在惯性基上的坐标式为</p>
+<script type="math/tex; mode=display">
+\dot{\boldsymbol{p}}=\boldsymbol{F}_\mathrm{R}</script><p>令 $\boldsymbol{F}_{\mathrm{R}}=\left(\begin{array}{lll}F_{\mathrm{Rx}} &amp; F_{\mathrm{Ry}} &amp; F_{\mathrm{Rz}}\end{array}\right)^{\mathrm{T}}$，展开上式有</p>
+<script type="math/tex; mode=display">
+\dot{p}_{x}=F_{\mathrm{Rx}}，\quad \dot{p}_{y}=F_{\mathrm{Ry}}，\quad \dot{p}_{z}=F_{\mathrm{Rz}}</script><p>这些方程描述的是质点系某方向的动量对时间的绝对导数等于外力系的主矢在该方向的分量。</p>
+<h3 id="动量定理的积分形式"><a href="#动量定理的积分形式" class="headerlink" title="动量定理的积分形式"></a>动量定理的积分形式</h3><script type="math/tex; mode=display">
+\vec{p}-\vec{p}_{0}=\int_{t_{0}}^{t} \vec{F}_{\mathrm{R}} \mathrm{d} t</script><p>其中 $\vec{p}_{0}$ 为时刻 $t_{0}$ 质点系的动量。上式的右边定义为时间 $t_{0}$ 到 $t$ 间隔内，外力系主矢的<strong>冲量</strong>，记为 $\vec{I}$，即</p>
+<script type="math/tex; mode=display">
+\vec{I}=\int_{t_{0}}^{t_{1}} \vec{F}_{\mathrm{R}} \mathrm{d} t</script><p>上式表示：质点系动量在某时间间隔内的变化等于外力系的主矢在同一时间间隔内的冲量。</p>
+<h3 id="质心运动定理"><a href="#质心运动定理" class="headerlink" title="质心运动定理"></a>质心运动定理</h3><script type="math/tex; mode=display">
+m\vec{a}_C=\vec{F}_{\mathrm{R}}</script><p>质点系质量与质心加速度矢量的乘积等于外力系的主矢。</p>
+<h3 id="动量守恒定律"><a href="#动量守恒定律" class="headerlink" title="动量守恒定律"></a>动量守恒定律</h3><script type="math/tex; mode=display">
+m \dot{\boldsymbol{r}}_{C}-m \dot{\boldsymbol{r}}_{C0}=m \boldsymbol{v}_{C}-m \boldsymbol{v}_{C0}=\mathbf{0}</script><p>此式描述的是动量守恒定律：当质点系外力的主矢为零时，质点系的动量保持不变。</p>
+<h3 id="动量矩"><a href="#动量矩" class="headerlink" title="动量矩"></a>动量矩</h3><p>将<strong>惯性空间</strong>的一定点记为 $O$。过该点建立惯性基 $\vec{\boldsymbol{e}}$。质点 $P_{k}$ 的矢径为 $\vec{r}_{k}$，该点的动量 $\vec{p}_{k}$ 对定点 $O$ 的动量矩定义为</p>
+<script type="math/tex; mode=display">
+\vec{L}_{Ok} \stackrel{\mathrm{def}}{=} \vec{M}_{O}\left(\vec{p}_{k}\right)=\vec{r}_{k} \times \vec{p}_{k}=\vec{r}_{k} \times m_{k} \dot{\vec{r}}_{k}=\vec{r}_{k} \times m_{k} \vec{v}_{k}</script><h3 id="质点系对定点的动量矩"><a href="#质点系对定点的动量矩" class="headerlink" title="质点系对定点的动量矩"></a>质点系对定点的动量矩</h3><p>由 $n$ 个质点构成的质点系对定点 $O$ 的动量矩 $\vec{L}_{O}$ 为所有质点对点 $O$ 的动量矩矢量和，即</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\vec{L}_{O} &=\sum_{k=1}^{n} \vec{M}_{O}\left(\vec{p}_{k}\right)=\sum_{k=1}^{n} \vec{r}_{k} \times \vec{p}_{k} \\
+&=\sum_{k=1}^{n} \vec{r}_{k} \times m_{k} \dot{\vec{r}}_{k}=\sum_{k=1}^{n} \vec{r}_{k} \times m_{k} \vec{v}_{k}
+\end{aligned}</script><p>动量矩 $\vec{L}_{O}$ 为一矢量，其在惯性基的坐标阵记为 $L_{O}=\left(\begin{array}{lll}L_{Ox} &amp; L_{Oy} &amp; L_{Oz}\end{array}\right)^{\mathrm{T}}$，分别称标量 $L_{Ox}$，$L_{Oy}$ 与 $L_{Oz}$ 为质点系对固定轴 $O x$，$O y$ 与 $O z$ 的动量矩。实际上它们为动量矩矢量 $\vec{L}_{o}$ 的三个分矢量 $\vec{L}_{Ox}$，$\vec{L}_{Oy}$，$\vec{L}_{Oz}$ 的模。当对某固定轴动量矩为正时，相应分矢量与对应的基矢量同向。</p>
+<h4 id="平移刚体对定点-О-的动量矩"><a href="#平移刚体对定点-О-的动量矩" class="headerlink" title="平移刚体对定点 О 的动量矩"></a>平移刚体对定点 О 的动量矩</h4><script type="math/tex; mode=display">
+\vec{L}_{O}=\vec{r}_{C} \times \vec{p}</script><p>平移刚体对定点 $O$ 的动量矩相当于将质量集中在质心上的一个质点的动量对该点的动量矩。</p>
+<h4 id="定轴转动刚体对固定轴的动量矩"><a href="#定轴转动刚体对固定轴的动量矩" class="headerlink" title="定轴转动刚体对固定轴的动量矩"></a>定轴转动刚体对固定轴的动量矩</h4><script type="math/tex; mode=display">
+L_{Oz}=J_{Oz} \omega</script><p>绕固定轴 $O z$ 转动的刚体对该轴的动量矩等于刚体对该轴转动惯量与角速度的积。</p>
+<h3 id="质点系对定点的动量矩定理"><a href="#质点系对定点的动量矩定理" class="headerlink" title="质点系对定点的动量矩定理"></a>质点系对定点的动量矩定理</h3><script type="math/tex; mode=display">
+\dot{\vec{L}}_{O}=\vec{M}_{O}</script><p>此式描述了质点系对定点的动量矩定理：质点系相对定点动量矩对时间的绝对导数等于质点系外力对该点的主矩。</p>
+<h3 id="动量矩定理的积分形式"><a href="#动量矩定理的积分形式" class="headerlink" title="动量矩定理的积分形式"></a>动量矩定理的积分形式</h3><script type="math/tex; mode=display">
+\vec{L}_{O}-\vec{L}_{O0}=\int_{t_{0}}^{t} \vec{M}_{O} \mathrm{d} t</script><p>上式的右边定义为时间 $t_{0}$ 到 $t$ 间隔内外力系的<strong>冲量主矩</strong>，简称为<strong>冲量矩</strong>。上式为积分形式的动量矩定理：质点系动量矩在时间间隔内的变化等于外力系在同一时间间隔内的冲量矩。</p>
+<h3 id="动量矩守恒定律"><a href="#动量矩守恒定律" class="headerlink" title="动量矩守恒定律"></a>动量矩守恒定律</h3><p>当质点系外力的主矩为零时，</p>
+<script type="math/tex; mode=display">
+L_{O}-L_{O 0}=0</script><p>此式描述的是动量矩守恒定律：当质点系的外力的主矩为零时质点系的动量矩保持不变。</p>
+<p>当主矩在 $z$ 方向的坐标为零时，即 $M_{Oz}=0$，可得</p>
+<script type="math/tex; mode=display">
+L_{Oz}-L_{Oz0}=0</script><p>由此类推可见，当外力对某轴的矩为零时，系统相对于该轴的动量矩保持不变。</p>
+<h3 id="质点系对动点的动量矩"><a href="#质点系对动点的动量矩" class="headerlink" title="质点系对动点的动量矩"></a>质点系对动点的动量矩</h3><p>考虑相对于惯性基运动的一动点 $D$。它对惯性基基点 $O$ 的矢径为 $\vec{r}_{D}$。质点 $P_{k}$ 对点 $O$ 与 $D$ 的矢径分别记为 $\vec{r}_{k}$ 与 $\vec{d}_{k}$。则有 $\vec{r}_{k}=\vec{r}_{D}+\vec{d}_{k}$</p>
+<ul>
+<li>$P_k$ 的绝对速度为 $\dot{\vec{r}_k}=\vec{v}_{k}$</li>
+<li>$P_k$ 的相对速度为 $\dot{\vec{d}_k}$</li>
+<li>$P_k$ 的平动牵连速度为 $\vec{v}_{tk}^{e}=\vec{v}_{D}$</li>
+</ul>
+<p>定义</p>
+<ul>
+<li>$P_k$ 的绝对动量为 $\vec{p}_{k}=m_{k} \vec{v}_{k}=m_{k} \dot{\vec{r}}_{k}$</li>
+<li>$P_k$ 的相对动量为 $\vec{p}_{k}=m_{k} \vec{v}_{k}^{\mathrm{r}}=m_{k} \mathring{\vec{d}}_{k}=m_{k} \dot{\vec{d}}_{k}$</li>
+<li>$P_k$ 的平动牵连动量为 $\vec{p}_{k}^{\mathrm{e}}=m_{k} \vec{v}_{k}^{\mathrm{e}}=m_{k} \vec{v}_{D}$</li>
+</ul>
+<p>令 $\vec{L}_{D}$ 与 $\vec{L}_{D}^{\prime}$ 分别为质点系的绝对动量与相对动量对动点 $D$ 的矩，分别称为质点系对动点 $D$ 的<strong>绝对动量矩</strong>与对动点 $D$ 的<strong>相对动量矩</strong>，即</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\vec{L}_{D} \stackrel{\mathrm{def}}{=} \sum_{k} \vec{d}_{k} \times \vec{p}_{k}=\sum_{k} \vec{d}_{k} \times m_{k} \dot{\vec{r}}_{k}=\sum_{k} \vec{d}_{k} \times m_{k} \vec{v}_{k} \\
+\vec{L}_{D}^{\prime} \stackrel{\mathrm{def}}{=} \sum_{k} \vec{d}_{k} \times \vec{p}_{k}^{\prime}=\sum_{k} \vec{d}_{k} \times m_{k} \mathring{\vec{d}}_{k}=\sum_{k} \vec{d}_{k} \times m_{k} \vec{v}_{k}^{\mathrm{r}}=\sum_{k} \vec{d}_{k} \times m_{k} \dot{\vec{d}}_{k}
+\end{array}</script><h4 id="质点系对动点的绝对动量矩与对动点的相对动量矩的关系"><a href="#质点系对动点的绝对动量矩与对动点的相对动量矩的关系" class="headerlink" title="质点系对动点的绝对动量矩与对动点的相对动量矩的关系"></a>质点系对动点的绝对动量矩与对动点的相对动量矩的关系</h4><script type="math/tex; mode=display">
+\vec{L}_{D}=\vec{L}_{D}^{\prime}+\vec{d}_{C} \times m \dot{\vec{r}}_{D}=\vec{L}_{D}^{\prime}+\vec{d}_{C} \times m \vec{v}_{D}</script><p>其中 C 是质点系的质心</p>
+<h4 id="质点系对质心的动量矩"><a href="#质点系对质心的动量矩" class="headerlink" title="质点系对质心的动量矩"></a>质点系对质心的动量矩</h4><p>当动点 $D$ 取为系统的质心 $C$ 时，矢量 $\vec{d}_{k}$ 由矢量 $\vec{\rho}_{k}$ 替代，质点系对动点质心的绝对动量矩与相对动量矩分别为</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\vec{L}_{c}=\sum_{k} \vec{\rho}_{k} \times m_{k} \dot{\vec{r}}_{k}\\
+\vec{L}_{C}^{\prime}=\sum_{k} \vec{\rho}_{k} \times m_{k} \mathring{\vec{\rho}}_{k}=\sum_{k} \vec{\rho}_{k} \times m_{k} \dot{\vec{\rho}}_{k}\\
+\vec{L}_{C}=\vec{L}_{C}^{\prime}
+\end{array}</script><p>质点系对其质心的绝对动量矩与相对动量矩相等。</p>
+<h4 id="平面运动刚体对质心的动量矩"><a href="#平面运动刚体对质心的动量矩" class="headerlink" title="平面运动刚体对质心的动量矩"></a>平面运动刚体对质心的动量矩</h4><p>对于作平面一般运动的刚体，质心 $C$ 为动点。刚体相对质心平移基 $\vec{\boldsymbol{e}}$ 的相对运动为绕 $C$ 的定轴转动。由于 $\vec{\boldsymbol{e}}^{\mathrm{s}}$ 与惯性基 $\vec{\boldsymbol{e}}$ 始终保持平行，故刚体相对转动角速度等于绝对角速度 $\omega$。刚体相对质心的相对动量矩为 $L_{Cz}^{\prime}=J_{Cz} \omega$。由上式，该作平面运动刚体对质心的绝对动量矩为</p>
+<script type="math/tex; mode=display">
+L_{Cz}=L_{Cz}^{\prime}=J_{Cz} \omega</script><h3 id="质点系对任意动点与对其质心动量矩的关系"><a href="#质点系对任意动点与对其质心动量矩的关系" class="headerlink" title="质点系对任意动点与对其质心动量矩的关系"></a>质点系对任意动点与对其质心动量矩的关系</h3><script type="math/tex; mode=display">
+\vec{L}_{D}=\vec{L}_{C}^{\prime}+\vec{d}_{C} \times m \vec{v}_{C}=\vec{L}_{C}^{\prime}+\vec{d}_{C} \times \vec{p}</script><p>质点系对任意动点的绝对动量矩，等于质点系对其质心的相对动量矩与质点系动量对该动点的矩之矢量和。</p>
+<h3 id="质点系对瞬心定轨迹点的动量矩"><a href="#质点系对瞬心定轨迹点的动量矩" class="headerlink" title="质点系对瞬心定轨迹点的动量矩"></a>质点系对瞬心定轨迹点的动量矩</h3><p>平面运动刚体对瞬心 $S$ 定轨迹点 $S^{\prime}$ 的绝对动量矩等于刚体绕过瞬心瞬时轴转动的动量矩。</p>
+<script type="math/tex; mode=display">
+L_{S^{\prime}z}=J_{Sz} \omega</script><p>式中，$J_{Sz}$ 为刚体绕过瞬心 $S$ 垂直于运动平面的转轴的转动惯量，上式也可表示为</p>
+<h3 id="动量矩计算小结"><a href="#动量矩计算小结" class="headerlink" title="动量矩计算小结"></a>动量矩计算小结</h3><h3 id="质点系对动点的动量矩定理"><a href="#质点系对动点的动量矩定理" class="headerlink" title="质点系对动点的动量矩定理"></a>质点系对动点的动量矩定理</h3><h4 id="质点系对动点的动量矩定理-1"><a href="#质点系对动点的动量矩定理-1" class="headerlink" title="质点系对动点的动量矩定理"></a>质点系对动点的动量矩定理</h4><p>质点系对动点的绝对动量矩对时间的绝对导数与动点的速度和质点系动量叉积之矢量和，等于质点系外力对该点的主矩。</p>
+<script type="math/tex; mode=display">
+\dot{\vec{L}}_{D}+\vec{v}_{D} \times \vec{p}=\vec{M}_{D}</script><h4 id="质点系对其质心的动量矩定理"><a href="#质点系对其质心的动量矩定理" class="headerlink" title="质点系对其质心的动量矩定理"></a>质点系对其质心的动量矩定理</h4><p>质点系对其质心的绝对动量矩或相对动量矩对时间的绝对导数，等于质点系外力对质心的主矩。</p>
+<script type="math/tex; mode=display">
+\dot{\vec{L}}_{C}=\dot{\vec{L}}_{C}^{\prime}=\vec{M}_{C}</script><h4 id="积分形式的质点系对其质心的动量矩定理"><a href="#积分形式的质点系对其质心的动量矩定理" class="headerlink" title="积分形式的质点系对其质心的动量矩定理"></a>积分形式的质点系对其质心的动量矩定理</h4><p>质点系对其质心动量矩在时间间隔内的变化等于外力系在同一时间间隔内质心 $C$ 的冲量矩。</p>
+<script type="math/tex; mode=display">
+\vec{L}_{C}-\vec{L}_{C 0}=\int_{t_{0}}^{t} \vec{M}_{C} \mathrm{d} t</script><p>上式的右边为时间 $t_{0}$ 到 $t$ 间隔内外力系对质心 $C$ 的冲量矩。</p>
+<h4 id="质点系对其质心动量矩守恒定律"><a href="#质点系对其质心动量矩守恒定律" class="headerlink" title="质点系对其质心动量矩守恒定律"></a>质点系对其质心动量矩守恒定律</h4><p>当质点系的外力系质心 $C$ 的主矩为零时，质点系对其质心动量矩保持不变。</p>
+<script type="math/tex; mode=display">
+\vec{L}_{C}-\vec{L}_{C 0}=\vec{0}</script><h3 id="动能"><a href="#动能" class="headerlink" title="动能"></a>动能</h3><p>将质点系的动能记为 $T$，其定义为每个质点动能之和，即</p>
+<script type="math/tex; mode=display">
+T=\frac{1}{2} \sum_{k} m_{k} \dot{\vec{r}}_{k} \cdot \dot{\vec{r}}_{k}=\frac{1}{2} \sum_{k} m_{k} \vec{v}_{k} \cdot \vec{v}_{k}</script><h4 id="平移刚体的动能"><a href="#平移刚体的动能" class="headerlink" title="平移刚体的动能"></a>平移刚体的动能</h4><script type="math/tex; mode=display">
+T=\frac{1}{2} m \dot{\vec{r}}_{C} \cdot \dot{\vec{r}}_{C}=\frac{1}{2} m \vec{v}_{C} \cdot \vec{v}_{C}=\frac{1}{2} m v_{C}^{2}</script><p>平移刚体的动能相当于将刚体质量集中在质心的一质点的动能。</p>
+<h4 id="定轴转动刚体的动能"><a href="#定轴转动刚体的动能" class="headerlink" title="定轴转动刚体的动能"></a>定轴转动刚体的动能</h4><script type="math/tex; mode=display">
+T=\frac{1}{2} \omega^{2} \sum_{k} m_{k} \rho_{k}^{2}=\frac{1}{2} J_{Oz} \omega^{2}</script><h4 id="平面运动刚体动能的柯尼希定理"><a href="#平面运动刚体动能的柯尼希定理" class="headerlink" title="平面运动刚体动能的柯尼希定理"></a>平面运动刚体动能的柯尼希定理</h4><script type="math/tex; mode=display">
+T=\frac{1}{2} m v_{C}^{2}+\frac{1}{2} J_{Cz} \omega^{2}</script><p>平面运动刚体的动能等于将质量集中于质心的质点动能与绕过质心瞬时轴的转动动能之代数和。</p>
+<h4 id="平面运动刚体动能用瞬心表示"><a href="#平面运动刚体动能用瞬心表示" class="headerlink" title="平面运动刚体动能用瞬心表示"></a>平面运动刚体动能用瞬心表示</h4><script type="math/tex; mode=display">
+T=\frac{1}{2} J_{Sz} \omega^{2}</script><p>平面运动刚体的动能等于刚体绕过瞬心瞬时轴转动的动能。</p>
+<h3 id="力的功"><a href="#力的功" class="headerlink" title="力的功"></a>力的功</h3><h4 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h4><p>力系的总功为所有力的功之和，即</p>
+<script type="math/tex; mode=display">
+W=\sum_{k=1}^{n} W_{k}=\sum_{k=1}^{n} \int_{l_{k}} \vec{F}_{k} \cdot \mathrm{d} \vec{r}_{k}</script><h4 id="重力的功"><a href="#重力的功" class="headerlink" title="重力的功"></a>重力的功</h4><p>质点系重力的功与质心的高度差成正比，与质心所经过的路径无关。</p>
+<script type="math/tex; mode=display">
+W=-m g\left(z_{C}-z_{C 0}\right)</script><h4 id="线弹性力的功"><a href="#线弹性力的功" class="headerlink" title="线弹性力的功"></a>线弹性力的功</h4><p>线弹性力的功与弹簧的变形平方之差成正比，与通过的路径无关</p>
+<script type="math/tex; mode=display">
+W=-\frac{1}{2} k\left(s^{2}-s_{n}^{2}\right)</script><h4 id="干摩擦力的功"><a href="#干摩擦力的功" class="headerlink" title="干摩擦力的功"></a>干摩擦力的功</h4><p>干摩擦力的功与滑动的距离 $l$ 成正比。</p>
+<script type="math/tex; mode=display">
+W=-f F_{\mathrm{N}} \int_{l} v \mathrm{~d} t=-f F_{\mathrm{N}} \int_{L} \mathrm{d} s=-f F_{\mathrm{N}} l</script><p>其中 $f$ 为动摩擦因数，$F_{\mathrm{N}}$ 为垂直于摩擦平面的正反力。</p>
+<h4 id="刚体内力的功"><a href="#刚体内力的功" class="headerlink" title="刚体内力的功"></a>刚体内力的功</h4><p>刚体在运动过程中所有质点间内力的功等于零。</p>
+<h4 id="理想约束力的功"><a href="#理想约束力的功" class="headerlink" title="理想约束力的功"></a>理想约束力的功</h4><p>理想约束力的方向与点的运动方向垂直，故刚体在运动过程中作用在刚体上的理想约束力所做的功为零。</p>
+<h4 id="作用在平面运动刚体的主动力之功"><a href="#作用在平面运动刚体的主动力之功" class="headerlink" title="作用在平面运动刚体的主动力之功"></a>作用在平面运动刚体的主动力之功</h4><p>主动力所作的元功之和，等于主动力的主矢与质心无限小位移矢量的点积，以及主动力对质心的主矩与无限小方位角矢量点积之和。</p>
+<script type="math/tex; mode=display">
+\mathrm{d} W=\vec{F}_{\mathrm{R}} \cdot \mathrm{d} \vec{r}_{C}+M_{C} \mathrm{d} \varphi</script><p>考虑质心 $C$ 的路径 $l$, 主动力的功为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+W&=\int_{l} \mathrm{~d} W=\int_{l} \vec{F}_{\mathrm{R}} \cdot \mathrm{d} \vec{r}_{C}+\vec{M}_{C} \cdot \mathrm{d} \vec{\varphi}=\int_{l}\left(\vec{F}_{\mathrm{R}} \cdot \vec{v}_{C}+\vec{M}_{C} \cdot \vec{\omega}\right) \mathrm{d} t \\
+&=\int_{l} \vec{F}_{\mathrm{R}} \cdot \mathrm{d} \vec{r}_{C}+M_{C} \mathrm{~d} \varphi=\int_{l}\left(\vec{F}_{\mathrm{R}} \cdot \vec{v}_{C}+M_{c} \omega\right) \mathrm{d} t
+\end{aligned}</script><h3 id="势力场和势能"><a href="#势力场和势能" class="headerlink" title="势力场和势能"></a>势力场和势能</h3><h4 id="力场"><a href="#力场" class="headerlink" title="力场"></a>力场</h4><p>力场中的每一点的位置由矢径 $\vec{r}$ 定义，那么力场中的力 $\vec{F}$ 可表示为 $\vec{F}=   \vec{F}(\vec{r})$，其坐标阵为空间点坐标的单值可微函数，即</p>
+<script type="math/tex; mode=display">
+\boldsymbol{F}=\boldsymbol{F}(\boldsymbol{r})</script><p>式中 $\boldsymbol{F}=\left(\begin{array}{lll}F_{x} &amp; F_{y} &amp; F_{z}\end{array}\right)^{\mathrm{T}}$，$\boldsymbol{r}=\left(\begin{array}{lll}x &amp; y &amp; z\end{array}\right)^{\mathrm{T}}$。<br>对于一单值可微标量函数 $U(\boldsymbol{r})$，由梯度的定义有</p>
+<script type="math/tex; mode=display">
+\operatorname{grad} U(\boldsymbol{r})=\left(\begin{array}{lll}
+\frac{\partial U}{\partial x} & \frac{\partial U}{\partial y} & \frac{\partial U}{\partial z}
+\end{array}\right)^{\mathrm{T}}=U_{r}^{\mathrm{T}}</script><h4 id="势力场、势、势能"><a href="#势力场、势、势能" class="headerlink" title="势力场、势、势能"></a>势力场、势、势能</h4><p>对于某力场，如果存在一标量函数 $U(\boldsymbol{r})$，并且其梯度恰好等于力 $\vec{F}$ 的坐标阵 $\boldsymbol{F}$，即有</p>
+<script type="math/tex; mode=display">
+\boldsymbol{F}=\operatorname{grad} U(\boldsymbol{r})=U_{\boldsymbol{r}}^{\mathrm{T}}</script><p>或</p>
+<script type="math/tex; mode=display">
+F_{x}=\frac{\partial U}{\partial x},\quad F_{y}=\frac{\partial U}{\partial y},\quad F_{z}=\frac{\partial U}{\partial z}</script><p>则此特殊力场称为<strong>势力场</strong>，或称<strong>保守力场</strong>，标量函数 $U$ 称为该势力场的<strong>势函数</strong>，简称为<strong>势</strong>。将势函数的负值定义为该势力场的<strong>势能函数</strong>，简称为<strong>势能</strong>，记为 $V$，即</p>
+<script type="math/tex; mode=display">
+V(\boldsymbol{r})=-U(\boldsymbol{r})</script><p>当一质点在势力场中沿路径 $l$ 运动时，力场对其做作的功可表示为</p>
+<script type="math/tex; mode=display">
+W=\int_{l} \vec{F} \cdot \mathrm{d} \vec{r}=\int_{l} \mathrm{~d} U=U-U_{0}=-\left(V-V_{0}\right)</script><p>其中 $U_{0}$ 与 $U$，以及 $V_{0}$ 与 $V$ 分别为路径 $l$ 的起点与终点的势函数和势能值。由此式表明，质点在势力场中运动，势力的功仅与路径的起始与终点的位置有关而与路径无关。考虑到势力场的功为两位置势函数（或势能）值的差，因此势力场的绝对大小已不重要。如果在力场中的某点 $\boldsymbol{r}_{0}$ 定义其势函数（或势能）值为零，即令</p>
+<script type="math/tex; mode=display">
+U_{0}=U\left(\boldsymbol{r}_{0}\right)=0,\quad V_{0}=V\left(\boldsymbol{r}_{0}\right)=0</script><h4 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h4><script type="math/tex; mode=display">
+W=U=-V</script><p>此式表明，质点在势力场某位置的势能为质点由零势能位置移动到该位置势力所做的功之负值。</p>
+<h4 id="等势面"><a href="#等势面" class="headerlink" title="等势面"></a>等势面</h4><p>在势力场中，势函数（或势能）为常值 $c$ 的点构成了一曲面，即</p>
+<script type="math/tex; mode=display">
+U(\boldsymbol{r})=c,\quad V(\boldsymbol{r})=c</script><p>这些曲面称为<strong>等势面</strong>。$c$ 为零的曲面称为<strong>零势面</strong>。势力的方向沿等势面的法向。质点在等势面上移动，势力不做功。</p>
+<h4 id="系统的势能"><a href="#系统的势能" class="headerlink" title="系统的势能"></a>系统的势能</h4><p>对于由 $n$ 个质点构成的系统，其势函数 $U$ 或势能 $V$ 为各质点 $P_{k}(k=1,\cdots,n)$ 的势函数 $U_{k}$ 或势能 $V_{k}$ 的代数和，即</p>
+<script type="math/tex; mode=display">
+U=\sum_{k=1}^{n} U_{k},\quad V=\sum_{k=1}^{n} V_{k}</script><h4 id="重力场"><a href="#重力场" class="headerlink" title="重力场"></a>重力场</h4><p>重力场的势函数为</p>
+<script type="math/tex; mode=display">
+U=m \boldsymbol{g}^{\mathrm{T}} \boldsymbol{r}+\alpha</script><p>其中 $\alpha$ 为任意常数。等势面方程为 $U=m g^{\mathrm{T}} r=c$。可见，重力场的等势面为垂直于重力加速度矢量的<strong>平面</strong>。</p>
+<p>定义 $O x y$ 平面为零势面，重力场的势函数与势能分别为</p>
+<script type="math/tex; mode=display">
+U=-m g z,\quad V=m g z</script><h4 id="线弹性力场"><a href="#线弹性力场" class="headerlink" title="线弹性力场"></a>线弹性力场</h4><p>线弹性力的势函数为</p>
+<script type="math/tex; mode=display">
+U=-\frac{1}{2} k s^{2}+\alpha=-\frac{1}{2} k\left(r-r_{0}\right)^{2}+\alpha</script><p>其中 $\alpha$ 为任意常数。等势面方程为 $U=-\frac{1}{2} k\left(r-r_{0}\right)^{2}=c$。可见，线弹性力场的等势面是以基点为圆心的<strong>球面</strong>。</p>
+<p>以原长 $r_{0}$ 为半径的球面为零势面，线弹性力的势函数与势能分别为</p>
+<script type="math/tex; mode=display">
+U=-\frac{1}{2} k\left(r-r_{0}\right)^{2},\quad V=\frac{1}{2} k\left(r-r_{0}\right)^{2}</script><h3 id="动能定理"><a href="#动能定理" class="headerlink" title="动能定理"></a>动能定理</h3><p>微分形式：</p>
+<script type="math/tex; mode=display">
+\mathrm{d} T=\mathrm{d} W+\mathrm{d} W^{\prime}</script><p>积分形式：</p>
+<script type="math/tex; mode=display">
+T^{\prime}-T_{n}=W+W^{\prime}</script><p>质点系的动能定理：质点系动能的改变等于作用于质点系所有外力的功与所有内力的功之和。需要指出的是除了外力的功，内力的功同样会引起系统动能的变化。</p>
+<h3 id="机械能守恒定律"><a href="#机械能守恒定律" class="headerlink" title="机械能守恒定律"></a>机械能守恒定律</h3><p>系统的动能加上系统的势能称为系统的机械能。机械能守恒定律：势力场中质点系的机械能为常量。</p>
+<script type="math/tex; mode=display">
+T+V=T_{0}+V_{0}=\mathrm{常数}</script><h2 id="第七章-刚体运动学"><a href="#第七章-刚体运动学" class="headerlink" title="第七章 刚体运动学"></a>第七章 刚体运动学</h2><h3 id="刚体平面运动的动力学条件"><a href="#刚体平面运动的动力学条件" class="headerlink" title="刚体平面运动的动力学条件"></a>刚体平面运动的动力学条件</h3><p>刚体作平面运动的惯量条件：刚体运动平面的法线方向应为刚体的一主轴。<br>满足作平面运动动力学条件的刚体称为平面刚体</p>
+<h3 id="单刚体动力学方程一般形式"><a href="#单刚体动力学方程一般形式" class="headerlink" title="单刚体动力学方程一般形式"></a>单刚体动力学方程一般形式</h3><p>作用于刚体的外力中理想约束力通常是末知的，将它们从外力中分离出来。将理想约束力的主矢在惯性基的坐标阵记为 $\boldsymbol{F}^{n}$，理想约束力对质心的主矩记为 $\boldsymbol{M}_{c}^{\mathrm{n}}$。外力的其余部分称为<strong>主动力</strong>，其主矢在惯性基的坐标阵记为 $\boldsymbol{F}^{a}$，主动力对质心的主矩记为 $M_{C}^{\mathrm{a}}$。</p>
+<p>平面运动刚体一般形式的动力学方程组：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+m \ddot{x}_{C} & =\boldsymbol{F}_{x}^{\mathrm{a}}+\boldsymbol{F}_{x}^{\mathrm{n}} \\
+m \ddot{y}_{C} & =\boldsymbol{F}_{y}^{\mathrm{a}}+\boldsymbol{F}_{y}^{\mathrm{n}} \\
+J_{C} \ddot{\varphi} & =M_{C}^{\mathrm{a}}+M_{C}^{\mathrm{n}}
+\end{aligned}</script><h3 id="刚体系动力学方程组"><a href="#刚体系动力学方程组" class="headerlink" title="刚体系动力学方程组"></a>刚体系动力学方程组</h3><p>略</p>
+<h3 id="附加方程"><a href="#附加方程" class="headerlink" title="附加方程"></a>附加方程</h3><ul>
+<li>摩擦</li>
+<li>几何关系</li>
+<li>动能定理</li>
+</ul>
+<h3 id="最终的动力学方程"><a href="#最终的动力学方程" class="headerlink" title="最终的动力学方程"></a>最终的动力学方程</h3><ul>
+<li>个数=自由度数</li>
+<li>仅以独立坐标或其导数为变量</li>
+<li>不含未知约束力</li>
+</ul>
+<h3 id="碰撞的相关概念"><a href="#碰撞的相关概念" class="headerlink" title="碰撞的相关概念"></a>碰撞的相关概念</h3><ul>
+<li>在力学意义上凡物体的速度或动量发生突变的现象均称为<strong>碰撞</strong>。</li>
+<li>通常碰撞的时间间隔在千分之一到万分之一秒之间，故两物体的加速度极大。由动力学基本原理可知，在碰撞的时间间隔内物体相互的作用力将非常大。</li>
+<li>称这种在短暂时刻发生远大于普通力的力称为<strong>碰撞力</strong>。</li>
+<li>在这样巨大的碰撞力作用下，物体肯定产生变形，同时会发生声、光与热等物理现象。说明碰撞的物理现象很复杂，碰撞过程中将有一部分机械能转化为其他运动形式的能量，<strong>机械能不守恒</strong>。</li>
+<li>在讨论碰撞效应时只考虑碰撞力，其他的相互作用力均忽略。</li>
+<li>碰撞力做的功不能忽略</li>
+</ul>
+<h3 id="冲量"><a href="#冲量" class="headerlink" title="冲量"></a>冲量</h3><p>碰撞力对物体的作用直接用碰撞力的冲量来描述，碰撞力的冲量称为碰撞冲量，记为 $\vec{I}$。定义为</p>
+<script type="math/tex; mode=display">
+\vec{i}=\int_{0}^{T} \vec{F} \mathrm{d} t</script><p>其中 $\tau$ 为碰撞的时间间隔。</p>
+<h3 id="恢复系数"><a href="#恢复系数" class="headerlink" title="恢复系数"></a>恢复系数</h3><script type="math/tex; mode=display">
+e=\frac{v_{2 \tau}-v_{1 \tau}}{v_{10}-v_{20}}</script><p>这是恢复因数的另一个定义，即恢复因数等于碰撞前后两物体相对速度的绝对值之比。</p>
+<p>恢复因数 $e$ 为小于 $1$ 大于 $0$ 的数。</p>
+<ul>
+<li>当 $e=0$ 时，$v_{2 \tau}=v_{1 \tau}$，两球将不会分离，即碰撞无变形恢复阶段，物体处在塑性变形，这种碰撞称为<strong>完全塑性碰撞</strong>。</li>
+<li>当 $e=1$ 时，$v_{2 \tau}-v_{1 \tau}=v_{10}-v_{20}$，物体在变形恢复阶段，变形完全恢复，物体处在弹性变形，这种碰撞称为<strong>完全弹性碰撞</strong>。</li>
+</ul>
+<p>碰撞前后的能量差，即机械能的损失为</p>
+<script type="math/tex; mode=display">
+T_{0}-T_{\tau}=(1-e^{2}) \frac{m_{1} m_{2}\left(v_{10}-v_{20}\right)^{2}}{2\left(m_{1}+m_{2}\right)}</script><p>可见对于完全弹性碰撞，能量损失为零。完全塑性碰撞能耗最大。</p>
+<h3 id="碰撞中的动量矩定理"><a href="#碰撞中的动量矩定理" class="headerlink" title="碰撞中的动量矩定理"></a>碰撞中的动量矩定理</h3><h4 id="定轴转动刚体"><a href="#定轴转动刚体" class="headerlink" title="定轴转动刚体"></a>定轴转动刚体</h4><script type="math/tex; mode=display">
+L_{Oz \tau}-L_{O z 0}=J_{Oz} \omega_{\tau}-J_{Oz} \omega_{0}=\sum_{k=1}^{n} M_{Oz}\left(\vec{I}_{k}^{\mathrm{a}}\right)</script><p>刚体碰撞前后对该轴动量矩的改变等于所有主动碰撞力的冲量对该轴的矩之和。</p>
+<h4 id="平面运动刚体"><a href="#平面运动刚体" class="headerlink" title="平面运动刚体"></a>平面运动刚体</h4><script type="math/tex; mode=display">
+L_{Cz \tau}-L_{C z 0}=J_{Cz} \omega_{\tau}-J_{Cz} \omega_{0}=\sum_{k=1}^{n} M_{Cz}\left(\vec{I}_{k}\right)</script><h2 id="第八章-分析力学基础"><a href="#第八章-分析力学基础" class="headerlink" title="第八章 分析力学基础"></a>第八章 分析力学基础</h2><h3 id="达朗贝尔惯性力和达朗贝尔原理"><a href="#达朗贝尔惯性力和达朗贝尔原理" class="headerlink" title="达朗贝尔惯性力和达朗贝尔原理"></a>达朗贝尔惯性力和达朗贝尔原理</h3><p>如果定义</p>
+<script type="math/tex; mode=display">
+\vec{F}^{*} \stackrel{\mathrm{def}}{=}-m \ddot{\vec{r}}=-m \vec{a}</script><p>为该质点的<strong>达朗贝尔惯性力</strong>，那么动力学方程可表示为</p>
+<script type="math/tex; mode=display">
+\vec{F}+\vec{F}^{*}=0</script><p>由此可得到如下结论：质点运动的任意时刻，质点的达朗贝尔惯性力与作用于质点的所有真实力组成平衡力系。此结论称为质点的<strong>达朗贝尔原理</strong>。</p>
+<h3 id="质点系的达朗贝尔原理"><a href="#质点系的达朗贝尔原理" class="headerlink" title="质点系的达朗贝尔原理"></a>质点系的达朗贝尔原理</h3><p>质点系运动的任意时刻，系统中所有质点的惯性力与作用于系统的外力构成平衡力系。此结论称为质点系的达朗贝尔原理。</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\sum_{k=1}^{n} \vec{F}_{k}+\sum_{k=1}^{n} \vec{F}_{k}^{*}=\overrightarrow{0} \\
+\sum_{k=1}^{n} \vec{M}_{O}\left(\vec{F}_{k}\right)+\sum_{k=1}^{n} \vec{M}_{O}\left(\vec{F}_{k}^{*}\right)=\overrightarrow{0}
+\end{array}</script><h3 id="达朗贝尔惯性力的主矢"><a href="#达朗贝尔惯性力的主矢" class="headerlink" title="达朗贝尔惯性力的主矢"></a>达朗贝尔惯性力的主矢</h3><script type="math/tex; mode=display">
+\vec{F}^{*}=-\dot{\vec{p}}</script><p>刚体惯性力系的主矢相当于刚体的质量集中在质心的一质点的惯性力，或等于系统动量对时间绝对导数的反向。</p>
+<h3 id="达朗贝尔惯性力对质心的主矩"><a href="#达朗贝尔惯性力对质心的主矩" class="headerlink" title="达朗贝尔惯性力对质心的主矩"></a>达朗贝尔惯性力对质心的主矩</h3><script type="math/tex; mode=display">
+\vec{M}_{C}=-\frac{\mathrm{d} \vec{L}_{c}}{\mathrm{d} t}</script><p>刚体惯性力系对质心的主矩等于系统对质心的动量矩对时间绝对导数的反向。</p>
+<h3 id="平面运动刚体的动静法"><a href="#平面运动刚体的动静法" class="headerlink" title="平面运动刚体的动静法"></a>平面运动刚体的动静法</h3><h4 id="刚体作平面运动（一般形式）"><a href="#刚体作平面运动（一般形式）" class="headerlink" title="刚体作平面运动（一般形式）"></a>刚体作平面运动（一般形式）</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+F_{x}^{*}=-m a_{C x}=-m \ddot{x}_{C} \\
+F_{y}^{*}=-m a_{C y}=-m \ddot{y}_{C} \\
+M_{Cz}^{*}=-J_{Cz} \dot{\omega}=-J_{Cz} \alpha
+\end{array}</script><h4 id="刚体作平动"><a href="#刚体作平动" class="headerlink" title="刚体作平动"></a>刚体作平动</h4><ul>
+<li>惯性力简化结果只有一个过质心的力</li>
+<li>若向任意点 $A$ 简化，也是 $\vec{F}_{A}^{\star}=-m\vec{a}_{A}$，但 $\vec{M}_{A}^{\star}\ne 0$</li>
+</ul>
+<h4 id="刚体绕定点-O-作平面定轴转动"><a href="#刚体绕定点-O-作平面定轴转动" class="headerlink" title="刚体绕定点 $O$ 作平面定轴转动"></a>刚体绕定点 $O$ 作平面定轴转动</h4><h5 id="向质心-C-简化"><a href="#向质心-C-简化" class="headerlink" title="向质心 $C$ 简化"></a>向质心 $C$ 简化</h5><script type="math/tex; mode=display">
+\begin{array}{c}
+\vec{F}^{*}=-m\vec{a}_C （主矢过 C）\\
+\vec{M}_C^{*}=-J_{Cz}\alpha
+\end{array}</script><h5 id="向转轴-O-简化"><a href="#向转轴-O-简化" class="headerlink" title="向转轴 $O$ 简化"></a>向转轴 $O$ 简化</h5><script type="math/tex; mode=display">
+\begin{array}{c}
+\vec{F}^{*}=-m\vec{a}_C （主矢过 O）\\
+\vec{M}_O^{*}=-J_{Oz}\alpha
+\end{array}</script><h3 id="平面运动刚体的达朗贝尔原理"><a href="#平面运动刚体的达朗贝尔原理" class="headerlink" title="平面运动刚体的达朗贝尔原理"></a>平面运动刚体的达朗贝尔原理</h3><script type="math/tex; mode=display">
+\begin{array}{l}
+\vec{F}^{\mathrm{a}}+\vec{F}^{\mathrm{n}}+\vec{F}^{*}=\vec{0} \\
+M_{C}^{\mathrm{a}}+M_{C}^{\mathrm{n}}+M_{C}^{*}=0
+\end{array}</script><h3 id="完整约束"><a href="#完整约束" class="headerlink" title="完整约束"></a>完整约束</h3><p>讨论由 $n$ 个质点 $P_{k}(k=1,\cdots,n)$ 构成的质点系。质点 $P_{k}$ 的矢径为 $\vec{r}_{k}$，其在参考基 $\overrightarrow{\boldsymbol{e}}$ 的坐标阵为 $\boldsymbol{r}_{k}=\left(\begin{array}{lll}x_{k} &amp; y_{k} &amp; z_{k}\end{array}\right)^{\mathrm{T}}$。质点系在参考基 $\overrightarrow{\boldsymbol{e}}$ 的位置由如下坐标阵确定：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{q}=\left(\begin{array}{llll}
+\boldsymbol{r}_{1}^{\mathrm{T}} & \boldsymbol{r}_{2}^{\mathrm{T}} & \cdots & \boldsymbol{r}_{n}^{\mathrm{T}}
+\end{array}\right)^{\mathrm{T}}</script><p>坐标阵 $\boldsymbol{q}$ 为 $3 n$ 维列阵。它的时间历程 $\boldsymbol{q}(t)$ 描述了质点系的运动。在外力的作用下，质点系的运动规律 $\boldsymbol{q}(t)$ 必须满足动力学方程，不同的初始条件可得到不同的运动形态，这是一个自由质点系的特征。所谓质点系受约束，或称该质点系为非自由质点系，是指系统中质点的位置（或速度）不独立，受到牵制。即除了动力学方程外，质点系位置的时间历程 $\boldsymbol{q}(t)$（或它们的导数）还必须满足其他的关系，这种关系的数学描述称为约束方程。</p>
+<p>本书主要讨论这样一类约束，即描述它们的约束方程中的变量只是矢径坐标与时间。称这类约束为<strong>完整约束</strong>，即</p>
+<script type="math/tex; mode=display">
+\Phi(\boldsymbol{q},t)=\mathbf{0}</script><p>其中 $\boldsymbol{\Phi}=\left(\begin{array}{llll}\Phi_{1} &amp; \Phi_{2} &amp; \cdots &amp; \Phi_{\mathrm{s}}\end{array}\right)^{\mathrm{T}}$，$s$ 为约束方程的个数。方程中不显含时间 $t$ 的约束称为定常约束，否则称为<strong>非定常约束</strong>。</p>
+<h3 id="实位移"><a href="#实位移" class="headerlink" title="实位移"></a>实位移</h3><p>对于外力作用下的非自由质点系，同时满足动力学方程与约束方程的 $\boldsymbol{q}(t)$ 所描述的运动是实际发生的运动，称之为质点系的<strong>真实运动</strong>。该运动在无限小时间间隔内产生的位移称为质点系的<strong>实位移</strong>，记为 $d \boldsymbol{q}$，即</p>
+<script type="math/tex; mode=display">
+\mathrm{d} \boldsymbol{q}=\left(\begin{array}{llll}
+\mathrm{d} \boldsymbol{r}_{1}^{\mathrm{T}} & \mathrm{d} \boldsymbol{r}_{2}^{\mathrm{T}} & \cdots & \mathrm{d} \boldsymbol{r}_{n}^{\mathrm{T}}
+\end{array}\right)^{\mathrm{T}}</script><h3 id="可能位移"><a href="#可能位移" class="headerlink" title="可能位移"></a>可能位移</h3><p><strong>仅满足约束方程</strong>（不管受力）的运动称为质点系的可能运动，可能运动在无限小时间间隔内产生的位移称为质点系的<strong>可能位移</strong>，记为 $\mathrm{d} \boldsymbol{q}^{\star}$，即</p>
+<script type="math/tex; mode=display">
+\mathrm{d} \boldsymbol{q}^{\star}=\left(\begin{array}{llll}
+\mathrm{d} \boldsymbol{r}_{1}^{\star\mathrm{T}} & \mathrm{d} \boldsymbol{r}_{2}^{\star\mathrm{T}} & \cdots & \mathrm{d} \boldsymbol{r}_{n}^{\star\mathrm{T}}
+\end{array}\right)^{\mathrm{T}}</script><p>显见，实位移是可能位移中的一种。</p>
+<p>计算完整约束的约束方程对时间的微分，有</p>
+<script type="math/tex; mode=display">
+\boldsymbol{\Phi}_{\boldsymbol{q}} \mathrm{d} \boldsymbol{q}+\boldsymbol{\Phi}_{t} \mathrm{~d} t=\mathbf{0}</script><p>可能位移满足此方程。</p>
+<h3 id="虚位移-1"><a href="#虚位移-1" class="headerlink" title="虚位移"></a>虚位移</h3><p>取质点系在同一时刻、同一位置的两组可能位移，记为 $\mathrm{d} \boldsymbol{q}_{1}^{\star}$ 与 $\mathrm{d} \boldsymbol{q}_{2}^{\star}$，它们均应满足约束方程，即</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\boldsymbol{\Phi}_{q} \mathrm{d} \boldsymbol{q}_{1}^{*}+\boldsymbol{\Phi}_{1} \mathrm{d} t=\mathbf{0} \\
+\boldsymbol{\Phi}_{q} \mathrm{d} \boldsymbol{q}_{2}^{*}+\boldsymbol{\Phi}_{\mathrm{r}} \mathrm{d} t=\mathbf{0}
+\end{array}</script><p>将这两组可能位移之差定义为质点系的<strong>虚位移</strong>，记为 $\delta \boldsymbol{q}$，即</p>
+<script type="math/tex; mode=display">
+\delta q=\delta \boldsymbol{q}_{2}^{*}-\delta \boldsymbol{q}_{1}^{*}</script><p>于是虚位移 $\delta q$ 必须满足的方程</p>
+<script type="math/tex; mode=display">
+\boldsymbol{\Phi}_{q} \delta q=0</script><ul>
+<li>可将虚位移理解为约束方程的等时变分。等时变分算子 $\delta(\cdot)$ 与微分算子 $\mathrm{d}(\cdot)$ 有类似的运算规则，但 $\delta t=0$。</li>
+<li>对于定常约束，虚位移即为可能位移，实位移为无数虚位移之一。</li>
+<li>对于非定常约束，虚位移一般不是可能位移，实位移一般也不是无数虚位移之一。</li>
+</ul>
+<h3 id="非独立坐标的虚位移与独立坐标虚位移间的关系"><a href="#非独立坐标的虚位移与独立坐标虚位移间的关系" class="headerlink" title="非独立坐标的虚位移与独立坐标虚位移间的关系"></a>非独立坐标的虚位移与独立坐标虚位移间的关系</h3><p>描述质点系位形的 $3 n$ 个坐标不独立。如果 $s$ 个约束方程独立，则坐标阵 $\boldsymbol{q}$ 中有 $\delta=3 n-s$ 个是独立坐标，记为 $\boldsymbol{w}$；$s$ 个为非独立坐标，记为 $\boldsymbol{u}$。故有 $\boldsymbol{q}=\left(\boldsymbol{u}^{\mathrm{T}} \quad \boldsymbol{w}^{\mathrm{T}}\right)^{\mathrm{T}}$，约束方程的雅可比可表示为 $\boldsymbol{\Phi}_{q}=\left(\begin{array}{ll}\boldsymbol{\Phi}_{u} &amp; \boldsymbol{\Phi}_{w}\end{array}\right)$。当 $\boldsymbol{\Phi}_{u}$ 为满秩时，由式 $(8.2-9)$ 可得非独立坐标的虚位移与独立坐标虚位移间的关系：</p>
+<script type="math/tex; mode=display">
+\delta \boldsymbol{u}=-\boldsymbol{\Phi}_{u}^{-1} \boldsymbol{\Phi}_{w} \delta \boldsymbol{w}</script><h3 id="虚位移与广义坐标虚位移间的关系"><a href="#虚位移与广义坐标虚位移间的关系" class="headerlink" title="虚位移与广义坐标虚位移间的关系"></a>虚位移与广义坐标虚位移间的关系</h3><p>需要指出的是独立坐标不一定为原坐标阵 $\boldsymbol{q}$ 中的坐标，可另外定义 $\delta$ 个相互独立的变量作为独立坐标 $\boldsymbol{w}$，这些独立坐标又称为<strong>广义坐标</strong>。如果坐标阵 $\boldsymbol{q}$ 总可以表示为这些广义坐标的函数，即有</p>
+<script type="math/tex; mode=display">
+\boldsymbol{q}=\boldsymbol{q}(\boldsymbol{w},t)</script><p>那么该广义坐标 $w$ 也完全确定了质点系的位形。这样真实位移与广义坐标真实位移间的关系为</p>
+<script type="math/tex; mode=display">
+\mathrm{d} \boldsymbol{q}=\boldsymbol{q}_{\boldsymbol{w}} \mathrm{d} \boldsymbol{w}+\boldsymbol{q}_{t} \mathrm{~d} t</script><p>其中 $\boldsymbol{q}_{w}$ 与 $\boldsymbol{q}_{1}$ 为函数 $\boldsymbol{q}=\boldsymbol{q}(\boldsymbol{w}$，$t)$ 对变量 $\boldsymbol{w}$ 与 $t$ 的偏导数。根据虚位移的定义，虚位移与广义坐标虚位移间的关系为</p>
+<script type="math/tex; mode=display">
+\delta \boldsymbol{q}=\boldsymbol{q}_{\omega} \delta \boldsymbol{w}</script><h3 id="虚位移原理-1"><a href="#虚位移原理-1" class="headerlink" title="虚位移原理"></a>虚位移原理</h3><p>具有双面理想约束的质点系，其<strong>平衡的充分必要条件为系统内所有主动力对于质点系的任意虚位移所作的元功之和为零</strong>，即</p>
+<script type="math/tex; mode=display">
+\delta W=\sum_{k=1}^{n} \vec{F}_{k}^{\mathrm{a}} \cdot \delta \vec{r}_{k}=0</script><ul>
+<li>主动力对虚位移所作的元功 $\delta W$ 称为<strong>虚功</strong>，故虚位移原理也称为<strong>虚功原理</strong>。</li>
+<li>虚位移原理的最大的优点是讨论质点系平衡时直接给出了<strong>主动力之间的关系</strong>而无需顾及理想约束力。</li>
+</ul>
+<h3 id="无自由度结构问题"><a href="#无自由度结构问题" class="headerlink" title="无自由度结构问题"></a>无自由度结构问题</h3><p>对于无自由度结构问题，需<strong>求理想约束力</strong>，直接无法利用虚位移原理。但可采取如下的方法，即将与待求约束力相关的约束解除，把该约束力作为主动力处理，从而可得到它与原系统主动力的关系。</p>
+<ol>
+<li>拆约束，求哪拆哪</li>
+<li>一次仅拆一个方向的约束</li>
+<li>代之以相应的约束力（看成主动力）</li>
+</ol>
+<h3 id="广义力"><a href="#广义力" class="headerlink" title="广义力"></a>广义力</h3><p>系统各主动力关于广义坐标 $w_{k}$ 的广义力为</p>
+<script type="math/tex; mode=display">
+Q_{k}=\frac{\delta W}{\delta w_{k}}(k=1,\cdots,\delta)</script><p>对于完整系统，广义坐标的变分 $\delta w_{j}(j=1,\cdots,\delta)$ 为独立变量，故由上式得</p>
+<script type="math/tex; mode=display">
+Q_{j}=0 \quad(j=1,\cdots,\delta)</script><p>因此虚位移原理可表述为：具有双面理想约束的质点系，其平衡的充分必要条件为所有关于广义坐标的广义力均为零。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">大学学习生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E7%89%A9%E7%90%86/">物理</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E7%89%A9%E7%90%86/%E5%8A%9B%E5%AD%A6/">力学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%89%A9%E7%90%86/">物理</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%8A%9B%E5%AD%A6/">力学</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/09/16/%E7%A6%BB%E6%95%A3%EF%BC%88%E5%9B%BE%E8%AE%BA%EF%BC%89%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">离散（图论）笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/09/15/%E5%A4%A7%E5%AD%A6%E7%89%A9%E7%90%86%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%8B%E5%86%8C%EF%BC%89/">
+                        <span class="hidden-mobile">大学物理笔记（下册）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', '1357310795/Blog-Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.12.3/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/anchor-js/4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.8/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,2315 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/doge.png">
+  <link rel="icon" href="/img/doge.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#e4ad97">
+  <meta name="description" content="">
+  <meta name="author" content="Teruteru">
+  <meta name="keywords" content="">
+  
+  <title>大学物理笔记（上册） - Teruteru的Hexo博客</title>
+
+  <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myiconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"teru.space","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/76443599_p0-1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="大学物理笔记（上册）">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-02-17 09:15" pubdate>
+        2022年2月17日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      32.8k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      406
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">大学物理笔记（上册）</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2023年10月7日 上午
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h2 id="第一章-力与运动"><a href="#第一章-力与运动" class="headerlink" title="第一章 力与运动"></a>第一章 力与运动</h2><h3 id="矢量基本知识"><a href="#矢量基本知识" class="headerlink" title="矢量基本知识"></a>矢量基本知识</h3><ul>
+<li>有大小、方向，且服从平行四边形运算法则的量</li>
+<li>线段长度表示大小；箭头表示方向。</li>
+<li>矢量的大小称为矢量的模，记为 $a=\left|\overrightarrow{a}\right|$</li>
+<li>单位方向矢量 $\overrightarrow{e_a}=\frac{\overrightarrow{a}}{a}$</li>
+<li>两矢量的点乘 = 两量大小与它们夹角余弦的乘积</li>
+<li>两矢量叉乘：大小$ab\sin\varphi$；方向由右手螺旋规则确定</li>
+</ul>
+<h3 id="国际单位制（SI）"><a href="#国际单位制（SI）" class="headerlink" title="国际单位制（SI）"></a>国际单位制（SI）</h3><ul>
+<li>1 m是光在真空中(1/299 792 458)s时间间隔内所经路径的长度。</li>
+<li>1s是铯的一种同位素133 Cs原子发出的一个特征频率光波周期的9 192 631 770倍。</li>
+<li>千克用基本物理常数普朗克常数h定义。</li>
+<li>安培用电子电荷定义。</li>
+<li>开尔文用玻尔兹曼常数定义。</li>
+<li>摩尔用阿伏伽德罗常数定义。</li>
+</ul>
+<script type="math/tex; mode=display">
+\begin{array}{llc}
+\hline \text { 量的名称 } & \text { 单位名称 } & \text { 单位符号 } \\
+\hline \text { 长度 } & \text { 米 } & \mathrm{m} \\
+\text { 质量 } & \text { 千克 (公斤) } & \mathrm{kg} \\
+\text { 时间 } & \text { 秒 } & \mathrm{s} \\
+\text { 电流 } & \text { 安 [培] } & \mathrm{A} \\
+\text { 热力学温度 } & \text { 开[尔文] } & \mathrm{K} \\
+\text { 物质的量 } & \text { 摩[尔] } & \mathrm{mol} \\
+\text { 发光强度 } & \text { 坎[德拉] } & \mathrm{cd} \\
+\hline
+\end{array}</script><h3 id="物理量的单位与量纲"><a href="#物理量的单位与量纲" class="headerlink" title="物理量的单位与量纲"></a>物理量的单位与量纲</h3><p>略</p>
+<h3 id="参考系"><a href="#参考系" class="headerlink" title="参考系"></a>参考系</h3><ul>
+<li>定义：为描述物体的运动而选择的标准物体。  </li>
+<li>运动具有绝对性，运动的描述具有相对性。</li>
+<li>在不同参考系中对同一物体运动的描述不同。</li>
+<li>参考系的选择是任意的</li>
+<li>描述物体的运动时，必须指明参考系</li>
+<li>若不指明参考系，则认为以地面为参考系</li>
+</ul>
+<h3 id="坐标系"><a href="#坐标系" class="headerlink" title="坐标系"></a>坐标系</h3><ul>
+<li>由固结在参考系上的一组有刻度的射线、曲线或角度表示。</li>
+<li>坐标系为参考系的数学抽象（两者相对静止）</li>
+<li>坐标系可任选，以描述方便为原则</li>
+<li>在同一参考系中，用不同的坐标系描述同一物体的运动时，其数学表述与坐标系的选择有关。</li>
+<li>常用的坐标系：<ul>
+<li>直角坐标系</li>
+<li>自然坐标系</li>
+<li>极坐标系</li>
+</ul>
+</li>
+</ul>
+<h3 id="质点"><a href="#质点" class="headerlink" title="质点"></a>质点</h3><ul>
+<li>定义：没有大小和形状,只有质量的理想化的物体</li>
+<li>条件：一个物体能否看作质点，它的唯一标准是物体的形状、大小与所研究的问题是否无关。可以将物体简化为质点的两种情况：<ul>
+<li>平动物体各点的运动状态完全相同</li>
+<li>物体本身线度和它活动范围相比小得很多(此时物体的变形及转动显得并不重要)。</li>
+</ul>
+</li>
+<li>质点是经过科学抽象而形成的理想化的物理模型。目的是为了突出研究对象的主要性质，暂不考虑一些次要的因素。</li>
+</ul>
+<h3 id="空间和时间"><a href="#空间和时间" class="headerlink" title="空间和时间"></a>空间和时间</h3><ul>
+<li>空间：反映物质运动的广延性，表示物理系统存在的延展及其各部分间的邻接。</li>
+<li>长度：空间中两点间的距离</li>
+<li>宇观尺度的长度单位:<ul>
+<li>太阳系内天体距离常用的长度单位<br>$\mathrm{AU}$，日地距离，$1\,\mathrm{AU}=1.495 978 70 \times 10^{11}\,\mathrm{m}$</li>
+<li>太阳系外天体距离常用的长度单位<br>光年，光在一年里传播的距离，$1\text{ 光年}=9.460 530 \times 10^{15}\,\mathrm{m}$</li>
+</ul>
+</li>
+<li>时间：事件发生的次序性。</li>
+<li>时间间隔：两个时刻之间的间隔</li>
+</ul>
+<h3 id="位置矢量"><a href="#位置矢量" class="headerlink" title="位置矢量"></a>位置矢量</h3><p>定义：从原点$O$向质点$P$所在位置作一矢量来表示质点位置。该矢量称为<strong>位置矢量</strong>，简称<strong>位矢</strong>。</p>
+<script type="math/tex; mode=display">
+\vec{r}=\overrightarrow{OP}</script><ul>
+<li><p>三维直角坐标系</p>
+<script type="math/tex; mode=display">
+\vec{r}=\vec{r}_x+\vec{r}_y+\vec{r}_z=x\vec{i}+y\vec{j}+z\vec{k}=(\boldsymbol{x},\boldsymbol{y},\boldsymbol{z})</script><p>大小 $r=\sqrt{x^2+y^2+z^2}=\left|\vec{r}\right|$</p>
+</li>
+<li><p>二维极坐标系<br>对于极点$O$外的任意点$P$，位置矢量</p>
+<script type="math/tex; mode=display">
+\vec{r}=\overrightarrow{OP}=r\vec{e}_r</script><p>径向基矢 $\vec{e}_r$ 沿着 $OP$ 方向，横向基矢 $\vec{e}_\theta$ 与径向基矢垂直，沿着角度的正方向<br>任意矢量</p>
+<script type="math/tex; mode=display">
+\vec{A}=A_r \vec{e}_r + A_{\theta}\vec{e}_{\theta}</script><p>大小 $\left|\vec{A}\right|=\sqrt{A_r^2+A_\theta^2}$</p>
+</li>
+<li><p>极坐标系与直角坐标系中同一点基矢间的关系</p>
+<script type="math/tex; mode=display">
+\begin{array}[c]
+\vec{e}_r=\cos\theta \vec{i}+\sin\theta \vec{j} \\
+\vec{e}_\theta=-\sin\theta \vec{i}+\cos\theta \vec{j}
+\end{array}</script></li>
+</ul>
+<h3 id="运动方程"><a href="#运动方程" class="headerlink" title="运动方程"></a>运动方程</h3><p>在坐标系中各处要配上一套同步时钟，给出质点运动到某地点的时刻。在质点的运动过程中，质点的位矢是时间$t$的函数，记作</p>
+<script type="math/tex; mode=display">
+\vec{r}=\vec{r}(t)=x(t)\vec{i}+y(t)\vec{j}+z(t)\vec{k}</script><p>称为运动方程</p>
+<h3 id="平均速度和瞬时速度"><a href="#平均速度和瞬时速度" class="headerlink" title="平均速度和瞬时速度"></a>平均速度和瞬时速度</h3><script type="math/tex; mode=display">
+\bar{\vec{v}}=\frac{\Delta \vec{r}}{\Delta t}</script><p>平均速度只是反映了某个时间段运动的平均状况<br>平均速度不能反映各个时刻的运动，为了反映各个时刻的运动，需要引入瞬时速度</p>
+<script type="math/tex; mode=display">
+\vec{v}=\lim _{\Delta t \rightarrow 0} \frac{\Delta \vec{r}}{\Delta t}=\frac{\mathrm{d}\vec{r}}{\mathrm{d}t}</script><p>瞬时速度，简称速度<br>速度的大小称为速率</p>
+<h3 id="平均加速度和瞬时加速度"><a href="#平均加速度和瞬时加速度" class="headerlink" title="平均加速度和瞬时加速度"></a>平均加速度和瞬时加速度</h3><ul>
+<li>平均加速度<script type="math/tex; mode=display">
+\bar{\vec{a}}=\frac{\Delta \vec{v}}{\Delta t}=\frac{\vec{v}(t+\Delta t)-\vec{v}(t)}{\Delta t}</script></li>
+<li>加速度<script type="math/tex; mode=display">
+\vec{a}=\lim _{\Delta t \rightarrow 0} \frac{\Delta \vec{v}}{\Delta t}=\frac{\mathrm{d}\vec{v}}{\mathrm{d}t}=\frac{\mathrm{d}^2 \vec{r}}{\mathrm{d}t^2}</script></li>
+</ul>
+<h3 id="几何意义"><a href="#几何意义" class="headerlink" title="几何意义"></a>几何意义</h3><ul>
+<li><p>位移的几何意义：位移在数值上等于 $v-t$ 图上曲线与$t$轴围成的面积</p>
+<script type="math/tex; mode=display">
+x(t)-x_0=\int_0^t v \mathrm{d}t</script></li>
+<li><p>速度的几何意义：速度在数值上等于 $a-t$ 图上曲线与$t$轴围成的面积</p>
+<script type="math/tex; mode=display">
+v(t)-v_0=\int_0^t a \mathrm{d}t</script></li>
+</ul>
+<h3 id="轨迹方程"><a href="#轨迹方程" class="headerlink" title="轨迹方程"></a>轨迹方程</h3><p>质点在空间运动所经过的路迹称为轨迹，相应的曲线方程称为轨迹方程。</p>
+<ul>
+<li>轨迹方程不显含时间。</li>
+<li>轨迹方程包含的信息量小于运动学方程。</li>
+</ul>
+<h3 id="位移矢量"><a href="#位移矢量" class="headerlink" title="位移矢量"></a>位移矢量</h3><p>经过时间间隔 $\Delta t$ 后，质点位置矢量发生变化，把由始点 $A$ 指向终点 $B$ 的有向线段 $\Delta \vec{r}$ 称为点 $A$ 到 $B$ 的位移矢量，简称位移，$\Delta \vec{r}=\vec{r}_B-\vec{r}_A$</p>
+<h3 id="路程"><a href="#路程" class="headerlink" title="路程"></a>路程</h3><ul>
+<li>定义：质点实际运动轨迹的长度</li>
+</ul>
+<p>在自然坐标系下，设 $t$ 时刻质点在位置 $P$ ，在 $P$ 点建立正交坐标系，其一根坐标轴沿轨迹切线方向，正方向为运动的前进方向，单位矢量为 $\vec{e}_t$，一根沿轨迹法线方向，正方向指向轨迹内凹的一侧，单位矢量为 $\vec{e}_n$</p>
+<h3 id="★速度、路程、加速度"><a href="#★速度、路程、加速度" class="headerlink" title="★速度、路程、加速度"></a>★速度、路程、加速度</h3><ul>
+<li>速度：$\vec{v}=\frac{\mathrm{d}\vec{r}}{\mathrm{d}t}=\left(\frac{\mathrm{d}s}{\mathrm{d}t}\right)\vec{e}_t=v\vec{e}_t$</li>
+<li>速率：$v=\frac{\mathrm{d}s}{\mathrm{d}t}=|\vec{v}|$</li>
+<li>加速度：$\vec{a}=\frac{\mathrm{d}\vec{v}}{\mathrm{d}t}=\frac{\mathrm{d}^2 \vec{r}}{\mathrm{d}t^2}$</li>
+<li>加速度大小：$a=|\vec{a}|$</li>
+</ul>
+<h3 id="★根据位矢求曲率半径的方法"><a href="#★根据位矢求曲率半径的方法" class="headerlink" title="★根据位矢求曲率半径的方法"></a>★根据位矢求曲率半径的方法</h3><ol>
+<li>求出速度 $\vec{v}=\frac{\mathrm{d}\vec{r}}{\mathrm{d}t}$</li>
+<li>求出速率 $v=|\vec{v}|$</li>
+<li>求出加速度 $\vec{a}=\frac{\mathrm{d}\vec{v}}{\mathrm{d}t}$</li>
+<li>求出加速度大小 $a=|\vec{a}|$</li>
+<li>求出切向加速度分量 $a_{t}=\frac{\mathrm{d} v}{\mathrm{d} t}$</li>
+<li>求出法向加速度分量 $a_n=\sqrt{a^2-a_{t}^{2}}$</li>
+<li>求出曲率半径 $\rho=\frac{v^2}{a_n}$</li>
+<li>使用公式 $\rho=\frac{|r’\times r’’|}{|r’|^3}$ 验算</li>
+</ol>
+<h3 id="速度在平面极坐标系中的表达形式"><a href="#速度在平面极坐标系中的表达形式" class="headerlink" title="速度在平面极坐标系中的表达形式"></a>速度在平面极坐标系中的表达形式</h3><script type="math/tex; mode=display">
+\vec{v}=\frac{\mathrm{d} r}{\mathrm{d} t} \vec{e}_{r}+r \frac{\mathrm{d} \theta}{\mathrm{d} t} \vec{e}_{\theta}=v_{r} \vec{e}_{r}+v_{\theta} \vec{e}_{\theta}</script><h3 id="抛体运动"><a href="#抛体运动" class="headerlink" title="抛体运动"></a>抛体运动</h3><ul>
+<li><script type="math/tex; mode=display">
+\vec{a}_x=\frac{\mathrm{d}\vec{v}_x}{\mathrm{d}t}=\mathbf{0}</script></li>
+<li><script type="math/tex; mode=display">
+\vec{a}_y=\frac{\mathrm{d}\vec{v}_y}{\mathrm{d}t}=-\boldsymbol{g}</script></li>
+<li><script type="math/tex; mode=display">
+\vec{v}_{0x}=\vec{v}_0\cos\alpha</script></li>
+<li><script type="math/tex; mode=display">
+\vec{v}_{0y}=\vec{v}_0\sin\alpha</script></li>
+<li><script type="math/tex; mode=display">
+\vec{v}_{x}=\vec{v}_0\cos\alpha</script></li>
+<li><script type="math/tex; mode=display">
+\vec{v}_{y}=\vec{v}_0\sin\alpha-\boldsymbol{g}t</script></li>
+<li><script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+x=v_{0} t \cos \alpha \\
+y=v_{0} t \sin \alpha-\frac{1}{2} g t^{2}
+\end{array}\right.</script></li>
+<li><script type="math/tex; mode=display">
+y=x\tan\alpha-\frac{g}{2v_0^2\cos^2\alpha}x^2</script></li>
+</ul>
+<h3 id="圆周运动"><a href="#圆周运动" class="headerlink" title="圆周运动"></a>圆周运动</h3><p>质点的圆周运动，除了用位矢、位移、速度和加速度等所谓的线量来描述外，也常用角量来描述。 </p>
+<ul>
+<li>角位置$\theta$：质点所在的矢径与$x$轴的夹角</li>
+<li>运动方程：$\theta=\theta(t)$</li>
+<li>平均角速度：$\bar{\omega}=\frac{\Delta \theta}{\Delta t}$</li>
+<li>（瞬时）角速度：$\omega=\lim_{\Delta t \rightarrow 0} \frac{\Delta \theta}{\Delta t}=\frac{\mathrm{d} \theta}{\mathrm{d} t}$</li>
+<li>角速度为矢量，其方向满足右手定则：右手四指沿质点转动方向，大拇指指向角速度方向。</li>
+<li>平均角加速度：$\bar{\beta}=\frac{\Delta \omega}{\Delta t} $</li>
+<li>角加速度：$\beta=\lim_{\Delta \rightarrow 0} \frac{\Delta \omega}{\Delta t}=\frac{\mathrm{d} \omega}{\mathrm{d} t}=\frac{\mathrm{d}^{2} \theta}{\mathrm{d} t^{2}}$</li>
+<li><p>对于匀角加速圆周运动：</p>
+<ul>
+<li>$\omega=\omega_{0}+\beta t$</li>
+<li>$\theta=\theta_{0}+\omega_{0} t+\frac{1}{2} \beta t^{2}$</li>
+<li>$\omega^{2}=\omega_{0}^{2}+2 \beta\left(\theta-\theta_{0}\right)$</li>
+</ul>
+</li>
+<li><p>路程与角位移之间的关系：$\Delta s=R\Delta\theta$</p>
+</li>
+<li>线速度与角速度的关系：$v=\frac{\mathrm{d}s}{\mathrm{d}t}=\omega R$</li>
+<li>法向坐标单位矢量 $\vec{e}_n$ 指向圆心</li>
+<li>切向坐标单位矢量 $\vec{e}_t$ 指向运动的前方</li>
+<li>法向加速度<script type="math/tex; mode=display">
+a_{n}=v \omega=R \omega^{2}=\frac{v^{2}}{R}</script></li>
+<li>切向加速度<script type="math/tex; mode=display">
+a_{t}=\frac{\mathrm{d} v}{\mathrm{d} t}=\frac{\mathrm{d}^2 s}{\mathrm{d}t^2}=R \frac{\mathrm{d} \omega}{\mathrm{d} t}=R \beta</script></li>
+<li>加速度矢量：$\boldsymbol{a}=\boldsymbol{\beta} \times \boldsymbol{r}-\omega^{2} \boldsymbol{r}$</li>
+</ul>
+<h3 id="曲率"><a href="#曲率" class="headerlink" title="曲率"></a>曲率</h3><ul>
+<li>若某一圆的曲率与轨道在该点的曲率相等，则此圆与轨道在该点相切，称之为该点的<strong>曲率圆</strong>。</li>
+<li>其圆心称为轨迹在该点的<strong>曲率中心</strong>。</li>
+<li>其半径称为轨迹在该点的<strong>曲率半径</strong>。</li>
+<li>质点做曲线运动时，可以看作各个瞬间做不同曲率半径的圆周运动。于是质点的曲线运动可以看作无穷多个各个瞬间做不同曲率半径的圆周运动的叠加。</li>
+<li>曲率半径$\rho=\frac{\mathrm{d} s}{\mathrm{d} \theta}$ </li>
+<li>曲率$k=\frac{\mathrm{d} \theta}{\mathrm{d} s}$</li>
+<li>加速度 $a=\vec{a}=\frac{\mathrm{d} v}{\mathrm{d} t} \vec{e}_{t}+v \frac{\mathrm{d} \theta}{\mathrm{d} t} \vec{e}_{n}=\frac{\mathrm{d} v}{\mathrm{d} t} \vec{e}_{t}+\frac{v^{2}}{\rho} \vec{e}_{n}$</li>
+<li>在二维直角坐标系中 $k=\frac{\left|\frac{\mathrm{d}^{2} y}{\mathrm{d} x^{2}}\right|}{\left[1+\left(\frac{\mathrm{d} y}{\mathrm{d} x}\right)^{2}\right]^{3 / 2}}$</li>
+<li>切向加速度分量 $a_{t}=\frac{\mathrm{d} v}{\mathrm{d} t}=\frac{\mathrm{d}^{2} s}{\mathrm{d} t^{2}}$</li>
+<li>法向加速度分量 $a_{n}=v \frac{\mathrm{d} \theta}{\mathrm{d} t}=\frac{1}{\rho} v^{2}$</li>
+<li>加速度大小 $a=|\vec{a}|=\sqrt{a_{t}^{2}+a_{n}^{2}}=\sqrt{\left(\frac{\mathrm{d} v}{\mathrm{d} t}\right)^{2}+\frac{v^{4}}{\rho^{2}}}$</li>
+<li>加速度方向 $\tan\alpha=\frac{a_n}{a_t}$</li>
+</ul>
+<h3 id="一个小技巧"><a href="#一个小技巧" class="headerlink" title="一个小技巧"></a>一个小技巧</h3><script type="math/tex; mode=display">
+a=\frac{\mathrm{d}v}{\mathrm{d}t}=\frac{\mathrm{d}v}{\mathrm{d}x}\frac{\mathrm{d}x}{\mathrm{d}t}=v\frac{\mathrm{d}v}{\mathrm{d}x}</script><h3 id="牛顿的绝对时空观"><a href="#牛顿的绝对时空观" class="headerlink" title="牛顿的绝对时空观"></a>牛顿的绝对时空观</h3><ul>
+<li>绝对时间：“绝对的、真正的和数学的时间自身在流逝着，而且由于其本性而在均匀地、与任何其他外界事物无关地流逝着”</li>
+<li>绝对空间：“绝对的空间，就其本性而言，是与外界任何事物无关而永远是相同的和不动的”</li>
+<li>绝对运动：“绝对运动是一个物体从某一绝对处所向另一绝对处所的移动”</li>
+<li>绝对静止：“真正的、绝对的静止，是指这一物体继续保持在不动的空间中的同一个部分而不动”</li>
+</ul>
+<h3 id="经典力学时空观的推论"><a href="#经典力学时空观的推论" class="headerlink" title="经典力学时空观的推论"></a>经典力学时空观的推论</h3><p>时间和空间的量度和参考系无关，长度和时间的测量是绝对的</p>
+<ul>
+<li>空间任意两点之间的距离对于任何的惯性系而言都是相等的，与惯性系的选择或观察者的相对运动无关。即：长度是“绝对的”，或称之为“绝对空间”</li>
+<li>时间也与惯性系的选择或观察者的相对运动无关，$t=t’$</li>
+<li>同时性的绝对性：在一惯性系中同时发生的两件事，在其它惯性系中也是同时发生的。</li>
+<li>时间间隔测量的绝对性：$\Delta t=\Delta t’$</li>
+<li>长度的绝对性：端点坐标值不随时间变化，坐标测量可在不同时刻进行，$l=x_2(t_2)-x_1(t_1)$</li>
+</ul>
+<h3 id="伽利略变换"><a href="#伽利略变换" class="headerlink" title="伽利略变换"></a>伽利略变换</h3><p>前提：两个惯性系 $S’,S$，$S’$ 相较于 $S$的速度为 $\vec{u}$</p>
+<ul>
+<li>位矢关系：$\vec{r}=\vec{r’}+\vec{u}$</li>
+<li>速度关系：$\vec{v}=\vec{v’}+\vec{u}$</li>
+<li>加速度关系：$\vec{a}=\vec{a’}$</li>
+</ul>
+<h3 id="一般的参照系变换"><a href="#一般的参照系变换" class="headerlink" title="一般的参照系变换"></a>一般的参照系变换</h3><p>设 $S$ 为惯性系，$S’$ 为相对于 $S$ 平动的非惯性系，$S’$ 相对于 $S$ 加速度为 $\vec{u_0}$，加速度为 $\vec{a_0}$</p>
+<ul>
+<li>位矢关系：$\vec{r}=\vec{r’}+\vec{r_0}$</li>
+<li>速度关系：$\vec{v}=\vec{v’}+\vec{u_0}$</li>
+<li>加速度关系：$\vec{a}=\vec{a’}+\vec{a_0}$</li>
+</ul>
+<h3 id="牛顿第一定律"><a href="#牛顿第一定律" class="headerlink" title="牛顿第一定律"></a>牛顿第一定律</h3><p>　　牛顿第一定律可表述如下：任何物体，如果没有受到其他物体的作用，都将保持静止或做匀速直线运动的状态。<br>　　牛顿第一定律的意义：</p>
+<ul>
+<li>定义了物体惯性的概念。任何物体都有保持运动状态不变并且反抗其他物体改变其运动状态的属性，物体这种固有的属性通常称为物体的惯性。因此，牛顿第一定律又称为惯性定律。</li>
+<li>定义了力的概念。力是改变物体运动状态的原因，或者说是使物体产生加速度的原因。</li>
+<li>定义了惯性参考系与非惯性参考系的概念。物体运动遵从牛顿第一定律的参考系称为惯性参考系；反之，物体运动不遵从牛顿第一定律的参考系称为非惯性参考系。</li>
+</ul>
+<h3 id="牛顿第二定律"><a href="#牛顿第二定律" class="headerlink" title="牛顿第二定律"></a>牛顿第二定律</h3><ul>
+<li>惯性质量<br>惯性质量 $m$ 是用来衡量物体惯性大小的物理量。</li>
+<li>牛顿第二定律：<br>在惯性参考系，物体受到外力作用时，所获得的加速度的大小与合外力成正比，与物体的惯性质量成反比，加速度的方向与合外力的方向相同。<script type="math/tex; mode=display">
+\begin{array}{c}
+\sum_{i} \boldsymbol{F}_{i}=m \boldsymbol{a} \\
+\sum_{i} \boldsymbol{F}_{i}=m \frac{\mathrm{d} \boldsymbol{v}}{\mathrm{d} t} \\
+\boldsymbol{F}=\frac{\mathrm{d} \boldsymbol{p}}{\mathrm{d} t}
+\end{array}</script></li>
+<li><p>意义：</p>
+<ul>
+<li>给出了力的测量定义：<br>选定一个物体，测量各种力引起的加速度</li>
+<li>物体惯性(质量)的测量定义：<br>选定一个力，测量它对各种物体引起的加速度</li>
+</ul>
+</li>
+<li><p>两个特性</p>
+<ul>
+<li>牛顿第二定律的瞬时性。牛顿第二定律定量地表述了物体的加速度与所受外力之间的瞬时关系。加速度与外力同时存在，同时改变，同时消失。一旦作用在物体上的外力撤去，物体的加速度立即消失，这正是第一定律所要求的，也是物体惯性的表现。</li>
+<li>牛顿第二定律的矢量性。力和物体的加速度都是矢量，$\boldsymbol{F}=m\boldsymbol{a}$ 是矢量方程。</li>
+</ul>
+</li>
+<li><p>注意</p>
+<ul>
+<li>牛顿第二定律仅适用于质点。对于广延物体，可以把它分解为无穷多个无穷小的质点，对每一个质点应用牛顿第二定律。</li>
+<li>牛顿第二定律只适用于惯性参考系。</li>
+</ul>
+</li>
+</ul>
+<h3 id="牛顿第三定律"><a href="#牛顿第三定律" class="headerlink" title="牛顿第三定律"></a>牛顿第三定律</h3><p>牛顿第三定律又称为作用和反作用定律。可表述如下:当物体1以力 $f_{21}$ 作用于物体2时，物体2必定同时以大小相等、方向相反的同性质的力 $f_{12}$ ，沿同一直线作用于物体1上。</p>
+<ul>
+<li>作用力总是成对出现，大小相等、方向相反；</li>
+<li>力的作用具有瞬时性：“同时存在，同时消失”。</li>
+<li>作用在两个不同的物体上，不能相互抵消；（作用力和反作用力不是一对平衡力！）</li>
+<li>作用性质相同，是同一性质的力，但作用效果不同。</li>
+</ul>
+<h3 id="牛顿运动定律的适用范围"><a href="#牛顿运动定律的适用范围" class="headerlink" title="牛顿运动定律的适用范围"></a>牛顿运动定律的适用范围</h3><ul>
+<li>牛顿运动定律仅适用于惯性系</li>
+<li>牛顿运动定律仅适用于速度比光速低得多的物体</li>
+<li>牛顿运动定律仅适用于宏观系统和介观系统的力学性质研究</li>
+<li>牛顿运动定律仅适用于实物间的相互作用问题，不适用于通过场所传递的相互作用。</li>
+</ul>
+<h3 id="经典力学相对性原理"><a href="#经典力学相对性原理" class="headerlink" title="经典力学相对性原理"></a>经典力学相对性原理</h3><ul>
+<li>任何相对于惯性系做匀速直线运动的参考系都是惯性参考系。</li>
+<li>在不同惯性参考系中观测同一质点的运动时，除了质点的位置、速度可能不同外，其加速度是相同的，质点的运动都遵从牛顿运动定律。</li>
+<li>力学运动定律在所有惯性系中均成立且具有相同的形式，即一切惯性系在力学意义上是等价的、平权的。</li>
+<li>不可能通过惯性系内进行的任何形式的力学实验来确定该惯性系相对其他惯性系的速度。这就是经典力学相对性原理。</li>
+</ul>
+<h3 id="万有引力"><a href="#万有引力" class="headerlink" title="万有引力"></a>万有引力</h3><p>任何两个物体之间都存在相互吸引力，即万有引力。质量分别为 $m$ 和 $M$ 的两个质点，相距为 $r$ 时，它们之间的引力大小为</p>
+<script type="math/tex; mode=display">
+F=G\frac{Mn}{r^2}</script><p>上式也可以表示为矢量形式</p>
+<script type="math/tex; mode=display">
+\boldsymbol{F}=G\frac{Mn}{r^3}\boldsymbol{r}</script><p>其中 $\boldsymbol{F}$ 表示物体 $M$ 对物体 $m$ 的引力；$r$ 表示 $m$ 相对于 $M$ 的位矢；$G$ 为万有引力常量。这里的质量是物体间引力作用的量度，称为引力质量，它与牛顿运动定律中衡量物体惯性大小的惯性质量在物理意义上是完全不同的。</p>
+<h3 id="惯性质量和引力质量的统一"><a href="#惯性质量和引力质量的统一" class="headerlink" title="惯性质量和引力质量的统一"></a>惯性质量和引力质量的统一</h3><p>按万有引力定律及牛顿运动定律，有</p>
+<script type="math/tex; mode=display">
+G\frac{m_\mathrm{A} M}{R^2}=m_1 g_0</script><p>即</p>
+<script type="math/tex; mode=display">
+\frac{m_1}{m_\mathrm{A}}=\frac{GM}{g_0 R^2}</script><p>实验证明，惯性质量和引力质量之比对一切物体都相同，对任何物体有 $m_\mathrm{A}=m_1$。引力质量和惯性质量统称为质量。</p>
+<h3 id="开普勒三定律"><a href="#开普勒三定律" class="headerlink" title="开普勒三定律"></a>开普勒三定律</h3><ul>
+<li>开普勒第一定律：所有行星绕太阳运动的轨道都是椭圆，太阳位于椭圆轨道的一个焦点上。</li>
+<li>开普勒第二定律：对任意一个行星来说，它与太阳的连线在相等的时间内扫过相等的面积。</li>
+<li>开普勒第三定律：所有行星的轨道半长轴的三次方跟它的公转周期的二次方的比值。</li>
+</ul>
+<h3 id="重力"><a href="#重力" class="headerlink" title="重力"></a>重力</h3><p>物体所受地球的引力 $\boldsymbol{F}_e$ （指向地心）有一部分提供了向心力，剩余的分力 $\boldsymbol{F}_c$ 称为重力，即</p>
+<script type="math/tex; mode=display">
+\boldsymbol{P}=\boldsymbol{F}_e-\boldsymbol{F}_c</script><p>设物体处于纬度 $\varphi$，地球半径为 $R$，质量为 $M$，自转角速度大小为 $\omega$，则重力大小</p>
+<script type="math/tex; mode=display">
+\begin{align}
+P \approx & F_{\mathrm{e}}-F_{\mathrm{c}} \cos \varphi\\
+= & m\left(G \frac{M}{R^{2}}-R \omega^{2} \cos ^{2} \varphi\right)\\
+= & m g_{0}\left(1-\frac{R \omega^{2}}{g_{0}} \cos ^{2} \varphi\right)\\
+\approx & mg_0(1-0.0035\cos^2\varphi)
+\end{align}</script><h3 id="弹力"><a href="#弹力" class="headerlink" title="弹力"></a>弹力</h3><ul>
+<li>弹性形变：物体受力发生形变，当把力撤除后，物体若完全恢复到原来的形状，这种形变称为弹性形变。</li>
+<li>弹性力：有物体形变引起的相互作用力。弹性力是一种接触力，其方向垂直于两物体接触点的切面。</li>
+</ul>
+<p>对于理想的弹簧，在弹性限度内，弹力遵从胡克定律</p>
+<script type="math/tex; mode=display">
+\boldsymbol{F}=-kx\boldsymbol{i}</script><h3 id="摩擦力"><a href="#摩擦力" class="headerlink" title="摩擦力"></a>摩擦力</h3><ul>
+<li>静摩擦力：当物体有滑动趋势但未滑动时作用在物体上的阻止物体相对运动的力。静摩擦力的大小取决于外力。（注意：静摩擦力不正比于支持力）</li>
+<li>最大静摩擦力：当静摩擦力增大到一定数值后就不能再增大了，这时的静摩擦力称为最大静摩擦力。实验表明，最大静摩擦力 $f_\mathrm{s}$ 与两个物体间的正压力 $N$ 成正比，即<script type="math/tex; mode=display">
+f_\mathrm{s}=\mu_\mathrm{s} N</script></li>
+<li>静摩擦因数：上式中 $\mu_\mathrm{s}$ 称为静摩擦因数，与两相互接触物体的材质、接触面的粗糙程度和干湿程度等因素有关。</li>
+<li>滑动摩擦力：当外力超过最大静摩擦力时，物体间将产生相对运动，在这两物体的接触面上就会产生阻碍物体作相对滑动的力，这种力是滑动摩擦力。实验表明，滑动摩擦力 $f_\mathrm{k}$ 也与正压力 $N$ 成正比，即<script type="math/tex; mode=display">
+f_\mathrm{k}=\mu N</script></li>
+<li>滑动摩擦因数：上式中 $\mu$ 称为滑动摩擦因数，它不仅与两相互接触物体的材料及表面情况有关，而且还与物体的相对速度有关。在大多数情况下，它先随相对速度的增加而减小，之后又随相对速度的增大而增大。在通常的速率范围内，可认为 $\mu$ 与速率无关。</li>
+<li>两个因数的关系：对于给定的一对接触面而言， $\mu_\mathrm{s}&gt;\mu$</li>
+<li>一般情况下，$\mu_\mathrm{s}$ 和 $\mu$ 均小于 $1$。在一般问题的简要分析中，可以把 $\mu_\mathrm{s}$ 和 $\mu$ 看成常量，且不加以区分。</li>
+</ul>
+<h3 id="流体阻力"><a href="#流体阻力" class="headerlink" title="流体阻力"></a>流体阻力</h3><p>一个物体在流体（液体或气体）中和流体有相对运动时会受到流体的阻力。阻力的方向与物体相对于流体的速度方向相反，其大小与相对速度的大小有关。<br>物体运动速度小时：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{f}=-b_1\boldsymbol{v}</script><p>其中 $b_1$ 与流体及物体的性质有关。<br>物体运动速度大时：</p>
+<script type="math/tex; mode=display">
+\boldsymbol{f}=b_1\boldsymbol{v}+b_2\boldsymbol{v}^2+b_3\boldsymbol{v}^3+\cdots</script><p>物体在流体中下落时，受到的阻力随速率增大而增大，当阻力和重力平衡时，物体以匀速下落。物体在流体中下落的最大速率称为终极速率，又称为<strong>收尾速率</strong>。</p>
+<h3 id="牛顿运动定律的应用"><a href="#牛顿运动定律的应用" class="headerlink" title="牛顿运动定律的应用"></a>牛顿运动定律的应用</h3><p>利用牛顿运动定律解决问题的主要步骤：</p>
+<ul>
+<li>分析各个物体受力情况，画隔离体图。</li>
+<li>分析各个物体的运动状态，寻求可能的约束条件。</li>
+<li>选择适当的坐标系，列出相应的动力学方程。</li>
+<li>解方程，并对结果进行分析和讨论。</li>
+</ul>
+<h3 id="非惯性系"><a href="#非惯性系" class="headerlink" title="非惯性系"></a>非惯性系</h3><p>牛顿运动定律成立的参照系叫做惯性参照系。牛顿定律不能成立的参照系是非惯性系。<br>实际上，没有严格意义上的惯性系存在，惯性系只是参考系的一个理想物理模型。</p>
+<h3 id="平动加速系"><a href="#平动加速系" class="headerlink" title="平动加速系"></a>平动加速系</h3><p>设 $S$ 为惯性系，$S’$ 相对于 $S$ 加速度为 $\vec{\boldsymbol{a}_0}$，则 $S’$ 为相对于 $S$ 平动的非惯性系。<br>把</p>
+<script type="math/tex; mode=display">
+\vec{\boldsymbol{F}_i}=-m\vec{\boldsymbol{a}_0}</script><p>称为惯性力</p>
+<ul>
+<li>惯性力没有施力者，也不存在反作用力</li>
+<li>惯性力是一个虚拟力，和真实力有区别</li>
+<li>真实力在惯性系和非惯性系中存在；惯性力仅在于非惯性系中存在</li>
+<li>惯性力的实质是物体的惯性在非惯性系中的表现</li>
+</ul>
+<h3 id="匀速转动参考系"><a href="#匀速转动参考系" class="headerlink" title="匀速转动参考系"></a>匀速转动参考系</h3><script type="math/tex; mode=display">
+\vec{\boldsymbol{F}_i}=-mR\omega^2 \vec{\boldsymbol{e}_r}</script><p>称为惯性离心力</p>
+<ul>
+<li>例：水桶旋转时水面方程为<script type="math/tex; mode=display">
+y=y_0+\frac{\omega^2}{2g}x^2</script></li>
+</ul>
+<h3 id="角速度的矢量表示"><a href="#角速度的矢量表示" class="headerlink" title="角速度的矢量表示"></a>角速度的矢量表示</h3><p>角速度是矢量，其大小反映物体转动的快慢，其方向沿转轴，指向由<strong>右手定则</strong>确定，即以弯曲的四指代表旋转方向，翘起的拇指指向角速度矢量 $\boldsymbol{\omega}$ 的方向。<br><img src="https://s2.loli.net/2022/03/04/ixvL2WIoPtgdbMK.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="科里奥利力"><a href="#科里奥利力" class="headerlink" title="科里奥利力"></a>科里奥利力</h3><p>在匀角速转动参考系中的惯性力为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{F}_{\mathrm{i}}=m r \omega^{2} \boldsymbol{e}_{r}+2 m \boldsymbol{v}^{\prime} \times \boldsymbol{\omega}</script><p>式中 $\boldsymbol{v}^{\prime}$ 是物体相对于匀角速转动参考系的速度，第一项就是前述的惯性离心力，第二项称为科里奥利力，它的方向总是与物体相对转动参考系运动的方向垂直。</p>
+<script type="math/tex; mode=display">
+\boldsymbol{f}_c = 2 m \boldsymbol{v}^{\prime} \times \boldsymbol{\omega}</script><ul>
+<li>科里奥利力的影响<ul>
+<li>北半球龙卷风向右偏</li>
+<li>轨道磨损</li>
+<li>北半球河床的右岸受到的冲刷较厉害</li>
+<li>两半球水涡方向相反</li>
+<li>使流动的大气形成气旋</li>
+<li>落体偏东</li>
+</ul>
+</li>
+</ul>
+<h3 id="质心"><a href="#质心" class="headerlink" title="质心"></a>质心</h3><p>考虑 $N$ 个质点组成的系统，定义</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\boldsymbol{r}_{C} &=\frac{\sum_{i=1}^{N} m_{i} \boldsymbol{r}_{i}}{m} \\
+&=\frac{m_{1} \boldsymbol{r}_{1}+m_{2} \boldsymbol{r}_{2}+\cdots+m_{N} \boldsymbol{r}_{N}}{m_{1}+m_{2}+\cdots+m_{N}}
+\end{aligned}</script><p>为系统的<strong>质心</strong>。质心指质点系的质量集中于此的一个假想点，质心的位置矢量是质点系中各个质点的位置矢量根据其对应质量加权平均之后的矢量。</p>
+<p>如果系统的质量是连续分布的，$\boldsymbol{r}_{C}$ 有积分形式</p>
+<script type="math/tex; mode=display">
+\boldsymbol{r}_{C}=\frac{\int \boldsymbol{r} \mathrm{d} m}{\int \mathrm{d} m}</script><p>其中 $\boldsymbol{r}$ 为质量元 $\mathrm{d} m$ 的位置矢量。在直角坐标系中，还可以表示成如下分量形式：</p>
+<script type="math/tex; mode=display">
+x_{C}=\frac{\int x \mathrm{~d} m}{\int \mathrm{d} m}, y_{C}=\frac{\int y \mathrm{~d} m}{\int \mathrm{d} m}, z_{C}=\frac{\int z \mathrm{~d} m}{\int \mathrm{d} m}</script><p>根据质量分布情况，质量元又可表示为具体的形式</p>
+<ul>
+<li>若为线分布时, $\mathrm{d} m=\rho_{l} \mathrm{~d} l $</li>
+<li>若为面分布时, $\mathrm{d} m=\rho_{s} \mathrm{~d} s $</li>
+<li>若为体分布时, $\mathrm{d} m=\rho \mathrm{d} V $<br>这里 $\rho_{l},\rho_{s},\rho$ 分别为质量线密度、质量面密度和质量体密度。</li>
+<li>具有几何对称中心的匀质物体，其质心一般在几何对称中心</li>
+<li>半径为 $R$、顶角为 $2\alpha$ 的匀质扇形板的质心位置为<script type="math/tex; mode=display">
+x_c=\frac{2}{3} R \frac{\sin \alpha}{\alpha}</script></li>
+<li>质心满足叠加原理，具有叠加性<script type="math/tex; mode=display">
+\boldsymbol{r}_{C}=\frac{\sum m_i\boldsymbol{r}_{C_i}}{\sum m_i}</script></li>
+</ul>
+<h3 id="质心运动定理"><a href="#质心运动定理" class="headerlink" title="质心运动定理"></a>质心运动定理</h3><p>质心加速度：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\boldsymbol{a}_{c}&=\frac{\mathrm{d} \boldsymbol{v}_{c}}{\mathrm{d} t}\\
+&=\frac{\mathrm{d}}{\mathrm{d} t}\left(\frac{1}{M} \sum m_{i} \boldsymbol{v}_{i}\right) \\
+&=\frac{1}{M} \sum m_{i} \frac{\mathrm{d} \boldsymbol{v}_{i}}{\mathrm{d} t}
+\end{aligned}</script><ul>
+<li><p>质心运动定理：在惯性参考系中，质心的运动等同于一个质点的运动；该质点的质量等于质点系的总质量，作用在该质点上的力等于质点系所受到的合外力。该质点的运动遵守牛顿第二定律，作用在该质点上的力等于它的质量乘以它的加速度。</p>
+<script type="math/tex; mode=display">
+\boldsymbol{F}=M\boldsymbol{a}_c</script><ul>
+<li>质点系运动时，其质心的加速度完全决定于质点系所受的外力。而与质点系的内力无关。</li>
+</ul>
+</li>
+<li><p>质点系质心守恒定理：若作用于质点系的所有外力的矢量和恒等于零，即 $\boldsymbol{a}_c=0$，于是有 $\boldsymbol{v}_c$是常量，即质心作匀速直线运动；如果质心原来是静止的，则它将在原处保持不动。</p>
+<ul>
+<li>由此可见，要改变质点系质心的运动，必须有外力作用；质点系内部各质点之间相互作用的内力不能改变质心的运动。 </li>
+</ul>
+</li>
+<li><p>质心沿某一轴的运动守恒定理：如果质点系所有外力的合力在某一方向上的分量为零，例如在 $x$ 轴上，即 $\sum \boldsymbol{F}_{ix}=0$，则有 $\boldsymbol{v}_{Cx}$ 为常量，即质心的速度在 $x$ 轴上的分量保持为常量；如果质心的速度在该轴上的分量原来就等于零，则质心在该轴上的坐标保持不变。</p>
+</li>
+</ul>
+<h2 id="第二章-功与能"><a href="#第二章-功与能" class="headerlink" title="第二章 功与能"></a>第二章 功与能</h2><h3 id="功的定义"><a href="#功的定义" class="headerlink" title="功的定义"></a>功的定义</h3><h4 id="恒力做功"><a href="#恒力做功" class="headerlink" title="恒力做功"></a>恒力做功</h4><script type="math/tex; mode=display">
+A=F|\Delta \boldsymbol{r}| \cos \theta=\boldsymbol{F} \cdot \Delta \boldsymbol{r}</script><ul>
+<li>在质点做曲线运动的情况下，这种定义依然有效</li>
+</ul>
+<h4 id="变力做功"><a href="#变力做功" class="headerlink" title="变力做功"></a>变力做功</h4><script type="math/tex; mode=display">
+A=\lim _{N \rightarrow \infty} \sum_{i=1}^{N} \Delta A_{i}=\int_{a}^{b} \boldsymbol{F} \cdot \mathrm{d} \boldsymbol{r}</script><ul>
+<li>由于功是力与位移的标积沿曲线路径的积分，故通常功既与质点运动的始末位置有关，又与运动过程有关，是一个过程量</li>
+<li>功是标量，其正负取决于力与位移间的夹角 $\theta$ 。当 $0 \leqslant \theta&lt;\frac{\pi}{2}$ 时，$\mathrm{d} A&gt;0$，力对物体做正功。当 $\theta=\frac{\pi}{2}$ 时，$\mathrm{d} A=0$，力对物体不做功。当 $\frac{\pi}{2}&lt;\theta \leqslant \pi$ 时，$\mathrm{d} A&lt;0$, 力对物体做负功。</li>
+<li>功与参考系的选择有关</li>
+<li>当质点同时受到 $n$ 个力作用时，其合力的功等于各分力功的代数和，即<script type="math/tex; mode=display">
+\mathrm{d} A=\boldsymbol{F} \cdot \mathrm{d} \boldsymbol{r}=F_{x} \mathrm{~d} x+F_{y} \mathrm{~d} y+F_{z} \mathrm{~d} z</script></li>
+<li>在直角坐标系内，对任意的力有<script type="math/tex; mode=display">
+\begin{array}{c}
+\mathrm{d} A=\boldsymbol{F} \cdot \mathrm{d} \boldsymbol{r}=F_{x} \mathrm{~d} x+F_{y} \mathrm{~d} y+F_{z} \mathrm{~d} z \\
+A=\int_{x_{a}}^{x_{b}} F_{x} \mathrm{~d} x+\int_{y_{a}}^{y_{b}} F_{y} \mathrm{~d} y+\int_{z_{a}}^{z_{b}} F_{z} \mathrm{~d} z
+\end{array}</script></li>
+<li>平均功率和瞬时功率的定义：略</li>
+</ul>
+<h4 id="内力做功"><a href="#内力做功" class="headerlink" title="内力做功"></a>内力做功</h4><p>系统内力作用总是发生在两两质点之间的，$\boldsymbol{f}_{12}=-\boldsymbol{f}_{21}$</p>
+<script type="math/tex; mode=display">
+\mathrm{d} A_{\text {对 }} =\boldsymbol{f}_{21} \cdot \mathrm{d} \boldsymbol{r}_{21}</script><p>其中 $\boldsymbol{r}_{21}=\boldsymbol{r}_{2}-\boldsymbol{r}_{1}$ 为质点2相对于质点1的相对位置矢量</p>
+<ul>
+<li>一对内力做功之和与所选参考系无关。</li>
+<li>一般情况下，一对内力所作的功不为零。</li>
+<li>在无相对位移(如刚体)或相对位移与一对内力垂直的情况下，一对内力做功之和等于零。</li>
+</ul>
+<h4 id="三个dr的区分"><a href="#三个dr的区分" class="headerlink" title="三个dr的区分"></a>三个dr的区分</h4><p>假设质点从 $A$ 运动到 $B$，路径为 $\mathrm{C}$，则</p>
+<script type="math/tex; mode=display">
+\int_{A}^{B} \mathrm{d} \boldsymbol{r}=\boldsymbol{r}_B-\boldsymbol{r}_A</script><script type="math/tex; mode=display">
+\int_{A}^{B} \left|\mathrm{d} \boldsymbol{r}\right|=s_\mathrm{C}</script><script type="math/tex; mode=display">
+\int_{A}^{B} \mathrm{d} r=|\boldsymbol{r}_B|-|\boldsymbol{r}_A|</script><h3 id="计算功的基本步骤"><a href="#计算功的基本步骤" class="headerlink" title="计算功的基本步骤"></a>计算功的基本步骤</h3><p>功的计算，关键在把握对元功的分析：不论力是在变还是位移的方向在变，我们都可只抓住运动过程中的一段元位移，在此元过程中可以将力和元位移都视为不变的，从而写出元功的表达式，此称微元法。 </p>
+<ol>
+<li>建立适当坐标系；</li>
+<li>在过程区间任选一元位移；</li>
+<li>写出元功，分析变量关系；</li>
+<li>积分计算功；</li>
+<li>分析结果的物理意义。</li>
+</ol>
+<h3 id="动能定理"><a href="#动能定理" class="headerlink" title="动能定理"></a>动能定理</h3><p>质量为 $m$ 的质点以速率 $v$ 运动时，其动能定义为</p>
+<script type="math/tex; mode=display">
+E_\mathrm{k}=\frac{1}{2}mv^2</script><p>动能是标量，且与坐标系的选取有关。</p>
+<p>动能定理：在物体运动过程中，合外力对质点做的功等于质点动能的增量</p>
+<script type="math/tex; mode=display">
+A=E_{\mathrm{k}b}-E_{\mathrm{k}a}</script><ul>
+<li>动能是描写物体状态的物理量，物体状态的改变是靠作功实现的。动能定理的实质，说明了力的空间积累效果是改变了物体的动能。</li>
+<li>功是过程量，动能是状态量，动能定理建立起过程量功与状态量动能之间的关系</li>
+<li>由于总能量是守恒的，动能定理表明，通过做功可以实现能量的转换，即功是能量转换的一种量度。</li>
+<li>动能是用来衡量物体做功本领的物理量，通过做功，质点与外界进行能量交换。</li>
+<li>当 $A&gt;0$ 时，作用于质点上的合外力做正功，其结果是使质点的动能增加；当 $A&lt;0$ 时，作用于质点上的合外力做负功，其结果是使质点的动能减小，或称质点可以通过减小动能而对外做功。</li>
+<li>动能定理只在惯性系中成立，动能定理的<strong>形式</strong>与惯性系的选择<strong>无关</strong>，功和动能的<strong>大小</strong>都与参考系的选择<strong>有关</strong>。</li>
+<li>应用动能定理解题时，只关心物体始末动能之差，无须研究物体在每一时刻的运动情况。</li>
+<li>动能定理的微分形式：<script type="math/tex; mode=display">
+\boldsymbol{F} \cdot \boldsymbol{v}=\frac{\mathrm{d} E_{\mathrm{k}}}{\mathrm{d} t}</script></li>
+</ul>
+<h3 id="动能定理的解题步骤"><a href="#动能定理的解题步骤" class="headerlink" title="动能定理的解题步骤"></a>动能定理的解题步骤</h3><ol>
+<li>确定研究对象。</li>
+<li>受力分析。</li>
+<li>选定研究过程。在<strong>惯性参照系</strong>确定过程的始、末状态的动能。</li>
+<li>计算在该过程中，各力的做功情况。</li>
+<li>列动能定理方程。</li>
+<li>求解、讨论。</li>
+</ol>
+<h3 id="保守力与非保守力做功"><a href="#保守力与非保守力做功" class="headerlink" title="保守力与非保守力做功"></a>保守力与非保守力做功</h3><h4 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h4><ul>
+<li>保守力：功是一个过程量，一般而言，力对物体做功的大小除了与物体的始末位置有关外，还与物体具体运动路径有关。但是，自然界也存在一类力，其做功与路径无关，这类力称为保守力。保守力做功只与质点的初、末位置有关。保守力沿任意闭合路径所作的功为零。</li>
+<li>非保守力：凡做功与路径有关的力称为非保守力。非保守力包括耗散力和非耗散力两类。</li>
+<li>耗散力：耗散力是指对系统或物体作负功，而使之总机械能减少的力。如摩擦力。</li>
+<li>非耗散力：非耗散力指能对系统或物体作正功，而且作功与路径有关的力。如磁力。</li>
+<li>有心力：有心力的方向永远指向一个固定点；称此点为力中心点。万有引力、静电力，都是有心力。</li>
+<li>回旋力：若质点在空间各处受到的力都沿着一系列同心圆弧的切向，这种力被称为回旋力。例如电子在感应加速器中受到的电场力、流体旋涡中质点受到流体的冲击力等就属于这种力。</li>
+</ul>
+<h4 id="重力（保守力）"><a href="#重力（保守力）" class="headerlink" title="重力（保守力）"></a>重力（保守力）</h4><script type="math/tex; mode=display">
+A=\int_{a}^{b} m \boldsymbol{g} \cdot \mathrm{d} \boldsymbol{r}=-m g \int_{z_{1}}^{z_{2}} \mathrm{~d} z=m g z_{1}-m g z_{2}</script><h4 id="万有引力（保守力）"><a href="#万有引力（保守力）" class="headerlink" title="万有引力（保守力）"></a>万有引力（保守力）</h4><script type="math/tex; mode=display">
+A=-G m_{1} m_{2} \int_{r_{a}}^{r_{b}} \frac{\mathrm{d} r}{r^{2}}=G m_{1} m_{2}\left(\frac{1}{r_{b}}-\frac{1}{r_{a}}\right)</script><h4 id="弹性力（保守力）"><a href="#弹性力（保守力）" class="headerlink" title="弹性力（保守力）"></a>弹性力（保守力）</h4><script type="math/tex; mode=display">
+A_{a b}=\frac{1}{2} k x_{1}^{2}-\frac{1}{2} k x_{2}^{2}</script><h4 id="回旋力（非保守力）"><a href="#回旋力（非保守力）" class="headerlink" title="回旋力（非保守力）"></a>回旋力（非保守力）</h4><script type="math/tex; mode=display">
+A=\int_{a}^{b} \boldsymbol{F} \cdot \mathrm{d} \boldsymbol{r}=\int_{a}^{b} \beta r \boldsymbol{e}_{\theta} \cdot \mathrm{d} \boldsymbol{r}</script><h4 id="摩擦力（非保守力）"><a href="#摩擦力（非保守力）" class="headerlink" title="摩擦力（非保守力）"></a>摩擦力（非保守力）</h4><script type="math/tex; mode=display">
+\begin{aligned}
+A &=\int_{a}^{b} \boldsymbol{f} \cdot \mathrm{d} \boldsymbol{r}=\int_{a}^{b}-\mu m g \boldsymbol{e}_{\mathrm{t}} \cdot \mathrm{d} \boldsymbol{r}=\int_{a}^{b}-\mu m g \mathrm{~d} s \\
+&=-\mu m g \int_{a}^{b} \mathrm{~d} s=-\mu m g s_{a b}
+\end{aligned}</script><h3 id="势能"><a href="#势能" class="headerlink" title="势能"></a>势能</h3><p>在保守力场中，质点在始、末两个不同的位置上具有不同的能量，也就是说，保守力场中的物体储藏着一种能量，这种能量是质点位置的单值函数，也叫势能函数。我们将这种与位置有关的能量称为势能（或称位能），函数用 $E_\mathrm{p}(\boldsymbol{r})$ 表示。</p>
+<p>规定当质点从点a运动到点b保守力做的功等于势能的减少，即</p>
+<script type="math/tex; mode=display">
+A_{a b}=\int_{a}^{b} \boldsymbol{F} \cdot \mathrm{d} \boldsymbol{r}=E_{\mathrm{p} a}-E_{\mathrm{p} b}</script><p>取导数，有</p>
+<script type="math/tex; mode=display">
+\boldsymbol{F} \cdot \mathrm{d} \boldsymbol{r}=-\mathrm{d} E_{\mathrm{p}}(\boldsymbol{r})</script><p>用势能的增量 $\Delta E_{\mathrm{p}}=E_{\mathrm{p} b}-E_{\mathrm{p} a}$ 表示，则有</p>
+<script type="math/tex; mode=display">
+\Delta E_{\mathrm{p}}=E_{\mathrm{p} b}-E_{\mathrm{p} a}=-\int_{a}^{b} \boldsymbol{F} \cdot \mathrm{d} \boldsymbol{r}</script><p>其含义为势能的增量等于保守力所做的负功。</p>
+<ul>
+<li>势能属于相互作用质点的系统。严格地讲，因为势能与相互作用有关，称势能为“两个质点的相互作用势能”或“多质点系统相互作用势能”更确切。</li>
+<li>两质点在相互作用的一对保守内力作用下，处在一定相对位置时具有一定的势能</li>
+<li>对于多个质点构成的系统，若两两质点间的相互作用内力均为保守力，质点系相互作用总势能为两两质点间的相互作用势能之和</li>
+<li>势能的引入是以保守力做功为前提的。因为非保守力做功与路径有关，所以不能引入相应的势能的概念。</li>
+<li>势能的大小只有相对意义。</li>
+<li>势能零点可以任意选取。</li>
+<li>系统势能零点的任意选择并不影响保守力对质点做功大小。</li>
+</ul>
+<h4 id="各种势能"><a href="#各种势能" class="headerlink" title="各种势能"></a>各种势能</h4><ul>
+<li><p>重力势能差</p>
+<script type="math/tex; mode=display">
+E_{\mathrm{p} b}-E_{\mathrm{p} a}=m g z_{b}-m g z_{a}</script></li>
+<li><p>引力势能差</p>
+<script type="math/tex; mode=display">
+E_{\mathrm{p} b}-E_{\mathrm{p} a}=\left(-G \frac{m_{1} m_{2}}{r_{b}}\right)-\left(-G \frac{m_{1} m_{2}}{r_{a}}\right)</script></li>
+<li><p>弹性势能差</p>
+<script type="math/tex; mode=display">
+E_{\mathrm{p} b}-E_{\mathrm{p} a}=\frac{1}{2} k x_{b}^{2}-\frac{1}{2} k x_{a}^{2}</script></li>
+</ul>
+<h4 id="广延物体的重力势能"><a href="#广延物体的重力势能" class="headerlink" title="广延物体的重力势能"></a>广延物体的重力势能</h4><p>一个广延物体的重力势能等于一个质量集中于其质心的质点的重力势能，即等于其质量乘以重力加速度再乘以其质心的高度。</p>
+<script type="math/tex; mode=display">
+E_{\mathrm{p}}=mgz</script><h4 id="由保守力确定势能函数"><a href="#由保守力确定势能函数" class="headerlink" title="由保守力确定势能函数"></a>由保守力确定势能函数</h4><p>系统在位置 $a$ 的势能等于系统从该位置移到势能零点时保守力所作的功。</p>
+<script type="math/tex; mode=display">
+E_{\mathrm{p} a}=\int_{a}^{\text {零势点}} \boldsymbol{F}_{\text {保}} \cdot \mathrm{d} \boldsymbol{r}</script><ul>
+<li><p>重力势能<br>对于重力势能，通常选取某一参考平面（$z=0$）为势能零点。</p>
+<script type="math/tex; mode=display">
+E_{\mathrm{p}}=mgz</script></li>
+<li><p>引力势能<br>对于引力势能，通常规定两物体相距无限远时为势能零点</p>
+<script type="math/tex; mode=display">
+E_{\mathrm{p}}=-\frac{GmM}{r}</script></li>
+<li><p>弹性势能<br>对于弹性势能，通常规定弹簧处于自然状态（$x=0$）时为势能零点</p>
+<script type="math/tex; mode=display">
+E_{\mathrm{p}}=\frac{1}{2}kx^2</script></li>
+</ul>
+<h4 id="由势能函数确定保守力"><a href="#由势能函数确定保守力" class="headerlink" title="由势能函数确定保守力"></a>由势能函数确定保守力</h4><p>若已知相互作用势能函数 $E_{\mathrm{p}}(x,y,z)$ 的表达式，由势能与保守力做功的关系可以得到</p>
+<script type="math/tex; mode=display">
+\boldsymbol{F}=-\left(\frac{\partial E_{\mathrm{p}}}{\partial x} \boldsymbol{i}+\frac{\partial E_{\mathrm{p}}}{\partial y} \boldsymbol{j}+\frac{\partial E_{\mathrm{p}}}{\partial z} \boldsymbol{k}\right)</script><p>引入梯度算子 $\boldsymbol{\nabla}$</p>
+<script type="math/tex; mode=display">
+\boldsymbol{\nabla}=\boldsymbol{i} \frac{\partial}{\partial x}+\boldsymbol{j} \frac{\partial}{\partial y}+\boldsymbol{k} \frac{\partial}{\partial z}</script><p>保守力可表示为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{F}=-\boldsymbol{\nabla}E_{\mathrm{p}}</script><h4 id="势能曲线"><a href="#势能曲线" class="headerlink" title="势能曲线"></a>势能曲线</h4><p>将系统的势能与物体相对位置的关系绘成曲线，这个曲线就称为势能曲线。</p>
+<ul>
+<li>重力势能，引力势能和弹性势能等势能曲线</li>
+<li>双原子分子的势能曲线</li>
+<li>势能曲线提供的信息<ul>
+<li>质点在轨道上任意位置时系统所具有的势能值</li>
+<li>利用势能曲线的形状，可以立刻判定在某一范围系统内保守力做功的大小。</li>
+<li>由势能差可立即计算保守力做功大小。势能减小，则保守力做正功。</li>
+<li>保守力的方向沿着势能减小的方向。</li>
+<li>势能曲线斜率的负值就表示保守力的大小。 </li>
+</ul>
+</li>
+</ul>
+<h3 id="质点系动能定理"><a href="#质点系动能定理" class="headerlink" title="质点系动能定理"></a>质点系动能定理</h3><p>在惯性参考系中，设质点系由 $N$ 个质点组成，$A_\mathrm{e}$ 表示外力对质点系做的总功，$A_\mathrm{I}$ 表示内力对质点系做的总功，$E_{\mathrm{k}0},E_{\mathrm{k}}$ 分别为质点系始末状态的总动能，则有</p>
+<script type="math/tex; mode=display">
+A_\mathrm{e}+A_\mathrm{I}=E_{\mathrm{k}}-E_{\mathrm{k}0}=\Delta E_{\mathrm{k}}</script><p>上式称为<strong>质点系的动能定理</strong>。它表明，所有外力和内力对质点系所做的总功等于质点系总动能的增量。</p>
+<ul>
+<li><strong>内力</strong>不能改变系统的<strong>总动量</strong>，但可以改变系统的<strong>总动能</strong>。</li>
+<li>如果取单个质点为研究对象时，应用质点动能定理，作用于质点上的力均是外力，所有力的功等于质点动能的增量。</li>
+</ul>
+<h3 id="质点系功能原理"><a href="#质点系功能原理" class="headerlink" title="质点系功能原理"></a>质点系功能原理</h3><p>在惯性参考系中，设质点系由 $N$ 个质点组成，保守内力的总功为 $A_\mathrm{CI}$ ，非保守内力的总功为 $A_\mathrm{NI}$，系统动能与势能之和 $E=E_{\mathrm{k}}+E_{\mathrm{p}}$ 为系统的总机械能，则有</p>
+<script type="math/tex; mode=display">
+A_\mathrm{e}+A_\mathrm{NI}=\Delta E</script><p>上式称为<strong>质点系的功能原理</strong>。它表明，在质点系运动过程中，外力和非保守内力对系统做的总功等于系统机械能的增量。</p>
+<h3 id="功能原理的解题步骤"><a href="#功能原理的解题步骤" class="headerlink" title="功能原理的解题步骤"></a>功能原理的解题步骤</h3><ol>
+<li>取相互作用系统为研究对象。</li>
+<li>作受力分析。区别保守内力与非保守内力。</li>
+<li>选定研究过程。在惯性参照系确定过程的始、末状态的机械能。</li>
+<li>计算在该过程中，所有外力和非保守内力做的功。</li>
+<li>列功能原理方程。</li>
+<li>求解、讨论。</li>
+</ol>
+<h3 id="机械能守恒定律"><a href="#机械能守恒定律" class="headerlink" title="机械能守恒定律"></a>机械能守恒定律</h3><p>由功能原理可知，当外力对系统不做功，系统内也无非保守内力做功(或非保守内力做功总和为零)时，有</p>
+<script type="math/tex; mode=display">
+\Delta E=0</script><p>或</p>
+<script type="math/tex; mode=display">
+E_{\mathrm{k}}+E_{\mathrm{p}}=\mathrm{Constant}</script><p>以上结果表明，在孤立系统中非保守内力不做功时，系统中的动能与势能可以彼此转化。当系统内保守力做正功时，系统势能减小，动能增大；而当系统内保守力做负功时，系统势能增大，动能减小，但系统的总机械能为恒量。这就是<strong>机械能守恒定律</strong>。</p>
+<h3 id="能量守恒定律"><a href="#能量守恒定律" class="headerlink" title="能量守恒定律"></a>能量守恒定律</h3><p>对于与外界没有任何相互作用的孤立系统，有 $A_\mathrm{e}=0$，因此功能原理简化为</p>
+<script type="math/tex; mode=display">
+A_\mathrm{N}=\Delta E</script><p>即系统非保守内力做功可以使系统的机械能发生变化。</p>
+<p>实验证明：在孤立系统中机械能增加或减少时，就有等量的非机械能减少或增加，从而保持系统的总能量（机械能与非机械能之和）不变。无论系统内发生什么样的物理过程，无论过程如何复杂，能量不能被创造，也不能被消灭，只能从一种形式转化成另一种形式，其总和保持不变。这就是<strong>能量转换和守恒定律</strong>，是自然界最基本的规律之一。</p>
+<h3 id="机械能守恒定律的解题步骤"><a href="#机械能守恒定律的解题步骤" class="headerlink" title="机械能守恒定律的解题步骤"></a>机械能守恒定律的解题步骤</h3><ol>
+<li>取孤立系统为研究对象。</li>
+<li>作受力分析。区别保守内力与非保守内力。确认孤立系统中非保守内力不做功，这样系统的总机械能才能守恒。若不满足，则采用动能定理或功能原理。</li>
+<li>选定研究过程。 在惯性参照系确定过程的始、末状态的机械能。（注意：有几个保守内力，就有相应的几个势能。）</li>
+<li>列机械能守恒方程。</li>
+<li>求解、讨论。</li>
+</ol>
+<h2 id="第三章-动量与角动量"><a href="#第三章-动量与角动量" class="headerlink" title="第三章 动量与角动量"></a>第三章 动量与角动量</h2><h3 id="动量"><a href="#动量" class="headerlink" title="动量"></a>动量</h3><p>一个质量为 $m$ 的质点以速度 $\boldsymbol{v}$ 运动时，定义其动量为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{p}=m\boldsymbol{v}</script><ul>
+<li>动量是描述物体运动状态的一个状态量，它是矢量，其方向和速度的方向一致。</li>
+</ul>
+<h3 id="冲量"><a href="#冲量" class="headerlink" title="冲量"></a>冲量</h3><p>冲量反映了力在时间上的累积效应。设一个恒力F作用在物体上，从时刻 $t_1$ 持续到时刻 $t_2$ ，则把该力与其作用时间的乘积称为该力的冲量，用 $\boldsymbol{I}$ 表示，即</p>
+<script type="math/tex; mode=display">
+\boldsymbol{I}=\boldsymbol{F}(t_2-t_1)</script><p>当 $\boldsymbol{F}$ 是变力时，</p>
+<script type="math/tex; mode=display">
+\boldsymbol{I}=\int_{t_1}^{t_2}\boldsymbol{F}\mathrm{d}t</script><ul>
+<li>冲量是矢量，冲量的大小和方向与整个过程中力的性质有关。</li>
+</ul>
+<h3 id="质点动量定理"><a href="#质点动量定理" class="headerlink" title="质点动量定理"></a>质点动量定理</h3><p>在惯性参照系里，质点所受合力在某段时间内对其冲量等于该段时间内质点动量的增量。</p>
+<script type="math/tex; mode=display">
+\boldsymbol{I}=\boldsymbol{p}_2-\boldsymbol{p}_1</script><p>式中 $\boldsymbol{p}_{1}, \boldsymbol{p}_{2}$ 分别为质点在 $t_{1}$ 和 $t_{2}$ 时刻的动量。</p>
+<ul>
+<li>不管质点在运动过程中动量变化的细节如何，质点始末动量的矢量差总是等于该过程中合力的冲量。</li>
+<li>动量定理是个矢量方程，在具体坐标系中可以写成分量形式。</li>
+<li>在诸如冲击、爆炸等过程中，力的作用时间极短，而作用力（一般称为冲力）随时间的变化既大又复杂，常用平均冲力表示，假设 $\bar{F}\left(t_{2}-t_{1}\right)=\int_{t_{1}}^{t_{2}} \boldsymbol{F} \mathrm{d} t$，则<script type="math/tex; mode=display">
+\overline{\boldsymbol{F}}=\frac{\boldsymbol{p}_{2}-\boldsymbol{p}_{1}}{t_{2}-t_{1}}</script></li>
+<li>在不同惯性系中，同一质点的动量不同，但动量的增量总相同。因此，在不同惯性系中，同一作用力的冲量相同。换言之，动量定理适用于所有惯性系。</li>
+</ul>
+<h3 id="质点动量定理的解题步骤"><a href="#质点动量定理的解题步骤" class="headerlink" title="质点动量定理的解题步骤"></a>质点动量定理的解题步骤</h3><ol>
+<li>计算冲量时，无须确定各个外力，只须知道质点始末的动量即可。</li>
+<li>对于冲击、绳绷紧等时间间隔极为短暂的过程，在惯性参照系确定过程的始、末状态的动量及其增量。</li>
+<li>爆炸问题使用平均冲力计算</li>
+<li>求解、讨论。</li>
+</ol>
+<h3 id="质点系的动量定理"><a href="#质点系的动量定理" class="headerlink" title="质点系的动量定理"></a>质点系的动量定理</h3><p>在惯性参照系里，质点系的总动量的时间变化率等于所受合外力。<br>设质点系由 $N$ 个质点组成，则</p>
+<script type="math/tex; mode=display">
+\sum_{i=1}^{N} \boldsymbol{F}_{i}=\frac{\mathrm{d}}{\mathrm{d} t}\left(\sum_{i=1}^{N} \boldsymbol{p}_{i}\right)</script><p>令 $\boldsymbol{p}=\sum_{i=1}^{N} \boldsymbol{p}_{i}$ 表示质点系的总动量，$\boldsymbol{F}=\sum_{i=1}^{N} \boldsymbol{F}_{i}$ 表示质点系所受到外力的矢量和，则</p>
+<script type="math/tex; mode=display">
+\boldsymbol{F}=\frac{\mathrm{d} \boldsymbol{p}}{\mathrm{d} t}</script><ul>
+<li>内力对系统内各个质点的动量会有影响，但内力对系统的总动量没有影响，系统总动量的变化仅与外力有关。</li>
+</ul>
+<h3 id="质点系动量定理的解题步骤"><a href="#质点系动量定理的解题步骤" class="headerlink" title="质点系动量定理的解题步骤"></a>质点系动量定理的解题步骤</h3><ol>
+<li>确定研究对象。可以取质点系的一部分或整体作为研究对象。对于连续系统，可以取一个微元作为研究对象。</li>
+<li>计算研究对象的总动量和所受到的合外力。</li>
+<li>选定时间间隔为 $\mathrm{d} t$ 的无穷短过程，在惯性参照系确定过程的始、末状态的动量及其增量。</li>
+<li>应用质点系的动量定理</li>
+<li>求解、讨论。</li>
+</ol>
+<h3 id="动量守恒定律"><a href="#动量守恒定律" class="headerlink" title="动量守恒定律"></a>动量守恒定律</h3><p>若质点系所受外力矢量和为零，则质点系总动量不随时间变化。</p>
+<script type="math/tex; mode=display">
+\boldsymbol{p}=\sum_{i=1}^{N} \boldsymbol{p}_{i}=\text {常矢量}</script><ul>
+<li>动量守恒是指质点系总动量不变，但系统内各个质点通过内力作用可以进行动量传递或交换。</li>
+<li>在碰撞、打击、爆炸等极短的时间过程中，外力的冲量与内力的冲量相比小很多，此时可以近似地应用动量守恒定律。</li>
+<li>动量守恒定律是一个矢量方程，在具体坐标系中可以写成分量式。</li>
+<li>动量守恒定律只适用于惯性系。</li>
+<li>动量守恒定律在宏观或微观领域范围内，低速或高速情况下均适用。</li>
+</ul>
+<h3 id="动量守恒定律的解题步骤"><a href="#动量守恒定律的解题步骤" class="headerlink" title="动量守恒定律的解题步骤"></a>动量守恒定律的解题步骤</h3><ol>
+<li>确定研究对象。</li>
+<li>作受力分析。如果合外力为零，则动量守恒。如果合外力在某一方向分量为零，则该方向上的动量守恒。</li>
+<li>选定研究过程。在惯性参照系确定过程的始、末状态的动量。</li>
+<li>列动量守恒方程。</li>
+<li>求解、讨论。</li>
+</ol>
+<h3 id="质点系总动量用质心速度表示"><a href="#质点系总动量用质心速度表示" class="headerlink" title="质点系总动量用质心速度表示"></a>质点系总动量用质心速度表示</h3><p>质点系的总动量等于它的总质量乘以质心的速度，即可以看作是所有质点均以质心速度运动时的动量。</p>
+<script type="math/tex; mode=display">
+\boldsymbol{p}=m\boldsymbol{v}_C</script><p>质心的运动可以代表质点系整体的运动。</p>
+<h3 id="质心坐标系"><a href="#质心坐标系" class="headerlink" title="质心坐标系"></a>质心坐标系</h3><p>如果取质心为参考系，并以质心为坐标原点建立坐标系，且坐标系与质心一起平动（即坐标轴方向无转动），这样的坐标系称为质心系。</p>
+<ul>
+<li>无论系统如何运动，在质心系中它的总动量始终保持为零，故质心系又称零动量系</li>
+<li>质心系可以是惯性系，也可以是非惯性系。若质点系所受外力矢量和为零，质心加速度为零，质心系是惯性系。若质点系所受外力矢量和不为零，质心有加速度，质心系就不再是惯性系。</li>
+<li>若质心系为非惯性系，对质点系而言，惯性力做的总功为零，惯性力对质心的总力矩也等于零，故不论质心系是惯性系还是非惯性系，在质心系中质点系的功能原理和角动量定理及各自的守恒定律仍然成立。</li>
+</ul>
+<h3 id="火箭问题"><a href="#火箭问题" class="headerlink" title="火箭问题"></a>火箭问题</h3><p>设在 $t$ 时刻，火箭质量为 $m$，速度为 $\boldsymbol{v}$；在 $t+\mathrm{d}t$ 时刻，火箭质量为 $m+\mathrm{d}m (\mathrm{d}m&lt;0)$ ，速度为 $\boldsymbol{v}+\mathrm{d}\boldsymbol{v}$，$\mathrm{d}t$ 时间内喷出的气体质量为 $(-\mathrm{d}m)$。气体相对火箭的速度为 $\boldsymbol{u}$（向后）。假设火箭受到合外力 $\boldsymbol{F}$ 的作用，则有</p>
+<script type="math/tex; mode=display">
+m \frac{\mathrm{d} \boldsymbol{v}}{\mathrm{d} t}=\boldsymbol{F}+\frac{\mathrm{d} m}{\mathrm{~d} t} \boldsymbol{u}</script><p>上式为描述火箭飞行的动力学方程。式中 $\boldsymbol{u}$ 的方向与火箭速度 $\boldsymbol{v}$ 方向相反，因 $\mathrm{d} m&lt;0, \frac{\mathrm{d} m}{\mathrm{d} t}&lt;0$，而 $\frac{\mathrm{d} m}{\mathrm{d} t} \boldsymbol{u}=\left(-\frac{\mathrm{d} m}{\mathrm{d} t}\right)(-\boldsymbol{u})=\left|\frac{\mathrm{d} m}{\mathrm{d} t}\right|(-u)$ 与火箭速度 $v$ 方向相同。因此，$\frac{\mathrm{d} m}{\mathrm{~d} t} \boldsymbol{u}$ 为箭体受到的等效推力，它来自喷射燃烧气体的反作用力，反作用力大于火箭受到的重力，从而推动箭体向上飞行。</p>
+<p>设火箭竖直飞行，不考虑空气阻力设 $\boldsymbol{F}=m\boldsymbol{g}$，设 $M_0,M_\mathrm{f}$ 分别为火箭在起飞前（$t=0$ 时刻）和燃料全部燃烧后（$t$ 时刻）的质量。积分后，火箭飞行的动力学方程可以写成如下形式：</p>
+<script type="math/tex; mode=display">
+v=u \ln \left(\frac{M_{0}}{M_{\mathrm{f}}}\right)-g t</script><p>式中的 $\frac{M_{0}}{M_{\mathrm{f}}}$ 称为火箭的质量比。</p>
+<p>对于多级火箭，设 $N_1,N_2,N_3,\cdots$ 为各级火箭的质量比，则火箭最终速度为</p>
+<script type="math/tex; mode=display">
+v=\sum_{i} u \ln N_{i}=u \ln \left(N_{1} N_{2} N_{3} \cdots\right)</script><h3 id="碰撞问题"><a href="#碰撞问题" class="headerlink" title="碰撞问题"></a>碰撞问题</h3><p>设两个小球的质量分别为 $m_1$ 和 $m_2$，碰撞前的速度分别为 $\boldsymbol{v}_{10}$ 和 $\boldsymbol{v}_{20}$，碰撞后的速度分别为 $\boldsymbol{v}_1$ 和 $\boldsymbol{v}_2$。</p>
+<h4 id="恢复系数"><a href="#恢复系数" class="headerlink" title="恢复系数"></a>恢复系数</h4><p>定义恢复系数</p>
+<script type="math/tex; mode=display">
+e=\frac{v_{2}-v_{1}}{v_{10}-v_{20}}</script><p>其取值范围为 $0 \leqslant e \leqslant 1$。恢复系数与两球碰撞前后的运动状态无关，仅与两球的材料性质有关。</p>
+<h4 id="基本结论"><a href="#基本结论" class="headerlink" title="基本结论"></a>基本结论</h4><ul>
+<li>碰撞后两小球的速度为<script type="math/tex; mode=display">
+\begin{array}{l}
+v_{1}=v_{10}-m_{2} \frac{(1+e)\left(v_{10}-v_{20}\right)}{m_{1}+m_{2}} \\
+v_{2}=v_{20}+m_{1} \frac{(1+e)\left(v_{10}-v_{20}\right)}{m_{1}+m_{2}}
+\end{array}</script></li>
+<li>碰撞过程中总动能的损失<script type="math/tex; mode=display">
+\Delta E_{\mathrm{k}}=\frac{1}{2}\left(1-e^{2}\right) \frac{m_{1} m_{2}}{m_{1}+m_{2}}\left(v_{10}-v_{20}\right)^{2}</script></li>
+</ul>
+<h4 id="碰撞的类型"><a href="#碰撞的类型" class="headerlink" title="碰撞的类型"></a>碰撞的类型</h4><h5 id="正碰"><a href="#正碰" class="headerlink" title="正碰"></a>正碰</h5><p>如果两球碰撞前的速度在两球的中心连线上，那么碰撞时相互作用的冲力和碰撞后的速度也都在这一连线上。这种碰撞称为对心碰撞，或称正碰撞。</p>
+<h5 id="完全弹性碰撞"><a href="#完全弹性碰撞" class="headerlink" title="完全弹性碰撞"></a>完全弹性碰撞</h5><p>完全弹性碰撞（或弹性碰撞）：</p>
+<ul>
+<li>$e=1$</li>
+<li>$v_{2}-v_{1}=v_{10}-v_{20}$</li>
+<li>分离速度等于接近速度</li>
+<li>$\Delta E_{\mathrm{k}}=0$，系统动能无损失</li>
+<li>碰撞前后小球无形变，无发热</li>
+</ul>
+<p>两小球碰撞后的速度为：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+v_{1}=\frac{\left(m_{1}-m_{2}\right) v_{10}+2 m_{2} v_{20}}{m_{1}+m_{2}} \\
+v_{2}=\frac{\left(m_{2}-m_{1}\right) v_{20}+2 m_{1} v_{10}}{m_{1}+m_{2}}
+\end{array}</script><ul>
+<li>特殊地，当 $m_1=m_2$ 时，有 $v_1=v_{20},v_2=v_{10}$。即在一维弹性碰撞中，质量相等的两个质点在碰撞后交换彼此的速度。</li>
+<li>如果 $v_{20}=0$，且 $m_{2} \gg m_{1}$，有 $v_{1} \approx-v_{10}, v_{2} \approx 0$，即质量很小的质点与质量很大的静止质点碰撞后，以几乎不变的速度大小反向运动，而质量很大的质点几乎保持不动。</li>
+</ul>
+<h5 id="完全非弹性碰撞"><a href="#完全非弹性碰撞" class="headerlink" title="完全非弹性碰撞"></a>完全非弹性碰撞</h5><p>完全非弹性碰撞：</p>
+<ul>
+<li>$e=0$</li>
+<li>$v_2=v_1$</li>
+<li>两球碰撞后以同一速度运动，并不分开</li>
+</ul>
+<p>碰撞后，两球的运动速度为</p>
+<script type="math/tex; mode=display">
+v_{1}=v_{2}=\frac{m_{1} v_{10}+m_{2} v_{20}}{m_{1}+m_{2}}</script><p>在完全非弹性碰撞过程中的动能损失为</p>
+<script type="math/tex; mode=display">
+\Delta E_{\mathrm{k}}=\frac{m_{1} m_{2}\left(v_{10}-v_{20}\right)^{2}}{2\left(m_{1}+m_{2}\right)}</script><p>特殊地，如果碰撞前 $m_2$ 静止，即 $v_{20}=0$，则</p>
+<script type="math/tex; mode=display">
+\Delta E_{\mathrm{k}}=\frac{m_{1} m_{2} v_{10}^{2}}{2\left(m_{1}+m_{2}\right)}=\frac{m_{2}}{\left(m_{1}+m_{2}\right)} E_{\mathrm{k}, 10}</script><p>可见 $m_2$ 越大，能量损失越大；$m_1$ 越大，能量损失越小。损失的动能转变为系统的内能。</p>
+<h5 id="斜碰"><a href="#斜碰" class="headerlink" title="斜碰"></a>斜碰</h5><p>如果两球碰撞前的速度不在两球的中心连线上，而有一定夹角，则两球的碰撞为非对心碰撞，或称为斜碰。</p>
+<p>设两球质量均匀分布、两球表面光滑且仅做平动，碰撞冲量沿着两球的连心线（定义为坐标轴 $n$）作用，斜碰时的恢复系数为</p>
+<script type="math/tex; mode=display">
+e=\frac{v_{2 \mathrm{n}}^{\prime}-v_{1 \mathrm{n}}^{\prime}}{v_{1 \mathrm{n}}-v_{2 \mathrm{n}}}</script><h4 id="碰撞问题的解题思路"><a href="#碰撞问题的解题思路" class="headerlink" title="碰撞问题的解题思路"></a>碰撞问题的解题思路</h4><ol>
+<li>对于弹性碰撞，列出动量守恒守恒和动能守恒方程</li>
+<li>对于完全非弹性碰撞，列出动量守恒方程</li>
+<li>对于非弹性碰撞，列出动量守恒方程和恢复系数</li>
+</ol>
+<h3 id="力矩"><a href="#力矩" class="headerlink" title="力矩"></a>力矩</h3><p>质点相对参考点 $O$ 的位置矢量为 $\boldsymbol{r}$，作用在质点上的作用力为$\boldsymbol{F}$，定义力相对于参考点 $O$ 的力矩为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{M}=\boldsymbol{r}\times\boldsymbol{F}</script><p>力矩 $\boldsymbol{M}$ 的方向由右手定则确定，伸出右手，四指指向 $\boldsymbol{r}$ 方向（由里向外），然后将四指弯曲指向 $\boldsymbol{F}$ 方向（小于 $180°$），此时大拇指所指的方向即为力矩的方向。</p>
+<p>$\boldsymbol{M}$ 的大小 $M=r F \sin \varphi$，其中 $\varphi$ 为 $\boldsymbol{r}$ 和 $\boldsymbol{F}$ 间夹角。在直角坐标系中，力矩 $\boldsymbol{M}$ 可用行列式表示为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\boldsymbol{M} &=\boldsymbol{r} \times \boldsymbol{F}=\left|\begin{array}{ccc}
+\boldsymbol{i} & \boldsymbol{j} & \boldsymbol{k} \\
+x & y & z \\
+F_{x} & F_{y} & F_{z}
+\end{array}\right| \\
+&=M_{x} \boldsymbol{i}+M_{y} \boldsymbol{j}+M_{z} \boldsymbol{k}
+\end{aligned}</script><h3 id="质点的角动量"><a href="#质点的角动量" class="headerlink" title="质点的角动量"></a>质点的角动量</h3><p>角动量是一个能描述物体转动规律的物理量。<br>在惯性参考系中，若质点相对惯性系中固定参考点 $O$ 的位矢为 $\boldsymbol{r}$，动量为 $\boldsymbol{p}=m\boldsymbol{v}$，则质点相对参考点 $O$ 的角动量定义为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{L}=\boldsymbol{r}\times\boldsymbol{p}=\boldsymbol{r}\times(m\boldsymbol{v})</script><ul>
+<li>角动量 $\boldsymbol{L}$ 的方向由右手定则确定，伸出右手，四指指向 $\boldsymbol{r}$ 方向（由里向外），然后将四指弯曲指向 $m\boldsymbol{v}$ 方向（小于 $180°$），此时大拇指所指的方向即为角动量的方向。</li>
+<li>角动量 $\boldsymbol{L}$ 的大小 $L=rp\sin\theta$，$\theta$ 为 $\boldsymbol{r}$ 和 $\boldsymbol{v}$ 间的夹角。</li>
+</ul>
+<h3 id="质点的角动量定理"><a href="#质点的角动量定理" class="headerlink" title="质点的角动量定理"></a>质点的角动量定理</h3><p>在惯性参考系中，质点相对某固定参考点角动量的变化率等于质点所受合力对同一参考点的力矩。</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d} \boldsymbol{L}}{\mathrm{d} t}=\boldsymbol{M}</script><p>角动量定理的另一种表述形式：<br>在惯性参考系中，当合力 $\boldsymbol{F}$ 作用于质点一段时间后，质点角动量的增量等于所受合力 $\boldsymbol{F}$ 相对点 $\boldsymbol{O}$ 力矩的冲量矩。</p>
+<script type="math/tex; mode=display">
+\int_{t_{1}}^{t_{2}} \boldsymbol{M} \mathrm{d} t=\int_{t_{1}}^{t_{2}}\left(\frac{\mathrm{d} \boldsymbol{L}}{\mathrm{d} t}\right) \mathrm{d} t=\boldsymbol{L}_{2}-\boldsymbol{L}_{1}</script><p>式中 $\boldsymbol{L}_{1},\boldsymbol{L}_{2}$ 分别为 $t_{1}$ 时刻和 $t_{2}$ 时刻质点相对点 $O$ 的角动量，力矩在时间上的累积称为冲量矩。</p>
+<ul>
+<li>对于不同的参考点，同一个质点运动的角动量是不同的。因此，在说质点的角动量（和力矩）等概念时，一定要说明是相对哪个参考点的。</li>
+</ul>
+<h3 id="质点角动量守恒定律"><a href="#质点角动量守恒定律" class="headerlink" title="质点角动量守恒定律"></a>质点角动量守恒定律</h3><p>在惯性参考系中，当外力相对点 $O$ 的力矩为零时，质点相对点 $O$ 的角动量保持不变，即</p>
+<script type="math/tex; mode=display">
+\boldsymbol{M}=0 \Rightarrow \frac{\mathrm{d} \boldsymbol{L}}{\mathrm{d} t}=0 \Rightarrow \boldsymbol{L}=\text{常矢量}</script><p>因为角动量是一个矢量，角动量守恒要求角动量的大小和方向都不变。当 $M\ne 0$ 时，质点角动量不守恒，但如果 $M$ 沿某个方向的分量为零时，则该方向上的角动量分量守恒。</p>
+<ul>
+<li>外力的矢量和为零时，外力矩的矢量和可以不为零</li>
+<li>外力矩的矢量和为零时，外力的矢量和也可以不为零</li>
+</ul>
+<h3 id="质点角动量守恒定律的解题步骤"><a href="#质点角动量守恒定律的解题步骤" class="headerlink" title="质点角动量守恒定律的解题步骤"></a>质点角动量守恒定律的解题步骤</h3><ol>
+<li>确定研究对象。</li>
+<li>作受力分析。在惯性参考系中，选取合适的固定参考点，计算所受合外力对固定参考点的力矩。<ul>
+<li>如果合外力矩为零，则角动量守恒。</li>
+<li>如果合外力矩在某一方向分量为零，则该方向上的角动量守恒。</li>
+<li>受到有心力作用的物体，相对于力心，其所受力矩为零，角动量守恒。</li>
+</ul>
+</li>
+<li>选定研究过程。在惯性参照系确定过程的始、末状态的角动量。</li>
+<li>列角动量守恒方程。</li>
+<li>求解、讨论。</li>
+</ol>
+<h3 id="质点系的力矩"><a href="#质点系的力矩" class="headerlink" title="质点系的力矩"></a>质点系的力矩</h3><p>一个广延物体的重力矩等于一个质量集中于其质心的质点的重力矩，即等于其质心的位置矢量叉乘以力。</p>
+<script type="math/tex; mode=display">
+\boldsymbol{M}=\boldsymbol{r}_c \times \boldsymbol{F}</script><h3 id="质点系的角动量定理"><a href="#质点系的角动量定理" class="headerlink" title="质点系的角动量定理"></a>质点系的角动量定理</h3><p>在惯性参考系中，质点系对参考点 $O$ 的总角动量的时间变化率等于作用于质点系的所有外力对同一参考点外力矩的矢量和。</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d} \boldsymbol{L}}{\mathrm{d} t}=\sum_{i} \boldsymbol{r}_{i} \times \boldsymbol{F}_{i}=\boldsymbol{M}_{\text{外}}</script><h3 id="质点系的角动量守恒定律"><a href="#质点系的角动量守恒定律" class="headerlink" title="质点系的角动量守恒定律"></a>质点系的角动量守恒定律</h3><p>在惯性参考系中，若对于某参考点，质点系所受外力矩的矢量和为零，则有系统的总角动量将保持守恒。</p>
+<script type="math/tex; mode=display">
+\boldsymbol{M}_{\text{外}}=0 \Rightarrow \frac{\mathrm{d} \boldsymbol{L}}{\mathrm{d} t}=0 \Rightarrow \boldsymbol{L}=\sum_{i} \boldsymbol{L}_{i}=\text{常矢量}</script><h3 id="动量与角动量的比较"><a href="#动量与角动量的比较" class="headerlink" title="动量与角动量的比较"></a>动量与角动量的比较</h3><p><a target="_blank" rel="noopener" href="http://47.100.52.206/short/dajk"><img src="/img/drawio/动量与角动量的比较.drawio.png" srcset="/img/loading.gif" lazyload style="margin:0"/></a></p>
+<h2 id="第四章-刚体运动学"><a href="#第四章-刚体运动学" class="headerlink" title="第四章 刚体运动学"></a>第四章 刚体运动学</h2><h3 id="刚体的定义"><a href="#刚体的定义" class="headerlink" title="刚体的定义"></a>刚体的定义</h3><p>刚体和质点一样是物理学中的一个理想模型，在任何情况下，其形状和大小都不会发生变化。</p>
+<p>对于刚体，总可以把它分成无穷多个小的质量元，每个质量元可以看作一个质点，这样刚体可以看成是由无穷多个相对位置保持不变的质点组成的特殊质点系。</p>
+<h3 id="刚体的运动分类"><a href="#刚体的运动分类" class="headerlink" title="刚体的运动分类"></a>刚体的运动分类</h3><h4 id="平动"><a href="#平动" class="headerlink" title="平动"></a>平动</h4><p>在刚体运动过程中，如果连接刚体内任意两点间的直线的方向在任意时刻总是保持不变，则这样的运动称为刚体的<strong>平动</strong>。<br>刚体平动时，刚体上所有点的运动都相同，包括位移、速度和加速度等。因此，我们可用刚体的质心或刚体上任何一点的运动来代表刚体的整体运动。</p>
+<h4 id="转动"><a href="#转动" class="headerlink" title="转动"></a>转动</h4><ul>
+<li><strong>定轴转动</strong><br>刚体在运动时各质元都绕同一条直线做圆周运动，而直线相对所选参考系固定不动，刚体的这种运动称为定轴转动，这直线称为转轴。</li>
+<li><strong>定点转动</strong><br>刚体在运动时如转轴上有一点固定不动，而转轴的方向在改变，刚体的这种运动称为定点转动。</li>
+</ul>
+<h4 id="平面平行运动"><a href="#平面平行运动" class="headerlink" title="平面平行运动"></a>平面平行运动</h4><p>刚体上各点都做平行于某一固定平面的运动称为刚体的平面运动，又称为刚体的平面平行运动。</p>
+<p>刚体的平面平行运动可以分解为刚体的两个基本运动形式：刚体随质心在确定的平面内的平动和绕过质心且垂直于运动平面的定轴转动。</p>
+<h4 id="一般运动"><a href="#一般运动" class="headerlink" title="一般运动"></a>一般运动</h4><p>刚体不受任何限制的任意运动，称为刚体的一般运动。<br>刚体的一般运动可视为两种刚体的基本运动形式的叠加：随基点O（基点可任选）的平动和绕通过基点О的瞬时轴的定点转动。一般情况下，这个定点转动的角速度不随基点的改变而改变。</p>
+<h3 id="定轴转动的角速度"><a href="#定轴转动的角速度" class="headerlink" title="定轴转动的角速度"></a>定轴转动的角速度</h3><p>为了反映刚体转动的方向及转动快慢等性质，引入角速度矢量 $\boldsymbol{\omega}$。其大小为角坐标的时间变化率</p>
+<script type="math/tex; mode=display">
+|\boldsymbol{\omega}|=\omega\frac{\mathrm{d}\varphi}{\mathrm{d}t}</script><p>角速度矢量 $\boldsymbol{\omega}$ 的方向沿着转轴，与刚体转动呈右手螺旋关系。</p>
+<p>在刚体做定轴转动时，刚体上任一质元 $P$ 的速度 $\boldsymbol{v}$ 可用角速度矢量 $\boldsymbol{\omega}$ 表示为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{v}=\boldsymbol{\omega} \times \boldsymbol{r}</script><h3 id="定轴转动的角加速度"><a href="#定轴转动的角加速度" class="headerlink" title="定轴转动的角加速度"></a>定轴转动的角加速度</h3><script type="math/tex; mode=display">
+\boldsymbol{\beta}=\frac{\mathrm{d} \boldsymbol{\omega}}{\mathrm{d} t},</script><p>其大小为 $\beta=\frac{\mathrm{d} \omega}{\mathrm{d} t}$，方向沿着转轴，根据角速度大小的变化情况，与角速度矢量 $\boldsymbol{\omega}$ 平行或反平行。</p>
+<ul>
+<li>刚体上点 $P$ 线速度大小为<script type="math/tex; mode=display">
+v=r_{\perp} \omega</script>式中 $v=r_{\perp}$ 为 $P$ 到转轴的垂直距离。</li>
+<li>点 $P$ 切向加速度大小为<script type="math/tex; mode=display">
+a_{\mathrm{t}}=\frac{\mathrm{d} v}{\mathrm{d} t}=r_{\perp} \beta</script></li>
+<li>点 $P$ 法向加速度大小为<script type="math/tex; mode=display">
+a_{\mathrm{n}}=r_{\perp} \omega^{2}</script></li>
+<li>当刚体做匀角加速转动时，$\beta$ 为常量，$\varphi, \omega ,\beta$ 间有如下运动学关系：<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\omega=\omega_{0}+\beta t, \\
+\left(\varphi-\varphi_{0}\right)=\omega_{0} t+\frac{1}{2} \beta t^{2}, \\
+\omega^{2}-\omega_{0}^{2}=2 \beta\left(\varphi-\varphi_{0}\right),
+\end{array}\right.</script>其中 $\varphi_{0}$ 和 $\omega_{0}$ 分别为 $t=0$ 时刻刚体的角位置和角速度。</li>
+</ul>
+<h3 id="作用于定轴刚体的合外力矩"><a href="#作用于定轴刚体的合外力矩" class="headerlink" title="作用于定轴刚体的合外力矩"></a>作用于定轴刚体的合外力矩</h3><p>只有 $\boldsymbol{F}_{i\perp,t}$ 产生的力矩沿 $z$ 轴的分量 $\boldsymbol{M}_{iz}$ 才能使刚体绕 $z$ 轴转动。其余的力矩分量被轴承上的支承力产生的力矩所抵消，不必考虑。 </p>
+<h3 id="定轴转动刚体的角动量"><a href="#定轴转动刚体的角动量" class="headerlink" title="定轴转动刚体的角动量"></a>定轴转动刚体的角动量</h3><p>刚体绕 $z$ 轴转动时，只有沿 $z$ 轴的力矩可以引起刚体转动状态的变化。</p>
+<p>整个刚体受合外力矩沿 $z$ 轴的分量：</p>
+<script type="math/tex; mode=display">
+M_z=\sum_{i} r_{i \perp}F_{i \perp,t}</script><p>整个刚体总角动量沿 $z$ 轴的分量：</p>
+<script type="math/tex; mode=display">
+L_z=\sum_{i} m_i r_{i\perp}v_i</script><p>质点系的角动量定理 $\boldsymbol{M}=\frac{\mathrm{d} \boldsymbol{L}}{\mathrm{d} t}$ 沿 $z$ 轴的分量式</p>
+<script type="math/tex; mode=display">
+M_{z}=\frac{\mathrm{d} L_{z}}{\mathrm{~d} t}</script><p>就是刚体定轴转动角动量定理，它是描述刚体做定轴转动的动力学方程。这里 $L_{z}$ 为角动量沿 $z$ 轴上的分量，又称为刚体相当于转轴的角动量。</p>
+<h3 id="定轴转动刚体的转动惯量"><a href="#定轴转动刚体的转动惯量" class="headerlink" title="定轴转动刚体的转动惯量"></a>定轴转动刚体的转动惯量</h3><p>记</p>
+<script type="math/tex; mode=display">
+J=\sum_{i} \Delta m_{i} r_{i}^{2}</script><p>有</p>
+<script type="math/tex; mode=display">
+L_{z}=J \omega</script><p>$J$称为刚体对 $z$ 轴的转动惯量，与刚体的质量及其分布有关，并与转轴的具体位置有关。</p>
+<ul>
+<li>转动惯量与质量类似，它是刚体转动惯性大小的量度</li>
+<li>转动惯量不仅与刚体质量有关，而且与刚体转轴的位置及刚体的质量分布有关：质量分布离轴越远，转动惯量越大。</li>
+<li>转动惯量具有叠加性，满足叠加原理</li>
+</ul>
+<h3 id="刚体定轴转动定理"><a href="#刚体定轴转动定理" class="headerlink" title="刚体定轴转动定理"></a>刚体定轴转动定理</h3><p>如果转动过程中 $J$ 不变，刚体在作定轴转动时，刚体的角加速度与它所受到的合外力矩成正比，与刚体的转动惯量成反比。</p>
+<script type="math/tex; mode=display">
+M=J \frac{\mathrm{d} \omega}{\mathrm{d} t}=J \beta</script><p>积分形式：</p>
+<script type="math/tex; mode=display">
+\int_{t_{0}}^{t} M \mathrm{~d} t=\int_{J_{0} \omega_{0}}^{J \omega} \mathrm{d}(J \omega)=J \omega-J_{0} \omega_{0}</script><p>式中 $\int_{t_{0}}^{t} M \mathrm{~d} t$ 称为在 $t_{0}$ 到 $t$ 时间内作用在刚体上的外力矩的冲量矩，$J_{0},\omega_{0}$ 和 $J,\omega$ 分别对应于 $t_{0}$ 和 $t$ 时刻刚体的转动惯量和角速度。</p>
+<h3 id="★刚体定轴转动和质点运动比较"><a href="#★刚体定轴转动和质点运动比较" class="headerlink" title="★刚体定轴转动和质点运动比较"></a>★刚体定轴转动和质点运动比较</h3><p><a target="_blank" rel="noopener" href="http://47.100.52.206/short/qgpc"><img src="/img/drawio/刚体定轴转动和质点运动比较.drawio.png" srcset="/img/loading.gif" lazyload style="margin:0"/></a></p>
+<h3 id="运用刚体定轴转动定理解题的步骤"><a href="#运用刚体定轴转动定理解题的步骤" class="headerlink" title="运用刚体定轴转动定理解题的步骤"></a>运用刚体定轴转动定理解题的步骤</h3><ol>
+<li>运用隔离法，对质点作受力分析。（牛二）</li>
+<li>运用隔离法，对刚体（包括定滑轮，盘，柱，杆等）作受力分析。（找出各力的力矩）</li>
+<li>选择与加速度 $\boldsymbol{a}$ 正方向一致的角加速度 $\boldsymbol{\beta}$ 的正方向。 </li>
+<li>根据角加速度 $\boldsymbol{\beta}$ 的正方向，确定各力的力矩的正负号，求各力的力矩的代数和。</li>
+<li>对刚体运用转动定律 $M=J \beta$</li>
+<li>补充条件：<ul>
+<li>需要选择与加速度的正方向一致的 $\boldsymbol{\beta}$ 的正方向，这样才有 $\boldsymbol{a}=\boldsymbol{\beta} r$</li>
+<li>绳不可伸长，加速度相等：$a_1=a_2$</li>
+</ul>
+</li>
+<li>计算质点系质心位置及加速度。</li>
+<li>对刚体运用质点系质心定理，获得刚体转轴处的支持力。</li>
+<li>求解、讨论。</li>
+</ol>
+<h3 id="刚体转动惯量的计算"><a href="#刚体转动惯量的计算" class="headerlink" title="刚体转动惯量的计算"></a>刚体转动惯量的计算</h3><ul>
+<li>若刚体为分立结构，即由多个质点组成的刚性质点系，用 $m_i$ 替代 $\Delta m_i$，则系统转动惯量为<script type="math/tex; mode=display">
+J=\sum_{i} m_{i} r_{i}^{2}</script></li>
+<li>若刚体为连续体，可采用如下积分办法计算刚体的转动惯量<script type="math/tex; mode=display">
+J=\int r^{2} \mathrm{~d} m</script>其中，根据质量分布情况，质量元又可分别表示为如下的具体形式。<ul>
+<li>若为线分布时，$\mathrm{d}m=\rho_l \mathrm{d}l$，其中 $\rho_l$ 为单位长度具有的质量，称为质量线密度。</li>
+<li>若为面分布时，$\mathrm{d}m=\rho_S \mathrm{d}S$，其中 $\rho_S$ 为单位面积具有的质量，称为质量面密度。</li>
+<li>若为体分布时，$\mathrm{d}m=\rho \mathrm{d}V$，其中 $\rho$ 为单位体积具有的质量，称为质量体密度。</li>
+</ul>
+</li>
+</ul>
+<h3 id="平行轴定理"><a href="#平行轴定理" class="headerlink" title="平行轴定理"></a>平行轴定理</h3><p>刚体对任一转轴的转动惯量为 $J$，等于对通过质心的平行转轴的转动惯量 $J_{C}$ 加上刚体质量 $m$ 乘以两平行转轴间距离 $d$ 的平方。</p>
+<script type="math/tex; mode=display">
+J=J_{C}+m d^{2}</script><p>式中 $J_{C}=\sum_{i} \Delta m_{i} r_{i}^{2}$ 为转轴通过刚体质心 $C$ 时刚体的转动惯量。</p>
+<h3 id="薄平板刚体的垂直轴定理"><a href="#薄平板刚体的垂直轴定理" class="headerlink" title="薄平板刚体的垂直轴定理"></a>薄平板刚体的垂直轴定理</h3><p>设有一厚度可以忽略的薄平板位于 $xOy$ 平面内，则</p>
+<script type="math/tex; mode=display">
+J_{z}=J_{y}+J_{x}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+J_{x}=\sum_{i} \Delta m_{i} y_{i}^{2} \\
+J_{y}=\sum_{i} \Delta m_{i} x_{i}^{2}
+\end{array}\right.</script><p>式中 $x_i$ 为质量元 $\Delta m_i$ 到 $y$ 轴的距离，而 $y_i$ 为质量元 $\Delta m_i$ 到 $x$ 轴的距离。</p>
+<h3 id="★常用的转动惯量"><a href="#★常用的转动惯量" class="headerlink" title="★常用的转动惯量"></a>★常用的转动惯量</h3><p><img src="/img/drawio/常用的转动惯量.drawio.png" srcset="/img/loading.gif" lazyload alt="常用的转动惯量"></p>
+<h3 id="转动惯量的一般计算式"><a href="#转动惯量的一般计算式" class="headerlink" title="转动惯量的一般计算式"></a>转动惯量的一般计算式</h3><h4 id="平面薄片"><a href="#平面薄片" class="headerlink" title="平面薄片"></a>平面薄片</h4><p>若平面薄片占据 $xOy$ 平面上的有界闭区域 $D$，面密度为 $\mu(x, y)$，薄片绕 $x$ 轴，$y$ 轴及坐标原点 $O$ 旋转的转动惯量 $I_{x}, I_{y}, I_{O}$ 分别是它关于 $x$ 轴，$y$ 轴及坐标原点 $O$ 的二阶矩</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+I_{x}=\iint_{D} y^{2} \mu(x, y) \mathrm{d} \sigma,\quad I_{y}=\iint_{D} x^{2} \mu(x, y) \mathrm{d} \sigma, \\
+I_{O}=\iint_{D}\left(x^{2}+y^{2}\right) \mu(x, y) \mathrm{d} \sigma=I_{x}+I_{y}
+\end{array}</script><h4 id="空间物体"><a href="#空间物体" class="headerlink" title="空间物体"></a>空间物体</h4><p>占据区域 $\Omega$，体密度为 $\mu(x, y, z)$ 的空间物体对三个坐标轴及坐标原点的转动惯量分别为</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+I_{x}=\iiint_{\Omega}\left(y^{2}+z^{2}\right) \mu(x, y, z) \mathrm{d} V\\
+I_{v}=\iiint_{\Omega}\left(z^{2}+x^{2}\right) \mu(x, y, z) \mathrm{d} V\\
+I_{z}=\iiint_{\Omega}\left(x^{2}+y^{2}\right) \mu(x, y, z) \mathrm{d} V\\
+I_{O}=\iiint_{\Omega}\left(x^{2}+y^{2}+z^{2}\right) \mu(x, y, z) \mathrm{d} V
+\end{array}</script><h3 id="定轴转动角动量守恒定律"><a href="#定轴转动角动量守恒定律" class="headerlink" title="定轴转动角动量守恒定律"></a>定轴转动角动量守恒定律</h3><p>物体在定轴转动中，当对转轴的<strong>合外力矩</strong>为零时，物体对转轴的角动量保持不变，这一规律就是定轴转动的角动量守恒定律。<br>根据定轴转动定理</p>
+<script type="math/tex; mode=display">
+M=\frac{\mathrm{d}(J\omega)}{\mathrm{d}t}</script><p>当合外力矩 $M=0$ 时，有</p>
+<script type="math/tex; mode=display">
+L_z=J\omega=\text{恒量}</script><p>对于系统：<br>当合外力矩 $M=0$ 时，有</p>
+<script type="math/tex; mode=display">
+L_z=\sum_{i} m_i r_{i\perp}v_i=\text{恒量}</script><h3 id="角动量守恒定律的解题步骤"><a href="#角动量守恒定律的解题步骤" class="headerlink" title="角动量守恒定律的解题步骤"></a>角动量守恒定律的解题步骤</h3><ol>
+<li>对刚体作受力分析。在惯性参考系中，计算所受外力对转轴的力矩的代数和。</li>
+<li>如果外力对转轴的力矩的代数和为零，则角动量守恒。</li>
+<li>如果外力对转轴的力矩的代数和在某一方向分量为零，则该方向上的角动量守恒。</li>
+<li>碰撞、打击等过程的时间极短，外力对转轴的力矩与内力对转轴的力矩相比小很多。外力对转轴的力矩可以忽略不计。我们可以有近似的角动量守恒。</li>
+<li>选定研究过程。在惯性参照系确定过程的始、末状态的角动量。</li>
+<li>列角动量守恒方程。</li>
+<li>求解、讨论。</li>
+</ol>
+<h3 id="刚体定轴转动的动能"><a href="#刚体定轴转动的动能" class="headerlink" title="刚体定轴转动的动能"></a>刚体定轴转动的动能</h3><p>如刚体质点固定，绕定轴转动角速度为 $\omega$，则刚体的转动动能为</p>
+<script type="math/tex; mode=display">
+E_{kr}=\frac{1}{2}J \omega^2</script><p>一般情况下,刚体绕定轴的动能可分解为质心携总质量绕该轴做圆周运动时的动能与刚体绕通过质心平行转轴的转动动能的和。</p>
+<script type="math/tex; mode=display">
+E_{kr}=\frac{1}{2}mv_C^2+\frac{1}{2}J_C\omega^2</script><h3 id="力矩的功"><a href="#力矩的功" class="headerlink" title="力矩的功"></a>力矩的功</h3><p>设刚体所受到的合外力矩为 $M$，从角位置 $\varphi_0$ 转到 $\varphi_1$，外力做功为</p>
+<script type="math/tex; mode=display">
+A=\int_{\varphi_0}^{\varphi_1} M \mathrm{~d} \varphi</script><h3 id="刚体定轴转动的动能定理"><a href="#刚体定轴转动的动能定理" class="headerlink" title="刚体定轴转动的动能定理"></a>刚体定轴转动的动能定理</h3><p>合外力矩对定轴转动刚体所做的功等于定轴转动刚体转动动能的增量。</p>
+<script type="math/tex; mode=display">
+\int_{\varphi_{0}}^{\varphi_1} M \mathrm{~d} \varphi=\int_{\omega_{0}}^{\omega_1} J \omega \mathrm{d} \omega=\frac{1}{2} J \omega_1^{2}-\frac{1}{2} J \omega_{0}^{2}</script><p>式中 $\omega_0$ 和 $\omega_1$ 分别对应于 $t_0$ 和 $t_1$ 时刻刚体的转动角速度。</p>
+<h3 id="刚体定轴转动的功能原理"><a href="#刚体定轴转动的功能原理" class="headerlink" title="刚体定轴转动的功能原理"></a>刚体定轴转动的功能原理</h3><p>设 $M$ 为除重力以外的所有其他外力矩，$M_z$ 为重力矩，则刚体做定轴转动时的功能原理表达式：</p>
+<script type="math/tex; mode=display">
+\int_{\varphi_{0}}^{\varphi_1} M \mathrm{~d} \varphi=\left(m g z_{C1}+\frac{1}{2} J \omega_1^{2}\right)-\left(m g z_{C 0}+\frac{1}{2} J \omega_{0}^{2}\right)</script><h3 id="功能原理的解题步骤-1"><a href="#功能原理的解题步骤-1" class="headerlink" title="功能原理的解题步骤"></a>功能原理的解题步骤</h3><ol>
+<li>取刚体，质点和地球等为系统，作为研究对象。</li>
+<li>作受力分析。</li>
+<li>选定研究过程。在惯性参照系确定过程的始、末状态的机械能。</li>
+<li>计算在该过程中，所有外力和非保守内力做的功。</li>
+<li>列功能原理方程。</li>
+<li>求解、讨论。</li>
+</ol>
+<h3 id="刚体定轴转动机械能守恒定律"><a href="#刚体定轴转动机械能守恒定律" class="headerlink" title="刚体定轴转动机械能守恒定律"></a>刚体定轴转动机械能守恒定律</h3><p>若 $M=0$ 则</p>
+<script type="math/tex; mode=display">
+mgz_C+\frac{1}{2}J\omega^2=\text{恒量}</script><p>即为刚体定轴转动的机械能守恒定律。</p>
+<h3 id="机械能守恒定律的解题步骤-1"><a href="#机械能守恒定律的解题步骤-1" class="headerlink" title="机械能守恒定律的解题步骤"></a>机械能守恒定律的解题步骤</h3><ol>
+<li>取刚体，质点和地球等为系统，确认系统为孤立系统，作为研究对象。</li>
+<li>作受力分析。确认孤立系统中非保守内力不做功，这样系统的总机械能才能守恒。</li>
+<li>选定研究过程。在惯性参照系确定过程的始、末状态的机械能。</li>
+<li>列机械能守恒方程。</li>
+<li>求解、讨论。</li>
+</ol>
+<h3 id="陀螺的运动"><a href="#陀螺的运动" class="headerlink" title="陀螺的运动"></a>陀螺的运动</h3><p>当处于重力场中的物体绕对称轴高速旋转时，有奇特的回转效应，称为刚体的进动。<br><img src="/img/陀螺运动示意图.png" srcset="/img/loading.gif" lazyload alt="陀螺运动示意图"></p>
+<p>刚体进动的角速度大小为</p>
+<script type="math/tex; mode=display">
+\omega_{\mathrm{p}}=\frac{m g r_{C}}{J_{C} \omega}</script><p>其中 $J_C$ 为陀螺绕对称轴的转动惯量，$\omega_{\mathrm{p}}$ 与陀螺的倾斜角度 $\theta$ 无关，但与陀螺的自转角速度大小 $\omega$ 成反比。$\omega$ 越小，刚体进动角速度越大；$\omega$ 越大，刚体进动角速度越小。</p>
+<ul>
+<li>注意：以上的分析只是近似结果，只有当刚体高速自转，使 $\boldsymbol{\omega} \gg \boldsymbol{\omega}_{\mathrm{p}}$ 时，才有 $\boldsymbol{\omega}_{\text {总}} \approx \boldsymbol{\omega}$</li>
+</ul>
+<h3 id="刚体平面平行运动"><a href="#刚体平面平行运动" class="headerlink" title="刚体平面平行运动"></a>刚体平面平行运动</h3><p>刚体做平面平行运动时，刚体的运动可以分解为刚体随质心的平动和刚体绕通过质心且垂直于运动平面的转轴的定轴转动。</p>
+<h3 id="质心运动定理-1"><a href="#质心运动定理-1" class="headerlink" title="质心运动定理"></a>质心运动定理</h3><script type="math/tex; mode=display">
+\sum_{i} \boldsymbol{F}_{i}=m \boldsymbol{a}_{C}</script><p>其中 $m$ 为刚体的总质量</p>
+<h3 id="质心坐标系中的定轴转动定理"><a href="#质心坐标系中的定轴转动定理" class="headerlink" title="质心坐标系中的定轴转动定理"></a>质心坐标系中的定轴转动定理</h3><p>因为在质心坐标系中，惯性力总力矩为零，则质心坐标系中的定轴转动定理为</p>
+<script type="math/tex; mode=display">
+M_c=J_c \beta</script><p>它在形式上与惯性参考系中相同，其中 $M_c$ 为作用在刚体上相对绕过质心转轴的所有外力矩，$J_c$ 为刚体绕过质心转轴的转动惯量。</p>
+<h3 id="刚体平面平行运动的角动量"><a href="#刚体平面平行运动的角动量" class="headerlink" title="刚体平面平行运动的角动量"></a>刚体平面平行运动的角动量</h3><p>平面平行运动的刚体，对于某一固定点的角动量，等于质心对于固定点的角动量+刚体绕质心转动的角动量</p>
+<script type="math/tex; mode=display">
+\boldsymbol{L}=\boldsymbol{L_c}+\boldsymbol{L'}</script><h3 id="刚体平面平行运动的总动能"><a href="#刚体平面平行运动的总动能" class="headerlink" title="刚体平面平行运动的总动能"></a>刚体平面平行运动的总动能</h3><p>刚体做平面平行运动时的总动能，可看作刚体质心的平动动能与刚体绕通过其质心与运动平面垂直的转轴的转动动能之和。</p>
+<script type="math/tex; mode=display">
+E_{\mathrm{k}}=\frac{1}{2} m v_{C}^{2}+\frac{1}{2} J_{C} \omega^{2}</script><h3 id="刚体平面平行运动的机械能守恒定律"><a href="#刚体平面平行运动的机械能守恒定律" class="headerlink" title="刚体平面平行运动的机械能守恒定律"></a>刚体平面平行运动的机械能守恒定律</h3><p>若外力为保守力，则机械能守恒：</p>
+<script type="math/tex; mode=display">
+\frac{1}{2} m v_{c}^{2}+\frac{1}{2} J \omega^{2}+V=E</script><h3 id="刚体平面平行运动的常用附加条件"><a href="#刚体平面平行运动的常用附加条件" class="headerlink" title="刚体平面平行运动的常用附加条件"></a>刚体平面平行运动的常用附加条件</h3><ul>
+<li><p>纯滚动：球与粗糙斜面接触处瞬时速度为 $0$，球绕与粗糙斜面接触点做瞬时定点转动（瞬时圆周运动）；同时有球+粗糙斜面+地球组成的系统机械能守恒</p>
+<script type="math/tex; mode=display">
+v_{\mathrm{c}}=R \omega \quad a_{\mathrm{c}}=R \beta</script></li>
+<li><p>卷线轴下落</p>
+<script type="math/tex; mode=display">
+\beta=\frac{a_{C}}{R}</script></li>
+</ul>
+<h2 id="第五章-狭义相对论基础"><a href="#第五章-狭义相对论基础" class="headerlink" title="第五章 狭义相对论基础"></a>第五章 狭义相对论基础</h2><h3 id="狭义相对论的基本假设"><a href="#狭义相对论的基本假设" class="headerlink" title="狭义相对论的基本假设"></a>狭义相对论的基本假设</h3><p>爱因斯坦提出了下述两条假设，作为狭义相对论的两条基本原理：</p>
+<ol>
+<li>物理定律在一切惯性系中都是相同的，可以表示为相同的数学表达形式。或者说，惯性参考系对所有物理规律都是等价的。这称为<strong>狭义相对性原理</strong>。</li>
+<li>光在真空中的传播速度与参考系无关，相对于任何惯性参考系恒为 $c$，即光速与光源运动或观测者的运动无关。这称为<strong>光速不变原理</strong>。</li>
+</ol>
+<h3 id="狭义相对论的时空观"><a href="#狭义相对论的时空观" class="headerlink" title="狭义相对论的时空观"></a>狭义相对论的时空观</h3><ul>
+<li>同时的相对性</li>
+<li>时间膨胀</li>
+<li>长度收缩</li>
+</ul>
+<h3 id="洛伦兹坐标变换"><a href="#洛伦兹坐标变换" class="headerlink" title="洛伦兹坐标变换"></a>洛伦兹坐标变换</h3><p>设有两个惯性参考系 $S$ 和 $S’$，$x$ 轴和 $x’$ 轴方向相同且重合，$S’$ 系相对于 $S$ 系以速度 $u$ 沿 $x$ 轴正方向运动。两个惯性系分别有自己的计时系统。当两个参考系的坐标原点重合时，两个参考系内的计时系统同时开始计时（即 $t=t’=0$）。对同一物理事件 $P$，两个参考系的时空坐标分别为 $(x,<br>y,z,t)$ 和 $(x’,y’,z’,t’)$。因为这两组时空坐标描述的是同一个物理事件，它们之间必有确定的联系，即时空坐标变换。<br><a target="_blank" rel="noopener" href="http://47.100.52.206/short/cdzp"><img src="/img/drawio/洛伦兹变换公式.drawio.png" srcset="/img/loading.gif" lazyload style="margin:0"></a></p>
+<p>令 $\frac{1}{\sqrt{1-\frac{u^{2}}{c^{2}}}}=\gamma$，这时洛伦兹变换可写为</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+x^{\prime}=\gamma(x-u t) \\
+y^{\prime}=y \\
+z^{\prime}=z \\
+t^{\prime}=\gamma\left(t-\frac{u}{c^{2}} x\right)
+\end{array}\right.
+\quad \text{和}\quad
+\left\{\begin{array}{l}
+x=\gamma\left(x^{\prime}+u t^{\prime}\right) \\
+y=y^{\prime} \\
+z=z^{\prime} \\
+t=\gamma\left(t^{\prime}+\frac{u}{c^{2}} x^{\prime}\right)
+\end{array}\right.</script><ul>
+<li>时间膨胀公式<br>设在 $S’$ 系中观测两个物理事件的时空坐标为 $(x_1’,t_1’)$ 和 $(x_2’,t_2’)$，设 $t’&gt;t$。在 $S$ 系中观测这两个物理事件的时空坐标为 $(x_1,t_1)$ 和 $(x_2,t_2)$。若 $x_1’=x_2’$，则有<script type="math/tex; mode=display">
+\Delta t=\frac{\Delta t^{\prime}}{\sqrt{1-\frac{u^{2}}{c^{2}}}}</script>若 $x_1’ \ne x_2’$，则有<script type="math/tex; mode=display">
+t_{2}^{\prime}-t_{1}^{\prime}=\left(t_{2}-t_{1}\right) \sqrt{1-u^{2} / c^{2}}-u\left(x_{2}^{\prime}-x_{1}^{\prime}\right) / c^{2}</script></li>
+<li>长度收缩公式<script type="math/tex; mode=display">
+l=l_0 \sqrt{1-\frac{u^{2}}{c^{2}}}</script></li>
+<li>不同时不同地的时间间隔、距离计算<script type="math/tex; mode=display">
+\begin{array}{l}
+\Delta x^{\prime}=\frac{\Delta x-u \Delta t}{\sqrt{1-u^{2} / c^{2}}} \\
+\Delta t^{\prime}=\frac{\Delta t-\frac{u}{c^{2}} \Delta x}{\sqrt{1-u^{2} / c^{2}}}
+\end{array}</script></li>
+<li>在 $S’$ 系中<strong>不同地点、相同时间</strong>发生的两事件，在 $S$ 系中这两个事件不一定是同时发生的。</li>
+<li>在 $S’$ 系中<strong>相同地点、相同时间</strong>发生的两事件，在 $S$ 系中这两个事件一定是同时发生的。</li>
+<li>在 $S’$ 系中<strong>相同地点、不同时间</strong>发生的两事件，在 $S$ 系中这两个事件不一定是同地发生的。</li>
+<li>在 $S’$ 系中<strong>相同地点、相同时间</strong>发生的两事件，在 $S$ 系中这两个事件一定是同地发生的。</li>
+<li>有因果关系的关联事件，时序不会颠倒，具有绝对性。</li>
+<li>在低速情况下（$u\ll c,y\to 1$），洛伦兹变换退化到伽利略变换。这个事实表明：洛伦兹变换更具普遍性，而伽利略变换只是洛伦兹变换在低速情况下的一个近似。</li>
+<li>与伽利略变换不同，在洛伦兹变换中，时间坐标明显地与空间坐标有关。这说明，按相对论的观点，对时间和空间的测量是不能分割的。因此，相对论的时空实际上是一个四维空间，这个空间与物质的运动有关。</li>
+<li>当 $u\ge c$ 时，变换式将出现无穷大或虚数值，这是没有物理意义的。因此，任意两个惯性系之间的相对运动速度 $u$ 不能大于或等于 $c$。由于惯性参考系总是选择在一定的运动物体上的，所以物体对于任意惯性系的速度一定小于 $c$。即真空中的光速是物体运动速度所不能达到和逾越的极限值。</li>
+</ul>
+<h3 id="洛伦兹速度变换"><a href="#洛伦兹速度变换" class="headerlink" title="洛伦兹速度变换"></a>洛伦兹速度变换</h3><p>设在惯性系 $S$ 和 $S’$ 中测得同一质点的运动速度分别为 $\boldsymbol{v}=(v_x,v_y,v_z)$ 和 $\boldsymbol{v’}=(v_x’,v_y’,v_z’)$，则有</p>
+<script type="math/tex; mode=display">
+\left\{\begin{aligned}
+v_{x}^{\prime} & = \frac{v_{x}-u}{1-\frac{u v_{x}}{c^{2}}} \\
+v_{y}^{\prime} & = \frac{v_{y} \sqrt{1-\frac{u^{2}}{c^{2}}}}{1-\frac{u v_{x}}{c^{2}}} \\
+v_{z}^{\prime} & = \frac{v_{z} \sqrt{1-\frac{u^{2}}{c^{2}}}}{1-\frac{u v_{x}}{c^{2}}}
+\end{aligned}\right.</script><p><a target="_blank" rel="noopener" href="http://47.100.52.206/short/keq2"><img src="/img/drawio/洛伦兹速度变换公式.drawio.png" srcset="/img/loading.gif" lazyload style="margin:0"></a></p>
+<h3 id="相对论运动学解题步骤"><a href="#相对论运动学解题步骤" class="headerlink" title="相对论运动学解题步骤"></a>相对论运动学解题步骤</h3><ol>
+<li>建立两个惯性参考系 $S$ 系和 $S’$ 系。通常情况下地面参考系为 $S$ 系。</li>
+<li>写下两个事件的时间空间坐标。<script type="math/tex; mode=display">
+(x_1,t_1),(x_2,t_2),(x_1',t_1'),(x_2',t_2')</script></li>
+<li>写下两个事件的空间坐标的补充条件。</li>
+<li>利用洛伦兹变换变换，将两个惯性参考系 $S$ 系和 $S’$ 系的物理量联系起来。</li>
+</ol>
+<h3 id="相对论动量和质量"><a href="#相对论动量和质量" class="headerlink" title="相对论动量和质量"></a>相对论动量和质量</h3><p>实验研究表明，物体的质量随速率增大而增大，满足如下质速关系式：（$m$ 称为动质量，$m_0$ 称为静质量）</p>
+<script type="math/tex; mode=display">
+m=\frac{m_{0}}{\sqrt{1-\frac{v^{2}}{c^{2}}}}</script><p>由于运动的相对性，同一物体在不同惯性系中的运动速度不同，其质量也不同。由质速关系，物体的相对论动量为</p>
+<script type="math/tex; mode=display">
+\boldsymbol{p}=m(v) v=\frac{m_{0}}{\sqrt{1-\frac{v^{2}}{c^{2}}}} v</script><h3 id="相对论动量守恒定律"><a href="#相对论动量守恒定律" class="headerlink" title="相对论动量守恒定律"></a>相对论动量守恒定律</h3><p>设在 $S$ 系中两粒子的质量为 $m_{\mathrm{A}}$ 和 $m_{\mathrm{B}}$，粒子碰撞后粘在一起，质量为 $M$，速度为 $u$，则有</p>
+<script type="math/tex; mode=display">
+M(u)u=m_{\mathrm{A}}(v_{\mathrm{A}}) v_{\mathrm{A}}+m_{\mathrm{B}}(v_{\mathrm{B}}) v_{\mathrm{B}}</script><p>且有碰撞前后系统总质量（能量）不变，即</p>
+<script type="math/tex; mode=display">
+M(u)=m_{\mathrm{A}}(u)+m_{\mathrm{B}}(u)</script><h3 id="相对论动力学方程"><a href="#相对论动力学方程" class="headerlink" title="相对论动力学方程"></a>相对论动力学方程</h3><script type="math/tex; mode=display">
+\boldsymbol{F}=\frac{\mathrm{d} \boldsymbol{p}}{\mathrm{d} t}=\frac{\mathrm{d}}{\mathrm{d} t}\left(\frac{m_{0} \boldsymbol{v}}{\sqrt{1-\frac{v^{2}}{c^{2}}}}\right)</script><p>在一般情况下</p>
+<script type="math/tex; mode=display">
+\boldsymbol{F}=\frac{m_{0} v \boldsymbol{v} \frac{\mathrm{d} v}{\mathrm{d} t}}{c^{2}\left(1-\frac{v^{2}}{c^{2}}\right)^{\frac{3}{2}}}+\frac{m_{0} \frac{\mathrm{d} \boldsymbol{v}}{\mathrm{d} t}}{\left(1-\frac{v^{2}}{c^{2}}\right)^{\frac{1}{2}}}</script><p>对于质点的一维运动，若外力为一恒力 $F_0$，则</p>
+<script type="math/tex; mode=display">
+F_0=\frac{m_{0}}{\left(\sqrt{1-\frac{v^{2}}{c^{2}}}\right)^{3}} \frac{\mathrm{d} v}{\mathrm{d} t}</script><p>加速度</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d} v}{\mathrm{d} t}=\left(1-\frac{v^{2}}{c^{2}}\right)^{3 / 2} \frac{F_{0}}{m_{0}}</script><h3 id="相对论动能"><a href="#相对论动能" class="headerlink" title="相对论动能"></a>相对论动能</h3><p>若质点静止时动能为零，质点速度为 $v$ 时的动能为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+E_{\mathrm{k}} & = m c^{2}-m_{0} c^{2} \\
+& = \frac{m_{0} c^{2}}{\sqrt{1-\frac{v^{2}}{c^{2}}}}-m_{0} c^{2}
+\end{aligned}</script><p>外力做功等于质点动能的改变量</p>
+<script type="math/tex; mode=display">
+A=\Delta E_{\mathrm{k}}</script><h3 id="相对论总能量"><a href="#相对论总能量" class="headerlink" title="相对论总能量"></a>相对论总能量</h3><p>相对论动能 $E_{\mathrm{k}}=m c^{2}-m_{0} c^{2}$ 表示为两项之差，其中 $m_{0} c^{2}$ 称为质点的静止能量，即静能。而第一项</p>
+<script type="math/tex; mode=display">
+m c^{2}=E_{\mathrm{k}}+m_{0} c^{2}</script><p>等于动能与静能之和，称为质点的总能量，如用 $E$ 表示，则有</p>
+<script type="math/tex; mode=display">
+E=m c^{2}</script><ul>
+<li>宏观静止物体的静能包括热能、化学能、以及各种微观粒子相互作用所具有的势能等。</li>
+<li>对于孤立系统而言，系统的总能量守恒与系统的总质量守恒紧密地联系在一起，统一在一起。</li>
+<li>总能量等于动能与静能之和，随着系统动能增加或减少，系统的静能也发生相应的减少或增加。</li>
+</ul>
+<h3 id="相对论的动量能量关系式"><a href="#相对论的动量能量关系式" class="headerlink" title="相对论的动量能量关系式"></a>相对论的动量能量关系式</h3><script type="math/tex; mode=display">
+E^2=p^2c^2+m_0^2c^4</script><p>对于光子，由于其静质量为零，即 $m=0$，上式可化为 $E=pc$，光子的动量 </p>
+<script type="math/tex; mode=display">
+p=\frac{E}{c}=\frac{h \nu}{c}=\frac{h}{\lambda}</script><h3 id="光子的吸收"><a href="#光子的吸收" class="headerlink" title="光子的吸收"></a>光子的吸收</h3><p>质量为 $m_0$ 的静止原子核（或原子），受到能量为 $E$ 的光子撞击，原子核（或原子）将光子的能量全部吸收，此合并系统的速度（反冲速度）为</p>
+<script type="math/tex; mode=display">
+u=\frac{E c}{m_{0} c^{2}+E}</script><p>静止质量为</p>
+<script type="math/tex; mode=display">
+M_{0}=m_{0} \sqrt{1+\frac{2 E}{m_{0} c^{2}}}</script><h3 id="相对论碰撞问题的解题步骤"><a href="#相对论碰撞问题的解题步骤" class="headerlink" title="相对论碰撞问题的解题步骤"></a>相对论碰撞问题的解题步骤</h3><ol>
+<li>确定研究对象。</li>
+<li>选定研究过程。在惯性参照系确定过程的始、末状态的动量。写出动量守恒方程。<script type="math/tex; mode=display">
+\sum_{i} \boldsymbol{p}_{i}=\sum_{i} m_{i} \boldsymbol{v}_{i}=\sum_{i} \frac{m_{0 i} \boldsymbol{v}_{i}}{\sqrt{1-v_i^{2} / c^{2}}}=\text { 常矢量 }</script></li>
+<li>在惯性参照系确定过程的始、末状态的总能量（总质量）。写出能量（质量）守恒方程。<script type="math/tex; mode=display">
+\sum_{i} E_{i}=\sum_{i} m_{i} c^{2}=\sum_{i} \frac{m_{0 i}}{\sqrt{1-v_i^{2} / c^{2}}} c^{2}=\text { 常数 }</script></li>
+<li>补充条件。</li>
+<li>求解、讨论。</li>
+</ol>
+<h2 id="第六章-机械振动"><a href="#第六章-机械振动" class="headerlink" title="第六章 机械振动"></a>第六章 机械振动</h2><h3 id="简谐振动"><a href="#简谐振动" class="headerlink" title="简谐振动"></a>简谐振动</h3><h4 id="简谐振动的定义"><a href="#简谐振动的定义" class="headerlink" title="简谐振动的定义"></a>简谐振动的定义</h4><p>所谓简谐振动，是指某一物理量随时间以正弦或余弦函数的规律变化的运动，简谐振动是最基本、最简单的振动形式。一切更复杂的振动都可以看作由许多不同频率、不同振幅的简谐振动的叠加。</p>
+<h4 id="简谐振动的判据"><a href="#简谐振动的判据" class="headerlink" title="简谐振动的判据"></a>简谐振动的判据</h4><ol>
+<li>力学判据：受到与对平衡位置的位移成<strong>正比</strong>而<strong>反向</strong>的合外力作用。</li>
+<li>运动学判据：满足动力学方程。</li>
+<li>运动学判据：满足运动学方程。</li>
+</ol>
+<h4 id="简谐振动的方程"><a href="#简谐振动的方程" class="headerlink" title="简谐振动的方程"></a>简谐振动的方程</h4><h5 id="动力学方程"><a href="#动力学方程" class="headerlink" title="动力学方程"></a>动力学方程</h5><script type="math/tex; mode=display">
+\frac{\mathrm{d}^{2} x}{\mathrm{d} t^{2}}+\omega^{2} x=0</script><p>其中 $\omega^2=\frac{k}{m}$<br>这是一个二阶线性齐次微分方程，通过求解相应的特征方程，或通过二次积分可以解得</p>
+<h5 id="运动学方程"><a href="#运动学方程" class="headerlink" title="运动学方程"></a>运动学方程</h5><script type="math/tex; mode=display">
+x=A\cos (\omega t+\varphi)</script><h5 id="运动学方程的初始条件"><a href="#运动学方程的初始条件" class="headerlink" title="运动学方程的初始条件"></a>运动学方程的初始条件</h5><p>设 $t=0$ 时，物体位于 $x=x_{0}$，其速度 $v=v_{0}$，将此条件代入上式，得</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+x_{0}=A \cos \varphi \\
+v_{0}=\left.\frac{\mathrm{d} x}{\mathrm{d} t}\right|_{t=0}=-\omega A \sin \varphi \\
+\end{array}\right.</script><p>由此解出</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+A=\sqrt{x_{0}^{2}+\left(\frac{v_{0}}{\omega}\right)^{2}} \\
+\tan \varphi=-\frac{v_{0}}{\omega x_{0}}
+\end{array}\right.</script><h5 id="运动周期"><a href="#运动周期" class="headerlink" title="运动周期"></a>运动周期</h5><script type="math/tex; mode=display">
+T=\frac{2\pi}{\omega}=2\pi\sqrt{\frac{m}{k}}</script><h4 id="解决简谐运动方程问题的一般步骤"><a href="#解决简谐运动方程问题的一般步骤" class="headerlink" title="解决简谐运动方程问题的一般步骤"></a>解决简谐运动方程问题的一般步骤</h4><ol>
+<li>找到振动平衡位置，此时合力为零，选平衡位置为原点，建立坐标系。</li>
+<li>设振子离开原点x处，分析受力情况。</li>
+<li>应用牛顿定律。与 $\frac{\mathrm{d}^{2} x}{\mathrm{d} t^{2}}+\omega^{2} x=0$ 比较，确定 $\omega$。</li>
+<li>根据初始条件确定 $A$ 和 $\varphi$。</li>
+<li>写出振动表达式。</li>
+</ol>
+<h4 id="描述简谐振动的物理量"><a href="#描述简谐振动的物理量" class="headerlink" title="描述简谐振动的物理量"></a>描述简谐振动的物理量</h4><ul>
+<li>周期 $T$ 表示完成一次振动全过程所需要的时间，单位为秒(s)<script type="math/tex; mode=display">
+T=\frac{2\pi}{\omega}</script></li>
+<li>频率 $\nu$ 表示单位时间内完成的振动次数，单位为赫兹(Hz)<script type="math/tex; mode=display">
+\omega=\frac{2 \pi}{T}=2 \pi \nu</script></li>
+<li>圆频率 $\omega$ 仅由振动系统自身的物理性质决定，与外界条件无关，所以 $\omega$ 通常被称为系统的固有圆频率，单位为弧度每秒(rad/s)</li>
+<li>振幅 $A$ 表示做简谐振动的物理量离开原点最大位移的绝对值。$A$ 的大小取决于振动的初始状态或振动系统的总能量。<br>以弹簧振子为例，设初始时振子位移为 $x_{0}$，速度为 $v_{0}$，则有<script type="math/tex; mode=display">
+E=\frac{1}{2} m v_{0}^{2}+\frac{1}{2} k x_{0}^{2}=\frac{1}{2} k A^{2}</script>由此可得振幅<script type="math/tex; mode=display">
+A=\sqrt{x_{0}^{2}+\left(\frac{v_{0}}{\omega}\right)^{2}}=\sqrt{\frac{2 E}{k}}=\sqrt{\frac{2 E}{m \omega^{2}}}</script></li>
+<li>相位 $\Phi$ 表示振动的状态，$\Phi=\omega t+\varphi$，单位为弧度(rad)。只要物体在某一时刻的相位确定了，则物体的位置、速度、加速度、能量乃至下一时刻的变化趋势都唯一地确定了下来。</li>
+<li>初相 $\varphi$ 反映了 $t=0$ 时刻的运动状态，，它取决于初始运动状态 $x_{0}, v_{0}$，即<script type="math/tex; mode=display">
+\tan \varphi=-\frac{v_{0}}{\omega x_{0}}</script></li>
+</ul>
+<h5 id="相位差与步调"><a href="#相位差与步调" class="headerlink" title="相位差与步调"></a>相位差与步调</h5><p>振动的相位与物体的振动状态直接对应，因此可以用相位比较两个简谐振动状态的差异。设两个频率相同的简谐振动分别为</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+x_{1}=A_{1} \cos \left(\omega t+\varphi_{1}\right) \\
+x_{2}=A_{2} \cos \left(\omega t+\varphi_{2}\right)
+\end{array}\right.</script><p>它们的相位差为</p>
+<script type="math/tex; mode=display">
+\Delta \Phi=\Phi_{2}-\Phi_{1}=\left(\omega t+\varphi_{2}\right)-\left(\omega t+\varphi_{1}\right)=\varphi_{2}-\varphi_{1}</script><p>这两个简谐振动的运动规律并无原则区别，只是在“步调”上相差了一段时间</p>
+<script type="math/tex; mode=display">
+\Delta t=\frac{\varphi_{2}-\varphi_{1}}{\omega}</script><p>其中 $\varphi_{2}-\varphi_{1} \in [-\pi,\pi]$</p>
+<ul>
+<li>$\varphi_{2}-\varphi_{1}&gt;0$，称振动 $x_{2}$ 超前振动 $x_{1}$</li>
+<li>$\varphi_{2}-\varphi_{1}&lt;0$，称振动 $x_{2}$ 落后振动 $x_{1}$</li>
+<li>$\varphi_{2}-\varphi_{1}=0$，称振动 $x_{2}$ 与振动 $x_{1}$ 同相，两个振动的“步调”完全一致</li>
+<li>$\varphi_{2}-\varphi_{1}=\pi$，称振动 $x_{2}$ 与振动 $x_{1}$ 反相，两个振动的“步调”恰好相反。</li>
+</ul>
+<h4 id="简谐振动的速度、加速度"><a href="#简谐振动的速度、加速度" class="headerlink" title="简谐振动的速度、加速度"></a>简谐振动的速度、加速度</h4><p>根据物体做简谐振动的运动方程为，由速度、加速度的定义可得</p>
+<ul>
+<li>简谐振动的速度<script type="math/tex; mode=display">
+\begin{aligned}
+v &=\frac{\mathrm{d} x}{\mathrm{~d} t}=-\omega A \sin (\omega t+\varphi) \\
+&=v_{\mathrm{m}} \cos \left[(\omega t+\varphi)+\frac{\pi}{2}\right] \\
+\end{aligned}</script>式中 $v_{\mathrm{m}}=\omega A$ 称为<strong>加速度振幅</strong></li>
+<li>简谐振动的加速度<script type="math/tex; mode=display">
+\begin{aligned}
+a &=\frac{\mathrm{d} v}{\mathrm{~d} t}=-\omega^{2} A \cos (\omega t+\varphi) \\
+&=a_{\mathrm{m}} \cos [(\omega t+\varphi) \pm \pi]
+\end{aligned}</script>式中 $a_{\mathrm{m}}=\omega^{2} A$ 称为<strong>加速度振幅</strong></li>
+</ul>
+<p>可见 $v,a$ 均随 $t$ 以余弦函数规律做周期性变化，但 $v$ 比 $x$ 相位超前 $\frac{\pi}{2}$，$a$ 比 $x$ 相位超前（或落后）$\pi$</p>
+<ul>
+<li>当做简谐振动物体的位移最大时，其速度为零，加速度最大但方向与位移方向相反。</li>
+<li>当做简谐振动物体的位移为零时，其速度最大，加速度为零。</li>
+</ul>
+<h4 id="简谐振动的能量"><a href="#简谐振动的能量" class="headerlink" title="简谐振动的能量"></a>简谐振动的能量</h4><p>以水平弹簧振子系统为例，振子的动能</p>
+<script type="math/tex; mode=display">
+\begin{align}
+E_{\mathrm{k}} = \frac{1}{2} m v^{2} 
+& = \frac{1}{2} m \omega^{2} A^{2} \sin ^{2}(\omega t+\varphi)\\
+&= \frac{1}{2} m \omega^{2} A^{2} \cos ^{2}\left[(\omega t+\varphi)+\frac{\pi}{2}\right]
+\end{align}</script><p>系统的势能为</p>
+<script type="math/tex; mode=display">
+\begin{align}
+E_{\mathrm{p}} = \frac{1}{2} k x^{2} 
+& = \frac{1}{2} k A^{2} \cos ^{2}(\omega t+\varphi)\\
+& =\frac{1}{2} m \omega^{2} A^{2} \cos ^{2}(\omega t+\varphi)
+\end{align}</script><p>总能量</p>
+<script type="math/tex; mode=display">
+E=E_{\mathrm{k}}+E_{\mathrm{p}}=\frac{1}{2} k A^{2}=\frac{1}{2} m \omega^{2} A^{2}</script><ul>
+<li>动能和势能的变化频率是弹簧振子振动频率的两倍。</li>
+<li>频率一定时，简谐振动的总能量与振幅的平方成正比。（适合于任何谐振系统）</li>
+</ul>
+<h4 id="使用能量守恒求解简谐运动方程的一般步骤"><a href="#使用能量守恒求解简谐运动方程的一般步骤" class="headerlink" title="使用能量守恒求解简谐运动方程的一般步骤"></a>使用能量守恒求解简谐运动方程的一般步骤</h4><ol>
+<li>确定平衡位置为坐标原点，建立坐标系。</li>
+<li>考虑弹性势能、重力势能、刚体转动势能、物体动能，写出机械能守恒方程。</li>
+<li>两边对 $t$ 求导。</li>
+<li>化成简谐运动标准动力学方程。</li>
+<li>求解，讨论。</li>
+</ol>
+<h4 id="简谐振动的旋转矢量表示"><a href="#简谐振动的旋转矢量表示" class="headerlink" title="简谐振动的旋转矢量表示"></a>简谐振动的旋转矢量表示</h4><p>如图 $6-6$ 所示，对于某一确定的简谐振动 $x=A \cos (\omega t+\varphi)$，画一坐标轴 $x$，在 $x$ 轴上取一点 $O$ 为原点，自 $O$ 出发作一矢量 $\boldsymbol{A}$，其<strong>长度</strong>等于简谐振动的振幅 $A$，它与 $x$ 轴正方向间<strong>夹角</strong>为 $\varphi$。$\boldsymbol{A}$ 称为<strong>振幅矢量</strong>，它在 $x$ 轴上的<strong>投影</strong> $x=A \cos \varphi$ 即为<strong>初位移</strong>。</p>
+<p>令 $\boldsymbol{A}$ 自 $t=0$ 开始，以数值等于圆频率 $\omega$ 的角速度沿<strong>逆时针</strong>方向匀速转动。在任一时刻 $t$，$\boldsymbol{A}$ 与 $x$ 轴正方向间夹角为 $\omega t+\varphi$，此时它在 $x$ 轴上的投影 $x=A \cos (\omega t+\varphi)$ 可以表示质点沿 $x$ 轴做简谐振动的运动方程。把这样的表示方法称为简谐振动的<strong>几何表示法</strong>，或称<strong>矢量表示法</strong>。<br><img src="/img/旋转矢量.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>通常把 $\boldsymbol{A}$ 的端点 $M$ 称为<strong>参考点</strong>，参考点的运动轨迹称为<strong>参考圆</strong>，$O$ 为参考圆中心，如图 $6-7$ 所示。参考点在 $x$ 轴上的投影即为质点位置，而参考点以 $\omega$ 转动时，它的投影点的运动就是简谐振动。在任一时刻，参考点 $M$ 的速度、加速度大小分别为 $\omega A$ 和 $\omega^{2} A$，它们在 $x$ 轴上的投影分别为</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+v=-\omega A \sin (\omega t+\varphi) \\
+a=-\omega^{2} A \cos (\omega t+\varphi)
+\end{array}</script><p>这正是振子简谐振动的速度和加速度。因此利用旋转矢量图可以形象地描述一个周期内简谐振动的运动规律。</p>
+<ul>
+<li>旋转矢量本身并不做简谐运动，只是用其投影点的运动来表示谐振动，各物理量直观。</li>
+<li>在旋转矢量法中，相位表现为角度，处理方便，但不是角度。相位的物理含义在于可据以描述物体在任一时刻的运动状态。</li>
+</ul>
+<h4 id="简谐运动的叠加"><a href="#简谐运动的叠加" class="headerlink" title="简谐运动的叠加"></a>简谐运动的叠加</h4><h5 id="同方向同频率振动的叠加"><a href="#同方向同频率振动的叠加" class="headerlink" title="同方向同频率振动的叠加"></a>同方向同频率振动的叠加</h5><p>设一质点在直线上同时参与了两个独立的同频率的简谐振动，其振动方程可分别表示为</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+x_{1}=A_{1} \cos \left(\omega t+\varphi_{1}\right)\\
+x_{2}=A_{2} \cos \left(\omega t+\varphi_{2}\right)
+\end{array}</script><p>易知合运动</p>
+<ul>
+<li>仍为简谐振动</li>
+<li>振动频率即为两个分运动的频率 $\omega$</li>
+<li>振幅<script type="math/tex; mode=display">
+A=\sqrt{A_{1}^{2}+A_{2}^{2}+2 A_{1} A_{2} \cos \left(\varphi_{2}-\varphi_{1}\right)}</script><ul>
+<li>当两分振动相位相同，即 $\Delta \varphi=\pm 2 k \pi(k=0,1,2,\cdots)$ 时，合振动的振幅 $A=A_{1}+A_{2}$ 为最大</li>
+<li>当两分振动相位相反，即 $\Delta \varphi=\pm(2 k+1) \pi(k=0,1,2,\cdots)$ 时，合振动的振幅 $A=\left|A_{1}-A_{2}\right|$ 为最小</li>
+<li>当两分振动相位取其他值时，合振动的振幅介于 $A_{1}+A_{2}$ 和 $\left|A_{1}-A_{2}\right|$ 之间。</li>
+</ul>
+</li>
+<li>初相<script type="math/tex; mode=display">
+\tan \varphi=\frac{A_{1} \sin \varphi_{1}+A_{2} \sin \varphi_{2}}{A_{1} \cos \varphi_{1}+A_{2} \cos \varphi_{2}}</script></li>
+</ul>
+<p>推广为 $n$ 个同方向同频率的简谐振动合成：<br>多个同方向同频率简谐运动合成仍为简谐运动。<br>（Todo）</p>
+<h5 id="同方向不同频率振动的叠加"><a href="#同方向不同频率振动的叠加" class="headerlink" title="同方向不同频率振动的叠加"></a>同方向不同频率振动的叠加</h5><p>设两个分振动的圆频率分别为 $\omega_{1}, \omega_{2}$，且 $\omega_{1} \approx \omega_{2}$，它们的振幅、初相位相等。则振动方程为</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+x_{1}=A \cos \left(\omega_{1} t+\varphi\right)\\
+ x_{2}=A \cos \left(\omega_{2} t+\varphi\right)
+\end{array}</script><p>合振动为</p>
+<script type="math/tex; mode=display">
+x=x_{1}+x_{2}=2 A \cos \left(\frac{\omega_{1}-\omega_{2}}{2} t\right) \cos \left(\frac{\omega_{1}+\omega_{2}}{2} t+\varphi\right)</script><p>由于 $\omega_{1} \approx \omega_{2}$，上式中第一项为随时间缓变项，可认为是振幅的变化；第二项为振动项，其圆频率近似为 $\omega_{1}$。因此振幅随时间缓慢地做周期性变化，把合振动的振幅时大时小的现象称为<strong>拍</strong>。由于振幅只考虑其绝对值，最大振幅为 $2A$，最小振幅为零，因此振幅变化的周期满足</p>
+<script type="math/tex; mode=display">
+\frac{\left|\omega_{1}-\omega_{2}\right|}{2} T=\pi</script><p>把振幅变化的频率称为<strong>拍频</strong>，其大小</p>
+<script type="math/tex; mode=display">
+\Delta \nu=\frac{1}{T}=\frac{\left|\omega_{1}-\omega_{2}\right|}{2 \pi}=\left|\nu_{1}-\nu_{2}\right|</script><h5 id="相互垂直简谐振动的叠加"><a href="#相互垂直简谐振动的叠加" class="headerlink" title="相互垂直简谐振动的叠加"></a>相互垂直简谐振动的叠加</h5><p>设两个相互垂直的分振动的振动方程为</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+x=A_{1} \cos \left(\omega t+\varphi_{1}\right) \\
+y=A_{2} \cos \left(\omega t+\varphi_{2}\right)
+\end{array}</script><p>合运动方程为</p>
+<script type="math/tex; mode=display">
+\frac{x^{2}}{A_{1}^{2}}+\frac{y^{2}}{A_{2}^{2}}-\frac{2 x y}{A_{1} A_{2}} \cos \left(\varphi_{2}-\varphi_{1}\right)=\sin ^{2}\left(\varphi_{2}-\varphi_{1}\right)</script><p>其振动轨迹一般情况下为一椭圆（又称“椭圆振动”）。椭圆轨迹的形状取决于振幅和相位差。</p>
+<ul>
+<li>当 $\varphi_{2}-\varphi_{1}=2k\pi$ 时，方程可化为<script type="math/tex; mode=display">
+y=\frac{A_2}{A_1}x,\,\left(\frac{A_2}{A_1}>0\right)</script></li>
+<li>当 $\varphi_{2}-\varphi_{1}=(2k+1)\pi$ 时，方程可化为<script type="math/tex; mode=display">
+y=-\frac{A_2}{A_1}x,\,\left(\frac{A_2}{A_1}>0\right)</script></li>
+<li>当 $\varphi_{2}-\varphi_{1}=(2k+1)\frac{\pi}{2}$ 时，方程可化为<script type="math/tex; mode=display">
+\frac{x^2}{A_1^2}+\frac{y^2}{A_2^2}=1</script>这表明，此时质点做轨道为正椭圆的周期性运动，运动周期与分振动的周期相等。<ul>
+<li>当 $\varphi_{2}-\varphi_{1}&gt;0$，即 $y$ 方向的振动比 $x$ 方向的振动超前时，质点沿椭圆做顺时针运动，称为右旋</li>
+<li>当 $\varphi_{2}-\varphi_{1}&lt;0$，即 $x$ 方向的振动比 $y$ 方向的振动超前时，质点沿椭圆做逆时针运动，称为左旋</li>
+</ul>
+</li>
+</ul>
+<h5 id="不同频率相互垂直简谐振动的合成"><a href="#不同频率相互垂直简谐振动的合成" class="headerlink" title="不同频率相互垂直简谐振动的合成"></a>不同频率相互垂直简谐振动的合成</h5><p>若两个相互垂直振动的频率不等时，一般而言，质点在 $xOy$ 平面内的运动将是一条复杂的曲线，其运动也不一定具有周期性。但如果这两个简谐振动的频率成整数比时，合运动仍为周期运动，其运动轨道具有规则的图形，这样的图形称为<strong>李萨如图形</strong>。此时轨道仍然闭合，但无法用普通的函数描述，用作图的方法同样可以得到其轨迹。</p>
+<h3 id="单摆的运动"><a href="#单摆的运动" class="headerlink" title="单摆的运动"></a>单摆的运动</h3><p>一质点用不可伸长的轻绳悬挂起来，并使质点保持在一坚直平面内摆动，就构成一个单摆。设质点的质量为 $m$，绳长为 $l$，当绳偏离竖直方向 $\theta$ 角时（一般 $\theta&lt;5^{\circ}$），质点受重力和绳的张力作用，重力的切向分力 $mg\sin\theta$ 决定质点沿圆周的切向加速度。质点的切向运动方程为</p>
+<script type="math/tex; mode=display">
+m l \frac{\mathrm{d}^{2} \theta}{\mathrm{d} t^{2}}=-m g \sin \theta</script><p>式中负号表示切向加速度总与摆角 $\theta$ 增大的方向相反。当 $\theta$ 很小时，$\sin \theta \approx \theta$，上式变为</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d}^{2} \theta}{\mathrm{d} t^{2}}+\frac{g}{l} \theta=0</script><p>解得单摆的运动方程为</p>
+<script type="math/tex; mode=display">
+\theta=\Theta \cos (\omega t+\varphi)</script><p>式中</p>
+<script type="math/tex; mode=display">
+\omega=\sqrt{\frac{g}{l}}</script><p>为单摆的圆频率。单摆的周期</p>
+<script type="math/tex; mode=display">
+T_{0}=2 \pi \sqrt{\frac{l}{g}}</script><p>角振幅 $\Theta$、初相位 $\varphi$ 由初始条件决定。</p>
+<h4 id="在非惯性系中"><a href="#在非惯性系中" class="headerlink" title="在非惯性系中"></a>在非惯性系中</h4><p>处于等效外力场中单摆的周期为</p>
+<script type="math/tex; mode=display">
+T_{0}=2 \pi \sqrt{\frac{l}{\left|\boldsymbol{g}-\boldsymbol{a}\right|}}</script><p>例如：</p>
+<ul>
+<li>以匀加速度 $a_0$ 沿水平方向直线行驶的车厢内<script type="math/tex; mode=display">
+T_{0}=2 \pi \sqrt{\frac{l}{\sqrt{g^2+a_0^2}}}</script></li>
+<li>以匀加速度 $a_0$ 上升的电梯内<script type="math/tex; mode=display">
+T_{0}=2 \pi \sqrt{\frac{l}{g+a_0}}</script></li>
+<li>以匀加速度 $a_0$ 下降的电梯内<script type="math/tex; mode=display">
+T_{0}=2 \pi \sqrt{\frac{l}{g-a_0}}</script></li>
+</ul>
+<h3 id="复摆的运动"><a href="#复摆的运动" class="headerlink" title="复摆的运动"></a>复摆的运动</h3><p>绕不通过质心的水平固定轴摆动的刚体称为<strong>复摆</strong>。若复摆的转动惯量为 $J$，质量为 $m$，质心 $C$ 到固定转轴的垂直距离为 $h$，则当摆角 $\theta$ 较小时，复摆的运动方程为</p>
+<script type="math/tex; mode=display">
+J \frac{\mathrm{d}^{2} \theta}{\mathrm{d} t^{2}}=-m g h \sin \theta \approx-m g h \theta</script><p>即</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d}^{2} \theta}{\mathrm{d} t^{2}}+\frac{m g h}{J} \theta=0</script><p>式中</p>
+<script type="math/tex; mode=display">
+\frac{m g h}{J}=\omega^{2}</script><p>在摆角 $\theta$ 较小情况下，复摆的运动也是简谐振动，其动力学方程为</p>
+<script type="math/tex; mode=display">
+\theta=\Theta \cos (\omega t+\varphi)</script><p>周期为</p>
+<script type="math/tex; mode=display">
+T=2 \pi \sqrt{\frac{J}{mgh}}</script><h3 id="阻尼振动"><a href="#阻尼振动" class="headerlink" title="阻尼振动"></a>阻尼振动</h3><p>在实际的振动过程中，由于受到各种阻力的作用，一个不受其他外力作用的振动系统的机械能将逐渐减少，从而振幅也逐渐变小，经一段时间后振动停止，这样的振动称为<strong>阻尼振动</strong>。</p>
+<p>仍以弹簧振子为例，在存在阻力的情况下，振子受到弹性力和黏滞阻力的作用。假定黏滞阻力与物体速度成正比，方向与速度方向相反，即</p>
+<script type="math/tex; mode=display">
+f=-\gamma v</script><p>式中 $\gamma$ 为与阻尼介质有关的<strong>比例系数</strong>。振子的运动方程为</p>
+<script type="math/tex; mode=display">
+m \frac{\mathrm{d}^{2} x}{\mathrm{~d} t^{2}}=-k x-\gamma v</script><p>即</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d}^{2} x}{\mathrm{~d} t^{2}}+\frac{\gamma}{m} \frac{\mathrm{d} x}{\mathrm{~d} t}+\frac{k}{m} x=0</script><p>定义阻尼系数 $\beta=\frac{\gamma}{2 m}$，固有圆频率 $\omega_{0}=\sqrt{\frac{k}{m}}$，则可得振子做阻尼振动的运动学方程为</p>
+<script type="math/tex; mode=display">
+x=A_{0} \mathrm{e}^{-\beta t} \cos \left(\sqrt{\omega_{0}^{2}-\beta^{2}} t+\varphi_{0}\right)</script><p>式中 $A_{0},\varphi_{0}$ 由初始条件确定。</p>
+<p>振子的动能为</p>
+<script type="math/tex; mode=display">
+E_{\mathrm{k}}=\frac{1}{2} m v_{0}^{2} \mathrm{e}^{-4 \beta t}</script><p>严格说来，阻尼振动只是一种准周期运动，其周期定义为相邻两个振动位移极大值间的时间间隔，即</p>
+<script type="math/tex; mode=display">
+T=\frac{2 \pi}{\sqrt{\omega_{0}^{2}-\beta^{2}}}</script><p>阻尼振动的周期大于无阻尼振动周期。</p>
+<ul>
+<li>阻尼较小时（$\beta&lt;\omega_0$），振动为减幅振动，振幅 $A_{0} \mathrm{e}^{-\beta t}$ 随时间按指数规律迅速减少。阻尼越大，减幅越迅速，称为<strong>欠阻尼</strong>。</li>
+<li>阻尼较大时（$\beta&gt;\omega_0$），质点缓慢回到平衡位置，不作往复运动，称为<strong>过阻尼</strong>。</li>
+<li>当（$\beta=\omega_0$）时，为<strong>临界阻尼</strong>情况。是质点不作往复运动的一个极限。</li>
+</ul>
+<h3 id="受迫振动"><a href="#受迫振动" class="headerlink" title="受迫振动"></a>受迫振动</h3><p>在有阻尼的情况下，若无外界对振动系统补充能量，振动将不能持续进行。<strong>受迫振动</strong>是在周期性外力策动下的振动。<br>仍以弹簧振子为例，设振子除受弹性力、阻尼力外，还受到一个周期性外力</p>
+<script type="math/tex; mode=display">
+F=F_{0} \cos \omega t</script><p>则运动方程为</p>
+<script type="math/tex; mode=display">
+\frac{\mathrm{d}^{2} x}{\mathrm{~d} t^{2}}+2 \beta \frac{\mathrm{d} x}{\mathrm{~d} t}+\omega_{0}^{2} x=\frac{F_{0}}{m} \cos \omega t</script><p>其解为</p>
+<script type="math/tex; mode=display">
+x=A_{0} \mathrm{e}^{-\beta t} \cos \left(\sqrt{\omega_{0}^{2}-\beta^{2}} t+\varphi_{0}\right)+B \cos (\omega t+\phi)</script><p>将稳态过程代入运动方程，可得</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+B=\frac{F_{0} / m}{\sqrt{\left(\omega_{0}^{2}-\omega^{2}\right)^{2}+4 \beta^{2} \omega^{2}}} \\
+\tan \phi=-\frac{2 \beta \omega}{\omega_{0}^{2}-\omega^{2}}
+\end{array}</script><p>式中 $\omega$ 即为外力的圆频率，而 $B,\phi$ 与振子的性质、阻尼的大小以及外力的特征有关。<br>式中第一项为阻尼振动，反映的是一个<strong>暂态过程</strong>，可以认为经过不太长的时间将衰减为零。第二项为受迫振动，反映的是一个<strong>稳态过程</strong>。</p>
+<h4 id="共振"><a href="#共振" class="headerlink" title="共振"></a>共振</h4><p>由上式可知，若保持外力的幅值不变，则振幅 $B$ 随外力的圆频率变化而改变。计算 $B(\omega)$ 的极值可得，当 $\omega=\sqrt{\omega_{0}^{2}-2 \beta^{2}}$ 时</p>
+<script type="math/tex; mode=display">
+B_{\max }=\frac{F_{0} / m}{2 \beta \sqrt{\omega_{0}^{2}-\beta^{2}}}</script><p>当策动力的频率接近于固有频率时，受迫振动的振幅达到最大值的现象称为<strong>共振</strong>，此时外力的频率 $\omega$ 略小于系统的固有频率 $\omega_{0}$，当阻尼越小时，$\omega$ 就越接近 $\omega_{0}$</p>
+<h4 id="速度振幅"><a href="#速度振幅" class="headerlink" title="速度振幅"></a>速度振幅</h4><p>振子做稳定受迫振动时的速度</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+v &=\frac{\mathrm{d} x}{\mathrm{d} t}=-\omega B \sin (\omega t+\phi) \\
+&=v_{0} \cos \left(\omega t+\phi+\frac{\pi}{2}\right)
+\end{aligned}</script><p>式中 $v_{0}$ 称为<strong>速度振幅</strong>。</p>
+<script type="math/tex; mode=display">
+v_{0}(\omega)=\frac{F_{0}\omega}{m\sqrt{\left(\omega_{0}^{2}-\omega^{2}\right)^{2}+4 \beta^{2} \omega^{2}}}</script><p>由上式可知，当外力频率等于系统的固有频率时，$\phi=-\frac{\pi}{2}$，此时速度振幅达到最大</p>
+<script type="math/tex; mode=display">
+v_{0 \max }=\frac{F_{0}}{2 m \beta}</script><p>称这种情况为<strong>速度共振</strong>。在这种情况下，振子速度 $v=v_{0 \max } \cos \omega t$，与外力相位相同，这意味着外力的方向始终与运动方向一致，外力始终做正功。</p>
+<h2 id="第八章-平衡态"><a href="#第八章-平衡态" class="headerlink" title="第八章 平衡态"></a>第八章 平衡态</h2><h3 id="宏观性质"><a href="#宏观性质" class="headerlink" title="宏观性质"></a>宏观性质</h3><p>将大量微观粒子运动的整体表现的可观测性质称为系统的宏观性质。</p>
+<h3 id="宏观态"><a href="#宏观态" class="headerlink" title="宏观态"></a>宏观态</h3><p>通常称宏观性质确定的状态为热力学系统的宏观态。</p>
+<h3 id="稳定态"><a href="#稳定态" class="headerlink" title="稳定态"></a>稳定态</h3><p>系统最终状态的宏观性质均不随时间变化，称为稳定态，否则称为非稳定态。</p>
+<h3 id="平衡态"><a href="#平衡态" class="headerlink" title="平衡态"></a>平衡态</h3><p>进一步还可以将稳定态划分为平衡态和非平衡态。在不受外界影响的条件下，系统的宏观性质不随时间改变的状态称为平衡态，否则为非平衡态。<br>另一种定义：当系统内没有宏观量的流动且系统的宏观性质不随时间改变，则系统处在平衡态。</p>
+<ul>
+<li>平衡态是一个理想化模型，现实中很难找到一个不受外界影响的系统。</li>
+</ul>
+<h3 id="状态参量的分类"><a href="#状态参量的分类" class="headerlink" title="状态参量的分类"></a>状态参量的分类</h3><p>一般地可以将描述热力学系统的状态参量划分为5类</p>
+<ul>
+<li>几何参量，如气体的体积、液体的表面积、电阻丝的长度等</li>
+<li>力学参量，如气体的压强、液体的表面张力、固体中的内应力等</li>
+<li>化学参量，如系统中各组分的质量和摩尔数等</li>
+<li>电磁参量，如电极化强度和磁化强度</li>
+<li>此外，还有热力学系统特有的状态参量，如温度、内能和熵等。</li>
+</ul>
+<h3 id="热力学第零定律"><a href="#热力学第零定律" class="headerlink" title="热力学第零定律"></a>热力学第零定律</h3><p>各自与第三个系统处于热平衡的两个系统彼此处于热平衡。<br>详细来说，有A、B和C三个物体，若A与B在热接触前已经达到热平衡，同时A与C在热接触前也已经达到热平衡，那么B与C在热接触前一定也达到热平衡，将这一规律称为<strong>热平衡定律</strong>或称为<strong>热力学第零定律</strong>。<br>热力学第零定律告诉我们，热平衡具有<strong>可传递性</strong>，这种可传递性说明处在热平衡的两个物体一定具有某种共同属性，称处于热平衡的系统所具有的共同属性为温度。</p>
+<h3 id="温标"><a href="#温标" class="headerlink" title="温标"></a>温标</h3><p>温度的数值表示法称为<strong>温标</strong>。所谓表示法是指温度定量定义的法则。由热平衡定律可知，只要对某一个特殊物体的温度进行了规定，也就规定了所有物体的温度值，称这个特殊物体为<strong>温度计</strong>。</p>
+<h4 id="三要素"><a href="#三要素" class="headerlink" title="三要素"></a>三要素</h4><p>建立温标需要3个基本要素：选定测温物质和测温属性、规定测温关系、选择温度的定标点。对3个要素的不同选择形成不同的温标。</p>
+<h4 id="华氏温标"><a href="#华氏温标" class="headerlink" title="华氏温标"></a>华氏温标</h4><p>华伦海特最初的水银温度计是按下列方式建立的:北爱尔兰冬天水银柱降到最低高度时定为零度，把人体的温度定为100度，然后再把这段区间均分为100份，每一份称为1度，这就是最初的华氏温标，以℉表示。</p>
+<h4 id="摄氏温标"><a href="#摄氏温标" class="headerlink" title="摄氏温标"></a>摄氏温标</h4><p>摄耳修司也用水银作测温物质，将冰的熔点规定为0度、将水的沸点规定为100度，并规定水银柱的长度随温度作线性变化，在0度和100度之间均分成100等份，每一份称为1摄氏度，用℃表示，称为摄氏温标。</p>
+<h4 id="实际气体温标"><a href="#实际气体温标" class="headerlink" title="实际气体温标"></a>实际气体温标</h4><p>将测温物质选为实际气体(如氢气、氦气、氮气等)，并充入温度计的气泡室中，测温属性选为气体的压强，保持气体的体积不变，这样的温标就是定容气体温标。</p>
+<h4 id="理想气体温标"><a href="#理想气体温标" class="headerlink" title="理想气体温标"></a>理想气体温标</h4><p>实验发现，当气体非常稀薄时，不管用什么气体，是定容还是定压，用实际气体所建立的温标趋于一个共同的极限，称这一极限温标为理想气体温标，它独立于测温物质、测温属性，是一种标准的理想温标。理想气体温标与热力学温标一致。</p>
+<h4 id="温标的换算关系"><a href="#温标的换算关系" class="headerlink" title="温标的换算关系"></a>温标的换算关系</h4><p>利用开尔文温标可以重新定义摄氏温标</p>
+<script type="math/tex; mode=display">
+t\left({ }^{\circ} \mathrm{C}\right)=T(\mathrm{K})-273.15</script><p>华氏温标可由摄氏温标定义</p>
+<script type="math/tex; mode=display">
+t_{\mathrm{F}}=32+\frac{9}{5} t</script><h3 id="查理定律"><a href="#查理定律" class="headerlink" title="查理定律"></a>查理定律</h3><p>实验发现，对于无限稀薄的实际气体，当气体的体积不变时，压强与绝对温度成正比</p>
+<script type="math/tex; mode=display">
+p \propto T</script><h3 id="盖・吕萨克定律"><a href="#盖・吕萨克定律" class="headerlink" title="盖・吕萨克定律"></a>盖・吕萨克定律</h3><p>当气体的压强不变时，体积与绝对温度成正比</p>
+<script type="math/tex; mode=display">
+V \propto T</script><h3 id="玻意耳定律"><a href="#玻意耳定律" class="headerlink" title="玻意耳定律"></a>玻意耳定律</h3><p>玻意耳在实验上发现，一定量的理想气体在温度不变时，它的压强和体积的乘积是一个常数，即</p>
+<script type="math/tex; mode=display">
+pV =C</script><h3 id="理想气体方程"><a href="#理想气体方程" class="headerlink" title="理想气体方程"></a>理想气体方程</h3><script type="math/tex; mode=display">
+p V=\frac{m'}{M} R T=\nu R T=\nu N_A k_B T=N k_{B} T=\frac{m'}{m} k_{B} T</script><p>其中：</p>
+<ul>
+<li>$p$ 是气体压强，单位是 $\mathrm{Pa}$</li>
+<li>$V$ 是气体体积，单位是 $\mathrm{L}$</li>
+<li>$m’$ 是气体质量，单位是 $\mathrm{kg}$</li>
+<li>$m$ 是单个气体分子质量，单位是 $\mathrm{kg}$</li>
+<li>$M$ 是气体摩尔质量，单位是 $\mathrm{kg}/\mathrm{mol}$</li>
+<li>$R$ 是普适气体衡量，$R=8.31\mathrm{J}/(\mathrm{mol}\cdot \mathrm{K})$</li>
+<li>$T$ 是温度，单位是 $\mathrm{K}$</li>
+<li>$\nu$ 是气体摩尔数，单位是 $\mathrm{mol}$</li>
+<li>$N$ 是气体总分子数，无单位</li>
+<li>$N_A$ 是阿伏伽德罗常数，单位是 $6.022\times 10^{23} \mathrm{mol}^{-1}$</li>
+<li>$k_B$ 是玻尔兹曼常数，$k_B=1.38\times 10^{-23}\mathrm{J}/\mathrm{K}$</li>
+<li>$n=\frac{N}{V}$ 是分子数密度</li>
+</ul>
+<h3 id="分子力模型"><a href="#分子力模型" class="headerlink" title="分子力模型"></a>分子力模型</h3><h3 id="速率分布函数"><a href="#速率分布函数" class="headerlink" title="速率分布函数"></a>速率分布函数</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>略</p>
+<h4 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h4><p>速率分布函数的意义为单位速率区间内分布的分子数占总数比率</p>
+<h4 id="归一化条件"><a href="#归一化条件" class="headerlink" title="归一化条件"></a>归一化条件</h4><script type="math/tex; mode=display">
+\int_{0}^{\infty} f(v) \mathrm{d} v=1</script><h4 id="任意平均值"><a href="#任意平均值" class="headerlink" title="任意平均值"></a>任意平均值</h4><p>任何一个与速率有关的微观量 $g$ 的平均值为</p>
+<script type="math/tex; mode=display">
+\bar{g}=\int_{0}^{\infty} g f(v) \mathrm{d} v</script><h4 id="平均值"><a href="#平均值" class="headerlink" title="平均值"></a>平均值</h4><script type="math/tex; mode=display">
+\bar{v}=\int_{0}^{\infty} v f(v) d v</script><h4 id="速率平方的平均值"><a href="#速率平方的平均值" class="headerlink" title="速率平方的平均值"></a>速率平方的平均值</h4><script type="math/tex; mode=display">
+\overline{v^{2}}=\int_{0}^{\infty} v^{2} f(v) \mathrm{d} v</script><h4 id="方均根速率"><a href="#方均根速率" class="headerlink" title="方均根速率"></a>方均根速率</h4><script type="math/tex; mode=display">
+\sqrt{\overline{v^{2}}}</script><h4 id="动能平均值"><a href="#动能平均值" class="headerlink" title="动能平均值"></a>动能平均值</h4><script type="math/tex; mode=display">
+\bar{\varepsilon}_{\mathrm{t}}=\frac{1}{2} m \int_{0}^{\infty} v^{2} f(v) \mathrm{d} v=\frac{1}{2} m \overline{v^{2}}</script><h4 id="区间平均速率"><a href="#区间平均速率" class="headerlink" title="区间平均速率"></a>区间平均速率</h4><script type="math/tex; mode=display">
+\overline{v_{[a, b]}}=\frac{\int_{a}^{b} v f(v) d v}{\int_{a}^{b} f(v) d v}</script><h4 id="区间分子数"><a href="#区间分子数" class="headerlink" title="区间分子数"></a>区间分子数</h4><script type="math/tex; mode=display">
+\Delta N=\int_{v_1}^{v_2} N f(v) d v</script><h4 id="速率分布函数解题步骤"><a href="#速率分布函数解题步骤" class="headerlink" title="速率分布函数解题步骤"></a>速率分布函数解题步骤</h4><ol>
+<li>速率分布函数的归一化，求出归一化常数。</li>
+<li>根据归一化速率分布函数求平均值</li>
+</ol>
+<h3 id="速度分布函数"><a href="#速度分布函数" class="headerlink" title="速度分布函数"></a>速度分布函数</h3><h4 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h4><p>略</p>
+<h4 id="意义-1"><a href="#意义-1" class="headerlink" title="意义"></a>意义</h4><p>速度分布函数的意义为分布在速度 $\boldsymbol{v}$ 处单位速度体积内的分子数占总分子数的比例。</p>
+<h4 id="与速率分布函数的关系"><a href="#与速率分布函数的关系" class="headerlink" title="与速率分布函数的关系"></a>与速率分布函数的关系</h4><script type="math/tex; mode=display">
+f(v)=v^{2} \int_{0}^{\pi} \int_{0}^{2 \pi} F(v, \theta, \varphi) \sin \theta \mathrm{d} \theta \mathrm{d} \varphi</script><h4 id="归一化条件-1"><a href="#归一化条件-1" class="headerlink" title="归一化条件"></a>归一化条件</h4><script type="math/tex; mode=display">
+\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} F\left(v_{x}, v_{y}, v_{z}\right) \mathrm{d} v_{x} \mathrm{d} v_{y} \mathrm{d} v_{z}=1</script><h4 id="处于平衡态的理想气体对器壁的压强"><a href="#处于平衡态的理想气体对器壁的压强" class="headerlink" title="处于平衡态的理想气体对器壁的压强"></a>处于平衡态的理想气体对器壁的压强</h4><script type="math/tex; mode=display">
+p=\frac{1}{3} \rho \bar{v}^{2}=\frac{2}{3} n \bar{\varepsilon}_{\mathrm{t}}</script><h3 id="温度公式"><a href="#温度公式" class="headerlink" title="温度公式"></a>温度公式</h3><p>利用理想气体的状态方程和上面的压强公式，可以得到温度与分子的平均平动能有如下关系：</p>
+<script type="math/tex; mode=display">
+\bar{\varepsilon}_{\mathrm{t}}=\frac{3}{2} k_{\mathrm{B}} T</script><h4 id="温度的意义"><a href="#温度的意义" class="headerlink" title="温度的意义"></a>温度的意义</h4><ul>
+<li>温度的统计意义：表示宏观量温度T与微观量的统计平均值之间的关系。</li>
+<li>温度的微观意义：温度是分子平均平动动能的量度，温度反映了物体内部分子无规则运动的激烈程度。</li>
+<li>温度是大量分子的集体表现，谈论个别分子的温度无意义。</li>
+<li>温度的微观实质：在同一温度下，各种气体分子平均平动动能均相等。温度是大量气体分子热运动剧烈程度的量度，与气体种类无关。</li>
+</ul>
+<h3 id="方均根速率-1"><a href="#方均根速率-1" class="headerlink" title="方均根速率"></a>方均根速率</h3><script type="math/tex; mode=display">
+\sqrt{\overline{v^{2}}}=\sqrt{\frac{3 k_{\mathrm{B}} T}{m}}=\sqrt{\frac{3 R T}{M}}=\sqrt{\frac{3p}{\rho}}</script><h3 id="道耳顿分压定律"><a href="#道耳顿分压定律" class="headerlink" title="道耳顿分压定律"></a>道耳顿分压定律</h3><p>容器内装有混合气体，如果各组分之间不发生化学反应，则混合气体的总压强等于同温时每种气体单独存在时所产生的压强之和。</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+p=\frac{2}{3}\left(\sum_{i} n_{i}\right) \bar{\varepsilon} \\
+p=\left(n_{1}+n_{2}+\cdots+n_{i}+\cdots\right) k_{\mathrm{B}} T \\
+p=\sum_{i} p_{i}
+\end{array}</script><h3 id="麦克斯韦速度分布律"><a href="#麦克斯韦速度分布律" class="headerlink" title="麦克斯韦速度分布律"></a>麦克斯韦速度分布律</h3><p>速度分布函数为</p>
+<script type="math/tex; mode=display">
+F\left(v_{x}, v_{y}, v_{z}\right)=\left(\frac{m}{2 \pi k_{\mathrm{B}} T}\right)^{3 / 2} \mathrm{e}^{-\frac{m}{2 k_{\mathrm{B}} T}\left(v_{x}^{2}+v_{y}^{2}+v_{z}^{2}\right)}</script><p>如果令 $Z=\left(\frac{2 \pi k_{\mathrm{B}} T}{m}\right)^{3 / 2}$，则可将速度分布函数简单表示为</p>
+<script type="math/tex; mode=display">
+F(\boldsymbol{v})=\frac{1}{Z} \mathrm{e}^{-\frac{m}{2 k_{\mathrm{B}} T^{2}}\boldsymbol{v}^2}</script><h3 id="麦克斯韦速率分布律"><a href="#麦克斯韦速率分布律" class="headerlink" title="麦克斯韦速率分布律"></a>麦克斯韦速率分布律</h3><script type="math/tex; mode=display">
+f(v) =4 \pi\left(\frac{m}{2 \pi k_{\mathrm{B}} T}\right)^{\frac{3}{2}} \mathrm{e}^{-\frac{m}{2 k_{\mathrm{B}} T}v^2} v^{2}</script><p>还可以写成</p>
+<script type="math/tex; mode=display">
+f(v) \mathrm{d} v =F\left(v_{x}, v_{y}, v_{z}\right) \cdot 4 \pi v^{2} \mathrm{~d} v</script><h4 id="最概然速率（最可几速率）"><a href="#最概然速率（最可几速率）" class="headerlink" title="最概然速率（最可几速率）"></a>最概然速率（最可几速率）</h4><p>速率分布函数取极大值对应的速率为最概然速率，在该速率处速率分布函数对速率的一阶导数为零</p>
+<script type="math/tex; mode=display">
+v_{\mathrm{p}}=\sqrt{\frac{2 k_{\mathrm{B}} T}{m}}=\sqrt{\frac{2 R T}{M}}=1.41 \sqrt{\frac{k_{\mathrm{B}} T}{m}}</script><script type="math/tex; mode=display">
+f\left(v_{p}\right)=4 \pi^{-\frac{1}{2}} e^{-1} v_{p}^{-1}</script><h4 id="平均速率"><a href="#平均速率" class="headerlink" title="平均速率"></a>平均速率</h4><script type="math/tex; mode=display">
+\bar{v}=\sqrt{\frac{8 k_{\mathrm{B}} T}{\pi m}}=\sqrt{\frac{8 R T}{\pi M}}=1.60 \sqrt{\frac{k_{\mathrm{B}} T}{m}}</script><h4 id="方均根速率-2"><a href="#方均根速率-2" class="headerlink" title="方均根速率"></a>方均根速率</h4><script type="math/tex; mode=display">
+\sqrt{\overline{v^{2}}} =\sqrt{\frac{3 k_{\mathrm{B}} T}{m}}=\sqrt{\frac{3 R T}{M}} =1.73 \sqrt{\frac{k_{\mathrm{B}} T}{m}}</script><h3 id="碰壁频率"><a href="#碰壁频率" class="headerlink" title="碰壁频率"></a>碰壁频率</h3><p>碰壁频率是指单位时间撞到单位面积上的分子数，以 $\Gamma$ 表示</p>
+<script type="math/tex; mode=display">
+\Gamma=\frac{1}{4} n \bar{v}</script><p>可见，碰壁频率与气体分子的数密度成正比，与分子的平均速率成正比。</p>
+<h3 id="泻流速率分布"><a href="#泻流速率分布" class="headerlink" title="泻流速率分布"></a>泻流速率分布</h3><p>在容器壁上开一小孔，则通过小孔会有分子束射出形成泻流，当小孔很小时泻流不影响容器中气体的速率分布。从小孔射出的分子束的速率分布规律称为<strong>泻流速率分布</strong>。泻流分布完全由容器内分子的速率分布确定。</p>
+<p>令 $\gamma(v)=\frac{1}{4} n v f(v)$。其物理意义为单位时间、从小孔单位面积上射出的在速率 $v$ 附近单位速率间隔的分子数，泻流速率分布函数是指分子束中速率在 $v$ 附近单位速率间隔的分子数占总泻流分子数的比率，即</p>
+<script type="math/tex; mode=display">
+f_{\mathrm{e}}(v)=\frac{\gamma(v)}{\Gamma}=\frac{v}{\bar{v}} f(v)=\frac{1}{2}\left(\frac{m}{k_{\mathrm{B}} T}\right)^{2} \mathrm{e}^{-\frac{m}{2 k_{\mathrm{B}} T}{v^{2}}} v^{3}</script><h3 id="玻尔兹曼能量分布"><a href="#玻尔兹曼能量分布" class="headerlink" title="玻尔兹曼能量分布"></a>玻尔兹曼能量分布</h3><script type="math/tex; mode=display">
+\mathrm{d} N=n_{0}\left(\frac{m}{2 \pi k_{\mathrm{B}} T}\right)^{\frac{3}{2}} \mathrm{e}^{-\frac{\left(\varepsilon_{\mathrm{t}}+\varepsilon_{\mathrm{p}}\right)}{k_{\mathrm{B}} T}} \mathrm{~d} v_{x} \mathrm{~d} v_{y} \mathrm{~d} v_{z} \mathrm{~d} x \mathrm{~d} y \mathrm{~d} z</script><p>式中 $n_0$ 为待定常数，$\varepsilon_{\mathrm{t}}$ 是分子的动能，$\varepsilon_{\mathrm{p}}$ 是分子的势能。将这一规律称为分子按能量的分布律或玻尔兹曼分布律。</p>
+<h3 id="分子的数密度"><a href="#分子的数密度" class="headerlink" title="分子的数密度"></a>分子的数密度</h3><script type="math/tex; mode=display">
+n=\frac{\mathrm{d} N^{\prime}}{\mathrm{d} x \mathrm{~d} y \mathrm{~d} z}=n_{0} \mathrm{e}^{-\frac{\varepsilon_{\mathrm{p}}}{k_{\mathrm{B}} T}}</script><h3 id="自由度"><a href="#自由度" class="headerlink" title="自由度"></a>自由度</h3><p>任意一个分子的自由度指完全确定该分子位置所需的独立坐标个数，用 $s$ 表示。</p>
+<ul>
+<li>单原子分子：自由度 $i=3$</li>
+<li>双原子分子：自由度 $i=5$</li>
+<li>多原子分子：自由度 $i=6$</li>
+<li>双原子分子（高温）：自由度 $i=7$</li>
+</ul>
+<h3 id="能量均分定理"><a href="#能量均分定理" class="headerlink" title="能量均分定理"></a>能量均分定理</h3><p>分子的总能量为三种运动能量之和，即</p>
+<script type="math/tex; mode=display">
+\varepsilon=\varepsilon_{\mathrm{t}}+\varepsilon_{\mathrm{r}}+\varepsilon_{\mathrm{s}}</script><p>气体系统处在平衡态时，分子在每个自由度都具有相同的平均动能 $\frac{1}{2} k_{\mathrm{B}} T$，对每一振动自由度还有 $\frac{1}{2} k_{\mathrm{B}} T$ 的平均势能。分子总能量的平均值为</p>
+<script type="math/tex; mode=display">
+\bar{\varepsilon}=(t+r+2 s) \frac{1}{2} k_{\mathrm{B}} T</script><p>式中 $t$ 为平动自由度，$r$ 为转动自由度，$s$ 为振动自由度。这就是<strong>能量按自由度的平均分配定理</strong>。</p>
+<h3 id="理想气体的内能"><a href="#理想气体的内能" class="headerlink" title="理想气体的内能"></a>理想气体的内能</h3><p>从微观上看，一个热力学系统的内能是所有粒子的动能和所有粒子相互作用势能之和。对于理想气体，因分子之间无相互作用势能，内能等于所有分子能量之和。设理想气体共有 $N$ 个分子，则内能</p>
+<script type="math/tex; mode=display">
+E=N \bar{\varepsilon}=N\left(\frac{i}{2} k_{B} T\right)=\frac{i}{2} \nu R T=\frac{i}{2} \frac{m}{M} R T=\frac{i}{2} P V</script><h2 id="第九章-热力学定律"><a href="#第九章-热力学定律" class="headerlink" title="第九章 热力学定律"></a>第九章 热力学定律</h2><h3 id="准静态过程"><a href="#准静态过程" class="headerlink" title="准静态过程"></a>准静态过程</h3><p>如果一个系统在其变化过程中所经历的每一中间状态都无限接近于热平衡态，这个过程称为<strong>准静态过程</strong>。过程中的每一状态都是平衡态。</p>
+<h3 id="p-V空间"><a href="#p-V空间" class="headerlink" title="p-V空间"></a>p-V空间</h3><p>对一个简单的热力学系统，状态空间是p-V空间。p-V图上的每一个点具有确定的坐标(p,V)，与系统的平衡态一一对应，p-V图上的一条曲线（称为过程曲线）对应系统的某个准静态过程。但对非静态过程，所经历的状态在p-V图中无对应点，故无对应的过程曲线。</p>
+<h3 id="系统对外界做功"><a href="#系统对外界做功" class="headerlink" title="系统对外界做功"></a>系统对外界做功</h3><p>在有限过程中，系统的体积由 $V_{1}$ 变为 $V_{2}$，系统对外界所做的总功</p>
+<script type="math/tex; mode=display">
+A=\int_{V_{1}}^{V_{2}} p \mathrm{~d} V</script><p>其绝对值等于 $p-V$ 图上过程曲线以下的面积。</p>
+<ul>
+<li>功不是态函数，与具体过程有关，在无限小过程中所做的元功不能表示为某个态函数的全微分，一般将元功记为 $\delta A$ 而不是 $\mathrm{d} A$。</li>
+<li>若过程为非静态过程，则只能用外力对位移积分的方法计算功。</li>
+</ul>
+<h3 id="绝热过程"><a href="#绝热过程" class="headerlink" title="绝热过程"></a>绝热过程</h3><p>在某一过程中如果系统状态的变化完全是由于外界对系统做功引起的，则称该过程为<strong>绝热过程</strong>。</p>
+<p>在绝热过程中外界对系统所做的功与过程无关，仅取决于系统的初态和末态。也就是说，热力学系统一定存在一个内能函数 $E$，该函数在初、末态之间的差值等于沿任意绝热过程外界对系统所做的功，即</p>
+<script type="math/tex; mode=display">
+E_2-E_1=A</script><p>这就是<strong>内能的宏观定义</strong>。从微观上看，热力学系统的内能是所有分子热运动的动能和分子间相互作用的势能之和，按照能量守恒的思想，<strong>在绝热过程中外界对系统所做的功完全转化为了系统的内能</strong>。</p>
+<h3 id="系统吸收和放出的热量"><a href="#系统吸收和放出的热量" class="headerlink" title="系统吸收和放出的热量"></a>系统吸收和放出的热量</h3><p>热像功一样是能量转移的方式。给系统<strong>传热</strong>，系统<strong>内能增加</strong>，同时使系统的状态发生变化。所以热量可用系统状态变化或系统的内能变化来量度。在不做功过程中系统内能的增量等于从外界吸收的热量</p>
+<script type="math/tex; mode=display">
+Q=E_2-E_1</script><p>如果系统经历了一个不做功的微元过程，则吸收的热量为</p>
+<script type="math/tex; mode=display">
+\delta Q=\mathrm{d}E</script><ul>
+<li>从微观上看，传热相当于内能在不同系统之间的流动。</li>
+<li>做功是将一个系统的<strong>有规则运动</strong>转化为另一系统分子<strong>无规则运动</strong>，也就是<strong>机械能</strong>或其他能和<strong>内能</strong>之间的转化。</li>
+<li>传热是将分子的无规则运动从一个系统<strong>转移</strong>到另一个系统，主要有热对流、热传导和热辐射三种形式，它们分别通过分子的动流、分子的碰撞以及热辐射来完成传热。</li>
+<li>传热对应的能量转移是系统间内能的转换。</li>
+<li>热量和功一样只是反映系统在状态变化时所转移的能量，可以用来衡量物体内能的变化。</li>
+</ul>
+<h3 id="热容量"><a href="#热容量" class="headerlink" title="热容量"></a>热容量</h3><p>系统与外界有热量的交换，同时系统的温度也发生变化，则可引入热容的概念来描述系统的“吸热能力”。当给一系统加热 $\delta Q$ 而温度升高 $\mathrm{d} T$ 时，则热容为</p>
+<script type="math/tex; mode=display">
+C=\lim _{\Delta T \rightarrow 0} \frac{\Delta Q}{\Delta T}=\frac{\delta Q}{\mathrm{d} T}</script><p>由于热量与过程有关，所以热容也与过程有关。系统在等体过程中的热容量称为定容热容，系统在等压过程中的热容量称为定压热容，它们的定义为</p>
+<script type="math/tex; mode=display">
+C_{V}=\left.\lim _{\Delta T \rightarrow 0} \frac{\Delta Q}{\Delta T}\right|_{V}=\left.\frac{\delta Q}{\mathrm{d} T}\right|_{V}</script><script type="math/tex; mode=display">
+C_{p}=\left.\lim _{\Delta T \rightarrow 0} \frac{\Delta Q}{\Delta T}\right|_{p}=\left.\frac{\delta Q}{\mathrm{d} T}\right|_{p}</script><h4 id="比热容"><a href="#比热容" class="headerlink" title="比热容"></a>比热容</h4><p>热容一般与系统物质的多少成比例，单位质量物质的热容称为质量热容（或<strong>比热容</strong>），通常用小写字母 $c$ 表示，与热容的关系为 </p>
+<script type="math/tex; mode=display">
+c=\frac{C}{m}</script><p>式中其中 $m$ 为系统的质量)，其单位为 $\mathrm{J} /(\mathrm{kg} \cdot \mathrm{K})$ 。而 $1 \mathrm{~mol}$ 物质的热容称为<strong>摩尔热容</strong>，通常用 $C_{\mathrm{m}}$ 表示，与热容的关系为 $C_{\mathrm{m}}=\frac{C}{\nu}$（其中 $\nu$ 为系统物质的量），其单位为 $\mathrm{J} /(\mathrm{mol} \cdot \mathrm{K})$。</p>
+<h3 id="热力学第一定律"><a href="#热力学第一定律" class="headerlink" title="热力学第一定律"></a>热力学第一定律</h3><p>热力学第一定律实际是包含内能在内的能量转换和守恒定律。如果系统吸收的热量为 $Q$，外界对系统做的功为 $A$，系统初、末态的内能分别为 $E_{1}$ 和 $E_{2}$，则系统内能的增量等于从外界吸收的热量和外界对系统做功之和，即</p>
+<script type="math/tex; mode=display">
+E_{2}-E_{1}=Q+A</script><h4 id="微分形式"><a href="#微分形式" class="headerlink" title="微分形式"></a>微分形式</h4><p>若热力学系统经历一个无穷小的微元过程，上式变为</p>
+<script type="math/tex; mode=display">
+\mathrm{d} E=\delta Q+\delta A</script><p>式中 $\mathrm{d} E$ 为内能的微分，$\delta Q$ 为系统吸收的元热量，$\delta A$ 为外界所做的元功。</p>
+<h4 id="准静态系统"><a href="#准静态系统" class="headerlink" title="准静态系统"></a>准静态系统</h4><p>热力学第一定律是普遍的能量转化和守恒定律，是任何系统在任何过程中必须遵从的规律之一。若一个简单系统经历了准静态过程，则功可由系统的状态参量表示，对微元过程的功可表示为 $\delta A=-p \mathrm{~d} V$，则热力学第一定律可表示为</p>
+<script type="math/tex; mode=display">
+\mathrm{d} E=\delta Q-p \mathrm{~d} V</script><p>对一个有限过程，热力学第一定律还可有如下表示：</p>
+<script type="math/tex; mode=display">
+E_{2}-E_{1}=Q-\int_{V_{1}}^{V_{2}} p \mathrm{~d} V</script><h4 id="理想气体吸热的计算"><a href="#理想气体吸热的计算" class="headerlink" title="理想气体吸热的计算"></a>理想气体吸热的计算</h4><script type="math/tex; mode=display">
+\delta Q=C_{V, m} \mathrm{d} T+p \mathrm{d} V</script><h4 id="理想气体内能变化"><a href="#理想气体内能变化" class="headerlink" title="理想气体内能变化"></a>理想气体内能变化</h4><p>对于理想气体</p>
+<script type="math/tex; mode=display">
+\mathrm{d}E=\nu C_{V,m} \mathrm{d}T</script><p>不仅适用于等容过程，而且适用于任何过程。</p>
+<h3 id="气体状态变化分析"><a href="#气体状态变化分析" class="headerlink" title="气体状态变化分析"></a>气体状态变化分析</h3><h4 id="等体过程"><a href="#等体过程" class="headerlink" title="等体过程"></a>等体过程</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+\mathrm{d}V=0\\
+\delta A=0\\
+C_V=\frac{\mathrm{d}E}{\mathrm{d}T}=\nu \frac{i}{2}R\\
+C_{V,\mathrm{m}}=\frac{i}{2}R\\
+\delta Q=\mathrm{d}E=\frac{\mathrm{d}E}{\mathrm{d}T}\mathrm{d}T=C_V\mathrm{d}T=\nu C_{V,\mathrm{m}}\mathrm{d}T\\
+Q=E_{2}-E_{1}=\int_{T_{1}}^{T_{2}} C_{V} \mathrm{~d} T=\frac{i}{2}(p_2-p_1)V
+\end{array}</script><h4 id="等压过程"><a href="#等压过程" class="headerlink" title="等压过程"></a>等压过程</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+p=C\\
+A=-\int_{V_{1}}^{V_{2}} p \mathrm{~d} V=-p\left(V_{2}-V_{1}\right)=-\nu R\left(T_{2}-T_{1}\right) \\
+Q=\int_{T_{1}}^{T_{2}} C_{p} \mathrm{~d} T=\nu \frac{i+2}{2}R(T_2-T_1)\\
+C_{p} =C_{V}+\nu R \\
+C_{p, \mathrm{m}} =C_{V, \mathrm{m}}+R=\frac{i+2}{2}R\\
+\end{array}</script><h4 id="定压定容热容比"><a href="#定压定容热容比" class="headerlink" title="定压定容热容比"></a>定压定容热容比</h4><script type="math/tex; mode=display">
+\gamma=\frac{C_{p, m}}{C_{V, m}}=\frac{2+i}{i}</script><script type="math/tex; mode=display">
+\begin{array}{c}
+C_{p, m}=\frac{\gamma R}{\gamma-1}\\
+C_{V, m}=\frac{R}{\gamma-1}
+\end{array}</script><h4 id="等温过程"><a href="#等温过程" class="headerlink" title="等温过程"></a>等温过程</h4><script type="math/tex; mode=display">
+\begin{array}{c}
+T=C\\
+E=E_0\\
+\delta Q=-\delta A=p \mathrm{~d} V \\
+Q=-A=\int_{V_{1}}^{V_{2}} p \mathrm{~d} V \\
+A=-\int_{V_{1}}^{V_{2}} \nu R T \frac{\mathrm{d} V}{V}=-\nu R T \ln \frac{V_{2}}{V_{1}}=-\nu R T \ln \frac{p_{1}}{p_{2}} \\
+C_T=+\infty
+\end{array}</script><h4 id="绝热过程-1"><a href="#绝热过程-1" class="headerlink" title="绝热过程"></a>绝热过程</h4><ul>
+<li><p>绝热过程方程（泊松方程）</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+pV^\gamma=C_1\\
+T V^{\gamma-1}=C_{2} \\
+T^{-\gamma} p^{\gamma-1}=C_{3}
+\end{array}</script></li>
+<li><p>外界对系统做功</p>
+<script type="math/tex; mode=display">
+A=-\frac{p_{2} V_{2}-p_{1} V_{1}}{1-\gamma}=-\frac{\nu R\left(T_{2}-T_{1}\right)}{1-\gamma}</script></li>
+<li><p>内能增量</p>
+<script type="math/tex; mode=display">
+\Delta E=A=-\frac{p_{2} V_{2}-p_{1} V_{1}}{1-\gamma}=-\frac{\nu R\left(T_{2}-T_{1}\right)}{1-\gamma}</script></li>
+<li><p>热容</p>
+<script type="math/tex; mode=display">
+C_{V, \mathrm{m}}=\frac{R}{\gamma-1}</script></li>
+</ul>
+<h4 id="多方过程"><a href="#多方过程" class="headerlink" title="多方过程"></a>多方过程</h4><p>上述4类等值过程是4类特殊的过程。理想气体在经历这4类过程时热容量是确定的，通常称热容量为常数的过程为<strong>多方过程</strong>。</p>
+<p>定义多方指数</p>
+<script type="math/tex; mode=display">
+n=\frac{C_{n, \mathrm{~m}}-C_{p, \mathrm{~m}}}{C_{n, \mathrm{~m}}-C_{V, \mathrm{~m}}}</script><p>则</p>
+<script type="math/tex; mode=display">
+pV^n=C</script><ul>
+<li><p>多方过程摩尔热容量</p>
+<script type="math/tex; mode=display">
+C_{n, \mathrm{~m}}=\frac{\gamma-n}{1-n} C_{V, \mathrm{~m}}</script></li>
+<li><p>外界对系统做功</p>
+<script type="math/tex; mode=display">
+A=-\frac{p_{2} V_{2}-p_{1} V_{1}}{1-n}=-\frac{\nu R\left(T_{2}-T_{1}\right)}{1-n}</script></li>
+<li><p>系统吸收热量</p>
+<script type="math/tex; mode=display">
+Q=\nu C_{n, \mathrm{~m}}\left(T_{2}-T_{1}\right)</script></li>
+<li><p>内能增量</p>
+<script type="math/tex; mode=display">
+\Delta E=\frac{i}{2}\nu R\left(T_{2}-T_{1}\right)</script></li>
+</ul>
+<p>前面所介绍的4种等值过程可以看作是多方过程的特例：</p>
+<ul>
+<li>当 $n=0$ 时，对应等压过程</li>
+<li>当 $n=+\infty$ 时，对应等体过程</li>
+<li>当 $n=1$ 时，对应等温过程</li>
+<li>当 $n=\gamma$ 时，对应绝热过程</li>
+</ul>
+<h3 id="绝热双系统模型解题步骤"><a href="#绝热双系统模型解题步骤" class="headerlink" title="绝热双系统模型解题步骤"></a>绝热双系统模型解题步骤</h3><ol>
+<li>由于整个系统绝热，根据能量守恒定律列写方程<script type="math/tex; mode=display">
+\delta Q=\delta Q_{1}+\delta Q_{2}=0</script>其中 $\delta A$ 为外界对系统2做功</li>
+<li>根据系统1的状态得出 $C_{m,1}$</li>
+<li>得到<script type="math/tex; mode=display">
+C_{m,2}=\frac{\delta Q_2}{\mathrm{d} T}=-C_{m,1}</script></li>
+<li>由于绝热，系统1与系统2导热，根据<script type="math/tex; mode=display">
+\mathrm{d} E_{1}+\mathrm{d} E_{2}-\delta A=0</script>根据内能的定义，可得<script type="math/tex; mode=display">
+\delta A=\mathrm{d} E_{1}+\mathrm{d} E_{2}=\left(\frac{i_1}{2}\nu_1+ \frac{i_2}{2}\nu_2\right)R \mathrm{d} T</script></li>
+<li>求出系统2的多方指数<script type="math/tex; mode=display">
+n_2=\frac{C_{m,2}-C_{p, \mathrm{m}}}{C_{m,2}-C_{V, \mathrm{m}}}</script></li>
+</ol>
+<h3 id="p-V图曲线对比"><a href="#p-V图曲线对比" class="headerlink" title="p-V图曲线对比"></a>p-V图曲线对比</h3><p>斜率：<br>等容线&gt;绝热线&gt;等温线&gt;等压线</p>
+<h3 id="循环过程"><a href="#循环过程" class="headerlink" title="循环过程"></a>循环过程</h3><p>循环过程是指热力学系统状态经历一系列变化后又回到初始状态的过程。一个简单系统若经历了准静态的循环过程，在p-V空间中对应一条<strong>闭合曲线</strong>。按照过程进行方向不同，可将循环分为<strong>正循环</strong>和<strong>逆循环</strong>。</p>
+<h4 id="热机"><a href="#热机" class="headerlink" title="热机"></a>热机</h4><p>循环系统中，工作物质</p>
+<ul>
+<li>从高温热源吸热 $Q_1$</li>
+<li>向低温热源放热 $Q_2$</li>
+<li>对外做的净功 $A=Q_1-Q_2$</li>
+<li>在状态空间中，工作物质的状态沿循环过程曲线<strong>顺时针方向</strong>变化，称工作物质经历的循环为<strong>正循环</strong></li>
+<li>所做净功 $A$ 在数值上等于 $p-V$ 图上循环曲线所包围的面积</li>
+<li><p>这里的 $Q_{1}$ 和 $Q_{2}$ 都是绝对值</p>
+</li>
+<li><p>热机效率</p>
+<script type="math/tex; mode=display">
+\eta=\frac{A}{Q_{1}}=\frac{Q_{1}-Q_{2}}{Q_{1}}</script></li>
+</ul>
+<h4 id="制冷机"><a href="#制冷机" class="headerlink" title="制冷机"></a>制冷机</h4><p>制冷剂在循环过程中需要外界做功 $A$，从低温热源吸热 $Q_2$，向高温热源放热 $Q_1$。将这样的循环过程称为<strong>逆循环</strong>。在状态空间中，工作物质的状态沿循环过程曲线是<strong>逆时针方向</strong>变化的。</p>
+<p>制冷机的性能好坏可用制冷系数描述，性能好的制冷机应该需要外界做的功少，但从低温热源吸收的热多，故定义逆循环的制冷系数为</p>
+<script type="math/tex; mode=display">
+w=\frac{Q_{2}}{A}=\frac{Q_{2}}{Q_{1}-Q_{2}}</script><p>制冷系数可以大于 $1$，也可以小于 $1$。</p>
+<h4 id="利用p-V图计算循环效率的一般步骤"><a href="#利用p-V图计算循环效率的一般步骤" class="headerlink" title="利用p-V图计算循环效率的一般步骤"></a>利用p-V图计算循环效率的一般步骤</h4><ol>
+<li>判断各个过程是吸热还是放热</li>
+<li>求出未知点的温度T</li>
+<li>计算吸热量和放热量</li>
+<li>代入循环效率公式</li>
+</ol>
+<h3 id="卡诺循环"><a href="#卡诺循环" class="headerlink" title="卡诺循环"></a>卡诺循环</h3><p>卡诺研究了一种理想的循环过程，这一循环由两条绝热线和两条等温线构成，称为<strong>卡诺循环</strong>。</p>
+<p><img src="https://s2.loli.net/2022/06/12/jWHe4ZDKFLy1aoJ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>卡诺循环中，</p>
+<script type="math/tex; mode=display">
+\frac{Q_{2}}{Q_{1}}=\frac{T_{2}}{T_{1}}</script><p>卡诺循环的效率为</p>
+<script type="math/tex; mode=display">
+\eta=\frac{A}{Q_1}=1-\frac{Q_{2}}{Q_{1}}=1-\frac{T_{2}}{T_{1}}</script><p>卡诺制冷机的制冷系数为</p>
+<script type="math/tex; mode=display">
+w_{c}=\frac{Q_{2}}{A}=\frac{Q_{2}}{Q_{1}-Q_{2}}=\frac{T_{2}}{T_{1}-T_{2}}</script><h3 id="奥托循环"><a href="#奥托循环" class="headerlink" title="奥托循环"></a>奥托循环</h3><p>四冲程火花塞点燃式汽油发动机经历的循环可看作等体加热循环。在理想情况下可认为由两条绝热线和两条等体线构成，称为奥托循环。</p>
+<p><img src="https://s2.loli.net/2022/06/12/h6yfHlrcRzLKoOg.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>定义绝热压缩比 $r=\frac{V_1}{V_2}$，奥托循环的效率</p>
+<script type="math/tex; mode=display">
+\eta=1-\frac{Q_2}{Q_1}=1-\frac{T_e-T_b}{T_d-T_c}=1-\frac{V_2}{V_1}^{\gamma-1}=1-r^{\gamma-1}</script><h3 id="狄塞尔循环"><a href="#狄塞尔循环" class="headerlink" title="狄塞尔循环"></a>狄塞尔循环</h3><p><img src="https://s2.loli.net/2022/06/12/KEbIGvJtFCAsPhD.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>定义压缩比 $r=\frac{V_1}{V_2}$，定压膨胀比 $\rho=\frac{V_3}{V_2}$，狄塞尔循环的效率</p>
+<script type="math/tex; mode=display">
+\eta=1-\frac{Q_{2}}{Q_{1}}=1-\frac{C_{V, m}\left(T_{4}-T_{1}\right)}{C_{p, m}\left(T_{3}-T_{2}\right)}=1-\frac{1}{\gamma} \frac{T_{4}-T_{1}}{T_{3}-T_{2}}=1-\frac{r^{1-\gamma}}{\gamma} \frac{\rho^{\gamma}-1}{\rho-1}</script><h3 id="热力学第二定律"><a href="#热力学第二定律" class="headerlink" title="热力学第二定律"></a>热力学第二定律</h3><h4 id="开尔文表述"><a href="#开尔文表述" class="headerlink" title="开尔文表述"></a>开尔文表述</h4><p>热机不可能从单一热源吸热，使之完全转化为有用的功而不产生其他影响。</p>
+<h4 id="克劳修斯表述"><a href="#克劳修斯表述" class="headerlink" title="克劳修斯表述"></a>克劳修斯表述</h4><p>不可能把热量从低温物体传到高温物体而不引起其他变化。</p>
+<h4 id="等价表述"><a href="#等价表述" class="headerlink" title="等价表述"></a>等价表述</h4><ul>
+<li>从单一热源吸收热量，并将其完全转化为功的装置，称为第二类永动机。第二类永动机不可能实现。</li>
+<li>效率为100%的热机和效率为无穷大的制冷机不存在</li>
+<li>与热现象有关的实际宏观过程不可避免地含有非平衡因素或耗散因素，从而一切与热现象有关的实际宏观过程都是不可逆的</li>
+</ul>
+<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><ul>
+<li>热力学第二定律是大量实验和经验的总结</li>
+<li>热力学第二定律开尔文说法与克劳修斯说法具有等效性</li>
+<li>热力学第二定律可有多种说法，每一种说法都反映了自然界过程进行的方向性</li>
+</ul>
+<h3 id="可逆过程和不可逆过程"><a href="#可逆过程和不可逆过程" class="headerlink" title="可逆过程和不可逆过程"></a>可逆过程和不可逆过程</h3><p>设在某一过程 $P$ 中，系统从状态 $A$ 变化到状态 $B$，如果存在一个过程能使系统从状态 $B$ 回复到初状态 $A$，而且在回复到初态 $A$ 时，<strong>外界环境也都各自恢复原状</strong>，则称过程 $P$ 为<strong>可逆过程</strong>。如果系统不能回复到原状态 $A$，或者虽然能回复到初态 $A$，但外界环境不能恢复原状，那么过程 $P$ 称为<strong>不可逆过程</strong>。</p>
+<h4 id="等价定义"><a href="#等价定义" class="headerlink" title="等价定义"></a>等价定义</h4><ul>
+<li>可逆过程：系统状态变化过程中，逆过程能重复正过程的每一个状态，且不引起其他变化的过程。</li>
+<li>不可逆过程：在不引起其它变化的条件下，不能使逆过程重复正过程的每一个状态的过程。</li>
+<li>实现可逆过程的条件：<ul>
+<li>系统中各部分都达到力学平衡。</li>
+<li>系统中各部分都达到热平衡。</li>
+<li>系统中不存在耗散。</li>
+</ul>
+</li>
+</ul>
+<h4 id="注意-1"><a href="#注意-1" class="headerlink" title="注意"></a>注意</h4><ul>
+<li>一个过程是不可逆的，并<strong>不是</strong>说该过程不能逆向进行，而是说当过程进行后，在外界留下的痕迹无论通过如何曲折复杂的途径都不能完全消除掉。</li>
+<li>可逆过程<strong>一定</strong>是准静态过程，准静态过程<strong>不一定</strong>是可逆过程。</li>
+<li>非平衡过程一定是不可逆过程。</li>
+<li>一切自发过程都是不可逆的。</li>
+<li>以有限速度进行的热过程<strong>一定</strong>是不可逆过程，以无限小速度进行的热过程<strong>不一定</strong>是可逆过程</li>
+<li>热功转换过程是不可逆过程</li>
+<li>不可逆过程和非准静态过程都无法用p-V图表示</li>
+<li>只要能画在p-V图上的光滑曲线都可以对应一个可逆过程</li>
+</ul>
+<h3 id="卡诺定理"><a href="#卡诺定理" class="headerlink" title="卡诺定理"></a>卡诺定理</h3><ul>
+<li>在相同的高温热源与相同的低温热源之间工作的一切可逆热机效率相等，与工作物质无关。</li>
+<li>在相同的高温热源与相同的低温热源之间工作的一切不可逆热机的效率不可能高于可逆热机的效率。</li>
+</ul>
+<p>若选择<strong>理想气体</strong>作为工作物质进行可逆循环，由于只有两个热源，故一定是<strong>可逆卡诺循环</strong>，而这样的循环的效率为</p>
+<script type="math/tex; mode=display">
+\eta=1-\frac{T_{2}}{T_{1}}</script><p>这就是说，所有工作在相同的高温热源与相同的低温热源之间的可逆机效率均由上式确定，对不可逆热机其效率小于该值。用数学式可将卡诺定理表示为</p>
+<script type="math/tex; mode=display">
+\eta \leqslant 1-\frac{T_{2}}{T_{1}}</script><p>其中等号对应可逆热机，不等号对应不可逆热机。</p>
+<h3 id="克劳修斯不等式"><a href="#克劳修斯不等式" class="headerlink" title="克劳修斯不等式"></a>克劳修斯不等式</h3><h4 id="对于卡诺循环"><a href="#对于卡诺循环" class="headerlink" title="对于卡诺循环"></a>对于卡诺循环</h4><p>按照卡诺定理，一个卡诺循环的效率应满足关系</p>
+<script type="math/tex; mode=display">
+\eta=\frac{Q_{1}-Q_{2}}{Q_{1}} \leqslant \frac{T_{1}-T_{2}}{T_{1}}</script><p>或者</p>
+<script type="math/tex; mode=display">
+\frac{Q_1}{T_1}-\frac{Q_2}{T_2}\leqslant 0</script><p>式中等号对应可逆循环过程，小于号对应不可逆循环过程。即：可逆卡诺循环中，热温比总和为零。</p>
+<p>若将吸热放热量改为代数值（吸热为正），则上式可推广为</p>
+<script type="math/tex; mode=display">
+\sum \frac{Q_i}{T_i}<0</script><h4 id="对于任意循环"><a href="#对于任意循环" class="headerlink" title="对于任意循环"></a>对于任意循环</h4><p>任意的可逆循环可视为由无穷多个无穷小的可逆卡诺循环所组成，于是有</p>
+<script type="math/tex; mode=display">
+\oint \frac{\delta Q}{T} \leqslant 0</script><ul>
+<li>系统在任意一个可逆循环过程中热温比的积分等于零</li>
+<li>系统在任意一个不可逆循环过程中热温比的积分一定小于零</li>
+<li>系统在任意一个循环过程中热温比的积分一定不大于零</li>
+</ul>
+<h3 id="熵"><a href="#熵" class="headerlink" title="熵"></a>熵</h3><p>热力学系统从某确定的初态出发，沿任意可逆过程到某确定的末态，<strong>热温比的积分与过程无关</strong>，只由系统的初末态确定。</p>
+<p>热力学系统一定存在一个状态函数 $S$，称之为熵，在初末态的增量等于沿任意可逆过程从初态变到末态热温比的积分</p>
+<script type="math/tex; mode=display">
+S_{2}-S_{1}=\int_{1}^{2} \frac{\delta Q}{T}</script><p>微分形式</p>
+<script type="math/tex; mode=display">
+\mathrm{d} S=\frac{\delta Q}{T}=\frac{\mathrm{d} E+p \mathrm{d} V}{T}</script><ul>
+<li>虽然熵是由过程量定义，但熵是<strong>态函数</strong>。</li>
+<li>系统的熵的变化与过程无关，不管系统实际过程怎样（可以是可逆的，也可以是不可逆的），只要系统的初末状态确定，初末态的熵函数就确定，系统从初态变到末态熵的增量也确定，而这个增量可用任意可逆过程热温比的积分来度量</li>
+<li>当系统实际经历的过程为不可逆过程时，熵的增量<strong>一般不</strong>等于沿实际过程热温比的积分。为了计算系统的熵增，通常<strong>设计一个可逆过程</strong>来连接初末态，沿设计的可逆过程热温比的积分等于系统的熵增。- 通常情况下，连接初末态的可逆过程一定存在</li>
+</ul>
+<h4 id="固体-液体的熵变"><a href="#固体-液体的熵变" class="headerlink" title="固体/液体的熵变"></a>固体/液体的熵变</h4><p>如果系统是固体或者液体，计算熵变时，可以把比热看成常数</p>
+<script type="math/tex; mode=display">
+\Delta S=\int_{T_{1}}^{T_{2}} \frac{m c \mathrm{d} T}{T}=m c \ln \frac{T_{2}}{T_{1}}</script><h4 id="理想气体的熵变"><a href="#理想气体的熵变" class="headerlink" title="理想气体的熵变"></a>理想气体的熵变</h4><script type="math/tex; mode=display">
+\begin{array}{l}
+S=S_{0}+C_{V} \ln \frac{T}{T_{0}}+\nu R \ln \frac{V}{V_{0}} \\
+S=S_{0}+C_{V} \ln \frac{p}{p_{0}}+C_{p} \ln \frac{V}{V_{0}} \\
+S=S_{0}+C_{p} \ln \frac{T}{T_{0}}-\nu R \ln \frac{p}{p_{0}}
+\end{array}</script><p>式中 $S_0$ 为状态 $(p_0,T_0,V_0)$ 的熵。</p>
+<ul>
+<li>对于等温过程：<script type="math/tex; mode=display">
+\Delta S_{T}=\nu R \ln \frac{V_{2}}{V_{1}}</script></li>
+<li>对于等容过程：<script type="math/tex; mode=display">
+\Delta S_{V}=\nu C_{V, m} \ln \frac{T_{2}}{T_{1}}=\nu C_{V, m} \ln \frac{p_{2}}{p_{1}}</script></li>
+<li>对于等压过程：<script type="math/tex; mode=display">
+\Delta S_{p}=\nu C_{P, m} \ln \frac{T_{2}}{T_{1}}=\nu C_{P, m} \ln \frac{V_{2}}{V_{1}}</script></li>
+<li>对于绝热过程：<script type="math/tex; mode=display">
+\Delta S=0</script></li>
+</ul>
+<h4 id="熵增加原理"><a href="#熵增加原理" class="headerlink" title="熵增加原理"></a>熵增加原理</h4><p>对孤立系统或绝热系统，一定有 $\delta Q=0$，这时</p>
+<script type="math/tex; mode=display">
+\mathrm{d} S \geqslant 0</script><p>一个孤立系统或绝热系统在状态变化时熵永不减少，这一结论称为<strong>熵增加原理</strong>。</p>
+<h2 id="典型二级结论合集"><a href="#典型二级结论合集" class="headerlink" title="典型二级结论合集"></a>典型二级结论合集</h2><h3 id="水桶旋转"><a href="#水桶旋转" class="headerlink" title="水桶旋转"></a>水桶旋转</h3><p>水桶以匀角速度 $\omega$ 旋转，求水面形状</p>
+<ul>
+<li>动力学方程<script type="math/tex; mode=display">
+m g \sin \theta-m \omega^{2} x \cos \theta=0</script></li>
+<li>结论<script type="math/tex; mode=display">
+y=y_{0}+\frac{\omega^{2}}{2 g} x^{2}</script>即水面为一抛物面</li>
+</ul>
+<h3 id="半圆柱和细杆"><a href="#半圆柱和细杆" class="headerlink" title="半圆柱和细杆"></a>半圆柱和细杆</h3><p><img src="https://s2.loli.net/2022/06/13/daRn4ir7smTHxqp.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>如图所示为细杆可以绕 $O$ 端以均匀角速度 $\omega$ 转动，细杆恒与半径为 $R$、质量为 $m$ 的半圆柱体接触，半圆柱体沿水平方向向右运动。不考虑摩擦力。在角位置 $\theta$ 时，</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+x=\frac{R}{\sin \theta} \\
+\mathrm{a}=-R \omega^{2} \frac{2-\sin ^{2} \theta}{\sin ^{3} \theta} \\
+v=R \omega \frac{\cos \theta}{\sin ^{2} \theta} \\
+N_{1}=m R \omega^{2} \frac{2-\sin ^{2} \theta}{\sin ^{4} \theta}
+\end{array}</script><h3 id="直角墙壁梯子模型"><a href="#直角墙壁梯子模型" class="headerlink" title="直角墙壁梯子模型"></a>直角墙壁梯子模型</h3><p>长度为 $l$ 的匀质梯子，顶端斜靠在竖直的墙上。设 $t =0$ 时，顶端离地面 $y_0$，顶端以恒定速度 $v_0$ 沿墙面下滑。</p>
+<ul>
+<li><p>梯子质心 $C$ 的运动方程</p>
+<script type="math/tex; mode=display">
+\vec{r}_{C}=\frac{1}{2} \sqrt{l^{2}-\left(y_{0}-v_{0} t\right)^{2}} \vec{i}+\frac{1}{2}\left(y_{0}-v_{0} t\right) \vec{j}</script></li>
+<li><p>墙面对梯子的支持力</p>
+<script type="math/tex; mode=display">
+N_{x}=-\frac{1}{2} m \frac{1}{\sqrt{l^{2}-\left(y_{0}-v_{0} t\right)^{2}}} v_{0}^{2}-\frac{1}{2} m \frac{\left(y_{0}-v_{0} t\right)^{2}}{\left[l^{2}-\left(y_{0}-v_{0} t\right)^{2}\right]^{3 / 2}} v_{0}^{2}</script></li>
+<li><p>地面对梯子的支持力</p>
+<script type="math/tex; mode=display">
+N_{y}=-\frac{1}{2} v_{0} m</script></li>
+<li><p>梯子下端位置为 $x$ 时的速度</p>
+<script type="math/tex; mode=display">
+v_B=\frac{\sqrt{l^2-x^2}}{x} v_0</script></li>
+</ul>
+<h3 id="人船模型"><a href="#人船模型" class="headerlink" title="人船模型"></a>人船模型</h3><p>船长 $L$，质量 $M$，静止浮在水面，有质量 $m$ 的人从船头走到船尾。</p>
+<p>用质心定理求。在地面参照系里，对 $M$ 与 $m$ 组成的系统，由于水平方向受外力为零，故系统质心的坐标不变</p>
+<ul>
+<li>船相对地面移动的距离<script type="math/tex; mode=display">
+\Delta X=-\frac{m L}{M+m}</script></li>
+</ul>
+<h3 id="提绳模型"><a href="#提绳模型" class="headerlink" title="提绳模型"></a>提绳模型</h3><p>绳子长为 $l$，质量 $m$ 且分布均匀，原本放在桌面上。</p>
+<ul>
+<li><p>以匀速 $v$ 提绳上升，提起 $x$ 时手对绳端的力</p>
+<script type="math/tex; mode=display">
+F=\frac{m}{l} x \cdot g+\frac{m}{l} v^{2}</script></li>
+<li><p>以匀加速度 $a$ 提绳上升，提起 $x$ 时手对绳端的力</p>
+<script type="math/tex; mode=display">
+F=\frac{x}{l} m(g+3 a)</script></li>
+</ul>
+<h3 id="链条下落模型"><a href="#链条下落模型" class="headerlink" title="链条下落模型"></a>链条下落模型</h3><p>质量为 $M$ 的匀质柔软链条，全长为 $L$，手持其上端，使下端正好碰到桌面。然后放手让它自由下落到桌面上，链条落到桌面的长度为 $l$ 时，桌面所受链条作用力的大小</p>
+<script type="math/tex; mode=display">
+N=\frac{3l}{L}Mg</script><h3 id="阿特伍德机"><a href="#阿特伍德机" class="headerlink" title="阿特伍德机"></a>阿特伍德机</h3><p>阿特伍德机：轻绳绕过一轻定滑轮，滑轮轴光滑，绳子两端系有质量为 $m_1$ 和 $m_2$ 的重物，绳与滑轮间无相对滑动</p>
+<ul>
+<li><p>两端重物的加速度</p>
+<script type="math/tex; mode=display">
+a_{1}=-a_{2}=\frac{m_{1}-m_{2}}{m_{1}+m_{2}} g</script></li>
+<li><p>绳子拉力</p>
+<script type="math/tex; mode=display">
+-T_{1}=T_{2}=\frac{2 m_{1} m_{2}}{m_{1}+m_{2}} g</script></li>
+</ul>
+<h4 id="电梯"><a href="#电梯" class="headerlink" title="电梯"></a>电梯</h4><p>将阿特伍德机置于电梯顶部，当电梯以加速度 $a_0$ 相对地面向上运动时</p>
+<ul>
+<li><p>两物体相对电梯的加速度</p>
+<script type="math/tex; mode=display">
+a_{r} =\frac{m_{1}-m_{2}}{m_{1}+m_{2}}\left(g+a_{0}\right)</script></li>
+<li><p>绳的张力</p>
+<script type="math/tex; mode=display">
+T =\frac{2 m_{1} m_{2}}{m_{1}+m_{2}}\left(g+a_{0}\right)</script></li>
+</ul>
+<h4 id="力矩-1"><a href="#力矩-1" class="headerlink" title="力矩"></a>力矩</h4><p>轻绳绕过一半径为 $R$ 的定滑轮，滑轮轴光滑，绳子两端系有质量为 $m_1$ 和 $m_2$ 的重物，绳与滑轮间无相对滑动。</p>
+<p>取垂直屏幕向外为正，系统的对轴的力矩为</p>
+<script type="math/tex; mode=display">
+M_z=(m_1-m_2)gR</script><p>在地面参考系，取垂直屏幕向外为正，系统对轴的角动量为</p>
+<script type="math/tex; mode=display">
+L_z=(m_1+m_2)vR</script><h4 id="圆盘转动惯量-amp-摩擦力矩"><a href="#圆盘转动惯量-amp-摩擦力矩" class="headerlink" title="圆盘转动惯量&amp;摩擦力矩"></a>圆盘转动惯量&amp;摩擦力矩</h4><p>轻绳绕过一半径为 $R$ 的定滑轮，滑轮轴光滑，可看成质量均匀的圆盘，绳子两端系有质量为 $m_1$ 和 $m_2$ 的重物，绳与滑轮间无相对滑动，轴上的摩擦力矩为 $M_f$</p>
+<ul>
+<li><p>物体的加速度</p>
+<script type="math/tex; mode=display">
+a_{1}=a_{2}=\frac{\left(m_{1}-m_{2}\right) g-\frac{M_{f}}{R}}{m_{1}+m_{2}+\frac{1}{2} m}</script></li>
+<li><p>绳中张力</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+T_{1}=m_{1}\left(g-a_{1}\right)=m_{1} \frac{\left(2 m_{2}+\frac{m}{2}\right) g+\frac{M_{f}}{R}}{m_{1}+m_{2}+\frac{m}{2}} \\
+T_{2}=m_{2}\left(g+a_{2}\right)=m_{2} \frac{\left(2 m_{1}+\frac{m}{2}\right) g-\frac{M_{f}}{R}}{m_{1}+m_{2}+\frac{m}{2}}
+\end{array}</script></li>
+</ul>
+<h4 id="一端人爬"><a href="#一端人爬" class="headerlink" title="一端人爬"></a>一端人爬</h4><p>轻绳绕过一半径为 $R$、转动惯量为 $J$ 定滑轮，在其边缘上，绳子 $A$ 端有一质量为 $m_1$ 的人抓住了绳端，而在绳的另一端 $B$ 系了一质量为 $m_2$ 的重物。设人从静止开始相对绳以变速度 $u$ 向上爬时，求 $B$ 端重物上升的加速度。</p>
+<script type="math/tex; mode=display">
+a_{2}=\frac{\left(m_{1}-m_{2}\right) g+m_{1} \frac{\mathrm{d} u}{\mathrm{d} t}}{m_{2}+m_{1}+\frac{J}{R^{2}}}</script><h3 id="风筝升力"><a href="#风筝升力" class="headerlink" title="风筝升力"></a>风筝升力</h3><p>如图所示，有一面积为 $S$ 的风筝静止于空中，风向沿水平方向向右，风速度大小为 $v$，风筝平面与水平方向的夹角为 $\theta$，空气碰到风筝后沿风筝平面方向四周散开。已知空气密度为 $\rho$，求风筝获得的升力，并求最大升力。</p>
+<ul>
+<li><p>正压力</p>
+<script type="math/tex; mode=display">
+F=\rho S v^{2} \sin ^{2} \theta</script></li>
+<li><p>升力</p>
+<script type="math/tex; mode=display">
+F_{y} =\rho S v^{2} \sin ^{2} \theta \cos \theta</script></li>
+<li><p>当 $\cos \theta=\frac{1}{\sqrt{3}}$ 时，升力取最大值</p>
+<script type="math/tex; mode=display">
+F_{y \max }=\frac{2}{3 \sqrt{3}} \rho S v^{2}</script></li>
+</ul>
+<h3 id="水管转向"><a href="#水管转向" class="headerlink" title="水管转向"></a>水管转向</h3><p>已知水管横截面不变，面积为 $S$，水流速度为 $v$，转弯角为 $\alpha$，水密度为 $\rho$，不考虑水对管壁的摩擦力，</p>
+<ul>
+<li><p>动量定理方程</p>
+<script type="math/tex; mode=display">
+\vec{F} \mathrm{d} t=\mathrm{d} \vec{P}=\left(\vec{v}_{2}-\vec{v}_{1}\right) \rho v S \mathrm{d} t</script></li>
+<li><p>水流转弯时由于速度变化对弯水管上的冲击力</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+F_{x}=(-v \cos \alpha-v) \rho v S \\
+F_{y}=(v \sin \alpha) \rho v S
+\end{array}</script></li>
+</ul>
+<h3 id="恢复系数的测定"><a href="#恢复系数的测定" class="headerlink" title="恢复系数的测定"></a>恢复系数的测定</h3><h4 id="法一"><a href="#法一" class="headerlink" title="法一"></a>法一</h4><p>将一种材料做成小球，用另一种材料做地板，令小球从一定高度 $H$ 自由下落，测得其反跳高度为 $h$，求这两种材料间的恢复系数</p>
+<script type="math/tex; mode=display">
+e=\sqrt{\frac{h}{H}}</script><h4 id="法二"><a href="#法二" class="headerlink" title="法二"></a>法二</h4><p>小球与固定面作斜碰撞。设碰撞前后小球速度方向与固定面法线间的夹角分别为 $\alpha$、$\beta$，且固定面光滑，则恢复系数</p>
+<script type="math/tex; mode=display">
+e=\frac{\tan \alpha}{\tan \beta}</script><h3 id="打击中心问题"><a href="#打击中心问题" class="headerlink" title="打击中心问题"></a>打击中心问题</h3><p>均质细棒质量为 $m$，长度为 $l$，上端固定在水平轴 $O$，铅直位置时，一水平力 $F$ 作用于距 $O$为 $l_0$ 处，计算 $O$ 轴对棒的作用力。</p>
+<ul>
+<li><p>作用力</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+N_{x}=F\left(\frac{3 l_{0}}{2 l}-1\right) \\
+N_{y}=m g
+\end{array}</script></li>
+<li><p>当 $l_0 =2l/3$ 时，$N_x =0$，此时的打击点称打击中心。</p>
+</li>
+</ul>
+<h3 id="变质量公式"><a href="#变质量公式" class="headerlink" title="变质量公式"></a>变质量公式</h3><p>火箭质量为 $M$，所受合外力为 $F$，发射物体速度（相对于火箭）为 $u$，动力学方程为</p>
+<script type="math/tex; mode=display">
+M \frac{\mathrm{d} \vec{v}}{\mathrm{d} t}=\vec{F}+\left(\frac{\mathrm{d} M}{\mathrm{d} t}\right) \vec{u}</script><p>注意：$M$ 是 $t$ 的函数；仅适用于 $F$ 与 $t$ 无关的情况。</p>
+<h3 id="桌角直杆掉落"><a href="#桌角直杆掉落" class="headerlink" title="桌角直杆掉落"></a>桌角直杆掉落</h3><p>一均质直杆，长 $l$，质量为 $m$，与桌面的静摩擦系数为 $\mu$，开始水平放置，质心与桌角的距离为 $b$。在重力作用下转动。</p>
+<ul>
+<li>直杆开始滑动的临界角<script type="math/tex; mode=display">
+\tan \theta = \frac{\mu\left(J-b^{2}\right)}{J+2 b^{2}}</script></li>
+</ul>
+<h3 id="相对论-火箭反射光"><a href="#相对论-火箭反射光" class="headerlink" title="相对论-火箭反射光"></a>相对论-火箭反射光</h3><p>静止长度为 $l_0$ 的火箭匀速 $u$ 飞离地球。由地面发射一光脉冲，地球收到火箭头部反射光比尾部反射光的延迟时间</p>
+<script type="math/tex; mode=display">
+\delta t=\frac{2 l_{0}}{c} \sqrt{\frac{1+u / c}{1-u / c}}</script>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">大学学习生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E7%89%A9%E7%90%86/">物理</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E7%89%A9%E7%90%86/">物理</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/02/18/%E7%94%B5%E8%B7%AF%E7%90%86%E8%AE%BA%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">电路理论笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/12/13/%E9%AB%98%E6%95%B0%E4%B8%8A%E7%AC%94%E8%AE%B0%E6%95%B4%E7%90%86/">
+                        <span class="hidden-mobile">高数上笔记整理</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', '1357310795/Blog-Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.12.3/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/anchor-js/4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.8/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
