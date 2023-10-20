@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.2k 字
+      4k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      44
+      53
        分钟
     </span>
   
@@ -233,7 +233,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年10月7日 上午
+                  本文最后更新于：2023年10月15日 上午
                 
               </p>
             
@@ -537,6 +537,31 @@ V_{I L}=V_{M}+\frac{V_{D D}-V_{M}}{g} \\
 N M_{H}=V_{D D}-V_{I H}\\
 N M_{L}=V_{I L}
 \end{array}</script><p>注意 $g$ 是负数</p>
+<h3 id="DC-robust"><a href="#DC-robust" class="headerlink" title="DC robust"></a>DC robust</h3><p>（Todo）</p>
+<h3 id="密勒效应"><a href="#密勒效应" class="headerlink" title="密勒效应"></a>密勒效应</h3><p>如果一个电容器的两个端子出现相同但相反的电压波动，可以用一个对地电容器来代替，其值是原值的两倍。</p>
+<p><img src="https://s2.loli.net/2023/10/15/lruRs46QL8be7xj.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="动态特性：电容"><a href="#动态特性：电容" class="headerlink" title="动态特性：电容"></a>动态特性：电容</h3><p><img src="https://s2.loli.net/2023/10/15/XwfAVpjF7SWn6gH.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/10/15/B27RNJAonpy9FTV.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="动态特性：电阻"><a href="#动态特性：电阻" class="headerlink" title="动态特性：电阻"></a>动态特性：电阻</h3><p>MOS管的平均导通电阻</p>
+<script type="math/tex; mode=display">
+R_{e q}=\frac{1}{V_{D D} / 2} \int_{V_{D D} / 2}^{V_{D D}} \frac{V}{I_{D S A T}(1+\lambda V)} d V \approx \frac{3}{4} \frac{V_{D D}}{I_{D S A T}}\left(1-\frac{7}{9} \lambda V_{D D}\right)</script><h3 id="动态特性：传播延时"><a href="#动态特性：传播延时" class="headerlink" title="动态特性：传播延时"></a>动态特性：传播延时</h3><p>由高至低翻转的传播延时</p>
+<script type="math/tex; mode=display">
+t_{p H L}=\ln (2) R_{e q n} C_{L}=0.69 R_{e q n} C_{L}</script><p>由低至高翻转的传播延时</p>
+<script type="math/tex; mode=display">
+t_{p L H}=0.69 R_{e q p} C_{L}</script><p>式中，$R_{\mathrm{eqp}}$ 是 PMOS 管在所关注时间内的等效导递电阻。</p>
+<p>反相器的总传播延时定义为这两个值的平均：</p>
+<script type="math/tex; mode=display">
+t_{p}=\frac{t_{p H L}+t_{p L H}}{2}=0.69 C_{L}\left(\frac{R_{e q n}+R_{e q p}}{2}\right)</script><p>人们常常希望一个门对于上升和下降输入具有相同的传播延时。这一状况可以通过使 NMOS 和 PMOS 晶体管的导通电阻近似相等来实现。</p>
+<p>减小一个门的传播延时：</p>
+<ul>
+<li>减小 $C_L$：注意这个负载电容由三个主要部分组成：门本身的内部扩散电容、互连线电容和扇出电容。细致的版图设计有助于减少扩散电容和互连线电容。优秀的设计实践要求漏扩散区的面积越小越好。</li>
+<li>增加晶体管的 $W/L$ 比：这是设计者手中最有力和最有效的性能优化工具。但是在采用这一方法时要当心。增加晶体管尺寸也增加扩散电容，因而增加了 $C_L$。事实上，一旦本征电容（即扩散电容）开始超过由连线和扇出形成的外部负载，增加门的尺寸就不再对减少延时有帮助。它只是加大了门的面积，这称为<strong>自载效应</strong>。此外，较宽的晶体管具有较大的栅电容，这就增加了驱动门的扇出系数,从而又反过来影响它的速度</li>
+<li><p>提高 $V_{DD}$：一个门的延时可以通过改变电源电压来调整。这一灵活性使设计者可以用能量损耗来换取性能，正如我们在后面一节中将要看到的那样。然而，增加电源电压超过一定程度后改善就会非常有限，因而应当避免。同时对可靠性方面的考虑（氧化层的击穿、热电子效应）也迫使在深亚微米工艺中对电源电压要规定严格的上限</p>
+</li>
+<li><p>最小延迟时，$\beta=\sqrt{\gamma}\approx 1.5$</p>
+</li>
+<li>上升下降延迟相同时，$\beta=\gamma\approx 2.4$</li>
+<li>阈值电压是 $V_{DD}$ 的一半时，$\beta=3.5$</li>
+</ul>
 
             </div>
             <hr>
@@ -556,9 +581,9 @@ N M_{L}=V_{I L}
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
-                    
                       <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
                     
                   </div>
                 
@@ -574,6 +599,12 @@ N M_{L}=V_{I L}
                 <div class="post-prevnext">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2023/09/13/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">数字信号处理笔记</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">

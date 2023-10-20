@@ -233,7 +233,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年10月7日 上午
+                  本文最后更新于：2023年10月20日 晚上
                 
               </p>
             
@@ -402,6 +402,8 @@ y[n]=\sum_{k=-\infty}^{\infty} x[k] h[n-k]=\sum_{k=-\infty}^{\infty} x[n-k] h[k]
 <li>根据卷积的交换律，将输入信号与单位脉冲响应互换，输出信号不变</li>
 <li>根据卷积的结合律和交换律，两个系统级联，可以交换级联顺序而使输出不变，还可将级联系统等效为一个系统</li>
 <li>根据卷积的分配律，两个系统并联，可以等效为一个系统</li>
+<li>因果系统的零输入响应一定是0，但是 LTI 系统不一定</li>
+<li>因果系统在因果信号的激励下，响应也为因果信号，但是 LTI 系统不一定</li>
 </ul>
 <h3 id="LTI系统的分类"><a href="#LTI系统的分类" class="headerlink" title="LTI系统的分类"></a>LTI系统的分类</h3><h4 id="因果系统"><a href="#因果系统" class="headerlink" title="因果系统"></a>因果系统</h4><p>LTI 系统是因果系统的<strong>充要条件</strong>是，单位脉冲响应是一个因果序列，即</p>
 <script type="math/tex; mode=display">
@@ -561,7 +563,7 @@ X(z)=\frac{\sum_{k=0}^{M} b_{k} z^{-k}}{\sum_{k=0}^{N} a_{k} z^{-k}}=\frac{P(z)}
 \mathscr{Z}\left[\beta^{n} \sin \left(\omega_{0} n\right) \cdot \varepsilon(n)\right] & = \frac{\beta z^{-1} \sin \omega_{0}}{1-2 \beta z^{-1} \cos \omega_{0}+\beta^{2} z^{-2}} \\ & = \frac{\beta z \sin \omega_{0}}{z^{2}-2 \beta z \cos \omega_{0}+\beta^{2}}, \quad|z|>|\beta| \\
 \end{align}</script><h3 id="z-反变换"><a href="#z-反变换" class="headerlink" title="z 反变换"></a>z 反变换</h3><p>从给定的 $z$ 变换闭式 $X(z)$ 及收敛域还原出原序列 $x[n]$ 的过程称为 $z$ 反变换，表示为</p>
 <script type="math/tex; mode=display">
-x[n]=\mathscr{Z}^{-1}\{X(z)\}</script><p>求 $x$ 反变换的方法通常有四种：围线积分法（留数法）、观察法、部分分式展开法和幂级数展开法。对于在离散时间 $LTI$ 系统分析中遇到的典型序列和 $x$ 变换，后面三种方法已经足够了。</p>
+x[n]=\mathscr{Z}^{-1}\{X(z)\}</script><p>求 $x$ 反变换的方法通常有四种：围线积分法（留数法）、观察法、部分分式展开法和幂级数展开法。对于在离散时间 LTI 系统分析中遇到的典型序列和 $x$ 变换，后面三种方法已经足够了。</p>
 <h4 id="幂级数展开法"><a href="#幂级数展开法" class="headerlink" title="幂级数展开法"></a>幂级数展开法</h4><p>从 $z$ 变换的定义中可以看出，$X(z)$ 定义为 $z^{-1}$ 的幂级数</p>
 <script type="math/tex; mode=display">
 X(z)=\sum_{n=-\infty}^{\infty} x(n) z^{-n}</script><p>因此，只要在给定的收敛域内把 $X(z)$ 展成 $z^{-1}$ 的幂级数，则序列值 $x(n)$ 就是 $z^{-n}$ 项的系数。</p>
@@ -858,7 +860,278 @@ W_{N}^{-n l} \tilde{x}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \tilde{X}[k-l
 \tilde{x}[n] \circledast \tilde{y}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \tilde{X}[k] \tilde{Y}[k]</script><p>频域周期卷积性质：</p>
 <script type="math/tex; mode=display">
 \tilde{x}[n] \tilde{y}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \frac{1}{N}\tilde{X}[k] \circledast \tilde{Y}[k]</script><p>Todo：卷积和周期卷积的关系</p>
-
+<h2 id="第四章-LTI-系统的变换域分析"><a href="#第四章-LTI-系统的变换域分析" class="headerlink" title="第四章 LTI 系统的变换域分析"></a>第四章 LTI 系统的变换域分析</h2><h3 id="系统函数"><a href="#系统函数" class="headerlink" title="系统函数"></a>系统函数</h3><p>我们将 LTI 系统的单位脉冲响应 $h[n]$ 的 $\mathrm{z}$ 变换</p>
+<script type="math/tex; mode=display">
+H(z)=\sum_{n=-\infty}^{\infty} h[n] z^{-n}</script><p>称为<strong>系统函数</strong>。<br>因为 LTI 系统的输入与输出信号满足如下的卷积关系</p>
+<script type="math/tex; mode=display">
+y[n]=x[n] * h[n]</script><p>根据 $\mathrm{z}$ 变换的卷积性质，有<br>所以</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+Y(z)=X(z) H(z) \\
+H(z)=Y(z) / X(z)
+\end{array}</script><p>系统函数也只有给出其 $ROC$，才能唯一地确定 $h[n]$。</p>
+<p>注意 $H(z)$ 是有收敛域的概念的：</p>
+<ul>
+<li>因果系统的 $H(z)$ 在 $z=+\infty$ 无极点</li>
+<li>稳定系统的 $H(z)$ 的 ROC 包含单位圆（$|z|=1$ 上无极点）</li>
+<li>因果稳定系统的 $H(z)$ 的极点都在单位圆内</li>
+<li>FIR 系统的 $H(z)$ 的 ROC 是整个平面（$z=0$ 和 $z=+\infty$ 可能例外），除了 $z=0$ 和 $z=+\infty$ 不可能有其他极点</li>
+<li>IIR 系统的 $H(z)$ 一定有原点和无穷远点以外的极点</li>
+</ul>
+<h3 id="逆系统"><a href="#逆系统" class="headerlink" title="逆系统"></a>逆系统</h3><p>如果两个系统的系统函数满足<br>即</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+H(z) H_{\mathrm{i}}(z)=1 \\
+H_{\mathrm{i}}(z)=1 / H(z)
+\end{array}</script><p>则称二者<strong>互为逆系统</strong>。两个系统的单脉冲响应满足</p>
+<script type="math/tex; mode=display">
+h[n] * h_{\mathrm{i}}[n]=\delta[n]</script><p>所以</p>
+<script type="math/tex; mode=display">
+x[n] * h[n] * h_{\mathrm{i}}[n]=x[n]</script><p>也就是说，任何序列 $x[n]$ 相继经过某系统及其逆系统后，输出信号就是输入信号，即逆系统与原系统的作用相互抵消。</p>
+<ul>
+<li>只要 $H_{\mathrm{i}}(z)$ 与 $H(z)$ 的 $ROC$ 有交集，则二者互为逆系统。所以一个系统的<strong>逆系统不一定唯一</strong>。</li>
+<li>不是所有的系统都有逆系统。比如理想选频滤波器就没有逆系统。</li>
+<li><p>而系统函数是有理函数的系统一定有逆系统。</p>
+</li>
+<li><p>一个因果稳定的系统，只有当其系统函数的零点也全在单位圆内时，该系统的逆系统才能是因果稳定的。</p>
+</li>
+<li>定义零点和极点都在单位圆内的系统为<strong>最小相位系统</strong>，系统函数用 $H_{\min }(z)$ 表示</li>
+<li>反之，极点全在单位圆内，而零点全在单位圆外的系统为<strong>最大相位系统</strong>，系统函数用 $H_{\mathrm{max}}(z)$ 表示。</li>
+<li>相应的时域序列 $h_{\mathrm{min}}[n]$ 和 $h_{\mathrm{max}}[n]$ 分别称为<strong>最小相位序列</strong>和<strong>最大相位序列</strong>。</li>
+</ul>
+<h3 id="频率响应"><a href="#频率响应" class="headerlink" title="频率响应"></a>频率响应</h3><p>我们将 LTI 系统的单位脉冲响应 $h[n]$ 的傅里叶变换</p>
+<script type="math/tex; mode=display">
+H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\sum_{n=-\infty}^{\infty} h[n] \mathrm{e}^{-\mathrm{j} \omega n}</script><p>称为系统的<strong>频率响应</strong>，简称<strong>频响</strong>。与序列的傅里叶变换相同，频率响应也是 $\omega$ 的周期函数，周期为 $2 \pi$。<br>一般来说 $H\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 是 $\omega$ 的复变函数，可以表示成</p>
+<script type="math/tex; mode=display">
+H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left|H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right| \mathrm{e}^{\mathrm{j} \nless H\left(\mathrm{e}^{\mathrm{j} \omega})\right.}</script><p>我们称 $\left|H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|$ 为<strong>幅度响应</strong>或<strong>增益</strong>，$\nless H\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 为<strong>相位响应</strong>或<strong>相移</strong>。</p>
+<p>系统频率响应的相位 $\nless H\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 也是不唯一的，可以加上 $2 \pi$ 的任意整数倍。<strong>主值相位</strong>记作 $-\pi&lt;\operatorname{ARG}\left[H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right] \leqslant \pi$，它可能是一个不连续的 $\omega$ 的函数。<strong>连续相位</strong>记作 $\arg \left[H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right]$。相频特性还可以用群延迟来等价地表示，<strong>群延迟</strong>定义成<strong>连续相位函数</strong>对 $\omega$ 的导数的负值，即</p>
+<script type="math/tex; mode=display">
+\operatorname{grd}\left[H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right]=-\frac{\mathrm{d}}{\mathrm{d} \omega}\left\{\arg \left[H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right]\right\}</script><h3 id="物理意义"><a href="#物理意义" class="headerlink" title="物理意义"></a>物理意义</h3><p>LTI 系统的输入与输出信号间满足卷积关系。根据傅里叶变换的卷积性质有</p>
+<script type="math/tex; mode=display">
+Y\left(\mathrm{e}^{\mathrm{j} \omega}\right)=X\left(\mathrm{e}^{\mathrm{j} \omega}\right) H\left(\mathrm{e}^{\mathrm{j} \omega}\right) \\</script><p>所以</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\left|Y\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|=\left|X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right| \cdot \left| H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right| \\
+\nless Y\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\nless X\left(\mathrm{e}^{\mathrm{j} \omega}\right)+\nless H\left(\mathrm{e}^{\mathrm{j} \omega}\right)
+\end{array}</script><p>所以幅度响应和相位响应分别表示系统对输入信号幅度和相位的影响。如果这种影响是我们所不需要的，则我们往往称这种影响为<strong>幅度失真</strong>和<strong>相位失真</strong>。</p>
+<ul>
+<li>在 $-\pi&lt;\omega \leqslant \pi$ 整个区间幅度响应为<strong>常数</strong>的系统是没有幅度失真的系统，并被定义为<strong>全通系统</strong></li>
+<li>在 $-\pi&lt;\omega \leqslant \pi$ 整个区间相位响应<strong>全为零</strong>的系统是没有相位失真的系统，我们称<strong>零相位系统</strong></li>
+<li>相位是 $\omega$ 的<strong>线性函数</strong>的系统称为<strong>线性相位系统</strong></li>
+</ul>
+<h3 id="特征函数"><a href="#特征函数" class="headerlink" title="特征函数"></a>特征函数</h3><p>对于 LTI 系统，时域复指数信号 $x[n]=\mathrm{e}^{j\omega_0 n}$ 可以构成相当广泛的一类有用信号，而且 LTI 系统对 $\mathrm{e}^{j\omega_0 n}$ 的响应可以方便地得到。一个 LTI 系统对复指数信号 $\mathrm{e}^{j\omega_0 n}$ 的响应 $y[n]$ 仍是<strong>同一个复指数信号</strong>，所不同的是<strong>幅度</strong>上产生了变化，即</p>
+<script type="math/tex; mode=display">
+y[n]=H(\mathrm{e}^{j\omega\_0}) \mathrm{e}^{j\omega\_0 n}</script><p>一般说来，一个信号，若系统对该信号的输出仅是一个常数（可能是复数）乘以输入，则称该信号为系统的<strong>特征函数</strong>，而幅度因子称为系统的<strong>特征值</strong>。</p>
+<h3 id="稳态与暂态"><a href="#稳态与暂态" class="headerlink" title="稳态与暂态"></a>稳态与暂态</h3><p>（Todo）</p>
+<h3 id="理想选频滤波器"><a href="#理想选频滤波器" class="headerlink" title="理想选频滤波器"></a>理想选频滤波器</h3><ul>
+<li><strong>频率选择性滤波器</strong>，简称<strong>选频滤波器</strong>，是指抑制输入信号中的某些频率成分，而让某些频率成分通过的系统。</li>
+<li><strong>理想选频滤波器</strong>是指幅度响应在某些频率范围（称<strong>通带</strong>）为 $1$，而其余频率范围（称<strong>阻带</strong>）为 $0$ 的零相位系统。</li>
+</ul>
+<h4 id="理想低通滤波器"><a href="#理想低通滤波器" class="headerlink" title="理想低通滤波器"></a>理想低通滤波器</h4><p>选取信号的低频成分，而阻止高频成分通过</p>
+<script type="math/tex; mode=display">
+H_{\mathrm{lp}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left\{\begin{array}{ll}
+1,& |\omega|<\omega_{\mathrm{c}} \\
+0,& \omega_{\mathrm{c}}<|\omega| \leqslant \pi
+\end{array}\right.</script><p>其中 $\omega_{c}$ 是<strong>截止频率</strong>。<br>理想低通滤波器的单位脉冲响应是</p>
+<script type="math/tex; mode=display">
+h_{1 \mathrm{p}}[n]=\frac{\sin \left(\omega_{c} n\right)}{\pi n},-\infty<n<\infty</script><h4 id="理想高通滤波器"><a href="#理想高通滤波器" class="headerlink" title="理想高通滤波器"></a>理想高通滤波器</h4><p>频率响应是</p>
+<script type="math/tex; mode=display">
+H_{\mathrm{hp}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left\{\begin{array}{ll}
+0,& |\omega|<\omega_{c} \\
+1,& \omega_{\mathrm{c}}<|\omega| \leqslant \pi
+\end{array}\right.</script><p>其中 $\omega_{c}$ 是<strong>截止频率</strong>。</p>
+<script type="math/tex; mode=display">
+h_{\mathrm{hp}}[n]=\delta[n]-\frac{\sin \left(\omega_{\mathrm{c}} n\right)}{\pi n},\quad-\infty<n<\infty</script><h4 id="理想带通滤波器"><a href="#理想带通滤波器" class="headerlink" title="理想带通滤波器"></a>理想带通滤波器</h4><p>频率响应是</p>
+<script type="math/tex; mode=display">
+H_{\mathrm{bp}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left\{\begin{array}{ll}
+0,& |\omega|<\omega_{\mathrm{a}} \\
+1,& \omega_{\mathrm{a}}<|\omega|<\omega_{\mathrm{b}} \\
+0,& \omega_{\mathrm{b}}<|\omega| \leqslant \pi
+\end{array}\right.</script><p>其中 $\omega_{\mathrm{a}}$ 和 $\omega_{\mathrm{b}}$ 分别是<strong>下截止频率</strong>和<strong>上截止频率</strong>。</p>
+<script type="math/tex; mode=display">
+h_{\mathrm{bp}}[n]=\frac{\sin \left(\omega_{\mathrm{b}} n\right)}{\pi n}-\frac{\sin \left(\omega_{\mathrm{a}} n\right)}{\pi n},\quad-\infty<n<\infty</script><h4 id="理想带阻滤波器"><a href="#理想带阻滤波器" class="headerlink" title="理想带阻滤波器"></a>理想带阻滤波器</h4><p>频率响应是</p>
+<script type="math/tex; mode=display">
+H_{\mathrm{bs}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left\{\begin{array}{ll}
+1,& |\omega|<\omega_{\mathrm{a}} \\
+0,& \omega_{\mathrm{a}}<|\omega|<\omega_{\mathrm{b}} \\
+1,& \omega_{\mathrm{b}}<|\omega| \leqslant \pi
+\end{array}\right.</script><script type="math/tex; mode=display">
+h_{\mathrm{bs}}[n]=\delta[n]-\frac{\sin \left(\omega_{\mathrm{b}} n\right)}{\pi n}+\frac{\sin \left(\omega_{\mathrm{a}} n\right)}{\pi n},-\infty<n<\infty</script><h4 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h4><p>四种理想选频滤波器的频率响应如下图所示。在截止频率处，频率响应无定义，是一个有限值。</p>
+<p><img src="https://s2.loli.net/2023/10/15/A41w52mzfaoGeYP.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>四种滤波器的单位脉冲响应都是双边序列，且 $z$ 变换不收敛，因而不能用有限的计算（递推或非递推）来实现理想选频滤波器只能进行因果近似。</p>
+<h3 id="差分方程、系统函数和频率响应间的关系"><a href="#差分方程、系统函数和频率响应间的关系" class="headerlink" title="差分方程、系统函数和频率响应间的关系"></a>差分方程、系统函数和频率响应间的关系</h3><p>表示 LTI 离散时间系统的常系数线性差分方程的一般形式为</p>
+<script type="math/tex; mode=display">
+\sum_{k=0}^{N} a_{k} y[n-k]=\sum_{k=0}^{M} b_{k} x[n-k]</script><p>直接对上式两端取 z 变换，</p>
+<script type="math/tex; mode=display">
+H(z)=\frac{Y(z)}{X(z)}=\frac{\sum_{k=0}^{M} b_{k} z^{-k}}{\sum_{k=0}^{N} a_{k} z^{-k}}=\frac{B\left(z^{-1}\right)}{A\left(z^{-1}\right)}</script><ul>
+<li>狭义上，FIR 系统的差分方程没有递归，分母是常数<ul>
+<li>当然，实际上 FIR 系统的差分方程也可以有递归，此时系统函数的分母不是常数，但是分母是被分子消去的，也就是说极点被零点抵消</li>
+</ul>
+</li>
+<li>IIR 系统的差分方程一定有递归，$N\ne 0$，所以分母不为常数，即只能表示成有理分式。</li>
+<li>有一类特殊的 IIR 系统，其系统函数的分子为常数，即零点只在原点或 $\infty$，这种系统又称为<strong>全极点系统</strong>。</li>
+<li>方程和系统函数不是一一对应的，通过对系统函数增加相互抵消的零点和极点，可以构造出无穷多等效的差分方程表示。</li>
+</ul>
+<h3 id="有理系统函数的频率响应"><a href="#有理系统函数的频率响应" class="headerlink" title="有理系统函数的频率响应"></a>有理系统函数的频率响应</h3><p>如果 $H(z)$ 的收敛域包含单位圆 $|z|=1$，即系统稳定，则频率响应 $H\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 存在。单位圆上 $\left(z=\mathrm{e}^{\mathrm{j} \omega}\right)$ 的系统函数就是系统的频率响应，即</p>
+<script type="math/tex; mode=display">
+H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left.H(z)\right|_{z=\mathrm{e} ^{j \omega}}</script><p>具有实系数系统函数的全通 IIR 系统的一般形式：</p>
+<script type="math/tex; mode=display">
+H_{\mathrm{ap}}(z)=A \prod_{k=1}^{M_{r}} \frac{z^{-1}-d_{k}}{1-d_{k} z^{-1}} \prod_{k=1}^{M_{c}}\left(\frac{\left(z^{-1}-e_{k}^{*}\right)\left(z^{-1}-e_{k}\right)}{\left(1-e_{k} z^{-1}\right)\left(1-e_{k}^{*} z^{-1}\right)}\right)</script><p>其中</p>
+<ul>
+<li>$A$ 是正常数</li>
+<li>$d_{k}$ 为实数极点</li>
+<li>$1 / d_{k}$ 是实数零点</li>
+<li>$e_{k}$ 和 $e_{k}^{*}$ 是复数极点</li>
+<li><p>$1 / e_{k}$ 和 $1 / e_{k}^{*}$ 是复数零点</p>
+</li>
+<li><p>全通系统的零点和极点互为共轭倒数关系</p>
+</li>
+<li>全通 FIR 系统也满足零点和极点互为倒数的关系</li>
+<li>任何系统级联一个幅度响应为 1 的全通系统，将得到与之幅度响应完全相同的另外一个系统</li>
+<li>任意有理系统函数都能表示成最小相位系统和全通系统的级联，即<script type="math/tex; mode=display">
+H(z)=H_{\mathrm{min}}(z)H_{\mathrm{ap}}(z)</script></li>
+</ul>
+<h3 id="零极点图与频率响应"><a href="#零极点图与频率响应" class="headerlink" title="零极点图与频率响应"></a>零极点图与频率响应</h3><p>设 $H(z)$ 的收敛域包括单位圆，将有理系统函数式表示成两个 $z$ 的多项式之比，并因式分解成</p>
+<script type="math/tex; mode=display">
+H(z)=z^{N-M} \frac{b_{0}}{a_{0}} \frac{\prod_{k=1}^{M}\left(z-c_{k}\right)}{\prod_{k=1}^{N}\left(z-d_{k}\right)}</script><ul>
+<li>其中 $c_{k}(k=1,2,\cdots,M)$ 和 $d_{k}(k=1,2,\cdots,N)$ 分别是<strong>非零零点</strong>和<strong>非零极点</strong>。</li>
+<li>如果 $N&gt;M$，则还有 $(N-M)$ 阶零点 $z=0$</li>
+<li>如果 $N&lt;M$，则还有 $(M-N)$ 阶极点 $z=0$。</li>
+</ul>
+<p>于是有</p>
+<script type="math/tex; mode=display">
+H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left.H(z)\right|_{z=\mathrm{e} ^{j\omega }}=\frac{b_{0}}{a_{0}} \mathrm{e}^{-\mathrm{j} \omega(M-N)} \frac{\prod_{k=1}^{M}\left(\mathrm{e}^{\mathrm{j} \omega}-c_{k}\right)}{\prod_{k=1}^{N}\left(\mathrm{e}^{\mathrm{j} \omega}-d_{k}\right)}</script><p>上式中</p>
+<ul>
+<li>分子的因子 $\left(\mathrm{e}^{\mathrm{j} \omega}-c_{k}\right)$ 是非零零点 $c_{k}$ 至单位圆上点 $\mathrm{e}^{\mathrm{j} \omega}$ 的矢量，称为<strong>零点矢量</strong></li>
+<li>分母因子 $\left(\mathrm{e}^{\mathrm{j} \omega}-d_{k}\right)$ 是非零极点 $d_{k}$ 至单位圆上点 $\mathrm{e}^{\mathrm{j} \omega}$ 的矢量，称为<strong>极点矢量</strong>。</li>
+</ul>
+<p>求出幅度响应和相位响应</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\left|H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|=\left|\frac{b_{0}}{a_{0}}\right| \frac{\prod_{k=1}^{M}\left|\mathrm{e}^{\mathrm{j} \omega}-c_{k}\right|}{\prod_{k=1}^{N}\left|\mathrm{e}^{\mathrm{j} \omega}-d_{k}\right|} \\
+\arg \left[H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right]=\arg \left[\frac{b_{0}}{a_{0}}\right]+\sum_{k=1}^{M} \arg \left[\mathrm{e}^{\mathrm{j} \omega}-c_{k}\right]-\sum_{k=1}^{N} \arg \left[\mathrm{e}^{\mathrm{j} \omega}-d_{k}\right]+(N-M) \omega \\
+\end{array}</script><p><img src="https://s2.loli.net/2023/10/20/w9uOv7VKWaTjQDe.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>从几何角度：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\left|H\left(\mathrm{e}^{\mathrm{j} \omega_{0}}\right)\right|=C \frac{L_{1}}{L_{2} L_{3}} \\
+\arg \left[H\left(\mathrm{e}^{\mathrm{j} \omega_{0}}\right)\right]=D+\phi_{1}-\phi_{2}-\phi_{3}+\omega_{0}
+\end{array}</script><p>结论：</p>
+<ul>
+<li>系统函数的零点和极点完全决定了系统的频率响应（常数 C 和 D 不影响频响的本质特征）</li>
+<li>其中原点处的零点或极点到单位圆的距离为 1，所以不影响幅度响应，但影响相位响应</li>
+<li>当单位圆上的点转到某个极点附近时，因为该极点矢量达到最短，所以幅度响应在该 $\omega$ 处出现极大值（峰值）。极点越靠近单位圆，峰值就越尖锐</li>
+<li>当极点处在单位圆上时，对应的 $\omega$ 的幅度响应为 $\infty$，这相当于在该频率处出现<strong>无耗谐振</strong></li>
+<li>当极点越出单位圆时，系统就处于不稳定状态，这是不希望出现的</li>
+<li>当单位圆上的点转到某个零点附近时，因为该零点矢量达到最短，所以幅度响应在该 $\omega$ 处出现极小值（谷点）。零点越靠近单位圆，谷点就越尖锐</li>
+<li>当零点处在单位圆上时，对应的 $\omega$ 的幅度响应为零</li>
+<li>零点可超出单位圆外，对稳定性没有影响</li>
+</ul>
+<h3 id="广义线性相位系统"><a href="#广义线性相位系统" class="headerlink" title="广义线性相位系统"></a>广义线性相位系统</h3><p>频率响应满足下式的系统，称为<strong>线性相位系统</strong>。</p>
+<script type="math/tex; mode=display">
+H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left|H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right| \mathrm{e}^{-\mathrm{j} \omega \alpha},\quad-\pi<\omega<\pi</script><p>其中幅度 $\left|H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|$ 是一个非负的 $\omega$ 的实数函数，$\alpha$ 是实数，相位是 $\omega$ 的线性函数，即</p>
+<script type="math/tex; mode=display">
+\arg \left[H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right]=-\omega \alpha,\quad-\pi<\omega<\pi</script><p>把线性相位系统的定义稍加推广，即<strong>广义线性相位系统</strong>的频率响应满足</p>
+<script type="math/tex; mode=display">
+H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=A\left(\mathrm{e}^{\mathrm{j} \omega}\right) \mathrm{e}^{-\mathrm{j} \omega \alpha+\mathrm{j} \beta},\quad-\pi<\omega<\pi</script><p>其中广义幅度 $A\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 是 $\omega$ 的实数函数，取值可以大于等于或小于零；$\alpha$ 和 $\beta$ 是实数；广义相位是 $\omega$ 的线性函数加上常数项，即</p>
+<script type="math/tex; mode=display">
+\phi(\omega)=-\omega \alpha+\beta,\quad-\pi<\omega<\pi</script><p>线性相位系统和广义线性相位系统都具有常数群延迟特性，即</p>
+<script type="math/tex; mode=display">
+\operatorname{grd}\left[H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right]=\alpha,\quad-\pi<\omega<\pi</script><p>所以线性相位系统和广义线性相位系统统称为<strong>常数群延迟系统</strong>。</p>
+<h3 id="广义线性相位系统的条件"><a href="#广义线性相位系统的条件" class="headerlink" title="广义线性相位系统的条件"></a>广义线性相位系统的条件</h3><p>广义线性相位系统的两个<strong>充分条件</strong>是：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\beta=0 \text { 或 } \pi \\
+2 \alpha=M=\text { 整数 } \\
+h[2 \alpha-n]=h[n]
+\end{array}\right.
+和
+\left\{\begin{array}{l}
+\beta=\pi / 2 \text { 或 } 3 \pi / 2 \\
+2 \alpha=M=\text { 整数 } \\
+h[2 \alpha-n]=-h[n]
+\end{array}\right.</script><p>上面的条件可以简化成：</p>
+<ul>
+<li>如果 $h[n]$ 相对于 $\alpha=M / 2$ 对称，则一定是广义线性相位系统。</li>
+<li>如果 $h[n]$ 相对于 $\alpha=M / 2$ 反对称，则一定是广义线性相位系统。</li>
+<li>两种情况下群延迟 $\alpha$ 都等于对称中心 $(M / 2)$</li>
+<li>当 $M$ 是偶数时，对称中心是整数</li>
+<li>当 $M$ 是奇数时，对称中心是整数加 $0.5$</li>
+</ul>
+<h3 id="因果广义线性相位-FIR-系统"><a href="#因果广义线性相位-FIR-系统" class="headerlink" title="因果广义线性相位 FIR 系统"></a>因果广义线性相位 FIR 系统</h3><h4 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h4><p>对于因果系统，单位脉冲响应 $h[n]=0$，$n&lt;0$。如果要使因果系统满足广义线性相位条件，则</p>
+<script type="math/tex; mode=display">
+h[n]=\left\{\begin{array}{ll} 
+\pm h[M-n],& 0 \leqslant n \leqslant M \\
+0,& \mathrm{其他}
+\end{array}\right.</script><p>所以因果广义线性相位系统是一个 FIR 系统，$h[n]$ 的长度是 $M+1$，对称中心是 $M / 2$。根据 $h[n]$ 的对称性和长度参数 $M$ 的奇偶性，我们将因果广义线性相位 FIR 系统分成 $4$ 类。</p>
+<ul>
+<li>第 Ⅰ 类： $h[n]=h[M-n]$，$M$ 是偶数；</li>
+<li>第 Ⅱ 类： $h[n]=h[M-n]$，$M$ 是奇数；</li>
+<li>第 Ⅲ 类： $h[n]=-h[M-n]$，$M$ 是偶数；</li>
+<li>第 Ⅳ 类： $h[n]=-h[M-n]$，$M$ 是奇数。</li>
+</ul>
+<h4 id="频率响应-1"><a href="#频率响应-1" class="headerlink" title="频率响应"></a>频率响应</h4><p>第 Ⅰ 类和第 Ⅱ 类系统的频率响应</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\mathrm{e}^{-\mathrm{j} \omega M / 2} \sum_{n=0}^{M} h[n] \cos \left[\left(\frac{M}{2}-n\right) \omega\right] \\
+\phi(\omega)=-\omega M / 2
+\end{array}</script><p>第 Ⅲ 和第 Ⅳ 类系统的频率响应为</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\mathrm{e}^{-\mathrm{j} \omega M / 2+\mathrm{j} \pi / 2} \sum_{n=0}^{M} h[n] \cos \left[\left(\frac{M}{2}-n\right) \omega-\frac{\pi}{2}\right] \\
+\phi(\omega)=-\omega M / 2+\pi / 2
+\end{array}</script><h4 id="零点特点"><a href="#零点特点" class="headerlink" title="零点特点"></a>零点特点</h4><p>对于满足因果广义线性相位 FIR 系统，当复数零点 $z_{0}$ 不在单位圆上时，一定同时存在互为共轭倒数的 $4$ 个零点 </p>
+<script type="math/tex; mode=display">
+z\_{0},z\_{0}^{*},1 / z\_{0},1 / z\_{0}^{*}</script><p>另外，$z= \pm 1$ 处是否有零点决定了广义线性相位 FIR 系统的应用场所，下面对 $4$ 种类型系统分别加以讨论。</p>
+<ul>
+<li>Ⅱ 类，一定有零点 $z=-1$</li>
+<li>Ⅲ 类，一定有零点 $z=1$ 和 $z=-1$</li>
+<li>Ⅳ 类，一定有零点 $z=1$</li>
+</ul>
+<h4 id="应用限制"><a href="#应用限制" class="headerlink" title="应用限制"></a>应用限制</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>低通</th>
+<th>高通</th>
+<th>带通</th>
+<th>带阻</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>第 Ⅰ 类</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>第 Ⅱ 类</td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>第 Ⅲ 类</td>
+<td>❌</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>第 Ⅳ 类</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="第五章-连续时间信号的采样"><a href="#第五章-连续时间信号的采样" class="headerlink" title="第五章 连续时间信号的采样"></a>第五章 连续时间信号的采样</h2>
             </div>
             <hr>
             <div>
@@ -877,9 +1150,9 @@ W_{N}^{-n l} \tilde{x}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \tilde{X}[k-l
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
-                    
                       <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
                     
                   </div>
                 
@@ -896,18 +1169,12 @@ W_{N}^{-n l} \tilde{x}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \tilde{X}[k-l
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/09/13/%E6%A8%A1%E6%8B%9F%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">模拟集成电路设计笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/04/20/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/">
-                        <span class="hidden-mobile">半导体器件原理笔记</span>
+                      <a href="/2023/09/13/%E6%95%B0%E5%AD%97%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">数字集成电路设计笔记</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
