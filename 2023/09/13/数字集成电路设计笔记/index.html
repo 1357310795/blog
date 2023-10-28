@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      4k 字
+      6.6k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      53
+      87
        分钟
     </span>
   
@@ -233,7 +233,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年10月15日 上午
+                  本文最后更新于：2023年10月28日 晚上
                 
               </p>
             
@@ -541,7 +541,14 @@ N M_{L}=V_{I L}
 <h3 id="密勒效应"><a href="#密勒效应" class="headerlink" title="密勒效应"></a>密勒效应</h3><p>如果一个电容器的两个端子出现相同但相反的电压波动，可以用一个对地电容器来代替，其值是原值的两倍。</p>
 <p><img src="https://s2.loli.net/2023/10/15/lruRs46QL8be7xj.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="动态特性：电容"><a href="#动态特性：电容" class="headerlink" title="动态特性：电容"></a>动态特性：电容</h3><p><img src="https://s2.loli.net/2023/10/15/XwfAVpjF7SWn6gH.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/10/15/B27RNJAonpy9FTV.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="动态特性：电阻"><a href="#动态特性：电阻" class="headerlink" title="动态特性：电阻"></a>动态特性：电阻</h3><p>MOS管的平均导通电阻</p>
+<script type="math/tex; mode=display">
+\begin{array}
+C_{all}=C_{gd1}+C_{gd2}+C_{db1}+C_{db2}+C_{g3}+C_{g4}+C_{w}\\
+C_{int}=C_{gd1}+C_{gd2}+C_{db1}+C_{db2}\\
+C_{ext}=C_{g3}+C_{g4}+C_{w} 或者 C_{L}\\
+C_{g}=C_{g3}+C_{g4}\\
+\end{array}</script><script type="math/tex; mode=display">
+C_{int}=\gamma C_{g}, \gamma\approx 1</script><h3 id="动态特性：电阻"><a href="#动态特性：电阻" class="headerlink" title="动态特性：电阻"></a>动态特性：电阻</h3><p>MOS管的平均导通电阻</p>
 <script type="math/tex; mode=display">
 R_{e q}=\frac{1}{V_{D D} / 2} \int_{V_{D D} / 2}^{V_{D D}} \frac{V}{I_{D S A T}(1+\lambda V)} d V \approx \frac{3}{4} \frac{V_{D D}}{I_{D S A T}}\left(1-\frac{7}{9} \lambda V_{D D}\right)</script><h3 id="动态特性：传播延时"><a href="#动态特性：传播延时" class="headerlink" title="动态特性：传播延时"></a>动态特性：传播延时</h3><p>由高至低翻转的传播延时</p>
 <script type="math/tex; mode=display">
@@ -562,6 +569,357 @@ t_{p}=\frac{t_{p H L}+t_{p L H}}{2}=0.69 C_{L}\left(\frac{R_{e q n}+R_{e q p}}{2
 <li>上升下降延迟相同时，$\beta=\gamma\approx 2.4$</li>
 <li>阈值电压是 $V_{DD}$ 的一半时，$\beta=3.5$</li>
 </ul>
+<h3 id="反相器链"><a href="#反相器链" class="headerlink" title="反相器链"></a>反相器链</h3><h4 id="尺寸系数"><a href="#尺寸系数" class="headerlink" title="尺寸系数"></a>尺寸系数</h4><ul>
+<li>尺寸系数 $S$ 把反相器的晶体管尺寸与一个参考门（通常是一个最小尺寸的反相器）的晶体管尺寸联系起来。</li>
+<li>本征电容 $C_{\mathrm{int}}=S C_{\mathrm{iref}}$ </li>
+<li>电阻 $R_{e q}=R_{\mathrm{ref}} / S$ </li>
+<li>反相器的本征延时 $t_{p 0}$ 与门的尺寸无关，而只取决于工艺及反相器的版图</li>
+<li>使 $S$ 无穷大将达到最大可能的性能改善，因为这消除了任何外部负载的影响，使延时减小到只有本征延时值。当然尺寸并不能做到无限大。</li>
+</ul>
+<h4 id="传播延时-1"><a href="#传播延时-1" class="headerlink" title="传播延时"></a>传播延时</h4><script type="math/tex; mode=display">
+\begin{aligned}
+t_{p} &=0.69R_{eq}C_{int}\left(1+\frac{C_{ext}}{C_{int}}\right)\\
+&=t_{p0}\left(1+\frac{C_{ext}}{SC_{int0}}\right)
+\end{aligned}</script><h4 id="N级级联最佳方案"><a href="#N级级联最佳方案" class="headerlink" title="N级级联最佳方案"></a>N级级联最佳方案</h4><script type="math/tex; mode=display">
+\begin{array}{l}
+C_{N+1}=C_{L}\\
+\frac{C_{j}}{C_{j-1}}=\frac{C_{j+1}}{C_{j}}=f, j=2 \ldots \ldots N \\
+\end{array}</script><script type="math/tex; mode=display">
+t_{p \min}=N t_{p 0}\left(1+\frac{f}{\gamma}\right)=N t_{p 0}\left(1+\frac{\sqrt[N]{C_{L} / C_{1}}}{\gamma}\right) \\</script><h4 id="最佳级数N"><a href="#最佳级数N" class="headerlink" title="最佳级数N"></a>最佳级数N</h4><script type="math/tex; mode=display">
+\text { for } \gamma=1, \quad f_{o p t}=3.6, \quad N=\ln F / \ln 3.6</script><h4 id="上升下降时间修正"><a href="#上升下降时间修正" class="headerlink" title="上升下降时间修正"></a>上升下降时间修正</h4><p>（Todo）</p>
+<h3 id="能量"><a href="#能量" class="headerlink" title="能量"></a>能量</h3><p><img src="https://s2.loli.net/2023/10/21/n7wp4BYAmqisfkc.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/10/21/Y4iL5HyjQMmoS98.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/10/21/TzkJjrsp79Vugh8.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/10/21/T8PYhH3Ox6Z4mJD.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+E_{V d d} \approx \int_{0}^{\infty} C V_{d d} \frac{d V_{o u t}}{d t} d t=\int_{0}^{V_{d d}} C V_{d d} d V_{o u t}=C V_{d d}^{2} \\
+E_{C}=\int_{0}^{V d d} C V_{\text {out }} \frac{d V_{\text {out }}}{d t} d t=\frac{1}{2} C V_{d d}^{2} \\
+\end{array}</script><script type="math/tex; mode=display">
+P_{\text {dyn }}=C_{L} V_{D D}^{2} P_{0 \rightarrow 1} f \\</script><p>其中</p>
+<ul>
+<li>Capacitance $C_{L}$ 是扇出、导线长度、晶体管大小的函数</li>
+<li>Supply Voltage $V_{D D}$</li>
+<li>Activity factor $P_{0 \rightarrow 1}$ 是平均每个周期输出从0到1变化的次数</li>
+<li>Clock frequency $f$ </li>
+</ul>
+<h4 id="门电路的能量（Activity-factor）"><a href="#门电路的能量（Activity-factor）" class="headerlink" title="门电路的能量（Activity factor）"></a>门电路的能量（Activity factor）</h4><p>对于具体的门电路，也是考虑输出从 0 到 1 变化的频率，此时可假设输入信号是 $\{0,1\}$ 随机信号</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>门类型</th>
+<th>输入端口</th>
+<th>输出 0 的概率</th>
+<th>输出 1 的概率</th>
+<th>功耗</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>反相器</td>
+<td>$1$</td>
+<td>$1/2$</td>
+<td>$1/2$</td>
+<td>$\frac{1}{4}CV_{dd}^2f$</td>
+</tr>
+<tr>
+<td>与门</td>
+<td>$N$</td>
+<td>$1-\frac{1}{2^N}$</td>
+<td>$\frac{1}{2^N}$</td>
+<td>$\frac{2^N-1}{2^{N+1}}CV_{dd}^2f$</td>
+</tr>
+<tr>
+<td>与非门</td>
+<td>$N$</td>
+<td>$\frac{1}{2^N}$</td>
+<td>$1-\frac{1}{2^N}$</td>
+<td>$\frac{2^N-1}{4^{N}}CV_{dd}^2f$</td>
+</tr>
+<tr>
+<td>或门</td>
+<td>$N$</td>
+<td>$\frac{1}{2^N}$</td>
+<td>$1-\frac{1}{2^N}$</td>
+<td>$\frac{2^N-1}{4^{N}}CV_{dd}^2f$</td>
+</tr>
+<tr>
+<td>或非门</td>
+<td>$N$</td>
+<td>$1-\frac{1}{2^N}$</td>
+<td>$\frac{1}{2^N}$</td>
+<td>$\frac{2^N-1}{4^{N}}CV_{dd}^2f$</td>
+</tr>
+<tr>
+<td>异或门</td>
+<td>$N$</td>
+<td>$1/2$</td>
+<td>$1/2$</td>
+<td>$\frac{1}{4}CV_{dd}^2f$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="短路电流"><a href="#短路电流" class="headerlink" title="短路电流"></a>短路电流</h3><script type="math/tex; mode=display">
+\begin{array}{l}
+P_{s c-r / f}=\frac{V_{d d} \frac{1}{2} I_{\text {peak }} t_{s c}}{T}=\frac{1}{2} V_{d d} I_{\text {peak }} t_{s c} f \\
+t_{s c}=\frac{V_{D D}-2 V_{T}}{V_{D D}} t_{s} \approx \frac{V_{D D}-2 V_{T}}{V_{D D}} \times \frac{t_{r/f}}{0.8} \\
+I_{\text {peak }}=k_{n}^{\prime} \frac{V_{D D}}{2} \alpha_{o u t} \frac{V_{D D}}{2 \alpha_{\text {in }}}=k_{n}^{\prime} \frac{V_{D D}^{2}}{4} \frac{\alpha_{\text {out }}}{\alpha_{\text {in }}}
+\end{array}</script><h2 id="第四章-导线"><a href="#第四章-导线" class="headerlink" title="第四章 导线"></a>第四章 导线</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>集成电路的导线已形成了一个复杂的几何形体，它引起<strong>电容、电阻和电感</strong>等寄生参数效应。所有这三个寄生参数对于电路的特性都会有多方面的影响:</p>
+<ul>
+<li>它们都会使传播延时增加，或者说相应于性能的下降</li>
+<li>它们都会影响能耗和功率的分布</li>
+<li>它们都会引起额外的噪声来源，从而影响电路的可靠性</li>
+</ul>
+<p>完整的导线等效模型非常复杂，好在常常可以进行相当多的简化，包括以下几点：</p>
+<ul>
+<li>如果导线的<strong>电阻很大</strong>——例如截面很小的长铝导线的情形，或者外加信号的上升和下降时间很慢，那么<strong>电感的影响可以忽略</strong></li>
+<li>当导线<strong>很短</strong>，导线的截面很大，或者所采用的互连材料电阻率很低时，那么就可以采用<strong>只含电容的模型</strong></li>
+<li>当相邻导线间的<strong>间距很大</strong>，或者当导线只在一段很短的距离上靠近在一起的时候，导线相互间的<strong>电容可以被忽略</strong>，并且所有的寄生电容都可以模拟成接地电容</li>
+</ul>
+<h3 id="电容"><a href="#电容" class="headerlink" title="电容"></a>电容</h3><p>首先考虑一条简单的矩形导线放在半导体衬底之上，如下图所示。如果这条导线的宽度明显大于绝缘材料的厚度，那么就可以假设电场线垂直于电容极板，并且它的电容可以用平行板电容模型（平面电容）来模拟。在这些情况下该导线的总电容可以近似为：</p>
+<script type="math/tex; mode=display">
+C_{int}=\frac{\varepsilon_{di}}{t_{di}}WL</script><p>其中</p>
+<ul>
+<li>$W$ 和 $L$ 分别是导线的宽度和长度</li>
+<li>$t_{di}$ 和 $\varepsilon_{di}$ 分别表示绝缘层的厚度和它的介电常数，$\varepsilon_{di}=\varepsilon_{r}\varepsilon_{0}$</li>
+<li>因此 low-k 材料可以降低导线间电容</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/10/28/qIczp2ktsLAZrgC.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>但是，当宽度接近高度甚至小于高度的时候，这个模型不再准确，因为侧壁也会有电容。我们采用一个简化的模型把这个电容近似为两部分的和：一个<strong>平板电容</strong>由宽度为 $W$ 的一条导线与接地平面之间的垂直电场决定，以及一个<strong>边缘电容</strong>用一条直径等于互连线宽度 $H$ 的圆柱形导线来模拟。于是得到</p>
+<script type="math/tex; mode=display">
+C_{wire}=C_{pp}+C_{fringe}=\frac{W\varepsilon_{di}}{t_{di}}+\frac{2\pi\varepsilon_{di}}{\log(t_{di}/H)}</script><p><img src="https://s2.loli.net/2023/10/28/3ymBsZHSkRAUcdz.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>（当导线宽度越大，电容越接近平板电容的值）<br><img src="https://s2.loli.net/2023/10/28/7HXNyz3KvmcUdOn.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="0-25um-CMOS-工艺电容计算"><a href="#0-25um-CMOS-工艺电容计算" class="headerlink" title="0.25um CMOS 工艺电容计算"></a>0.25um CMOS 工艺电容计算</h4><p>平面电容：（行代表上极板，列代表下极板，单位：$\mathrm{aF}/\mathrm{\mu m}^2$）</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>场氧 Field</th>
+<th>有源区 Active</th>
+<th>多晶 Poly</th>
+<th>Al1</th>
+<th>Al2</th>
+<th>Al3</th>
+<th>Al4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多晶</td>
+<td>88</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Al1</td>
+<td>30</td>
+<td>41</td>
+<td>57</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Al2</td>
+<td>13</td>
+<td>15</td>
+<td>17</td>
+<td>36</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Al3</td>
+<td>8.9</td>
+<td>9.4</td>
+<td>10</td>
+<td>15</td>
+<td>41</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Al4</td>
+<td>6.5</td>
+<td>6.8</td>
+<td>7</td>
+<td>8.9</td>
+<td>15</td>
+<td>35</td>
+<td></td>
+</tr>
+<tr>
+<td>Al5</td>
+<td>5.2</td>
+<td>5.4</td>
+<td>5.4</td>
+<td>6.6</td>
+<td>9.1</td>
+<td>14</td>
+<td>38</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>边缘电容：（<strong>单侧面</strong>，单位：$\mathrm{aF}/\mathrm{\mu m}$）</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>场氧 Field</th>
+<th>有源区 Active</th>
+<th>多晶 Poly</th>
+<th>Al1</th>
+<th>Al2</th>
+<th>Al3</th>
+<th>Al4</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>多晶</td>
+<td>54</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Al1</td>
+<td>40</td>
+<td>47</td>
+<td>54</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Al2</td>
+<td>25</td>
+<td>27</td>
+<td>29</td>
+<td>45</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Al3</td>
+<td>18</td>
+<td>19</td>
+<td>20</td>
+<td>27</td>
+<td>49</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Al4</td>
+<td>14</td>
+<td>15</td>
+<td>15</td>
+<td>18</td>
+<td>27</td>
+<td>45</td>
+<td></td>
+</tr>
+<tr>
+<td>Al5</td>
+<td>12</td>
+<td>12</td>
+<td>12</td>
+<td>14</td>
+<td>19</td>
+<td>27</td>
+<td>52</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>线间电容：（单位：$\mathrm{aF}/\mathrm{\mu m}$）</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>多晶 Poly</th>
+<th>Al1</th>
+<th>Al2</th>
+<th>Al3</th>
+<th>Al4</th>
+<th>Al5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40</td>
+<td>95</td>
+<td>85</td>
+<td>85</td>
+<td>85</td>
+<td>115</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="电阻"><a href="#电阻" class="headerlink" title="电阻"></a>电阻</h3><h4 id="铜阻挡层（copper-barrier-layer）和凹陷效应（dishing-impact）"><a href="#铜阻挡层（copper-barrier-layer）和凹陷效应（dishing-impact）" class="headerlink" title="铜阻挡层（copper barrier layer）和凹陷效应（dishing impact）"></a>铜阻挡层（copper barrier layer）和凹陷效应（dishing impact）</h4><ul>
+<li>铜阻挡层（Copper Barrier Layer）：在CMOS工艺中，金属层通常使用铜（Cu）作为导电材料。由于铜与硅（Si）之间的反应性，为了防止铜渗透到硅基底中，需要在铜层和硅基底之间添加一层称为铜阻挡层的材料。铜阻挡层通常使用钨（W）或钨合金等材料，其具有低扩散率特性，可以有效防止铜与硅的反应。</li>
+<li>凹陷效应（Dishing Impact）：在CMOS工艺中，当进行金属填充时，如铜填充，可能会出现凹陷效应。凹陷效应指的是在金属填充过程中，由于电流密度分布的不均匀性，金属在一些区域会过度填充，而在其他区域则会出现凹陷。这种凹陷现象可能会导致金属层的不平坦性增加，从而对电路性能产生负面影响，如信号传输的不稳定性和电阻变化等。</li>
+</ul>
+<h4 id="方块电阻"><a href="#方块电阻" class="headerlink" title="方块电阻"></a>方块电阻</h4><p>由于对给定的工艺 $H$ 是一个常数，所以电阻定义式可以重新写成：</p>
+<script type="math/tex; mode=display">
+R=R_{\square} \frac{L}{W}</script><p>式中</p>
+<script type="math/tex; mode=display">
+R_{0}=\frac{p}{H}</script><p>为材料的薄层电阻（Sheet resistance），其单位为 $\Omega /\square$。这表明，一个方块导体的电阻与它的绝对尺寸无关，为了得到一条导线的电阻，只需将薄层电阻乘以该导线的 $L/W$。</p>
+<ul>
+<li>注意：如果给了图形，那么导线的90度转角处只能算半个square。</li>
+</ul>
+<h4 id="趋肤效应（skin-effect）"><a href="#趋肤效应（skin-effect）" class="headerlink" title="趋肤效应（skin effect）"></a>趋肤效应（skin effect）</h4><p>趋肤效应（skin effect）是指<strong>高频电流</strong>在导体中的分布不均匀现象。当电流频率增加时，电流会倾向于集中在<strong>导体表面附近</strong>，而在导体内部的电流密度会减小。</p>
+<p>趋肤效应会导致导体截面内部的有效导电区域减小，增加了电阻。定义趋肤深度</p>
+<script type="math/tex; mode=display">
+\delta = \sqrt{\frac{\rho}{\pi f \mu}}</script><p>截面积就从 $WH$ 变成了</p>
+<script type="math/tex; mode=display">
+2(W+L)\delta - 4\delta^2</script><h4 id="设计时优化"><a href="#设计时优化" class="headerlink" title="设计时优化"></a>设计时优化</h4><ul>
+<li>尽量不要缩放导线厚度（H） </li>
+<li>铜（Cu）或硅化物做导线（更好的电导率）</li>
+<li>低k材料（更低的电容）</li>
+<li>更多的互连层</li>
+<li>低层的薄密度</li>
+<li>宽间隔较高层</li>
+</ul>
+<h3 id="串扰（crosstalk）"><a href="#串扰（crosstalk）" class="headerlink" title="串扰（crosstalk）"></a>串扰（crosstalk）</h3><p>当导线 A 中的信号在 01 切换时，由于电容耦合（称为串扰），它往往会将邻近的导线 B 也带入其中。</p>
+<p>Y 覆盖在 X 上，</p>
+<script type="math/tex; mode=display">
+\Delta V_{Y}=\frac{C_{XY}\Delta V_{X}}{C_{Y}+C_{XY}}</script><p>其中<br>$C_{XY}$ 是 X 和 Y 的层间平面电容，$C_{Y}$ 是 Y 对衬底的层间平面电容</p>
+<p>同层时，$C_{adj}$ 还需要一个系数 MFC，表示它与它相邻的线之间的变化差别。</p>
+<h4 id="aggressor-victim模型"><a href="#aggressor-victim模型" class="headerlink" title="aggressor-victim模型"></a>aggressor-victim模型</h4><p>对于 floating line，电压串扰同上公式</p>
+<script type="math/tex; mode=display">
+\Delta V_{\text {victim }}=\frac{C_{a d j}}{C_{g n d-v}+C_{a d j}} \Delta V_{a g g r e s s o r}</script><p><img src="https://s2.loli.net/2023/10/28/kHyjLiMoOcdJN7r.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>对于 driving line，需要加个修正因子 $\frac{1}{1+\kappa}$</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\Delta V_{\text {victim }}=\frac{C_{a d j}}{C_{g n d-v}+C_{a d j}} \frac{1}{1+\kappa} \Delta V_{a g g r e s s o r} \\
+\kappa=\frac{\tau_{a g g r e s s o r}}{\tau_{\text {victim }}}=\frac{R_{a g g r e s s o r}\left(C_{g n d-a}+C_{a d j}\right)}{R_{\text {victim }}\left(\left(C_{g n d-v}+C_{a d j}\right)\right.}
+\end{array}</script><p><img src="https://s2.loli.net/2023/10/28/qjABGDYTw2hmdrM.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="design-tips"><a href="#design-tips" class="headerlink" title="design tips"></a>design tips</h4><ul>
+<li>避免悬空节点和悬空线（$\kappa=0$）</li>
+<li>两条线不要并排走太长（$C_{adj}$ 过大）</li>
+<li>增加上升/下降时间能缓解串扰</li>
+<li>使用差分信号</li>
+<li>使用屏蔽层（两根信号之间加地线）</li>
+<li>相邻两层信号纵横交错放置</li>
+<li>对 aggressor 加反相器，使得串扰能够抵消</li>
+<li>差分信号线时不时交换个位置，使得串扰能够抵消</li>
+</ul>
 
             </div>
             <hr>
@@ -581,9 +939,9 @@ t_{p}=\frac{t_{p H L}+t_{p L H}}{2}=0.69 C_{L}\left(\frac{R_{e q n}+R_{e q p}}{2
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
-                    
                       <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
                     
                   </div>
                 
@@ -595,29 +953,6 @@ t_{p}=\frac{t_{p H L}+t_{p L H}}{2}=0.69 C_{L}\left(\frac{R_{e q n}+R_{e q p}}{2
                   
                 </p>
               
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2023/09/13/%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%E7%AC%94%E8%AE%B0/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数字信号处理笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2023/09/13/%E6%A8%A1%E6%8B%9F%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/">
-                        <span class="hidden-mobile">模拟集成电路设计笔记</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 

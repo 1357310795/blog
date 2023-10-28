@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      2.1k 字
+      3k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      32
+      40
        分钟
     </span>
   
@@ -233,7 +233,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年10月7日 上午
+                  本文最后更新于：2023年10月28日 晚上
                 
               </p>
             
@@ -319,53 +319,144 @@ C_{s b}=\frac{C_{s b 0}}{\sqrt{1+\frac{V_{S B}}{\psi_{0}}}} \quad C_{d b}=\frac{
 <h4 id="简化模型"><a href="#简化模型" class="headerlink" title="简化模型"></a>简化模型</h4><p><img src="https://s2.loli.net/2023/10/05/ezrMQSpKZWA6FLo.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <script type="math/tex; mode=display">
 i_{ds}=g_m\cdot v_{gs}+g_{mb}\cdot v_{bs}+\frac{1}{r_o}\cdot v_{ds}</script><h4 id="完整模型"><a href="#完整模型" class="headerlink" title="完整模型"></a>完整模型</h4><p><img src="https://s2.loli.net/2023/10/04/MOJuqhY2Xm5fzji.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h2 id="单级放大器"><a href="#单级放大器" class="headerlink" title="单级放大器"></a>单级放大器</h2><h3 id="共源放大器"><a href="#共源放大器" class="headerlink" title="共源放大器"></a>共源放大器</h3><p>共源（CS）放大器；输入应用于栅极(G)，输出取自漏极(D)，源极(S)是输入和输出的共同参考点（小信号共地）</p>
-<p><img src="https://s2.loli.net/2023/10/05/HQBGtgey65LUrIO.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="接电阻的共源放大器"><a href="#接电阻的共源放大器" class="headerlink" title="接电阻的共源放大器"></a>接电阻的共源放大器</h3><ul>
-<li>电阻负载具有有限阻抗，从而降低了小信号增益</li>
-<li>难以制造物理尺寸合理的大型电阻器</li>
-<li>难以制造具有严格控制值的电阻器（用于精确增益）</li>
+<h2 id="单级放大器"><a href="#单级放大器" class="headerlink" title="单级放大器"></a>单级放大器</h2><div class="note note-primary">
+            <p>这可能是这门课最基础也是最重要的一节了。然而 Razavi 的教材实在是有些抽象，跳跃性比较强。PPT 内容全面，但是仍有不少坑与细节问题。故此节打算自己写，不照抄 PPT 和课本了。</p>
+          </div>
+<h3 id="放大的原理"><a href="#放大的原理" class="headerlink" title="放大的原理"></a>放大的原理</h3><ul>
+<li>模电里就学过，放大是针对小信号而言的</li>
+<li>MOSFET工作在某个直流稳态，然后把小信号叠加到输入上，输出也会发生变动</li>
+<li>由于小信号很小，变动在整个系统的输入输出曲线上只占很小一部分，因此可以看成在这一点的切线上变动</li>
+<li>如果切线斜率大于1，那么输入变化x，输出可能变化2x，这就实现了放大</li>
+<li>显然小信号必须足够小，否则就不再是线性的了</li>
+<li>使用MOSFET实现时，在理论分析中，小信号等效电路中的受控电流源就是放大的核心组件</li>
 </ul>
-<p><img src="https://s2.loli.net/2023/10/05/81Dr2ULsW4OY7B3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="共源放大器"><a href="#共源放大器" class="headerlink" title="共源放大器"></a>共源放大器</h3><p>共源（CS）放大器；输入应用于栅极(G)，输出取自漏极(D)，源极(S)是输入和输出的共同参考点（小信号共地）</p>
+<p><img src="https://s2.loli.net/2023/10/05/HQBGtgey65LUrIO.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>↑注意 Razavi 的这个图画得很糟糕，这里的 $V_{in}$ 应该是包含了大信号和小信号两部分的。</p>
 <p>小信号等效电路中：</p>
 <ul>
 <li>跨导<script type="math/tex; mode=display">
 g_{m}=\mu_{n} C_{o x} \frac{W}{L}\left(V_{G S}-V_{t h}\right)=\sqrt{\mu_{n} C_{o x} \frac{W}{L} 2 I_{D}}=\frac{2 I_{D}}{V_{G S}-V_{t h}}</script></li>
 <li>输出电阻<script type="math/tex; mode=display">
 r_{o}=\frac{1}{\lambda I_{D}}=\frac{V_{E} L}{I_{D}}</script></li>
-<li>电压增益<script type="math/tex; mode=display">
-A_{v}=\frac{V_{\text {out }}}{\boldsymbol{V}_{\text {in }}}=G_{m}\left(Z_{\text {out }} \| Z_{\text {load }}\right)=-g_{m}\left(r_{o} \| R_{D}\right)=-g_{m} \frac{r_{o} R_{D}}{r_{O}+R_{D}}</script></li>
 </ul>
-<h3 id="接线性区MOSFET的共源放大器"><a href="#接线性区MOSFET的共源放大器" class="headerlink" title="接线性区MOSFET的共源放大器"></a>接线性区MOSFET的共源放大器</h3><p><img src="https://s2.loli.net/2023/10/05/Qn5XZGfz38Iq7cA.png" srcset="/img/loading.gif" lazyload alt=""><br>线性MOSFET相当于电阻</p>
-<p>参数</p>
+<p>在接下去的分析中，我们将 CS 放大器的 $V_{out}$ 和地作为含源一端口网络的两个端。</p>
+<p>使用诺顿定理，可以用一个电流源与一个电阻并联组合来等效。由于小信号电路都是线性电路，且输入小信号为 0 时输出也为 0，不难得出结论：可以把诺顿等效电流源当成受控电流源，与 $V_{in}$ 成正比例关系。</p>
+<p>于是定义受控电流源的系数为等效跨导 $G_{m}$，电阻为输出阻抗 $Z_{out}$</p>
+<p><img src="https://s2.loli.net/2023/10/27/qgx54MlGoFDeJH9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="接电阻的共源放大器"><a href="#接电阻的共源放大器" class="headerlink" title="接电阻的共源放大器"></a>接电阻的共源放大器</h3><p><img src="https://s2.loli.net/2023/10/05/81Dr2ULsW4OY7B3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>等效跨导<script type="math/tex; mode=display">
+G_m=-g_{m1}</script></li>
+<li>输出阻抗<script type="math/tex; mode=display">
+R_{out}=r_{o1}//R_{D}</script></li>
+<li>电压增益<script type="math/tex; mode=display">
+A_{v}=-g_{m1}\left(r_{o1} // R_{D}\right)</script></li>
+</ul>
+<p>Insights：</p>
+<ul>
+<li>电阻负载具有有限阻抗，从而降低了小信号增益</li>
+<li>难以制造物理尺寸合理的大型电阻器</li>
+<li>难以制造具有严格控制值的电阻器（用于精确增益）</li>
+</ul>
+<h3 id="接深三极管区MOSFET的共源放大器（不常用）"><a href="#接深三极管区MOSFET的共源放大器（不常用）" class="headerlink" title="接深三极管区MOSFET的共源放大器（不常用）"></a>接深三极管区MOSFET的共源放大器（不常用）</h3><p><img src="https://s2.loli.net/2023/10/27/byvVUZn3uOML5C6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>这个时候小信号模型失效了，但是 M2 可以直接看成电阻，</p>
 <script type="math/tex; mode=display">
-\begin{array}{c}
-g_{m}=\mu_{n} C_{o x} \frac{W}{L}\left(V_{G S}-V_{t h}\right)=\sqrt{\mu_{n} C_{o x} \frac{W}{L} 2 I_{D}}=\frac{2 I_{D}}{V_{G S}-V_{t h}} \\
-r_{o}=\frac{1}{\lambda I_{D}}=\frac{V_{E} L}{I_{D}} \\
-R_{\text {on2 } }=\frac{1}{\mu_{p} C_{o x}(W / L)_{2}\left(V_{D D}-V_{b}-\left|V_{\text {thp }}\right|\right)} \\
-A_{v}=\frac{V_{\text {out }}}{V_{\text {in }}}=G_{m}\left(Z_{\text {out }} \| Z_{\text {load }}\right)=-g_{m}\left(r_{o} \| R_{\text {on2 } }\right)=-g_{m} \frac{r_{o} R_{\text {on2 } }}{r_{o}+R_{\text {on2 } }}
-\end{array}</script><h3 id="接饱和区MOSFET的共源放大器"><a href="#接饱和区MOSFET的共源放大器" class="headerlink" title="接饱和区MOSFET的共源放大器"></a>接饱和区MOSFET的共源放大器</h3><p><img src="https://s2.loli.net/2023/10/05/cdXVUPope2hIyYW.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>从 $V_{out}$ 向上看，饱和的MOSFET也相当于一个电阻：</p>
+R_{\text {on2 } }=\frac{1}{\mu_{p} C_{o x}(W / L)_{2}\left(V_{D D}-V_{b}-\left|V_{\text {thp }}\right|\right)}</script><ul>
+<li>等效跨导<script type="math/tex; mode=display">
+G_m=-g_{m1}</script></li>
+<li>输出阻抗<script type="math/tex; mode=display">
+R_{out}=r_{o1}//R_{on2}</script></li>
+<li>电压增益<script type="math/tex; mode=display">
+A_{v}=-g_{m1}\left(r_{o1} // R_{on2}\right)</script></li>
+</ul>
+<h3 id="接饱和区MOSFET的共源放大器"><a href="#接饱和区MOSFET的共源放大器" class="headerlink" title="接饱和区MOSFET的共源放大器"></a>接饱和区MOSFET的共源放大器</h3><p><img src="https://s2.loli.net/2023/10/27/WfVlTU5CFYOMDs3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>M2 在饱和区，理论上 $I_{D}$ 应该是关于 $V_{DS}$ 的常数函数，也就是电流始终不变，相当于一个电流源。但是由于沟长调制，$I_{D}$ 随 $V_{DS}$ 缓慢增加，因此等效小信号模型中还是存在一个电阻 $r_{o2}$</p>
+<p>由于 $V_2$ 两端都是 DC 电压，于是在小信号模型中都是接地，$V_2=0$，受控电流源可以直接去掉。</p>
+<ul>
+<li>等效跨导<script type="math/tex; mode=display">
+G_m=-g_{m1}</script></li>
+<li>输出阻抗<script type="math/tex; mode=display">
+R_{out}=r_{o1}//r_{o2}</script></li>
+<li>电压增益<script type="math/tex; mode=display">
+A_{v}=-g_{m1}\left(r_{o1} // r_{o2}\right)</script></li>
+</ul>
+<h3 id="接类二极管MOSFET的共源放大器"><a href="#接类二极管MOSFET的共源放大器" class="headerlink" title="接类二极管MOSFET的共源放大器"></a>接类二极管MOSFET的共源放大器</h3><p><img src="https://s2.loli.net/2023/10/05/cdXVUPope2hIyYW.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>先考虑上图，等效小信号模型已经画出。注意 M2 是 NMOS 的情况，由于不是共源解法，所以需要考虑体偏效应。</p>
+<ul>
+<li>等效跨导<script type="math/tex; mode=display">
+G_m=-g_{m1}</script></li>
+<li>输出阻抗<script type="math/tex; mode=display">
+R_{out}=r_{o1}//\left( \frac{1}{g_{m2}+g_{mb2}} // r_{o2}\right)</script></li>
+<li>电压增益<script type="math/tex; mode=display">
+A_{v}=-g_{m1}\left(r_{o1}//\left( \frac{1}{g_{m2}+g_{mb2}} // r_{o2}\right)\right)</script></li>
+</ul>
+<p>如果我们把这种二极管接法的 MOSFET 单独拿出来看，<strong>忽略衬底偏置效应</strong>，画出小信号模型<br><img src="https://s2.loli.net/2023/10/27/JXVSdyFoDu4BI5M.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>稍加计算可得这个 MOSFET 等效为一个电阻，阻抗为</p>
 <script type="math/tex; mode=display">
-r_{D} =\left(\frac{1}{g_{m 2}+g_{m b 2}}\right) \| r_{o 2} \approx \frac{1}{g_{m 2}+g_{m b 2}}</script><p>于是 NMOS 的电压增益</p>
+\frac{1}{g_{m}} // r_{o}</script><p>（如果有衬底偏置就不能这么玩）</p>
+<h3 id="接电流源的共源放大器"><a href="#接电流源的共源放大器" class="headerlink" title="接电流源的共源放大器"></a>接电流源的共源放大器</h3><p><img src="https://s2.loli.net/2023/10/05/8lcebATam5sqIdv.png" srcset="/img/loading.gif" lazyload alt=""><br>注意在交流通路中，电流源是断路。这个其实就相当于接电阻的 CS，但是电阻是无穷大。</p>
+<ul>
+<li>等效跨导<script type="math/tex; mode=display">
+G_m=-g_{m1}</script></li>
+<li>输出阻抗<script type="math/tex; mode=display">
+R_{out}=r_{o1}</script></li>
+<li>电压增益<script type="math/tex; mode=display">
+A_{v}=-g_{m1}r_{o1}</script></li>
+</ul>
+<h3 id="像反相器的共源放大器"><a href="#像反相器的共源放大器" class="headerlink" title="像反相器的共源放大器"></a>像反相器的共源放大器</h3><p><img src="https://s2.loli.net/2023/10/05/LEc79pMWUQ6qz1e.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>不多说，暴算</p>
+<ul>
+<li>等效跨导<script type="math/tex; mode=display">
+G_m=-g_{m1}-g_{m2}</script></li>
+<li>输出阻抗<script type="math/tex; mode=display">
+R_{out}=r_{o1}//r_{o2}</script></li>
+<li>电压增益<script type="math/tex; mode=display">
+A_{v}=-\left(g_{m1}+g_{m2}\right)\left(r_{o1} // r_{o2}\right)</script></li>
+</ul>
+<h3 id="带源衰减的共源放大器"><a href="#带源衰减的共源放大器" class="headerlink" title="带源衰减的共源放大器"></a>带源衰减的共源放大器</h3><ul>
+<li>如果输入信号超出输入范围，工作点可能会偏离原始/所需的直流偏置点太远，从而离开所需的饱和区域并产生失真</li>
+<li>源衰减：在源和地之间插入阻抗（这是一个负反馈！）以扩展输入范围</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/10/05/OdSQhRk8jLJBnDK.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/10/05/hkUc9CXtHDiVsZT.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>如右上图，让输出接地，计算跨导</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-A_{v} & =\frac{V_{\text {out }}}{V_{\text {in }}}=G_{m}\left(Z_{\text {out }} \| Z_{\text {load }}\right)=-g_{m 1}\left(r_{o} \| r_{D}\right) \approx-g_{m 1} r_{D} \\
-& \approx-\frac{g_{m 1}}{g_{m 2}+g_{m b 2}}
-\end{aligned}</script><p>PMOS 是共源接法，没有体偏效应，电压增益</p>
+G_{m}=\frac{I_{\text {out }}}{V_{\text {in }}}=\frac{-g_{m} r_{o}}{R_{S}+\left[1+\left(g_{m}+g_{m b}\right) R_{S}\right] r_{o}}</script><p><img src="https://s2.loli.net/2023/10/05/pT4VqI5dMP7ythZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>再令 $V_{in}=0$，并在输出端增加测试电压 $V_{X}$，计算输出阻抗：</p>
 <script type="math/tex; mode=display">
-\begin{aligned}
-A_{v} & =\frac{V_{\text {out }}}{V_{\text {in }}}=G_{m}\left(Z_{\text {out }} \| Z_{\text {load }}\right)=-g_{m 1}\left(r_{o} \| r_{D}\right) \approx-g_{m 1} r_{D} \\
-& \approx-\frac{g_{m 1}}{g_{m 2}}=-\frac{\sqrt{\mu_{n} C_{o x}(W / L)_{1}}}{\sqrt{\mu_{p} C_{o x}(W / L)_{2}}}
-\end{aligned}</script><h3 id="接电流源的共源放大器"><a href="#接电流源的共源放大器" class="headerlink" title="接电流源的共源放大器"></a>接电流源的共源放大器</h3><p><img src="https://s2.loli.net/2023/10/05/8lcebATam5sqIdv.png" srcset="/img/loading.gif" lazyload alt=""><br>注意在交流通路中，电流源是短路</p>
+R_{out}=r_o+R_S+(g_m+g_{mb})r_oR_S</script><p>于是电压增益</p>
 <script type="math/tex; mode=display">
-\begin{array}{c}
-g_{m}=\mu_{n} C_{o x} \frac{W}{L}\left(V_{G S}-V_{t h}\right)=\sqrt{\mu_{n} C_{o x} \frac{W}{L} 2 I_{D}}=\frac{2 I_{D}}{V_{G S}-V_{\text {th }}} \\
-r_{o}=\frac{1}{\lambda I_{D}}=\frac{V_{E} L}{I_{D}} \\
-A_{v}=\frac{V_{\text {out }}}{V_{\text {in }}}=G_{m}\left(Z_{\text {out }} \| Z_{\text {load }}\right)=-g_{m} r_{o}=-\frac{2 V_{E} L}{V_{G S}-V_{\text {th }}}
-\end{array}</script><h3 id="像反相器的共源放大器"><a href="#像反相器的共源放大器" class="headerlink" title="像反相器的共源放大器"></a>像反相器的共源放大器</h3><p><img src="https://s2.loli.net/2023/10/05/LEc79pMWUQ6qz1e.png" srcset="/img/loading.gif" lazyload alt=""></p>
+A_{v}=\frac{-g_mr_oR_D}{R_D+r_o+R_S+(g_m+g_{mb})r_oR_S}</script><h3 id="共漏放大器（源跟随器）"><a href="#共漏放大器（源跟随器）" class="headerlink" title="共漏放大器（源跟随器）"></a>共漏放大器（源跟随器）</h3><p>顾名思义，CD放大器的主要作用不是放大，而且作为CS放大器的后级，用于减小输出阻抗</p>
+<p><img src="https://s2.loli.net/2023/10/26/nPCV6o9xsiFW5y1.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="接电阻的CD-SF"><a href="#接电阻的CD-SF" class="headerlink" title="接电阻的CD/SF"></a>接电阻的CD/SF</h3><p><img src="https://z1.ax1x.com/2023/10/27/piZRz1x.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>等效跨导<script type="math/tex; mode=display">
+G_m=g_m</script></li>
+<li>输出阻抗<script type="math/tex; mode=display">
+R_{out}=\frac{1}{g_m+g_{mb}+1/r_0}</script></li>
+<li>电压增益<script type="math/tex; mode=display">
+A_{v}=\frac{g_m}{g_m+g_{mb}+1/r_0}</script></li>
+</ul>
+<h3 id="接饱和MOSFET的CD-SF"><a href="#接饱和MOSFET的CD-SF" class="headerlink" title="接饱和MOSFET的CD/SF"></a>接饱和MOSFET的CD/SF</h3><p><img src="https://z1.ax1x.com/2023/10/27/piZW1EQ.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <script type="math/tex; mode=display">
-A_{v}=\frac{V_{\text {out }}}{V_{\text {in }}}=G_{m}\left(Z_{\text {out }} \| Z_{\text {load }}\right)=-\left(g_{m 1}+g_{m 2}\right)\left(r_{o 1} \| r_{o 2}\right)</script><h3 id="单一增益频率"><a href="#单一增益频率" class="headerlink" title="单一增益频率"></a>单一增益频率</h3><p>单位增益频率 $f_T$，也称为过渡频率。它被定义为共源放大器的 <strong>短路</strong> <strong>电流增益</strong> 变为 1 的频率。</p>
+R_{eq}=\frac{1}{g_{mb}}//r_{o1}//r_{o2}//R_{L}</script><script type="math/tex; mode=display">
+A_v=\frac{R_{eq}}{R_{eq}+\frac{1}{g_m}}</script><p>（？）</p>
+<h3 id="共栅放大器"><a href="#共栅放大器" class="headerlink" title="共栅放大器"></a>共栅放大器</h3><ul>
+<li>增益是正数</li>
+<li>体偏效应反而增大了增益</li>
+</ul>
+<h3 id="接电阻的共栅放大器"><a href="#接电阻的共栅放大器" class="headerlink" title="接电阻的共栅放大器"></a>接电阻的共栅放大器</h3><p><img src="https://z1.ax1x.com/2023/10/27/piZflM6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>等效跨导<script type="math/tex; mode=display">
+G_m=g_m+g_{mb}+1/r_o</script></li>
+<li>输出阻抗<script type="math/tex; mode=display">
+R_{out}=r_o//R_D</script></li>
+<li>电压增益<script type="math/tex; mode=display">
+A_{v}=\left(g_m+g_{mb}+1/r_o\right)\left(r_o//R_D\right)</script></li>
+<li>输入阻抗<script type="math/tex; mode=display">
+Z_{in}=\frac{1+R_D/r_o}{g_m+g_{mb}+1/r_o}</script></li>
+</ul>
+<h3 id="级联分析"><a href="#级联分析" class="headerlink" title="级联分析"></a>级联分析</h3><h3 id="单一增益频率"><a href="#单一增益频率" class="headerlink" title="单一增益频率"></a>单一增益频率</h3><p>单位增益频率 $f_T$，也称为过渡频率。它被定义为共源放大器的 <strong>短路</strong> <strong>电流增益</strong> 变为 1 的频率。</p>
 <p><img src="https://s2.loli.net/2023/10/05/uMqi4hb1yxnC7Ak.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <script type="math/tex; mode=display">
 \begin{array}{c}
@@ -382,17 +473,22 @@ f_{T}=\omega_{T} / 2 \pi=\frac{g_{m}}{2 \pi\left(C_{g s}+C_{g d}\right)}
 <li>输出范围为 $V_{DD}-2*V_{dsat}$, 其中最小输入电压限制为 $V{dsat}$，以确保 $V_{DS}(M1)\ge V_{dsat}$，最大输入电压限制为 $V_{DD}-V_{dsat}$，以确保 $|V_{DS}(M2)|&gt;=V_{dsat}$</li>
 </ul>
 <p><img src="https://s2.loli.net/2023/10/05/jqedgyJFOrYcla9.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="带源衰减的共源放大器"><a href="#带源衰减的共源放大器" class="headerlink" title="带源衰减的共源放大器"></a>带源衰减的共源放大器</h3><ul>
-<li>如果输入信号超出输入范围，工作点可能会偏离原始/所需的直流偏置点太远，从而离开所需的饱和区域并产生失真</li>
-<li>源衰减：在源和地之间插入阻抗（这是一个负反馈！）以扩展输入范围</li>
+<h2 id="差分放大器"><a href="#差分放大器" class="headerlink" title="差分放大器"></a>差分放大器</h2><h3 id="差模信号与共模信号"><a href="#差模信号与共模信号" class="headerlink" title="差模信号与共模信号"></a>差模信号与共模信号</h3><script type="math/tex; mode=display">
+\begin{array}{c}
+v_{in,CM}=\frac{v_{i+}+v_{i-}}{2}\\ 
+v_{in,DM}=v_{i+}-v_{i-}
+\end{array}</script><h3 id="单端放大与简单两路放大的弊端"><a href="#单端放大与简单两路放大的弊端" class="headerlink" title="单端放大与简单两路放大的弊端"></a>单端放大与简单两路放大的弊端</h3><ul>
+<li>电路有干扰，比如理想情况下输入信号是正弦波，但是实际情况正弦波会有“毛刺”或者“变形”</li>
+<li>单端放大信号会把干扰也放大，显然不可行</li>
+<li>于是考虑把信号分成正负两路，干扰也是对称的，一起被放大，那么取它们的差值，干扰就可以被去除</li>
 </ul>
-<p><img src="https://s2.loli.net/2023/10/05/OdSQhRk8jLJBnDK.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p><img src="https://s2.loli.net/2023/10/05/pT4VqI5dMP7ythZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>考虑上沟道长度调制和体偏效应，跨导</p>
-<script type="math/tex; mode=display">
-G_{m}=\frac{I_{\text {out }}}{V_{\text {in }}}=\frac{g_{m} r_{O}}{R_{S}+\left[1+\left(g_{m}+g_{m b}\right) R_{S}\right] r_{O}}</script><p>在输出端增加测试电压 $V_{X}$，计算输出阻抗：<br><img src="https://s2.loli.net/2023/10/05/hkUc9CXtHDiVsZT.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<script type="math/tex; mode=display">
-R_{out}=r_O+R_S+(g_m+g_{mb})r_OR_S</script>
+<p><img src="https://s2.loli.net/2023/10/27/dN2WBAVoKhtLPQr.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>对于简单两路放大，如果信号的共模部分发生波动，也就相当于 DC 工作点发生变化，器件的跨导改变，小信号被放大的倍数改变。</li>
+</ul>
+<h3 id="基本差分对"><a href="#基本差分对" class="headerlink" title="基本差分对"></a>基本差分对</h3><p>为了解决上面的问题，我们使用基本差分对。</p>
+<p><img src="https://s2.loli.net/2023/10/27/Sz9YWcn1liM8tkD.png" srcset="/img/loading.gif" lazyload alt=""></p>
+
             </div>
             <hr>
             <div>
@@ -411,9 +507,9 @@ R_{out}=r_O+R_S+(g_m+g_{mb})r_OR_S</script>
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
-                    
                       <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
                     
                   </div>
                 
@@ -425,29 +521,6 @@ R_{out}=r_O+R_S+(g_m+g_{mb})r_OR_S</script>
                   
                 </p>
               
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2023/09/13/%E6%95%B0%E5%AD%97%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数字集成电路设计笔记</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2023/04/20/%E5%8D%8A%E5%AF%BC%E4%BD%93%E5%99%A8%E4%BB%B6%E5%8E%9F%E7%90%86%E7%AC%94%E8%AE%B0/">
-                        <span class="hidden-mobile">半导体器件原理笔记</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
               
             </div>
 
