@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      6.6k 字
+      9.1k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      87
+      125
        分钟
     </span>
   
@@ -233,12 +233,70 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年10月28日 晚上
+                  本文最后更新于：2023年11月19日 上午
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="第一章-引论"><a href="#第一章-引论" class="headerlink" title="第一章 引论"></a>第一章 引论</h2><h3 id="电压传输特性"><a href="#电压传输特性" class="headerlink" title="电压传输特性"></a>电压传输特性</h3><p>现在假设一个反相门电路的输入为逻辑变量 in，它产生输出变量 out。一个逻辑门的电路功能可以用它的电压传输特性（VTC，有时称为 DC 传输特性）得到最佳描述，它画出了输出电压与输入电压的关系 $V_{out}=f\left(V_{in}\right)$</p>
+              <h2 id="置顶"><a href="#置顶" class="headerlink" title="置顶"></a>置顶</h2><h3 id="单位"><a href="#单位" class="headerlink" title="单位"></a>单位</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Letter</th>
+<th>Unit</th>
+<th>Magnitude</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a</td>
+<td>atto</td>
+<td>$10^{-18}$</td>
+</tr>
+<tr>
+<td>f</td>
+<td>fempto</td>
+<td>$10^{-15}$</td>
+</tr>
+<tr>
+<td>p</td>
+<td>pico</td>
+<td>$10^{-12}$</td>
+</tr>
+<tr>
+<td>n</td>
+<td>nano</td>
+<td>$10^{-9}$</td>
+</tr>
+<tr>
+<td>u</td>
+<td>micro</td>
+<td>$10^{-6}$</td>
+</tr>
+<tr>
+<td>m</td>
+<td>mili</td>
+<td>$10^{-3}$</td>
+</tr>
+<tr>
+<td>k</td>
+<td>kilo</td>
+<td>$10^{3}$</td>
+</tr>
+<tr>
+<td>x</td>
+<td>mega</td>
+<td>$10^{6}$</td>
+</tr>
+<tr>
+<td>g</td>
+<td>giga</td>
+<td>$10^{9}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="第一章-引论"><a href="#第一章-引论" class="headerlink" title="第一章 引论"></a>第一章 引论</h2><h3 id="电压传输特性"><a href="#电压传输特性" class="headerlink" title="电压传输特性"></a>电压传输特性</h3><p>现在假设一个反相门电路的输入为逻辑变量 in，它产生输出变量 out。一个逻辑门的电路功能可以用它的电压传输特性（VTC，有时称为 DC 传输特性）得到最佳描述，它画出了输出电压与输入电压的关系 $V_{out}=f\left(V_{in}\right)$</p>
 <ul>
 <li>额定高电压 $V_{OH}$ 和额定低电压 $V_{OL}$<script type="math/tex; mode=display">
 V_{OH}=f\left(V_{O L}\right),V_{O L}=f\left(V_{O H}\right)</script></li>
@@ -267,7 +325,13 @@ N M_{H}=V_{O H}-V_{I H}
 </ul>
 <h3 id="传播延时"><a href="#传播延时" class="headerlink" title="传播延时"></a>传播延时</h3><p>一个门的<strong>传播延时</strong> $t_{p}$ 定义了它对输入端信号变化的响应有多快。它表示一个信号通过一个门时所经历的延时，定义为输入和输出波形的 $50\%$ 翻转点之间的时间。由于一个门对上升和下降输入波形的响应时间不同，所以需要定义两个传播延时。$t_{p L H}$ 定义为这个门的输出由低至高（或正向）翻转的响应时问，而 $t_{p H L}$ 则为输出由高至低（或负向）翻转的响应时间。传播延时 $t_{p}$ 定义为这两个时间的平均值：</p>
 <script type="math/tex; mode=display">
-t_{p}=\frac{t_{p L H}+t_{p H L}}{2}</script><p><img src="https://s2.loli.net/2023/09/15/JlyHD24wg9xQoRZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+t_{p}=\frac{t_{p L H}+t_{p H L}}{2}</script><ul>
+<li>传播延时（Propagation delay time）$t_{pd}=\max\{t_{p L H},t_{p H L}\}$</li>
+<li>污染延时（Contamination delay time）$t_{cd}=\min\{t_{p L H},t_{p H L}\}$</li>
+<li>下降时间 $t_{f}$ 是从 90% 到 10% 所用的时间</li>
+<li>下降时间 $t_{r}$ 是从 10% 到 90% 所用的时间</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/11/04/xlucGTNbrKYgfVD.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>对于 RC 电路</p>
 <ul>
 <li>充电：$V_{out}(t)=V_{dd}(1-e^{-t/\tau})$</li>
@@ -285,7 +349,8 @@ t_{p}=\frac{t_{p L H}+t_{p H L}}{2}</script><p><img src="https://s2.loli.net/202
 </li>
 <li>一个理想的门应当快速且几乎不消耗能量，<strong>能量-延时积</strong>（E-D）是把这两个因素放在一起考虑的复合标准，它经常作为最后的质量评价。</li>
 </ul>
-<h2 id="第二章-制造工艺"><a href="#第二章-制造工艺" class="headerlink" title="第二章 制造工艺"></a>第二章 制造工艺</h2><p>（Todo）</p>
+<h3 id="晶圆"><a href="#晶圆" class="headerlink" title="晶圆"></a>晶圆</h3><script type="math/tex; mode=display">
+\text { Dies per wafer }=\frac{\pi \times(\text { wafer diameter } / 2)^{2}}{\text { die area }}-\frac{\pi \times \text { wafer diameter }}{\sqrt{2 \times \text { die area }}}</script><h2 id="第二章-制造工艺"><a href="#第二章-制造工艺" class="headerlink" title="第二章 制造工艺"></a>第二章 制造工艺</h2><p>（Todo）</p>
 <h2 id="第三章-器件"><a href="#第三章-器件" class="headerlink" title="第三章 器件"></a>第三章 器件</h2><h3 id="MOSFET-电容模型"><a href="#MOSFET-电容模型" class="headerlink" title="MOSFET 电容模型"></a>MOSFET 电容模型</h3><p><img src="https://s2.loli.net/2023/09/22/sMiYqQnIP1kcmEb.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>覆盖电容 $C_{overlap}=C_{GSO}+C_{GDO}$</li>
@@ -389,17 +454,17 @@ V_{T}=V_{T 0}+\gamma\left(\sqrt{\left|-2 \phi_{F}+V_{S B}\right|}-\sqrt{\left|2 
 \end{array}</script><p>费米电势</p>
 <script type="math/tex; mode=display">
 \begin{array}{c}
-\phi_{F_{-} N M O S}=\frac{k T}{q} \ln \frac{n_{i}}{N_{A}} \\
-\phi_{F_{-} P M O S}=\frac{k T}{q} \ln \frac{N_{D}}{n_{i}}
+\phi F_{N M O S}=\frac{k T}{q} \ln \frac{n_{i}}{N_{A}} \\
+\phi F_{P M O S}=\frac{k T}{q} \ln \frac{N_{D}}{n_{i}}
 \end{array}</script><ul>
 <li>对于NMOS<ul>
-<li>正体偏，$V_{BS}&gt;0$，$V_T$ 减小</li>
-<li>负体偏，$V_{BS}&lt;0$，$V_T$ 增大</li>
+<li>正体偏，$V_{SB}&lt;0$，$V_T$ 减小</li>
+<li>负体偏，$V_{SB}&gt;0$，$V_T$ 增大</li>
 </ul>
 </li>
 <li>对于PMOS<ul>
-<li>正体偏，$V_{BS}&gt;0$，$V_T$ 增大</li>
-<li>负体偏，$V_{BS}&lt;0$，$V_T$ 减小</li>
+<li>正体偏，$V_{SB}&gt;0$，$V_T$ 增大</li>
+<li>负体偏，$V_{SB}&lt;0$，$V_T$ 减小（数值减小，绝对值增大）</li>
 </ul>
 </li>
 </ul>
@@ -510,6 +575,50 @@ V_{D S n}=V_{O u t} \quad V_{D S p}=V_{o u t}-V_{D D}
 </tbody>
 </table>
 </div>
+<p>考虑速度饱和的工作状态：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>工作区</th>
+<th>条件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PMOS</td>
+<td>饱和</td>
+<td>$V_{in}-V_{DD}-V_{tp}&gt;V_{dsatp}$</td>
+</tr>
+<tr>
+<td>PMOS</td>
+<td>速度饱和</td>
+<td>$V_{in}-V_{DD}-V_{tp}&lt;V_{dsatp}$</td>
+</tr>
+<tr>
+<td>PMOS</td>
+<td>线性</td>
+<td>$V_{out}&gt;V_{DD}+V_{dsatp}$</td>
+</tr>
+<tr>
+<td>NMOS</td>
+<td>饱和</td>
+<td>$V_{in}-V_{tn}&lt;V_{dsatn}$</td>
+</tr>
+<tr>
+<td>NMOS</td>
+<td>速度饱和</td>
+<td>$V_{in}-V_{tn}&gt;V_{dsatn}$</td>
+</tr>
+<tr>
+<td>NMOS</td>
+<td>线性</td>
+<td>$V_{out}&lt;V_{dsatn}$</td>
+</tr>
+</tbody>
+</table>
+</div>
 <h3 id="阈值电压"><a href="#阈值电压" class="headerlink" title="阈值电压"></a>阈值电压</h3><p>开关阈值 $V_{M}$ 定义为 $V_{in}=V_{out}$ 的点，其值可以用图解法由 VTC 与直线 $V_{in}=V_{out}$ 的交点求得。在这一区域由于 $V_{DS}=V_{GS}$，PMOS 和 NMOS 总是饱和的。使通过两个晶体管的电流相等就可以得到 $V_{M}$ 的解析表达式。我们求解的情形是电源电压足够高，所以这两个器件可以被假设为都处于速度饱和（即 $V_{D S A T}&lt;V_{M}-V_{T}$）。同时我们忽略沟长调制效应，于是有：</p>
 <script type="math/tex; mode=display">
 k_{n} V_{D S A T n}\left(V_{M}-V_{T n}-\frac{V_{D S A T n}}{2}\right)+k_{p} V_{D S A T P}\left(V_{M}-V_{D D}-V_{T p}-\frac{V_{D S A T p}}{2}\right)=0</script><p>求解 $V_{M}$ 得到：</p>
@@ -542,7 +651,7 @@ N M_{L}=V_{I L}
 <p><img src="https://s2.loli.net/2023/10/15/lruRs46QL8be7xj.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="动态特性：电容"><a href="#动态特性：电容" class="headerlink" title="动态特性：电容"></a>动态特性：电容</h3><p><img src="https://s2.loli.net/2023/10/15/XwfAVpjF7SWn6gH.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/10/15/B27RNJAonpy9FTV.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <script type="math/tex; mode=display">
-\begin{array}
+\begin{array}{c}
 C_{all}=C_{gd1}+C_{gd2}+C_{db1}+C_{db2}+C_{g3}+C_{g4}+C_{w}\\
 C_{int}=C_{gd1}+C_{gd2}+C_{db1}+C_{db2}\\
 C_{ext}=C_{g3}+C_{g4}+C_{w} 或者 C_{L}\\
@@ -908,7 +1017,7 @@ R_{0}=\frac{p}{H}</script><p>为材料的薄层电阻（Sheet resistance），�
 <script type="math/tex; mode=display">
 \begin{array}{c}
 \Delta V_{\text {victim }}=\frac{C_{a d j}}{C_{g n d-v}+C_{a d j}} \frac{1}{1+\kappa} \Delta V_{a g g r e s s o r} \\
-\kappa=\frac{\tau_{a g g r e s s o r}}{\tau_{\text {victim }}}=\frac{R_{a g g r e s s o r}\left(C_{g n d-a}+C_{a d j}\right)}{R_{\text {victim }}\left(\left(C_{g n d-v}+C_{a d j}\right)\right.}
+\kappa=\frac{\tau_{a g g r e s s o r}}{\tau_{\text {victim }}}=\frac{R_{a g g r e s s o r}\left(C_{g n d-a}+C_{a d j}\right)}{R_{\text {victim }}\left(C_{g n d-v}+C_{a d j}\right)}
 \end{array}</script><p><img src="https://s2.loli.net/2023/10/28/qjABGDYTw2hmdrM.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h4 id="design-tips"><a href="#design-tips" class="headerlink" title="design tips"></a>design tips</h4><ul>
 <li>避免悬空节点和悬空线（$\kappa=0$）</li>
@@ -920,7 +1029,230 @@ R_{0}=\frac{p}{H}</script><p>为材料的薄层电阻（Sheet resistance），�
 <li>对 aggressor 加反相器，使得串扰能够抵消</li>
 <li>差分信号线时不时交换个位置，使得串扰能够抵消</li>
 </ul>
-
+<h3 id="集总C模型"><a href="#集总C模型" class="headerlink" title="集总C模型"></a>集总C模型</h3><p>只要导线的电阻部分很小并且开关频率较低，那么就可以很合理地<strong>只考虑该导线的电容部分</strong>，并把分布的电容集总为<strong>单个电容</strong>，如下图所示。注意在这一模型中导线仍表现为一个等势区，因而导线本身并不引人任何延时。对于性能的唯一影响是由电容对于驱动门的负载效应引起的。</p>
+<p><img src="https://s2.loli.net/2023/11/02/OcFWroALtXp4891.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+C_{\text {lumped }} \frac{\mathrm{d} V_{\text {out }}}{\mathrm{d} t}+\frac{V_{\text {out }}-V_{\text {in }}}{R_{\text {driver }}}=0</script><p>若当 $V_{in}$ 是<strong>阶梯</strong>从 0 到 1 时，</p>
+<script type="math/tex; mode=display">
+V_{out}=(1-e^{-t/\tau})V_{in}</script><p>其中</p>
+<script type="math/tex; mode=display">
+\tau=R_{driver}C_{lumped}</script><h3 id="集总RC模型"><a href="#集总RC模型" class="headerlink" title="集总RC模型"></a>集总RC模型</h3><p>类似集总C模型，微分方程为</p>
+<script type="math/tex; mode=display">
+C_{\text {lumped }} \frac{d V_{\text {out }}}{d t}+\frac{V_{\text {out }}-V_{\text {in }}}{R_{\text {driver }}+R_{\text {wire }}}=0</script><p>输入阶梯信号，输出仍然是 RC 充电公式，其中</p>
+<script type="math/tex; mode=display">
+\tau=R_{\text {driver }} C_{\text {lumped }}+R_{\text {wire }} C_{\text {lumped }}</script><h3 id="分布式模型"><a href="#分布式模型" class="headerlink" title="分布式模型"></a>分布式模型</h3><p><img src="https://s2.loli.net/2023/11/02/gNimasjKLdGPphO.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>每一小部分的微分方程可以写为：</p>
+<script type="math/tex; mode=display">
+rc\frac{\partial V}{\partial t}=\frac{\partial^2 V}{\partial x^2}</script><p>具体解略，不要求。但是可以给出一些关键节点的数值，见下面的表</p>
+<h3 id="RC网络的Elmore延迟"><a href="#RC网络的Elmore延迟" class="headerlink" title="RC网络的Elmore延迟"></a>RC网络的Elmore延迟</h3><p><img src="https://s2.loli.net/2023/11/02/MmcH6i4KsZFT5oa.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>实际网络很复杂，不可能只有一个起点一个终点，而通常是 RC 网络。假设</p>
+<ul>
+<li>只有一个输入节点</li>
+<li>所有电容都是在节点和地之间</li>
+<li>不包含电阻环路</li>
+</ul>
+<p>设网络中起点是 s，终点是 i，定义共享路径电阻</p>
+<script type="math/tex; mode=display">
+R_{i k}=\sum R_{j} \Rightarrow\left(R_{j} \in[\operatorname{path}(s \rightarrow i) \cap \operatorname{path}(s \rightarrow k)]\right)</script><p>那么遍历电容可以得到延迟：</p>
+<script type="math/tex; mode=display">
+\tau_{D i}=\sum_{k=1}^{N} C_{k} R_{i k}</script><p>也可以使用遍历电阻的方法：遍历 s 到 i 的所有电阻，乘以被这个电阻驱动的所有电容</p>
+<h3 id="Elmore模型的RC链"><a href="#Elmore模型的RC链" class="headerlink" title="Elmore模型的RC链"></a>Elmore模型的RC链</h3><p><img src="https://s2.loli.net/2023/11/02/oShjRQyxDWFZevE.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\tau_{Di}=C_1R_1+C_2(R_1+R_2)+\cdots+C_N(R_1+R_2+\cdots+R_N)</script><p>当 N 很大时</p>
+<script type="math/tex; mode=display">
+\tau_{DN}=\frac{RC}{2}=\frac{rcL^2}{2}</script><ul>
+<li>导线的延迟是其长度的二次函数！这意味着导线长度增加一倍，延迟就会增加两倍。</li>
+<li>分布式 RC 线路的延迟是集总 RC 模型预测延迟的一半。这证实了前面的观点，即集总模型对电阻延迟的看法是悲观的。</li>
+</ul>
+<h3 id="加上驱动端和负载端的RC"><a href="#加上驱动端和负载端的RC" class="headerlink" title="加上驱动端和负载端的RC"></a>加上驱动端和负载端的RC</h3><p><img src="https://s2.loli.net/2023/11/03/etnvLIDN8wEU5Yr.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\tau_{DN}=R_{ad}(C_{ad1}+Lc_{W}+C_{ad2})+\frac{r_Wc_W}{2}L^2+Lr_{W}C_{ad2}</script><h3 id="总结对比"><a href="#总结对比" class="headerlink" title="总结对比"></a>总结对比</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>电压变化</th>
+<th>集总 RC 模型</th>
+<th>分布式 RC 模型</th>
+<th>Elmore 模型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0\rightarrow 50\%(t_{p})$</td>
+<td>0.69RC</td>
+<td>0.38RC</td>
+<td>0.345RC</td>
+</tr>
+<tr>
+<td>$0\rightarrow 63\%(\tau)$</td>
+<td>RC</td>
+<td>0.5RC</td>
+<td>0.5RC</td>
+</tr>
+<tr>
+<td>$10\%\rightarrow 90\%(t_{r})$</td>
+<td>2.2RC</td>
+<td>0.9RC</td>
+<td>1.1C</td>
+</tr>
+<tr>
+<td>$0\rightarrow 90\%$</td>
+<td>2.3RC</td>
+<td>1.0RC</td>
+<td>1.15RC</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><ul>
+<li>长 Poly 线太慢，使用 Metal 线在两端驱动，或者分段并联</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/11/03/5vEwXuTHVYBQfJg.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>使用斜45°的互连线</li>
+<li>插入反相器<br>若假设每个反相器延时都是 $t_{p \text {buf} 0}$<script type="math/tex; mode=display">
+t_{p, \text { min-load }}=m t_{p \text {buf} 0}+\frac{t_{p w i r e(\text { unbuffered })}}{m}\ge 2 \sqrt{t_{p w i r e(\text { unbuffered }) t_{p buf 0}}}</script>一般情况，设反相器的电阻和电容为 $R_d$ 和 $C_d$，延时<script type="math/tex; mode=display">
+t_{p}=m\left(0.69 \frac{R_{d}}{s}\left(\frac{c L}{m}+s C_{d}\right)+0.69\left(\frac{r L}{m}\right)\left(s C_{d}\right)+0.38 r c\left(\frac{L}{m}\right)^{2}\right)</script>对 s 和 m 求偏导，得到最优解<script type="math/tex; mode=display">
+\begin{array}{c}
+m_{o p t}=\sqrt{\frac{r c L^{2}}{2 R_{d}\left(\gamma C_{d}+C_{d}\right)}}=\sqrt{\frac{t_{\text {wire}}}{t_{\text {pbuff} 1}}} \\
+s_{o p t} =\sqrt{\frac{R_{d} c}{r C_{d}}} \\
+t_{p,min-load1} =(1.38+1.02 \sqrt{1+\gamma}) {L} \sqrt{R_{d} C_{d} r c} \approx 2.82 {L} \sqrt{R_{d} C_{d} r c}
+\end{array}</script>其中 $t_{\text {pbuff} 1}$ 是单位反相器推单位反相器的延时</li>
+</ul>
+<h2 id="第六章-组合逻辑"><a href="#第六章-组合逻辑" class="headerlink" title="第六章 组合逻辑"></a>第六章 组合逻辑</h2><h3 id="“互补”CMOS"><a href="#“互补”CMOS" class="headerlink" title="“互补”CMOS"></a>“互补”CMOS</h3><p>静态 CMOS 逻辑门是两个网络的组合，分别称为<strong>上拉网络</strong>（PUN）和<strong>下拉网络</strong>（PDN）。PUN 的功能是在逻辑门输出为 1 时（基于输入），提供输出与 VDD 之间的连接。同样，PDN 的功能是在逻辑门输出为 0 时将输出连接至 VSS。PUN 和 PDN 网络以互斥的方式构建，因此在稳定状态下只有一个网络在导通。这样，一旦瞬态稳定下来，VDD 和输出 F 之间始终存在一条通路，实现高电平输出，或者，VSS 和 F 之间存在一条通路，实现低电平输出。这相当于说，输出节点在稳定状态下始终是一个<strong>低阻抗节点</strong>。</p>
+<p><img src="https://s2.loli.net/2023/11/18/5yWH2w7RYXuTJs3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>上拉网络 PUN</th>
+<th>下拉网络 PDN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>组成</td>
+<td>PMOS</td>
+<td>NMOS</td>
+</tr>
+<tr>
+<td>输出为 0 时</td>
+<td>不工作</td>
+<td>使 F 与 GND 连接</td>
+</tr>
+<tr>
+<td>输出为 1 时</td>
+<td>使 F 与 GND 连接</td>
+<td>不工作</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="完整门电路画图"><a href="#完整门电路画图" class="headerlink" title="完整门电路画图"></a>完整门电路画图</h3><p>（Todo）</p>
+<h3 id="VTC"><a href="#VTC" class="headerlink" title="VTC"></a>VTC</h3><p>由于输入不对称和体偏效应的存在，VTC 是数据相关的。</p>
+<p><img src="https://s2.loli.net/2023/11/18/Dt3sSxkFQE1bfjz.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="延迟"><a href="#延迟" class="headerlink" title="延迟"></a>延迟</h3><ul>
+<li>由于网络复杂，输入情况不同，延迟不同</li>
+<li>传播延时是最坏情况下的延时，污染延时是最好情况下的延时</li>
+<li>有必要设计各个 MOSFET 的尺寸，使得 $t_{pLH}$ 和 $t_{pHL}$ 与一个最小尺寸反相器相同</li>
+</ul>
+<h4 id="尺寸规则"><a href="#尺寸规则" class="headerlink" title="尺寸规则"></a>尺寸规则</h4><ul>
+<li>初始 PUN2 PDN1</li>
+<li>分配下去：并联一样、串联加倍</li>
+</ul>
+<h4 id="数据相关的分析"><a href="#数据相关的分析" class="headerlink" title="数据相关的分析"></a>数据相关的分析</h4><p>tpLH：</p>
+<ul>
+<li>$A=B=1\rightarrow 0$ 时，PDN 不通，两个 P 管给电容充电，速度最快</li>
+<li>$A=1,B=1\rightarrow 0$ 时，M2 导通，一个 P 管开启，电流一部分会经过 M2 给寄生电容充电，故最慢</li>
+<li>$A=1\rightarrow 0,B=1$ 时，M2 关闭，PDN 不通，一个 P 管开启</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/11/18/M2JoW4sZrFiVeTq.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>tpHL：</p>
+<ul>
+<li>$A=B=0\rightarrow 1$ 时，A、B 从截止开始转变到饱和，载流子分布、电阻降低需要时间，速度最慢</li>
+<li>$A=1,B=0\rightarrow 1$ 时，M2 导通，比上面的仅仅快了 M2 转换状态的时间</li>
+<li>$A=0\rightarrow 1,B=1$ 时，M1 导通，M1 与 M2 之间电容已经被放电，故最快</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/11/18/eGt3dNDC1A5MBlH.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="根据版图算延迟"><a href="#根据版图算延迟" class="headerlink" title="根据版图算延迟"></a>根据版图算延迟</h3><p>（Todo）</p>
+<h3 id="根据逻辑电路图算延迟"><a href="#根据逻辑电路图算延迟" class="headerlink" title="根据逻辑电路图算延迟"></a>根据逻辑电路图算延迟</h3><p>以 2-input NAND 为例</p>
+<p><img src="https://s2.loli.net/2023/11/18/p2tb8ELASz7Is5v.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}
+t_{pLH}=\ln(2)((6+4h)CR+2CR)\\
+t_{pHL}=\ln(2)((6+4h)CR+2C\frac{R}{2})\\
+t_{cLH}=\ln(2)((6+4h)CR)\\
+t_{cLH}=\ln(2)((6+4h)C\frac{R}{2})\\
+\end{array}</script><h3 id="大扇入优化"><a href="#大扇入优化" class="headerlink" title="大扇入优化"></a>大扇入优化</h3><ul>
+<li>重排序：让先到来的信号放在 PDN 下面，先放电</li>
+<li>逐级递增尺寸：串联电路，经常被计算到的电阻调小，离输出越近尺寸越小 </li>
+<li>重组逻辑：扇入不要超过4个</li>
+<li>插入buffer隔离大扇出和大扇入</li>
+</ul>
+<h3 id="逻辑努力——组合网络延迟优化"><a href="#逻辑努力——组合网络延迟优化" class="headerlink" title="逻辑努力——组合网络延迟优化"></a>逻辑努力——组合网络延迟优化</h3><script type="math/tex; mode=display">
+\begin{aligned}
+t_{p-c l} & =\ln 2 C_{p a r-i n v} R_{p a r-c l}\left(\frac{C_{p a r-c l}}{C_{p a r-i n v}}+\frac{C_{\text {ext }}}{C_{\text {par-inv }}}\right) \\
+& =\ln 2 C_{p a r-i n v} R_{p a r-c l}\left(\frac{C_{p a r-c l}}{C_{p a r-i n v}}+\frac{C_{g-c l} C_{e x t}}{C_{p a r-i n v} C_{g-c l}}\right) \\
+& =\ln 2 C_{p a r-i n v} R_{p a r-c l}\left(\frac{C_{p a r-c l}}{C_{p a r-i n v}}+\frac{C_{g-c l} C_{e x t}}{\gamma C_{g-i n v} C_{g-c l}}\right) \\
+& =t_{p 0}\left({\color{Green} p} +\frac{ {\color{Red} g}  {\color{Blue} f} }{\gamma}\right)
+\end{aligned}</script><p>其中：</p>
+<ul>
+<li>$t_{p0}$ 是单位反相器的本征延迟</li>
+<li>$f$ 称为电气努力，是外部负载电容比上逻辑门输入电容</li>
+<li>$g$ 称为逻辑努力，是逻辑门输入电容比上单位反相器的输入电容</li>
+<li>$h=gf$ 称为门努力，是外部负载电容比上单位反相器的输入电容</li>
+<li>$p$ 是本征延迟比，是逻辑门寄生（输出）电容比上单位反相器的寄生（输出）电容</li>
+</ul>
+<p><strong>栅极的逻辑努力定义为栅极的输入电容与能提供相同输出电流的反相器的输入电容之比，对于给定负载，复杂栅极必须比反相器更努力地工作，才能产生类似的响应。</strong></p>
+<h4 id="常见门电路的逻辑努力"><a href="#常见门电路的逻辑努力" class="headerlink" title="常见门电路的逻辑努力"></a>常见门电路的逻辑努力</h4><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>输入数</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>n</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NAND</td>
+<td>4/3</td>
+<td>5/3</td>
+<td>6/3</td>
+<td>(n+2)/3</td>
+</tr>
+<tr>
+<td>NOR</td>
+<td>5/3</td>
+<td>7/3</td>
+<td>9/3</td>
+<td>(2n+1)/3</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>MUX：$(2N+(\log_2 N)+1)|3$</p>
+<h4 id="优化电路延时"><a href="#优化电路延时" class="headerlink" title="优化电路延时"></a>优化电路延时</h4><script type="math/tex; mode=display">
+\begin{array}{l}
+t_{p}^{i}=\ln 2 R_{r} C_{r g}\left(\frac{C_{p a r}^{i}}{C_{r g}}+\frac{C_{g}^{i}}{C_{r g}} \frac{C_{e x t}^{i}}{C_{g}^{i}}\right)=t_{p 0}\left(p_{i}+\frac{g_{i}}{\gamma} \frac{C_{i+1}}{C_{i}}\right) \\
+t_{p}=\sum_{i=1}^{N} t_{p}^{i} \\
+\frac{\delta t_{p}}{\delta C_{i}}=0, \text { minimize }_{p} \\
+\frac{g_{i-1}}{\gamma} \frac{C_{i}}{C_{i-1}}=\frac{g_{i}}{\gamma} \frac{C_{i+1}}{C_{i}} \\
+g_{i-1} f_{i-1}=g_{i} f_{i}={h}_{i-1}={h}_{i}
+\end{array}</script><script type="math/tex; mode=display">
+h^N=\frac{C_{N+1}}{C_1}\prod_{i=1}^{N} g_i</script><p>注意此处的 f 代表组合网络总体的放大系数 </p>
+<p>当然，对于组合逻辑，不可能只是一条线，中间一定还有分支需要去驱动，所以修正</p>
+<script type="math/tex; mode=display">
+t_{p}^{i}=\ln 2 R_{r} C_{r g}\left(\frac{C_{p a r}^{i}}{C_{r g}}+\frac{C_{g}^{i}}{C_{r g}} \frac{C_{e x t}^{i}}{C_{g}^{i}}\right)=t_{p 0}\left(p_{i}+\frac{g_{i}}{\gamma} \frac{C_{i+1}+{\color{Red} C'_{i+1} } }{C_{i}}\right)</script><p>令</p>
+<script type="math/tex; mode=display">
+b_{i}=\frac{C_{i+1}+C'_{i+1}}{C_{i+1}}</script><p>则最优条件</p>
+<script type="math/tex; mode=display">
+\frac{g_{i-1}{\color{Red} b_{i-1}} }{\gamma} \frac{C_{i}}{C_{i-1}}=\frac{g_{i}{\color{Red} b_{i}} }{\gamma} \frac{C_{i+1}}{C_{i}}</script><script type="math/tex; mode=display">
+H=h^N=\frac{C_{N+1}}{C_1}\left(\prod_{i=1}^{N} g_i\right)\left(\prod_{i=1}^{N} b_i\right)</script><script type="math/tex; mode=display">
+h=\sqrt[N]{GBF}</script>
             </div>
             <hr>
             <div>

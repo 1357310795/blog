@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      177 字
+      659 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2
+      9
        分钟
     </span>
   
@@ -233,7 +233,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年10月21日 上午
+                  本文最后更新于：2023年11月17日 晚上
                 
               </p>
             
@@ -252,12 +252,35 @@ r=|a^2+b^2|,\ \theta=\arctan\frac{b}{a}\\
 <script type="math/tex; mode=display">
 \begin{array}{c}
 e^{j\omega}+e^{-j\omega}=2\cos\omega,\ e^{j\omega}-e^{-j\omega}=2j\sin\omega
+\end{array}</script><p>或者写成 $W_{N}^{k}$ 的形式</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\cos\omega=\frac{1}{2}\left( W_{N}^{\frac{\omega}{2\pi} N}+ W_{N}^{-\frac{\omega}{2\pi} N}\right)\\
+\sin\omega=\frac{1}{2j}\left( W_{N}^{-\frac{\omega}{2\pi}N}-W_{N}^{\frac{\omega}{2\pi} N}\right)\\
 \end{array}</script><p>转换为幅度相位形式</p>
 <script type="math/tex; mode=display">
 \begin{array}{c}
 e^{-j\omega_1}+e^{-j\omega_2}=2\cos\frac{\omega_2-\omega_1}{2}e^{-j\frac{\omega_1+\omega_2}{2}}\\
 e^{-j\omega_1}-e^{-j\omega_2}=2j\sin\frac{\omega_2-\omega_1}{2}e^{-j\frac{\omega_1+\omega_2}{2}}
-\end{array}</script><h2 id="第一章-离散时间信号和系统基础"><a href="#第一章-离散时间信号和系统基础" class="headerlink" title="第一章 离散时间信号和系统基础"></a>第一章 离散时间信号和系统基础</h2><h3 id="信号的表示"><a href="#信号的表示" class="headerlink" title="信号的表示"></a>信号的表示</h3><p>离散时间信号在数学上表示成数的序列。序列 $x$ 记作</p>
+\end{array}</script><h3 id="关于频率"><a href="#关于频率" class="headerlink" title="关于频率"></a>关于频率</h3><h4 id="概念辨析"><a href="#概念辨析" class="headerlink" title="概念辨析"></a>概念辨析</h4><ul>
+<li><strong>模拟频率</strong>：我们通常所说的频率，在没有特别指明的情况下，指的是模拟频率，这是一种自然界存在的<strong>物理特性</strong>，用 $f$ 表示，其单位为 Hz</li>
+<li><strong>模拟角频率</strong>：$\Omega = 2\pi f$，单位为 rad/s</li>
+<li><strong>数字频率</strong>：全称<strong>归一化数字角频率</strong>，其物理意义是<strong>相邻两个采样点</strong>之间所变化的弧度数，单位为弧度(rad)，数学符号常用 $\omega$ 表示，单位为 rad</li>
+<li><strong>采样频率</strong>：采样频率是指在数字信号处理中，对连续时间信号进行离散化处理时，<strong>每秒钟进行采样的次数</strong>，用户 $f_s$ 表示，单位是 Hz</li>
+<li><strong>采样周期</strong>：$T=1/f_s$，单位是 s</li>
+</ul>
+<script type="math/tex; mode=display">
+\omega=\Omega T=\frac{\Omega}{f_s}=2\pi\frac{f}{f_s}</script><h4 id="区分"><a href="#区分" class="headerlink" title="区分"></a>区分</h4><ul>
+<li>离散时间傅里叶变换 $X\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 中的 $\omega$ 是数字频率，以 $2\pi$ 为周期</li>
+<li>连续时间傅里叶变换 $X\left(\mathrm{j} \Omega\right)$ 中的 $\Omega$ 是模拟频率，不一定有周期</li>
+<li>滤波器的频率响应 $H\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 中的 $\omega$ 是数字频率，以 $2\pi$ 为周期</li>
+<li>理想采样中，用 $x_{\mathrm{c}}(t)$ 调制 $s(t)$ 得到冲激串形式的连续时间信号，其中的 $\Omega_{N}$ 和 $\Omega_{s}$ 是模拟角频率</li>
+<li>理想采样的最终结果中，$\Omega T$ 是数字频率</li>
+<li>理想重构中的理想重构滤波器 $H_{r}(j\Omega)$ 是模拟频率滤波器，$\Omega_{\mathrm{c}}=\Omega_{\mathrm{s}} / 2=\pi / T$ 是模拟频率</li>
+</ul>
+<h3 id="类卷积的计算技巧"><a href="#类卷积的计算技巧" class="headerlink" title="类卷积的计算技巧"></a>类卷积的计算技巧</h3><script type="math/tex; mode=display">
+y[n]=\sum_{k=-\infty}^{+\infty} x[k]h[n-2k]</script><script type="math/tex; mode=display">
+y[n]=\sum_{k=-\infty}^{+\infty} x[k]h[n+k]</script><h2 id="第一章-离散时间信号和系统基础"><a href="#第一章-离散时间信号和系统基础" class="headerlink" title="第一章 离散时间信号和系统基础"></a>第一章 离散时间信号和系统基础</h2><h3 id="信号的表示"><a href="#信号的表示" class="headerlink" title="信号的表示"></a>信号的表示</h3><p>离散时间信号在数学上表示成数的序列。序列 $x$ 记作</p>
 <script type="math/tex; mode=display">
 x=\{x[n]\},\quad-\infty<n<+\infty</script><p>其中 $n$ 是整数，$x[n]$ 是序列的第 $n$ 个数，也称为序列的第 $n$ 个样本。为了方便，$x[n]$ 往往就表示整个序列。</p>
 <ul>
@@ -1130,7 +1153,363 @@ z_{0},z_{0}^{*},1 / z_{0},1 / z_{0}^{*}</script><p>另外，$z= \pm 1$ 处是否
 </tbody>
 </table>
 </div>
-<h2 id="第五章-连续时间信号的采样"><a href="#第五章-连续时间信号的采样" class="headerlink" title="第五章 连续时间信号的采样"></a>第五章 连续时间信号的采样</h2>
+<h2 id="第五章-连续时间信号的采样"><a href="#第五章-连续时间信号的采样" class="headerlink" title="第五章 连续时间信号的采样"></a>第五章 连续时间信号的采样</h2><h3 id="总结-2"><a href="#总结-2" class="headerlink" title="总结"></a>总结</h3><ul>
+<li>理想采样<ul>
+<li>$x[n]=x_{\mathrm{c}}(n T)$</li>
+<li>$X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{1}{T} \sum_{k=-\infty}^{\infty} X_{\mathrm{c}}\left(\mathrm{j} \frac{\omega-k 2 \pi}{T}\right)$</li>
+</ul>
+</li>
+<li>理想重构</li>
+</ul>
+<h3 id="理想采样"><a href="#理想采样" class="headerlink" title="理想采样"></a>理想采样</h3><p>通过周期采样得到的离散时间信号与原始连续时间信号之间满足如下关系</p>
+<script type="math/tex; mode=display">
+x[n]=\left.x_{\mathrm{c}}(t)\right|_{t=n T}=x_{\mathrm{c}}(n T),\quad-\infty<n<\infty</script><p>其中，</p>
+<ul>
+<li>$T$ 是<strong>采样周期</strong>。</li>
+<li>$f_{\mathrm{s}}=1 / T$ 是<strong>采样频率</strong>（简称<strong>采样率</strong>），单位是赫兹 $(\mathrm{Hz})$，表示每秒的采样点数。</li>
+<li>采样率也可表示为 $\Omega_{\mathrm{s}}=2 \pi f_{\mathrm{s}}=2 \pi / T$，单位是 $\mathrm{rad} / \mathrm{s}$。</li>
+</ul>
+<p>对同一个连续时间信号采用不同的采样周期将得到不同的序列。下图给出了一段连续时间信号及理想采样后的离散时间信号的时域关系。能实现理想采样的系统称为<strong>理想连续时间到离散时间转换器</strong>。</p>
+<p><img src="https://s2.loli.net/2023/10/29/r6fRIcvpYx7VDtW.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>为了推导和理解方便，从数学上将 $C/D$ 过程分解成两步表示（注意不是实际的实现过程）。其中 $s(t)$ 是由单位冲激函数组成的，即</p>
+<script type="math/tex; mode=display">
+s(t)=\sum_{n=-\infty}^{+\infty} \delta(t-n T)</script><p>用 $x_{\mathrm{c}}(t)$ 调制 $s(t)$ 得到冲激串形式的连续时间信号为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+x_{\mathrm{s}}(t) & =x_{\mathrm{c}}(t) s(t)=x_{\mathrm{c}}(t) \sum_{n=-\infty}^{+\infty} \delta(t-n T) \\
+& =\sum_{n=-\infty}^{+\infty} x_{\mathrm{c}}(t) \delta(t-n T)
+\end{aligned}</script><p>根据冲激函数的“筛选性质”得到</p>
+<script type="math/tex; mode=display">
+x_{\mathrm{s}}(t)=\sum_{n=-\infty}^{+\infty} x_{c}(n T) \delta(t-n T)</script><p>利用连续时间信号的傅里叶级数可以得到 $s(t)$ 的傅里叶变换为</p>
+<script type="math/tex; mode=display">
+S(\mathrm{j} \Omega)=\frac{2 \pi}{T} \sum_{k=-\infty}^{+\infty} \delta\left(\Omega-k \frac{2 \pi}{T}\right)</script><p>利用傅里叶变换的频域卷积性质，可以得到 $x_{\mathrm{s}}(t)$ 与 $x_{\mathrm{c}}(t)$ 的傅里叶变换之间的关系为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+X_{\mathrm{s}}(\mathrm{j} \Omega) & =\frac{1}{2 \pi} X_{c}(\mathrm{j} \Omega) * S(\mathrm{j} \Omega) \\
+& =\frac{1}{T} \sum_{k=-\infty}^{+\infty} X_{\mathrm{c}}\left[\mathrm{j}\left(\Omega-k \frac{2 \pi}{T}\right)\right]
+\end{aligned}</script><p>由上式可见，$x_{\mathrm{s}}(t)$ 的傅里叶变换是 $x_{\mathrm{c}}(t)$ 的傅里叶变换的周期性延拓 $($ 附加一个幅度尺度因子 $1 / T)$，延拓周期是 $2 \pi / T$，即采样率 $\Omega_{s}$。</p>
+<p>第二步其实就是将由冲激串组成的连续时间信号 $x_{\mathrm{s}}(t)$ 看成离散时间信号 $x[n]$，即引入时间归一化，且其样本值为各冲激的强度。</p>
+<script type="math/tex; mode=display">
+x_{s}(t)=\sum_{n=-\infty}^{\infty} x[n] \delta(t-n T)</script><p>两边做傅里叶变换可得</p>
+<script type="math/tex; mode=display">
+X_{s}(\mathrm{j} \Omega)=\int_{-\infty}^{\infty} \sum_{n=-\infty}^{\infty} x[n] \delta(t-n T) \mathrm{e}^{-\mathrm{j} \Omega t} \mathrm{~d} t</script><p>交换积分及求和顺序得到</p>
+<script type="math/tex; mode=display">
+X_{\mathrm{s}}(\mathrm{j} \Omega)=\sum_{n=-\infty}^{\infty} x[n] \int_{-\infty}^{\infty} \delta(t-n T) \mathrm{e}^{-\mathrm{j} \Omega t} \mathrm{~d} t=\sum_{n=-\infty}^{\infty} x[n] \mathrm{e}^{-\mathrm{j} \Omega n T}=\left.X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|_{\omega,=\Omega T}</script><p>最后可得<strong>输出的离散时间信号</strong> $x[n]$ 与<strong>输入的连续时间信号</strong> $x_{\mathrm{e}}(t)$ 的傅里叶变换之间的关系为</p>
+<script type="math/tex; mode=display">
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left.X_{\mathrm{s}}(\mathrm{j} \Omega)\right|_{\Omega=\omega / T}=\frac{1}{T} \sum_{k=-\infty}^{\infty} X_{\mathrm{c}}\left(\mathrm{j} \frac{\omega-k 2 \pi}{T}\right)</script><p>上式表示 $x[n]$ 的傅里叶变换就是 $x_{\mathrm{s}}(t)$ 的傅里叶变换的频率轴<strong>归一化</strong>，归一化公式是</p>
+<script type="math/tex; mode=display">
+\omega=\Omega T</script><p>其中，$\omega$ 是离散时间信号的数字频率，$\Omega$ 是连续时间信号的角频率，单位分别是 $\mathrm{rad}$ 和 $\mathrm{rad} / \mathrm{s}$。归一化的结果是，采样频率 $\Omega_{\mathrm{s}}=2 \pi / T$ 被归一化成 $2 \pi$，$\Omega_{\mathrm{s}} / 2$ 被归一化成 $\pi$，即离散时间信号的最高频率。</p>
+<p><img src="https://s2.loli.net/2023/10/29/Tlr2ybDBvx8JGVI.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>注意：如果输入信号的最高频率 $\Omega_N$ 满足 $\Omega_s&lt;2\Omega_N$，则会发生<strong>混叠</strong></p>
+<h3 id="理想重构"><a href="#理想重构" class="headerlink" title="理想重构"></a>理想重构</h3><p>能够将离散时间信号重构成带限连续时间信号的理想系统，称为<strong>理想离散时间到连续时间转换器</strong>。注意如果采样发生混叠，就无法无失真地恢复 $x_{\mathrm{c}}(t)$ 的频谱。而对于没有混叠的情况，将 $x_{\mathrm{s}}(t)$ 通过一个具有如下频率响应的理想低通滤波器</p>
+<script type="math/tex; mode=display">
+H_{\mathrm{r}}(\mathrm{j} \Omega)=\left\{\begin{array}{ll}
+T,& |\Omega| \leqslant \Omega_{\mathrm{c}} \\
+0,& |\Omega|>\Omega_{\mathrm{c}}
+\end{array}\right.</script><p>其中 $\Omega_{N}&lt;\Omega_{\mathrm{c}}&lt;\Omega_{\mathrm{s}}-\Omega_{N}$，输出信号的傅里叶变换就和 $x_{\mathrm{c}}(t)$ 的完全一样。都取 $\Omega_{\mathrm{c}}=   \Omega_{\mathrm{s}} / 2=\pi / T$。称这个低通滤波器为<strong>理想重构滤波器</strong>。注意这是一个连续时间滤波器，它的输入是冲激串信号 $x_{\mathrm{s}}(t)$，输出 $x_{\mathrm{r}}(t)$ 的傅里叶变换表示成</p>
+<script type="math/tex; mode=display">
+X_{\mathrm{r}}(\mathrm{j} \Omega)=H_{\mathrm{r}}(\mathrm{j} \Omega) X_{\mathrm{s}}(\mathrm{j} \Omega)=X_{\mathrm{c}}(\mathrm{j} \Omega)</script><p>同理可以将 $D/C$ 过程分解成两步表示（注意不是实际的实现过程）。</p>
+<p><img src="https://s2.loli.net/2023/10/29/WKjRgVASiZoBQky.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>输入输出关系</p>
+<script type="math/tex; mode=display">
+x_{\mathrm{r}}(t)=\sum_{n=-\infty}^{\infty} x[n] \frac{\sin [\pi(t-n T) / T]}{\pi(t-n T) / T}</script><p>重构信号是由无穷多连续时间信号叠加而成的。每个 $x_{\mathrm{n}}(t)$ 在对称中心 $n T$ 处等于序列的值 $x[n]$，在其他 $T$ 的整数倍处等于零，所以叠加以后的合成信号 $x_{\mathrm{r}}(t)$，在采样时刻点上等于采样值，在采样点之间的值是通过<strong>内插</strong>的方式得到的。由此可以得出结论：<strong>频域的理想低通滤波相当于时域的理想内插</strong>。当采样过程无混叠时，$x_{\mathrm{r}}(t)=x_{\mathrm{c}}(t)$。无论有无混叠，$x_{\mathrm{r}}(t)$ 都是带限信号，最高频率是 $\Omega_{\mathrm{c}}$，一般是采样率的一半。</p>
+<h3 id="采样定理"><a href="#采样定理" class="headerlink" title="采样定理"></a>采样定理</h3><p>能够由离散时间信号无失真地重构原始连续时间信号是有条件的，这个条件由以下的奈奎斯特采样定理表述。</p>
+<p>令 $x_{\mathrm{c}}(t)$ 是一个带限信号，</p>
+<script type="math/tex; mode=display">
+X_{c}(\mathrm{j} \Omega)=0 \mathrm{,对于}|\Omega|>\Omega_{N}</script><p>那么 $x_{\mathrm{c}}(t)$ 能由它的样本 $x[n]=x_{\mathrm{c}}(n T)$，$n=0$，$\pm 1$，$\pm 2$，$\cdots$ 完全不失真重构的条件是</p>
+<script type="math/tex; mode=display">
+\Omega_{\mathrm{s}}=2 \pi / T \geqslant 2 \Omega_{N}</script><p>其中，</p>
+<ul>
+<li>$\Omega_{N}$ 是原始连续时间信号的最高频率，称为<strong>奈奎斯特频率</strong></li>
+<li>$2 \Omega_{N}$ 称为<strong>奈奎斯特率</strong></li>
+<li>$\Omega_{\mathrm{s}}&gt;2 \Omega_{N}$ 时称为<strong>过采样</strong></li>
+<li>$\Omega_{\mathrm{s}}&lt;2 \Omega_{N}$ 时称为<strong>欠采样</strong></li>
+<li>$\Omega_{\mathrm{s}}=2 \Omega_{N}$ 时称为<strong>临界采样</strong></li>
+</ul>
+<h3 id="抗混叠"><a href="#抗混叠" class="headerlink" title="抗混叠"></a>抗混叠</h3><p>通常情况下，被采样的连续时间信号包含若干不同频率的余弦信号，当不满足采样定理时，重构信号的<strong>高频成分失真变成低频成分</strong>，并与原有的低频成分（未失真的）叠加在一起，从而使<strong>整个信号产生失真</strong>。如果是声音信号，则会听到噪声。采样定理的实质就是，采样周期要小到能对信号中最高频率的余弦信号的每个周期至少采样两个点，才能理想重构该频率成分，从而使整个信号无失真。<br>通常情况下，连续时间信号不是严格带限的，或者尽管带限但采样率低于信号最高频率的两倍。所以一般都在 $C/D$ 转换前加<strong>抗混叠的连续时间低通滤波器</strong>来避免混叠，其中抗混叠低通滤波器的截止频率应该选择为采样率的一半。<br><strong>注意：这种抗混叠方法不是完美的解决方法，因为低通滤波器提前把高频部分过滤，从而使信号质量受损</strong></p>
+<h3 id="连续时间信号的离散时间处理"><a href="#连续时间信号的离散时间处理" class="headerlink" title="连续时间信号的离散时间处理"></a>连续时间信号的离散时间处理</h3><p>由于数字信号处理比起模拟信号处理来，有诸多优点，所以我们常常希望用离散时间信号处理的方法来实现对连续时间信号的处理。连续时间信号的离散时间处理系统的框图如下图所示。如果其中的离散时间系统是一个离散时间滤波器，则整个系统等效为一个连续时间滤波器。</p>
+<p><img src="https://s2.loli.net/2023/10/29/tfqQVgCpOLYs9vP.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>设输入信号带限，且采样周期 $T$ 满足采样定理，即 $X_{\mathrm{c}}(\mathrm{j} \Omega)=0$，$|\Omega|&gt;\pi / T$，离散时间系统是一个频响为 $H\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 的 LTI 系统；$H_{\mathrm{eff}}(j \Omega)$ 是整个等效的连续时间系统的频率响应。</p>
+<script type="math/tex; mode=display">
+H_{\mathrm{eff}}(\mathrm{j} \Omega)=\left\{\begin{array}{ll}
+\left.H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|_{\omega=\Omega T},& |\Omega| \leqslant \pi / T \\
+0,& |\Omega|>\pi / T
+\end{array}\right.</script><p>可见，等效的连续时间系统也是一个 LTI 系统，其频率响应由上式给出，等于离散时间系统频率响应的主周期。</p>
+<p>注意，得出上述结论需要满足两个条件：离散时间系统是<strong>线性时不变</strong>的；输入信号带限且<strong>无混叠</strong>或<strong>混叠发生在离散时间系统的通带以外</strong>。</p>
+<p><img src="https://s2.loli.net/2023/10/29/MwK25WTl1mtpV9S.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="离散时间信号的连续时间处理"><a href="#离散时间信号的连续时间处理" class="headerlink" title="离散时间信号的连续时间处理"></a>离散时间信号的连续时间处理</h3><p>离散时间信号的连续时间处理系统框图如下图所示，整个系统等效于一个离散时间系统。</p>
+<p><img src="https://s2.loli.net/2023/10/29/nLJEGm5RdUP12VZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>由于理想 $\mathrm{D} / \mathrm{C}$ 转换后，$X_{\mathrm{c}}(\mathrm{j} \Omega)$ 的最高频率是 $\pi / T$，所以整个系统中<strong>不存在混叠问题</strong>。写出图所以等效的离散时间系统的频率响应与连续时间系统的频率响应间的关系是</p>
+<script type="math/tex; mode=display">
+H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left.H_{\mathrm{c}}(\mathrm{j} \Omega)\right|_{\Omega=\omega / T},\quad|\omega|<\pi</script><h3 id="模拟信号的数字处理"><a href="#模拟信号的数字处理" class="headerlink" title="模拟信号的数字处理"></a>模拟信号的数字处理</h3><p><img src="https://s2.loli.net/2023/10/29/ktbTyhZgs2YW8xz.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>前面讨论连续时间信号的采样和重构时都只考虑了理想的情况，即被采样的连续时间信号是带限的，采样后的信号用<strong>无限精度的序列</strong>表示，重构时可以实现<strong>理想内插</strong>。</p>
+<p>在实际的采样系统中，连续时间信号不可能真正带限，理想滤波不可能实现，采样数据也只能用<strong>有限字长的数</strong>表示，所以理想的 C/D 和 D/C 转换是用模拟到数字（A/D）和数字到模拟（D/A）的转换器来近似实现的</p>
+<h4 id="抗混叠滤波"><a href="#抗混叠滤波" class="headerlink" title="抗混叠滤波"></a>抗混叠滤波</h4><p>数字系统在处理数据时所需的运算量与存储数据所需的空间正比于采样的数据量，而采样的数据量又正比于采样率，所以在实际应用中往往根据需要<strong>选择尽可能低的采样率以减小数据量</strong>。比如对于语音信号的可懂度来说，3～4kHz带宽就可以了，而对于音乐信号的保真度来说则要求20kHz带宽，所以两者的采样率可以分别选取8kHz和44.1kHz。然而，通常的情况往往是输入的模拟信号不带限，或者带宽太宽，或者尽管信号的带宽满足要求，但宽带加性噪声含有高于奈奎斯特频率的成分，为了避免混叠的发生，需要在采样之前用一个<strong>模拟低通滤波器</strong>来实现抗混叠滤波，其截止频率应该是已经选定的采样率的一半。</p>
+<p>理想情况下抗混叠低通滤波器的频响在上面给出。但是，它不可能理想带限，锐截止的抗混叠低通滤波器在廉价的数字处理器应用中占的成本太高，实现起来十分困难和昂贵。并且，锐截止的模拟滤波器一般都有很严重的非线性相位问题。解决这个问题的一条途径是：采用一个性能和成本低的抗混叠低通滤波器，以及采样率比选定值高很多的<strong>过采样</strong>，将模拟信号转换成数字信号，最后在数字域进行<strong>降采样</strong></p>
+<h4 id="采样保持"><a href="#采样保持" class="headerlink" title="采样保持"></a>采样保持</h4><p>A/D 转换器每 $T$ 秒启动和完成一次模拟到数字的转换，转换不是瞬时的，需要一定的时间，所以<strong>采样的数据</strong>需要在 $T$ 秒内<strong>保持不变</strong>。采样保持器就是兼具尽可能瞬时采样和使样本在一个采样周期尽可能保持不变两个功能的器件。理想情况下，采样保持器的输入/输出信号间的关系可以用公式表示成</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+x_{0}(t) & =\left[\sum_{n=-\infty}^{\infty} x_{c}(n T) \delta(t-n T)\right] * h_{0}(t) \\
+& =\sum_{n=-\infty}^{\infty} x_{c}(n T) h_{0}(t-n T)
+\end{aligned}</script><p>其中 $h_{0}(t)$ 是一个称为零阶保持系统的单位脉冲响应，表达式如下</p>
+<script type="math/tex; mode=display">
+h_{0}(t)=\left\{\begin{array}{ll}
+1,& 0<t<T \\
+0,& \mathrm{其他}
+\end{array}\right.</script><p>上式说明，理想采样保持等效于冲激串调制再级联一个零阶保持滤波处理。</p>
+<p>（Todo）</p>
+<h3 id="改变采样率"><a href="#改变采样率" class="headerlink" title="改变采样率"></a>改变采样率</h3><h4 id="采样率按整数因子降低"><a href="#采样率按整数因子降低" class="headerlink" title="采样率按整数因子降低"></a>采样率按整数因子降低</h4><p><img src="https://s2.loli.net/2023/10/29/oRcWsgwVKjAJFXD.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>实现采样率按整数因子 $M$ 降低的离散时间系统如上图所示。其中第 2 个功能模块表示离散时间域的亚采样，即<strong>抽选</strong>，其输出与输入信号间的关系是</p>
+<script type="math/tex; mode=display">
+\hat{x}_{\mathrm{d}}[n]=\hat{x}[n M]</script><p>即只保留序号为 $M$ 的整数倍的样本值，数据量减小为 $1 / M$，采样率也降低为原始采样率的 $1 / M$，采样周期从 $T$ 增加到 $T’=MT$</p>
+<script type="math/tex; mode=display">
+\hat{X}_{\mathrm{d}}\left(e^{\mathrm{j} \omega}\right)=\frac{1}{M} \sum_{i=0}^{M-1} \hat{X}\left(\mathrm{e}^{\mathrm{j}(\omega-2 \pi \mathrm{i}) / M}\right)</script><p>可以看出，抽选后信号的傅里叶变换仍然以 $2 \pi$ 为周期，对每个周期而言，信号的频率变成抽选前的 $M$ 倍，幅度降低为 $1 / M$（抽选相当于在每个周期，横坐标变为原来的 $M$ 倍，再叠加起来）</p>
+<p>当采样率降低后，由于可能不再满足采样定理而导致频域混叠，所以有必要在抽选之前加一个抗混叠的离散时间低通滤波器。为了保证信号的最高频率在增大为 $M$ 倍后无混叠发生，$\hat{x}[n]$ 的最高频率应该低于 $\pi / M$。这也就意味着，抗混叠离散时间滤波器是截止频率为 $\pi / M$，增益为 $1$ 的低通滤波器。</p>
+<h4 id="采样率按整数因子升高"><a href="#采样率按整数因子升高" class="headerlink" title="采样率按整数因子升高"></a>采样率按整数因子升高</h4><p><img src="https://s2.loli.net/2023/10/29/e4qyfdx5TEiXtWo.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>实现采样率按整数因子 $L$ 升高的离散时间系统如上图所示。其中第 1 个功能模块表示离散时间域的内插，其输出与输入信号间的关系是</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+x_{\mathrm{e}}[n] & =\sum_{k=-\infty}^{\infty} x[k] \delta[n-k L] \\
+& =\left\{\begin{array}{l}
+x[n / L],n=0,\pm L,\pm 2 L,\cdots \\
+0,\mathrm{其他}
+\end{array}\right.
+\end{aligned}</script><p>即每两个点之间插入 $L-1$ 个零值点，数据量增加为 $L$ 倍，采样率也升高为原始采样率的 $L$ 倍。采样周期从 $T$ 减小到 $T^{\prime}=T / L$。</p>
+<p>$x_{\mathrm{e}}[n]$ 和 $x[n]$ 的傅里叶变换之间的关系</p>
+<script type="math/tex; mode=display">
+X_{\mathrm{e}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\sum_{n=-\infty}^{\infty} x_{\mathrm{e}}[n] \mathrm{e}^{-\mathrm{j} \omega n}=\sum_{n=L \mathrm{前整数倍}} x[n / L] \mathrm{e}^{-\mathrm{j} \omega n}</script><p>令 $n=L m$ 上式成为</p>
+<script type="math/tex; mode=display">
+X_{\mathrm{e}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\sum_{m=-\infty}^{\infty} x[m] \mathrm{e}^{-\mathrm{j} \omega L m}=X\left(\mathrm{e}^{\mathrm{j} \omega L}\right)</script><p><strong>在主周期内</strong>，信号的最高频率从 $\pi$ 缩小到 $\pi / L$，同时还在 $\pi / L \leqslant \omega \leqslant \pi$ 区间出现了 $(L-1)$ 个复本，称为<strong>镜像频谱</strong>。（内插相当于在所有周期一起，横坐标变为原来的 $1/L$）</p>
+<p>所以内插之后的反镜像离散时间滤波器是用来消除高频镜像频谱的，其截止频率是 $\pi / L$，增益是 $L$，即</p>
+<script type="math/tex; mode=display">
+H_{\mathrm{i}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left\{\begin{array}{ll}
+L,& |\omega| \leqslant \pi / L \\
+0,& \pi / L<|\omega|<\pi
+\end{array}\right.</script><p>最终输出信号的时域表达式为</p>
+<script type="math/tex; mode=display">
+x_{\mathrm{i}}[n]=\sum_{k=-\infty}^{\infty} x[k] \frac{\sin \left(\frac{\pi(n-k L)}{L}\right)}{\frac{\pi(n-k L)}{L}}</script><p>可见升采样系统的最终输出信号是原始信号的<strong>理想内插</strong>。</p>
+<h4 id="采样率按非整数因子变化"><a href="#采样率按非整数因子变化" class="headerlink" title="采样率按非整数因子变化"></a>采样率按非整数因子变化</h4><p>实现采样率按非整数因子变化的离散时间系统如下图所示。该系统是升采样系统与降采样系统的级联，其中的反镜像滤波器和抗混叠滤波器用一个等效的低通滤波器实现，其截止频率取 $\min\{\pi/L,\pi/M\}$，增益为 $L$。</p>
+<p><img src="https://s2.loli.net/2023/10/29/Va198WucBjXFE35.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h2 id="第六章-离散傅里叶变换（DFT）"><a href="#第六章-离散傅里叶变换（DFT）" class="headerlink" title="第六章 离散傅里叶变换（DFT）"></a>第六章 离散傅里叶变换（DFT）</h2><h3 id="DFT-与-IDFT-的定义"><a href="#DFT-与-IDFT-的定义" class="headerlink" title="DFT 与 IDFT 的定义"></a>DFT 与 IDFT 的定义</h3><p>考虑有 $N$ 个样本的有限长因果序列 $x[n]$，在 $0 \leqslant n \leqslant N-1$ 之外 $x[n]=0$，其傅里叶变换是</p>
+<script type="math/tex; mode=display">
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\sum_{n=0}^{N-1} x[n] \mathrm{e}^{-\mathrm{j} \omega n}</script><p>为了将 $\omega$ 离散化，在 $0 \leqslant \omega&lt;2 \pi$ 区间从 $\omega=0$ 开始等间隔地取 $N$ 个频率 $\omega_{k}=2 \pi k / N,k=0,1,\cdots,N-1$，将这些频率代入得到</p>
+<script type="math/tex; mode=display">
+X\left(\mathrm{e}^{\mathrm{j} \omega_{k}}\right)=\left.X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|_{\omega=\frac{2 \pi}{N} k}=\sum_{n=0}^{N-1} x[n] \mathrm{e}^{-\frac{2 \pi}{N} k n},\quad k=0,1,\cdots,N-1</script><p>采用符号 $X[k]=X\left(\mathrm{e}^{\mathrm{j} \omega_{k}}\right)$ 和 $W_{N}=\mathrm{e}^{-\mathrm{j}(2 \pi / N)}$，上式成为</p>
+<script type="math/tex; mode=display">
+X[k]=\sum_{n=0}^{N-1} x[n] W_{N}^{k n},\quad k=0,1,\cdots,N-1</script><p>我们将上式定义成<strong>有限长序列的 N 点离散傅里叶变换（DFT）</strong>。因此，我们也可以说，有限长序列的 DFT 是序列的傅里叶变换在 $0 \leqslant \omega&lt;2 \pi$ 内的等间隔取样，即</p>
+<script type="math/tex; mode=display">
+X[k]=\left.X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|_{\omega=\frac{2 \pi}{N} k},\quad k=0,1,\cdots,N-1</script><p>上式定义的 DFT 的特点是求和项数等于信号长度，也等于频域取样点数。</p>
+<script type="math/tex; mode=display">
+x[n]=\frac{1}{N} \sum_{k=0}^{N-1} X[k] W_{N}^{-k n},\quad n=0,1,\cdots,N-1</script><p>上式<strong>是离散傅里叶反变换（IDFT）</strong>。上述定义中，</p>
+<ul>
+<li>在区间 $0 \leqslant k \leqslant N-1$ 之外，$X[k]=0$</li>
+<li>在区间 $0 \leqslant n \leqslant N-1$ 之外，$x[n]=0$。</li>
+</ul>
+<p>注意上面只给出了 $[0,N-1]$ 范围内 DFT 的定义，实际上 DFT 的完整定义是周期的。</p>
+<script type="math/tex; mode=display">
+X[k]=X[k+rN]</script><h3 id="DFT-与-DFS-的关系"><a href="#DFT-与-DFS-的关系" class="headerlink" title="DFT 与 DFS 的关系"></a>DFT 与 DFS 的关系</h3><p>下式表示将长度为 $M$ 的序列 $x[n]$ 以 $N$ 为周期延拓成周期序列 $\tilde{x}[n]$</p>
+<script type="math/tex; mode=display">
+\tilde{x}[n]=\sum_{r=-\infty}^{\infty} x[n-r N]</script><ul>
+<li>当 $N&lt;M$ 时，$x[n-r N]$ 各项之间将产生重叠，称为<strong>时域混叠</strong></li>
+<li>当 $N&gt;M$ 时，我们认为 $x[n]$ 的最后 $(N-M)$ 个样本值为 $0$。</li>
+<li>所以对于 $N \ge M$ 的情况，$\tilde{x}[n]$ 是 $x[n]$ 没有混叠的周期性延拓，这时上式可以简写成<script type="math/tex; mode=display">
+\tilde{x}[n]=x[n \bmod N]=x\left[((n))_{N}\right]</script></li>
+</ul>
+<p>考虑<strong>长度为 N</strong> 的有限长序列 $x[n]$，以 <strong>N 为周期延拓</strong>成周期序列 $\tilde{x}[n]$，则有限长序列的 DFT 就是取与之<strong>对应的周期序列的 DFS 的主周期</strong>，即</p>
+<script type="math/tex; mode=display">
+X[k]=\tilde{X}[k] R_{N}[k]</script><p>反过来</p>
+<script type="math/tex; mode=display">
+\tilde{X}[k]=X[k \bmod N]=X\left[((k))_{N}\right]</script><p>对于反变换，IDFT 就是取 IDFS 的主周期，即</p>
+<script type="math/tex; mode=display">
+x[n]=\tilde{x}[n] R_{N}[n]</script><p>反过来</p>
+<script type="math/tex; mode=display">
+\tilde{x}[n]=x\left[((n))_{N}\right]</script><h3 id="频域取样"><a href="#频域取样" class="headerlink" title="频域取样"></a>频域取样</h3><p>设序列 $x[n]$ 长度为 $M$（$M$ 可以是无穷大），已知其 $N$ 点<strong>频域取样</strong>为</p>
+<script type="math/tex; mode=display">
+\left.X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|_{\omega=\frac{2 \pi}{N} k},k=0,1,\cdots,N-1,</script><p>对其做 $N$ 点 IDFT 重构，得到有限长时域信号为 $x^{\prime}[n]$</p>
+<script type="math/tex; mode=display">
+x^{\prime}[n]=\tilde{x}[n] R_{N}[n]=\left(\sum_{r=-\infty}^{\infty} x[n-r N]\right) R_{N}[n]</script><ul>
+<li>当 $N=M$ 时<script type="math/tex; mode=display">
+x^{\prime}[n]=x[n]</script></li>
+<li>当 $N&gt;M$ 时<script type="math/tex; mode=display">
+x^{\prime}[n]=\left\{\begin{array}{ll}
+x[n],& n=0,1,\cdots,M-1 \\
+0,& n=M,\cdots,N-1
+\end{array}\right.</script></li>
+<li>当 $N&lt;M$ 时，$x[n-r N]$ 各项之间<strong>产生重叠</strong>，无法无失真地重构原始有限长或无限长序列 $x[n]$。</li>
+</ul>
+<p><strong>频域取样定理</strong>：只有当序列<strong>长度有限</strong>，并且<strong>频域取样点数大于或等于序列的长度</strong>时，才能够由频域取样<strong>无失真地重构</strong>原始时域信号，也才能够通过理想内插由频域取样得到无失真的连续的傅里叶变换函数。</p>
+<p>于是反过来，如果对长度为 $M$ 的序列 $x[n]$ 进行补 0 操作，补到长度为 $N$，再进行 DFT 变换，那么得到的 $X\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 就满足</p>
+<script type="math/tex; mode=display">
+\left.X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|_{\omega=\frac{2 \pi}{N} k},k=0,1,\cdots,N-1,</script><p>也就是说，DFT 等价于傅里叶变换上取点，那么如果取的点够多，就可以看成对傅里叶变换的一种近似。</p>
+<h3 id="DFT-的性质"><a href="#DFT-的性质" class="headerlink" title="DFT 的性质"></a>DFT 的性质</h3><h4 id="线性性质-3"><a href="#线性性质-3" class="headerlink" title="线性性质"></a>线性性质</h4><script type="math/tex; mode=display">
+a x[n]+b y[n] \stackrel{\mathrm{DFT}}{\longrightarrow} a X[k]+b Y[k]</script><h4 id="移位性质-1"><a href="#移位性质-1" class="headerlink" title="移位性质"></a>移位性质</h4><p>定义序列 $x[n]$ 在区间 $0 \leqslant n \leqslant N-1$ 上以 $N$ 为模的循环移位为</p>
+<script type="math/tex; mode=display">
+x_{1}[n]=x\left[((n-m))_{N}\right] R_{N}[n]</script><p>其中 $m$ 为整数。<br>DFT 的时域循环移位和频域循环移位性质分别是</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+x\left[((n-m))_{N}\right] R_{N}[n] \stackrel{\mathrm{DFT}}{\longrightarrow} W_{N}^{k m} X[k] \\
+W_{N}^{-n l} x[n] \stackrel{\mathrm{DFT}}{\longrightarrow} X\left[((k-l))_{N}\right] R_{N}[k]
+\end{array}</script><h4 id="反转性质"><a href="#反转性质" class="headerlink" title="反转性质"></a>反转性质</h4><p>长度为 $N$ 的序列 $x_2[n]=x_{1}[N-1-n]$</p>
+<script type="math/tex; mode=display">
+X_2[k] = X_{1}^{*}[k]W_{N}^{k(N-1)}</script><h4 id="对偶性质-1"><a href="#对偶性质-1" class="headerlink" title="对偶性质"></a>对偶性质</h4><script type="math/tex; mode=display">
+X[n] \stackrel{\mathrm{DFT}}{\longrightarrow} N x\left[((-k))_{N}\right] R_{N}[k]</script><h4 id="对称性质-2"><a href="#对称性质-2" class="headerlink" title="对称性质"></a>对称性质</h4><p>对于周期为 $N$ 的序列 $x[n]$，周期共轭对称是指：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+x[1]=x[N-1]\\
+x[2]=x[N-2]\\
+\cdots\\
+\end{array}</script><p>若 $N$ 是偶数，则 $x[0]$ 和 $x[N/2]$ 没有列入比较；若 $N$ 是奇数，则 $x[0]$ 没有列入比较</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+x^{*}[n] \stackrel{\mathrm{DFT}}{\longrightarrow} X^{*}\left[((-k))_{N}\right] R_{N}[k]=X^{*}[N-k] \\
+x^{*}\left[((-n))_{N}\right] R_{N}[n]=x^{*}[N-n] \stackrel{\mathrm{DFT}}{\longrightarrow} X^{*}[k]
+\end{array}</script><script type="math/tex; mode=display">
+\begin{array}{l}
+\operatorname{Re}\{x[n]\}=\frac{1}{2}\left(x[n]+x^{*}[n]\right) \stackrel{\mathrm{DFT}}{\longrightarrow} X_{\mathrm{ep}}[k]=\frac{1}{2}\left(X[k]+X^{*}[N-k]\right) \\
+\mathrm{j} \operatorname{Im}\{x[n]\}=\frac{1}{2}\left(x[n]-x^{*}[n]\right) \stackrel{\mathrm{DFT}}{\longrightarrow} X_{\mathrm{op}}[k]=\frac{1}{2}\left(X[k]-X^{*}[N-k]\right) \\
+x_{\mathrm{ep}}[n]=\frac{1}{2}\left(x[n]+x^{*}[N-n]\right) \stackrel{\mathrm{DFT}}{\longrightarrow} \operatorname{Re}\{X[k]\}=\frac{1}{2}\left(X[k]+X^{*}[k]\right) \\
+x_{\mathrm{op}}[n]=\frac{1}{2}\left(x[n]-x^{*}[N-n]\right) \stackrel{\mathrm{DFT}}{\longrightarrow} \mathrm{j} \operatorname{Im}\{X[k]\}=\frac{1}{2}\left(X[k]-X^{*}[k]\right)
+\end{array}</script><p>其中 $x_{\mathrm{ep}}[n]$ 和 $x_{\mathrm{op}}[n]$ 是两个长度为 $N$ 的有限长序列，分别称为 $x[n]$ 的<strong>周期共轭对称分量</strong>和<strong>周期共轭反对称分量</strong>。容易证明它们分别满足</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+x_{\mathrm{ep}}[n]=x_{\mathrm{ep}}^{*}[N-n] & =x_{\mathrm{ep}}^{*}\left[((-n))_{N}\right] R_{N}[n] \\
+x_{\mathrm{op}}[n]=-x_{\mathrm{op}}^{*}[N-n] & =-x_{\mathrm{op}}^{*}\left[((-n))_{N}\right] R_{N}[n]
+\end{aligned}</script><p>上式表明，将 $x_{\mathrm{ep}}[n]$ 和 $x_{\mathrm{op}}[n]$ 周期延拓分别得到共轭对称和共轭反对称的周期序列。</p>
+<p><img src="https://s2.loli.net/2023/11/10/A3Q6JfBmcnKCWb2.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>此外，实序列的 DFT 是周期共辄对称序列，如果不考虑 $X[0]$ 这一点，</p>
+<ul>
+<li>$\operatorname{Re}{X[k]}$ 相对于 $N / 2$ 对称，</li>
+<li>$\operatorname{Im}{X[k]}$ 相对于 $N / 2$ 反对称，</li>
+<li>$|X[k]|$ 相对于 $N / 2$ 对称，</li>
+<li>$\Varangle X[k]$ 相对于 $N / 2$ 反对称。</li>
+</ul>
+<p>用式子表达：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\operatorname{Re}\{X[k]\}=\operatorname{Re}\{X[N-k]\} \\
+\operatorname{Im}\{X[k]\}=-\operatorname{Im}\{X[N-k]\} \\
+|X[k]|=|X[N-k]| \\
+\Varangle X[k]=-\Varangle X[N-k]
+\end{array}</script><h4 id="帕斯瓦尔定理-1"><a href="#帕斯瓦尔定理-1" class="headerlink" title="帕斯瓦尔定理"></a>帕斯瓦尔定理</h4><script type="math/tex; mode=display">
+\sum_{n=0}^{N-1} x[n] y^{*}[n]=\frac{1}{N} \sum_{k=0}^{N-1} X[k] Y^{*}[k]</script><p>当 $x[n]=y[n]$ 时，上式成为</p>
+<script type="math/tex; mode=display">
+\sum_{n=0}^{N-1}|x[n]|^{2}=\frac{1}{N} \sum_{k=0}^{N-1}|X[k]|^{2}</script><h4 id="循环卷积性质"><a href="#循环卷积性质" class="headerlink" title="循环卷积性质"></a>循环卷积性质</h4><p>由于线性卷积序列的长度大于原序列长度，超过了 $[0,N-1]$ 区间，所以在 DFT 的性质中，线性卷积性质被循环卷积性质所代替。我们定义两个长度为 $N$ 的序列的 $N$ 点循环卷积为</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+x[n] \circledN y[n] & =\left(x\left[((n))_{N}\right] \circledast y\left[((n))_{N}\right]\right) R_{N}[n] \\
+& =\left(\sum_{m=0}^{N-1} x[m] y\left[((n-m))_{N}\right]\right) R_{N}[n]
+\end{aligned}</script><p>可以看出 $N$ 点循环卷积的结果也是长度为 $N$ 的序列，并且循环卷积满足交换律</p>
+<script type="math/tex; mode=display">
+x[n] \circledN y[n]=y[n] \circledN x[n]</script><p>DFT 的时域循环卷积和频域循环卷积性质分别是</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+x[n] \circledN y[n] \stackrel{\mathrm{DFT}}{\longrightarrow} X[k] Y[k] \\
+x[n] y[n] \stackrel{\mathrm{DFT}}{\longrightarrow} \frac{1}{N} X[k]\circledN Y[k]
+\end{array}</script><h4 id="频域降采样"><a href="#频域降采样" class="headerlink" title="频域降采样"></a>频域降采样</h4><p>设长度为 $N$ 的序列 $x[n]$ 的 N 点 DFT 是 $X[k]$，令 $Y[k]=X[pk]$，则</p>
+<script type="math/tex; mode=display">
+y[n]=\sum_{r=0}^{p-1}x[n+\frac{N}{p}r], \quad 0\le n \le \frac{N}{p}-1</script><h4 id="时域补0"><a href="#时域补0" class="headerlink" title="时域补0"></a>时域补0</h4><p>设长度为 $N$ 的序列 $x[n]$ 的 N 点 DFT 是 $X[k]$，$y[n]$ 是 $x[n]$ 后面再加了 N 个 0，则 $Y[k]$ 频域取样更密，即理想内插，满足</p>
+<script type="math/tex; mode=display">
+Y[2k]=X[k]</script><h4 id="时域插0"><a href="#时域插0" class="headerlink" title="时域插0"></a>时域插0</h4><p>设长度为 $N$ 的序列 $x[n]$ 的 N 点 DFT 是 $X[k]$，$y[n]$ 是 $x[n]$ 内插 0，即</p>
+<script type="math/tex; mode=display">
+y[n]=\left\{\begin{array}{l}
+x[n/2], n=0, 2,\cdots, 2 N-2 \\
+0, n=1, 3,\cdots, 2 N-1
+\end{array}\right.</script><p>则 $Y[k]$ 是 $X[k]$ 后面再加了 $X[k]$，即</p>
+<script type="math/tex; mode=display">
+Y[k]=\left\{\begin{array}{l}
+X[k], n=0, \ldots, N-1 \\
+X[k-N], n=N, \ldots, 2 N-1
+\end{array}\right.</script><h4 id="时域复制"><a href="#时域复制" class="headerlink" title="时域复制"></a>时域复制</h4><p>设长度为 $N$ 的序列 $x[n]$ 的 N 点 DFT 是 $X[k]$，$y[n]$ 是 $x[n]$ 后面再加了 $xx[n]$，即</p>
+<script type="math/tex; mode=display">
+y[n]=\left\{\begin{array}{l}
+x[n], n=0, \ldots, N-1 \\
+x[n-N], n=N, \ldots, 2 N-1
+\end{array}\right.</script><p>则 $Y[k]$ 是 $X[k]$ 的零值内插的 2 倍，即</p>
+<script type="math/tex; mode=display">
+Y[2k]=2X[k]</script><h3 id="用循环卷积实现线性卷积"><a href="#用循环卷积实现线性卷积" class="headerlink" title="用循环卷积实现线性卷积"></a>用循环卷积实现线性卷积</h3><p>考虑一个 $L$ 点的序列 $x[n]$，$n=0,1,\cdots L-1$，和另一个 $P$ 点的序列 $h[n]$，$n=0,1,\cdots,P-1$，它们的线性卷积为</p>
+<script type="math/tex; mode=display">
+y[n]=x[n] * h[n]</script><p>对上式两边做 $N$ 点 IDFT，整理后得到</p>
+<script type="math/tex; mode=display">
+\sum_{r=-\infty}^{\infty} y[n-r N] R_{N}[n]=x[n] \circledN h[n]</script><p>因此，$N$ 点循环卷积等于线性卷积以 $N$ 为周期延拓后取主周期。当循环卷积的点数 $N$ 大于等于线性卷积的长度 $(L+P-1)$ 时，循环卷积等于线性卷积；否则，循环卷积是线性卷积的混叠。</p>
+<h2 id="第七章-快速傅里叶变换（FFT）"><a href="#第七章-快速傅里叶变换（FFT）" class="headerlink" title="第七章 快速傅里叶变换（FFT）"></a>第七章 快速傅里叶变换（FFT）</h2><h3 id="使用-DFT-定义计算的运算量"><a href="#使用-DFT-定义计算的运算量" class="headerlink" title="使用 DFT 定义计算的运算量"></a>使用 DFT 定义计算的运算量</h3><p>基2 FFT 算法的基本思想是，将序列 $x[n]$ 根据序号 $n$ 的奇偶逐次分解成较短的子序列，适用于 $DFT$ 点数 $N$ 为 $2$ 的整数次幂，即 $N=2^{v}$ 的情况。如果 $N$ 不满足这一条件，则可以采用<strong>对序列补零</strong>的方式使 $N$ 满足该要求。</p>
+<p>对于一个 N 点的 DFT，根据定义式，</p>
+<ul>
+<li>计算每一个 $X[k]$ 需要 $N$ 次复数乘法和 $(N-1)$ 次复数加法</li>
+<li>计算全部 $N$ 个 $X[k]$ 总共需要 $N^2$ 次复数乘法和 $N(N-1)$ 次复数加法。</li>
+<li>一次复数乘法一般需要 $4$ 次实数乘法和 $2$ 次实数加法</li>
+<li>一次复数加法需要 $2$ 次实数加法</li>
+<li>计算全部 $X[k]$ 需要 $4N^2$ 次实数乘法和 $N(4N-2)$ 次实数加法。</li>
+<li>由于运算次数大致正比于 $N^2$，当 $N$ 很大时，运算量非常大。</li>
+</ul>
+<h3 id="时域抽选基2-FFT算法"><a href="#时域抽选基2-FFT算法" class="headerlink" title="时域抽选基2 FFT算法"></a>时域抽选基2 FFT算法</h3><h4 id="单次分解"><a href="#单次分解" class="headerlink" title="单次分解"></a>单次分解</h4><p>根据 DFT 的定义式</p>
+<script type="math/tex; mode=display">
+X[k]=\sum_{n=0}^{N-1} x[n] W_{N}^{k n}, \quad 0 \leq k \leq N-1</script><p>令</p>
+<script type="math/tex; mode=display">
+\begin{array}{ll}
+g[n]=x[2 n], & 0 \leq n \leq N / 2-1 \\
+h[n]=x[2 n+1], & 0 \leq n \leq N / 2-1
+\end{array}</script><p>且</p>
+<script type="math/tex; mode=display">
+\begin{array}{ll}
+G[k] =\sum_{n=0}^{N / 2-1} g[n] W_{N / 2}^{k n}, & 0 \leq k \leq N / 2-1 \\
+H[k] =\sum_{n=0}^{N / 2-1} h[n] W_{N / 2}^{k n}, & 0 \leq k \leq N / 2-1
+\end{array}</script><p>则</p>
+<script type="math/tex; mode=display">
+\begin{array}{ll}
+X[k]=G[k]+W_{N}^{k} H[k], & 0 \leq k \leq N / 2-1 \\
+X\left[k+\frac{N}{2}\right]=G[k]-W_{N}^{k} H[k], & 0 \leq k \leq N / 2-1
+\end{array}</script><h4 id="8点FFT完整信号流图"><a href="#8点FFT完整信号流图" class="headerlink" title="8点FFT完整信号流图"></a>8点FFT完整信号流图</h4><p><img src="https://s2.loli.net/2023/11/13/x842iKILRZOorjV.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="DIT-FFT-基本蝶形运算"><a href="#DIT-FFT-基本蝶形运算" class="headerlink" title="DIT-FFT 基本蝶形运算"></a>DIT-FFT 基本蝶形运算</h4><p><img src="https://s2.loli.net/2023/11/13/BgZ7VfpQn2C1udH.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+x_m[p]=x_{m-1}[p]+W_N^r x_{m-1}[q]\\
+x_m[p]=x_{m-1}[p]-W_N^r x_{m-1}[q]\\
+\end{array}</script><h4 id="蝶形运算与FFT计算量"><a href="#蝶形运算与FFT计算量" class="headerlink" title="蝶形运算与FFT计算量"></a>蝶形运算与FFT计算量</h4><ul>
+<li>对于 $N=2^{\nu}$，最多可以分解 $\nu=\log _{2} N$ 次，即流图有 $\log _{2} N$ 级。</li>
+<li>每级有 $N / 2$ 个蝶形运算。</li>
+<li>每个蝶形运算需要 $1$ 次复数乘法和 $2$ 次复数加法。</li>
+<li>所以 $N$ 点 FFT 总共需要复数乘法和复数加法的次数分别是 $\left(\frac{N}{2} \log _{2} N\right)$ 和 $\left(N \log _{2} N\right)$。</li>
+<li>通过与本章开始给出的直接计算的复数乘法和加法次数的比较可以看出，随着 $N$ 的增大，FFT 的优越性越来越明显。</li>
+</ul>
+<h4 id="其他形式"><a href="#其他形式" class="headerlink" title="其他形式"></a>其他形式</h4><p><img src="https://s2.loli.net/2023/11/13/zVt5dgwkZxPLSir.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="频域抽选基2-FFT算法"><a href="#频域抽选基2-FFT算法" class="headerlink" title="频域抽选基2 FFT算法"></a>频域抽选基2 FFT算法</h3><h4 id="单次分解-1"><a href="#单次分解-1" class="headerlink" title="单次分解"></a>单次分解</h4><p>根据 DFT 的定义式</p>
+<script type="math/tex; mode=display">
+X[k]=\sum_{n=0}^{N-1} x[n] W_{N}^{k n}, \quad 0 \leq k \leq N-1</script><p>令</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+g[n]=x[n]+x\left[n+\frac{N}{2}\right], n=0, \ldots N / 2-1 \\
+h[n]=\left(x[n]-x\left[n+\frac{N}{2}\right]\right) W_{N}^{n}, n=0, \ldots N / 2-1
+\end{array}</script><p>则</p>
+<script type="math/tex; mode=display">
+\begin{array}{ll}
+X[2 r]=G[r]=\sum_{n=0}^{N / 2-1} g[n] W_{N / 2}^{r n}, & 0 \leq r \leq \frac{N}{2}-1 \\
+X[2 r+1]=H[r]=\sum_{n=0}^{N / 2-1} h[n] W_{N / 2}^{r n}, & 0 \leq r \leq \frac{N}{2}-1
+\end{array}</script><h4 id="8点FFT完整信号流图-1"><a href="#8点FFT完整信号流图-1" class="headerlink" title="8点FFT完整信号流图"></a>8点FFT完整信号流图</h4><p><img src="https://s2.loli.net/2023/11/13/kQepLFgcZjNlviS.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="DIF-FFT-基本蝶形运算"><a href="#DIF-FFT-基本蝶形运算" class="headerlink" title="DIF-FFT 基本蝶形运算"></a>DIF-FFT 基本蝶形运算</h4><p><img src="https://s2.loli.net/2023/11/13/5WlgyDTOwn3ixeI.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+x_m[p]=x_{m-1}[p]+x_{m-1}[q]\\
+x_m[p]=\left(x_{m-1}[p]-x_{m-1}[q]\right)W_N^r\\
+\end{array}</script><h4 id="其他形式-1"><a href="#其他形式-1" class="headerlink" title="其他形式"></a>其他形式</h4><p><img src="https://s2.loli.net/2023/11/13/q1SWclHNF9ZJAjX.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="DFT-与硬件实现"><a href="#DFT-与硬件实现" class="headerlink" title="DFT 与硬件实现"></a>DFT 与硬件实现</h3><p>（Todo：5.3）</p>
+<h3 id="实序列的-DFT"><a href="#实序列的-DFT" class="headerlink" title="实序列的 DFT"></a>实序列的 DFT</h3><p>首先考虑两个 $N$ 点的实序列 $x_{1}[n]$ 和 $x_{2}[n]$，要求计算它们的 $N$ 点 $DFT$，即 $X_{1}[k]$ 和 $X_{2}[k]$。我们可以将两个实序列合成一个 $N$ 点的复数序列，计算该复数序列的一次 $N$ 点 $DFT$，然后利用 $DFT$ 的性质构造出两个实序列的 $DFT$。具体步骤如下：<br> $(1)$ 构造一个 $N$ 点的复数序列 $y[n]=x_{1}[n]+\mathrm{j} x_{2}[n],n=0,1,\cdots,N-1$；<br> $(2)$ 利用 $N$ 点 $FFT$ 算法计算 $y[n]$ 的 $N$ 点 $DFT  Y[k],k=0,1,\cdots,N-1$；<br> $(3)$ 从 $Y[k]$ 得出实序列的 $DFT</p>
+<script type="math/tex; mode=display">
+\begin{array}{ll}
+X\_{\mathrm{I}}[k]=\frac{\left.Y[k]+Y^{*}[N-k]\right\}}{2},\quad k=0,1,\cdots,N-1 \\
+X\_{2}[k]=\frac{\left.Y[k]-Y^{*}[N-k]\right\}}{2 \mathrm{j}},\quad k=0,1,\cdots,N-1
+\end{array}</script><p>下面考虑只有一个 $N$ 点实序列 $x[n]$ 的情况。我们首先将 $x[n]$ 拆成两个 $N / 2$ 点的实序列，然后应用上面的方案。需要考虑的是这两个 $N / 2$ 点的实序列的 $DFT$ 应该能合成原 $N$ 点实序列的 $DFT$，根据 $DIT-FFT$ 第 $1$ 次分解的原理，将 $x[n]$ 按照序号的奇偶拆就能满足这一要求。所以具体实现步骤是：<br> $(1)$ 将 $x[n]$ 拆成两个实序列</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+x_{1}[n]=x[2 n],n=0,\cdots,N / 2-1 \\
+x_{2}[n]=x[2 n+1],n=0,\cdots,N / 2-1
+\end{array}</script><p> $(2)  y[n]=x_{1}[n]+\mathrm{j} x_{2}[n]$，$n=0$，$\cdots$，$N / 2-1<br> $(3)$ 利用 $N / 2$ 点 $FFT$ 算法计算 $y[n]$ 的 $N / 2$ 点 $DFT  Y[k],k=0,1,\cdots,N / 2-1$；<br> $(4)  X_{1}[k]=\frac{\left.Y[k]+Y^{*}[N / 2-k]\right}}{2}$，$\quad k=0$，$1$，$\cdots$，$N / 2-1</p>
+<script type="math/tex; mode=display">
+X_{2}[k]=\frac{\left.Y[k]-Y^{*}[N / 2-k]\right\}}{2 \mathrm{j}},\quad k=0,1,\cdots,N / 2-1</script><p> $(5)$ 利用蝶形算法组合出 $X[k]$，即</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+X[k]=X_{1}[k]+W_{N}^{k} X_{2}[k],\quad k=0,1,\cdots,N / 2-1 \\
+X[k+N / 2]=X_{1}[k]-W_{N}^{k} X_{2}[k],\quad k=0,1,\cdots,N / 2-1
+\end{array}</script>
             </div>
             <hr>
             <div>
