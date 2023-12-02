@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      9.1k 字
+      9.5k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      125
+      129
        分钟
     </span>
   
@@ -233,7 +233,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年11月19日 上午
+                  本文最后更新于：2023年11月25日 上午
                 
               </p>
             
@@ -1190,21 +1190,35 @@ t_{cLH}=\ln(2)((6+4h)C\frac{R}{2})\\
 <li>重组逻辑：扇入不要超过4个</li>
 <li>插入buffer隔离大扇出和大扇入</li>
 </ul>
-<h3 id="逻辑努力——组合网络延迟优化"><a href="#逻辑努力——组合网络延迟优化" class="headerlink" title="逻辑努力——组合网络延迟优化"></a>逻辑努力——组合网络延迟优化</h3><script type="math/tex; mode=display">
+<h3 id="逻辑努力——组合网络延迟优化"><a href="#逻辑努力——组合网络延迟优化" class="headerlink" title="逻辑努力——组合网络延迟优化"></a>逻辑努力——组合网络延迟优化</h3><p>以 NAND 为例</p>
+<ul>
+<li>首先按照 resizing network rule 进行大小设置，保证输出的电阻 $R_{p a r-c l}$（最坏情况下的电阻）与单位反相器的输出电阻 $R_{par-inv}$ 相同。</li>
+<li>$C_{par-inv}$ 表示单位反相器的寄生电容（输出电容），$C_{par-cl}$ 表示</li>
+<li>NAND 整体尺寸扩大到原来的 $x_i$ 倍，$R_{par-cl}$ 变为原来的 $1/x_{i}$，$C_{par-cl}$ 又变为原来的 $x_i$ 倍。改记原来的电容和电阻为 $C_{par-cl-0}$、$R_{par-cl-0}$，所以有 $C_{par-cl}=x_{i}C_{par-cl-0}$、$R_{par-cl}=R_{par-cl-0}/x_{i}$</li>
+</ul>
+<p>传播延迟</p>
+<script type="math/tex; mode=display">
 \begin{aligned}
-t_{p-c l} & =\ln 2 C_{p a r-i n v} R_{p a r-c l}\left(\frac{C_{p a r-c l}}{C_{p a r-i n v}}+\frac{C_{\text {ext }}}{C_{\text {par-inv }}}\right) \\
-& =\ln 2 C_{p a r-i n v} R_{p a r-c l}\left(\frac{C_{p a r-c l}}{C_{p a r-i n v}}+\frac{C_{g-c l} C_{e x t}}{C_{p a r-i n v} C_{g-c l}}\right) \\
-& =\ln 2 C_{p a r-i n v} R_{p a r-c l}\left(\frac{C_{p a r-c l}}{C_{p a r-i n v}}+\frac{C_{g-c l} C_{e x t}}{\gamma C_{g-i n v} C_{g-c l}}\right) \\
+t_{p-cl} & =\ln 2 C_{par-inv} R_{par-cl}\left(\frac{C_{par-cl}}{C_{par-inv}}+\frac{C_{ext }}{C_{par-inv }}\right) \\
+& =\ln 2 C_{par-inv} R_{par-cl}\left(\frac{C_{par-cl}}{C_{par-inv}}+\frac{C_{g-cl} C_{e x t}}{C_{par-inv} C_{g-cl}}\right) \\
+& =\ln 2 C_{par-inv} R_{par-cl}\left(\frac{C_{par-cl}}{C_{par-inv}}+\frac{C_{g-cl} C_{e x t}}{\gamma C_{g-inv} C_{g-cl}}\right) \\
+& =\ln 2 C_{par-inv} \left(x_iR_{par-cl}\right)\left(\frac{\left(C_{par-cl}/x_{i}\right)}{C_{par-inv}}+\frac{\left(C_{g-cl}/x_{i}\right) C_{e x t}}{\gamma C_{g-inv} C_{g-cl}}\right) \\
+& =\ln 2 C_{par-inv} R_{par-cl-0}\left(\frac{C_{par-cl-0}}{C_{par-inv}}+\frac{C_{g-cl-0} C_{e x t}}{\gamma C_{g-inv} C_{g-cl}}\right) \\
+& =\ln 2 C_{par-inv} R_{par-inv}\left({\color{Green}\frac{C_{par-cl-0}}{C_{par-inv}}}+\frac{1}{\gamma }{\color{Red} \frac{C_{g-cl-0}}{C_{g-inv}}}{\color{Blue} \frac{C_{e x t}}{C_{g-cl}}}\right) \\
 & =t_{p 0}\left({\color{Green} p} +\frac{ {\color{Red} g}  {\color{Blue} f} }{\gamma}\right)
 \end{aligned}</script><p>其中：</p>
 <ul>
-<li>$t_{p0}$ 是单位反相器的本征延迟</li>
-<li>$f$ 称为电气努力，是外部负载电容比上逻辑门输入电容</li>
-<li>$g$ 称为逻辑努力，是逻辑门输入电容比上单位反相器的输入电容</li>
-<li>$h=gf$ 称为门努力，是外部负载电容比上单位反相器的输入电容</li>
-<li>$p$ 是本征延迟比，是逻辑门寄生（输出）电容比上单位反相器的寄生（输出）电容</li>
+<li>$t_{p0}$ 是<strong>单位反相器</strong>的本征延迟</li>
+<li>$p$ 是<strong>本征延迟比</strong>，是<strong>单位大小逻辑门</strong>寄生（输出）电容比上<strong>单位反相器</strong>的寄生（输出）电容</li>
+<li>$g$ 称为<strong>逻辑努力</strong>，是<strong>单位大小逻辑门</strong>输入电容比上<strong>单位反相器</strong>的输入电容（通常是3）</li>
+<li>$f$ 称为<strong>电气努力</strong>，是外部负载电容比上<strong>放大后逻辑门</strong>输入电容</li>
+<li>$h=gf$ 称为<strong>门努力</strong>，是外部负载电容比上<strong>单位反相器</strong>的输入电容再除以逻辑门放大倍数</li>
 </ul>
 <p><strong>栅极的逻辑努力定义为栅极的输入电容与能提供相同输出电流的反相器的输入电容之比，对于给定负载，复杂栅极必须比反相器更努力地工作，才能产生类似的响应。</strong></p>
+<h4 id="两种标注法"><a href="#两种标注法" class="headerlink" title="两种标注法"></a>两种标注法</h4><p>1、标在一输入端表示输入端电容与单位反相器输入电容的比值，也就是 $C_{g-cl}/C_{g-inv}$</p>
+<p><img src="https://s2.loli.net/2023/11/25/AzFBNbt5lry6ujO.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>2、标在逻辑门上表示整个逻辑门的放大倍数，也就是 $C_{par-cl}/C_{par-cl-0}=x_{i}$</p>
+<p><img src="https://s2.loli.net/2023/11/25/aK5TXvUtiNWg2sb.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h4 id="常见门电路的逻辑努力"><a href="#常见门电路的逻辑努力" class="headerlink" title="常见门电路的逻辑努力"></a>常见门电路的逻辑努力</h4><div class="table-container">
 <table>
 <thead>

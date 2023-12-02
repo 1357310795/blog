@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      659 字
+      935 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      9
+      13
        分钟
     </span>
   
@@ -233,7 +233,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年11月17日 晚上
+                  本文最后更新于：2023年12月2日 下午
                 
               </p>
             
@@ -251,7 +251,8 @@ r=|a^2+b^2|,\ \theta=\arctan\frac{b}{a}\\
 \end{array}</script><p>一些性质</p>
 <script type="math/tex; mode=display">
 \begin{array}{c}
-e^{j\omega}+e^{-j\omega}=2\cos\omega,\ e^{j\omega}-e^{-j\omega}=2j\sin\omega
+e^{j\omega}+e^{-j\omega}=2\cos\omega,\ e^{j\omega}-e^{-j\omega}=2j\sin\omega\\
+\tan\omega = \frac{1}{j}\frac{e^{j\omega}-e^{-j\omega}}{e^{j\omega}+e^{-j\omega}}, \cot\omega = j\frac{e^{j\omega}+e^{-j\omega}}{e^{j\omega}-e^{-j\omega}}
 \end{array}</script><p>或者写成 $W_{N}^{k}$ 的形式</p>
 <script type="math/tex; mode=display">
 \begin{array}{c}
@@ -277,6 +278,34 @@ e^{-j\omega_1}-e^{-j\omega_2}=2j\sin\frac{\omega_2-\omega_1}{2}e^{-j\frac{\omega
 <li>理想采样中，用 $x_{\mathrm{c}}(t)$ 调制 $s(t)$ 得到冲激串形式的连续时间信号，其中的 $\Omega_{N}$ 和 $\Omega_{s}$ 是模拟角频率</li>
 <li>理想采样的最终结果中，$\Omega T$ 是数字频率</li>
 <li>理想重构中的理想重构滤波器 $H_{r}(j\Omega)$ 是模拟频率滤波器，$\Omega_{\mathrm{c}}=\Omega_{\mathrm{s}} / 2=\pi / T$ 是模拟频率</li>
+</ul>
+<h3 id="三种卷积的比较"><a href="#三种卷积的比较" class="headerlink" title="三种卷积的比较"></a>三种卷积的比较</h3><h4 id="线性卷积"><a href="#线性卷积" class="headerlink" title="线性卷积"></a>线性卷积</h4><ul>
+<li><script type="math/tex; mode=display">
+y[n]=x[n] * h[n]=\sum_{k=-\infty}^{\infty} x[k] h[n-k]</script></li>
+<li>适用范围：可无限长，可有限长；可离散，可连续</li>
+<li>结果长度：$L=M+N+1$</li>
+</ul>
+<h4 id="循环卷积"><a href="#循环卷积" class="headerlink" title="循环卷积"></a>循环卷积</h4><ul>
+<li><script type="math/tex; mode=display">
+x[n] \circledN y[n] =\left(\sum_{m=0}^{L-1} x[m] y\left[((n-m))_{L}\right]\right) R_{L}[n]</script></li>
+<li>适用范围：有限长；离散信号</li>
+<li>结果长度：$L \ge \max\{N, M\}$</li>
+</ul>
+<h4 id="周期卷积"><a href="#周期卷积" class="headerlink" title="周期卷积"></a>周期卷积</h4><ul>
+<li><script type="math/tex; mode=display">
+\tilde{x}[n]=\tilde{x}_{1}[n] \circledast \tilde{x}_{2}[n]=\sum_{m=0}^{N-1} \tilde{x}_{1}[m] \tilde{x}_{2}[n-m]</script></li>
+<li>适用范围：周期为 $N$ 的周期序列</li>
+<li>结果长度：$N=N_1=N_2$</li>
+</ul>
+<h4 id="三者关系"><a href="#三者关系" class="headerlink" title="三者关系"></a>三者关系</h4><ul>
+<li>设<strong>循环卷积</strong>点数为 $L_{N}$，<strong>线性卷积</strong>长度为 $L$<ul>
+<li>当 $L_N&lt;L$ 时，循环卷积是线性卷积的混叠</li>
+<li>当 $L_N=L$ 时，循环卷积=线性卷积</li>
+<li>当 $L_N&gt;L$ 时，循环卷积是线性卷积末尾补 $L_N-L$ 个零</li>
+</ul>
+</li>
+<li>对<strong>周期卷积</strong>取主值序列得到<strong>循环卷积</strong></li>
+<li></li>
 </ul>
 <h3 id="类卷积的计算技巧"><a href="#类卷积的计算技巧" class="headerlink" title="类卷积的计算技巧"></a>类卷积的计算技巧</h3><script type="math/tex; mode=display">
 y[n]=\sum_{k=-\infty}^{+\infty} x[k]h[n-2k]</script><script type="math/tex; mode=display">
@@ -599,10 +628,10 @@ X(z)=\frac{N(z)}{M(z)}=\frac{b_{r} z^{r}+b_{r-1} z^{r-1}+\cdots+b_{1} z+b_{0}}{a
 a x[n]+b y[n] \stackrel{\mathscr{Z}}{\longrightarrow} a X(z)+b Y(z),\quad \mathrm{ROC 包含} R_{x} \cap R_{y}</script><p>其中 $a,b$ 为任意常数。ROC 一般为两个序列的 ROC 的交集。如果线性组合使得引入的某些零点抵消了极点，则 ROC 可能扩大。这一性质在 $\mathrm{z}$ 反变换中已经用过。</p>
 <h4 id="移位性质"><a href="#移位性质" class="headerlink" title="移位性质"></a>移位性质</h4><script type="math/tex; mode=display">
 x\left[n-n_{0}\right] \stackrel{\mathscr{Z}}{\longrightarrow} z^{-n_{0}} X(z),\quad \mathrm{ROC}=R_{x}</script><p>其中 $n_{0}$ 为任意整数。其 ROC 同原序列的 ROC，除了可能加上或去除 $z=0$ 或 $z=\infty$ 以外。例如，$\mathscr{Z}{\delta[n]}=1$，在 $z$ 平面处处收敛，而 $\mathscr{Z}{\delta[n-1]}=z^{-1}$，在 $z=0$ 处不收敛。</p>
-<h4 id="乘以指数序列（z域尺度变换性质）"><a href="#乘以指数序列（z域尺度变换性质）" class="headerlink" title="乘以指数序列（z域尺度变换性质）"></a>乘以指数序列（z域尺度变换性质）</h4><script type="math/tex; mode=display">
+<h4 id="乘以指数序列（z-域尺度变换性质）"><a href="#乘以指数序列（z-域尺度变换性质）" class="headerlink" title="乘以指数序列（z 域尺度变换性质）"></a>乘以指数序列（z 域尺度变换性质）</h4><script type="math/tex; mode=display">
 a^{n} x[n] \stackrel{\mathscr{Z}}{\longrightarrow} X\left(\frac{z}{a}\right),\quad \mathrm{ROC}=|a| R_{x}</script><p>其中 $a$ 为任意常数。</p>
-<h4 id="线性加权（-z-域微分性质）"><a href="#线性加权（-z-域微分性质）" class="headerlink" title="线性加权（$z$ 域微分性质）"></a>线性加权（$z$ 域微分性质）</h4><script type="math/tex; mode=display">
-n x[n] \stackrel{\mathscr{Z}}{\longrightarrow}-z \cdot \frac{\mathrm{d}}{\mathrm{d} z} X(z),\quad \mathrm{ROC}=R_{x}</script><h4 id="取共轭"><a href="#取共轭" class="headerlink" title="取共轭"></a>取共轭</h4><script type="math/tex; mode=display">
+<h4 id="线性加权（z-域微分性质）"><a href="#线性加权（z-域微分性质）" class="headerlink" title="线性加权（z 域微分性质）"></a>线性加权（z 域微分性质）</h4><script type="math/tex; mode=display">
+n x[n] \stackrel{\mathscr{Z}}{\longrightarrow}-z \cdot \frac{\mathrm{d}}{\mathrm{d} z} X(z),\quad \mathrm{ROC}=R_{x}</script><h4 id="共轭"><a href="#共轭" class="headerlink" title="共轭"></a>共轭</h4><script type="math/tex; mode=display">
 x^{*}[n] \stackrel{\mathscr{Z}}{\longrightarrow} X^{*}\left(z^{*}\right),\quad \mathrm{ROC}=R_{x}</script><ul>
 <li>实序列的 $\mathrm{z}$ 变换的复数零点一定以两两互为共轭的形式成对出现</li>
 <li>对于实数零点，其共轭就等于其本身，所以实数零点可以单独存在</li>
@@ -610,7 +639,7 @@ x^{*}[n] \stackrel{\mathscr{Z}}{\longrightarrow} X^{*}\left(z^{*}\right),\quad \
 </ul>
 <h4 id="反转"><a href="#反转" class="headerlink" title="反转"></a>反转</h4><script type="math/tex; mode=display">
 x[-n] \stackrel{\mathscr{Z}}{\longrightarrow} X\left(\frac{1}{z}\right),\quad \mathrm{ROC}=\frac{1}{R_{x}}</script><p>由于自变量取倒数，所以零点和极点取倒数，ROC 的边界也取倒数。需要注意的是，序列反转后如果类型改变了，则收敛域的特点也应相应地改变。</p>
-<h4 id="卷积性质"><a href="#卷积性质" class="headerlink" title="卷积性质"></a>卷积性质</h4><script type="math/tex; mode=display">
+<h4 id="卷积-1"><a href="#卷积-1" class="headerlink" title="卷积"></a>卷积</h4><script type="math/tex; mode=display">
 x[n] * y[n] \stackrel{\mathscr{P}}{\longrightarrow} X(z) Y(z),\quad \mathrm{ROC 包含} R_{x} \cap R_{y}</script><p>ROC 是两个 ROC 的交集。如果一个 $\mathrm{z}$ 变换的极点和另一个 $\mathrm{z}$ 变换的零点互相抵消，则 ROC 可能扩大。</p>
 <h4 id="初值定理"><a href="#初值定理" class="headerlink" title="初值定理"></a>初值定理</h4><p>如果 $x[n]$ 是因果序列，那么 $x[0]=\lim _{z \rightarrow \infty} X(z)$。</p>
 <h4 id="终值定理"><a href="#终值定理" class="headerlink" title="终值定理"></a>终值定理</h4><p>如果 $x[n]$ 是因果序列，且 $X(z)$ 的极点处于单位圆 $|z|=1$ 以内（单位圆上最多在 $z=1$ 处有一阶极点），那么</p>
@@ -827,9 +856,9 @@ X_{e}\left(\mathrm{e}^{\mathrm{j} \omega}\right)+X_{\mathrm{o}}\left(\mathrm{e}^
 <script type="math/tex; mode=display">
 \omega_{k}=2 \pi k / N,\quad k=0,1,\cdots,N-1</script><p>引入记号</p>
 <script type="math/tex; mode=display">
-W_{N}=\mathrm{e}^{-\mathrm{j}(2 \pi / N)}</script><p>则 DFS 正变换</p>
+W_{N}=\mathrm{e}^{-\mathrm{j}(2 \pi / N)}</script><p>则 <strong>DFS 正变换</strong></p>
 <script type="math/tex; mode=display">
-\tilde{X}[k]=\sum_{n=0}^{N-1} \tilde{x}[n] W_{N}^{k n}</script><p>DFS 反变换</p>
+\tilde{X}[k]=\sum_{n=0}^{N-1} \tilde{x}[n] W_{N}^{k n}</script><p><strong>DFS 反变换</strong></p>
 <script type="math/tex; mode=display">
 \tilde{x}[n]=\frac{1}{N} \sum_{k=0}^{N-1} \tilde{X}[k] W_{N}^{-k n}</script><ul>
 <li>DFS 正变换是权重 $\tilde{X}[k]$ 的计算公式</li>
@@ -879,8 +908,7 @@ W_{N}^{-n l} \tilde{x}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \tilde{X}[k-l
 <script type="math/tex; mode=display">
 \tilde{x}[n] \circledast \tilde{y}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \tilde{X}[k] \tilde{Y}[k]</script><p>频域周期卷积性质：</p>
 <script type="math/tex; mode=display">
-\tilde{x}[n] \tilde{y}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \frac{1}{N}\tilde{X}[k] \circledast \tilde{Y}[k]</script><p>Todo：卷积和周期卷积的关系</p>
-<h2 id="第四章-LTI-系统的变换域分析"><a href="#第四章-LTI-系统的变换域分析" class="headerlink" title="第四章 LTI 系统的变换域分析"></a>第四章 LTI 系统的变换域分析</h2><h3 id="系统函数"><a href="#系统函数" class="headerlink" title="系统函数"></a>系统函数</h3><p>我们将 LTI 系统的单位脉冲响应 $h[n]$ 的 $\mathrm{z}$ 变换</p>
+\tilde{x}[n] \tilde{y}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \frac{1}{N}\tilde{X}[k] \circledast \tilde{Y}[k]</script><h2 id="第四章-LTI-系统的变换域分析"><a href="#第四章-LTI-系统的变换域分析" class="headerlink" title="第四章 LTI 系统的变换域分析"></a>第四章 LTI 系统的变换域分析</h2><h3 id="系统函数"><a href="#系统函数" class="headerlink" title="系统函数"></a>系统函数</h3><p>我们将 LTI 系统的单位脉冲响应 $h[n]$ 的 $\mathrm{z}$ 变换</p>
 <script type="math/tex; mode=display">
 H(z)=\sum_{n=-\infty}^{\infty} h[n] z^{-n}</script><p>称为<strong>系统函数</strong>。<br>因为 LTI 系统的输入与输出信号满足如下的卷积关系</p>
 <script type="math/tex; mode=display">
@@ -943,7 +971,15 @@ Y\left(\mathrm{e}^{\mathrm{j} \omega}\right)=X\left(\mathrm{e}^{\mathrm{j} \omeg
 <h3 id="特征函数"><a href="#特征函数" class="headerlink" title="特征函数"></a>特征函数</h3><p>对于 LTI 系统，时域复指数信号 $x[n]=\mathrm{e}^{j\omega_0 n}$ 可以构成相当广泛的一类有用信号，而且 LTI 系统对 $\mathrm{e}^{j\omega_0 n}$ 的响应可以方便地得到。一个 LTI 系统对复指数信号 $\mathrm{e}^{j\omega_0 n}$ 的响应 $y[n]$ 仍是<strong>同一个复指数信号</strong>，所不同的是<strong>幅度</strong>上产生了变化，即</p>
 <script type="math/tex; mode=display">
 y[n]=H(\mathrm{e}^{j\omega_0}) \mathrm{e}^{j\omega_0 n}</script><p>一般说来，一个信号，若系统对该信号的输出仅是一个常数（可能是复数）乘以输入，则称该信号为系统的<strong>特征函数</strong>，而幅度因子称为系统的<strong>特征值</strong>。</p>
-<h3 id="稳态与暂态"><a href="#稳态与暂态" class="headerlink" title="稳态与暂态"></a>稳态与暂态</h3><p>（Todo）</p>
+<h3 id="稳态与暂态"><a href="#稳态与暂态" class="headerlink" title="稳态与暂态"></a>稳态与暂态</h3><p>以 $x[n]=\mathrm{e}^{\mathrm{j} \omega_{0}n} u[n]$ 为例，证明该信号经过频率响应为 $H\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 的<strong>稳定 LTI 系统</strong>，当时间足够长时，输出信号仍然是 $H\left(\mathrm{e}^{\mathrm{j} \omega_{0}}\right) \mathrm{e}^{\mathrm{j} \omega_{0} n}$。首先根据卷积写出输出信号</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+y[n] & =\sum_{k=-\infty}^{\infty} h[k] \mathrm{e}^{\mathrm{j} \omega_{0}(n-k)} u[n-k]=\sum_{k=-\infty}^{n} h[k] \mathrm{e}^{\mathrm{j} \omega_{0}(n-k)} \\
+& =\sum_{k=-\infty}^{\infty} h[k] \mathrm{e}^{\mathrm{j} \omega_{0}(n-k)}-\sum_{k=n+1}^{\infty} h[k] \mathrm{e}^{\mathrm{j} \omega_{0}(n-k)} \\
+& =H\left(\mathrm{e}^{\mathrm{j} \omega_{0}}\right) \mathrm{e}^{\mathrm{j} \omega_{0} n}-\mathrm{e}^{\mathrm{j} \omega_{0} n} \sum_{k=n+1}^{\infty} h[k] \mathrm{e}^{-j \omega_{0} k}
+\end{aligned}</script><p>对于 FIR 系统（一定稳定），设 $h[n]=0,n<0$ 和 $n>M$，当时间足够长，确切地说是 $n \geqslant M$ 时，上式第 2 项等于 $0$。对于稳定的 IIR 系统，$h[n]$ 绝对可和，样本随着 $n$ 的增加而趋于零，所以上式第 2 项有界，即</p>
+<script type="math/tex; mode=display">
+\left|\mathrm{e}^{\mathrm{j} \omega_{0} n} \sum_{k=n+1}^{\infty} h[k] \mathrm{e}^{-\mathrm{j} \omega_{0} k}\right| \leqslant \sum_{k=n+1}^{\infty}|h[k]| \leqslant \sum_{k=0}^{\infty}|h[k]|<\infty</script><p>并且随着 $n \rightarrow \infty$ 而越来越小直至消失。所以上式第 2 项称为<strong>暂态响应</strong>，而第 1 项称为<strong>稳态（稳定）响应</strong>，它等同于输入为 $x[n]=\mathrm{e}^{j \omega_{0} n}, -\infty&lt;n&lt;\infty$ 时的输出。所以可以通过求 $\lim _{n \rightarrow \infty} (x[n] * h[n])$ 得到稳态响应，也可以将因果输入替换成双边非因果输入求稳态响应，当然<strong>前提是系统稳定</strong>。</p>
 <h3 id="理想选频滤波器"><a href="#理想选频滤波器" class="headerlink" title="理想选频滤波器"></a>理想选频滤波器</h3><ul>
 <li><strong>频率选择性滤波器</strong>，简称<strong>选频滤波器</strong>，是指抑制输入信号中的某些频率成分，而让某些频率成分通过的系统。</li>
 <li><strong>理想选频滤波器</strong>是指幅度响应在某些频率范围（称<strong>通带</strong>）为 $1$，而其余频率范围（称<strong>阻带</strong>）为 $0$ 的零相位系统。</li>
@@ -955,7 +991,7 @@ H_{\mathrm{lp}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left\{\begin{array}{
 0,& \omega_{\mathrm{c}}<|\omega| \leqslant \pi
 \end{array}\right.</script><p>其中 $\omega_{c}$ 是<strong>截止频率</strong>。<br>理想低通滤波器的单位脉冲响应是</p>
 <script type="math/tex; mode=display">
-h_{1 \mathrm{p}}[n]=\frac{\sin \left(\omega_{c} n\right)}{\pi n},-\infty<n<\infty</script><h4 id="理想高通滤波器"><a href="#理想高通滤波器" class="headerlink" title="理想高通滤波器"></a>理想高通滤波器</h4><p>频率响应是</p>
+h_{\mathrm{lp}}[n]=\frac{\sin \left(\omega_{c} n\right)}{\pi n},-\infty<n<\infty</script><h4 id="理想高通滤波器"><a href="#理想高通滤波器" class="headerlink" title="理想高通滤波器"></a>理想高通滤波器</h4><p>频率响应是</p>
 <script type="math/tex; mode=display">
 H_{\mathrm{hp}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left\{\begin{array}{ll}
 0,& |\omega|<\omega_{c} \\
@@ -1241,7 +1277,7 @@ H_{\mathrm{eff}}(\mathrm{j} \Omega)=\left\{\begin{array}{ll}
 <p><img src="https://s2.loli.net/2023/10/29/nLJEGm5RdUP12VZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>由于理想 $\mathrm{D} / \mathrm{C}$ 转换后，$X_{\mathrm{c}}(\mathrm{j} \Omega)$ 的最高频率是 $\pi / T$，所以整个系统中<strong>不存在混叠问题</strong>。写出图所以等效的离散时间系统的频率响应与连续时间系统的频率响应间的关系是</p>
 <script type="math/tex; mode=display">
-H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left.H_{\mathrm{c}}(\mathrm{j} \Omega)\right|_{\Omega=\omega / T},\quad|\omega|<\pi</script><h3 id="模拟信号的数字处理"><a href="#模拟信号的数字处理" class="headerlink" title="模拟信号的数字处理"></a>模拟信号的数字处理</h3><p><img src="https://s2.loli.net/2023/10/29/ktbTyhZgs2YW8xz.png" srcset="/img/loading.gif" lazyload alt=""></p>
+H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left.H_{\mathrm{c}}(\mathrm{j} \Omega)\right|_{\Omega=\omega / T},\quad|\omega|<\pi</script><h3 id="模拟信号的数字处理"><a href="#模拟信号的数字处理" class="headerlink" title="*模拟信号的数字处理"></a>*模拟信号的数字处理</h3><p><img src="https://s2.loli.net/2023/10/29/ktbTyhZgs2YW8xz.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>前面讨论连续时间信号的采样和重构时都只考虑了理想的情况，即被采样的连续时间信号是带限的，采样后的信号用<strong>无限精度的序列</strong>表示，重构时可以实现<strong>理想内插</strong>。</p>
 <p>在实际的采样系统中，连续时间信号不可能真正带限，理想滤波不可能实现，采样数据也只能用<strong>有限字长的数</strong>表示，所以理想的 C/D 和 D/C 转换是用模拟到数字（A/D）和数字到模拟（D/A）的转换器来近似实现的</p>
 <h4 id="抗混叠滤波"><a href="#抗混叠滤波" class="headerlink" title="抗混叠滤波"></a>抗混叠滤波</h4><p>数字系统在处理数据时所需的运算量与存储数据所需的空间正比于采样的数据量，而采样的数据量又正比于采样率，所以在实际应用中往往根据需要<strong>选择尽可能低的采样率以减小数据量</strong>。比如对于语音信号的可懂度来说，3～4kHz带宽就可以了，而对于音乐信号的保真度来说则要求20kHz带宽，所以两者的采样率可以分别选取8kHz和44.1kHz。然而，通常的情况往往是输入的模拟信号不带限，或者带宽太宽，或者尽管信号的带宽满足要求，但宽带加性噪声含有高于奈奎斯特频率的成分，为了避免混叠的发生，需要在采样之前用一个<strong>模拟低通滤波器</strong>来实现抗混叠滤波，其截止频率应该是已经选定的采样率的一半。</p>
@@ -1257,7 +1293,7 @@ h_{0}(t)=\left\{\begin{array}{ll}
 1,& 0<t<T \\
 0,& \mathrm{其他}
 \end{array}\right.</script><p>上式说明，理想采样保持等效于冲激串调制再级联一个零阶保持滤波处理。</p>
-<p>（Todo）</p>
+<p>（Todo，上面的不考）</p>
 <h3 id="改变采样率"><a href="#改变采样率" class="headerlink" title="改变采样率"></a>改变采样率</h3><h4 id="采样率按整数因子降低"><a href="#采样率按整数因子降低" class="headerlink" title="采样率按整数因子降低"></a>采样率按整数因子降低</h4><p><img src="https://s2.loli.net/2023/10/29/oRcWsgwVKjAJFXD.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>实现采样率按整数因子 $M$ 降低的离散时间系统如上图所示。其中第 2 个功能模块表示离散时间域的亚采样，即<strong>抽选</strong>，其输出与输入信号间的关系是</p>
 <script type="math/tex; mode=display">
@@ -1342,7 +1378,7 @@ x[n],& n=0,1,\cdots,M-1 \\
 <script type="math/tex; mode=display">
 \left.X\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|_{\omega=\frac{2 \pi}{N} k},k=0,1,\cdots,N-1,</script><p>也就是说，DFT 等价于傅里叶变换上取点，那么如果取的点够多，就可以看成对傅里叶变换的一种近似。</p>
 <h3 id="DFT-的性质"><a href="#DFT-的性质" class="headerlink" title="DFT 的性质"></a>DFT 的性质</h3><h4 id="线性性质-3"><a href="#线性性质-3" class="headerlink" title="线性性质"></a>线性性质</h4><script type="math/tex; mode=display">
-a x[n]+b y[n] \stackrel{\mathrm{DFT}}{\longrightarrow} a X[k]+b Y[k]</script><h4 id="移位性质-1"><a href="#移位性质-1" class="headerlink" title="移位性质"></a>移位性质</h4><p>定义序列 $x[n]$ 在区间 $0 \leqslant n \leqslant N-1$ 上以 $N$ 为模的循环移位为</p>
+a x[n]+b y[n] \stackrel{\mathrm{DFT}}{\longrightarrow} a X[k]+b Y[k]</script><h4 id="循环移位性质"><a href="#循环移位性质" class="headerlink" title="循环移位性质"></a>循环移位性质</h4><p>定义序列 $x[n]$ 在区间 $0 \leqslant n \leqslant N-1$ 上以 $N$ 为模的循环移位为</p>
 <script type="math/tex; mode=display">
 x_{1}[n]=x\left[((n-m))_{N}\right] R_{N}[n]</script><p>其中 $m$ 为整数。<br>DFT 的时域循环移位和频域循环移位性质分别是</p>
 <script type="math/tex; mode=display">
@@ -1352,7 +1388,8 @@ W_{N}^{-n l} x[n] \stackrel{\mathrm{DFT}}{\longrightarrow} X\left[((k-l))_{N}\ri
 \end{array}</script><h4 id="反转性质"><a href="#反转性质" class="headerlink" title="反转性质"></a>反转性质</h4><p>长度为 $N$ 的序列 $x_2[n]=x_{1}[N-1-n]$</p>
 <script type="math/tex; mode=display">
 X_2[k] = X_{1}^{*}[k]W_{N}^{k(N-1)}</script><h4 id="对偶性质-1"><a href="#对偶性质-1" class="headerlink" title="对偶性质"></a>对偶性质</h4><script type="math/tex; mode=display">
-X[n] \stackrel{\mathrm{DFT}}{\longrightarrow} N x\left[((-k))_{N}\right] R_{N}[k]</script><h4 id="对称性质-2"><a href="#对称性质-2" class="headerlink" title="对称性质"></a>对称性质</h4><p>对于周期为 $N$ 的序列 $x[n]$，周期共轭对称是指：</p>
+X[k] \stackrel{\mathrm{DFT}}{\longrightarrow} N x\left[((-k))_{N}\right] R_{N}[k]</script><script type="math/tex; mode=display">
+X^{*}[k] \stackrel{\mathrm{DFT}}{\longrightarrow} N x^{*}\left[n\right] R_{N}[n]</script><h4 id="对称性质-2"><a href="#对称性质-2" class="headerlink" title="对称性质"></a>对称性质</h4><p>对于周期为 $N$ 的序列 $x[n]$，周期共轭对称是指：</p>
 <script type="math/tex; mode=display">
 \begin{array}{c}
 x[1]=x[N-1]\\
@@ -1405,11 +1442,11 @@ x[n] \circledN y[n]=y[n] \circledN x[n]</script><p>DFT 的时域循环卷积和�
 \begin{array}{c}
 x[n] \circledN y[n] \stackrel{\mathrm{DFT}}{\longrightarrow} X[k] Y[k] \\
 x[n] y[n] \stackrel{\mathrm{DFT}}{\longrightarrow} \frac{1}{N} X[k]\circledN Y[k]
-\end{array}</script><h4 id="频域降采样"><a href="#频域降采样" class="headerlink" title="频域降采样"></a>频域降采样</h4><p>设长度为 $N$ 的序列 $x[n]$ 的 N 点 DFT 是 $X[k]$，令 $Y[k]=X[pk]$，则</p>
+\end{array}</script><h4 id="频域降采样（二级结论）"><a href="#频域降采样（二级结论）" class="headerlink" title="频域降采样（二级结论）"></a>频域降采样（二级结论）</h4><p>设长度为 $N$ 的序列 $x[n]$ 的 N 点 DFT 是 $X[k]$，令 $Y[k]=X[pk]$，则</p>
 <script type="math/tex; mode=display">
-y[n]=\sum_{r=0}^{p-1}x[n+\frac{N}{p}r], \quad 0\le n \le \frac{N}{p}-1</script><h4 id="时域补0"><a href="#时域补0" class="headerlink" title="时域补0"></a>时域补0</h4><p>设长度为 $N$ 的序列 $x[n]$ 的 N 点 DFT 是 $X[k]$，$y[n]$ 是 $x[n]$ 后面再加了 N 个 0，则 $Y[k]$ 频域取样更密，即理想内插，满足</p>
+y[n]=\sum_{r=0}^{p-1}x[n+\frac{N}{p}r], \quad 0\le n \le \frac{N}{p}-1</script><h4 id="时域补0（二级结论）"><a href="#时域补0（二级结论）" class="headerlink" title="时域补0（二级结论）"></a>时域补0（二级结论）</h4><p>设长度为 $N$ 的序列 $x[n]$ 的 N 点 DFT 是 $X[k]$，$y[n]$ 是 $x[n]$ 后面再加了 N 个 0，则 $Y[k]$ 频域取样更密，即理想内插，满足</p>
 <script type="math/tex; mode=display">
-Y[2k]=X[k]</script><h4 id="时域插0"><a href="#时域插0" class="headerlink" title="时域插0"></a>时域插0</h4><p>设长度为 $N$ 的序列 $x[n]$ 的 N 点 DFT 是 $X[k]$，$y[n]$ 是 $x[n]$ 内插 0，即</p>
+Y[2k]=X[k]</script><h4 id="时域插0（二级结论）"><a href="#时域插0（二级结论）" class="headerlink" title="时域插0（二级结论）"></a>时域插0（二级结论）</h4><p>设长度为 $N$ 的序列 $x[n]$ 的 N 点 DFT 是 $X[k]$，$y[n]$ 是 $x[n]$ 内插 0，即</p>
 <script type="math/tex; mode=display">
 y[n]=\left\{\begin{array}{l}
 x[n/2], n=0, 2,\cdots, 2 N-2 \\
@@ -1419,7 +1456,7 @@ x[n/2], n=0, 2,\cdots, 2 N-2 \\
 Y[k]=\left\{\begin{array}{l}
 X[k], n=0, \ldots, N-1 \\
 X[k-N], n=N, \ldots, 2 N-1
-\end{array}\right.</script><h4 id="时域复制"><a href="#时域复制" class="headerlink" title="时域复制"></a>时域复制</h4><p>设长度为 $N$ 的序列 $x[n]$ 的 N 点 DFT 是 $X[k]$，$y[n]$ 是 $x[n]$ 后面再加了 $xx[n]$，即</p>
+\end{array}\right.</script><h4 id="时域复制（二级结论）"><a href="#时域复制（二级结论）" class="headerlink" title="时域复制（二级结论）"></a>时域复制（二级结论）</h4><p>设长度为 $N$ 的序列 $x[n]$ 的 N 点 DFT 是 $X[k]$，$y[n]$ 是 $x[n]$ 后面再加了 $xx[n]$，即</p>
 <script type="math/tex; mode=display">
 y[n]=\left\{\begin{array}{l}
 x[n], n=0, \ldots, N-1 \\
@@ -1431,7 +1468,39 @@ Y[2k]=2X[k]</script><h3 id="用循环卷积实现线性卷积"><a href="#用循�
 y[n]=x[n] * h[n]</script><p>对上式两边做 $N$ 点 IDFT，整理后得到</p>
 <script type="math/tex; mode=display">
 \sum_{r=-\infty}^{\infty} y[n-r N] R_{N}[n]=x[n] \circledN h[n]</script><p>因此，$N$ 点循环卷积等于线性卷积以 $N$ 为周期延拓后取主周期。当循环卷积的点数 $N$ 大于等于线性卷积的长度 $(L+P-1)$ 时，循环卷积等于线性卷积；否则，循环卷积是线性卷积的混叠。</p>
-<h2 id="第七章-快速傅里叶变换（FFT）"><a href="#第七章-快速傅里叶变换（FFT）" class="headerlink" title="第七章 快速傅里叶变换（FFT）"></a>第七章 快速傅里叶变换（FFT）</h2><h3 id="使用-DFT-定义计算的运算量"><a href="#使用-DFT-定义计算的运算量" class="headerlink" title="使用 DFT 定义计算的运算量"></a>使用 DFT 定义计算的运算量</h3><p>基2 FFT 算法的基本思想是，将序列 $x[n]$ 根据序号 $n$ 的奇偶逐次分解成较短的子序列，适用于 $DFT$ 点数 $N$ 为 $2$ 的整数次幂，即 $N=2^{v}$ 的情况。如果 $N$ 不满足这一条件，则可以采用<strong>对序列补零</strong>的方式使 $N$ 满足该要求。</p>
+<h3 id="短时傅里叶变换"><a href="#短时傅里叶变换" class="headerlink" title="短时傅里叶变换"></a>短时傅里叶变换</h3><p>定义信号 $x[n]$ 的短时傅里叶变换为</p>
+<script type="math/tex; mode=display">
+X[n,\omega)=\sum_{m=0}^{M} x[n+m] w[m] \mathrm{e}^{-\mathrm{j} \omega m}</script><p>其中 $w[n]$ 在 $0 \leqslant n \leqslant M$ 以外为零，是一个有限长的窗序列。常用的窗序列定义如下：</p>
+<ul>
+<li>矩形窗：<script type="math/tex; mode=display">
+w[n]=\left\{\begin{array}{ll}
+1,& 0 \leqslant n \leqslant M \\
+0,& \mathrm{其他}
+\end{array}\right.</script></li>
+<li>巴特利特窗（三角形窗）：<script type="math/tex; mode=display">
+w[n]=\left\{\begin{array}{ll}
+\frac{2 n}{M},& 0 \leqslant n \leqslant \frac{M}{2} \\
+2-\frac{2 n}{M},& \frac{M}{2} \leqslant n \leqslant M \\
+0,& \mathrm{其他}
+\end{array}\right.</script></li>
+<li>汉宁窗：<script type="math/tex; mode=display">
+w[n]=\left\{\begin{array}{ll}
+0.5-0.5 \cos \left(\frac{2 \pi n}{M}\right),& 0 \leqslant n \leqslant M \\
+0,& \mathrm{其他}
+\end{array}\right.</script></li>
+<li>海明窗：<script type="math/tex; mode=display">
+w[n]=\left\{\begin{array}{ll}
+0.54-0.46 \cos \left(\frac{2 \pi n}{M}\right),& 0 \leqslant n \leqslant M \\
+0,& \mathrm{其他}
+\end{array}\right.</script></li>
+<li>布莱克曼窗：<script type="math/tex; mode=display">
+w[n]=\left\{\begin{array}{l}
+0.42-0.5 \cos \left(\frac{2 \pi n}{M}\right)+0.08 \cos \left(\frac{4 \pi n}{M}\right),\quad 0 \leqslant n \leqslant M \\
+0,
+\end{array}\right.</script></li>
+</ul>
+<p>（Todo：前两年都没考）</p>
+<h2 id="第七章-快速傅里叶变换（FFT）"><a href="#第七章-快速傅里叶变换（FFT）" class="headerlink" title="第七章 快速傅里叶变换（FFT）"></a>第七章 快速傅里叶变换（FFT）</h2><h3 id="使用-DFT-定义计算的运算量"><a href="#使用-DFT-定义计算的运算量" class="headerlink" title="使用 DFT 定义计算的运算量"></a>使用 DFT 定义计算的运算量</h3><p>基2 FFT 算法的基本思想是，将序列 $x[n]$ 根据序号 $n$ 的奇偶逐次分解成较短的子序列，适用于 DFT 点数 $N$ 为 $2$ 的整数次幂，即 $N=2^{v}$ 的情况。如果 $N$ 不满足这一条件，则可以采用<strong>对序列补零</strong>的方式使 $N$ 满足该要求。</p>
 <p>对于一个 N 点的 DFT，根据定义式，</p>
 <ul>
 <li>计算每一个 $X[k]$ 需要 $N$ 次复数乘法和 $(N-1)$ 次复数加法</li>
@@ -1491,25 +1560,211 @@ X[2 r+1]=H[r]=\sum_{n=0}^{N / 2-1} h[n] W_{N / 2}^{r n}, & 0 \leq r \leq \frac{N
 x_m[p]=x_{m-1}[p]+x_{m-1}[q]\\
 x_m[p]=\left(x_{m-1}[p]-x_{m-1}[q]\right)W_N^r\\
 \end{array}</script><h4 id="其他形式-1"><a href="#其他形式-1" class="headerlink" title="其他形式"></a>其他形式</h4><p><img src="https://s2.loli.net/2023/11/13/q1SWclHNF9ZJAjX.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="DFT-与硬件实现"><a href="#DFT-与硬件实现" class="headerlink" title="DFT 与硬件实现"></a>DFT 与硬件实现</h3><p>（Todo：5.3）</p>
-<h3 id="实序列的-DFT"><a href="#实序列的-DFT" class="headerlink" title="实序列的 DFT"></a>实序列的 DFT</h3><p>首先考虑两个 $N$ 点的实序列 $x_{1}[n]$ 和 $x_{2}[n]$，要求计算它们的 $N$ 点 $DFT$，即 $X_{1}[k]$ 和 $X_{2}[k]$。我们可以将两个实序列合成一个 $N$ 点的复数序列，计算该复数序列的一次 $N$ 点 $DFT$，然后利用 $DFT$ 的性质构造出两个实序列的 $DFT$。具体步骤如下：<br> $(1)$ 构造一个 $N$ 点的复数序列 $y[n]=x_{1}[n]+\mathrm{j} x_{2}[n],n=0,1,\cdots,N-1$；<br> $(2)$ 利用 $N$ 点 $FFT$ 算法计算 $y[n]$ 的 $N$ 点 $DFT  Y[k],k=0,1,\cdots,N-1$；<br> $(3)$ 从 $Y[k]$ 得出实序列的 $DFT</p>
-<script type="math/tex; mode=display">
+<h3 id="DFT-与硬件实现"><a href="#DFT-与硬件实现" class="headerlink" title="DFT 与硬件实现"></a>DFT 与硬件实现</h3><h4 id="同址计算"><a href="#同址计算" class="headerlink" title="同址计算"></a>同址计算</h4><p>要计算第 $m$ 列在 $p$ 和 $q$ 位置上的复数节点的值，只需要第 $(m-1)$ 列在 $p$ 和 $q$ 位置上的复数节点的值。因此，若将 $X_{m}[p]$ 和 $X_{m}[q]$ 分别存放在原存放 $X_{m-1}[p]$ 和 $X_{m-1}[q]$ 的同一存储器中，则实现全部的计算只需要一列存储 $N$ 个复数的存储器。我们称这种数据的存储方式为<strong>同址计算</strong>。</p>
+<h4 id="倒位序排列"><a href="#倒位序排列" class="headerlink" title="倒位序排列"></a>倒位序排列</h4><p>为了实现同址计算，FFT 的输入和输出必须有一个是顺序、一个是倒位序。倒位序就是把二进制的进位和+1操作倒过来，从最高位开始。</p>
+<p>例如 0~7 的倒位序排列是：</p>
+<blockquote>
+<p>0,4,2,6,1,5,3,7</p>
+</blockquote>
+<h3 id="实序列的-DFT"><a href="#实序列的-DFT" class="headerlink" title="实序列的 DFT"></a>实序列的 DFT</h3><p>首先考虑两个 $N$ 点的实序列 $x_{1}[n]$ 和 $x_{2}[n]$，要求计算它们的 $N$ 点 DFT，即 $X_{1}[k]$ 和 $X_{2}[k]$。我们可以将两个实序列合成一个 $N$ 点的复数序列，计算该复数序列的一次 $N$ 点 DFT，然后利用 DFT 的性质构造出两个实序列的 DFT。具体步骤如下：</p>
+<ol>
+<li>构造一个 $N$ 点的复数序列 $y[n]=x_{1}[n]+\mathrm{j} x_{2}[n],n=0,1,\cdots,N-1$</li>
+<li>利用 $N$ 点 FFT 算法计算 $y[n]$ 的 $N$ 点 DFT $Y[k],k=0,1,\cdots,N-1$</li>
+<li>从 $Y[k]$ 得出实序列的 DFT<script type="math/tex; mode=display">
 \begin{array}{ll}
-X\_{\mathrm{I}}[k]=\frac{\left.Y[k]+Y^{*}[N-k]\right\}}{2},\quad k=0,1,\cdots,N-1 \\
-X\_{2}[k]=\frac{\left.Y[k]-Y^{*}[N-k]\right\}}{2 \mathrm{j}},\quad k=0,1,\cdots,N-1
-\end{array}</script><p>下面考虑只有一个 $N$ 点实序列 $x[n]$ 的情况。我们首先将 $x[n]$ 拆成两个 $N / 2$ 点的实序列，然后应用上面的方案。需要考虑的是这两个 $N / 2$ 点的实序列的 $DFT$ 应该能合成原 $N$ 点实序列的 $DFT$，根据 $DIT-FFT$ 第 $1$ 次分解的原理，将 $x[n]$ 按照序号的奇偶拆就能满足这一要求。所以具体实现步骤是：<br> $(1)$ 将 $x[n]$ 拆成两个实序列</p>
-<script type="math/tex; mode=display">
+X_{\mathrm{I}}[k]=\frac{Y[k]+Y^{*}[N-k]}{2},\quad k=0,1,\cdots,N-1 \\
+X_{2}[k]=\frac{Y[k]-Y^{*}[N-k]}{2 \mathrm{j}},\quad k=0,1,\cdots,N-1
+\end{array}</script></li>
+</ol>
+<p>下面考虑只有一个 $N$ 点实序列 $x[n]$ 的情况。我们首先将 $x[n]$ 拆成两个 $N / 2$ 点的实序列，然后应用上面的方案。需要考虑的是这两个 $N / 2$ 点的实序列的 DFT 应该能合成原 $N$ 点实序列的 DFT，根据 DIT-FFT 第 1 次分解的原理，将 $x[n]$ 按照序号的<strong>奇偶拆</strong>就能满足这一要求。所以具体实现步骤是：</p>
+<ol>
+<li>将 $x[n]$ 拆成两个实序列<script type="math/tex; mode=display">
 \begin{array}{c}
 x_{1}[n]=x[2 n],n=0,\cdots,N / 2-1 \\
 x_{2}[n]=x[2 n+1],n=0,\cdots,N / 2-1
-\end{array}</script><p> $(2)  y[n]=x_{1}[n]+\mathrm{j} x_{2}[n]$，$n=0$，$\cdots$，$N / 2-1<br> $(3)$ 利用 $N / 2$ 点 $FFT$ 算法计算 $y[n]$ 的 $N / 2$ 点 $DFT  Y[k],k=0,1,\cdots,N / 2-1$；<br> $(4)  X_{1}[k]=\frac{\left.Y[k]+Y^{*}[N / 2-k]\right}}{2}$，$\quad k=0$，$1$，$\cdots$，$N / 2-1</p>
-<script type="math/tex; mode=display">
-X_{2}[k]=\frac{\left.Y[k]-Y^{*}[N / 2-k]\right\}}{2 \mathrm{j}},\quad k=0,1,\cdots,N / 2-1</script><p> $(5)$ 利用蝶形算法组合出 $X[k]$，即</p>
-<script type="math/tex; mode=display">
+\end{array}</script></li>
+<li>令<script type="math/tex; mode=display">
+y[n]=x_{1}[n]+\mathrm{j} x_{2}[n], n=0,\cdots,N / 2-1</script></li>
+<li>利用 $N / 2$ 点 FFT 算法计算 $y[n]$ 的 $N / 2$ 点 DFT <script type="math/tex; mode=display">
+Y[k],k=0,1,\cdots,N / 2-1</script></li>
+<li><script type="math/tex; mode=display">
+\begin{array}{c}
+X_{1}[k]=\frac{Y[k]+Y^{*}[N / 2-k]}{2},\quad k=0,1,\cdots,N / 2-1\\
+X_{2}[k]=\frac{Y[k]-Y^{*}[N / 2-k]}{2 \mathrm{j}},\quad k=0,1,\cdots,N / 2-1
+\end{array}</script></li>
+<li>利用蝶形算法组合出 $X[k]$，即<script type="math/tex; mode=display">
 \begin{array}{c}
 X[k]=X_{1}[k]+W_{N}^{k} X_{2}[k],\quad k=0,1,\cdots,N / 2-1 \\
 X[k+N / 2]=X_{1}[k]-W_{N}^{k} X_{2}[k],\quad k=0,1,\cdots,N / 2-1
-\end{array}</script>
+\end{array}</script></li>
+</ol>
+<h3 id="IDFT-快速算法"><a href="#IDFT-快速算法" class="headerlink" title="IDFT 快速算法"></a>IDFT 快速算法</h3><h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><p>利用 FFT 算法，增加一些预处理和后处理。因为</p>
+<script type="math/tex; mode=display">
+x[n]=\frac{1}{N} \sum_{k=0}^{N-1} X[k] W_{N}^{-k n}=\frac{1}{N}\left[\sum_{k=0}^{N-1} X^{*}[k] W_{N}^{k n}\right]^{*}</script><p>所以实现步骤是：</p>
+<ul>
+<li>将 $X[k]$ 取共轭</li>
+<li>计算 $N$ 点 FFT</li>
+<li>对结果再取共轭，并除以 $N$</li>
+</ul>
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><p>也是利用 FFT 算法。根据 DFT 的对偶性质有</p>
+<script type="math/tex; mode=display">
+\sum_{k=0}^{N-1} X[k] W_{N}^{k n}=N x\left[((-n))_{N}\right] R_{N}[n]=N x[N-n]</script><p>所以计算步骤是：</p>
+<ul>
+<li>对 $X[k]$ 计算 $N$ 点 FFT</li>
+<li>将结果相对 $n=N / 2$ 反转（$x[0]$ 保持不变），再除以 $N$</li>
+</ul>
+<h2 id="第八章-离散时间滤波器的设计"><a href="#第八章-离散时间滤波器的设计" class="headerlink" title="第八章 离散时间滤波器的设计"></a>第八章 离散时间滤波器的设计</h2><h3 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h3><ul>
+<li>从广义上讲，任何能对信号的频率进行修正的系统都称为<strong>滤波器</strong></li>
+<li>本章及第 9 章只讨论<strong>因果稳定的选频滤波器</strong>的设计与实现</li>
+<li>实际应用中，由于离散时间滤波器往往通过数字计算的方法来实现，并且用于对数字信号的滤波，所以人们往往将离散时间滤波器称为<strong>数字滤波器</strong></li>
+<li><strong>理想选频滤波器</strong>是非因果的 IIR 系统，没有有理形式的系统函数，即无法用有限的计算实现</li>
+<li><strong>理想选频滤波器</strong>不是因果可实现的系统</li>
+<li>反过来讲，因果可实现的滤波器的频率响应不可能满足理想选频特性</li>
+</ul>
+<h3 id="技术指标"><a href="#技术指标" class="headerlink" title="技术指标"></a>技术指标</h3><ul>
+<li>离散时间滤波器的技术指标大多是在频域给出的</li>
+<li>$\left[0,\omega_{\mathrm{p}}\right]$ 的频率区间内，幅度逼近 $1$，但允许有 $\pm \delta_{\mathrm{p}}$ 的波动，称之为<strong>通带</strong></li>
+<li>$\left[\omega_{\mathrm{p}},\omega_{\mathrm{s}}\right]$ 的频率区间内，幅度单调下降，称之为<strong>过渡带</strong></li>
+<li>$\left[\omega_{\mathrm{s}},\pi\right]$ 的频率区间内，幅度逼近 $0$，误差不大于 $\delta_{\mathrm{s}}$，称之为<strong>阻带</strong></li>
+<li>$\omega_{\mathrm{p}}$ 称为<strong>通带截止频率</strong>，$\omega_{\mathrm{s}}$ 称为<strong>阻带截止频率</strong>，均以 $\mathrm{rad}$ 为单位。</li>
+<li>$\delta_{\mathrm{p}}$ 称为<strong>通带容差</strong>，$\delta_{\mathrm{s}}$ 称为<strong>阻带容差</strong>。</li>
+<li>$1+\delta_{\mathrm{p}}$ 和 $1-\delta_{\mathrm{p}}$ 分别是<strong>通带最大和最小幅度（增益）</strong>，$\delta_{\mathrm{s}}$ 是<strong>阻带最大幅度（增益）</strong></li>
+<li>增益还可以采用对数增益（单位：$\mathrm{dB}$）表示，理想的通带增益是 $0 \mathrm{~dB}$，<strong>最大通带增益</strong>是 $20 \lg \left(1+\delta_{\mathrm{p}}\right) \mathrm{dB}$，<strong>最小通带增益</strong>是 $20 \lg \left(1-\delta_{\mathrm{p}}\right) \mathrm{dB}$，<strong>最大阻带增益</strong>是 $20 \lg \delta_{\mathrm{s}} \mathrm{dB}$</li>
+<li>另外，也常用<strong>通带最大衰减</strong> $\alpha_{\mathrm{p}}=-20 \lg \left(1-\delta_{\mathrm{p}}\right) \mathrm{dB}$ 和<strong>阻带最小衰减</strong> $\alpha_{\mathrm{s}}=-20 \lg \delta_{s}$ 来表述通带和阻带误差</li>
+<li>有些时候，容限图给出的通带最高幅度是 $1$，即最大增益是 $0 \mathrm{~dB}$。</li>
+<li>幅度 $1 / \sqrt{2}$ 对应的频率称为 $3 \mathrm{~dB}$ 截止频率，用 $\omega_{\mathrm{c}}$ 表示，$20 \lg \sqrt{1 / 2}=-3(\mathrm{~dB})$。</li>
+<li>因为 $\left|H\left(\mathrm{e}^{\mathrm{j} \omega_{\mathrm{c}}}\right)\right|^{2}=1 / 2$，所以 $\omega_{\mathrm{c}}$ 又称<strong>半功率截止频率</strong>。</li>
+<li>对于带通和带阻滤波器的技术指标，通带截止频率分<strong>上通带截止频率</strong>和<strong>下通带截止频率</strong>，阻带截止频率分<strong>上阻带截止频率</strong>和<strong>下阻带截止频率</strong></li>
+<li>对于低通滤波器，假设给出等效连续时间滤波器的通带截止频率 $\Omega_{\mathrm{p}}$ 和阻带截止频率 $\Omega_{\mathrm{s}}$，单位是 $\mathrm{rad} / \mathrm{s}$，则离散时间滤波器的截止频率是<script type="math/tex; mode=display">
+\begin{array}{l}
+\omega_{\mathrm{p}}=\Omega_{\mathrm{p}} T \\
+\omega_{\mathrm{s}}=\Omega_{\mathrm{s}} T
+\end{array}</script></li>
+</ul>
+<p><img src="https://s2.loli.net/2023/11/27/XojL3anKkrwNFCh.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="离散时间滤波器的设计方法"><a href="#离散时间滤波器的设计方法" class="headerlink" title="离散时间滤波器的设计方法"></a>离散时间滤波器的设计方法</h3><ul>
+<li>首先设计一个连续时间滤波器（称为<strong>原型连续时间滤波器</strong>），得到系统函数 $H_{c}(s)$</li>
+<li>将 $H_{c}(s)$ 转换成离散时间滤波器的系统函数 $H(z)$。</li>
+<li>原型连续时间滤波器的技术指标是通过对给定的离散时间滤波器的技术指标加以变换得到的。</li>
+<li>本节只讨论连续时间滤波器设计法的第二步即系统函数的转换。</li>
+<li>$H_{c}(s)$ 到 $H(z)$ 的转换过程实际上是 $s$ 平面到 $z$ 平面的映射过程，该映射需要满足两个要求<ul>
+<li>一是所得到的离散时间滤波器的频率响应<strong>保持</strong>连续时间滤波器频率响应的<strong>基本特征</strong>，即 $s$ 平面的虚轴映射到 $z$ 平面的单位圆，且离散时间滤波器与连续时间滤波器的<strong>选频特性保持一致</strong></li>
+<li>二是将一个<strong>因果稳定</strong>的连续时间滤波器转换成一个<strong>因果稳定</strong>的离散时间滤波器，即将 $H_{c}(s)$ 在 $s$ 左半平面的极点全部映射成 $H(z)$ 在 $z$ 平面单位圆内的极点。</li>
+<li>有许多方法可以实现满足这两个要求的映射，本章介绍其中两种常用的方法：脉冲响应不变法和双线性变换法</li>
+</ul>
+</li>
+</ul>
+<h3 id="脉冲响应不变法（IIR）"><a href="#脉冲响应不变法（IIR）" class="headerlink" title="脉冲响应不变法（IIR）"></a>脉冲响应不变法（IIR）</h3><p>脉冲响应不变法是从时域的角度出发进行映射的，映射的依据是使离散时间滤波器的单位脉冲响应 $h[n]$ 为原型连续时间滤波器的单位脉冲响应 $h_{\mathrm{c}}(t)$ 的取样，即</p>
+<script type="math/tex; mode=display">
+h[n]=\left.T_{\mathrm{d}} h_{\mathrm{c}}(t)\right|_{t=n T_{\mathrm{d}}}=T_{\mathrm{d}} h_{c}\left(n T_{\mathrm{d}}\right)</script><p>其中 $T_{\mathrm{d}}$ 是取样间隔。</p>
+<p>系统函数之间的转换方式：首先将连续时间滤波器的系统函数 $H_{\mathrm{c}}(s)$ 展开成部分分式（假设分母阶次高于分子阶次，且只有一阶极点）</p>
+<script type="math/tex; mode=display">
+H_{\mathrm{c}}(s)=\sum_{k=0}^{N-1} \frac{A_{k}}{s-s_{k}}</script><p>对上式做 $\mathrm{z}$ 变换得到离散时间滤波器的系统函数为</p>
+<script type="math/tex; mode=display">
+H(z)=\sum_{n=-\infty}^{+\infty} h[n] z^{-n}=\sum_{k=0}^{N-1} \frac{T_{\mathrm{d}} A_{k}}{1-\mathrm{e}^{s_{k} T_{\mathrm{d}}} z^{-1}}</script><p>如果原型连续时间滤波器因果稳定，也就是说极点 $s_{k}$ 全部位于 $s$ 平面的左半平面，即 $\operatorname{Re}\left\{s_{k}\right\}&lt;0$，则离散时间滤波器的极点的模 $\left|z_{k}\right|=\left|\mathrm{e}^{s_{k} T_{\mathrm{d}}}\right|=\mathrm{e}^{\operatorname{Re}\left|s_{k}\right| T_{\mathrm{d}}}&lt;1$，即极点全部位于单位圆内，仍然是因果稳定的系统。可见脉冲响应不变法符合前面提到的系统函数的映射需要满足的第二个要求。</p>
+<p><img src="https://s2.loli.net/2023/11/28/mAb8Vh21u6R3lfW.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>当 $h[n]=T_{\mathrm{d}} h_{c}\left(n T_{\mathrm{d}}\right)$ 时，离散时间系统的频率响应 $H\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 是连续时间滤波器的频率响应 $H_{\mathrm{c}}   (\mathrm{j} \Omega)$ 的周期性延拓，即</p>
+<script type="math/tex; mode=display">
+H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left.\sum_{r=-\infty}^{\infty} H_{\mathrm{c}}\left(\mathrm{j} \Omega+\mathrm{j} 2 \pi r / T_{\mathrm{d}}\right)\right|_{\Omega=\omega / T_{\mathrm{d}}}</script><p>但是如果 $H_{c}(\mathrm{j} \Omega)$ 的高频部分快速趋近于零时，混叠很小可以忽略，可以认为下式成立：</p>
+<script type="math/tex; mode=display">
+H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left.H_{\mathrm{c}}(\mathrm{j} \Omega)\right|_{\Omega=\omega / T_{\mathrm{d}}},|\omega| \leqslant \pi</script><p>所以离散时间滤波器保留了连续时间滤波器的频响特征。所以脉冲响应不变法也满足前面提到的第一个要求。<br>离散时间滤波器与原型连续时间滤波器的频率响应的自变量之间的映射关系是</p>
+<script type="math/tex; mode=display">
+\Omega=\omega / T_{\mathrm{d}}</script><h3 id="双线性变换法（IIR）"><a href="#双线性变换法（IIR）" class="headerlink" title="双线性变换法（IIR）"></a>双线性变换法（IIR）</h3><h3 id="窗函数法（FIR）"><a href="#窗函数法（FIR）" class="headerlink" title="窗函数法（FIR）"></a>窗函数法（FIR）</h3><h2 id="第九章-离散时间滤波器的实现"><a href="#第九章-离散时间滤波器的实现" class="headerlink" title="第九章 离散时间滤波器的实现"></a>第九章 离散时间滤波器的实现</h2><h3 id="信号流图"><a href="#信号流图" class="headerlink" title="信号流图"></a>信号流图</h3><ul>
+<li>信号流图是由连接节点的有向支路组成的网络</li>
+<li>在信号流图中，用带箭头的线段表示一条<strong>支路</strong></li>
+<li>支路的两个端点称为节点，一个节点代表一个<strong>信号变量</strong>，用圆点或圆圈表示</li>
+<li>支路上的箭头表示<strong>信号流动的方向</strong></li>
+<li>支路上的增益表示输入节点到输出节点的<strong>线性变换</strong>，其中常数增益表示乘以常数，增益 $z^{-k}$ 表示延迟 $k$ 个样本，增益没有标示则表示传输比为 1 或恒等变换</li>
+<li>每个节点的变量值等于进入该节点的所有支路的输出变量之和</li>
+<li>没有流入支路的节点又称<strong>源节点</strong></li>
+<li>仅有流入支路的节点又称<strong>汇节点</strong>。</li>
+<li>LTI 系统的三种基本运算，即<strong>加法</strong>、<strong>乘法</strong>和<strong>延迟</strong>一个样本运算采用下图所示的流图表示。</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/11/27/XBn8s7m6rWK4Gci.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><strong>信号流图转置定理</strong>：对于单输入/输出系统，将流图中所有<strong>支路的方向颠倒</strong>，但保持支路<strong>增益不变</strong>，并将<strong>源节点和汇节点互换</strong>，则所得流图与原流图具有<strong>相同的系统函数</strong></p>
+<h3 id="IIR滤波器的基本实现结构"><a href="#IIR滤波器的基本实现结构" class="headerlink" title="IIR滤波器的基本实现结构"></a>IIR滤波器的基本实现结构</h3><p>设 IIR 系统具有如下有理系统函数</p>
+<script type="math/tex; mode=display">
+H(z)=\frac{\sum_{k=0}^{M} b_{k} z^{-k}}{1-\sum_{k=1}^{N} a_{k} z^{-k}}</script><p>对应的差分方程是</p>
+<script type="math/tex; mode=display">
+y[n]=\sum_{k=0}^{M} b_{k} x[n-k]+\sum_{k=1}^{N} a_{k} y[n-k]</script><p>将系统函数表示成两个子系统函数的乘积，即</p>
+<script type="math/tex; mode=display">
+H(z)=H_{1}(z) H_{2}(z)</script><p>其中</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+H_{1}(z)=\sum_{k=0}^{M} b_{k} z^{-k} \\
+H_{2}(z)=\frac{1}{1-\sum_{k=1}^{N} a_{k} z^{-k}}
+\end{array}</script><h4 id="直接Ⅰ型"><a href="#直接Ⅰ型" class="headerlink" title="直接Ⅰ型"></a>直接Ⅰ型</h4><p>令</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+V(z)=X(z) H_{1}(z) \\
+Y(z)=V(z) H_{2}(z)
+\end{array}</script><p>写出两个子系统的差分方程如下</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+v[n]=\sum_{k=0}^{M} b_{k} x[n-k] \\
+y[n]=v[n]+\sum_{k=1}^{N} a_{k} y[n-k]
+\end{array}</script><p><img src="https://s2.loli.net/2023/11/27/p1L9SJeIaA73gfK.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>采用直接Ⅰ型结构实现，需要存储 $M+N+1$ 个系数，$M$ 个以前的输入样本，$N$ 个以前的输出样本。也就是说系数除外，需要 $M+N$ 个存储单元（或称延迟），需要做 $M+N+1$ 次乘法运算和 $M+N$ 次加法运算。</p>
+<h4 id="直接Ⅱ型"><a href="#直接Ⅱ型" class="headerlink" title="直接Ⅱ型"></a>直接Ⅱ型</h4><p>令</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+W(z)=X(z) H_{2}(z) \\
+Y(z)=W(z) H_{1}(z)
+\end{array}</script><p>写出两个子系统的差分方程如下</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+w[n]=x[n]+\sum_{k=1}^{N} a_{k} w[n-k] \\
+y[n]=\sum_{k=0}^{M} b_{k} w[n-k]
+\end{array}</script><p><img src="https://s2.loli.net/2023/11/27/i9cxYrzDCftUbVR.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>直接Ⅱ型结构的延迟最小，延迟单元数是 $M$ 和 $N$ 的最大值。这种具有最小延迟单元数的实现结构通常称为<strong>典范型</strong>结构。<br>直接型实现结构的优点是简单直观，缺点是对有限字长效应敏感。即当采用有限位二进制数近似表示系统中的系数和变量时造成的偏差大。</p>
+<h4 id="级联型"><a href="#级联型" class="headerlink" title="级联型"></a>级联型</h4><p><img src="https://s2.loli.net/2023/12/02/nJOupaCtv2k6yKA.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>将系统函数 $H(z)$ 分解成若干个二阶子系统的级联（假设 $M \leqslant N$）</p>
+<script type="math/tex; mode=display">
+H(z)=b_{0} \prod_{k=1}^{\lceil N / 2\rceil} H_{k}(z)=b_{0} \prod_{k=1}^{\lceil N/ 2\rceil} \frac{1+b_{1 k} z^{-1}+b_{2 k} z^{-2}}{1-a_{1 k} z^{-1}-a_{2 k} z^{-2}}</script><p>其中各系数均为实数，$\lceil N / 2\rceil$ 是大于等于 $N / 2$ 的最小整数。</p>
+<p>分解的具体方法是： </p>
+<ul>
+<li>$H(z)$ 的互为共轭的复数零点两两配对，实数零点任意两两配对，形成二阶因子 $\left(1+b_{1 k} z^{-1}+b_{2 k} z^{-2}\right)$</li>
+<li>$H(z)$ 的互为共轭的复数极点两两配对，实数极点任意两两配对，形成二阶因子 $\left(1-a_{1 k} z^{-1}-a_{2 k} z^{-2}\right)$</li>
+<li>上述二阶因子又可以任意两两配对，形成二阶 IIR 子系统的系统函数 $H_{k}(z)$。这样分解的目的是使各系数均为实数，并且形式统一。</li>
+<li>如果 $H(z)$ 极点（或零点）的个数是奇数，则其中有一个 $a_{2 k}$（或 $b_{2 k}$）为零</li>
+<li>如果 $M&lt;N$，则某些 $b_{1 k}$ 和 $b_{2 k}$ 为零</li>
+<li>如果 $M&gt;N$，则某些 $a_{1 k}$ 和 $a_{2 k}$ 为零，即有若干个子系统是 FIR 系统。</li>
+</ul>
+<p>级联型结构的优点是：</p>
+<ul>
+<li>硬件实现中，可采用一个二阶环分时复用</li>
+<li>软件实现中，可以调用同一个子函数</li>
+<li>对有限字长的敏感程度比直接型低，易于通过调整子系统（即整个系统）的零点和极点，来达到调整系统的频率响应的目的。不同的配对方式具有不同的有限字长敏感程度。</li>
+</ul>
+<h4 id="并联型"><a href="#并联型" class="headerlink" title="并联型"></a>并联型</h4><p><img src="https://s2.loli.net/2023/12/02/ZP36WsDuCBfNngM.jpg" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>将系统函数 $H(z)$ 分解成部分分式形式（假设 $M \geqslant N$）</p>
+<script type="math/tex; mode=display">
+H(z)=\sum_{k=0}^{M-N} c_{k} z^{-k}+\sum_{k=1}^{\lceil N / 2\rceil} \frac{d_{0 k}+d_{1 k} z^{-1}}{1-a_{1 k} z^{-1}-a_{2 k} z^{-2}}</script><p>其中，系数均为实数。如果 $M&lt;N$，则不包括第一项 FIR 子系统。极点的配对方式与级联结构相同。</p>
+<p>并联型结构的优点是：硬件实现时，各子系统可以并行实现，速度快。缺点是不易调整整个系统的零点，不适用于对零点位置精度要求高的滤波器，例如点阻滤波器和窄带带阻滤波器。</p>
+<h3 id="FIR滤波器的基本实现结构"><a href="#FIR滤波器的基本实现结构" class="headerlink" title="FIR滤波器的基本实现结构"></a>FIR滤波器的基本实现结构</h3><p>设 FIR 数字滤波器的单位脉冲响应是 $h[n],n=0,1,\cdots,M$，则系统函数是</p>
+<script type="math/tex; mode=display">
+H(z)=\sum_{k=0}^{M} h[k] z^{-k}</script><p>对应的差分方程，即卷积和式为</p>
+<script type="math/tex; mode=display">
+y[n]=\sum_{k=0}^{M} h[k] x[n-k]</script><h4 id="直接型"><a href="#直接型" class="headerlink" title="直接型"></a>直接型</h4><p><img src="https://s2.loli.net/2023/12/02/gUWsa4xR5qBClwc.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>直接型又称横向结构，它其实就是 IIR 滤波器直接Ⅰ型的左半部分。</p>
+<h4 id="级联型-1"><a href="#级联型-1" class="headerlink" title="级联型"></a>级联型</h4><p><img src="https://s2.loli.net/2023/12/02/do83yH2vlQx7zOW.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>将系统函数 $H(z)$ 分解成若干个二阶子系统的级联</p>
+<script type="math/tex; mode=display">
+H(z)=\sum_{k=0}^{M} h[k] z^{-k}=h[0] \prod_{k=1}^{\lceil M / 2\rceil}\left(1+b_{1 k} z^{-1}+b_{2 k} z^{-2}\right)</script><p>其中系数均为实数，$\lceil M / 2\rceil$ 是大于等于 $(M / 2)$ 的最小整数。零点的配对方式与 $IIR$ 系统级联结构相同。若 $M$ 为奇数，$H(z)$ 有奇数个零点，所以其中某个 $b_{2 k}$ 或 $b_{2 k}^{\prime}$ 为零。</p>
+<h4 id="线性相位型"><a href="#线性相位型" class="headerlink" title="线性相位型"></a>线性相位型</h4><p><img src="https://s2.loli.net/2023/12/02/9rfyV27khlNqtGT.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>对于广义线性相位 FIR 系统，单位脉冲响应具有如下的对称性</p>
+<script type="math/tex; mode=display">
+h[n]=h[M-n],n=0,1,\cdots,M</script><p>或</p>
+<script type="math/tex; mode=display">
+h[n]=-h[M-n],n=0,1,\cdots,M</script><p>第Ⅰ类 FIR 系统，利用对称性，差分方程可以变换成</p>
+<script type="math/tex; mode=display">
+y[n]=\sum_{k=0}^{M / 2-1} h[k](x[n-k]+x[n-M+k])+h\left[\frac{M}{2}\right] x[n-M / 2]</script><p>第Ⅱ类 FIR 系统的差分方程可以变换成</p>
+<script type="math/tex; mode=display">
+y[n]=\sum_{k=0}^{(M-1) / 2} h[k](x[n-k]+x[n-M+k])</script><p>第Ⅲ类 FIR 系统的差分方程可以变换成</p>
+<script type="math/tex; mode=display">
+y[n]=\sum_{k=0}^{M / 2-1} h[k](x[n-k]-x[n-M+k])</script><p>第Ⅳ类 FIR 系统的差分方程可以变换成</p>
+<script type="math/tex; mode=display">
+y=\sum_{k=0}^{(M-1) / 2} h[k](x[n-k]-x[n-M+k])</script>
             </div>
             <hr>
             <div>
