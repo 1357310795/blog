@@ -233,7 +233,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年12月2日 下午
+                  本文最后更新于：2023年12月8日 晚上
                 
               </p>
             
@@ -1528,6 +1528,7 @@ H[k] =\sum_{n=0}^{N / 2-1} h[n] W_{N / 2}^{k n}, & 0 \leq k \leq N / 2-1
 X[k]=G[k]+W_{N}^{k} H[k], & 0 \leq k \leq N / 2-1 \\
 X\left[k+\frac{N}{2}\right]=G[k]-W_{N}^{k} H[k], & 0 \leq k \leq N / 2-1
 \end{array}</script><h4 id="8点FFT完整信号流图"><a href="#8点FFT完整信号流图" class="headerlink" title="8点FFT完整信号流图"></a>8点FFT完整信号流图</h4><p><img src="https://s2.loli.net/2023/11/13/x842iKILRZOorjV.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="4点FFT完整信号流图"><a href="#4点FFT完整信号流图" class="headerlink" title="4点FFT完整信号流图"></a>4点FFT完整信号流图</h4><p><img src="https://s2.loli.net/2023/12/08/C895oYRnxIABlg3.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h4 id="DIT-FFT-基本蝶形运算"><a href="#DIT-FFT-基本蝶形运算" class="headerlink" title="DIT-FFT 基本蝶形运算"></a>DIT-FFT 基本蝶形运算</h4><p><img src="https://s2.loli.net/2023/11/13/BgZ7VfpQn2C1udH.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <script type="math/tex; mode=display">
 \begin{array}{c}
@@ -1554,6 +1555,7 @@ h[n]=\left(x[n]-x\left[n+\frac{N}{2}\right]\right) W_{N}^{n}, n=0, \ldots N / 2-
 X[2 r]=G[r]=\sum_{n=0}^{N / 2-1} g[n] W_{N / 2}^{r n}, & 0 \leq r \leq \frac{N}{2}-1 \\
 X[2 r+1]=H[r]=\sum_{n=0}^{N / 2-1} h[n] W_{N / 2}^{r n}, & 0 \leq r \leq \frac{N}{2}-1
 \end{array}</script><h4 id="8点FFT完整信号流图-1"><a href="#8点FFT完整信号流图-1" class="headerlink" title="8点FFT完整信号流图"></a>8点FFT完整信号流图</h4><p><img src="https://s2.loli.net/2023/11/13/kQepLFgcZjNlviS.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="4点FFT完整信号流图-1"><a href="#4点FFT完整信号流图-1" class="headerlink" title="4点FFT完整信号流图"></a>4点FFT完整信号流图</h4><p><img src="https://s2.loli.net/2023/12/08/RwGN6B3sEciKfQt.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h4 id="DIF-FFT-基本蝶形运算"><a href="#DIF-FFT-基本蝶形运算" class="headerlink" title="DIF-FFT 基本蝶形运算"></a>DIF-FFT 基本蝶形运算</h4><p><img src="https://s2.loli.net/2023/11/13/5WlgyDTOwn3ixeI.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <script type="math/tex; mode=display">
 \begin{array}{c}
@@ -1669,7 +1671,27 @@ H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left.\sum_{r=-\infty}^{\infty} H_{
 <script type="math/tex; mode=display">
 H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left.H_{\mathrm{c}}(\mathrm{j} \Omega)\right|_{\Omega=\omega / T_{\mathrm{d}}},|\omega| \leqslant \pi</script><p>所以离散时间滤波器保留了连续时间滤波器的频响特征。所以脉冲响应不变法也满足前面提到的第一个要求。<br>离散时间滤波器与原型连续时间滤波器的频率响应的自变量之间的映射关系是</p>
 <script type="math/tex; mode=display">
-\Omega=\omega / T_{\mathrm{d}}</script><h3 id="双线性变换法（IIR）"><a href="#双线性变换法（IIR）" class="headerlink" title="双线性变换法（IIR）"></a>双线性变换法（IIR）</h3><h3 id="窗函数法（FIR）"><a href="#窗函数法（FIR）" class="headerlink" title="窗函数法（FIR）"></a>窗函数法（FIR）</h3><h2 id="第九章-离散时间滤波器的实现"><a href="#第九章-离散时间滤波器的实现" class="headerlink" title="第九章 离散时间滤波器的实现"></a>第九章 离散时间滤波器的实现</h2><h3 id="信号流图"><a href="#信号流图" class="headerlink" title="信号流图"></a>信号流图</h3><ul>
+\Omega=\omega / T_{\mathrm{d}}</script><h3 id="双线性变换法（IIR）"><a href="#双线性变换法（IIR）" class="headerlink" title="双线性变换法（IIR）"></a>双线性变换法（IIR）</h3><p>双线性变换法可以克服脉冲响应不变法的频响混叠现象。</p>
+<h4 id="设计思想"><a href="#设计思想" class="headerlink" title="设计思想"></a>设计思想</h4><p>该方法从频域的角度出发进行映射，映射的依据是直接使离散时间滤波器的频率响应是原型连续时间滤波器频率响应的逼近。映射过程中，s 平面的整个虚轴非线性一对一地映射到 z 平面的单位圆上。</p>
+<h4 id="系统函数的转换方法"><a href="#系统函数的转换方法" class="headerlink" title="系统函数的转换方法"></a>系统函数的转换方法</h4><p>从 $s$ 平面到 $z$ 平面的映射由如下的代数变换实现：</p>
+<script type="math/tex; mode=display">
+s=\frac{2}{T_{\mathrm{d}}} \cdot \frac{1-z^{-1}}{1+z^{-1}}</script><p>其中，$T_{\mathrm{d}}$ 为一般常数。也就是说，离散时间滤波器的系统函数可通过下式从原型连续时间滤波器的系统函数变换得到</p>
+<script type="math/tex; mode=display">
+H(z)=H_{\mathrm{c}}\left(\frac{2}{T_{\mathrm{d}}} \cdot \frac{1-z^{-1}}{1+z^{-1}}\right)</script><h4 id="因果稳定性"><a href="#因果稳定性" class="headerlink" title="因果稳定性"></a>因果稳定性</h4><p>将 $s=\sigma+\mathrm{j} \Omega$ 代入式映射关系式得到</p>
+<script type="math/tex; mode=display">
+z=\frac{\left(2 / T_{\mathrm{d}}\right)+\sigma+\mathrm{j} \Omega}{\left(2 / T_{\mathrm{d}}\right)-\sigma-\mathrm{j} \Omega}</script><p>从上式可以看出，当 $\sigma&lt;0$ 时，$|z|&lt;1$，表示 $s$ 左半平面的所有点（包括极点）都映射到 $z$ 平面的单位圆内，所以如果原型连续时间滤波器因果稳定，则离散时间滤波器也一定是因果稳定的。</p>
+<h4 id="频率响应的映射特点"><a href="#频率响应的映射特点" class="headerlink" title="频率响应的映射特点"></a>频率响应的映射特点</h4><p>从式上式还可看出，当 $\sigma=0$ 时，$|z|=1$，即 $s$ 平面的虚轴映射到 $z$ 平面的单位员上。所以可以将 $s=\mathrm{j} \Omega$ 和 $z=\mathrm{e}^{\mathrm{j} \omega}$ 代入映射关系式，有</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\mathrm{j} \Omega=\frac{2}{T_{\mathrm{d}}} \cdot \frac{1-\mathrm{e}^{-\mathrm{j} \omega}}{1+\mathrm{e}^{-\mathrm{j} \omega}} & =\frac{2}{T_{\mathrm{d}}} \cdot \frac{\mathrm{e}^{-\mathrm{j} \omega / 2}\left(\mathrm{e}^{\mathrm{j} \omega / 2}-\mathrm{e}^{-\mathrm{j} \omega / 2}\right)}{\mathrm{e}^{-\mathrm{j} \omega / 2}\left(\mathrm{e}^{\mathrm{j} \omega / 2}+\mathrm{e}^{-\mathrm{j} \omega / 2}\right)} \\
+& =\frac{2}{T_{\mathrm{d}}} \cdot \mathrm{j} \tan \left(\frac{\omega}{2}\right)
+\end{aligned}</script><p>得到频率的映射关系为</p>
+<script type="math/tex; mode=display">
+\Omega=\frac{2}{T_{\mathrm{d}}} \tan \frac{\omega}{2}</script><p>因此频率响应的映射关系为</p>
+<script type="math/tex; mode=display">
+H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left.H_{\mathrm{c}}(\mathrm{j} \Omega)\right|_{\Omega=\left(2 / T_{\mathrm{d}}\right) \tan (\omega / 2)}</script><p>在映射过程中，$-\infty \leqslant \Omega \leqslant \infty$ 的频率范围被非线性压缩后映射到 $-\pi \leqslant \omega \leqslant \pi$ 的频率范围内，即 $s$ 平面的整个虚轴非线性压缩后映射到了 $z$ 平面的单位圆上。由于频率是一对一映射的，所以频率响应的映射<strong>没有混叠问题</strong>。但是映射时频率轴和频率响应都发生了<strong>非线性畸变</strong>，所以在确定原型连续时间滤波器的技术指标时应对截止频率进行<strong>预畸变</strong>，以保证双线性变换后得到的离散时间滤波器满足指标要求。</p>
+<h3 id="窗函数法（FIR）"><a href="#窗函数法（FIR）" class="headerlink" title="窗函数法（FIR）"></a>窗函数法（FIR）</h3><p>（Todo：期末不考）</p>
+<h2 id="第九章-离散时间滤波器的实现"><a href="#第九章-离散时间滤波器的实现" class="headerlink" title="第九章 离散时间滤波器的实现"></a>第九章 离散时间滤波器的实现</h2><h3 id="信号流图"><a href="#信号流图" class="headerlink" title="信号流图"></a>信号流图</h3><ul>
 <li>信号流图是由连接节点的有向支路组成的网络</li>
 <li>在信号流图中，用带箭头的线段表示一条<strong>支路</strong></li>
 <li>支路的两个端点称为节点，一个节点代表一个<strong>信号变量</strong>，用圆点或圆圈表示</li>
@@ -1704,7 +1726,7 @@ Y(z)=V(z) H_{2}(z)
 v[n]=\sum_{k=0}^{M} b_{k} x[n-k] \\
 y[n]=v[n]+\sum_{k=1}^{N} a_{k} y[n-k]
 \end{array}</script><p><img src="https://s2.loli.net/2023/11/27/p1L9SJeIaA73gfK.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<p>采用直接Ⅰ型结构实现，需要存储 $M+N+1$ 个系数，$M$ 个以前的输入样本，$N$ 个以前的输出样本。也就是说系数除外，需要 $M+N$ 个存储单元（或称延迟），需要做 $M+N+1$ 次乘法运算和 $M+N$ 次加法运算。</p>
+<p>采用直接Ⅰ型结构实现，需要存储 $M+N+1$ 个系数，$M$ 个以前的输入样本，$N$ 个以前的输出样本。也就是说系数除外，需要 $M+N$ 个存储单元（或称<strong>延迟</strong>），需要做 $M+N+1$ 次乘法运算和 $M+N$ 次加法运算。</p>
 <h4 id="直接Ⅱ型"><a href="#直接Ⅱ型" class="headerlink" title="直接Ⅱ型"></a>直接Ⅱ型</h4><p>令</p>
 <script type="math/tex; mode=display">
 \begin{array}{l}

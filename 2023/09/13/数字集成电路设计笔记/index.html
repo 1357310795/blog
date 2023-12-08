@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      9.5k 字
+      11k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      129
+      147
        分钟
     </span>
   
@@ -233,7 +233,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年11月25日 上午
+                  本文最后更新于：2023年12月3日 晚上
                 
               </p>
             
@@ -1266,7 +1266,155 @@ b_{i}=\frac{C_{i+1}+C'_{i+1}}{C_{i+1}}</script><p>则最优条件</p>
 <script type="math/tex; mode=display">
 \frac{g_{i-1}{\color{Red} b_{i-1}} }{\gamma} \frac{C_{i}}{C_{i-1}}=\frac{g_{i}{\color{Red} b_{i}} }{\gamma} \frac{C_{i+1}}{C_{i}}</script><script type="math/tex; mode=display">
 H=h^N=\frac{C_{N+1}}{C_1}\left(\prod_{i=1}^{N} g_i\right)\left(\prod_{i=1}^{N} b_i\right)</script><script type="math/tex; mode=display">
-h=\sqrt[N]{GBF}</script>
+h=\sqrt[N]{GBF}</script><h3 id="功耗"><a href="#功耗" class="headerlink" title="功耗"></a>功耗</h3><script type="math/tex; mode=display">
+E=\sum_{i \in nodes} \left( 
+  C_{\text{wire}_{i}}V_{DD}^2\alpha_i+
+  (3Cp_ix_i)V_{DD}^2\alpha_i+
+  \sum_{j\in\text{fanout}(i)} (3Cg_jx_j)V_{DD}^2\alpha_i
+\right)</script><p>其中 $\alpha_i$ 是活跃因子，$p_i$ 是本征延迟比</p>
+<h4 id="简单二输入门的活跃因子"><a href="#简单二输入门的活跃因子" class="headerlink" title="简单二输入门的活跃因子"></a>简单二输入门的活跃因子</h4><table>
+<thead>
+  <tr>
+    <th></th>
+    <th>$p_1$</th>
+    <th>$\alpha_{0 \rightarrow 1}$</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>AND2</td>
+    <td>$p_Ap_B$</td>
+    <td rowspan="6">$(1-p_1)p_1$</td>
+  </tr>
+  <tr>
+    <td>AND3</td>
+    <td>$p_Ap_Bp_C$</td>
+  </tr>
+  <tr>
+    <td>OR2</td>
+    <td>$1-\bar{p}_A\bar{p}_B$</td>
+  </tr>
+  <tr>
+    <td>NAND2</td>
+    <td>$1-p_Ap_B$</td>
+  </tr>
+  <tr>
+    <td>NOR2</td>
+    <td>$\bar{p}_A\bar{p}_B$</td>
+  </tr>
+  <tr>
+    <td>XOR</td>
+    <td>$p_A\bar{p}_B+\bar{p}_Ap_B$</td>
+  </tr>
+</tbody>
+</table>
+
+<ul>
+<li>输入必须独立</li>
+<li>电路没有反馈</li>
+</ul>
+<h4 id="毛刺"><a href="#毛刺" class="headerlink" title="毛刺"></a>毛刺</h4><p><img src="https://s2.loli.net/2023/12/03/G8PCBEV3rcLsqde.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>毛刺是指在输出信号中临时的、非预期的电压波动。这种现象通常是由门级别的逻辑变化造成的，因为不<strong>同的输入可能以不同的速度到达逻辑门</strong>，从而导致短暂的错误状态。</p>
+<p>缓解毛刺：</p>
+<ul>
+<li>使用树形结构</li>
+<li>或门级联，输入为1概率越大越排前面；与门级联，输入为1概率越小越排前面</li>
+<li>根据信号到达时间调整顺序</li>
+<li>把输出或者电源关闭</li>
+</ul>
+<h3 id="有比逻辑电路"><a href="#有比逻辑电路" class="headerlink" title="有比逻辑电路"></a>有比逻辑电路</h3><ul>
+<li>有比逻辑试图<strong>减少</strong>实现特定逻辑功能所需的<strong>晶体管数量</strong>，但代价是<strong>降低鲁棒性</strong>和<strong>额外功耗</strong>。</li>
+<li>在有比逻辑中，整个 PUN 被一个无条件负载器件取代，该器件将输出拉高以获得高输出。这种栅极由一个实现逻辑功能的 NMOS 下拉网络和一个简单的负载器件组成，而不是有源下拉和上拉网络的组合。右下图显示了一个比率逻辑示例，它使用接地 PMOS 负载，被称为<strong>伪 NMOS 栅极</strong>。</li>
+<li>扇入 N，只需要 N+1 个晶体管</li>
+<li>输入只连接到一个晶体管栅极，电容小</li>
+<li>不适合大规模电路</li>
+<li>只适合高速电路</li>
+<li>只适合大多数时候输出 1 的情况</li>
+<li>特别适用于 NOR 门</li>
+<li>总是希望在不工作时关闭 PMOS</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/12/03/m7YCifgJkFoDSzw.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="工作状态分析"><a href="#工作状态分析" class="headerlink" title="工作状态分析"></a>工作状态分析</h4><p><img src="https://s2.loli.net/2023/12/03/QJla8U3yFPnRNXm.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/12/03/kGnJis2zEWaMyjF.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>pMOS 只有线性和速度饱和</li>
+<li>PMOS 尺寸越大（$\beta$ 越大），VOL越大，电路静态功耗越大，但是速度越快</li>
+</ul>
+<h4 id="逻辑努力推导"><a href="#逻辑努力推导" class="headerlink" title="逻辑努力推导"></a>逻辑努力推导</h4><p><img src="https://s2.loli.net/2023/12/03/NRJPDIemTgA76tW.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>尺寸比定为 1:2</li>
+<li>设单位 NMOS 和单位 PMOS 的电流是 $I_{n0}$ 和 $I_{p0}$，则 $I_{n0}=2I_{p0}$</li>
+<li>放电电流对齐时<script type="math/tex; mode=display">
+\begin{array}{c}
+I_{DC}=I_{n}-I_{p}=\frac{W_n}{L_n}I_{n0}-\frac{W_p}{L_p}I_{p0}=\frac{3W_n}{4L_n}I_{n0}\\
+\Rightarrow \frac{W_n}{L_n}=\frac{4}{3}\frac{W_{n0}}{L_{n0}}
+\end{array}</script>因此放电逻辑努力<script type="math/tex; mode=display">
+g_{HL}=\frac{4}{3}/3=\frac{4}{9}</script></li>
+<li>充电电流对齐时<script type="math/tex; mode=display">
+\begin{array}{c}
+I_{DC}=I_{p}=\frac{W_p}{L_p}I_{p0}=\frac{1}{4}\frac{W_n}{L_n}I_{n0}\\
+\Rightarrow \frac{W_n}{L_n}=4\frac{W_{n0}}{L_{n0}}
+\end{array}</script>因此充电逻辑努力<script type="math/tex; mode=display">
+g_{HL}=4/3=\frac{4}{3}</script></li>
+</ul>
+<p>对于 N 输入 NOR 门，电路延时：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+D_{H L}=p_{d}+g_{d} f=(4 \mathrm{~N}+2) / 9+4 / 9 f=(4 \mathrm{~N}+2) / 9+\frac{4}{9} f \\
+D_{H L-C M O S}=p_{d}+g_{d} f=N+\frac{2 N+1}{3} f
+\end{array}</script><h4 id="差分串联电压开关逻辑（DCVSL）"><a href="#差分串联电压开关逻辑（DCVSL）" class="headerlink" title="差分串联电压开关逻辑（DCVSL）"></a>差分串联电压开关逻辑（DCVSL）</h4><p><img src="https://s2.loli.net/2023/12/03/ZqDXglNQVGIxobO.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="传输管逻辑"><a href="#传输管逻辑" class="headerlink" title="传输管逻辑"></a>传输管逻辑</h3><p><img src="https://s2.loli.net/2023/12/03/f1xXVytFMpq7QCS.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>与前面提到的一致，NMOS 传递“强0弱1”，PMOS传递“强1弱0”</li>
+<li>Output of passing-transistor should not be connected with the gate of next stage<br><img src="https://s2.loli.net/2023/12/03/NvEpIobzsLg4cP6.png" srcset="/img/loading.gif" lazyload alt=""></li>
+</ul>
+<h4 id="VTC-特性"><a href="#VTC-特性" class="headerlink" title="VTC 特性"></a>VTC 特性</h4><p><img src="https://s2.loli.net/2023/12/03/cjNk5s62QT3lYpz.png" srcset="/img/loading.gif" lazyload alt=""><br>（Todo）</p>
+<h4 id="差分传输管逻辑（CPL）"><a href="#差分传输管逻辑（CPL）" class="headerlink" title="差分传输管逻辑（CPL）"></a>差分传输管逻辑（CPL）</h4><p>常用三种门的CPL：<br><img src="https://s2.loli.net/2023/12/03/76AVtQGxyqSp4vu.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>本质其实是选择器</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+F=AS+B\bar{S}\\
+\bar{F}=\overline{AS+B\bar{S}}
+\end{array}</script><ul>
+<li>诸如XOR和加法器之类的一些门可以用少量晶体管有效地实现。每个信号的两个极性的可用性消除了对额外反相器的需要</li>
+<li>属于静态门，具有抗噪优势</li>
+<li>设计非常模块化。实际上，所有门电路都使用完全相同的拓扑结构。这使得门库的设计变得简单。通过级联标准模块，可以构建更复杂的门。</li>
+</ul>
+<h4 id="电平恢复"><a href="#电平恢复" class="headerlink" title="电平恢复"></a>电平恢复</h4><p>方法一：引入反馈回路：</p>
+<ul>
+<li>该电路的优点是所有电压电平均为 GND 或 VDD，不消耗静态功率</li>
+<li>$M_r$ 的尺寸如果不合适，电路输出不了 0 </li>
+<li>添加电平恢复器会增加内部节点 X 的电容，从而减慢栅极的速度</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/12/03/bwZIy6lDuNtSMWT.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>方法二：零或低阈值晶体管</p>
+<ul>
+<li>由于体偏效应，不可能完全传输强1</li>
+<li>由于亚阈值电路，可能有潜在的漏直流电通路</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/12/03/SwvxEnZRGdXqrgB.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="传输门"><a href="#传输门" class="headerlink" title="传输门"></a>传输门</h3><p><img src="https://s2.loli.net/2023/12/03/o521efumnK6LiAd.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/12/03/xpv1EyQMCWfzKUY.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>传输门实现异或：<br><img src="https://s2.loli.net/2023/12/03/8RkHV32O9KTI4rG.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="MOS工作状态分析"><a href="#MOS工作状态分析" class="headerlink" title="MOS工作状态分析"></a>MOS工作状态分析</h4><p><img src="https://s2.loli.net/2023/12/03/WEKmxrJz8f7iM5q.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="等效电阻"><a href="#等效电阻" class="headerlink" title="等效电阻"></a>等效电阻</h4><p>（Todo）</p>
+<h4 id="级联优化"><a href="#级联优化" class="headerlink" title="级联优化"></a>级联优化</h4><p>（Todo）</p>
+<h3 id="动态电路"><a href="#动态电路" class="headerlink" title="动态电路"></a>动态电路</h3><ul>
+<li>静态电路在每个时间点（开关时除外）的输出都通过低阻抗路径连接到 GND 或 VDD。</li>
+<li>动态电路则依靠<strong>高阻抗节点的电容</strong>临时存储信号值。</li>
+</ul>
+<h4 id="基本组成"><a href="#基本组成" class="headerlink" title="基本组成"></a>基本组成</h4><p>在 CMOS PDN 的两端接上一个 NMOS 和一个 PMOS 得到基本动态电路。</p>
+<p><img src="https://s2.loli.net/2023/12/03/zZbK3uEAitqhHp4.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>Precharge：当 CLK＝0 时，输出节点 Out 通过 PMOS 晶体管 Mp 被<strong>预充电</strong>到 VDD。在此期间，评估 NMOS 晶体管 Me 关断，使得下拉路径被禁用，没有静态功率</li>
+<li>Evaluation：当 CLK = 1 时，预充电晶体管 Mp 关断，评估晶体管 Me 接通。输出根据输入值和 PDN <strong>有条件放电</strong>。<ul>
+<li>如果输入使 PDN 导通，则输出和接地之间存在低阻路径，输出将放电至接地。</li>
+<li>如果输入使 PDN 关断，则预充电值仍存储在输出电容 CL 上，该电容由结电容、布线电容和扇出栅极的输入电容组合而成。</li>
+</ul>
+</li>
+<li>在评估阶段，输出节点与电源轨之间的唯一可能路径是接地。因此，输出一旦放电，在下一次预充电操作之前就无法再充电。因此，在评估期间，栅极的输入最多只能进行一次转换。请注意，如果下拉网络关闭，输出在评估期间可能处于高阻抗状态。这种行为与输出端和其中一个电源轨之间始终存在低阻路径的静态对应器件有着本质区别。</li>
+<li>输入不能是 1 到 0</li>
+<li>如果能保证预充电的时候 PDN 不通，最下面的 MOS 可以去掉</li>
+</ul>
+
             </div>
             <hr>
             <div>
