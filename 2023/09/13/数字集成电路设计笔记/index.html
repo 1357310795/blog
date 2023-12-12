@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      11k 字
+      11.7k 字
     </span>
   
 
@@ -199,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      147
+      158
        分钟
     </span>
   
@@ -233,7 +233,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年12月3日 晚上
+                  本文最后更新于：2023年12月9日 晚上
                 
               </p>
             
@@ -1392,7 +1392,8 @@ F=AS+B\bar{S}\\
 <li>由于亚阈值电路，可能有潜在的漏直流电通路</li>
 </ul>
 <p><img src="https://s2.loli.net/2023/12/03/SwvxEnZRGdXqrgB.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="传输门"><a href="#传输门" class="headerlink" title="传输门"></a>传输门</h3><p><img src="https://s2.loli.net/2023/12/03/o521efumnK6LiAd.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/12/03/xpv1EyQMCWfzKUY.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="传输门"><a href="#传输门" class="headerlink" title="传输门"></a>传输门</h3><p>传输门相当于开关，当 $C=0$ 时高阻，当 $C=1$ 时输出跟随输入</p>
+<p><img src="https://s2.loli.net/2023/12/03/o521efumnK6LiAd.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/12/03/xpv1EyQMCWfzKUY.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>传输门实现异或：<br><img src="https://s2.loli.net/2023/12/03/8RkHV32O9KTI4rG.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h4 id="MOS工作状态分析"><a href="#MOS工作状态分析" class="headerlink" title="MOS工作状态分析"></a>MOS工作状态分析</h4><p><img src="https://s2.loli.net/2023/12/03/WEKmxrJz8f7iM5q.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h4 id="等效电阻"><a href="#等效电阻" class="headerlink" title="等效电阻"></a>等效电阻</h4><p>（Todo）</p>
@@ -1400,6 +1401,10 @@ F=AS+B\bar{S}\\
 <h3 id="动态电路"><a href="#动态电路" class="headerlink" title="动态电路"></a>动态电路</h3><ul>
 <li>静态电路在每个时间点（开关时除外）的输出都通过低阻抗路径连接到 GND 或 VDD。</li>
 <li>动态电路则依靠<strong>高阻抗节点的电容</strong>临时存储信号值。</li>
+<li>晶体管更少</li>
+<li>负载电容小</li>
+<li>延迟小</li>
+<li>噪声容限不对称（$NM_L&lt;NM_H$）</li>
 </ul>
 <h4 id="基本组成"><a href="#基本组成" class="headerlink" title="基本组成"></a>基本组成</h4><p>在 CMOS PDN 的两端接上一个 NMOS 和一个 PMOS 得到基本动态电路。</p>
 <p><img src="https://s2.loli.net/2023/12/03/zZbK3uEAitqhHp4.png" srcset="/img/loading.gif" lazyload alt=""></p>
@@ -1414,6 +1419,91 @@ F=AS+B\bar{S}\\
 <li>输入不能是 1 到 0</li>
 <li>如果能保证预充电的时候 PDN 不通，最下面的 MOS 可以去掉</li>
 </ul>
+<h4 id="活跃因子"><a href="#活跃因子" class="headerlink" title="活跃因子"></a>活跃因子</h4><p>由于动态电路的充电过程是必然发生的，计算活跃因子时只需计算输出为0的概率即可。</p>
+<h4 id="逻辑努力"><a href="#逻辑努力" class="headerlink" title="逻辑努力"></a>逻辑努力</h4><p><img src="https://s2.loli.net/2023/12/08/8zavdesHKWj4OoI.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>充电PMOS尺寸固定为1</li>
+<li>PDN与单位反相器对齐</li>
+</ul>
+<h4 id="增加输出保持"><a href="#增加输出保持" class="headerlink" title="增加输出保持"></a>增加输出保持</h4><p><img src="https://s2.loli.net/2023/12/08/7BkJytLCFXmDZeH.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="电荷分享（Charge-Sharing）"><a href="#电荷分享（Charge-Sharing）" class="headerlink" title="电荷分享（Charge Sharing）"></a>电荷分享（Charge Sharing）</h4><p><img src="https://s2.loli.net/2023/12/08/fY8MeraxApSHiV7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>当 $\frac{C_L}{C_{a}+C_{L}}&gt;\frac{V_{DD}-V_{Tn}}{V_{DD}}$，则 $C_{a}$ 上的电压会充到 $V_{DD}-V_{Tn}$ 以上，导致 $M_a$ 关闭，最终输出压降为<script type="math/tex; mode=display">
+\begin{aligned}
+C_{L} V_{D D} & =C_{L} V_{\text {out }}(t)+C_{a}\left[V_{D D}-V_{T n}\left(V_{X}\right)\right] \\
+\Delta V_{o u t} & =V_{D D}-V_{o u t}(t)=\frac{C_{a}}{C_{L}}\left[V_{D D}-V_{T n}\left(V_{X}\right)\right]
+\end{aligned}</script></li>
+<li>当 $\frac{C_L}{C_{a}+C_{L}}&lt;\frac{V_{DD}-V_{Tn}}{V_{DD}}$，则 $M_a$ 不会关闭，最终 $M_a$ 源漏电压相等，最终输出压降为<script type="math/tex; mode=display">
+\Delta V_{o u t}=V_{D D}\left(\frac{C_{a}}{C_{a}+C_{L}}\right)</script></li>
+</ul>
+<h4 id="时钟馈通与回栅耦合"><a href="#时钟馈通与回栅耦合" class="headerlink" title="时钟馈通与回栅耦合"></a>时钟馈通与回栅耦合</h4><p>（Todo）</p>
+<h4 id="多米诺门"><a href="#多米诺门" class="headerlink" title="多米诺门"></a>多米诺门</h4><ul>
+<li>若将动态电路反相器直接相连，会出现输入是 1 到 0 的情况，这是不被允许的</li>
+<li>使用一个动态电路+一个 CMOS 反相器组成一个多米诺门</li>
+<li>多米诺门链中，非第一级的门，PDN 下面的 NMOS（连接 CLK）可以省略</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/12/08/NL3YWmEn6KOpgiq.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="np-CMOS"><a href="#np-CMOS" class="headerlink" title="np-CMOS"></a>np-CMOS</h4><p>（Todo）</p>
+<h2 id="第七章-数据通路"><a href="#第七章-数据通路" class="headerlink" title="第七章 数据通路"></a>第七章 数据通路</h2><h3 id="一位加法器"><a href="#一位加法器" class="headerlink" title="一位加法器"></a>一位加法器</h3><p>真值表：</p>
+<script type="math/tex; mode=display">
+\begin{array}{ccc|cc}
+\hline \mathrm{A} & \mathrm{B} & \mathrm{C}_{\mathrm{i}} & \mathrm{C}_{\mathrm{o}} & \mathrm{S} \\
+\hline 0 & 0 & 0 & 0 & 0 \\
+\hline 0 & 0 & 1 & 0 & 1 \\
+\hline 0 & 1 & 0 & 0 & 1 \\
+\hline 0 & 1 & 1 & 1 & 0 \\
+\hline 1 & 0 & 0 & 0 & 1 \\
+\hline 1 & 0 & 1 & 1 & 0 \\
+\hline 1 & 1 & 0 & 1 & 0 \\
+\hline 1 & 1 & 1 & 1 & 1 \\
+\hline
+\end{array}</script><p>因此输出的逻辑表达式：</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+S & =\overline{A} \overline{B} C_{i}+\overline{A} B \overline{C_{i}}+A \overline{B} \overline{C_{i}}+A B C_{i} \\
+& =A \oplus B \oplus C_{i}
+\end{aligned}</script><script type="math/tex; mode=display">
+\begin{aligned}
+C_{o} & =\overline{A} B C_{i}+A \overline{B} C_{i}+A B \overline{C_{i}}+A B C_{i} \\
+& =(\overline{A} B+A \overline{B}) C_{i}+A B \\
+& =(A \oplus B) C_{i}+A B \\
+& =(A+B) C_{i}+A B
+\end{aligned}</script><h4 id="镜像性"><a href="#镜像性" class="headerlink" title="镜像性"></a>镜像性</h4><ul>
+<li>将 $A$、$B$、$C_{\mathrm{i}}$ 均取反，输出的 $\mathrm{C}_{\mathrm{o}}$ 和 $S$ 也是取反</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/12/08/eKcDJr5TEGdMpsN.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="PGK"><a href="#PGK" class="headerlink" title="PGK"></a>PGK</h3><ul>
+<li>定义两个输入都为 0 时，为<strong>消除</strong>过程<ul>
+<li>$K=\bar{A}\bar{B}$</li>
+</ul>
+</li>
+<li>定义两个输入只有一个为 1 时，为<strong>传播</strong>过程<ul>
+<li>$P=A\oplus B$</li>
+</ul>
+</li>
+<li>定义两个输入都为 1 时，为<strong>产生</strong>过程<ul>
+<li>$G=AB$</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/12/09/geADuJjkwdBx2IS.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>因此，两个输出可以分别写成：</p>
+<ul>
+<li><script type="math/tex; mode=display">
+\begin{aligned}
+C_{out}&=G+PC_i\\
+&=\bar{P}G+PC_i\\
+&=A\bar{P}+PC_i
+\end{aligned}</script></li>
+<li><script type="math/tex; mode=display">
+\begin{aligned}
+S&=P\oplus C_i\\
+\end{aligned}</script></li>
+</ul>
+<h3 id="XOR-Full-Adder"><a href="#XOR-Full-Adder" class="headerlink" title="XOR Full Adder"></a>XOR Full Adder</h3><p><img src="https://s2.loli.net/2023/12/09/DsIMPEy7ewJ5tcU.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="CPL-Full-Adder"><a href="#CPL-Full-Adder" class="headerlink" title="CPL Full Adder"></a>CPL Full Adder</h3><p><img src="https://s2.loli.net/2023/12/09/wdmTOeoAkW9QZXH.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/12/09/XqreS6WsntuchU7.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="曼彻斯特进位链（Manchester-Carry-Chain）"><a href="#曼彻斯特进位链（Manchester-Carry-Chain）" class="headerlink" title="曼彻斯特进位链（Manchester Carry Chain）"></a>曼彻斯特进位链（Manchester Carry Chain）</h3><p>由于 PGK(D) 是互斥的，直接把输出接在一起：<br><img src="https://s2.loli.net/2023/12/09/sYjFmabHQIpVluD.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>增加预充过程，转换为动态电路<br><img src="https://s2.loli.net/2023/12/09/mQCa3NHPbyWXUIi.png" srcset="/img/loading.gif" lazyload alt=""></p>
 
             </div>
             <hr>

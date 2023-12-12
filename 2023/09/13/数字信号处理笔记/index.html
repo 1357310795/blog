@@ -189,7 +189,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      935 字
+      954 字
     </span>
   
 
@@ -233,7 +233,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年12月8日 晚上
+                  本文最后更新于：2023年12月12日 晚上
                 
               </p>
             
@@ -256,7 +256,7 @@ e^{j\omega}+e^{-j\omega}=2\cos\omega,\ e^{j\omega}-e^{-j\omega}=2j\sin\omega\\
 \end{array}</script><p>或者写成 $W_{N}^{k}$ 的形式</p>
 <script type="math/tex; mode=display">
 \begin{array}{c}
-\cos\omega=\frac{1}{2}\left( W_{N}^{\frac{\omega}{2\pi} N}+ W_{N}^{-\frac{\omega}{2\pi} N}\right)\\
+\cos\omega=\frac{1}{2}\left( W_{N}^{-\frac{\omega}{2\pi} N}+ W_{N}^{\frac{\omega}{2\pi} N}\right)\\
 \sin\omega=\frac{1}{2j}\left( W_{N}^{-\frac{\omega}{2\pi}N}-W_{N}^{\frac{\omega}{2\pi} N}\right)\\
 \end{array}</script><p>转换为幅度相位形式</p>
 <script type="math/tex; mode=display">
@@ -283,13 +283,13 @@ e^{-j\omega_1}-e^{-j\omega_2}=2j\sin\frac{\omega_2-\omega_1}{2}e^{-j\frac{\omega
 <li><script type="math/tex; mode=display">
 y[n]=x[n] * h[n]=\sum_{k=-\infty}^{\infty} x[k] h[n-k]</script></li>
 <li>适用范围：可无限长，可有限长；可离散，可连续</li>
-<li>结果长度：$L=M+N+1$</li>
+<li>结果长度：$L=M+N-1$</li>
 </ul>
 <h4 id="循环卷积"><a href="#循环卷积" class="headerlink" title="循环卷积"></a>循环卷积</h4><ul>
-<li><script type="math/tex; mode=display">
-x[n] \circledN y[n] =\left(\sum_{m=0}^{L-1} x[m] y\left[((n-m))_{L}\right]\right) R_{L}[n]</script></li>
+<li>$L_{N}$ 点循环卷积为<script type="math/tex; mode=display">
+x[n] \circledN y[n] =\left(\sum_{m=0}^{L_N-1} x[m] y\left[((n-m))_{L_N}\right]\right) R_{L_N}[n]</script></li>
 <li>适用范围：有限长；离散信号</li>
-<li>结果长度：$L \ge \max\{N, M\}$</li>
+<li>结果长度：$L_N = K \ge \max\{N, M\}$</li>
 </ul>
 <h4 id="周期卷积"><a href="#周期卷积" class="headerlink" title="周期卷积"></a>周期卷积</h4><ul>
 <li><script type="math/tex; mode=display">
@@ -298,14 +298,13 @@ x[n] \circledN y[n] =\left(\sum_{m=0}^{L-1} x[m] y\left[((n-m))_{L}\right]\right
 <li>结果长度：$N=N_1=N_2$</li>
 </ul>
 <h4 id="三者关系"><a href="#三者关系" class="headerlink" title="三者关系"></a>三者关系</h4><ul>
-<li>设<strong>循环卷积</strong>点数为 $L_{N}$，<strong>线性卷积</strong>长度为 $L$<ul>
-<li>当 $L_N&lt;L$ 时，循环卷积是线性卷积的混叠</li>
+<li>设<strong>循环卷积</strong>点数为 $L_{N}$，<strong>线性卷积</strong>最大的下标为 $L-1$<ul>
+<li>当 $L_N&lt;L$ 时，循环卷积是线性卷积以 $L_{N}$ 为周期的混叠</li>
 <li>当 $L_N=L$ 时，循环卷积=线性卷积</li>
 <li>当 $L_N&gt;L$ 时，循环卷积是线性卷积末尾补 $L_N-L$ 个零</li>
 </ul>
 </li>
 <li>对<strong>周期卷积</strong>取主值序列得到<strong>循环卷积</strong></li>
-<li></li>
 </ul>
 <h3 id="类卷积的计算技巧"><a href="#类卷积的计算技巧" class="headerlink" title="类卷积的计算技巧"></a>类卷积的计算技巧</h3><script type="math/tex; mode=display">
 y[n]=\sum_{k=-\infty}^{+\infty} x[k]h[n-2k]</script><script type="math/tex; mode=display">
@@ -315,7 +314,7 @@ x=\{x[n]\},\quad-\infty<n<+\infty</script><p>其中 $n$ 是整数，$x[n]$ 是�
 <ul>
 <li>当 $n$ 不为整数时，$x[n]$ 的取值不是零，而是无定义。</li>
 <li>序列的能量定义成<script type="math/tex; mode=display">
-E=\sum_{n=-\infty}^{\infty}|x[n]|^{2}=\sum_{n=-\infty}^{\infty} x[n] x^{*}[n]</script>其中 $x^{*}[n]=\operatorname{Re}{x[n]}-\operatorname{jIm}{x[n]}$，称为 $x[n]$ 的共轭。</li>
+E=\sum_{n=-\infty}^{\infty}|x[n]|^{2}=\sum_{n=-\infty}^{\infty} x[n] x^{*}[n]</script>其中 $x^{*}[n]=\operatorname{Re}\{x[n]\}-\operatorname{jIm}\{x[n]\}$，称为 $x[n]$ 的共轭。</li>
 </ul>
 <h3 id="信号的分类"><a href="#信号的分类" class="headerlink" title="信号的分类"></a>信号的分类</h3><p>序列一般按长度分成如下几类：</p>
 <ul>
@@ -346,6 +345,11 @@ x[n] *\left(h_{1}[n]+h_{2}[n]\right)=x[n] * h_{1}[n]+x[n] * h_{2}[n]</script></l
 <li>满足结合律<script type="math/tex; mode=display">
 \left(x[n] * h_{1}[n]\right) * h_{2}[n]=x[n] *\left(h_{1}[n] * h_{2}[n]\right)</script></li>
 <li>如果 $x[n]$ 的非零区间是 $N_{0} \leqslant n \leqslant N_{1}$，长度为 $L_{0}$，$h[n]$ 的非零区间是 $N_{2} \leqslant n \leqslant N_{3}$，长度为 $L_{1}$，则 $x[n] * h[n]$ 的非零区间是 $N_{0}+N_{2} \leqslant n \leqslant N_{1}+N_{3}$，长度为 $L_{0}+L_{1}-1$。</li>
+<li><script type="math/tex; mode=display">
+\begin{array}{c}
+x[n] * \delta[n]=x[n] \\
+x[n] * \delta\left[n-n_{0}\right]=x\left[n-n_{0}\right]
+\end{array}</script></li>
 </ul>
 <h4 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h4><p>两个序列的互相关运算定义成</p>
 <script type="math/tex; mode=display">
@@ -375,7 +379,12 @@ R_{N}[n]=\left\{\begin{array}{l}
 1,0 \leqslant n \leqslant N-1 \\
 0,\quad \mathrm{其他}
 \end{array}\right.</script><h4 id="指数序列"><a href="#指数序列" class="headerlink" title="指数序列"></a>指数序列</h4><script type="math/tex; mode=display">
-x[n]=a^{n}</script><p>其中 $a$ 为常数。<br>如果 $a$ 是实数，则序列为实指数序列，如图 $1.1-4(d)$ 和 $(e)$ 所示，当 $|a| \neq 1$ 时，序列的幅度按指数增长或衰减。<br>如果 $a$ 是复数，即 $a=r \mathrm{e}^{\mathrm{j} \omega_{0}}$，其中 $r$ 和 $\omega_{0}$ 是实常数，则序列为复指数序列。当 $a$ 是幅度为 $1$ 的复数，即 $a=\mathrm{e}^{\mathrm{j} \omega_{0}}$ 时，$x[n]=\mathrm{e}^{\mathrm{j} \omega_{0} n}=\cos \left(\omega_{0} n\right)+\mathrm{j} \sin \left(\omega_{0} n\right)$</p>
+x[n]=a^{n}</script><p>其中 $a$ 为常数。</p>
+<ul>
+<li>如果 $a$ 是实数，则序列为实指数序列，当 $|a| \neq 1$ 时，序列的幅度按指数增长或衰减。</li>
+<li>如果 $a$ 是复数，即 $a=r \mathrm{e}^{\mathrm{j} \omega_{0}}$，其中 $r$ 和 $\omega_{0}$ 是实常数，则序列为复指数序列。</li>
+<li>当 $a$ 是幅度为 $1$ 的复数，即 $a=\mathrm{e}^{\mathrm{j} \omega_{0}}$ 时，$x[n]=\mathrm{e}^{\mathrm{j} \omega_{0} n}=\cos \left(\omega_{0} n\right)+\mathrm{j} \sin \left(\omega_{0} n\right)$</li>
+</ul>
 <h4 id="余弦序列（正弦序列）"><a href="#余弦序列（正弦序列）" class="headerlink" title="余弦序列（正弦序列）"></a>余弦序列（正弦序列）</h4><script type="math/tex; mode=display">
 x[n]=A \cos \left(\omega_{0} n+\phi\right)</script><p>其中，$A$、$\omega_{0}$ 和 $\phi$ 是常数。$A$ 为幅度，$\omega_{0}$ 为数字频率，单位是 $\mathrm{rad}$，$\phi$ 为初始相位，单位也是 $\mathrm{rad}$</p>
 <p>为了数学推导方便，常常将余弦序列和正弦序列表示成复指数序列的加权和的形式，即</p>
@@ -409,7 +418,7 @@ x[n]=x_{\mathrm{e}}[n]+x_{\mathrm{o}}[n]</script><p>其中 $x_{\mathrm{e}}[n]$ �
 \begin{array}{l}
 x_{e}[n]=\frac{x[n]+x[-n]}{2} \\
 x_{\mathrm{o}}[n]=\frac{x[n]-x[-n]}{2}
-\end{array}</script><p> $x_{\mathrm{e}}[n]$ 和 $x_{0}[n]$ 分别称为 $x[n]$ 的<strong>对称分量</strong>和<strong>反对称分量</strong>。</p>
+\end{array}</script><p> $x_{\mathrm{e}}[n]$ 和 $x_{\mathrm{o}}[n]$ 分别称为 $x[n]$ 的<strong>对称分量</strong>和<strong>反对称分量</strong>。</p>
 <h4 id="共轭对称性"><a href="#共轭对称性" class="headerlink" title="共轭对称性"></a>共轭对称性</h4><p>一个复数序列如果满足</p>
 <script type="math/tex; mode=display">
 x[n]=x^{*}[-n]</script><p>则称为<strong>共轭对称序列</strong>。</p>
@@ -433,19 +442,19 @@ x_{\mathrm{o}}[n]=\frac{x[n]-x^{*}[-n]}{2}
 \end{array}</script><p> $x_{\mathrm{e}}[n]$ 和 $x_{\mathrm{o}}[n]$ 分别称为 $x[n]$ 的<strong>共轭对称分量</strong>和<strong>共轭反对称分量</strong>。</p>
 <h3 id="离散时间系统的基础概念"><a href="#离散时间系统的基础概念" class="headerlink" title="离散时间系统的基础概念"></a>离散时间系统的基础概念</h3><p>在数学上，离散时间系统可以定义成一种变换或算子，它把输入的离散时间信号 $x[n]$ 映射成输出的离散时间信号 $y[n]$，记作</p>
 <script type="math/tex; mode=display">
-y[n]=T\{x[n]\}</script><p>也可以用图 $1.2-1$ 所示的框图表示。<br>其中输入信号称为激励，输出信号称为响应。如果输入信号是单位样本序列，即 $x[n]=\delta[n]$，则相应的输出信号称为单位脉冲响应，用 $h[n]$ 表示，即</p>
+y[n]=T\{x[n]\}</script><p>其中输入信号称为<strong>激励</strong>，输出信号称为<strong>响应</strong>。如果输入信号是单位样本序列，即 $x[n]=\delta[n]$，则相应的输出信号称为<strong>单位脉冲响应</strong>，用 $h[n]$ 表示，即</p>
 <script type="math/tex; mode=display">
-h[n]=\mathrm{T}\{\delta[n]\}</script><p>另外，我们定义系统对单位阶跃序列的响应为单位阶跃响应，用 $s[n]$ 表示，即</p>
+h[n]=\mathrm{T}\{\delta[n]\}</script><p>另外，我们定义系统对单位阶跃序列的响应为<strong>单位阶跃响应</strong>，用 $s[n]$ 表示，即</p>
 <script type="math/tex; mode=display">
-s[n]=\mathrm{T}\{u[n]\}</script><h3 id="离散时间系统的分类"><a href="#离散时间系统的分类" class="headerlink" title="离散时间系统的分类"></a>离散时间系统的分类</h3><h4 id="无记忆和有记忆系统"><a href="#无记忆和有记忆系统" class="headerlink" title="无记忆和有记忆系统"></a>无记忆和有记忆系统</h4><p>一个系统，如果任一时刻 $n$ 的输出（简称当前输出）都只和时刻 $n$ 的输入（简称当前输入）有关，则该系统称为无记忆系统。</p>
+s[n]=\mathrm{T}\{u[n]\}</script><h3 id="离散时间系统的分类"><a href="#离散时间系统的分类" class="headerlink" title="离散时间系统的分类"></a>离散时间系统的分类</h3><h4 id="无记忆和有记忆系统"><a href="#无记忆和有记忆系统" class="headerlink" title="无记忆和有记忆系统"></a>无记忆和有记忆系统</h4><p>一个系统，如果任一时刻 $n$ 的输出（简称当前输出）都只和时刻 $n$ 的输入（简称当前输入）有关，则该系统称为<strong>无记忆系统</strong>。</p>
 <h4 id="线性和非线性系统"><a href="#线性和非线性系统" class="headerlink" title="线性和非线性系统"></a>线性和非线性系统</h4><p>一个系统, 如果满足如下的叠加性质</p>
 <script type="math/tex; mode=display">
-\mathrm{T}\left\{a x_1[n]+b x_2[n]\right\}=a \mathrm{~T}\left\{x_1[n]\right\}+b \mathrm{~T}\left\{x_2[n]\right\}</script><p>其中 $a$ 和 $b$ 是任意常数，则该系统称为线性系统。</p>
+\mathrm{T}\left\{a x_1[n]+b x_2[n]\right\}=a \mathrm{~T}\left\{x_1[n]\right\}+b \mathrm{~T}\left\{x_2[n]\right\}</script><p>其中 $a$ 和 $b$ 是任意常数，则该系统称为<strong>线性系统</strong>。</p>
 <h4 id="时不变和时变系统"><a href="#时不变和时变系统" class="headerlink" title="时不变和时变系统"></a>时不变和时变系统</h4><p>一个系统，$\mathrm{T}\{x[n]\}=y[n]$，如果满足</p>
 <script type="math/tex; mode=display">
-\mathrm{T}\left\{x\left[n-n_0\right]\right\}=y\left[n-n_0\right]</script><p>其中，$n_0$ 为任意整数，即输入序列的任意移位引起输出序列相同方式的移位，则该系统称为时不变系统，又称移不变系统。</p>
-<h4 id="因果和非因果系统"><a href="#因果和非因果系统" class="headerlink" title="因果和非因果系统"></a>因果和非因果系统</h4><p>输出变化不会发生在输入变化之前的系统称为因果系统，即当前输出样本只取决于当前及以前的输入样本，而和以后的输入样本无关。这也就意味着，如果 $n \leqslant n_0$ 时 $x_1[n]=x_2[n]$，则有 $n \leqslant n_0$ 时 $\mathrm{T}\left\{x_1[n]\right\}=\mathrm{T}\left\{x_2[n]\right\}$。</p>
-<h4 id="稳定和不稳定系统"><a href="#稳定和不稳定系统" class="headerlink" title="稳定和不稳定系统"></a>稳定和不稳定系统</h4><p>对任意的有界输入都产生有界输出的系统称为稳定系统，即当 $|x[n]|&lt;\infty, \forall n$ 时，$|\mathrm{T}\{x[n]\}|&lt;\infty, \forall n$。一个不稳定系统可能使输出无限制增长，以至于产生溢出，所以是没有实用价值的。需要注意的是，一个不稳定的系统可能会对某些有界输入产生有界输出。</p>
+\mathrm{T}\left\{x\left[n-n_0\right]\right\}=y\left[n-n_0\right]</script><p>其中，$n_0$ 为任意整数，即输入序列的任意移位引起输出序列相同方式的移位，则该系统称为<strong>时不变系统</strong>，又称移不变系统。</p>
+<h4 id="因果和非因果系统"><a href="#因果和非因果系统" class="headerlink" title="因果和非因果系统"></a>因果和非因果系统</h4><p>输出变化不会发生在输入变化之前的系统称为<strong>因果系统</strong>，即当前输出样本只取决于当前及以前的输入样本，而和以后的输入样本无关。这也就意味着，如果 $n \leqslant n_0$ 时 $x_1[n]=x_2[n]$，则有 $n \leqslant n_0$ 时 $\mathrm{T}\left\{x_1[n]\right\}=\mathrm{T}\left\{x_2[n]\right\}$。</p>
+<h4 id="稳定和不稳定系统"><a href="#稳定和不稳定系统" class="headerlink" title="稳定和不稳定系统"></a>稳定和不稳定系统</h4><p>对任意的有界输入都产生有界输出的系统称为<strong>稳定系统</strong>，即当 $|x[n]|&lt;\infty, \forall n$ 时，$|\mathrm{T}\{x[n]\}|&lt;\infty, \forall n$。一个不稳定系统可能使输出无限制增长，以至于产生溢出，所以是没有实用价值的。需要注意的是，一个不稳定的系统可能会对某些有界输入产生有界输出。</p>
 <h3 id="线性时不变系统"><a href="#线性时不变系统" class="headerlink" title="线性时不变系统"></a>线性时不变系统</h3><p>线性时不变（LTI）系统是既满足线性性质也满足时不变性质的系统。</p>
 <p>LTI 系统有一个重要特性，就是输出 $y[n]$ 可表示成输入 $x[n]$ 与单位脉冲响应 $h[n]$ 的卷积，即</p>
 <script type="math/tex; mode=display">
@@ -513,7 +522,7 @@ h[n]=0, n<0</script><h4 id="稳定系统"><a href="#稳定系统" class="headerl
 <ul>
 <li>差分方程的求和项数是有限的，而用卷积表示的输入和输出间的映射关系式可能包含无穷项求和</li>
 <li>差分方程中可以包含递归项 $y[n-k], k&gt;0$，而卷积和式中则没有。</li>
-<li>不是所有的 LTI 系统都可以用差分方程表示, 比如理想选频滤波器等</li>
+<li>不是所有的 LTI 系统都可以用差分方程表示，比如理想选频滤波器等</li>
 <li>差分方程描述的系统也不一定是 LTI 系统。</li>
 </ul>
 <h2 id="第二章-z-变换"><a href="#第二章-z-变换" class="headerlink" title="第二章 z 变换"></a>第二章 z 变换</h2><h3 id="z-变换的定义"><a href="#z-变换的定义" class="headerlink" title="z 变换的定义"></a>z 变换的定义</h3><h4 id="双边"><a href="#双边" class="headerlink" title="双边"></a>双边</h4><p>序列 $x[n]$ 的 $z$ 变换 $X(z)$ 定义为</p>
@@ -551,7 +560,7 @@ X(z)=\sum_{n=0}^{\infty} x[n] z^{-n}</script><ul>
 <li>因果序列的 ROC 总是包含 $z=+\infty$</li>
 <li>绝对可和序列的 ROC 总是包含 $|z|=1$</li>
 </ul>
-<h3 id="零点和极点"><a href="#零点和极点" class="headerlink" title="零点和极点"></a>零点和极点</h3><p>当 $\mathrm{z}$ 变换收敛并且可以表示成一个简单的有理函数，即</p>
+<h3 id="零点和极点"><a href="#零点和极点" class="headerlink" title="零点和极点"></a>零点和极点</h3><p>当 $z$ 变换收敛并且可以表示成一个简单的有理函数，即</p>
 <script type="math/tex; mode=display">
 X(z)=\frac{\sum_{k=0}^{M} b_{k} z^{-k}}{\sum_{k=0}^{N} a_{k} z^{-k}}=\frac{P(z)}{Q(z)}</script><ul>
 <li>使 $X(z)=0$ 的 $z$，称为 $X(z)$ 的<strong>零点</strong></li>
@@ -625,7 +634,7 @@ X(z)=\frac{N(z)}{M(z)}=\frac{b_{r} z^{r}+b_{r-1} z^{r-1}+\cdots+b_{1} z+b_{0}}{a
 <h4 id="常用z反变换"><a href="#常用z反变换" class="headerlink" title="常用z反变换"></a>常用z反变换</h4><p><img src="https://s2.loli.net/2023/05/29/aEVGM3LmA8zN9jZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p><img src="https://s2.loli.net/2023/05/29/hp8izjWfwOdY9uH.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="z-变换的性质（双边性质）"><a href="#z-变换的性质（双边性质）" class="headerlink" title="z 变换的性质（双边性质）"></a>z 变换的性质（双边性质）</h3><h4 id="线性性质"><a href="#线性性质" class="headerlink" title="线性性质"></a>线性性质</h4><script type="math/tex; mode=display">
-a x[n]+b y[n] \stackrel{\mathscr{Z}}{\longrightarrow} a X(z)+b Y(z),\quad \mathrm{ROC 包含} R_{x} \cap R_{y}</script><p>其中 $a,b$ 为任意常数。ROC 一般为两个序列的 ROC 的交集。如果线性组合使得引入的某些零点抵消了极点，则 ROC 可能扩大。这一性质在 $\mathrm{z}$ 反变换中已经用过。</p>
+a x[n]+b y[n] \stackrel{\mathscr{Z}}{\longrightarrow} a X(z)+b Y(z),\quad \mathrm{ROC 包含} R_{x} \cap R_{y}</script><p>其中 $a,b$ 为任意常数。ROC 一般为两个序列的 ROC 的交集。如果线性组合使得引入的某些零点抵消了极点，则 ROC 可能扩大。这一性质在 $z$ 反变换中已经用过。</p>
 <h4 id="移位性质"><a href="#移位性质" class="headerlink" title="移位性质"></a>移位性质</h4><script type="math/tex; mode=display">
 x\left[n-n_{0}\right] \stackrel{\mathscr{Z}}{\longrightarrow} z^{-n_{0}} X(z),\quad \mathrm{ROC}=R_{x}</script><p>其中 $n_{0}$ 为任意整数。其 ROC 同原序列的 ROC，除了可能加上或去除 $z=0$ 或 $z=\infty$ 以外。例如，$\mathscr{Z}{\delta[n]}=1$，在 $z$ 平面处处收敛，而 $\mathscr{Z}{\delta[n-1]}=z^{-1}$，在 $z=0$ 处不收敛。</p>
 <h4 id="乘以指数序列（z-域尺度变换性质）"><a href="#乘以指数序列（z-域尺度变换性质）" class="headerlink" title="乘以指数序列（z 域尺度变换性质）"></a>乘以指数序列（z 域尺度变换性质）</h4><script type="math/tex; mode=display">
@@ -633,14 +642,14 @@ a^{n} x[n] \stackrel{\mathscr{Z}}{\longrightarrow} X\left(\frac{z}{a}\right),\qu
 <h4 id="线性加权（z-域微分性质）"><a href="#线性加权（z-域微分性质）" class="headerlink" title="线性加权（z 域微分性质）"></a>线性加权（z 域微分性质）</h4><script type="math/tex; mode=display">
 n x[n] \stackrel{\mathscr{Z}}{\longrightarrow}-z \cdot \frac{\mathrm{d}}{\mathrm{d} z} X(z),\quad \mathrm{ROC}=R_{x}</script><h4 id="共轭"><a href="#共轭" class="headerlink" title="共轭"></a>共轭</h4><script type="math/tex; mode=display">
 x^{*}[n] \stackrel{\mathscr{Z}}{\longrightarrow} X^{*}\left(z^{*}\right),\quad \mathrm{ROC}=R_{x}</script><ul>
-<li>实序列的 $\mathrm{z}$ 变换的复数零点一定以两两互为共轭的形式成对出现</li>
+<li>实序列的 $z$ 变换的复数零点一定以两两互为共轭的形式成对出现</li>
 <li>对于实数零点，其共轭就等于其本身，所以实数零点可以单独存在</li>
 <li>复数极点也以共轭对的形式成对出现</li>
 </ul>
 <h4 id="反转"><a href="#反转" class="headerlink" title="反转"></a>反转</h4><script type="math/tex; mode=display">
 x[-n] \stackrel{\mathscr{Z}}{\longrightarrow} X\left(\frac{1}{z}\right),\quad \mathrm{ROC}=\frac{1}{R_{x}}</script><p>由于自变量取倒数，所以零点和极点取倒数，ROC 的边界也取倒数。需要注意的是，序列反转后如果类型改变了，则收敛域的特点也应相应地改变。</p>
 <h4 id="卷积-1"><a href="#卷积-1" class="headerlink" title="卷积"></a>卷积</h4><script type="math/tex; mode=display">
-x[n] * y[n] \stackrel{\mathscr{P}}{\longrightarrow} X(z) Y(z),\quad \mathrm{ROC 包含} R_{x} \cap R_{y}</script><p>ROC 是两个 ROC 的交集。如果一个 $\mathrm{z}$ 变换的极点和另一个 $\mathrm{z}$ 变换的零点互相抵消，则 ROC 可能扩大。</p>
+x[n] * y[n] \stackrel{\mathscr{P}}{\longrightarrow} X(z) Y(z),\quad \mathrm{ROC 包含} R_{x} \cap R_{y}</script><p>ROC 是两个 ROC 的交集。如果一个 $z$ 变换的极点和另一个 $z$ 变换的零点互相抵消，则 ROC 可能扩大。</p>
 <h4 id="初值定理"><a href="#初值定理" class="headerlink" title="初值定理"></a>初值定理</h4><p>如果 $x[n]$ 是因果序列，那么 $x[0]=\lim _{z \rightarrow \infty} X(z)$。</p>
 <h4 id="终值定理"><a href="#终值定理" class="headerlink" title="终值定理"></a>终值定理</h4><p>如果 $x[n]$ 是因果序列，且 $X(z)$ 的极点处于单位圆 $|z|=1$ 以内（单位圆上最多在 $z=1$ 处有一阶极点），那么</p>
 <script type="math/tex; mode=display">
@@ -654,7 +663,7 @@ x[n] * y[n] \stackrel{\mathscr{P}}{\longrightarrow} X(z) Y(z),\quad \mathrm{ROC 
 \hline \text { 时域反向 } & x(-n) & X\left(z^{-1}\right) & R_{x_{1}}<\left|z^{-1}\right|<R_{x_{2}} \\
 \hline \text { 指数 } & a^{n} x[n] & X\left(a^{-1} z\right) & |a| R_{x_{1}}<|z|<|a| R_{x_{2}} \\
 \hline \text { z域反向 } & (-1)^{n} x[n] & X(-z) & R_{x_{1}}<|z|<R_{x_{2}} \\
-\hline \text {  } & n x[n] & -z \frac{\mathrm{d}}{\mathrm{d} z} X(z) & R_{x_{1}}<|z|<R_{x_{2}} \\
+\hline \text { z域微分 } & n x[n] & -z \frac{\mathrm{d}}{\mathrm{d} z} X(z) & R_{x_{1}}<|z|<R_{x_{2}} \\
 \hline \text { 时移 } & x\left(n-n_{0}\right) & z^{-n_{0}} X(z) & R_{x_{1}}<|z|<R_{x_{2}} \\
 \hline \text { 频移 } & \mathrm{e}^{\mathrm{j} \omega_{0} n} x[n] & X\left(\mathrm{e}^{-\mathrm{j} \omega_{0}} \cdot z\right) & R_{x_{1}}<|z|<R_{x_{2}} \\
 \hline \text { z域尺度变换 } & z_{0}^{n} x[n] & X\left(\frac{z}{z_{0}}\right) & R_{x_{1}}<\left|\frac{z}{z_{0}}\right|<R_{x_{2}} \\
@@ -704,7 +713,7 @@ X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=X_{\mathrm{R}}\left(\mathrm{e}^{\ma
 x[n]=\frac{\sin \left(\omega_{\mathrm{c}} n\right)}{\pi n},-\infty<n<\infty</script></li>
 <li>还有一些序列，例如；$u[n]$、$\mathrm{e}^{\mathrm{j} \omega n}$，$-\infty&lt;n&lt;\infty$ 和 $x[n]=1$，$-\infty&lt;n&lt;\infty$ 等，既非绝对可和也非平方可和，若<strong>在频域引入冲激函数</strong> $\delta(\omega)$，它们也可以有傅里叶变换表示。</li>
 </ul>
-<h3 id="矩形窗"><a href="#矩形窗" class="headerlink" title="矩形窗"></a>矩形窗</h3><p>长度为 $M+1$ 的矩形序列 $w_{\mathrm{R}}[n]=\left\{\begin{array}{ll}1,&amp; 0 \leqslant n \leqslant M \ 0,&amp; \mathrm{ 其他 }\end{array}\right.$ 称为<strong>矩形窗</strong></p>
+<h3 id="矩形窗"><a href="#矩形窗" class="headerlink" title="矩形窗*"></a>矩形窗*</h3><p>长度为 $M+1$ 的矩形序列 $w_{\mathrm{R}}[n]=\left\{\begin{array}{ll}1,&amp; 0 \leqslant n \leqslant M \\ 0,&amp; \mathrm{ 其他 }\end{array}\right.$ 称为<strong>矩形窗</strong></p>
 <script type="math/tex; mode=display">
 W_{\mathrm{R}}\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{\sin (\omega(M+1) / 2)}{\sin (\omega / 2)} \mathrm{e}^{-\mathrm{j} \omega M / 2}</script><p>将其简写成</p>
 <script type="math/tex; mode=display">
@@ -736,12 +745,20 @@ R_{M}[n]=\left\{\begin{array}{ll}
 X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{\sin (\omega M / 2)}{\sin (\omega / 2)} \mathrm{e}^{-\mathrm{j} \omega(M-1) / 2}
 \end{array}</script><h4 id="实指数序列"><a href="#实指数序列" class="headerlink" title="实指数序列"></a>实指数序列</h4><script type="math/tex; mode=display">
 \begin{array}{c}
-x[n]=a^{n} \varepsilon[n],\quad|a|<1 \\
-X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\sum_{n=-\infty}^{\infty} a^{n} \varepsilon[n] \mathrm{e}^{-\mathrm{j} \omega n}=\sum_{n=0}^{\infty}\left(a \mathrm{e}^{-\mathrm{j} \omega}\right)^{n}=\frac{1}{1-a \mathrm{e}^{-\mathrm{j} \omega}}
-\end{array}</script><h4 id="非因果实指数序列"><a href="#非因果实指数序列" class="headerlink" title="非因果实指数序列"></a>非因果实指数序列</h4><script type="math/tex; mode=display">
-\begin{array}{l}
-x[n]=a^{n} \varepsilon(-n),\quad|a|>1 \\
-X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\sum_{n=-\infty}^{0} a^{n} \mathrm{e}^{-\mathrm{j} \omega n}=\frac{1}{1-a^{-1} \mathrm{e}^{\mathrm{j} \omega}}
+x[n]=a^{n} u[n],\quad|a|<1 \\
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{1}{1-a \mathrm{e}^{-\mathrm{j} \omega}}
+\end{array}</script><script type="math/tex; mode=display">
+\begin{array}{c}
+x[n]=-a^n u[-n-1],\quad|a|>1 \\
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{1}{1-a \mathrm{e}^{-\mathrm{j} \omega}}
+\end{array}</script><script type="math/tex; mode=display">
+\begin{array}{c}
+x[n]=-a^{-n} u[n+1],\quad|a|>1 \\
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{1}{1-a \mathrm{e}^{\mathrm{j} \omega}}
+\end{array}</script><script type="math/tex; mode=display">
+\begin{array}{c}
+x[n]=a^{-n} u[-n],\quad|a|<1 \\
+X\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\frac{1}{1-a \mathrm{e}^{\mathrm{j} \omega}}
 \end{array}</script><h4 id="双边指数序列-1"><a href="#双边指数序列-1" class="headerlink" title="双边指数序列"></a>双边指数序列</h4><script type="math/tex; mode=display">
 \begin{array}{c}
 x[n]=a^{|n|},\quad|a|<1 \\
@@ -806,7 +823,7 @@ X(z)=X\left(r \mathrm{e}^{\mathrm{j} \omega}\right)=D T F T\left\{x[n] r^{-n}\ri
 <li>傅里叶变换为 $z$ 变换的一个特例，即在复数 $z$ 平面中，半径为 $1$ 的圆上的 $z$ 变换。</li>
 <li>在 $z$ 平面上，这个圆称为<strong>单位圆</strong>。</li>
 <li>离散信号的傅里叶变换即在 $z$ 平面单位圆上的 $z$ 变换。而傅里叶变换的推广，即由 $z$ 平面的单位圆推广至整个 $z$ 平面，则成为 $z$ 变换。</li>
-<li>对于有些不是绝对可加，傅里叶变换不收敛的序列，只要适当选择 $|z│=r$ 的大小，$z$ 变换就可以收敛，例如 $x[n] = u[n]$</li>
+<li>对于有些不是绝对可加，傅里叶变换不收敛的序列，只要适当选择 $|z|=r$ 的大小，$z$ 变换就可以收敛，例如 $x[n] = u[n]$</li>
 <li>存在 $z$ 变换不收敛，而傅里叶变换表示存在的情况，例如抽样信号序列</li>
 </ul>
 <h3 id="傅里叶变换的性质"><a href="#傅里叶变换的性质" class="headerlink" title="傅里叶变换的性质"></a>傅里叶变换的性质</h3><h4 id="线性性质-1"><a href="#线性性质-1" class="headerlink" title="线性性质"></a>线性性质</h4><script type="math/tex; mode=display">
@@ -820,7 +837,7 @@ x[n] * y[n] \stackrel{\mathscr{F}}{\longrightarrow} X\left(\mathrm{e}^{\mathrm{j
 x[n] y[n] \stackrel{\mathscr{F}}{\longrightarrow} \frac{1}{2 \pi} \int_{-\pi}^{\pi} X\left(\mathrm{e}^{\mathrm{j} \theta}\right) Y\left(\mathrm{e}^{\mathrm{j}(\omega-\theta)}\right) \mathrm{d} \theta</script><h4 id="帕斯瓦尔定理"><a href="#帕斯瓦尔定理" class="headerlink" title="帕斯瓦尔定理"></a>帕斯瓦尔定理</h4><script type="math/tex; mode=display">
 \sum_{n=-\infty}^{\infty} x[n] y^{*}[n]=\frac{1}{2 \pi} \int_{-\pi}^{\pi} X\left(\mathrm{e}^{\mathrm{j} \omega}\right) Y^{*}\left(\mathrm{e}^{\mathrm{j} \omega}\right) \mathrm{d} \omega</script><h4 id="对称性质"><a href="#对称性质" class="headerlink" title="对称性质"></a>对称性质</h4><script type="math/tex; mode=display">
 \begin{array}{l}
-x^{*}[\mathrm{n}] \stackrel{\mathscr{F}}{\longrightarrow} X^{*}\left(\mathrm{e}^{-\mathrm{j} \omega}\right) \\
+x^{*}[n] \stackrel{\mathscr{F}}{\longrightarrow} X^{*}\left(\mathrm{e}^{-\mathrm{j} \omega}\right) \\
 x^{*}[-n] \stackrel{\mathscr{F}}{\longrightarrow} X^{*}\left(\mathrm{e}^{\mathrm{j} \omega}\right)
 \end{array}</script><p>再利用线性性质可以得到</p>
 <script type="math/tex; mode=display">
@@ -847,7 +864,7 @@ X_{e}\left(\mathrm{e}^{\mathrm{j} \omega}\right)+X_{\mathrm{o}}\left(\mathrm{e}^
 <li>特别注意：序列的虚部也是实数，<strong>序列的虚部</strong>的傅里叶变换一定是<strong>共轭对称函数</strong></li>
 </ul>
 <p><img src="https://s2.loli.net/2023/10/05/GThVIXAau8FQ65c.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="DFS-的定义"><a href="#DFS-的定义" class="headerlink" title="DFS 的定义"></a>DFS 的定义</h3><p>一个周期为 $N$ 的周期序列 $\tilde{x}[n]$，对于任一整数 $n$ 和 $r$，有 $\tilde{x}[n]=\tilde{x}[n+r N]$。由于其既非绝对可和又非平方可和，所以将其代入式 $(3.1-2)$ 求傅里叶变换不收敛。如果我们引入冲激函数 $\delta(\omega)$，仍然可以构造周期序列的傅里叶变换的函数表达式。那么如何确定由 $\delta(\omega)$ 的加权和所表示的周期序列的傅里叶变换函数呢？这就需要借助离散傅里叶级数（DFS）的计算。</p>
+<h3 id="DFS-的定义"><a href="#DFS-的定义" class="headerlink" title="DFS 的定义"></a>DFS 的定义</h3><p>一个周期为 $N$ 的周期序列 $\tilde{x}[n]$，对于任一整数 $n$ 和 $r$，有 $\tilde{x}[n]=\tilde{x}[n+r N]$。由于其既非绝对可和又非平方可和，求傅里叶变换不收敛。如果我们引入冲激函数 $\delta(\omega)$，仍然可以构造周期序列的傅里叶变换的函数表达式。那么如何确定由 $\delta(\omega)$ 的加权和所表示的周期序列的傅里叶变换函数呢？这就需要借助离散傅里叶级数（DFS）的计算。</p>
 <p>如果我们将周期为 $N$ 的序列 $\tilde{x}[n]$ 分解成<strong>若干复指数序列</strong>的加权求和，则各复指数序列的周期的最小公倍数应该是 $N$。根据复指数序列的周期与频率的关系，我们得到每个复指数序列的频率 $\omega_{k}$ 与整个序列的周期 $N$ 之间满足</p>
 <script type="math/tex; mode=display">
 2 \pi / \omega_{k}=N / k,\quad k=1,2,\cdots,\infty</script><p>所以复指数序列的频率只能是</p>
@@ -908,16 +925,16 @@ W_{N}^{-n l} \tilde{x}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \tilde{X}[k-l
 <script type="math/tex; mode=display">
 \tilde{x}[n] \circledast \tilde{y}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \tilde{X}[k] \tilde{Y}[k]</script><p>频域周期卷积性质：</p>
 <script type="math/tex; mode=display">
-\tilde{x}[n] \tilde{y}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \frac{1}{N}\tilde{X}[k] \circledast \tilde{Y}[k]</script><h2 id="第四章-LTI-系统的变换域分析"><a href="#第四章-LTI-系统的变换域分析" class="headerlink" title="第四章 LTI 系统的变换域分析"></a>第四章 LTI 系统的变换域分析</h2><h3 id="系统函数"><a href="#系统函数" class="headerlink" title="系统函数"></a>系统函数</h3><p>我们将 LTI 系统的单位脉冲响应 $h[n]$ 的 $\mathrm{z}$ 变换</p>
+\tilde{x}[n] \tilde{y}[n] \stackrel{\mathrm{DFS}}{\longrightarrow} \frac{1}{N}\tilde{X}[k] \circledast \tilde{Y}[k]</script><h2 id="第四章-LTI-系统的变换域分析"><a href="#第四章-LTI-系统的变换域分析" class="headerlink" title="第四章 LTI 系统的变换域分析"></a>第四章 LTI 系统的变换域分析</h2><h3 id="系统函数"><a href="#系统函数" class="headerlink" title="系统函数"></a>系统函数</h3><p>我们将 LTI 系统的单位脉冲响应 $h[n]$ 的 $z$ 变换</p>
 <script type="math/tex; mode=display">
 H(z)=\sum_{n=-\infty}^{\infty} h[n] z^{-n}</script><p>称为<strong>系统函数</strong>。<br>因为 LTI 系统的输入与输出信号满足如下的卷积关系</p>
 <script type="math/tex; mode=display">
-y[n]=x[n] * h[n]</script><p>根据 $\mathrm{z}$ 变换的卷积性质，有<br>所以</p>
+y[n]=x[n] * h[n]</script><p>根据 $z$ 变换的卷积性质，有<br>所以</p>
 <script type="math/tex; mode=display">
 \begin{array}{c}
 Y(z)=X(z) H(z) \\
 H(z)=Y(z) / X(z)
-\end{array}</script><p>系统函数也只有给出其 $ROC$，才能唯一地确定 $h[n]$。</p>
+\end{array}</script><p>系统函数也只有给出其 ROC，才能唯一地确定 $h[n]$。</p>
 <p>注意 $H(z)$ 是有收敛域的概念的：</p>
 <ul>
 <li>因果系统的 $H(z)$ 在 $z=+\infty$ 无极点</li>
@@ -938,7 +955,7 @@ h[n] * h_{\mathrm{i}}[n]=\delta[n]</script><p>所以</p>
 <script type="math/tex; mode=display">
 x[n] * h[n] * h_{\mathrm{i}}[n]=x[n]</script><p>也就是说，任何序列 $x[n]$ 相继经过某系统及其逆系统后，输出信号就是输入信号，即逆系统与原系统的作用相互抵消。</p>
 <ul>
-<li>只要 $H_{\mathrm{i}}(z)$ 与 $H(z)$ 的 $ROC$ 有交集，则二者互为逆系统。所以一个系统的<strong>逆系统不一定唯一</strong>。</li>
+<li>只要 $H_{\mathrm{i}}(z)$ 与 $H(z)$ 的 ROC 有交集，则二者互为逆系统。所以一个系统的<strong>逆系统不一定唯一</strong>。</li>
 <li>不是所有的系统都有逆系统。比如理想选频滤波器就没有逆系统。</li>
 <li><p>而系统函数是有理函数的系统一定有逆系统。</p>
 </li>
@@ -953,7 +970,7 @@ x[n] * h[n] * h_{\mathrm{i}}[n]=x[n]</script><p>也就是说，任何序列 $x[n
 H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\sum_{n=-\infty}^{\infty} h[n] \mathrm{e}^{-\mathrm{j} \omega n}</script><p>称为系统的<strong>频率响应</strong>，简称<strong>频响</strong>。与序列的傅里叶变换相同，频率响应也是 $\omega$ 的周期函数，周期为 $2 \pi$。<br>一般来说 $H\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 是 $\omega$ 的复变函数，可以表示成</p>
 <script type="math/tex; mode=display">
 H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left|H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right| \mathrm{e}^{\mathrm{j} \nless H\left(\mathrm{e}^{\mathrm{j} \omega})\right.}</script><p>我们称 $\left|H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|$ 为<strong>幅度响应</strong>或<strong>增益</strong>，$\nless H\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 为<strong>相位响应</strong>或<strong>相移</strong>。</p>
-<p>系统频率响应的相位 $\nless H\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 也是不唯一的，可以加上 $2 \pi$ 的任意整数倍。<strong>主值相位</strong>记作 $-\pi&lt;\operatorname{ARG}\left[H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right] \leqslant \pi$，它可能是一个不连续的 $\omega$ 的函数。<strong>连续相位</strong>记作 $\arg \left[H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right]$。相频特性还可以用群延迟来等价地表示，<strong>群延迟</strong>定义成<strong>连续相位函数</strong>对 $\omega$ 的导数的负值，即</p>
+<p>系统频率响应的相位 $\nless H\left(\mathrm{e}^{\mathrm{j} \omega}\right)$ 也是不唯一的，可以加上 $2 \pi$ 的任意整数倍。<strong>主值相位</strong>记作 $-\pi&lt;\operatorname{ARG}\left[H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right] \leqslant \pi$，它可能是一个不连续的 $\omega$ 的函数。<strong>连续相位</strong>记作 $\arg \left[H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right]$。相频特性还可以用群延迟来等价地表示，<strong>群延迟</strong>定义成连续相位函数对 $\omega$ 的导数的负值，即</p>
 <script type="math/tex; mode=display">
 \operatorname{grd}\left[H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right]=-\frac{\mathrm{d}}{\mathrm{d} \omega}\left\{\arg \left[H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right]\right\}</script><h3 id="物理意义"><a href="#物理意义" class="headerlink" title="物理意义"></a>物理意义</h3><p>LTI 系统的输入与输出信号间满足卷积关系。根据傅里叶变换的卷积性质有</p>
 <script type="math/tex; mode=display">
@@ -964,8 +981,8 @@ Y\left(\mathrm{e}^{\mathrm{j} \omega}\right)=X\left(\mathrm{e}^{\mathrm{j} \omeg
 \nless Y\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\nless X\left(\mathrm{e}^{\mathrm{j} \omega}\right)+\nless H\left(\mathrm{e}^{\mathrm{j} \omega}\right)
 \end{array}</script><p>所以幅度响应和相位响应分别表示系统对输入信号幅度和相位的影响。如果这种影响是我们所不需要的，则我们往往称这种影响为<strong>幅度失真</strong>和<strong>相位失真</strong>。</p>
 <ul>
-<li>在 $-\pi&lt;\omega \leqslant \pi$ 整个区间幅度响应为<strong>常数</strong>的系统是没有幅度失真的系统，并被定义为<strong>全通系统</strong></li>
-<li>在 $-\pi&lt;\omega \leqslant \pi$ 整个区间相位响应<strong>全为零</strong>的系统是没有相位失真的系统，我们称<strong>零相位系统</strong></li>
+<li>在 $-\pi&lt;\omega \leqslant \pi$ 整个区间<strong>幅度响应</strong>为<strong>常数</strong>的系统是没有幅度失真的系统，并被定义为<strong>全通系统</strong></li>
+<li>在 $-\pi&lt;\omega \leqslant \pi$ 整个区间<strong>相位响应全为零</strong>的系统是没有相位失真的系统，我们称<strong>零相位系统</strong></li>
 <li>相位是 $\omega$ 的<strong>线性函数</strong>的系统称为<strong>线性相位系统</strong></li>
 </ul>
 <h3 id="特征函数"><a href="#特征函数" class="headerlink" title="特征函数"></a>特征函数</h3><p>对于 LTI 系统，时域复指数信号 $x[n]=\mathrm{e}^{j\omega_0 n}$ 可以构成相当广泛的一类有用信号，而且 LTI 系统对 $\mathrm{e}^{j\omega_0 n}$ 的响应可以方便地得到。一个 LTI 系统对复指数信号 $\mathrm{e}^{j\omega_0 n}$ 的响应 $y[n]$ 仍是<strong>同一个复指数信号</strong>，所不同的是<strong>幅度</strong>上产生了变化，即</p>
@@ -1270,7 +1287,12 @@ X_{c}(\mathrm{j} \Omega)=0 \mathrm{,对于}|\Omega|>\Omega_{N}</script><p>那么
 H_{\mathrm{eff}}(\mathrm{j} \Omega)=\left\{\begin{array}{ll}
 \left.H\left(\mathrm{e}^{\mathrm{j} \omega}\right)\right|_{\omega=\Omega T},& |\Omega| \leqslant \pi / T \\
 0,& |\Omega|>\pi / T
-\end{array}\right.</script><p>可见，等效的连续时间系统也是一个 LTI 系统，其频率响应由上式给出，等于离散时间系统频率响应的主周期。</p>
+\end{array}\right.</script><p>等效连续时间系统截止频率</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\Omega_c =\frac{\omega_c}{T}\\
+f_c=\frac{\Omega_c}{2\pi}
+\end{array}</script><p>可见，等效的连续时间系统也是一个 LTI 系统，其频率响应由上式给出，等于离散时间系统频率响应的主周期。</p>
 <p>注意，得出上述结论需要满足两个条件：离散时间系统是<strong>线性时不变</strong>的；输入信号带限且<strong>无混叠</strong>或<strong>混叠发生在离散时间系统的通带以外</strong>。</p>
 <p><img src="https://s2.loli.net/2023/10/29/MwK25WTl1mtpV9S.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="离散时间信号的连续时间处理"><a href="#离散时间信号的连续时间处理" class="headerlink" title="离散时间信号的连续时间处理"></a>离散时间信号的连续时间处理</h3><p>离散时间信号的连续时间处理系统框图如下图所示，整个系统等效于一个离散时间系统。</p>
@@ -1388,12 +1410,12 @@ W_{N}^{-n l} x[n] \stackrel{\mathrm{DFT}}{\longrightarrow} X\left[((k-l))_{N}\ri
 \end{array}</script><h4 id="反转性质"><a href="#反转性质" class="headerlink" title="反转性质"></a>反转性质</h4><p>长度为 $N$ 的序列 $x_2[n]=x_{1}[N-1-n]$</p>
 <script type="math/tex; mode=display">
 X_2[k] = X_{1}^{*}[k]W_{N}^{k(N-1)}</script><h4 id="对偶性质-1"><a href="#对偶性质-1" class="headerlink" title="对偶性质"></a>对偶性质</h4><script type="math/tex; mode=display">
-X[k] \stackrel{\mathrm{DFT}}{\longrightarrow} N x\left[((-k))_{N}\right] R_{N}[k]</script><script type="math/tex; mode=display">
+X[k] \stackrel{\mathrm{DFT}}{\longrightarrow} N x\left[((-n))_{N}\right] R_{N}[n]</script><script type="math/tex; mode=display">
 X^{*}[k] \stackrel{\mathrm{DFT}}{\longrightarrow} N x^{*}\left[n\right] R_{N}[n]</script><h4 id="对称性质-2"><a href="#对称性质-2" class="headerlink" title="对称性质"></a>对称性质</h4><p>对于周期为 $N$ 的序列 $x[n]$，周期共轭对称是指：</p>
 <script type="math/tex; mode=display">
 \begin{array}{c}
-x[1]=x[N-1]\\
-x[2]=x[N-2]\\
+x[1]=x^{*}[N-1]\\
+x[2]=x^{*}[N-2]\\
 \cdots\\
 \end{array}</script><p>若 $N$ 是偶数，则 $x[0]$ 和 $x[N/2]$ 没有列入比较；若 $N$ 是奇数，则 $x[0]$ 没有列入比较</p>
 <script type="math/tex; mode=display">
@@ -1661,7 +1683,7 @@ x[n]=\frac{1}{N} \sum_{k=0}^{N-1} X[k] W_{N}^{-k n}=\frac{1}{N}\left[\sum_{k=0}^
 h[n]=\left.T_{\mathrm{d}} h_{\mathrm{c}}(t)\right|_{t=n T_{\mathrm{d}}}=T_{\mathrm{d}} h_{c}\left(n T_{\mathrm{d}}\right)</script><p>其中 $T_{\mathrm{d}}$ 是取样间隔。</p>
 <p>系统函数之间的转换方式：首先将连续时间滤波器的系统函数 $H_{\mathrm{c}}(s)$ 展开成部分分式（假设分母阶次高于分子阶次，且只有一阶极点）</p>
 <script type="math/tex; mode=display">
-H_{\mathrm{c}}(s)=\sum_{k=0}^{N-1} \frac{A_{k}}{s-s_{k}}</script><p>对上式做 $\mathrm{z}$ 变换得到离散时间滤波器的系统函数为</p>
+H_{\mathrm{c}}(s)=\sum_{k=0}^{N-1} \frac{A_{k}}{s-s_{k}}</script><p>对上式做 $z$ 变换得到离散时间滤波器的系统函数为</p>
 <script type="math/tex; mode=display">
 H(z)=\sum_{n=-\infty}^{+\infty} h[n] z^{-n}=\sum_{k=0}^{N-1} \frac{T_{\mathrm{d}} A_{k}}{1-\mathrm{e}^{s_{k} T_{\mathrm{d}}} z^{-1}}</script><p>如果原型连续时间滤波器因果稳定，也就是说极点 $s_{k}$ 全部位于 $s$ 平面的左半平面，即 $\operatorname{Re}\left\{s_{k}\right\}&lt;0$，则离散时间滤波器的极点的模 $\left|z_{k}\right|=\left|\mathrm{e}^{s_{k} T_{\mathrm{d}}}\right|=\mathrm{e}^{\operatorname{Re}\left|s_{k}\right| T_{\mathrm{d}}}&lt;1$，即极点全部位于单位圆内，仍然是因果稳定的系统。可见脉冲响应不变法符合前面提到的系统函数的映射需要满足的第二个要求。</p>
 <p><img src="https://s2.loli.net/2023/11/28/mAb8Vh21u6R3lfW.png" srcset="/img/loading.gif" lazyload alt=""></p>
@@ -1671,7 +1693,8 @@ H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left.\sum_{r=-\infty}^{\infty} H_{
 <script type="math/tex; mode=display">
 H\left(\mathrm{e}^{\mathrm{j} \omega}\right)=\left.H_{\mathrm{c}}(\mathrm{j} \Omega)\right|_{\Omega=\omega / T_{\mathrm{d}}},|\omega| \leqslant \pi</script><p>所以离散时间滤波器保留了连续时间滤波器的频响特征。所以脉冲响应不变法也满足前面提到的第一个要求。<br>离散时间滤波器与原型连续时间滤波器的频率响应的自变量之间的映射关系是</p>
 <script type="math/tex; mode=display">
-\Omega=\omega / T_{\mathrm{d}}</script><h3 id="双线性变换法（IIR）"><a href="#双线性变换法（IIR）" class="headerlink" title="双线性变换法（IIR）"></a>双线性变换法（IIR）</h3><p>双线性变换法可以克服脉冲响应不变法的频响混叠现象。</p>
+\Omega=\omega / T_{\mathrm{d}}</script><p>综上所述，脉冲响应不变法的特点是：由于离散时间滤波器的单位脉冲响应是连续时间滤波器的单位脉冲响应的取样，所以二者的频率是线性映射关系，<strong>频率响应的形状保持不变</strong>，但<strong>会有混叠</strong>。该方法的应用只限于带限滤波器即<strong>低通和带通滤波器</strong>的设计，应用于高通或带阻滤波器设计时会产生严重的频响混叠。</p>
+<h3 id="双线性变换法（IIR）"><a href="#双线性变换法（IIR）" class="headerlink" title="双线性变换法（IIR）"></a>双线性变换法（IIR）</h3><p>双线性变换法可以克服脉冲响应不变法的频响混叠现象。</p>
 <h4 id="设计思想"><a href="#设计思想" class="headerlink" title="设计思想"></a>设计思想</h4><p>该方法从频域的角度出发进行映射，映射的依据是直接使离散时间滤波器的频率响应是原型连续时间滤波器频率响应的逼近。映射过程中，s 平面的整个虚轴非线性一对一地映射到 z 平面的单位圆上。</p>
 <h4 id="系统函数的转换方法"><a href="#系统函数的转换方法" class="headerlink" title="系统函数的转换方法"></a>系统函数的转换方法</h4><p>从 $s$ 平面到 $z$ 平面的映射由如下的代数变换实现：</p>
 <script type="math/tex; mode=display">
@@ -1680,7 +1703,7 @@ s=\frac{2}{T_{\mathrm{d}}} \cdot \frac{1-z^{-1}}{1+z^{-1}}</script><p>其中，$
 H(z)=H_{\mathrm{c}}\left(\frac{2}{T_{\mathrm{d}}} \cdot \frac{1-z^{-1}}{1+z^{-1}}\right)</script><h4 id="因果稳定性"><a href="#因果稳定性" class="headerlink" title="因果稳定性"></a>因果稳定性</h4><p>将 $s=\sigma+\mathrm{j} \Omega$ 代入式映射关系式得到</p>
 <script type="math/tex; mode=display">
 z=\frac{\left(2 / T_{\mathrm{d}}\right)+\sigma+\mathrm{j} \Omega}{\left(2 / T_{\mathrm{d}}\right)-\sigma-\mathrm{j} \Omega}</script><p>从上式可以看出，当 $\sigma&lt;0$ 时，$|z|&lt;1$，表示 $s$ 左半平面的所有点（包括极点）都映射到 $z$ 平面的单位圆内，所以如果原型连续时间滤波器因果稳定，则离散时间滤波器也一定是因果稳定的。</p>
-<h4 id="频率响应的映射特点"><a href="#频率响应的映射特点" class="headerlink" title="频率响应的映射特点"></a>频率响应的映射特点</h4><p>从式上式还可看出，当 $\sigma=0$ 时，$|z|=1$，即 $s$ 平面的虚轴映射到 $z$ 平面的单位员上。所以可以将 $s=\mathrm{j} \Omega$ 和 $z=\mathrm{e}^{\mathrm{j} \omega}$ 代入映射关系式，有</p>
+<h4 id="频率响应的映射特点"><a href="#频率响应的映射特点" class="headerlink" title="频率响应的映射特点"></a>频率响应的映射特点</h4><p>从式上式还可看出，当 $\sigma=0$ 时，$|z|=1$，即 $s$ 平面的虚轴映射到 $z$ 平面的单位圆上。所以可以将 $s=\mathrm{j} \Omega$ 和 $z=\mathrm{e}^{\mathrm{j} \omega}$ 代入映射关系式，有</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 \mathrm{j} \Omega=\frac{2}{T_{\mathrm{d}}} \cdot \frac{1-\mathrm{e}^{-\mathrm{j} \omega}}{1+\mathrm{e}^{-\mathrm{j} \omega}} & =\frac{2}{T_{\mathrm{d}}} \cdot \frac{\mathrm{e}^{-\mathrm{j} \omega / 2}\left(\mathrm{e}^{\mathrm{j} \omega / 2}-\mathrm{e}^{-\mathrm{j} \omega / 2}\right)}{\mathrm{e}^{-\mathrm{j} \omega / 2}\left(\mathrm{e}^{\mathrm{j} \omega / 2}+\mathrm{e}^{-\mathrm{j} \omega / 2}\right)} \\
