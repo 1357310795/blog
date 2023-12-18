@@ -144,6 +144,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
@@ -189,7 +201,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      11.7k 字
+      12.1k 字
     </span>
   
 
@@ -199,7 +211,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      158
+      165
        分钟
     </span>
   
@@ -233,7 +245,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年12月9日 晚上
+                  本文最后更新于：2023年12月17日 下午
                 
               </p>
             
@@ -1504,6 +1516,76 @@ S&=P\oplus C_i\\
 <h3 id="CPL-Full-Adder"><a href="#CPL-Full-Adder" class="headerlink" title="CPL Full Adder"></a>CPL Full Adder</h3><p><img src="https://s2.loli.net/2023/12/09/wdmTOeoAkW9QZXH.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/12/09/XqreS6WsntuchU7.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="曼彻斯特进位链（Manchester-Carry-Chain）"><a href="#曼彻斯特进位链（Manchester-Carry-Chain）" class="headerlink" title="曼彻斯特进位链（Manchester Carry Chain）"></a>曼彻斯特进位链（Manchester Carry Chain）</h3><p>由于 PGK(D) 是互斥的，直接把输出接在一起：<br><img src="https://s2.loli.net/2023/12/09/sYjFmabHQIpVluD.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>增加预充过程，转换为动态电路<br><img src="https://s2.loli.net/2023/12/09/mQCa3NHPbyWXUIi.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>（Todo：MCC Timing）</p>
+<h3 id="分组"><a href="#分组" class="headerlink" title="分组"></a>分组</h3><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>进位的路径最慢，而前面部分只与对应输入位有关，可以提前计算</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+C_{i}=g_{i}+p_{i} C_{i-1} \\
+\begin{aligned}
+C_{0,3} & =g_{3}+p_{3} C_{2} \\
+& =g_{3}+p_{3}\left(g_{2}+p_{2} C_{1}\right) \\
+& =g_{3}+p_{3}\left(g_{2}+p_{2}\left(g_{1}+p_{1}\left(g_{0}+p_{0} C_{i, 0}\right)\right)\right) \\
+& =g_{3}+p_{3} g_{2}+p_{3} p_{2} g_{1}+p_{3} p_{2} p_{1} g_{0}+{\color{Red} p_{3} p_{2} p_{1} p_{0} C_{i, 0}} 
+\end{aligned}
+\end{array}</script><h4 id="分组GP定义"><a href="#分组GP定义" class="headerlink" title="分组GP定义"></a>分组GP定义</h4><ul>
+<li>定义 $G_{i,j}$ 和 $P_{i,j}$ 为第 $i$ 位到第 $j$ 位的状态</li>
+<li>转移方程<script type="math/tex; mode=display">
+\begin{array}{l}
+G_{i: j} =G_{i: k}+P_{i: k} G_{k-1: j} \\
+P_{i: j} =P_{i: k} P_{k-1: j}
+\end{array}</script></li>
+<li>边界条件（PG 准备层）<script type="math/tex; mode=display">
+\begin{array}{l}
+G_{i: i} = G_{i}=A_{i} B_{i} \\
+P_{i: i}=P_{i}=A_{i} \oplus B_{i} \\
+G_{0: 0} = G_{0}=C_{i n} \\
+P_{0: 0}=P_{0}=0
+\end{array}</script></li>
+<li>PG 逻辑层目标<script type="math/tex; mode=display">
+G_{i:0}, \quad i=0,1,2,\cdots</script></li>
+<li>结果（求和逻辑）<script type="math/tex; mode=display">
+\begin{array}{l}
+S_{i}=P_{i} \oplus G_{i-1: 0} \\
+C_{i}=G_{i: 0}=G_{i}+P_{i} G_{i-1: 0}
+\end{array}</script></li>
+</ul>
+<h3 id="PG-图"><a href="#PG-图" class="headerlink" title="PG 图"></a>PG 图</h3><h4 id="基础模板"><a href="#基础模板" class="headerlink" title="基础模板"></a>基础模板</h4><p><img src="https://s11.ax1x.com/2023/12/17/pi5MUH0.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="基本积木"><a href="#基本积木" class="headerlink" title="基本积木"></a>基本积木</h4><p><img src="https://s11.ax1x.com/2023/12/17/pi5MfUK.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>Black cell 计算 $G_{i:j}$ 和 $P_{i:j}$</li>
+<li>Gray cell 计算 $G_{i:j}$</li>
+<li>Buffer 缓冲</li>
+<li>Black cell 两块输入都需要 PG</li>
+<li>Gray cell 前一块输入需要 PG，后一块只需要 G</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/12/17/1C6LfTa5xpWcAwY.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>Black cell 下还可接选择器<script type="math/tex; mode=display">
+G_{i,j}=P_{i,k}G_{k-1,j}+\bar{P}_{i,k}G_{i,k}</script></li>
+</ul>
+<h4 id="Carry-Ripple-PG-Diagram"><a href="#Carry-Ripple-PG-Diagram" class="headerlink" title="Carry-Ripple PG Diagram"></a>Carry-Ripple PG Diagram</h4><p><img src="https://s2.loli.net/2023/12/17/4esvwOJMf8CkKog.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Logic Level</th>
+<th>Max Fanout</th>
+<th>Tracks</th>
+<th>Cells</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N-1</td>
+<td>2</td>
+<td>1</td>
+<td>N</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="Carry-Skip-PG-Diagram"><a href="#Carry-Skip-PG-Diagram" class="headerlink" title="Carry-Skip PG Diagram"></a>Carry-Skip PG Diagram</h4><p><img src="https://s2.loli.net/2023/12/17/FY1gzTrdwCDmN7I.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="Carry-Increment-Adder"><a href="#Carry-Increment-Adder" class="headerlink" title="Carry-Increment Adder"></a>Carry-Increment Adder</h4><p><img src="https://s2.loli.net/2023/12/17/lIbptagrio3NxjR.png" srcset="/img/loading.gif" lazyload alt=""></p>
 
             </div>
             <hr>

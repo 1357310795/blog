@@ -144,6 +144,18 @@
             </li>
           
         
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
         
           <li class="nav-item" id="search-btn">
             <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
@@ -189,7 +201,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.1k 字
+      6.1k 字
     </span>
   
 
@@ -199,7 +211,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      72
+      86
        分钟
     </span>
   
@@ -233,7 +245,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年11月12日 下午
+                  本文最后更新于：2023年12月16日 晚上
                 
               </p>
             
@@ -456,6 +468,7 @@ A_{v}=\left(g_m+g_{mb}+1/r_o\right)\left(r_o//R_D\right)</script></li>
 <li>输入阻抗<script type="math/tex; mode=display">
 Z_{in}=\frac{1+R_D/r_o}{g_m+g_{mb}+1/r_o}</script></li>
 </ul>
+<h3 id="“漏极电阻”积木"><a href="#“漏极电阻”积木" class="headerlink" title="“漏极电阻”积木"></a>“漏极电阻”积木</h3><p><img src="https://s2.loli.net/2023/12/15/kqzJrB7n84Cs2Ah.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="级联分析"><a href="#级联分析" class="headerlink" title="级联分析"></a>级联分析</h3><h3 id="单一增益频率"><a href="#单一增益频率" class="headerlink" title="单一增益频率"></a>单一增益频率</h3><p>单位增益频率 $f_T$，也称为过渡频率。它被定义为共源放大器的 <strong>短路</strong> <strong>电流增益</strong> 变为 1 的频率。</p>
 <p><img src="https://s2.loli.net/2023/10/05/uMqi4hb1yxnC7Ak.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <script type="math/tex; mode=display">
@@ -609,6 +622,92 @@ V_{GS0}+(V_{GS1}-V_{TH1})\le V_{b}\le V_{GS1}+V_{TH0}</script><p>则 M0 和 M1 �
 <p>为了产生 $V_{b}$，使用下面的电路</p>
 <p><img src="https://s2.loli.net/2023/11/12/ojTS2GNqRgtLpK3.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>M7 饱和，M6 线性，M7 提供 $V_{GS}$，M6 提供 $V_{DS}$</p>
+<h3 id="Wilson-电流镜"><a href="#Wilson-电流镜" class="headerlink" title="Wilson 电流镜"></a>Wilson 电流镜</h3><p><img src="https://s2.loli.net/2023/12/15/ZqXPNQKVx5MWnbe.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>输出阻抗是</p>
+<script type="math/tex; mode=display">
+g_{m3} r_{o3} r_{o2}</script><h3 id="gm-boosting"><a href="#gm-boosting" class="headerlink" title="gm-boosting"></a>gm-boosting</h3><p>（Todo）</p>
+<h2 id="频率响应"><a href="#频率响应" class="headerlink" title="频率响应"></a>频率响应</h2><h3 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h3><ul>
+<li>频率响应是一种线性系统分析，适用于晶体管可以通过其工作点和工作点附近的微小线性变化（即<strong>小信号分析</strong>）来充分表征的情况</li>
+<li>频率响应是一种稳态分析（正弦分析），表征线性系统对各种输入信号频率的响应，包括<strong>幅值/增益响应</strong>和<strong>相位/延迟响应</strong></li>
+</ul>
+<h3 id="传输函数"><a href="#传输函数" class="headerlink" title="传输函数"></a>传输函数</h3><p>系统的输出比上输入是传输函数。</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+H(s)=\frac{v_{o}(s)}{v_{i}(s)}=k \frac{\left(s+\omega_{Z 1}\right)\left(s+\omega_{Z 2}\right) \ldots\left(s+\omega_{Z m}\right)}{\left(s+\omega_{P 1}\right)\left(s+\omega_{P 2}\right) \ldots\left(s+\omega_{P n}\right)} \\
+=a_{0} \frac{\left(1+s / \omega_{Z 1}\right)\left(1+s / \omega_{Z 2}\right) \ldots\left(1+s / \omega_{Z m}\right)}{\left(1+s / \omega_{P 1}\right)\left(1+s / \omega_{P 2}\right) \ldots\left(1+s / \omega_{P n}\right)}
+\end{array}</script><p>其中：</p>
+<ul>
+<li>$\left(-\omega_{Z m}\right)$ 是系统的零点</li>
+<li>$\left(-\omega_{P n}\right)$ 是系统的极点</li>
+<li>$a_{0}$ 是 DC 增益</li>
+<li>$|H(j\omega)|$ 是频率响应</li>
+<li>$\varphi(\omega)$ 是相位响应</li>
+</ul>
+<h3 id="3dB-截止频率"><a href="#3dB-截止频率" class="headerlink" title="-3dB 截止频率"></a>-3dB 截止频率</h3><p><img src="https://s2.loli.net/2023/12/16/TCuwD35HlVOIMyS.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>以 20dB 对数坐标画出频率响应图，</p>
+<ul>
+<li>-3dB 频率：又称角频率或截止频率，与最大幅度/增益相比，该频率的幅度/增益下降 3dB </li>
+<li>带宽：又称 -3dB 带宽，带通情况下两个 -3dB 频率之间的距离，或低通情况下 -3dB 频率与直流之间的距离</li>
+</ul>
+<h3 id="RC-传输线极点"><a href="#RC-传输线极点" class="headerlink" title="RC 传输线极点"></a>RC 传输线极点</h3><p><img src="https://s2.loli.net/2023/12/16/1zI3dL9GCjcpQuP.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+H(s)=\frac{V_{o}(s)}{V_{i}(s)}=\frac{\frac{1}{s C}}{R+\frac{1}{s C}}=\frac{1}{1+s R C}</script><p>极点</p>
+<script type="math/tex; mode=display">
+\omega_p=-\frac{1}{RC}</script><h3 id="波特图"><a href="#波特图" class="headerlink" title="波特图"></a>波特图</h3><ul>
+<li>For magnitude response<ul>
+<li>A real pole contributes -20dB/dec</li>
+<li>A real zero contributes 20dB/dec</li>
+</ul>
+</li>
+<li>For phase response (and stability)<ul>
+<li>A LHP real pole contributes -90° (reducing gain and reducing phase)</li>
+<li>A RHP real pole contributes +90° (unstable with growing amplitude)</li>
+<li>A LHP real zero contributes +90° (increasing gain and increasing phase)</li>
+<li>A RHP real zero contributes -90° (increasing gain and reducing phase, potentially unstable in a closed-loop feedback system)</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/12/16/wZcMvFk78amE2IQ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="米勒近似"><a href="#米勒近似" class="headerlink" title="米勒近似"></a>米勒近似</h3><p><img src="https://s2.loli.net/2023/12/15/lKYnR7PxwD5kCq6.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>当放大器输入输出两端之间存在一个电容时，可以将其等效为两个对地的电容，大小为</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+Z_1=\frac{1}{sC_F(1+A)}\\
+Z_2=\frac{1}{sC_F(1+1/A)}\approx \frac{1}{sC_F}\\
+\end{array}</script><ul>
+<li>米勒近似对于高频输出极点估计可能不准确</li>
+<li>米勒近似可能丢失零点</li>
+</ul>
+<h3 id="CS-放大器极点分析"><a href="#CS-放大器极点分析" class="headerlink" title="CS 放大器极点分析"></a>CS 放大器极点分析</h3><p><img src="https://s2.loli.net/2023/12/16/L9EvisPbwxqo2W3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>输入和输出的极点：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\omega_{i n}=\frac{1}{R_{S}\left[C_{G S}+\left(1+g_{m} R_{D}\right) C_{G D}\right]} \\
+\omega_{\text {out }}=\frac{1}{R_{D}\left(C_{D B}+C_{G D}\right)}
+\end{array}</script><h3 id="CS-放大器零点分析"><a href="#CS-放大器零点分析" class="headerlink" title="CS 放大器零点分析"></a>CS 放大器零点分析</h3><p>不能用米勒近似</p>
+<p><img src="https://s2.loli.net/2023/12/16/y49DOVqJPcYBHAu.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://s2.loli.net/2023/12/16/gXIQF1AWGhMslC9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>分析零点时，可以把输出点接地，写出 KCL 方程：</p>
+<script type="math/tex; mode=display">
+V_1C_{GD}s_z=g_mV_1</script><h3 id="Cascode-放大器极点分析"><a href="#Cascode-放大器极点分析" class="headerlink" title="Cascode 放大器极点分析"></a>Cascode 放大器极点分析</h3><ul>
+<li>级联级抑制了米勒效应，提高了共源 (CS) 级的带宽</li>
+<li>级联结构的另一个优点是，它的主极点通常位于输出端：负载电容实际上有助于提高稳定性。</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/12/16/aik6A8jZeQc74wo.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>输入端，A 点到 X 点的增益 $G_m$ 是 $g_{m1}$，而 $R_{out}=\frac{1}{g_{m2}+g_{mb2}}$，故本征增益 $A=-\frac{g_{m1}}{g_{m2}+g_{mb2}}$，由米勒近似，A 点对地电容可以计算。</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\omega_{p, A}=\frac{1}{R_{S}\left[C_{G S 1}+\left(1+\frac{g_{m 1}}{g_{m 2}+g_{m b 2}}\right) C_{G D 1}\right]} \\
+\omega_{p, X}=\frac{g_{m 2}+g_{m b 2}}{2 C_{G D 1}+C_{D B 1}+C_{S B 2}+C_{G S 2}} \\
+\omega_{p, Y}=\frac{1}{R_{D}\left(C_{D B 2}+C_{L}+C_{G D 2}\right)}
+\end{array}</script><h3 id="Source-Follower-极点分析"><a href="#Source-Follower-极点分析" class="headerlink" title="Source Follower 极点分析"></a>Source Follower 极点分析</h3><p><img src="https://s2.loli.net/2023/12/16/FmP95oqBSl6Vuep.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>放大器倍数 $A$ 近似等于 1，故米勒近似的系数为 0，X 点极点为：<script type="math/tex; mode=display">
+\omega_{p, X} \approx \frac{1}{R_{S} C_{G D}}</script></li>
+<li>如果 $R_{S}$ 很小，<script type="math/tex; mode=display">
+\omega_{p, Y} \approx \frac{1}{C_{L} / g_{m}+C_{G S} / g_{m}}</script>如果 $R_{S}$ 很大，<script type="math/tex; mode=display">
+\omega_{p, Y} \approx \frac{g_{m}}{C_{L}+C_{G s} C_{G D} /\left(C_{G s}+C_{G D}\right)}</script></li>
+</ul>
 
             </div>
             <hr>
