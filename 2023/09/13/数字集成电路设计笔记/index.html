@@ -18,7 +18,7 @@
   <meta name="author" content="Teruteru">
   <meta name="keywords" content="">
   
-  <title>数字集成电路设计笔记 - Teruteru的Hexo博客</title>
+  <title>数字集成电路设计笔记 - Teruteru的学习笔记</title>
 
   <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
 
@@ -72,7 +72,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Teruteru 的学习笔记</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -201,7 +201,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      12.1k 字
+      12.3k 字
     </span>
   
 
@@ -211,7 +211,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      165
+      168
        分钟
     </span>
   
@@ -245,7 +245,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年12月17日 下午
+                  本文最后更新于：2023年12月26日 下午
                 
               </p>
             
@@ -1484,6 +1484,12 @@ C_{o} & =\overline{A} B C_{i}+A \overline{B} C_{i}+A B \overline{C_{i}}+A B C_{i
 <li>将 $A$、$B$、$C_{\mathrm{i}}$ 均取反，输出的 $\mathrm{C}_{\mathrm{o}}$ 和 $S$ 也是取反</li>
 </ul>
 <p><img src="https://s2.loli.net/2023/12/08/eKcDJr5TEGdMpsN.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="Full-Adder"><a href="#Full-Adder" class="headerlink" title="Full Adder"></a>Full Adder</h4><p>28T<br><img src="https://s2.loli.net/2023/12/26/dJoARBqpfOazcYm.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\overline{C_o}=X=\overline{AB+C_i(A+B)}\\
+\overline{S}=\overline{ABC_i+X(A+B+C_i)}
+\end{array}</script><p>24T<br><img src="https://s2.loli.net/2023/12/26/5XwHTz2B7Yq8Gti.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h3 id="PGK"><a href="#PGK" class="headerlink" title="PGK"></a>PGK</h3><ul>
 <li>定义两个输入都为 0 时，为<strong>消除</strong>过程<ul>
 <li>$K=\bar{A}\bar{B}$</li>
@@ -1585,7 +1591,103 @@ G_{i,j}=P_{i,k}G_{k-1,j}+\bar{P}_{i,k}G_{i,k}</script></li>
 </table>
 </div>
 <h4 id="Carry-Skip-PG-Diagram"><a href="#Carry-Skip-PG-Diagram" class="headerlink" title="Carry-Skip PG Diagram"></a>Carry-Skip PG Diagram</h4><p><img src="https://s2.loli.net/2023/12/17/FY1gzTrdwCDmN7I.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>注意其中蓝色块也是 Gray cell，但是输入连在了最上面</p>
+<p>4个一组：<br>|Logic Level|Max Fanout|Tracks|Cells|<br>|—————-|—————|———|——-|<br>|N/4+5|3|1|1.25N~1.75N|</p>
+<p>若可变组大小，延迟降低到 $O\left(\sqrt{N}\right)$</p>
+<p><img src="https://s2.loli.net/2023/12/22/mQ7d3s2wYohKfHU.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <h4 id="Carry-Increment-Adder"><a href="#Carry-Increment-Adder" class="headerlink" title="Carry-Increment Adder"></a>Carry-Increment Adder</h4><p><img src="https://s2.loli.net/2023/12/17/lIbptagrio3NxjR.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Logic Level</th>
+<th>Max Fanout</th>
+<th>Tracks</th>
+<th>Cells</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>N/2+2</td>
+<td>5</td>
+<td>1</td>
+<td>1.75N-4</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="Brent-Kung-B-tree"><a href="#Brent-Kung-B-tree" class="headerlink" title="Brent-Kung*(B-tree)"></a>Brent-Kung*(B-tree)</h4><p><img src="https://s2.loli.net/2023/12/22/pn1WP4L7Dbh8wXy.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Logic Level</th>
+<th>Max Fanout</th>
+<th>Tracks</th>
+<th>Cells</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$2\log_{2} N-1$</td>
+<td>2</td>
+<td>1</td>
+<td>2N</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="Sklansky-S-Tree"><a href="#Sklansky-S-Tree" class="headerlink" title="Sklansky(S-Tree)"></a>Sklansky(S-Tree)</h4><p><img src="https://s2.loli.net/2023/12/22/FVEHWJhfkc4Kea3.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Logic Level</th>
+<th>Max Fanout</th>
+<th>Tracks</th>
+<th>Cells</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\log_{2} N$</td>
+<td>N/2+1</td>
+<td>1</td>
+<td>$0.5N\log_{2} N$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="Kogge-Stone-K-tree"><a href="#Kogge-Stone-K-tree" class="headerlink" title="Kogge-Stone*(K-tree)"></a>Kogge-Stone*(K-tree)</h4><p><img src="https://s2.loli.net/2023/12/22/ScpD4yjJIlATKmR.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>Logic Level</th>
+<th>Max Fanout</th>
+<th>Tracks</th>
+<th>Cells</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\log_{2} N$</td>
+<td>2</td>
+<td>N/2</td>
+<td>$N\log_{2} N$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="树加法器分类"><a href="#树加法器分类" class="headerlink" title="树加法器分类"></a>树加法器分类</h3><p>定义三维空间 $(\lambda,f,t)$，树加法器的参数满足</p>
+<ul>
+<li>Logic Level：$L+\lambda$</li>
+<li>Max Fanout：$2^f+1$</li>
+<li>Wiring：$2^t$</li>
+</ul>
+<p>则已知的树加法器都在平面 $\lambda+f+t=L-1$ 上</p>
+<p><img src="https://s2.loli.net/2023/12/22/Z6P5ESqyWXuKOjG.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="Carry-Select-Adder"><a href="#Carry-Select-Adder" class="headerlink" title="Carry-Select Adder"></a>Carry-Select Adder</h3><p>（Todo）</p>
 
             </div>
             <hr>

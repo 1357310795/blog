@@ -18,7 +18,7 @@
   <meta name="author" content="Teruteru">
   <meta name="keywords" content="">
   
-  <title>模拟集成电路设计笔记 - Teruteru的Hexo博客</title>
+  <title>模拟集成电路设计笔记 - Teruteru的学习笔记</title>
 
   <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
 
@@ -72,7 +72,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Teruteru 的学习笔记</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -201,7 +201,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      6.1k 字
+      8.1k 字
     </span>
   
 
@@ -211,7 +211,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      86
+      114
        分钟
     </span>
   
@@ -245,7 +245,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年12月16日 晚上
+                  本文最后更新于：2023年12月26日 下午
                 
               </p>
             
@@ -430,10 +430,10 @@ A_{v}=-\left(g_{m1}+g_{m2}\right)\left(r_{o1} // r_{o2}\right)</script></li>
 <li>如果输入信号超出输入范围，工作点可能会偏离原始/所需的直流偏置点太远，从而离开所需的饱和区域并产生失真</li>
 <li>源衰减：在源和地之间插入阻抗（这是一个负反馈！）以扩展输入范围</li>
 </ul>
-<p><img src="https://s2.loli.net/2023/10/05/OdSQhRk8jLJBnDK.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/10/05/hkUc9CXtHDiVsZT.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p><img src="https://s2.loli.net/2023/10/05/OdSQhRk8jLJBnDK.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2023/10/05/pT4VqI5dMP7ythZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>如右上图，让输出接地，计算跨导</p>
 <script type="math/tex; mode=display">
-G_{m}=\frac{I_{\text {out }}}{V_{\text {in }}}=\frac{-g_{m} r_{o}}{R_{S}+\left[1+\left(g_{m}+g_{m b}\right) R_{S}\right] r_{o}}</script><p><img src="https://s2.loli.net/2023/10/05/pT4VqI5dMP7ythZ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+G_{m}=\frac{I_{\text {out }}}{V_{\text {in }}}=\frac{-g_{m} r_{o}}{R_{S}+\left[1+\left(g_{m}+g_{m b}\right) R_{S}\right] r_{o}}</script><p><img src="https://s2.loli.net/2023/10/05/hkUc9CXtHDiVsZT.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <p>再令 $V_{in}=0$，并在输出端增加测试电压 $V_{X}$，计算输出阻抗：</p>
 <script type="math/tex; mode=display">
 R_{out}=r_o+R_S+(g_m+g_{mb})r_oR_S</script><p>于是电压增益</p>
@@ -700,15 +700,195 @@ V_1C_{GD}s_z=g_mV_1</script><h3 id="Cascode-放大器极点分析"><a href="#Cas
 \omega_{p, A}=\frac{1}{R_{S}\left[C_{G S 1}+\left(1+\frac{g_{m 1}}{g_{m 2}+g_{m b 2}}\right) C_{G D 1}\right]} \\
 \omega_{p, X}=\frac{g_{m 2}+g_{m b 2}}{2 C_{G D 1}+C_{D B 1}+C_{S B 2}+C_{G S 2}} \\
 \omega_{p, Y}=\frac{1}{R_{D}\left(C_{D B 2}+C_{L}+C_{G D 2}\right)}
-\end{array}</script><h3 id="Source-Follower-极点分析"><a href="#Source-Follower-极点分析" class="headerlink" title="Source Follower 极点分析"></a>Source Follower 极点分析</h3><p><img src="https://s2.loli.net/2023/12/16/FmP95oqBSl6Vuep.png" srcset="/img/loading.gif" lazyload alt=""></p>
+\end{array}</script><h3 id="Source-Follower-零极点分析"><a href="#Source-Follower-零极点分析" class="headerlink" title="Source Follower 零极点分析"></a>Source Follower 零极点分析</h3><p><img src="https://s2.loli.net/2023/12/16/FmP95oqBSl6Vuep.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>放大器倍数 $A$ 近似等于 1，故米勒近似的系数为 0，X 点极点为：<script type="math/tex; mode=display">
 \omega_{p, X} \approx \frac{1}{R_{S} C_{G D}}</script></li>
 <li>如果 $R_{S}$ 很小，<script type="math/tex; mode=display">
 \omega_{p, Y} \approx \frac{1}{C_{L} / g_{m}+C_{G S} / g_{m}}</script>如果 $R_{S}$ 很大，<script type="math/tex; mode=display">
-\omega_{p, Y} \approx \frac{g_{m}}{C_{L}+C_{G s} C_{G D} /\left(C_{G s}+C_{G D}\right)}</script></li>
+\omega_{p, Y} \approx \frac{g_{m}}{C_{L}+C_{G s} C_{G D} /\left(C_{G s}+C_{G D}\right)}</script>零点：<script type="math/tex; mode=display">
+s_ZC_{GS}V_1=-g_mV_1 \Rightarrow s_{Z}=-\frac{g_m}{C_{GS}}</script></li>
 </ul>
-
+<h3 id="Common-Gate-放大器极点分析"><a href="#Common-Gate-放大器极点分析" class="headerlink" title="Common-Gate 放大器极点分析"></a>Common-Gate 放大器极点分析</h3><p>Compared to CS, CG has higher bandwidth since the resistance and capacitance at the input node are smaller</p>
+<p><img src="https://s2.loli.net/2023/12/20/t5ANbTnq6Va7dx9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\omega_{\text {in }}=\frac{g_{m}+g_{m b}+R_{S}^{-1}}{C_{S}}\\
+\omega_{\text {out }}=\frac{1}{R_{D} C_{D}}
+\end{array}</script><h3 id="Diff-Pair-With-Active-Load-分析"><a href="#Diff-Pair-With-Active-Load-分析" class="headerlink" title="Diff Pair With Active Load 分析"></a>Diff Pair With Active Load 分析</h3><p>（Todo）</p>
+<h3 id="GBW"><a href="#GBW" class="headerlink" title="GBW"></a>GBW</h3><script type="math/tex; mode=display">
+\text{GBW}=A_0\omega_{-3\mathrm{dB}}/2\pi=\omega_{u}/2\pi</script><h2 id="运算放大器"><a href="#运算放大器" class="headerlink" title="运算放大器"></a>运算放大器</h2><h3 id="理想运放"><a href="#理想运放" class="headerlink" title="理想运放"></a>理想运放</h3><p><img src="https://s2.loli.net/2023/12/23/rPnNmgWVE5ohwCY.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>Infinite voltage gain (practically &gt;60dB)</li>
+<li>Infinite bandwidth</li>
+<li>Infinite slew rate</li>
+<li>Infinite input impedance</li>
+<li>Infinite CMRR</li>
+<li>Infinite output voltage &amp; current range</li>
+<li>Zero output impedance</li>
+<li>Zero input offset</li>
+<li>Zero noise</li>
+<li>Zero distortion</li>
+<li>Zero power</li>
+</ul>
+<h3 id="开环与闭环"><a href="#开环与闭环" class="headerlink" title="开环与闭环"></a>开环与闭环</h3><h4 id="Open-loop-amplifiers"><a href="#Open-loop-amplifiers" class="headerlink" title="Open-loop amplifiers"></a>Open-loop amplifiers</h4><p><img src="https://s2.loli.net/2023/12/23/woO7lRE2NaVqiG9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>Since the opamp gain is very high, any difference between the two input terminals (“+” and “-”) would drive the opamp into clipping or saturation</li>
+<li>The open-loop opamp acts as a comparator, not a linear amplifier</li>
+</ul>
+<h4 id="Closed-loop-amplifiers"><a href="#Closed-loop-amplifiers" class="headerlink" title="Closed-loop amplifiers"></a>Closed-loop amplifiers</h4><p><img src="https://s2.loli.net/2023/12/23/iYXW5jfbmtNxPBC.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<ul>
+<li>If predictable operation is desired, negative feedback is employed by applying a portion of the output voltage to the inverting input.</li>
+<li>As long as the opamp gain is high enough, the characteristics of the closed-loop amplifier, such as the gain, input and output impedance, bandwidth etc., are determined by external linear components (usually resistors and capacitors) and have little dependence on non-ideal effects in the opamp itself</li>
+</ul>
+<h3 id="基本架构"><a href="#基本架构" class="headerlink" title="基本架构"></a>基本架构</h3><p><img src="https://s2.loli.net/2023/12/23/RW2tvB3Ga5CZNbp.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>小信号增益都是</p>
+<script type="math/tex; mode=display">
+g_{mN}(r_{ON} || r_{OP})</script><h3 id="Cascode-OTA"><a href="#Cascode-OTA" class="headerlink" title="Cascode OTA"></a>Cascode OTA</h3><p><img src="https://s2.loli.net/2023/12/23/Lo3AZcWKvuanHhS.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>小信号增益都是</p>
+<script type="math/tex; mode=display">
+g_{mN}[(g_{mN}r_{ON}^2) || (g_{mP}r_{OP}^2)]</script><h3 id="Power-supply-rejection"><a href="#Power-supply-rejection" class="headerlink" title="Power supply rejection"></a>Power supply rejection</h3><p>电源抑制比 (PSRR) 的定义是从输入到输出的增益除以从电源到输出的增益。</p>
+<p>对于上图(a)，电源到输出的增益为1，PSRR就是小信号增益。</p>
+<h3 id="Slew-rate"><a href="#Slew-rate" class="headerlink" title="Slew rate*"></a>Slew rate*</h3><ul>
+<li>当输入阶跃较大时，由于输出驱动能力/电流有限，输出可能会呈现斜率恒定的线性斜坡。这就是所谓的“回转”，输出上升/下降斜率受到最大输出驱动电流的限制。<script type="math/tex; mode=display">
+SR=\frac{\mathrm{d}V_{out}}{\mathrm{d}t}=\frac{I_{SS}}{C_{L}}</script></li>
+<li>当输出电压逐渐增大，反馈侧的MOS从截止到开始工作，输入又可以看成小信号，输出电压增长回归为 RC 充电的指数形式。</li>
+</ul>
+<h3 id="Basic-OTA-电压范围分析"><a href="#Basic-OTA-电压范围分析" class="headerlink" title="Basic OTA 电压范围分析"></a>Basic OTA 电压范围分析</h3><ul>
+<li>Common-mode (CM) input range<script type="math/tex; mode=display">
+V_{1}=V_{t h 1}+V_{d s a t 1}+V_{d s a t_{-} S S} \leq V_{C M, I N} \leq V_{2}=V_{t h 1}+V_{D D}-V_{G S 3}</script></li>
+<li>Output swing<script type="math/tex; mode=display">
+\begin{array}{l}
+V_{\text {out,max }} \approx V_{D D}-V_{\text {dsat4 }} \\
+V_{\text {out,min }} \approx V_{\text {dsat } 2}+V_{\text {dsat_SS }} \\
+\end{array}</script>Vout 是一个高直流阻抗节点，因此其直流偏置电压对 PVT 变化非常敏感，通常需要一个负反馈回路来定义 Vout,DC，通常等于 上下限的平均值以获得最佳输出摆幅。</li>
+<li>Bandwidth<script type="math/tex; mode=display">
+\begin{array}{l}
+B W=\frac{1}{2 \pi\left(r_{O N} \| r_{O P}\right) C_{L}} \\
+G B W=\frac{g_{m 1}}{2 \pi C_{L}}
+\end{array}</script>差分对 OTA 的主要极点通常位于输出端，这里的直流电阻和负载电容相当大</li>
+</ul>
+<h3 id="Cascode-OTA-电压范围分析"><a href="#Cascode-OTA-电压范围分析" class="headerlink" title="Cascode OTA 电压范围分析"></a>Cascode OTA 电压范围分析</h3><ul>
+<li>Output swing is reduced by $2V_{dsat}$<script type="math/tex; mode=display">
+\begin{array}{l}
+V_{\text {out,max }} \approx V_{D D}-\left(V_{\text {dsat } 6}+V_{\text {dsat8 }}\right) \\
+V_{\text {out,min }} \approx V_{\text {dsat } 1}+V_{\text {dsat }  3}+V_{\text {dsat_ss }} \\
+\end{array}</script></li>
+<li>Bandwidth is reduced by x100 but GBW is the same<script type="math/tex; mode=display">
+\begin{array}{l}
+B W=\frac{1}{2 \pi\left[\left(g_{m N} r_{O N}^{2}\right) \|\left(g_{m P} r_{O P}^{2}\right)\right] C_{L}} \\
+G B W=\frac{g_{m 1}}{2 \pi C_{L}}
+\end{array}</script></li>
+<li>当 Cascode OTA 用作输出缓冲的时候，范围更小了<br><img src="https://s2.loli.net/2023/12/23/J41wZTemsdUNHIO.png" srcset="/img/loading.gif" lazyload alt=""></li>
+</ul>
+<p>the input/output CM voltage should be equal to $V_{b} +V_{GS}4 /2$ for best output swing</p>
+<h3 id="Two-Stage-Opamps"><a href="#Two-Stage-Opamps" class="headerlink" title="Two-Stage Opamps"></a>Two-Stage Opamps</h3><p>（Todo）</p>
+<h2 id="稳定性与频率补偿"><a href="#稳定性与频率补偿" class="headerlink" title="稳定性与频率补偿"></a>稳定性与频率补偿</h2><h3 id="负反馈的基本概念"><a href="#负反馈的基本概念" class="headerlink" title="负反馈的基本概念"></a>负反馈的基本概念</h3><p><img src="https://s2.loli.net/2023/12/24/EKZDd6gcJWBpMVb.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h3 id="负反馈的优点"><a href="#负反馈的优点" class="headerlink" title="负反馈的优点"></a>负反馈的优点</h3><ul>
+<li>Negative feedback provides gain “desensitization”, where the closed-loop gain is less sensitive to variations of active device parameters (PVT)</li>
+<li>The negative feedback extends 3-dB bandwidth by a factor of $(1+\beta A_0)$, while reducing the dc gain by the same factor and thus maintaining the same GBW</li>
+<li>the gain slope is more linear over a large input range</li>
+</ul>
+<h3 id="稳定性分析"><a href="#稳定性分析" class="headerlink" title="稳定性分析"></a>稳定性分析</h3><p>环路增益在负反馈中起着核心作用，通常用于分析闭环系统的稳定性</p>
+<ul>
+<li>若负反馈回路引入额外的180°相移（使得总相移=360°），那么负反馈变为正反馈</li>
+<li>如果180°相移的时候环路增益大于1，那么会引起自激振荡</li>
+</ul>
+<h4 id="Phase-Margin-PM"><a href="#Phase-Margin-PM" class="headerlink" title="Phase Margin (PM)"></a>Phase Margin (PM)</h4><p>相位裕度（PM）是当环路增益=1时相位和-180°之间的差，用于估计闭环系统离振荡有多近。</p>
+<script type="math/tex; mode=display">
+PM=\angle \beta H(\omega_1)-(-180^{\circ})</script><p>其中</p>
+<script type="math/tex; mode=display">
+|\beta H(\omega_1)|=1</script><p>如果相位裕度较小，闭环频率响应会在 $\omega=\omega_1$ 附近出现一个<strong>尖锐的峰值</strong>，闭环系统接近振荡。</p>
+<h4 id="频率补偿"><a href="#频率补偿" class="headerlink" title="频率补偿"></a>频率补偿</h4><p>将主极点向内移动，第二极点 $\omega_{p2}$ 向外移动，使得第二极点大于单位增益频率（GBW/UGB），以获得足够的相位裕度（例如 PM=60°~70°），从而提高闭环系统的稳定性。</p>
+<p>对于两级运算放大器，有两个非常接近的主要极点 </p>
+<ul>
+<li>主要极点补偿需要一个大电容器（大硅面积），以便将主要极点移近</li>
+<li>第二主要极点非常低，限制了单位增益频率，为了获得良好的 PM，要求单位增益频率小于第二主要极点频率</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/12/24/EDmxGTsh97SA31L.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>补偿方法：在第二级放大器两端接一个大电容 $C_{C}$</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th></th>
+<th>补偿前</th>
+<th>补偿后</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\omega_{p1}$</td>
+<td>$\frac{1}{(r_{o1}//r_{o2})C_1}$</td>
+<td>$\frac{1}{(r_{o1}//r_{o2})(1+g_{m}r_{o2})C_C}$</td>
+</tr>
+<tr>
+<td>$\omega_{p2}$</td>
+<td>$\frac{1}{r_{o2}C_L}$</td>
+<td>$\frac{g_{m2}}{C_L}$</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="米勒补偿的零点问题"><a href="#米勒补偿的零点问题" class="headerlink" title="米勒补偿的零点问题"></a>米勒补偿的零点问题</h4><p>米勒补偿引入了一个右半平面零点，因为 $C_C$ 形成一个额外的前馈信号路径。</p>
+<script type="math/tex; mode=display">
+s_{Z}=+\frac{g_m}{C_C}</script><ul>
+<li>RHP 零点会随频率增加增益，推高单位增益频率，从而降低 PM</li>
+<li>RHP 零点与 LHP 极点一样会产生负相移，进一步降低 PM</li>
+</ul>
+<p>只要 $g_mR_Z&gt;1$，在前馈路径中插入一个与 $C_C$ 串联的电阻 $R_Z$ 以改变相位，就能将零点从 RHP 移至 LHP，从而消除 RHP 零点所导致的稳定性问题。</p>
+<p><img src="https://s2.loli.net/2023/12/26/delogVZYLA5W1fz.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+s_{Z}=\frac{1}{C_C (g_m^{-1}-R_Z)}</script><h2 id="噪声"><a href="#噪声" class="headerlink" title="噪声"></a>噪声</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><ul>
+<li>噪声是一个随机过程</li>
+<li>瞬时振幅不可预测</li>
+<li>定义噪声在每个频率的功率大小为功率谱密度（PSD），单位 $\mathrm{V}^2/\mathrm{Hz}$</li>
+<li>对于白噪声，功率谱密度是常数函数</li>
+<li>不相关噪声叠加，功率叠加</li>
+<li>定义信噪比 $\text{SNR}= P_{\text{sig}} / P_{\text{noise}}$</li>
+</ul>
+<h3 id="电阻热噪声"><a href="#电阻热噪声" class="headerlink" title="电阻热噪声"></a>电阻热噪声</h3><ul>
+<li>起源：电子的随机热运动</li>
+<li>零均值</li>
+<li>高斯概率密度函数</li>
+<li>与绝对温度成正比</li>
+<li>与电流无关</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/12/26/XGsxvy1gCk2ZbWQ.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+S_v(f)=4kTR</script><p>或者说</p>
+<script type="math/tex; mode=display">
+\overline{v^2}=4kTR</script><p>如果使用诺顿等效电路，</p>
+<script type="math/tex; mode=display">
+\overline{v^2}=4kT\frac{1}{R}</script><h3 id="MOSFET-热噪声"><a href="#MOSFET-热噪声" class="headerlink" title="MOSFET 热噪声"></a>MOSFET 热噪声</h3><p><img src="https://s2.loli.net/2023/12/26/Xncti3kYNzGgIHT.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>其中，γ 等于长沟道器件的 2/3，但在现代亚微米 MOS 器件中可能要大几倍。</p>
+<p>当然，MOSFET 连接端的欧姆接触会有电阻热噪声</p>
+<h3 id="电容对于噪声的影响"><a href="#电容对于噪声的影响" class="headerlink" title="电容对于噪声的影响"></a>电容对于噪声的影响</h3><p>电容不贡献噪声，但是可以像滤波器一样过滤噪声，从而限制了总噪声功率</p>
+<p><img src="https://s2.loli.net/2023/12/26/Eg7t3QnS4Nzbwxf.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+S_{\text {out }}(f) & =S_{v}(f)\left|\frac{V_{\text {out }}}{V_{R}}(j \omega)\right|^{2} \\
+& =4 k T R \frac{1}{4 \pi^{2} R^{2} C^{2} f^{2}+1} \\
+P_{n, \text { out }}= & \int_{0}^{\infty} \frac{4 k T R}{4 \pi^{2} R^{2} C^{2} f^{2}+1} d f \\
+P_{n, \text { out }}= & \left.\frac{2 k T}{\pi C} \tan ^{-1} u\right|_{u=0} ^{u=\infty} \\
+& =\frac{k T}{C}
+\end{aligned}</script><h3 id="闪烁噪声（1-f-噪声）"><a href="#闪烁噪声（1-f-噪声）" class="headerlink" title="闪烁噪声（1/f 噪声）"></a>闪烁噪声（1/f 噪声）</h3><ul>
+<li>起源：与污染和晶体缺陷有关的陷阱，电荷的“陷阱”和“释放”产生了“闪烁噪声”</li>
+<li>不仅存在于有源器件中，也存在于一些分立的无源元件（如碳电阻器）中</li>
+<li>在低频时非常明显（因此被称为 1/f 噪声）</li>
+<li>只存在于直流电中</li>
+<li>取决于电流流向</li>
+</ul>
+<p><img src="https://s2.loli.net/2023/12/26/jYerAOqNwS71GBD.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\overline{V_n^2}=\frac{K}{C_{ox}WL}\cdot \frac{1}{f}</script><ul>
+<li>其中 K 与器件参数无关</li>
+<li>Reducing gm to improve 1/f noise (e.g., using degeneration)</li>
+<li>PMOS shows smaller flicker noise than NMOS</li>
+</ul>
+<h3 id="Where-Thermal-voltage-of-channel-meets-the-flicker-noise"><a href="#Where-Thermal-voltage-of-channel-meets-the-flicker-noise" class="headerlink" title="Where Thermal voltage of channel meets the flicker noise"></a>Where Thermal voltage of channel meets the flicker noise</h3><p><img src="https://s2.loli.net/2023/12/26/jTMQGCk3x8w4Vng.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+f_{C}=\frac{K}{\gamma C_{o x} W L} g_{m} \frac{1}{4 k T}</script>
             </div>
             <hr>
             <div>

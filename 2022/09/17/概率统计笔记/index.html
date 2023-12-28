@@ -18,7 +18,7 @@
   <meta name="author" content="Teruteru">
   <meta name="keywords" content="">
   
-  <title>概率统计笔记 - Teruteru的Hexo博客</title>
+  <title>概率统计笔记 - Teruteru的学习笔记</title>
 
   <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
 
@@ -72,7 +72,7 @@
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand"
-       href="/">&nbsp;<strong>Teruteru 的博客</strong>&nbsp;</a>
+       href="/">&nbsp;<strong>Teruteru 的学习笔记</strong>&nbsp;</a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
             data-target="#navbarSupportedContent"
@@ -245,7 +245,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年10月7日 上午
+                  本文最后更新于：2023年12月23日 下午
                 
               </p>
             
@@ -410,7 +410,7 @@ P(A)=\sum_{i=1}^{n} P\left(B_{i}\right) P\left(A \mid B_{i}\right)</script><p>�
 <h3 id="贝叶斯（Bayes）公式"><a href="#贝叶斯（Bayes）公式" class="headerlink" title="贝叶斯（Bayes）公式"></a>贝叶斯（Bayes）公式</h3><p>设 $B_{1},B_{2},\cdots,B_{n}$ 为某一试验的样本空间 $\Omega$ 的一个划分，且 $P\left(B_{i}\right)&gt;0(i=1,2,\cdots,n)$，则对该试验的任一事件 $A(P(A)&gt;0)$，有</p>
 <script type="math/tex; mode=display">
 P\left(B_{i} \mid A\right)=\frac{P\left(A B_{i}\right)}{P(A)}=\frac{P\left(B_{i}\right) P\left(A \mid B_{i}\right)}{\sum_{j=1}^{n} P\left(B_{j}\right) P\left(A \mid B_{j}\right)},i=1,2,\cdots,n</script><p>上述公式称为 Bayes 公式</p>
-<p>贝叶斯公式可以看成“由原因推结果”，它所求的是条件概率，是已知某结果发生条件下，求各原因发生可能性大小</p>
+<p>贝叶斯公式可以看成“由结果推原因”，它所求的是条件概率，是已知某结果发生条件下，求各原因发生可能性大小</p>
 <h3 id="先验概率和后验概率"><a href="#先验概率和后验概率" class="headerlink" title="先验概率和后验概率"></a>先验概率和后验概率</h3><p>假设在实际问题中，我们关心的事件 $A$ 满足 $P(A)&gt;0$，$B_{1},B_{2},\cdots,B_{n}$ 是可能导致随机事件 $A$ 发生的所有原因（情况或因素），即 $A \subset \bigcup_{j=1} B_{j}$ 且 $B_{i} B_{j}=\varnothing$，$i \neq j$，$i,j=1,2,\cdots,n$，通过条件概率与全概率公式，可以计算在 $A$ 发生的条件下，导致其发生的原因 $B_{i}$ 的概率为</p>
 <script type="math/tex; mode=display">
 P\left(B_{i} \mid A\right)=\frac{P\left(A B_{i}\right)}{P(A)}=\frac{P\left(B_{i}\right) P\left(A \mid B_{i}\right)}{\sum_{j=1}^{n} P\left(B_{j}\right) P\left(A \mid B_{j}\right)}，i=1,2,\cdots,n</script><p>在上述公式中，$P\left(B_{i}\right)$ 是在没有得到 $A$ 的信息，即不知 $A$ 是否发生的情况下（试验之前）对 $B_{i}$ 发生可能性大小的估计，称为<strong>先验概率</strong>；若得到新的信息，即在 $A$ 已经发生的情况下（试验之后），人们对 $B_{i}$ 发生的可能性大小有了新的估计，由此得到的条件概率 $P\left(B_{i} \mid A\right)$ 称为<strong>后验概率</strong></p>
