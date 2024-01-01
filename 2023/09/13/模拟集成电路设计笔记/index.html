@@ -201,7 +201,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      8.1k 字
+      8.6k 字
     </span>
   
 
@@ -211,7 +211,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      114
+      125
        分钟
     </span>
   
@@ -245,7 +245,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2023年12月26日 下午
+                  本文最后更新于：2023年12月31日 晚上
                 
               </p>
             
@@ -469,7 +469,13 @@ A_{v}=\left(g_m+g_{mb}+1/r_o\right)\left(r_o//R_D\right)</script></li>
 Z_{in}=\frac{1+R_D/r_o}{g_m+g_{mb}+1/r_o}</script></li>
 </ul>
 <h3 id="“漏极电阻”积木"><a href="#“漏极电阻”积木" class="headerlink" title="“漏极电阻”积木"></a>“漏极电阻”积木</h3><p><img src="https://s2.loli.net/2023/12/15/kqzJrB7n84Cs2Ah.png" srcset="/img/loading.gif" lazyload alt=""></p>
-<h3 id="级联分析"><a href="#级联分析" class="headerlink" title="级联分析"></a>级联分析</h3><h3 id="单一增益频率"><a href="#单一增益频率" class="headerlink" title="单一增益频率"></a>单一增益频率</h3><p>单位增益频率 $f_T$，也称为过渡频率。它被定义为共源放大器的 <strong>短路</strong> <strong>电流增益</strong> 变为 1 的频率。</p>
+<h3 id="级联分析"><a href="#级联分析" class="headerlink" title="级联分析"></a>级联分析</h3><p><img src="https://s2.loli.net/2023/12/30/VB6QuSC2og5lZkh.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+G_{m}=\frac{I_{o u t}}{V_{\text {in }}}=-g_{m 1} \frac{g_{m 2}+g_{m b}+1 / r_{o 2}}{g_{m 2}+g_{m b}+1 / r_{o 2}+1 / r_{o 1}} \approx-g_{m 1} \\
+Z_{o u t}=V_{X} / I_{X}=\left(1+\left(g_{m 2}+g_{m b}\right) r_{o 2}\right) r_{o 1}+r_{o 2}=r_{o 1}+r_{o 2}+g_{m 2} r_{o 2} r_{o 1} \approx g_{m 2} r_{o 2} r_{o 1} \\
+A_{v}=\frac{V_{\text {out }}}{V_{\text {in }}}=G_{m}\left(Z_{\text {out }} \| Z_{\text {load }}\right)=-g_{m 1}\left(g_{m 2} r_{o 2} r_{o 1} \| Z_{\text {load }}\right)
+\end{array}</script><h3 id="单一增益频率"><a href="#单一增益频率" class="headerlink" title="单一增益频率"></a>单一增益频率</h3><p>单位增益频率 $f_T$，也称为过渡频率。它被定义为共源放大器的 <strong>短路</strong> <strong>电流增益</strong> 变为 1 的频率。</p>
 <p><img src="https://s2.loli.net/2023/10/05/uMqi4hb1yxnC7Ak.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <script type="math/tex; mode=display">
 \begin{array}{c}
@@ -486,6 +492,7 @@ f_{T}=\omega_{T} / 2 \pi=\frac{g_{m}}{2 \pi\left(C_{g s}+C_{g d}\right)}
 <li>输出范围为 $V_{DD}-2*V_{dsat}$, 其中最小输入电压限制为 $V{dsat}$，以确保 $V_{DS}(M1)\ge V_{dsat}$，最大输入电压限制为 $V_{DD}-V_{dsat}$，以确保 $|V_{DS}(M2)|&gt;=V_{dsat}$</li>
 </ul>
 <p><img src="https://s2.loli.net/2023/10/05/jqedgyJFOrYcla9.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<h4 id="Folded-Cascode"><a href="#Folded-Cascode" class="headerlink" title="Folded Cascode"></a>Folded Cascode</h4><p>（Todo）</p>
 <h2 id="差分放大器"><a href="#差分放大器" class="headerlink" title="差分放大器"></a>差分放大器</h2><h3 id="差模信号与共模信号"><a href="#差模信号与共模信号" class="headerlink" title="差模信号与共模信号"></a>差模信号与共模信号</h3><script type="math/tex; mode=display">
 \begin{array}{c}
 v_{in,CM}=\frac{v_{i+}+v_{i-}}{2}\\ 
@@ -537,7 +544,7 @@ G_{m,\max}=\sqrt{\mu_{n} C_{o x} (W / L)I_{SS}}</script><p>电压增益</p>
 <script type="math/tex; mode=display">
 \frac{V_X-V_Y}{V_{in1}-V_{in2}}=-g_mR_D</script><h3 id="源极衰减"><a href="#源极衰减" class="headerlink" title="源极衰减"></a>源极衰减</h3><p>源极衰减能提升差分放大器的线性度。定义有源极衰减时 M2 刚好关闭时的 $\Delta V_{in}$ 为 $\Delta V_{in2}$，则可得</p>
 <script type="math/tex; mode=display">
-\Delta V\_{in2}-\Delta V\_{in1}=R_SI_{SS}</script><p>这说明线性输入范围被扩大了 $\pm R_S I_{SS}$</p>
+\Delta V_{in2}-\Delta V_{in1}=R_SI_{SS}</script><p>这说明线性输入范围被扩大了 $\pm R_S I_{SS}$</p>
 <p>而小信号增益变成了</p>
 <script type="math/tex; mode=display">
 |A_v|=\frac{R_D}{1/g_m+R_S}</script><p><img src="https://s2.loli.net/2023/11/11/UqN21zGJ4aHeTbv.png" srcset="/img/loading.gif" lazyload alt=""></p>
@@ -715,8 +722,30 @@ s_ZC_{GS}V_1=-g_mV_1 \Rightarrow s_{Z}=-\frac{g_m}{C_{GS}}</script></li>
 \begin{array}{c}
 \omega_{\text {in }}=\frac{g_{m}+g_{m b}+R_{S}^{-1}}{C_{S}}\\
 \omega_{\text {out }}=\frac{1}{R_{D} C_{D}}
-\end{array}</script><h3 id="Diff-Pair-With-Active-Load-分析"><a href="#Diff-Pair-With-Active-Load-分析" class="headerlink" title="Diff Pair With Active Load 分析"></a>Diff Pair With Active Load 分析</h3><p>（Todo）</p>
-<h3 id="GBW"><a href="#GBW" class="headerlink" title="GBW"></a>GBW</h3><script type="math/tex; mode=display">
+\end{array}</script><h3 id="Diff-Pair-With-Passive-Load-分析"><a href="#Diff-Pair-With-Passive-Load-分析" class="headerlink" title="Diff Pair With Passive Load 分析"></a>Diff Pair With Passive Load 分析</h3><p><img src="https://s2.loli.net/2023/12/31/5RLsGknW4cwoOif.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>极点</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\omega_{\text {in }} =\frac{1}{R_{S}\left[C_{G S}+\left(1+g_{m} R_{D}\right) C_{G D}\right]} \\
+\omega_{\text {out }} \approx \frac{1}{R_{D}\left(C_{D B}+C_{G D}\right)} \\
+\end{array}</script><p>零点</p>
+<script type="math/tex; mode=display">
+s_{Z} =+\frac{g_{m}}{C_{G D}}</script><h3 id="Diff-Pair-With-Active-Load-分析"><a href="#Diff-Pair-With-Active-Load-分析" class="headerlink" title="Diff Pair With Active Load 分析"></a>Diff Pair With Active Load 分析</h3><p><img src="https://s2.loli.net/2023/12/31/r2DsutZCnWhpcEz.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<p>信号路径 1 (M1-M3-M4): 2 poles</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\omega_{p, E} \approx \frac{g_{m 3}}{C_{E}} \\
+\omega_{p, \text { out }} \approx \frac{1}{\left(r_{O N} \| r_{O P}\right) C_{L}} \\
+\end{array}</script><p>信号路径 2 (M2): 1 pole</p>
+<script type="math/tex; mode=display">
+\omega_{p, \text { out }} \approx \frac{1}{\left(r_{O N} \| r_{O P}\right) C_{L}}</script><p>相加得到传输函数</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\frac{V_{\text {out }}}{V_{\text {in }}}&=\frac{g_{m 1}\left(r_{O N} \| r_{O P}\right) / 2}{\left(1+s\left(r_{O N} \| r_{O P}\right) C_{L}\right)}+\frac{g_{m 1}\left(r_{O N} \| r_{O P}\right) / 2}{\left(1+s \frac{C_{E}}{g_{m 3}}\right)\left(1+s\left(r_{O N} \| r_{O P}\right) C_{L}\right)} \\
+&=\frac{g_{m 1}\left(r_{O N} \| r_{O P}\right)}{\left(1+s\left(r_{O N} \| r_{O P}\right) C_{L}\right)} \frac{1+s \frac{C_{E}}{2 g_{m 3}}}{\left(1+s \frac{C_{E}}{g_{m 3}}\right)} \\
+\end{aligned}</script><p>可得零点</p>
+<script type="math/tex; mode=display">
+s_{Z}=-\frac{2 g_{m 3}}{C_{E}}</script><h3 id="GBW"><a href="#GBW" class="headerlink" title="GBW"></a>GBW</h3><script type="math/tex; mode=display">
 \text{GBW}=A_0\omega_{-3\mathrm{dB}}/2\pi=\omega_{u}/2\pi</script><h2 id="运算放大器"><a href="#运算放大器" class="headerlink" title="运算放大器"></a>运算放大器</h2><h3 id="理想运放"><a href="#理想运放" class="headerlink" title="理想运放"></a>理想运放</h3><p><img src="https://s2.loli.net/2023/12/23/rPnNmgWVE5ohwCY.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <ul>
 <li>Infinite voltage gain (practically &gt;60dB)</li>
@@ -888,7 +917,19 @@ P_{n, \text { out }}= & \left.\frac{2 k T}{\pi C} \tan ^{-1} u\right|_{u=0} ^{u=
 </ul>
 <h3 id="Where-Thermal-voltage-of-channel-meets-the-flicker-noise"><a href="#Where-Thermal-voltage-of-channel-meets-the-flicker-noise" class="headerlink" title="Where Thermal voltage of channel meets the flicker noise"></a>Where Thermal voltage of channel meets the flicker noise</h3><p><img src="https://s2.loli.net/2023/12/26/jTMQGCk3x8w4Vng.png" srcset="/img/loading.gif" lazyload alt=""></p>
 <script type="math/tex; mode=display">
-f_{C}=\frac{K}{\gamma C_{o x} W L} g_{m} \frac{1}{4 k T}</script>
+f_{C}=\frac{K}{\gamma C_{o x} W L} g_{m} \frac{1}{4 k T}</script><h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><h4 id="CS-with-resistive-load"><a href="#CS-with-resistive-load" class="headerlink" title="CS with resistive load"></a>CS with resistive load</h4><p><img src="https://s2.loli.net/2023/12/29/DeViTBo1nA56yLa.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\overline{V_{n, \text { out }}^{2}}=\left(4 k T \gamma g_{m}+\frac{K}{C_{\text {ox }} W L} \cdot \frac{1}{f} \cdot g_{m}^{2}+\frac{4 k T}{R_{D}}\right) R_{D}^{2} \\
+\overline{V_{n, \text { in }}^{2}}=\frac{\overline{V_{n, \text { out }}^{2}}}{A_{v}^{2}}=4 k T \frac{\gamma}{g_{m}}+\frac{K}{C_{\text {ox }} W L} \cdot \frac{1}{f}+\frac{4 k T}{g_{m}^{2} R_{D}} \\
+\end{array}</script><h4 id="CS-with-current-source-loads"><a href="#CS-with-current-source-loads" class="headerlink" title="CS with current source loads"></a>CS with current source loads</h4><p><img src="https://s2.loli.net/2023/12/29/Z9DgWtolTCO7kUG.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\overline{V_{n, \text { in }}^{2}}&=4 k T\left(\gamma g_{m 1}+\gamma g_{m 2}\right) \frac{1}{g_{m 1}^{2}} \\
+&=4 k T \gamma\left(\frac{1}{g_{m 1}}+\frac{g_{m 2}}{g_{m 1}^{2}}\right) \\
+\end{aligned}</script><h4 id="CS-with-cascode"><a href="#CS-with-cascode" class="headerlink" title="CS with cascode"></a>CS with cascode</h4><p><img src="https://s2.loli.net/2023/12/29/iOy7BCbRGVrwTuK.png" srcset="/img/loading.gif" lazyload alt=""></p>
+<script type="math/tex; mode=display">
+\left.\overline{V_{n, i n}^{2}}\right|_{M 1, R D}=4 k T\left(\frac{\gamma}{g_{m 1}}+\frac{1}{g_{m 1}^{2} R_{D}}\right)</script>
             </div>
             <hr>
             <div>
@@ -917,7 +958,7 @@ f_{C}=\frac{K}{\gamma C_{o x} W L} g_{m} \frac{1}{4 k T}</script>
               
                 <p class="note note-warning">
                   
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="nofollow noopener noopener">CC BY-NC-ND 4.0 协议</a> ，转载请注明出处！
                   
                 </p>
               
