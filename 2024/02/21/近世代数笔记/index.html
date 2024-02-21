@@ -201,7 +201,7 @@
     
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1k 字
+      1.1k 字
     </span>
   
 
@@ -211,7 +211,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      14
+      15
        分钟
     </span>
   
@@ -251,13 +251,20 @@
             
             <div class="markdown-body">
               <h2 id="第一章-群"><a href="#第一章-群" class="headerlink" title="第一章 群"></a>第一章 群</h2><h3 id="二元关系"><a href="#二元关系" class="headerlink" title="二元关系"></a>二元关系</h3><p>设 $S$ 是一个<strong>非空集合</strong>，$\mathcal{R}$ 是关于 $S$ 的元素的一个条件。如果对 $S$ 中<strong>任意</strong>一个<strong>有序</strong>元素对 $(a,b)$，我们总能<strong>确定</strong> $a$ 与 $b$ 是否满足条件 $\mathcal{R}$，就称 $\mathcal{R}$ 是 $S$ 的一个<strong>关系</strong>。如果 $a$ 与 $b$ 满足条件 $\mathcal{R}$，则称 $a$ 与 $b$ 有关系 $\mathcal{R}$，记作 $a\mathcal{R}b$；否则称 $a$ 与 $b$ 无关系 $\mathcal{R}$。关系 $\mathcal{R}$ 也称为<strong>二元关系</strong></p>
+<ul>
+<li>注意 $\mathcal{R}$ 的确定性，“总能”表示忽略验证所需的时间和复杂度</li>
+</ul>
 <h3 id="等价关系"><a href="#等价关系" class="headerlink" title="等价关系"></a>等价关系</h3><p>设 $\mathcal{R}$ 是非空集合 $S$ 的一个关系，如果 $\mathcal{R}$ 满足</p>
 <ul>
 <li>反身性，即对任意的 $a \in S$，有 $a \mathcal{R} a$</li>
 <li>对称性，即若 $a \mathcal{R} b$，则 $b \mathcal{R} a$</li>
 <li>传递性，即若 $a \mathcal{R} b$，且 $b \mathcal{R} c$，则 $a \mathcal{R} c$</li>
 </ul>
-<p>则称 $\mathcal{R}$ 是 $S$ 的一个<strong>等价关系</strong>，并且如果 $a \mathcal{R} b$，则称 $a$ 等价于 $b$，记作 $a \sim b$</p>
+<p>则称 $\mathcal{R}$ 是 $S$ 的一个<strong>等价关系</strong>，并且如果 $a \mathcal{R} b$，则称 $a$ 等价于 $b$，记作 $a \sim b= \{[a], a\in S\}$</p>
+<ul>
+<li>注意可能存在孤立元素，即存在 $a$，对于任意 $b$，$a \not\sim b$。</li>
+<li>不能根据传递性和对称性推出自反性。（反例：$a$ 可以是孤立元素且没有自反性）</li>
+</ul>
 <h3 id="等价类"><a href="#等价类" class="headerlink" title="等价类"></a>等价类</h3><p>如果是集合 $S$ 的一个等价关系，对 $a \in S$，令</p>
 <script type="math/tex; mode=display">
 [a]=\{x \in S \mid x \sim a\}</script><p>称子集 $[a]$ 为 $S$ 的一个<strong>等价类</strong>。$S$ 的全体等价类的集合称为集合 $S$ 在等价关系下的<strong>商集</strong>，记 $S / \sim$</p>
