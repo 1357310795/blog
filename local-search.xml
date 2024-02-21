@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>近世代数笔记</title>
+    <link href="/2024/02/21/%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0%E7%AC%94%E8%AE%B0/"/>
+    <url>/2024/02/21/%E8%BF%91%E4%B8%96%E4%BB%A3%E6%95%B0%E7%AC%94%E8%AE%B0/</url>
+    
+    <content type="html"><![CDATA[<h2 id="第一章-群"><a href="#第一章-群" class="headerlink" title="第一章 群"></a>第一章 群</h2><h3 id="二元关系"><a href="#二元关系" class="headerlink" title="二元关系"></a>二元关系</h3><p>设 $S$ 是一个<strong>非空集合</strong>，$\mathcal{R}$ 是关于 $S$ 的元素的一个条件。如果对 $S$ 中<strong>任意</strong>一个<strong>有序</strong>元素对 $(a,b)$，我们总能<strong>确定</strong> $a$ 与 $b$ 是否满足条件 $\mathcal{R}$，就称 $\mathcal{R}$ 是 $S$ 的一个<strong>关系</strong>。如果 $a$ 与 $b$ 满足条件 $\mathcal{R}$，则称 $a$ 与 $b$ 有关系 $\mathcal{R}$，记作 $a\mathcal{R}b$；否则称 $a$ 与 $b$ 无关系 $\mathcal{R}$。关系 $\mathcal{R}$ 也称为<strong>二元关系</strong></p><h3 id="等价关系"><a href="#等价关系" class="headerlink" title="等价关系"></a>等价关系</h3><p>设 $\mathcal{R}$ 是非空集合 $S$ 的一个关系，如果 $\mathcal{R}$ 满足</p><ul><li>反身性，即对任意的 $a \in S$，有 $a \mathcal{R} a$</li><li>对称性，即若 $a \mathcal{R} b$，则 $b \mathcal{R} a$</li><li>传递性，即若 $a \mathcal{R} b$，且 $b \mathcal{R} c$，则 $a \mathcal{R} c$</li></ul><p>则称 $\mathcal{R}$ 是 $S$ 的一个<strong>等价关系</strong>，并且如果 $a \mathcal{R} b$，则称 $a$ 等价于 $b$，记作 $a \sim b$</p><h3 id="等价类"><a href="#等价类" class="headerlink" title="等价类"></a>等价类</h3><p>如果是集合 $S$ 的一个等价关系，对 $a \in S$，令</p><script type="math/tex; mode=display">[a]=\{x \in S \mid x \sim a\}</script><p>称子集 $[a]$ 为 $S$ 的一个<strong>等价类</strong>。$S$ 的全体等价类的集合称为集合 $S$ 在等价关系下的<strong>商集</strong>，记 $S / \sim$</p><h3 id="同余关系与剩余类"><a href="#同余关系与剩余类" class="headerlink" title="同余关系与剩余类"></a>同余关系与剩余类</h3><p>设 $m$ 是正整数，在整数集 $\mathbf{Z}$ 中，规定</p><script type="math/tex; mode=display">a \mathcal{R} b \Longleftrightarrow m \mid a-b,\quad \forall a,b \in \mathbf{Z}</script><p>则</p><ul><li>对任意整数 $a$，有 $m \mid a-a$</li><li>若 $m \mid a-b$，则 $m \mid b-a$</li><li>若 $m|a-b$，$m|b-c$，则 $m \mid a-c$<br>所以 $\mathcal{R}$ 是 $\mathbb{Z}$ 的一个等价关系。显然 $a$ 与 $b$ 等价当且仅当 $a$ 与 $b$ 被 $m$ 除有相同的余数，因此称这个关系为<strong>同余关系</strong>，并记作 $a \equiv b(\bmod m)$</li></ul><p>设 $a \in \mathbb{Z}$，则</p><script type="math/tex; mode=display">\begin{aligned}{[a] } & =\{x \in \mathbb{Z} \mid x \equiv a \quad(\bmod m)\} \\& =\{x \in \mathbb{Z}|m| x-a\} \\& =\{a+m z \mid z \in \mathbb{Z}\},\end{aligned}</script><p>$[a]$ 称为整数集 $\mathbb{Z}$ 的一个（与 $a$ 同余的）<strong>模 m 剩余类</strong>，在数论中，$[a]$ 常记作 $\bar{a}$，而相应的商集称为 $\mathbb{Z}$ 的模 m 剩余类集，记作 $\mathbb{Z}_{m}$<br>由</p><script type="math/tex; mode=display">\bar{a}=\bar{b} \Longleftrightarrow m \mid a-b,</script><p>易得</p><script type="math/tex; mode=display">\begin{array}{l}\overline{0}=\{\cdots,-2 m,-m,0,m,2 m,\cdots\},\\\overline{1}=\{\cdots,-2 m+1,-m+1,1,m+1,2 m+1,\cdots\},\\\cdots \cdots \\\overline{m-1}=\{\cdots,-2 m-1,-m-1,-1,m-1,2 m-1,\cdots\}\end{array}</script><p>是模 $m$ 的全体不同的剩余类，所以</p><script type="math/tex; mode=display">\mathbb{Z}_{m}=\{\overline{0},\overline{1},\overline{2},\cdots,\overline{m-1}\}</script><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><p>如果非空集合 $S$ 是它的某些两两不相交的非空子集的并，则称这些子集为集合 $S$ 的一种<strong>分类</strong>，其中每个子集称为 $S$ 一个<strong>类</strong>。如果 $S$ 的子集族 $\left\{S_{i} \mid i \in I\right\}$ 构成 $S$ 的一种分类，则记作 $\mathcal{P}=\left\{S_{i} \mid i \in I\right\}$ 由此定义可知，集合 $S$ 的子集族 $\left\{S_{i} \mid i \in I\right\}$ 构成 $S$ 的一种分类当且仅当</p><ul><li>$S=\bigcup_{i \in I} S_{i}$</li><li><p>$S_{i} \cap S_{j}=\varnothing$，$i \neq j$</p></li><li><p>第一个条件说明 $\left\{S_{i}\right\}$ 这些子集<strong>无遗漏地包含</strong>了 $S$ 的全部元素</p></li><li>第二个条件说明两个不同的子集无公共元素，从而 $S$ 的元素属于且仅属于一个子集</li><li>这表明，$S$ 的一个分类必须满足<strong>不漏不重</strong>的原则</li></ul><h3 id="分类与等价关系的关系"><a href="#分类与等价关系的关系" class="headerlink" title="分类与等价关系的关系"></a>分类与等价关系的关系</h3><ul><li>集合 $S$ 的任何一个等价关系都确定了 $S$ 的一种分类，且其中每一个类都是集合 $S$ 的一个等价类。</li><li>反之，集合 $S$ 的任何一种分类也都给出了集合 $S$ 的一个等价关系，且相应的等价类就是原分类中的那些类。</li><li>也就是说，一个集合的分类可以通过等价关系来描述；另一方面，等价关系也可以用集合的分类来表示</li></ul><h3 id="等价关系数目"><a href="#等价关系数目" class="headerlink" title="等价关系数目"></a>等价关系数目</h3><p>如果用 $B(n)$ 表示一个具有 $n$ 个元素的集合上的不同等价关系的个数，则有下列的递推公式：</p><script type="math/tex; mode=display">B(n+1)=\sum_{k=0}^{n} \mathrm{C}_{n}^{k} B(k),\quad n \geqslant 1</script><p>其中 $\mathrm{C}_{n}^{k}$ 为二项式系数，并规定 $B(0)=1,B(1)=1$</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>大学学习生活</category>
+      
+      <category>数学</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>学习</tag>
+      
+      <tag>数学</tag>
+      
+      <tag>大学</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>驾考科目一笔记</title>
     <link href="/2024/01/21/%E9%A9%BE%E8%80%83%E7%A7%91%E7%9B%AE%E4%B8%80/"/>
     <url>/2024/01/21/%E9%A9%BE%E8%80%83%E7%A7%91%E7%9B%AE%E4%B8%80/</url>
