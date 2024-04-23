@@ -245,7 +245,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2024年3月16日 晚上
+                  本文最后更新于：2024年4月21日 晚上
                 
               </p>
             
@@ -424,8 +424,8 @@ U_{n} & =\left\{x \in \mathbf{C} \mid x^{n}=1\right\} \\
 \end{aligned}</script>关于数的乘法构成一个 $n$ 阶交换群，通常称这个群为 <strong>n 次单位根群</strong></li>
 <li>设 $m$ 是大于 $1$ 的正整数，则 $\mathbf{Z}_{m}$ 关于剩余类的加法构成加群，这个群称为 $\mathbf{Z}$ 的模 $m$ 剩余类加群</li>
 <li>设 $m$ 是大于 $1$ 的正整数，记<script type="math/tex; mode=display">
-U(m)=\left\{\bar{a} \in \mathbf{Z}_{m} \mid(a,m)=1\right\},</script>则 $U(m)$ 关于剩余类的乘法构成群，群 $(U(m),\cdot)$ 称为 $\mathbf{Z}$ 的模 $m$ 单位群，显然这是一个交换群。当 $p$ 为素数时，$U(p)$ 常记作 $\mathbf{Z}_{p}^{*}$，易知<script type="math/tex; mode=display">
-\mathbf{Z}_{p}^{*}=\{\overline{1},\overline{2},\cdots,\overline{p-1}\}</script>由初等数论可知，$U(m)$ 的阶等于欧拉函数 $\phi(m)$</li>
+U(m)=\left\{\bar{a} \in \mathbf{Z}_{m} \mid(a,m)=1\right\},</script>则 $U(m)$ 关于剩余类的乘法构成群，群 $(U(m),\cdot)$ 称为 $\mathbf{Z}$ 的模 $m$ 单位群，显然这是一个交换群，不一定是循环群。当 $p$ 为素数时，$U(p)$ 常记作 $\mathbf{Z}_{p}^{*}$，易知<script type="math/tex; mode=display">
+\mathbf{Z}_{p}^{*}=\{\overline{1},\overline{2},\cdots,\overline{p-1}\}</script>这是一个循环群，$U(m)$ 的阶等于欧拉函数 $\phi(m)$</li>
 </ul>
 <h3 id="子群"><a href="#子群" class="headerlink" title="子群"></a>子群</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>设 $G$ 是一个群，$H$ 是 $G$ 的一个非空子集。如果 $H$ 关于 $G$ 的运算也构成群，则称 $H$ 为 $G$ 的一个<strong>子群</strong>，记作 $H&lt;G$</p>
 <ul>
@@ -483,10 +483,11 @@ a^{l_{1}} a^{l_{2}} \cdots a^{l_{k}}=a^{\sum_{i=1}^{k} l_{i}}</script>所以<scr
 </ul>
 <h3 id="群的同构"><a href="#群的同构" class="headerlink" title="群的同构"></a>群的同构</h3><h4 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h4><p>设 $G$ 与 $G^{\prime}$ 是两个群，$\phi$ 是 $G$ 到 $G^{\prime}$ 的一一对应，使</p>
 <script type="math/tex; mode=display">
-\phi(a \cdot b)=\phi(a) \cdot \phi(b),\quad \forall a,b \in G,</script><p>则称 $\phi$ 为群 $G$ 到 $G^{\prime}$ 的一个<strong>同构映射</strong>，简称<strong>同构</strong>，并称群 $G$ 与 $G^{\prime}$ 同构，记作</p>
+\phi(a \cdot b)=\phi(a) \cdot \phi(b),\quad \forall a,b \in G,</script><p>则称 $\phi$ 为群 $G$ 到 $G^{\prime}$ 的一个<strong>同构映射</strong>，简称<strong>同构</strong>，并称群 $G$ 与 $G^{\prime}$ <strong>同构</strong>，记作</p>
 <script type="math/tex; mode=display">
 \phi: \, G \cong G^{\prime}</script><ul>
 <li>群 $G$ 到它自身的同构映射称为群 $G$ 的<strong>自同构</strong>，恒等同构是自同构</li>
+<li>同构映射一定是可逆变换</li>
 <li>同构的群之间可以有不止一个同构映射</li>
 <li>在群同构的定义中，虽然使用了同一个符号“ $\cdot$ ”表示群 $G$ 与 $G^{\prime}$ 的运算，但事实上，$a \cdot b$ 与 $\phi(a) \cdot \phi(b)$ 分别是在群 $G$ 与群 $G^{\prime}$ 中进行的运算，一般来说它们是不相同的</li>
 </ul>
@@ -521,6 +522,205 @@ a^{l_{1}} a^{l_{2}} \cdots a^{l_{k}}=a^{\sum_{i=1}^{k} l_{i}}</script>所以<scr
 <h4 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h4><p>非空集合 $X$ 的全体可逆变换关于变换的合成所构成的群 $S_x$ 称为集合 $X$ 的<strong>对称群</strong>，$S_x$ 的任一子群称为 $X$ 的一个<strong>变换群</strong></p>
 <h4 id="凯莱定理"><a href="#凯莱定理" class="headerlink" title="凯莱定理"></a>凯莱定理</h4><p><strong>每一个群都同构于一个变换群。</strong></p>
 <p>（Todo：凯莱定理的证明）</p>
+<h3 id="阶"><a href="#阶" class="headerlink" title="阶"></a>阶</h3><h4 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h4><p>设 $G$ 是一个群，$e$ 是 $G$ 的单位元，$a \in G$。如果存在正整数 $r$，使 $a^{r}=e$，则称 $a$ 是<strong>有限阶</strong>的，否则称 $a$ 是<strong>无限阶</strong>的。使 $a^{r}=e$<strong> 的最小正整数</strong> $r$ 称为元素 $a$ 的<strong>阶</strong>，记作 $\operatorname{ord} a=r$。如果 $a$ 是无限阶的，则记作 $\operatorname{ord} a=\infty$</p>
+<ul>
+<li>在任何一个群中，单位元的阶总是 $1$</li>
+<li>在整数加群 $\mathbf{Z}$ 中，除零元 $0$ 外，每个元素都是无限阶的</li>
+</ul>
+<h4 id="性质-3"><a href="#性质-3" class="headerlink" title="性质"></a>性质</h4><p>设 $G$ 为群，$e$ 为 $G$ 的单位元</p>
+<ul>
+<li>对任意的 $a \in G$，有 $\operatorname{ord} a=\operatorname{ord} a^{-1}$</li>
+<li>设 $\operatorname{ord} a=n$，如果有 $m \in \mathbf{Z}$，使 $a^{m}=e$，则 $n \mid m$</li>
+<li>设 $\operatorname{ord} a=n$，则对任意的 $m \in \mathbf{Z}$，$\operatorname{ord} a^{m}=\frac{n}{(n,m)}$</li>
+<li>设 $\operatorname{ord} a=n$，$\operatorname{ord}  b=m$，如果 $a b=b a$，且 $\operatorname{gcd}(n,m)=1$，则 $\operatorname{ord}(a b)=m n$</li>
+</ul>
+<p>设 $G$ 是一个有限群，$|G|=n$，则对任意的 $a \in G$，$a$ 是有限阶的，且 $\operatorname{ord} a\mid \left| G \right|$，即有限群的任何一个元素的阶都是群阶数的因子。</p>
+<h3 id="循环群"><a href="#循环群" class="headerlink" title="循环群"></a>循环群</h3><h4 id="定义-5"><a href="#定义-5" class="headerlink" title="定义"></a>定义</h4><p>设 $G$ 是群，如果存在 $a \in G$，使得 $G=\langle a\rangle$（a 的生成子群），则称 $G$ 为一个<strong>循环群</strong>，并称 $a$ 为 $G$ 的一个<strong>生成元</strong>。当 $G$ 的元素个数无限时，称 $G$ 为<strong>无限循环群</strong>；当 $G$ 的元素个数为 $n$ 时，称 $G$ 为 <strong>n 阶循环群</strong></p>
+<ul>
+<li>整数加群 $\mathbf{Z}$ 是无限循环群</li>
+<li>设 $m$ 为正整数，则模 $m$ 剩余类加群 $\mathbf{Z}_{m}$ 是 $m$ 阶循环群</li>
+<li>$n$ 次单位根群 $U_{n}$ 是一个 $n$ 阶循环群</li>
+</ul>
+<h4 id="性质-4"><a href="#性质-4" class="headerlink" title="性质"></a>性质</h4><p>设 $p$ 为素数，则 $\mathbf{Z}_{p}^{*}$ 是 $p-1$ 阶循环群。对于循环群 $\mathbf{Z}_{p}^{*}$，如果 $\bar{a}$ 是 $\mathbf{Z}_{p}^{*}$ 的生成元，则称数 $a$ 是 $\mathbf{Z}$ 的一个<strong>模 p 原根</strong></p>
+<p>设 $G=\langle a\rangle$ 为循环群，则</p>
+<ul>
+<li>如果 $|G|=\infty$，则 $a$ 与 $a^{-1}$ 是 $G$ 的两个仅有的生成元</li>
+<li>如果 $|G|=n$，则 $G$ 恰有 $\phi(n)$ 个生成元，且 $a^{r}$ 是 $G$ 的生成元的充分必要条件是 $(n,r)=1$，其中，$\phi(n)$ 是欧拉函数</li>
+</ul>
+<p>原根判定定理：<br>设 $m \geqslant 3$，$(g,m)=1$，则 $g$ 是模 $m$ 的原根的充要条件是，对于 $\varphi(m)$ 的每个素因数 $p$，都有 $g^{\frac{q(m)}{p}} \not \equiv 1(\bmod m)$</p>
+<p>循环群的任一子群也是循环群</p>
+<ul>
+<li>设 $\operatorname{ord} a=n$，$r$ 是任一整数。如果 $(n,r)=d$，则<script type="math/tex; mode=display">
+\left\langle a^{r}\right\rangle=\left\langle a^{d}\right\rangle</script></li>
+<li>设 $G=\langle a\rangle$ 为循环群，<ul>
+<li>如果 $|G|=\infty$，则 $G$ 的全部子群为<script type="math/tex; mode=display">
+\left\{\left\langle a^{d}\right\rangle \mid d=0,1,2,\cdots\right\}</script></li>
+<li>如果 $|G|=n$，则 $G$ 的全部子群为<script type="math/tex; mode=display">
+\left\{\left\langle a^{d}\right\rangle \mid d \mathrm{为} n \mathrm{的正因子}\right\}</script></li>
+</ul>
+</li>
+</ul>
+<h4 id="循环群的结构定理"><a href="#循环群的结构定理" class="headerlink" title="循环群的结构定理"></a>循环群的结构定理</h4><p>设 $G$ 为循环群</p>
+<ul>
+<li>如果 $G=\langle a\rangle$ 是无限循环群，则 $G \cong(\mathbf{Z},+)$</li>
+<li>如果 $G=\langle a\rangle$ 是 $n$ 阶循环群，则 $G \cong\left(\mathbf{Z}_{n},+\right)$</li>
+</ul>
+<h3 id="置换群与对称群"><a href="#置换群与对称群" class="headerlink" title="置换群与对称群"></a>置换群与对称群</h3><p>前面提到非空集合的全体可逆变换关于映射的合成构成集合 $X$ 的对称群 $S_X$，并且把 $S_X$ 的任一子群叫做 $X$ 的一个变换群。如果 $X$ 是由 $n$ 个元素组成的有限集合，则通常把的一个可逆变换叫做一个 $n$ 阶置换，称 $S_X$ 为 <strong>n 次对称群</strong>，并把 $S_X$ 记作 $S_n$（因为集合 $X$ 有哪些元素与群的特性无关），同时称 $S_n$ 的子群为<strong>置换群</strong>。</p>
+<ul>
+<li>定理：<strong>每一个有限群都同构于一个置换群</strong></li>
+</ul>
+<h4 id="置换"><a href="#置换" class="headerlink" title="置换"></a>置换</h4><p>由于集合 $X$ 的元素本身与我们所讨论的问题无关，所以可不妨记</p>
+<script type="math/tex; mode=display">
+X=\{1,2,3,\cdots,n\}</script><p>设 $\sigma$ 为 $X$ 的任一置换，如果 $\sigma$ 把 $1$ 映成 $k_{1}$，$2$ 映成 $k_{2}$，……，$n$ 映成 $k_{n}$，则可以把这个置换记作</p>
+<script type="math/tex; mode=display">
+\sigma=\left(\begin{array}{ccccc}
+1 & 2 & 3 & \cdots & n \\
+k_{1} & k_{2} & k_{3} & \cdots & k_{n}
+\end{array}\right)</script><p>如果固定第一行元素的次序，则第二行就是 $1,2,\cdots,n$ 的一个排列，且<strong>每一个置换都唯一对应了一个这样的排列</strong>。反之，每一个 $n$ 阶排列也可按上式得到唯一的一个 $n$ 阶置换 。由于 $n$ 个数共有 $n!$ 个 $n$ 阶排列，所以 $n$ 个元素的集合共有 $n!$ 个 $n$ 阶置换。换句话说，$n$ 次对称群 $S_{n}$ 的阶是 $n!$</p>
+<h4 id="置换的合成"><a href="#置换的合成" class="headerlink" title="置换的合成"></a>置换的合成</h4><p>置换的乘法习惯上总是按<strong>从右到左</strong>的顺序进行的。在本教材中，总是按从右到左的顺序计算置换的乘法。</p>
+<p>两个置换 $\sigma,\tau$ 的乘积 $\sigma \cdot \tau$ 是按通常映射合成的法则进行的，即</p>
+<script type="math/tex; mode=display">
+(\sigma \cdot \tau)(i)=\sigma(\tau(i)),\quad i=1,2,\cdots,n,</script><p>它是先用 $\tau$ 作用于 $i$，再用 $\sigma$ 作用于 $\tau(i)$</p>
+<ul>
+<li>当 $n \geqslant 3$ 时，$S_{n}$ 都不是交换群</li>
+</ul>
+<h4 id="置换的性质"><a href="#置换的性质" class="headerlink" title="置换的性质"></a>置换的性质</h4><p>设置换</p>
+<script type="math/tex; mode=display">
+\tau=\left(\begin{array}{cccc}
+1 & 2 & \cdots & n \\
+k_{1} & k_{2} & \cdots & k_{n}
+\end{array}\right),</script><p>则对任一 $n$ 阶置换 $\sigma$，</p>
+<script type="math/tex; mode=display">
+\sigma \tau \sigma^{-1}=\left(\begin{array}{cccc}
+\sigma(1) & \sigma(2) & \cdots & \sigma(n) \\
+\sigma\left(k_{1}\right) & \sigma\left(k_{2}\right) & \cdots & \sigma\left(k_{n}\right)
+\end{array}\right)</script><h4 id="轮换"><a href="#轮换" class="headerlink" title="轮换"></a>轮换</h4><p>设 $\sigma$ 是一个 $n$ 阶置换，如果存在 $1$ 到 $n$ 中的 $r$ 个不同的数 $i_{1},i_{2},\cdots,i_{r}$，使</p>
+<script type="math/tex; mode=display">
+\sigma\left(i_{1}\right)=i_{2},\sigma\left(i_{2}\right)=i_{3},\cdots,\sigma\left(i_{r-1}\right)=i_{r},\sigma\left(i_{r}\right)=i_{1},</script><p>并且 $\sigma$ 保持其余的元素不变，则称 $\sigma$ 是一个长度为 $r$ 的<strong>轮换</strong>，简称 $r$ 轮换，记作</p>
+<script type="math/tex; mode=display">
+\sigma=\left(i_{1} i_{2} \cdots i_{r}\right)</script><ul>
+<li>2 轮换称为对换</li>
+<li>1 轮换就是恒等置换，并且显然有<script type="math/tex; mode=display">
+(1)=(2)=\cdots=(n)</script></li>
+<li>轮换的表示一般不是唯一的 $.$ 例如，置换<script type="math/tex; mode=display">
+\sigma=\left(\begin{array}{ccccccc}
+1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+2 & 4 & 3 & 6 & 5 & 1 & 7
+\end{array}\right)</script>可分别表示为<script type="math/tex; mode=display">
+\begin{aligned}
+\sigma 
+& =\left(\begin{array}{llll}
+1 & 2 & 4 & 6
+\end{array}\right) \\
+& =\left(\begin{array}{llll}
+2 & 4 & 6 & 1
+\end{array}\right) \\
+& =\left(\begin{array}{llll}
+4 & 6 & 1 & 2
+\end{array}\right) \\
+& =\left(\begin{array}{llll}
+6 & 1 & 2 & 4 
+\end{array}\right) \\
+\end{aligned}</script></li>
+</ul>
+<h4 id="轮换的性质"><a href="#轮换的性质" class="headerlink" title="轮换的性质"></a>轮换的性质</h4><p>设 $\sigma=\left(i_{1} i_{2} \cdots i_{r}\right)$ 与 $\tau=\left(j_{1} j_{2} \cdots j_{s}\right)$ 是两个轮换，如果</p>
+<script type="math/tex; mode=display">
+i_{k} \neq j_{l},\quad k=1,2,\cdots,r;\,l=1,2,\cdots,s</script><p>则称 $\sigma$ 与 $\tau$ 为两个<strong>不相交</strong>的轮换</p>
+<ul>
+<li>任何两个不相交轮换的乘积是可以交换的</li>
+<li>一个置换不一定就是轮换，但是每一个置换可表为一些不相交轮换的乘积</li>
+<li>将一个置换分解为不相交轮换的乘积，如果不考虑因子的次序和乘积中 $1$ 轮换的个数，则这个分解式是唯一的</li>
+</ul>
+<p>对于轮换的乘积，容易证明下面两个有用的等式：</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+(k\ l)(k\ a \cdots b)(l\ c \cdots d)=(k\ a \cdots b\ l\ c \cdots d) \\
+(k\ l)(k\ a \cdots b\ l\ c \cdots d)=(k\ a \cdots b)(l\ c \cdots d)
+\end{array}</script><script type="math/tex; mode=display">
+(k\ c \cdots d)(k\ a \cdots b)=(k\ a \cdots b\ c \cdots d)</script><script type="math/tex; mode=display">
+\begin{array}{l}
+(x\ y\ c \cdots d)(x\ y\ a \cdots b)=(x\ c \cdots d)(y\ a \cdots b) \\
+(y\ x\ c \cdots d)(x\ y\ a \cdots b)=(x)(y\ a \cdots b\ c \cdots d) \\
+\end{array}</script><script type="math/tex; mode=display">
+\begin{array}{l}
+(x\ y\ z\ c \cdots d)(x\ y\ z\ a \cdots b)=(x\ z\ a \cdots b\ y\ c \cdots d)\\
+(x\ z\ y\ c \cdots d)(x\ y\ z\ a \cdots b)=(x\ c \cdots d)(y)(z\ a \cdots b)\\
+(y\ x\ z\ c \cdots d)(x\ y\ z\ a \cdots b)=(x)(y\ c \cdots d)(z\ a \cdots b)\\
+(y\ z\ x\ c \cdots d)(x\ y\ z\ a \cdots b)=(y\ x\ z\ a \cdots b\ c \cdots d)\\
+(z\ x\ y\ c \cdots d)(x\ y\ z\ a \cdots b)=(x\ c \cdots d\ z\ a \cdots b\ y)\\
+(z\ y\ x\ c \cdots d)(x\ y\ z\ a \cdots b)=(x)(y)(z\ a \cdots b\ c \cdots d)\\
+\end{array}</script><ul>
+<li>其中 $a,\cdots,b,c,\cdots,d,k,l,x,y,z$ 为互不相同的正整数</li>
+<li>注意置换是从右到左</li>
+</ul>
+<p>如果 $\sigma$ 是一个 $r$ 轮换，则 $\operatorname{ord} \sigma=r$<br>如果 $\sigma$ 是一些不相交轮换的乘积</p>
+<script type="math/tex; mode=display">
+\sigma=\sigma_{1} \sigma_{2} \cdots \sigma_{s}</script><p>其中 $\sigma_{i}$ 是 $r_{i}$ 轮换，则 $\operatorname{ord} \sigma=\left[r_{1},r_{2},\cdots,r_{s}\right]$</p>
+<ul>
+<li>每个置换都可表为对换的乘积</li>
+<li>将一个置换表为对换的乘积，表法一般不唯一</li>
+<li>将一个置换表为对换的乘积，所用对换个数的奇偶性是唯一的</li>
+</ul>
+<p>可表成偶数个对换的乘积的置换叫<strong>偶置换</strong>，可表成奇数个对换的乘积的置换叫<strong>奇置换</strong></p>
+<ul>
+<li>任何两个偶（奇）置换之积是偶置换</li>
+<li>一个偶置换与一个奇置换之积是奇置换</li>
+<li><p>一个偶（奇）置换的逆置换仍是一个偶（奇）置换</p>
+</li>
+<li><p>当 $n&gt;1$ 时，在全体 $n$ 阶置换中，奇置换与偶置换各有 $\frac{n!}{2}$ 个</p>
+</li>
+<li>在 $S_{n}$ 中，全体偶置换构成 $S_{n}$ 的子群</li>
+<li>由 $S_{n}$ 的全体偶置换所构成的子群称为 <strong>n 次交代群</strong>，记作 $A_{n}$</li>
+</ul>
+<h3 id="子集的运算"><a href="#子集的运算" class="headerlink" title="子集的运算"></a>子集的运算</h3><h4 id="乘积"><a href="#乘积" class="headerlink" title="乘积"></a>乘积</h4><p>设 $A$ 与 $B$ 是群 $G$ 的两个非空子集，称集合</p>
+<script type="math/tex; mode=display">
+A B=\{a b \mid a \in A,b \in B\}</script><p>为群的子集 $A$ 与 $B$ 的<strong>乘积</strong><br>如果 $g$ 为群 $G$ 的一个元素，$A={g}$，则 $A B$ 与 $B A$ 分别简记为</p>
+<script type="math/tex; mode=display">
+g B=\{g b \mid b \in B\} \quad \mathrm{和} \quad B g=\{b g \mid b \in B\}</script><ul>
+<li>当 $G$ 为加群时，上述记号应相应地改为<script type="math/tex; mode=display">
+\begin{aligned}
+A+B & =\{a+b \mid a \in A,b \in B\},\\
+g+A & =\{g+a \mid a \in A\},\\
+A+g & =\{a+g \mid a \in A\},
+\end{aligned}</script>并称 $A+B$ 为 $A$ 与 $B$ 的<strong>和</strong></li>
+</ul>
+<h4 id="简单性质"><a href="#简单性质" class="headerlink" title="简单性质"></a>简单性质</h4><ul>
+<li>“和”有交换律<script type="math/tex; mode=display">
+A+B=B+A,\quad g+A=A+g</script></li>
+<li>当群 $G$ 不是交换群时，$A B$ 与 $B A$ 一般是不相同的</li>
+<li>即使 $A B=B A$，也并不意味着对任意的 $a \in A$，$b \in B$，一定有 $a b=b a$</li>
+<li>$A B=B A$ 的意思是，对任意的 $a \in A, b \in B$，存在 $a^{\prime} \in A, b^{\prime} \in B$，使 $a b=b^{\prime} a^{\prime}$</li>
+<li>由 $A B=A C$，一般不能推出 $B=C$</li>
+</ul>
+<h4 id="子集运算的性质定理"><a href="#子集运算的性质定理" class="headerlink" title="子集运算的性质定理"></a>子集运算的性质定理</h4><p>设 $A,B,C$ 是群 $G$ 的非空子集，$g$ 是群 $G$ 的一个元素，则</p>
+<ul>
+<li>$A(B C)=(A B) C$</li>
+<li>如果 $g A=g B$ 或 $A g=B g$，则 $A=B$</li>
+<li>如果 $H$ 是群 $G$ 的子群，则 $H \cdot H=H$</li>
+<li>如果 $A, B$ 是群 $G$ 的两个子群，则 $A B$ 也是群 $G$ 的子群的充分必要条件是 $A B=B A$</li>
+</ul>
+<h3 id="陪集"><a href="#陪集" class="headerlink" title="陪集"></a>陪集</h3><h4 id="定义-6"><a href="#定义-6" class="headerlink" title="定义"></a>定义</h4><p>设 $G$ 是群，$H$ 是 $G$ 的子群。对任意的 $a \in G$，群 $G$ 的子集</p>
+<script type="math/tex; mode=display">
+a H=\{a h \mid h \in H\} \quad \mathrm{与} H a=\{h a \mid h \in H\}</script><p>分别称为 $H$ 在 $G$ 中的<strong>左陪集</strong>和<strong>右陪集</strong></p>
+<ul>
+<li>$H$ 的一个陪集<strong>一般</strong>不是 $G$ 的子群</li>
+<li>$G$ 的两个不同的元素<strong>可能</strong>生成 $H$ 的同一个左陪集</li>
+<li>$H$ 的一个左陪集 $aH$ <strong>一般</strong>不等于相应的右陪集 $Ha$</li>
+</ul>
+<h4 id="性质-5"><a href="#性质-5" class="headerlink" title="性质"></a>性质</h4><p>设 $H$ 是群 $G$ 的子群，$a,b \in G$，则</p>
+<ul>
+<li>$a \in a H$</li>
+<li>$a H=H$ 的充分必要条件是 $a \in H$</li>
+<li>$a H$ 为子群的充分必要条件是 $a \in H$</li>
+<li>$a H=b H$ 的充分必要条件是 $a^{-1} b \in H$</li>
+<li>$a H$ 与 $b H$ 或者完全相同，或者无公共元素</li>
+<li>$|a H|=|b H|$</li>
+</ul>
+<p>由此定理可以知道，群 $G$ 可表示成子群 $H$ 的一些互不相交的左陪集之并。因此，群 $G$ 的子群 $H$ 的全体左陪集的集合组成群 $G$ 的一个分类，即</p>
+<script type="math/tex; mode=display">
+G=\bigcup_{g_{i} \in G} g_{i} H</script><p>其中 $g_{i}$ 取遍 $H$ 的不同陪集的代表元素。特别地，如果 $G$ 为有限群，则</p>
+<script type="math/tex; mode=display">
+|G|=\sum_{i=1}^{t}\left|g_{i} H\right|=\sum_{i=1}^{t}|H|=t|H|</script><p>其中 $t$ 为 $H$ 的不同左陪集的个数</p>
 
             </div>
             <hr>
