@@ -245,7 +245,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2024年4月21日 晚上
+                  本文最后更新于：2024年5月2日 中午
                 
               </p>
             
@@ -721,7 +721,156 @@ a H=\{a h \mid h \in H\} \quad \mathrm{与} H a=\{h a \mid h \in H\}</script><p>
 G=\bigcup_{g_{i} \in G} g_{i} H</script><p>其中 $g_{i}$ 取遍 $H$ 的不同陪集的代表元素。特别地，如果 $G$ 为有限群，则</p>
 <script type="math/tex; mode=display">
 |G|=\sum_{i=1}^{t}\left|g_{i} H\right|=\sum_{i=1}^{t}|H|=t|H|</script><p>其中 $t$ 为 $H$ 的不同左陪集的个数</p>
-
+<h4 id="左陪集与有右陪集"><a href="#左陪集与有右陪集" class="headerlink" title="左陪集与有右陪集"></a>左陪集与有右陪集</h4><p>相应的结论对右陪集也成立：</p>
+<script type="math/tex; mode=display">
+H a=H b \Longleftrightarrow b a^{-1} \in H</script><p>用 $G / H$ 与 $H \backslash G$ 分别表示 $H$ 的全体左陪集和全体右陪集组成的集合，即</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+G / H=\{g H \mid g \in G\} \\
+H \backslash G=\{H g \mid g \in G\}
+\end{array}</script><p>则两者间有下述关系</p>
+<p>设 $H$ 为 $G$ 的子群，则</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\phi: \quad G / H & \longrightarrow H \backslash G,\\
+a H & \longmapsto H a^{-1}
+\end{aligned}</script><p>是 $G / H$ 到 $H \backslash G$ 的<strong>一一对应</strong></p>
+<h4 id="指数"><a href="#指数" class="headerlink" title="指数"></a>指数</h4><p>设 $G$ 是群，$H$ 是 $G$ 的子群。称子群 $H$ 在群 $G$ 中的左陪集或右陪集的个数（有限或无限）为 $H$ 在 $G$ 中的指数，记作 $[G:H]$</p>
+<p>拉格朗日定理：设 $G$ 是一个有限群，$H$ 是 $G$ 的子群，则</p>
+<script type="math/tex; mode=display">
+|G|=|H|[G:H]</script><p>拉格朗日定理说明，有限群 $G$ 的子群 $H$ 的阶数与它在 $G$ 中的指数，都是群 $G$ 的阶数的因子<br>由拉格朗日定理，可以得到下面的推论</p>
+<ul>
+<li>设 $G$ 是有限群，则 $G$ 中每一个元素的阶都是 $|G|$ 的因子</li>
+<li><p>设 $G$ 为有限群，$|G|=n$，则对任意的 $a \in G$，有 $a^{n}=e$</p>
+</li>
+<li><p>应用到模 $p$ 单位群 $\mathbf{Z}_{p}^{*}$（$p$ 是素数），可以得到初等数论中著名的定理：</p>
+</li>
+</ul>
+<p>费马小定理：设 $p$ 为素数，则对任意一个与 $p$ 互素的整数 $a$，有</p>
+<script type="math/tex; mode=display">
+a^{p-1} \equiv 1 \quad(\bmod p)</script><p>应用拉格朗日定理，可以推测在一个有限群中，可能有怎样阶数的子群与元素，只是一种可能性，不能仅仅依据这种可能性，就断定这样的子群或元素一定存在</p>
+<h3 id="各阶群的结构"><a href="#各阶群的结构" class="headerlink" title="各阶群的结构"></a>各阶群的结构</h3><ul>
+<li>一阶群是循环群：$G={e}$</li>
+<li>二阶群是循环群：$G={e, a} = \langle a\rangle$</li>
+<li>三阶群是循环群：$G={e, a, a^2} = \langle a\rangle$</li>
+<li>四阶群是循环群或克莱因四元群：<ul>
+<li>$G={e, a, a^2, a^3} = \langle a\rangle$</li>
+<li>$G={e,a,b,ab}$，$ab=ba$，$a^2=b^2=e$</li>
+</ul>
+</li>
+<li>五阶群是循环群：$G={e, a, a^2, a^3, a^4} = \langle a\rangle$</li>
+<li>六阶群是循环群或三次对称群<ul>
+<li>$G={e, a, a^2, a^3, a^4, a^5} = \langle a\rangle$</li>
+<li>$G \cong S_3$</li>
+</ul>
+</li>
+</ul>
+<h3 id="正规子群"><a href="#正规子群" class="headerlink" title="正规子群"></a>正规子群</h3><h4 id="定义-7"><a href="#定义-7" class="headerlink" title="定义"></a>定义</h4><p>设 $H$ 是群 $G$ 的子群，如果对每个 $a \in G$，都有 $a H=H a$，则称 $H$ 是群 $G$ 的一个<strong>正规子群</strong>或<strong>不变子群</strong>，记作 $H \triangleleft G$</p>
+<ul>
+<li>条件 $a H=H a$ 仅仅表示两个集合 $a H$ 与 $H a$ 相等，不可推出 $a h=h a$ 对 $H$ 中所有的元素 $h$ 都成立</li>
+<li>对任意的 $h \in H$，存在 $h^{\prime} \in H$，使 $a h=h^{\prime} a$</li>
+<li>群 $G$ 的单位元群 ${e}$ 和群 $G$ 本身都是 $G$ 的正规子群，这两个正规子群称为 $G$ 的<strong>平凡正规子群</strong></li>
+<li>如果群 $G$ 只有平凡的正规子群，且 $G \neq{e}$，则称 $G$ 为<strong>单群</strong></li>
+<li>如果 $G$ 是<strong>交换群</strong>，则 $G$ 的一切子群都是 $G$ 的正规子群</li>
+<li>设 $H, K$ 都是 $G$ 的子群，如果 $H$ 是 $G$ 的正规子群且 $H \subseteq K$，则 $H$ 也是 $K$ 的正规子群</li>
+<li>设 $G$ 为群，$H$ 是 $G$ 的子群，如果 $H$ 在 $G$ 中的指数 $[G:H]=2$，则 $H$ 是 $G$ 的正规子群</li>
+<li>若 $H$ 是 $K$ 的正规子群，$K$ 是 $G$ 的正规子群，$K$ 不一定是 $G$ 的正规子群</li>
+</ul>
+<h4 id="性质定理"><a href="#性质定理" class="headerlink" title="性质定理"></a>性质定理</h4><p>设 $G$ 是群，$H$ 是 $G$ 的子群，则下列四个条件等价：</p>
+<ul>
+<li>$H$ 是 $G$ 的正规子群</li>
+<li>对任意的 $a \in G$，有 $a H a^{-1}=H$</li>
+<li>对任意的 $a \in G$，有 $a H a^{-1} \subseteq H$</li>
+<li>对任意的 $a \in G$，$h \in H$，有 $a h a^{-1} \in H$</li>
+</ul>
+<p>设 $G$ 为群，$H_{1}$，$H_{2}$ 是 $G$ 的正规子群，则</p>
+<script type="math/tex; mode=display">
+H_{1} \cap H_{2} \mathrm{与} H_{1} H_{2}</script><p>都是 $G$ 的正规子群</p>
+<ul>
+<li>事实上，前面提到，两个子群的交一定是子群，而两个子群的合成要是子群的充分必要条件是可交换。而只要其中一个子群是正规子群，那么就是可交换的</li>
+</ul>
+<h4 id="陪集的乘法"><a href="#陪集的乘法" class="headerlink" title="陪集的乘法"></a>陪集的乘法</h4><p>正规子群的基本特点是：它的每一个左陪集与相应的右陪集完全一致。因此，对于群 $G$ 的正规子群 $H$，可不必区分它的左陪集 $a H$ 与右陪集 $H a$，而直接称 $a H$ 或 $H a$ 为它的一个<strong>陪集</strong>。用 $G / H$ 表示它的所有陪集组成的集合，即</p>
+<script type="math/tex; mode=display">
+G / H=\{a H \mid a \in G\}</script><p>下面规定 $G / H$ 的运算，以使 $G / H$ 关于给定的运算构成群。</p>
+<p>对任意的 $a H, b H \in G / H$，规定：</p>
+<script type="math/tex; mode=display">
+(a H) \cdot(b H)=(a b) H</script><p>设 $a^{\prime} H=a H$，$b^{\prime} H=b H$，则</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+a^{\prime} H \cdot b^{\prime} H & =\left(a^{\prime} b^{\prime}\right) H=a^{\prime}\left(b^{\prime} H\right)=a^{\prime}(b H)=a^{\prime}(H b) \\
+& =\left(a^{\prime} H\right) b=(a H) b=a(H b)=(a b) H \\
+& =a H \cdot b H
+\end{aligned}</script><p>所以上述乘法是 $G / H$ 的一个代数运算。</p>
+<p>设 $G$ 是群，$H$ 是 $G$ 的一个正规子群，则 $H$ 的所有陪集组成的集合</p>
+<script type="math/tex; mode=display">
+G / H=\{a H \mid a \in G\}</script><p>关于陪集的乘法 $a H \cdot b H=(a b) H$ 构成群。</p>
+<h3 id="商群"><a href="#商群" class="headerlink" title="商群"></a>商群</h3><p>设 $G$ 为群，$H$ 是 $G$ 的正规子群。$H$ 的所有陪集 $G / H$ 关于陪集的乘法构成的群称为群 $G$ 关于子群 $H$ 的<strong>商群</strong>，仍记作 $G / H$。</p>
+<p>设 $G$ 为群，$H$ 是 $G$ 的正规子群，则</p>
+<ul>
+<li>商群 $G / H$ 的单位元是 $e H(=H)$</li>
+<li>$a H$ 在 $G / H$ 中的逆元是 $a^{-1} H$</li>
+</ul>
+<p>设 $G$ 为群，$H$ 是 $G$ 的任一子群。如果 $G$ 是交换群，则商群 $G / H$ 也是交换群。由于 $H$ 在 $G$ 中的指数 $[G:H]$ 就是 $H$ 在 $G$ 中的陪集的个数，所以 $|G / H|= [G:H]$。特别地，当 $G$ 是有限群时，</p>
+<script type="math/tex; mode=display">
+|G / H|=[G:H]=\frac{|G|}{|H|}</script><p>有限群 $G$ 的商群的阶是群 $G$ 的阶数的因子。</p>
+<h3 id="同态"><a href="#同态" class="headerlink" title="同态"></a>同态</h3><h4 id="定义-8"><a href="#定义-8" class="headerlink" title="定义"></a>定义</h4><p>设 $G$ 与 $G^{\prime}$ 是两个群，$\phi$ 是 $G$ 到 $G^{\prime}$ 的映射。如果对任意的 $a,b \in G$ 有</p>
+<script type="math/tex; mode=display">
+\phi(a b)=\phi(a) \phi(b)</script><p>则称 $\phi$ 是群 $G$ 到 $G^{\prime}$ 的一个<strong>同态映射</strong>，简称<strong>同态</strong></p>
+<ul>
+<li>当同态映射 $\phi$ 是满射时，称 $\phi$ 为群 $G$ 到 $G^{\prime}$ 的<strong>满同态</strong>，并称群 $G$ 与 $G^{\prime}$ <strong>同态</strong>，记作 $\phi: G \sim G^{\prime}$（或 $G \stackrel{\phi}{\sim} G^{\prime}$）</li>
+<li>当同态映射 $\phi$ 是单射时，称 $\phi$ 为 $G$ 到 $G^{\prime}$ 的<strong>单同态</strong></li>
+<li>群的同构映射一定是既单且满的同态映射</li>
+<li>反之，当群 $G$ 到群 $G^{\prime}$ 的同态映射 $\phi$ 既是单同态又是满同态时，$\phi$ 是 $G$ 到 $G^{\prime}$ 的同构映射</li>
+<li>在上式中，虽然用同一个记号“$\cdot$”来表示群 $G$ 与群 $G^{\prime}$ 的运算，但这不表示等式两边的运算 $a b$ 与 $\phi(a) \phi(b)$ 是一样的</li>
+</ul>
+<h4 id="自然同态"><a href="#自然同态" class="headerlink" title="自然同态"></a>自然同态</h4><p>设 $G$ 为群，$H$ 是 $G$ 的正规子群，对商群 $G / H$，令</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\eta:G & \longrightarrow G / H,\\
+a & \longrightarrow a H,
+\end{aligned}</script><p>则 $\eta$ 是满映射，且对任意 $a$，$b \in G$，有</p>
+<script type="math/tex; mode=display">
+\eta(a b)=(a b) H=a H \cdot b H=\eta(a) \eta(b)</script><p>所以 $\eta$ 是 $G$ 到它的商群 $G / H$ 的同态映射。通常称这样的同态映射为<strong>自然同态</strong></p>
+<h4 id="性质-6"><a href="#性质-6" class="headerlink" title="性质"></a>性质</h4><p>设 $\phi$ 是群 $G$ 到群 $G^{\prime}$ 的同态映射，$e$ 与 $e^{\prime}$ 分别是 $G$ 与 $G^{\prime}$ 的单位元，$a \in G$，则</p>
+<ul>
+<li>$\phi$ 将 $G$ 的单位元映到 $G^{\prime}$ 的单位元，即 $\phi(e)=e^{\prime}$</li>
+<li>$\phi$ 将 $a$ 的逆元映到 $\phi(a)$ 的逆元，即 $\phi\left(a^{-1}\right)=(\phi(a))^{-1}$</li>
+<li>设 $n$ 是任一整数，则 $\phi\left(a^{n}\right)=(\phi(a))^{n}$</li>
+<li>如果 $\operatorname{ord} a$ 有限，则 $\operatorname{ord} \phi(a) \mid \operatorname{ord} a$</li>
+</ul>
+<h4 id="象和原象"><a href="#象和原象" class="headerlink" title="象和原象"></a>象和原象</h4><p>设 $\phi$ 为群 $G$ 到群 $G^{\prime}$ 的<strong>映射</strong>，$A, B$ 分别为 $G$ 与 $G^{\prime}$ 的非空子集，记</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\phi(A) & =\{\phi(x) \mid x \in A\},\\
+\phi^{-1}(B) & =\{x \in G \mid \phi(x) \in B\},
+\end{aligned}</script><p>则 $\phi(A)$ 与 $\phi^{-1}(B)$ 分别是 $G^{\prime}$ 与 $G$ 的非空子集。$\phi(A)$ 与 $\phi^{-1}(B)$ 分别称为子集 $A$ 与 $B$ 在 $\phi$ 下的<strong>象</strong>与<strong>原象</strong></p>
+<ul>
+<li>注意，$\phi^{-1}(B)$ 仅仅是一个集合的记号，并不表示映射 $\phi$ 是可逆的</li>
+</ul>
+<h4 id="同态映射与子群"><a href="#同态映射与子群" class="headerlink" title="同态映射与子群"></a>同态映射与子群</h4><p>设 $\phi$ 是群 $G$ 到 $G^{\prime}$ 的<strong>同态映射</strong>，$H$ 与 $K$ 分别是 $G$ 与 $G^{\prime}$ 的子群，则</p>
+<ul>
+<li>$\phi(H)$ 是 $G^{\prime}$ 的子群</li>
+<li>$\phi^{-1}(K)$ 是 $G$ 的子群</li>
+<li>如果 $H$ 是 $G$ 的正规子群，则 $\phi(H)$ 是 $\phi(G)$ 的正规子群</li>
+<li>如果 $K$ 是 $G^{\prime}$ 的正规子群，则 $\phi^{-1}(K)$ 是 $G$ 的正规子群</li>
+</ul>
+<h4 id="核"><a href="#核" class="headerlink" title="核"></a>核</h4><p>设 $\phi$ 是群 $G$ 到 $G^{\prime}$ 的同态映射，$e^{\prime}$ 是 $G^{\prime}$ 的单位元，则称 $e^{\prime}$ 在 $G$ 中的原象</p>
+<script type="math/tex; mode=display">
+\phi^{-1}\left(\left\{e^{\prime}\right\}\right)=\left\{a \in G \mid \phi(a)=e^{\prime}\right\}</script><p>为同态映射 $\phi$ 的<strong>核</strong>，记作 $\operatorname{Ker} \phi$</p>
+<h4 id="群同态基本定理"><a href="#群同态基本定理" class="headerlink" title="群同态基本定理"></a>群同态基本定理</h4><p>设 $\phi$ 是群 $G$ 到群 $G^{\prime}$ 的满同态，$K=\operatorname{Ker} \phi$，则</p>
+<script type="math/tex; mode=display">
+G / K \cong G^{\prime}</script><h4 id="同态与同构"><a href="#同态与同构" class="headerlink" title="同态与同构"></a>同态与同构</h4><p>设 $\phi$ 是群 $G$ 到 $G^{\prime}$ 的同态映射，则 $\operatorname{Ker} \phi$ 是 $G$ 的正规子群。我们知道，群同态保持了群双方的运算。因此，群 $G$ 与其同态象 $\phi(G)$ 在结构上有一定的相似之处。同态核可以看成是群 $G$ 与其同态象 $\phi(G)$ 之间的相似程度的一个度量。如果 $\operatorname{Ker} \phi=\{e\}$，则 $G \cong \phi(G)$，从而 $G$ 与 $\phi(G)$ 的结构完全相同。如果 $\operatorname{Ker} \phi=G$，即 $\phi(G)=\left\{e^{\prime}\right\}$，则不能由 $\phi(G)$ 获得群 $G$ 的任何信息。而在其他情况下，$\phi(G)$ 都或多或少地给出了群 $G$ 的部分信息。另一方面，由于同态核 $\operatorname{Ker} \phi$ 是群 $G$ 的正规子群，所以由商群 $G / \operatorname{Ker} \phi$ 又可以反过来了解群 $G$ 的同态象 $\phi(G)$ 的性质</p>
+<p>应用群同态基本定理证明群的同构，一般有以下五个步骤：</p>
+<ol>
+<li>建立群 $G$ 与群 $G^{\prime}$ 的元素之间的对应关系 $\phi$，并证明 $\phi$ 为 $G$ 到 $G^{\prime}$ 的映射</li>
+<li>证明 $\phi$ 为 $G$ 到 $G^{\prime}$ 的满映射</li>
+<li>证明 $\phi$ 为 $G$ 到 $G^{\prime}$ 的同态映射</li>
+<li>计算同态的核 $\operatorname{Ker} \phi$</li>
+<li>应用群同态基本定理得 $G / \operatorname{Ker} \phi \cong G^{\prime}$</li>
+</ol>
+<h4 id="第二同构定理"><a href="#第二同构定理" class="headerlink" title="第二同构定理"></a>第二同构定理</h4><p>设 $H$ 为 $G$ 的子群，$K$ 为 $G$ 的正规子群，则 $H \cap^{\prime} K$ 是 $H$ 的正规子群且</p>
+<script type="math/tex; mode=display">
+H /(H \cap K) \cong H K / K</script>
             </div>
             <hr>
             <div>
