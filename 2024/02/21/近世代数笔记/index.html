@@ -213,7 +213,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      47
+      48
        分钟
     </span>
   
@@ -247,12 +247,21 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2024年5月31日 下午
+                  本文最后更新于：2024年6月15日 晚上
                 
               </p>
             
             <div class="markdown-body">
-              <h2 id="第一章-群"><a href="#第一章-群" class="headerlink" title="第一章 群"></a>第一章 群</h2><h3 id="二元关系"><a href="#二元关系" class="headerlink" title="二元关系"></a>二元关系</h3><p>设 $S$ 是一个<strong>非空集合</strong>，$\mathcal{R}$ 是关于 $S$ 的元素的一个条件。如果对 $S$ 中<strong>任意</strong>一个<strong>有序</strong>元素对 $(a,b)$，我们总能<strong>确定</strong> $a$ 与 $b$ 是否满足条件 $\mathcal{R}$，就称 $\mathcal{R}$ 是 $S$ 的一个<strong>关系</strong>。如果 $a$ 与 $b$ 满足条件 $\mathcal{R}$，则称 $a$ 与 $b$ 有关系 $\mathcal{R}$，记作 $a\mathcal{R}b$；否则称 $a$ 与 $b$ 无关系 $\mathcal{R}$。关系 $\mathcal{R}$ 也称为<strong>二元关系</strong></p>
+              <h2 id="置顶：解题范式"><a href="#置顶：解题范式" class="headerlink" title="置顶：解题范式"></a>置顶：解题范式</h2><h3 id="特征"><a href="#特征" class="headerlink" title="特征"></a>特征</h3><p>若要证明 $R$ 的特征为 $n$，$n \ne 0$：</p>
+<ol>
+<li>$\forall a \in R, na=0$</li>
+<li>$\forall k, 1\le k &lt;n, \exists b \in R, kb\ne 0$</li>
+</ol>
+<p>若要证明 $R$ 的特征为 $n=0$：</p>
+<ol>
+<li>$\exists a \in R, na=0 \Rightarrow  n=0$</li>
+</ol>
+<h2 id="第一章-群"><a href="#第一章-群" class="headerlink" title="第一章 群"></a>第一章 群</h2><h3 id="二元关系"><a href="#二元关系" class="headerlink" title="二元关系"></a>二元关系</h3><p>设 $S$ 是一个<strong>非空集合</strong>，$\mathcal{R}$ 是关于 $S$ 的元素的一个条件。如果对 $S$ 中<strong>任意</strong>一个<strong>有序</strong>元素对 $(a,b)$，我们总能<strong>确定</strong> $a$ 与 $b$ 是否满足条件 $\mathcal{R}$，就称 $\mathcal{R}$ 是 $S$ 的一个<strong>关系</strong>。如果 $a$ 与 $b$ 满足条件 $\mathcal{R}$，则称 $a$ 与 $b$ 有关系 $\mathcal{R}$，记作 $a\mathcal{R}b$；否则称 $a$ 与 $b$ 无关系 $\mathcal{R}$。关系 $\mathcal{R}$ 也称为<strong>二元关系</strong></p>
 <ul>
 <li>注意 $\mathcal{R}$ 的确定性，“总能”表示忽略验证所需的时间和复杂度</li>
 </ul>
@@ -921,7 +930,7 @@ G=\left\{\left(a_{1},a_{2},\cdots,a_{n}\right) \mid a_{i} \in G_{i},i=1,2,\cdots
 <ul>
 <li>(R1) $R$ 关于加法构成一个<strong>交换群</strong></li>
 <li>(R2) 乘法结合律成立，即对任意的 $a,b,c\in R$，有 <script type="math/tex; mode=display">
-(a\cdot b)\cdot c = a\cdot (b \dot c)</script></li>
+(a\cdot b)\cdot c = a\cdot (b \cdot c)</script></li>
 <li><p>(R3) 乘法对加法的两个分配律成立，即对任意的 $a,b,c \in R$，有</p>
 <script type="math/tex; mode=display">
 \begin{array}{c}
@@ -938,7 +947,7 @@ a\cdot (b + c) = a\cdot b + a\cdot c\\
 ae = ea = a</script>则称 $R$ 是一个有单位元的环，并称 $e$ 为 $R$ 的<strong>单位元</strong>（注意：环的单位元是乘法单位元）</li>
 <li>一个环<strong>不一定有单位元</strong></li>
 <li>如果环有单位元，则单位元是唯一的</li>
-<li>设环 $R$ 是有单位元的环，$a\in R$，如果存在 $b\ in R$，使<script type="math/tex; mode=display">
+<li>设环 $R$ 是有单位元的环，$a\in R$，如果存在 $b \in R$，使<script type="math/tex; mode=display">
 ab=ba=e</script>则称 $a$ 是 $R$ 的一个<strong>可逆元</strong>或<strong>单位</strong>，并称 $b$ 为 $a$ 的<strong>逆元</strong>，记作 $a^{-1}$</li>
 <li>如果 $a$ 可逆则 $a$ 的逆元是唯一的</li>
 <li>环的一个元素不一定是可逆的</li>
@@ -1107,7 +1116,180 @@ a+b \sqrt{-1} & c+d \sqrt{-1} \\
 <script type="math/tex; mode=display">
 A=a 1+b \mathrm{i}+c \mathrm{j}+d \mathrm{k}</script><p>从而</p>
 <script type="math/tex; mode=display">
-\mathbf{H}=\{a 1+b \mathbf{i}+c \mathrm{j}+d \mathbf{k} \mid a,b,c,d \in \mathbf{R}\}</script>
+\mathbf{H}=\{a 1+b \mathbf{i}+c \mathrm{j}+d \mathbf{k} \mid a,b,c,d \in \mathbf{R}\}</script><h3 id="理想"><a href="#理想" class="headerlink" title="理想"></a>理想</h3><h4 id="定义-11"><a href="#定义-11" class="headerlink" title="定义"></a>定义</h4><p>设 $R$ 为环，$I$ 为 $R$ 的非空子集，如果 $I$ 满足</p>
+<ul>
+<li>对任意的 $r_{1}$，$r_{2} \in I$，$r_{1}-r_{2} \in I$</li>
+<li>对任意的 $r \in I$，$s \in R$，$r s,s r \in I$</li>
+</ul>
+<p>则称 $I$ 为环 $R$ 的一个<strong>理想</strong>，记作 $I \triangleleft R$。又如果 $I \subsetneq R$，则称 $I$ 为 $R$ 的<strong>真理想</strong></p>
+<ul>
+<li>如果 $I$ 为 $R$ 的理想，则 $I$ 必为 $R$ 的子环</li>
+<li>$\{0\}$ 与 $R$ 本身显然都是 $R$ 的理想,这两个理想称为 $R$ 的<strong>平凡理想</strong></li>
+<li>$\mathbb{Z}$ 的所有理想是 $\{d\mathrm{Z} \mid d\in \mathbb{Z}, d\ge 0\}$</li>
+<li>$\mathbb{Z}_{m}$ 的所有理想是 $\{d\mathrm{Z}_{m} \mid d=0 \text{或} d\mid m\}$</li>
+</ul>
+<h4 id="和与交"><a href="#和与交" class="headerlink" title="和与交"></a>和与交</h4><p>设 $R$ 为环，$I$，$J$ 都是 $R$ 的理想，集合</p>
+<script type="math/tex; mode=display">
+I+J=\{a+b \mid a \in I,b \in J\} \, \mathrm{与} \, I \cap J</script><p>分别称为理想 $I$ 与 $J$ 的<strong>和</strong>与<strong>交</strong></p>
+<ul>
+<li>设 $R$ 为环，$I$，$J$ 都是 $R$ 的理想，则 $I$ 与 $J$ 的和与交都是 $R$ 的理想</li>
+<li>环 $R$ 的任意<strong>有限</strong>多个理想的和还是 $R$ 的理想</li>
+<li>环 $R$ 的任意（<strong>有限或无限</strong>）多个理想的交还是 $R$ 的理想</li>
+</ul>
+<h4 id="主理想"><a href="#主理想" class="headerlink" title="主理想"></a>主理想</h4><p>设 $a \in R$，考察 $R$ 中含有元素 $a$ 的全部理想的集合</p>
+<script type="math/tex; mode=display">
+\Sigma=\{I \triangleleft R \mid a \in I\}</script><p>因为 $a \in R$，且 $R \triangleleft R$，所以 $R \in \Sigma$，从而 $\Sigma$ 非空。令</p>
+<script type="math/tex; mode=display">
+\langle a\rangle=\bigcap_{I \in \Sigma} I</script><p>则 $\langle a\rangle$ 为 $R$ 的一个理想，这个理想称为 $R$ 的由 $a$ 生成的<strong>主理想</strong></p>
+<p>因为 $a \in I(I \in \Sigma)$，所以 $a \in\langle a\rangle$，从而 $\langle a\rangle \in \Sigma$ 我们看到：一方面，$\langle a\rangle$ 是包含 $a$ 的理想；另一方面，$\langle a\rangle$ 是所有包含 $a$ 的理想的交，所以 $\langle a\rangle$ 是 $R$ 的包含 $a$ 的最小理想</p>
+<h4 id="主理想的构成"><a href="#主理想的构成" class="headerlink" title="主理想的构成"></a>主理想的构成</h4><p>设 $R$ 为环，$a \in R$，则</p>
+<ul>
+<li><script type="math/tex; mode=display">
+\langle a\rangle=\left\{\sum_{i=1}^{n} x_{i} a y_{i}+x a+a y+m a \mid x_{i},y_{i},x,y \in R,\,n \in \mathbf{N},\,m \in \mathbf{Z}\right\}</script></li>
+<li>如果 $R$ 是有单位元的环，则<script type="math/tex; mode=display">
+\langle a\rangle=\left\{\sum_{i=1}^{n} x_{i} a y_{i} \mid x_{i},y_{i} \in R,\,n \in \mathbf{N}\right\}</script></li>
+<li>如果 $R$ 是交换环，则<script type="math/tex; mode=display">
+\langle a\rangle=\{x a+m a \mid x \in R,m \in \mathbf{Z}\}；</script></li>
+<li><p>如果 $R$ 是有单位元的交换环，则</p>
+<script type="math/tex; mode=display">
+\langle a\rangle=a R=\{a r \mid r \in R\}</script></li>
+<li><p>整数环 $\mathbf{Z}$ 的每个理想都是主理想</p>
+</li>
+<li>模 $m$ 剩余类环 $\mathbf{Z}_{m}$ 的每个理想都是主理想</li>
+</ul>
+<h4 id="多元理想"><a href="#多元理想" class="headerlink" title="多元理想"></a>多元理想</h4><p>设 $R$ 为环，$a_{1},a_{2},\cdots,a_{s} \in R$，则 $\left\langle a_{1}\right\rangle,\left\langle a_{2}\right\rangle,\cdots,\left\langle a_{s}\right\rangle$ 都是 $R$ 的理想。令</p>
+<script type="math/tex; mode=display">
+\left\langle a_{1},a_{2},\cdots,a_{s}\right\rangle=\left\langle a_{1}\right\rangle+\left\langle a_{2}\right\rangle+\cdots+\left\langle a_{s}\right\rangle,</script><p>则 $\left\langle a_{1},a_{2},\cdots,a_{s}\right\rangle$ 为 $R$ 的理想，称为 $R$ 的由 $a_{1},a_{2},\cdots,a_{s}$ 生成的理想。易知，$\left\langle a_{1},a_{2},\cdots,a_{s}\right\rangle$ 是 $R$ 的含 $a_{1},a_{2},\cdots,a_{s}$ 的最小理想</p>
+<h3 id="商环"><a href="#商环" class="headerlink" title="商环"></a>商环</h3><p>设 $R$ 是一个环，$I$ 是环 $R$ 的一个理想，则 $(I,+)$ 是 $(R,+)$ 的子加群，从而 $(I,+)$ 是 $(R,+)$ 的正规子群，于是有商群：</p>
+<script type="math/tex; mode=display">
+R / I=\{\bar{x}=x+I \mid x \in R\}</script><p>其加法运算定义为</p>
+<script type="math/tex; mode=display">
+\bar{x}+\bar{y}=\overline{x+y},\quad x,y \in R</script><p>定义 $R / I$ 的乘法：</p>
+<script type="math/tex; mode=display">
+\bar{x} \cdot \bar{y}=\bar{x} \bar{y},\quad x,y \in R</script><p>称环 $R / I$ 为环 $R$ 关于它的理想 $I$ 的<strong>商环</strong></p>
+<p>设 $R$ 为环，$I$ 是 $R$ 的理想，则</p>
+<ul>
+<li>$\overline{0}=I$ 为 $R / I$ 的零元</li>
+<li>如果 $R$ 有单位元 $e$，且 $e \notin I$，则 $\bar{e}=e+I$ 为 $R / I$ 的单位元</li>
+<li>如果 $R$ 是交换环，则 $R / I$ 也是交换环</li>
+</ul>
+<h3 id="环的同态"><a href="#环的同态" class="headerlink" title="环的同态"></a>环的同态</h3><p>设 $R$ 和 $R^{\prime}$ 为两个环，$\phi$ 是集合 $R$ 到 $R^{\prime}$ 的映射。如果对任意的 $a,b \in R$，有</p>
+<ul>
+<li>$\phi(a+b)=\phi(a)+\phi(b)$</li>
+<li>$\phi(a b)=\phi(a) \phi(b)$</li>
+</ul>
+<p>则称 $\phi$ 为环 $R$ 到环 $R^{\prime}$ 的一个<strong>同态映射</strong>，简称<strong>同态</strong></p>
+<ul>
+<li>环同态就是环之间保持运算的映射</li>
+<li>如果同态映射 $\phi$ 是单映射，则称 $\phi$ 为单同态</li>
+<li>如果 $\phi$ 是满映射，则称 $\phi$ 为满同态，此时，称环 $R$ 与 $R^{\prime}$ <strong>同态</strong>，记作 $\phi: R \sim R^{\prime}$</li>
+<li>如果 $\phi$ 既是单同态，又是满同态，则称 $\phi$ 为<strong>同构</strong>，此时，称环 $R$ 与 $R^{\prime}$ <strong>同构</strong>，记作 $\phi: R \cong R^{\prime}$</li>
+<li>与群的相应概念类似，环的同构是环之间的一个等价关系，并且从环的观点来看，同构的环有完全相同的代数性质</li>
+</ul>
+<h4 id="零同态"><a href="#零同态" class="headerlink" title="零同态"></a>零同态</h4><p>设 $R$ 与 $R^{\prime}$ 是两个环，对任意的 $a \in R$，令</p>
+<script type="math/tex; mode=display">
+\begin{aligned} 
+\phi: R &\longrightarrow R^{\prime},\\
+a &\longmapsto 0,
+\end{aligned}</script><p>则对任意的 $a,b \in R$，</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\phi(a+b) & =0=\phi(a)+\phi(b),\\
+\phi(a b) & =0=\phi(a) \phi(b),
+\end{aligned}</script><p>所以 $\phi$ 是 $R$ 到 $R^{\prime}$ 的一个同态，这个同态称为<strong>零同态</strong></p>
+<h4 id="自然同态-1"><a href="#自然同态-1" class="headerlink" title="自然同态"></a>自然同态</h4><p>设 $R$ 是环，$I$ 是 $R$ 的理想。对任意的 $a \in R$，令</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\eta:R & \longrightarrow R / I,\\
+a & \longmapsto \bar{a},
+\end{aligned}</script><p>则 $\eta$ 为 $R$ 到它的商环 $R / I$ 的满映射。又对任意的 $a$，$b \in R$，</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\eta(a+b) & =\overline{a+b}=\bar{a}+\bar{b}=\eta(a)+\eta(b),\\
+\eta(a b) & =\overline{a b}=\bar{a} \bar{b}=\eta(a) \eta(b),
+\end{aligned}</script><p>所以 $\eta$ 为 $R$ 到它的商环 $R / I$ 的一个<strong>满同态</strong>，这个同态称为<strong>自然同态</strong></p>
+<h4 id="性质-7"><a href="#性质-7" class="headerlink" title="性质"></a>性质</h4><p>设 $\phi$ 是环 $R$ 到 $R^{\prime}$ 的同态，则对任意的 $a \in R$，</p>
+<ul>
+<li>$\phi\left(0_{R}\right)=0_{R^{\prime}}$</li>
+<li>$\phi(n a)=n \phi(a),\quad \forall n \in \mathbf{Z}$</li>
+<li>$\phi\left(a^{n}\right)=(\phi(a))^{n},\quad \forall n \in \mathbf{N}$</li>
+</ul>
+<p>设 $R$ 与 $R^{\prime}$ 都是有单位元的环，$e$ 与 $e^{\prime}$ 分别是它们的单位元，$\phi$ 是 $R$ 到 $R^{\prime}$ 的环同态</p>
+<ul>
+<li>如果 $\phi$ 是满同态，则 $\phi(e)=e^{\prime}$</li>
+<li>如果 $R^{\prime}$ 为无零因子环，且 $\phi(e) \neq 0$，则 $\phi(e)=e^{\prime}$</li>
+<li>如果 $\phi(e)=e^{\prime}$，则对 $R$ 的任一单位 $u$，$\phi(u)$ 是 $R^{\prime}$ 的单位，且 $(\phi(u))^{-1}=\phi\left(u^{-1}\right)$</li>
+</ul>
+<h4 id="核-1"><a href="#核-1" class="headerlink" title="核"></a>核</h4><p>设 $\phi$ 为环 $R$ 到环 $R^{\prime}$ 的同态映射，称集合</p>
+<script type="math/tex; mode=display">
+K=\{a \in R \mid \phi(a)=0\}</script><p>为环同态 $\phi$ 的<strong>核</strong>，记作 $\operatorname{Ker} \phi$</p>
+<p>设 $\phi$ 为环 $R$ 到 $R^{\prime}$ 的环同态，则 $\operatorname{Ker} \phi$ 为 $R$ 的理想。</p>
+<h4 id="环同态基本定理"><a href="#环同态基本定理" class="headerlink" title="环同态基本定理"></a>环同态基本定理</h4><p>设 $\phi$ 是环 $R$ 到 $R^{\prime}$ 的满同态，则有环同构</p>
+<script type="math/tex; mode=display">
+\widetilde{\phi}:R / \operatorname{Ker} \phi \cong R^{\prime}</script><h4 id="环的第二同构定理"><a href="#环的第二同构定理" class="headerlink" title="环的第二同构定理"></a>环的第二同构定理</h4><p>设 $S$ 为 $R$ 的子环，$I$ 为 $R$ 的理想，则 $S \cap I$ 是 $S$ 的理想且</p>
+<script type="math/tex; mode=display">
+S /(S \cap I) \cong(S+I) / I</script><p>证明显然 $I$ 为环 $S+I$ 的理想，从而有自然同态</p>
+<script type="math/tex; mode=display">
+\eta:S+I \longrightarrow(S+I) / I</script><p>因而 $\eta$ 在 $S$ 上的限制</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\left.\eta\right|_{S}:S & \longrightarrow(S+I) / I,\\
+s & \longmapsto \eta(s)
+\end{aligned}</script><p>是一个 $S$ 到 $(S+I) / I$ 的同态<br>又对任意的 $\overline{s+x} \in(S+I) / I(s \in S,x \in I)$，有</p>
+<script type="math/tex; mode=display">
+\left.\eta\right|_{S}(s)=\eta(s)=\bar{s}=\overline{s+x}</script><p>所以 $\left.\eta\right|_{S}$ 为满同态，而</p>
+<script type="math/tex; mode=display">
+\left.\operatorname{Ker} \eta\right|_{S}=\{s \in S \mid \eta(s)=\overline{0}\}=\{s \in S \mid s \in I\}=S \cap I</script><p>从而 $S \cap I$ 是 $S$ 的理想，由环同态基本定理知，有环同构</p>
+<script type="math/tex; mode=display">
+S /(S \cap I) \cong(S+I) / I</script><h3 id="环的扩张定理"><a href="#环的扩张定理" class="headerlink" title="环的扩张定理"></a>环的扩张定理</h3><p>设 $\bar{S}$ 与 $R$ 是两个没有公共元素的环，$\bar{\phi}$ 是环 $\bar{S}$ 到环 $R$ 的单同态，则存在一个与环 $R$ 同构的环 $S$ 及由环 $S$ 到 $R$ 的同构映射 $\phi$，使 $\bar{S}$ 为 $S$ 的子环且 $\left.\phi\right|_{\bar{S}}=\bar{\phi}$</p>
+<h3 id="素理想"><a href="#素理想" class="headerlink" title="素理想"></a>素理想</h3><p>设 $R$ 是一个交换环，$P$ 是 $R$ 的真理想。如果对任意的 $a,b \in R$，由 $a b \in P$，可推出 $a \in P$ 或 $b \in P$，则称 $P$ 为 $R$ 的一个<strong>素理想</strong></p>
+<ul>
+<li>设 $n$ 为正整数，$\langle n\rangle$ 为 $\mathbf{Z}$ 的素理想的充分必要条件是 $n$ 为素数</li>
+</ul>
+<p>设 $R$ 是有单位元 $e \neq 0$ 的交换环，$I$ 是 $R$ 的理想，则 $I$ 是 $R$ 的素理想的充分必要条件是 $R / I$ 是整环</p>
+<h3 id="极大理想"><a href="#极大理想" class="headerlink" title="极大理想"></a>极大理想</h3><p>设 $R$ 是一个交换环，$M$ 是 $R$ 的真理想.如果对 $R$ 的任一包含 $M$ 的理想 $N$，必有 $N=M$ 或 $N=R$，则称 $M$ 为 $R$ 的一个<strong>极大理想</strong></p>
+<p>设 $R$ 是有单位元 $e$ 的交换环，$I$ 为 $R$ 的理想，则 $I$ 是 $R$ 的极大理想的充分必要条件是 $R / I$ 是域</p>
+<p>设 $R$ 是一个有单位元的交换环，则 $R$ 的每个极大理想都是素理想</p>
+<ul>
+<li>若没有单位元，则不一定成立</li>
+<li>素理想不一定是极大理想</li>
+<li>非零素理想不一定是极大理想</li>
+</ul>
+<h3 id="特征-1"><a href="#特征-1" class="headerlink" title="特征"></a>特征</h3><p>设 $R$ 为环，如果存在最小的正整数 $n$，使得对所有的 $a \in R$，有 $n a=0$，则称 $n$ 为环 $R$ 的<strong>特征</strong>。如果这样的正整数不存在，则称环 $R$ 的特征为 $0$。环 $R$ 的特征记作 $\operatorname{Char} R$</p>
+<ul>
+<li>$\mathbf{Z},\mathbf{Q},\mathbf{R},\mathbf{C}$ 的特征都等于 $0$ </li>
+<li>一般地，如果 $R$ 是一个数环，则 $\operatorname{Char} R=0$</li>
+<li>设 $\mathbf{Z}_{m}$ 是模 $m$ 剩余类环，则对每个 $\bar{n} \in \mathbf{Z}_{m}$，有<script type="math/tex; mode=display">
+m \bar{n}=\overline{m n}=\overline{0}</script>而对于任何正整数 $k&lt;m$，有<script type="math/tex; mode=display">
+k \overline{1}=\bar{k} \neq \overline{0},</script>所以 $\operatorname{Char}  \mathbf{Z}_{m}=m$ </li>
+<li>对于 $\mathbf{Z}_{m}$ 上的一元多项式环 $\mathbf{Z}_{m}[x]$，也有 $\operatorname{Char}  \mathbf{Z}_{m}[x]=m$</li>
+<li>一个有限环的特征是一个正整数</li>
+</ul>
+<p>设 $R$ 是有单位元 $e$ 的环，如果 $e$ 关于加法的阶为无穷大，那么 $R$ 的特征等于 $0$。如果 $e$ 关于加法的阶等于 $n$，那么 $\operatorname{Char} R=n$</p>
+<p>整环的特征是 $0$ 或者是一个素数</p>
+<h3 id="同态与特征"><a href="#同态与特征" class="headerlink" title="同态与特征"></a>同态与特征</h3><p>设 $R$ 是有单位元 $e$ 的环，则映射</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+\phi:\mathbf{Z} & \longrightarrow R,\\
+n & \longmapsto n e
+\end{aligned}</script><p>是环 $\mathbf{Z}$ 到 $R$ 的同态</p>
+<p>设 $R$ 是有单位元的环</p>
+<ul>
+<li>如果 $R$ 的特征为 $n&gt;0$，则 $R$ 包含一个与 $\mathbf{Z}_{n}$ 同构的子环</li>
+<li>如果 $R$ 的特征为 $0$，则 $R$ 包含一个与 $\mathbf{Z}$ 同构的子环</li>
+</ul>
+<p>设 $F$ 是域</p>
+<ul>
+<li>如果 $F$ 的特征是 $0$，则 $F$ 包含一个与有理数域同构的子域</li>
+<li>如果 $F$ 的特征是素数 $p$，则 $F$ 包含一个与模 $p$ 剩余类环 $\mathbf{Z}_{p}$ 同构的子域</li>
+</ul>
+<h3 id="素域"><a href="#素域" class="headerlink" title="素域"></a>素域</h3><p>一个域 $F$ 如果不含任何真子域，则称 $F$ 是一个<strong>素域</strong></p>
+<p>设 $F$ 是个域</p>
+<ul>
+<li>如果 $\operatorname{Char}  F=0$，那么 $F$ 包含一个与 $\mathbf{Q}$ 同构的素域</li>
+<li>如果 $\operatorname{Char}  F=p&gt;0$，那么 $F$ 包含一个与 $\mathbf{Z}_{p}$ 同构的素域</li>
+</ul>
+
             </div>
             <hr>
             <div>
