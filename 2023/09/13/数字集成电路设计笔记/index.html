@@ -247,7 +247,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2024年1月5日 下午
+                  本文最后更新于：2024年9月23日 上午
                 
               </p>
             
@@ -535,10 +535,10 @@ V_{G T}=V_{G S}-V_{T}, \\
 </table>
 </div>
 <h3 id="静态CMOS反相器特性"><a href="#静态CMOS反相器特性" class="headerlink" title="静态CMOS反相器特性"></a>静态CMOS反相器特性</h3><ul>
-<li>输出高电平和低电平分别为 $V_{dd}$ 和 $GND$。换言之，电压摆幅等于电源电压。因此噪声容限很大。</li>
+<li>输出高电平和低电平分别为 VDD 和 GND。换言之，电压摆幅等于电源电压。因此噪声容限很大。</li>
 <li>逻辑电平与器件的<strong>相对尺寸无关</strong>，所以晶体管可以采用最小尺寸。具有这一特点的门称为<strong>无比逻辑</strong>。它不同于有比逻辑，在有比逻辑中逻辑电平是由组成逻辑的晶体管的相对尺寸来决定的。</li>
-<li>稳态时在输出和 $V_{dd}$ 或 $GND$ 之间总存在一条具有有限电阻的通路。因此一个设计良好的 CMOS 反相器具有低输出阻抗，这使它对噪声和干扰不敏感。输出电阻的典型值在 $k\Omega$ 的范围内。</li>
-<li>CMOS反相器的<strong>输入电阻极高</strong>，因为一个MOS管的栅实际上是-个完全的绝缘体，因此不取任何dc（直流）输入电流。由于反相器的输入节点只连到晶体管的栅上，所以<strong>稳态输入电流几乎为零</strong>。</li>
+<li>稳态时在输出和 VDD 或 GND 之间总存在一条具有有限电阻的通路。因此一个设计良好的 CMOS 反相器具有低输出阻抗，这使它对噪声和干扰不敏感。输出电阻的典型值在 $k\Omega$ 的范围内。</li>
+<li>CMOS 反相器的<strong>输入电阻极高</strong>，因为一个 MOS 管的栅实际上是一个完全的绝缘体，因此不取任何 DC（直流）输入电流。由于反相器的输入节点只连到晶体管的栅上，所以<strong>稳态输入电流几乎为零</strong>。</li>
 <li>理论上，单个反相器可以驱动无穷多个门（或者说具有<strong>无穷大的扇出</strong>）而仍能正确工作，但我们很快会看到增加扇出也会增加传播延时。尽管扇出不会对稳态特性有任何影响，但它使<strong>瞬态响应变差</strong>。</li>
 <li>在稳态工作情况下电源线和地线之间没有直接的通路（即此时输入和输出保持不变）。没有电流存在（忽略漏电流）意味着该门并<strong>不消耗任何静态功率</strong>。</li>
 </ul>
@@ -651,7 +651,7 @@ k_{n} V_{D S A T n}\left(V_{M}-V_{T n}-\frac{V_{D S A T n}}{2}\right)+k_{p} V_{D
 V_{M}=\frac{\left(V_{T n}+\frac{V_{D S A T n}}{2}\right)+\gamma\left(V_{D D}+V_{T p}+\frac{V_{D S A T p}}{2}\right)}{1+\gamma}</script><p>其中</p>
 <script type="math/tex; mode=display">
 \gamma=\frac{k_p V_{Dsat_p}}{k_n V_{Dsat_n}}=\frac{k_p^{\prime} V_{Dsat_p}}{k_n^{\prime} V_{Dsat_n}}N</script><ul>
-<li>为了让 $V_{M}$ 接近 $V_{DD}$，$\gamma$ 应该在 3~4 之间</li>
+<li>为了让 $V_{M}$ 接近 $V_{DD}/2$，$\gamma$ 应该在 3~4 之间</li>
 </ul>
 <h3 id="增益"><a href="#增益" class="headerlink" title="增益"></a>增益</h3><script type="math/tex; mode=display">
 \begin{aligned}

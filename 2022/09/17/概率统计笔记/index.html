@@ -247,7 +247,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2024年4月23日 上午
+                  本文最后更新于：2024年7月7日 晚上
                 
               </p>
             
@@ -722,7 +722,7 @@ F(x,y)=\int_{-\infty}^{x} \int_{-\infty}^{y} f(u,v) \mathrm{d} u \mathrm{d} v</s
 P((X,Y) \in D)=\iint_{D} f(x,y) \mathrm{d} x \mathrm{d} y</script></li>
 <li>在 $f(x,y)$ 的连续点处，有<script type="math/tex; mode=display">
 \frac{\partial^{2} F(x,y)}{\partial x \partial y}=f(x,y)</script></li>
-<li>如果 $(X,Y)$ 为二维连续型随机变量，对平面上任意一条可以求长度的曲线 $L$，有 $P(X,Y) \in L)=0$</li>
+<li>如果 $(X,Y)$ 为二维连续型随机变量，对平面上任意一条可以求长度的曲线 $L$，有 $P(X,Y \in L)=0$</li>
 </ul>
 <h4 id="边缘分布函数和边缘概率密度"><a href="#边缘分布函数和边缘概率密度" class="headerlink" title="边缘分布函数和边缘概率密度"></a>边缘分布函数和边缘概率密度</h4><p>由定义，边缘分布函数 $F_{X}(x),F_{Y}(y)$ 可分别表示为</p>
 <script type="math/tex; mode=display">
@@ -736,7 +736,7 @@ F_{y}(y) &=P(Y \leqslant y)=P(X \leqslant+\infty,Y \leqslant y) \\
 f_{X}(x)=\int_{-\infty}^{+\infty} f(x,v) \mathrm{d} v,\quad f_{Y}(y)=\int_{-\infty}^{+\infty} f(u,y) \mathrm{d} u</script><p>分别称 $f_{X}(x)$ 和 $f_{Y}(y)$ 为 $(X,Y)$ 关于 $X$ 和关于 $Y$ 的<strong>边缘概率密度</strong></p>
 <h4 id="二维均匀分布"><a href="#二维均匀分布" class="headerlink" title="二维均匀分布"></a>二维均匀分布</h4><p>如果二维随机变量 $(X,Y)$ 在二维有界区域 $G$ 上取值，且它的联合概率密度为</p>
 <script type="math/tex; mode=display">
-f(x，y)=\left\{\begin{array}{ll}
+f(x,y)=\left\{\begin{array}{ll}
 \frac{1}{G \mathrm{的面积}},& (x,y) \in G\\
 0,& \mathrm{其他}
 \end{array}\right.</script><p>则称 $(X,Y)$ 服从 $G$ 上的均匀分布</p>
@@ -970,7 +970,7 @@ D(X)=E\left(X^{2}\right)-[E(X)]^{2}</script><h4 id="性质-3"><a href="#性质-3
 <li><script type="math/tex; mode=display">
 \begin{aligned}
 D(X \pm Y) &=D(X)+D(Y) \pm 2 E((X-E(X))(Y-E(Y)))\\
-&=D(X)+D(Y) \pm 2 (E(XY)-E(X)E(Y))
+&=D(X)+D(Y) \pm 2 (E(XY)-E(X)E(Y))\\
 &=D(X)+D(Y) \pm 2 \operatorname{cov}(X, Y)
 \end{aligned}</script></li>
 <li>设 $X,Y$ 为相互独立的随机变量，$X,Y$ 的方差都存在，则<script type="math/tex; mode=display">

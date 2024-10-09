@@ -1,0 +1,594 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/doge.png">
+  <link rel="icon" href="/img/doge.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#e4ad97">
+  <meta name="description" content="">
+  <meta name="author" content="Teruteru">
+  <meta name="keywords" content="">
+  
+    <script type="text/javascript"> (function(c,l,a,r,i,t,y){ c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)}; t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i; y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y); })(window, document, "clarity", "script", "mki2oyz04r"); </script>
+  
+  <title>计算方法笔记 - Teruteru的学习笔记</title>
+
+  <link  rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/github-markdown-css/4.0.0/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/highlight.js/10.7.2/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.css" />
+  
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+  
+<link rel="stylesheet" href="/css/myiconfont.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"teru.space","root":"/","version":"1.8.11","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":"#"},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":2},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Teruteru 的学习笔记</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/links/">
+                <i class="iconfont icon-link-fill"></i>
+                友链
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/banner/76443599_p0-1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="计算方法笔记">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2024-10-05 09:54" pubdate>
+        2024年10月5日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.5k 字
+    </span>
+  
+
+  
+    
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      19
+       分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">计算方法笔记</h1>
+            
+              <p class="note note-info">
+                
+                  本文最后更新于：2024年10月8日 晚上
+                
+              </p>
+            
+            <div class="markdown-body">
+              <h3 id="误差的来源"><a href="#误差的来源" class="headerlink" title="误差的来源"></a>误差的来源</h3><h4 id="模型误差"><a href="#模型误差" class="headerlink" title="模型误差"></a>模型误差</h4><ul>
+<li>用计算机解决科学计算问题首先要建立数学模型，它是对被描述的实际问题进行抽象、简化而得到的，因而是近似的。我们把数学模型与实际问题之间出现的这种误差称为<strong>模型误差</strong>。</li>
+<li>由于这种误差难以用数量表示，通常都假定数学模型是合理的，这种误差可忽略不计</li>
+</ul>
+<h4 id="观测误差"><a href="#观测误差" class="headerlink" title="观测误差"></a>观测误差</h4><p>在数学模型中往往还有一些根据观测得到的物理量，如温度、长度、电压等，这些参量显然也包含误差。这种由观测产生的误差称为<strong>观测误差</strong>。</p>
+<h4 id="截断误差"><a href="#截断误差" class="headerlink" title="截断误差"></a>截断误差</h4><p>当数学模型不能得到精确解时，通常要用数值方法求它的<strong>近似解</strong>，其近似解与精确解之间的误差称为<strong>截断误差</strong>或<strong>方法误差</strong></p>
+<ul>
+<li>例如，当函数 $f(x)$ 用 Taylor 多项式<script type="math/tex; mode=display">
+P_{n}(x)=f(0)+\frac{f^{\prime}(0)}{1!} x+\frac{f^{\prime \prime}(0)}{2!} x^{2}+\cdots+\frac{f^{(n)}(0)}{n!} x^{n}</script>近似代替时，数值方法的截断误差是<script type="math/tex; mode=display">
+R_{n}(x)=f(x)-P_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!} x^{n+1},\quad \xi \text{在} x \text{与} 0 \text{之间}</script></li>
+</ul>
+<h4 id="舍入误差"><a href="#舍入误差" class="headerlink" title="舍入误差"></a>舍入误差</h4><p>有了求解数学问题的计算公式以后，用计算机进行数值计算时，由于<strong>计算机的字长有限</strong>，原始数据在计算机上表示会产生误差，计算过程又可能产生新的误差，这种误差称为<strong>舍入误差</strong>，例如，用 $3.14159$ 近似代替 $\pi$，产生的误差就是舍入误差</p>
+<script type="math/tex; mode=display">
+R=\pi-3.14159=0.0000026 \cdots</script><h3 id="误差的基本概念"><a href="#误差的基本概念" class="headerlink" title="误差的基本概念"></a>误差的基本概念</h3><h4 id="绝对误差"><a href="#绝对误差" class="headerlink" title="绝对误差"></a>绝对误差</h4><p>设 $x$ 为准确值，$x^{*}$ 为 $x$ 的一个近似值，称 $e^{*}=x^{*}-x$ 为近似值的<strong>绝对误差</strong>，简称<strong>误差</strong></p>
+<ul>
+<li>误差 $e^{*}$ 可正可负，当绝对误差为正时近似值偏大，叫做<strong>强近似值</strong>；当绝对误差为负时近似值偏小，叫做<strong>弱近似值</strong></li>
+</ul>
+<p>通常，我们不能算出准确值 $x$，也不能算出误差 $e^{*}$ 的准确值，只能根据测量工具或计算情况估计出误差的绝对值不超过某正数 $\varepsilon^{*}$，也就是误差绝对值的一个上界 $\varepsilon^{*}$，叫做近似值的<strong>误差限</strong>，它总是正数</p>
+<p>对于一般情形，$\left|x^{*}-x\right| \leqslant \varepsilon^{*}$，即 $x^{*}-\varepsilon^{*} \leqslant x \leqslant x^{*}+\varepsilon^{*}$，这个不等式有时也表示为 $x=x^{*} \pm \varepsilon^{*}$</p>
+<h4 id="相对误差"><a href="#相对误差" class="headerlink" title="相对误差"></a>相对误差</h4><p>除考虑误差的大小外，还应考虑准确值 $x$ 本身的大小，近似值的误差 $e^{*}$ 与准确值 $x$ 的比值</p>
+<script type="math/tex; mode=display">
+\frac{e^{*}}{x}=\frac{x^{*}-x}{x}</script><p>称为近似值 $x^{*}$ 的<strong>相对误差</strong>，记作 $e_{r}^{*}$</p>
+<p>在实际计算中，由于真值 $x$ 总是不知道的，通常取</p>
+<script type="math/tex; mode=display">
+e_{\mathrm{r}}^{*}=\frac{e^{*}}{x^{*}}=\frac{x^{*}-x}{x^{*}}</script><p>作为 $x^{*}$ 的相对误差，条件是 $e_{r}^{*}=\frac{e^{*}}{x^{*}}$ 较小，此时</p>
+<script type="math/tex; mode=display">
+\frac{e^{*}}{x}-\frac{e^{*}}{x^{*}}=\frac{e^{*}\left(x^{*}-x\right)}{x^{*} x}=\frac{\left(e^{*}\right)^{2}}{x^{*}\left(x^{*}-e^{*}\right)}=\frac{\left(e^{*} / x^{*}\right)^{2}}{1-\left(e^{*} / x^{*}\right)}</script><p>是 $e_{r}^{*}$ 的二次方项级，故可忽略不计</p>
+<p>相对误差也可正可负，它的绝对值上界叫做<strong>相对误差限</strong>，记作 $\varepsilon_{r}^{*}$，$\varepsilon_{r}^{*}=\frac{\varepsilon^{*}}{\left|x^{*}\right|}$</p>
+<h3 id="有效数字"><a href="#有效数字" class="headerlink" title="有效数字"></a>有效数字</h3><h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>若近似值 $x^{*}$ 的误差限是某一位的半个单位，该位到 $x^{*}$ 的第一位非零数字共有 $n$ 位，就说 $x^{*}$ 有 $n$ 位<strong>有效数字</strong></p>
+<ul>
+<li>如取 $x^{*}=3.14$ 作 $\pi$ 的近似值，$x^{*}$ 就有三位有效数字；取 $x^{*}=3.1416$ 作 $\pi$ 的近似值，$x^{*}$ 就有五位有效数字 </li>
+</ul>
+<h4 id="标准形式"><a href="#标准形式" class="headerlink" title="标准形式"></a>标准形式</h4><p>$x^{*}$ 有 $n$ 位有效数字可写成标准形式</p>
+<script type="math/tex; mode=display">
+x^{*}= \pm 10^{m} \times\left(a_{1}+a_{2} \times 10^{-1}+\cdots+a_{n} \times 10^{-(n-1)}\right)</script><p>其中，$a_{1}$ 是 $1$ 到 $9$ 中的一个数字；$a_{2},\cdots,a_{n}$ 是 $0$ 到 $9$ 中的一个数字；$m$ 为整数，且</p>
+<script type="math/tex; mode=display">
+\left|x-x^{*}\right| \leqslant \frac{1}{2} \times 10^{m-n+1}</script><h4 id="和误差限的关系"><a href="#和误差限的关系" class="headerlink" title="和误差限的关系"></a>和误差限的关系</h4><p>以上述形式表示的有 $n$ 位有效数字的近似数 $x^{*}$，其绝对误差限为</p>
+<script type="math/tex; mode=display">
+\varepsilon^{*}=\frac{1}{2} \times 10^{m-n+1}</script><p>相对误差限为</p>
+<script type="math/tex; mode=display">
+\varepsilon_{r}^{*} \leqslant \frac{1}{2 a_{1}} \times 10^{-(n-1)}</script><p>反之，若 $x^{*}$ 的相对误差限 </p>
+<script type="math/tex; mode=display">
+\varepsilon_{\mathrm{r}}^{*} \leqslant \frac{1}{2\left(a_{1}+1\right)} \times 10^{-(n-1)}</script><p>则 $x^{*}$ 至少具有 $n$ 位有效数字</p>
+<h3 id="数值运算的误差估计"><a href="#数值运算的误差估计" class="headerlink" title="数值运算的误差估计"></a>数值运算的误差估计</h3><p>两个近似数 $x_{1}^{*}$ 与 $x_{2}^{*}$，其误差限分别为 $\varepsilon\left(x_{1}^{*}\right)$ 及 $\varepsilon\left(x_{2}^{*}\right)$，它们进行加、减、乘、除运算得到的误差限分别为</p>
+<script type="math/tex; mode=display">
+\varepsilon\left(x_{1}^{*} \pm x_{2}^{*}\right)=\varepsilon\left(x_{1}^{*}\right)+\varepsilon\left(x_{2}^{*}\right)</script><script type="math/tex; mode=display">
+\varepsilon\left(x_{1}^{*} x_{2}^{*}\right) \approx\left|x_{1}^{*}\right| \varepsilon\left(x_{2}^{*}\right)+\left|x_{2}^{*}\right| \varepsilon\left(x_{1}^{*}\right)</script><script type="math/tex; mode=display">
+\varepsilon\left(\frac{x_{1}^{*}}{x_{2}^{*}}\right) \approx \frac{\left|x_{1}^{*}\right| \varepsilon\left(x_{2}^{*}\right)+\left|x_{2}^{*}\right| \varepsilon\left(x_{1}^{*}\right)}{\left|x_{2}^{*}\right|^{2}}\left(x_{2}^{*} \neq 0\right)</script><p>更一般的情况是，当自变量有误差时，计算函数值也会产生误差，其误差限可利用函数的 Taylor 展开式进行估计。<br>当 $f$ 为多元函数时计算 $A=f\left(x_{1},x_{2},\cdots,x_{n}\right)$，如果 $x_{1},x_{2},\cdots,x_{n}$ 的近似值为 $x_{1}^{*},x_{2}^{*} \cdots,x_{n}^{*}$，则 $A$ 的近似值为 $A^{*}=f\left(x_{1}^{*},x_{2}^{*},\cdots,x_{n}^{*}\right)$，由 Taylor 展开，得 $A^{*}$ 的相对误差限为</p>
+<script type="math/tex; mode=display">
+\varepsilon_{\mathrm{r}}^{*}=\varepsilon_{\mathrm{r}}\left(A^{*}\right)=\frac{\varepsilon\left(A^{*}\right)}{\left|A^{*}\right|} \approx \sum_{k=1}^{k}\left|\left(\frac{\partial f}{\partial x_{k}}\right)^{*}\right| \frac{\varepsilon\left(x_{k}^{*}\right)}{\left|A^{*}\right|}</script><h3 id="数值运算中误差分析的方法与原则"><a href="#数值运算中误差分析的方法与原则" class="headerlink" title="数值运算中误差分析的方法与原则"></a>数值运算中误差分析的方法与原则</h3><p>运算过程舍入误差不增长的计算公式是<strong>数值稳定</strong>的，否则是不稳定的。</p>
+<ul>
+<li>要避免除数绝对值远远小于被除数绝对值的除法</li>
+<li>要避免两相近数相减</li>
+<li>要防止大数“吃掉”小数</li>
+<li>注意简化计算步骤，减少运算次数</li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/">大学学习生活</a>
+                    
+                      <a class="hover-with-bg" href="/categories/%E5%A4%A7%E5%AD%A6%E5%AD%A6%E4%B9%A0%E7%94%9F%E6%B4%BB/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" rel="nofollow noopener noopener">CC BY-NC-ND 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/06/26/%E7%BD%91%E5%AE%89%E5%AF%BC%E8%AE%BA&amp;%E6%94%BB%E9%98%B2%E7%90%86%E8%AE%BA%E7%AC%94%E8%AE%B0/">
+                        <span class="hidden-mobile">网安导论&攻防理论笔记</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#comments', function() {
+      var light = 'github-light';
+      var dark = 'github-dark';
+      var schema = document.documentElement.getAttribute('data-user-color-scheme');
+      if (schema === 'dark') {
+        schema = dark;
+      } else {
+        schema = light;
+      }
+      window.UtterancesThemeLight = light;
+      window.UtterancesThemeDark = dark;
+      var s = document.createElement('script');
+      s.setAttribute('src', 'https://utteranc.es/client.js');
+      s.setAttribute('repo', '1357310795/Blog-Comment');
+      s.setAttribute('issue-term', 'pathname');
+      
+      s.setAttribute('label', 'utterances');
+      
+      s.setAttribute('theme', schema);
+      s.setAttribute('crossorigin', 'anonymous');
+      document.getElementById('comments').appendChild(s);
+    })
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/bootstrap/4.6.0/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  <script  src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/tocbot/4.12.3/tocbot.min.js" ></script>
+
+
+
+  <script  src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/fancybox/3.5.7/jquery.fancybox.min.js" ></script>
+
+
+
+  <script  src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/anchor-js/4.3.1/anchor.min.js" ></script>
+
+
+
+  <script defer src="https://lf9-cdn-tos.bytecdntp.com/cdn/expire-1-M/clipboard.js/2.0.8/clipboard.min.js" ></script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+
+  <script  src="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/mathjax/3.1.4/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
