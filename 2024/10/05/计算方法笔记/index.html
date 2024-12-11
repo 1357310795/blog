@@ -247,7 +247,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2024年11月14日 晚上
+                  本文最后更新于：2024年12月11日 晚上
                 
               </p>
             
@@ -1043,7 +1043,503 @@ x_{i}^{(k+1)}=x_{i}^{(k)}+\Delta x_{i} \quad(k=0,1,\cdots;i=1,2,\cdots,n)\\
 <li>如果 $\boldsymbol{A}$ 为对称正定矩阵，且 $0&lt;\omega&lt;2$，则 SOR 方法收敛 </li>
 </ul>
 <h4 id="最佳松弛因子公式"><a href="#最佳松弛因子公式" class="headerlink" title="最佳松弛因子公式"></a>最佳松弛因子公式</h4><script type="math/tex; mode=display">
-\omega_{\mathrm{opt}}=\frac{2}{1+\sqrt{1-\rho^{2}\left(\boldsymbol{B}_{0}\right)}}</script>
+\omega_{\mathrm{opt}}=\frac{2}{1+\sqrt{1-\rho^{2}\left(\boldsymbol{B}_{0}\right)}}</script><h2 id="第二章-插值法"><a href="#第二章-插值法" class="headerlink" title="第二章 插值法"></a>第二章 插值法</h2><h3 id="基础定义"><a href="#基础定义" class="headerlink" title="基础定义"></a>基础定义</h3><p>设函数 $y=f(x)$ 在区间 $[a,b]$ 上有定义，且已知在点 $a \leqslant x_{0} \leqslant x_{1}&lt;\cdots   &lt;x_{n} \leqslant b$ 上的值 $y_{0},y_{1},\cdots,y_{n}$，若存在一简单函数 $P(x)$，使</p>
+<script type="math/tex; mode=display">
+P\left(x_{i}\right)=y_{i} \quad(i=0,1,\cdots,n)</script><p>成立，就称 $P(x)$ 为 $f(x)$ 的<strong>插值函数</strong>，点 $x_{0},x_{1},\cdots,x_{n}$ 称为<strong>插值节点</strong>，包含插值节点的区间 $[a,b]$ 称为<strong>插值区间</strong>，求插值函数 $P(x)$ 的方法称为<strong>插值法</strong>。若 $P(x)$ 是次数不超过 $n$ 的代数多项式，即</p>
+<script type="math/tex; mode=display">
+P(x)=a_{0}+a_{1} x+\cdots+a_{n} x^{n},</script><p>其中 $a_{i}$ 为实数，就称 $P(x)$ 为插值多项式，相应的插值法称为<strong>多项式插值</strong>；若 $P(x)$ 为分段的<em>多项式</em>，就称之为<strong>分段插值</strong>；若 $P(x)$ 为三角多项式，就称之为<strong>三角插值</strong></p>
+<h3 id="插值多项式的存在唯一性"><a href="#插值多项式的存在唯一性" class="headerlink" title="插值多项式的存在唯一性"></a>插值多项式的存在唯一性</h3><p>设 $P(x)$ 是插值多项式，用 $H_{n}$ 代表所有次数不超过 $n$ 的多项式集合，于是 $P(x) \in H_{n}$。所谓插值多项式 $P(x)$ 存在唯一，就是指在集合 $H_{n}$ 中有且只有一个 $P(x)$ 满足式 </p>
+<script type="math/tex; mode=display">
+P\left(x_{i}\right)=y_{i} \quad(i=0,1,\cdots,n)</script><p>展开得</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{c}
+a_{0}+a_{1} x_{0}+\cdots+a_{n} x_{0}^{n}=y_{0},\\
+a_{0}+a_{1} x_{1}+\cdots+a_{n} x_{1}^{n}=y_{1},\\
+\vdots \\
+a_{0}+a_{1} x_{n}+\cdots+a_{n} x_{n}^{n}=y_{n}
+\end{array}\right.</script><p>这是一个关于 $a_{0},a_{1},\cdots,a_{n}$ 的 $n+1$ 元线性方程组</p>
+<p>要证明插值多项式的存在唯一，只要证明方程组的解存在唯一，也就是证明系数行列式</p>
+<script type="math/tex; mode=display">
+V_{n}\left(x_{0},x_{1},\cdots,x_{n}\right)=\left|\begin{array}{ccccc}
+1 & x_{0} & x_{0}^{2} & \cdots & x_{0}^{n} \\
+1 & x_{1} & x_{1}^{2} & \cdots & x_{1}^{n} \\
+\vdots & \vdots & \vdots & & \vdots \\
+1 & x_{n} & x_{n}^{2} & \cdots & x_{n}^{n}
+\end{array}\right|</script><p>不为零，其中 $V_{n}\left(x_{0},x_{1},\cdots,x_{n}\right)$ 称为 Vandermonde 行列式。利用行列式性质可得</p>
+<script type="math/tex; mode=display">
+V_{n}\left(x_{0},x_{1},\cdots,x_{n}\right)=\prod_{i=1}^{n} \prod_{j=0}^{i-1}\left(x_{i}-x_{j}\right)</script><p>由于 $i \neq j$ 时 $x_{i} \neq x_{j}$，上式所有因子 $x_{i}-x_{j} \neq 0$，于是 $V_{n}\left(x_{0},x_{1},\cdots,x_{n}\right) \neq 0$，故方程组存在唯一的一组解 $a_{0},a_{1},\cdots,a_{n}$。</p>
+<h3 id="线性插值与抛物插值"><a href="#线性插值与抛物插值" class="headerlink" title="线性插值与抛物插值"></a>线性插值与抛物插值</h3><script type="math/tex; mode=display">
+L_{1}(x)=y_{k}+\frac{y_{k+1}-y_{k}}{x_{k+1}-x_{k}}\left(x-x_{k}\right) \mathrm{(点斜式)}</script><script type="math/tex; mode=display">
+L_{1}(x)=\frac{x_{k+1}-x}{x_{k+1}-x_{k}} y_{k}+\frac{x-x_{k}}{x_{k+1}-x_{k}} y_{k+1}\mathrm{(两点式)}</script><script type="math/tex; mode=display">
+\begin{aligned}
+L_{2}(x) &=y_{k-1} \frac{\left(x-x_{k}\right)\left(x-x_{k+1}\right)}{\left(x_{k-1}-x_{k}\right)\left(x_{k-1}-x_{k+1}\right)}+y_{k} \frac{\left(x-x_{k-1}\right)\left(x-x_{k+1}\right)}{\left(x_{k}-x_{k-1}\right)\left(x_{k}-x_{k+1}\right)} \\
+&+y_{k+1} \frac{\left(x-x_{k-1}\right)\left(x-x_{k}\right)}{\left(x_{k+1}-x_{k-1}\right)\left(x_{k+1}-x_{k}\right)}
+\end{aligned}</script><h3 id="插值基函数"><a href="#插值基函数" class="headerlink" title="插值基函数"></a>插值基函数</h3><p>若 $n$ 次多项式 $l_{j}(x)(j=0,1,\cdots,n)$ 在 $n+1$ 个节点 $x_{0}&lt;x_{1}&lt;\cdots&lt;x_{n}$ 上满足条件</p>
+<script type="math/tex; mode=display">
+l_{j}\left(x_{k}\right)=\left\{\begin{array}{ll}
+1,& k=j,\\
+0,& k \neq j
+\end{array} \quad(j,k=0,1,\cdots,n),\right.</script><p>就称这 $n+1$ 个 $n$ 次多项式 $l_{0}(x),l_{1}(x),\cdots,l_{n}(x)$ 为节点 $x_{0},x_{1},\cdots,x_{n}$ 上的 $n$ 次插值基函数</p>
+<ul>
+<li>$n$ 次插值基函数为<script type="math/tex; mode=display">
+l_{k}(x)=\frac{\left(x-x_{0}\right) \cdots\left(x-x_{k-1}\right)\left(x-x_{k+1}\right) \cdots\left(x-x_{n}\right)}{\left(x_{k}-x_{0}\right) \cdots\left(x_{k}-x_{k-1}\right)\left(x_{k}-x_{k+1}\right) \cdots\left(x_{k}-x_{n}\right)} \quad(k=0,1,\cdots,n)</script></li>
+</ul>
+<h3 id="拉格朗日插值"><a href="#拉格朗日插值" class="headerlink" title="拉格朗日插值"></a>拉格朗日插值</h3><p>拉格朗日（Lagrange）插值多项式 $L_{n}(x)$ 可表示为</p>
+<script type="math/tex; mode=display">
+L_{n}(x)=\sum_{k=0}^{n} y_{k} l_{k}(x)</script><p>由 $l_{k}(x)$ 的定义知</p>
+<script type="math/tex; mode=display">
+L_{n}\left(x_{j}\right)=\sum_{k=0}^{n} y_{k} l_{k}\left(x_{j}\right)=y_{j} \quad(j=0,1,\cdots,n)</script><p>若引入记号</p>
+<script type="math/tex; mode=display">
+\omega_{n+1}(x)=\left(x-x_{0}\right)\left(x-x_{1}\right) \cdots\left(x-x_{n}\right),</script><p>容易求得</p>
+<script type="math/tex; mode=display">
+\omega_{n+1}^{\prime}\left(x_{k}\right)=\left(x_{k}-x_{0}\right) \cdots\left(x_{k}-x_{k-1}\right)\left(x_{k}-x_{k+1}\right) \cdots\left(x_{k}-x_{n}\right),</script><p>于是差值多项式也可表示成</p>
+<script type="math/tex; mode=display">
+L_{n}(x)=\sum_{k=0}^{n} y_{k} \frac{\omega_{n+1}(x)}{\left(x-x_{k}\right) \omega_{n+1}^{\prime}\left(x_{k}\right)}</script><ul>
+<li>$n$ 次插值多项式 $L_{n}(x)$ 通常是次数为 $n$ 的多项式，特殊情况次数可能小于 $n$（例如，三点共线）</li>
+</ul>
+<h3 id="截断误差-1"><a href="#截断误差-1" class="headerlink" title="截断误差"></a>截断误差</h3><p>若在 $[a,b]$ 上用 $L_{n}(x)$ 近似 $f(x)$，则其<strong>截断误差</strong>为 $R_{n}(x)=f(x)-L_{n}(x)$，$R_{n}(x)$ 也称为插值多项式的<strong>余项</strong>或<strong>插值余项</strong></p>
+<p>设 </p>
+<ul>
+<li>$f^{(n)}(x)$ 在 $[a,b]$ 上连续；</li>
+<li>$f^{(n+1)}(x)$ 在 $(a,b)$ 内存在；</li>
+<li>节点互不相同且 $a \leqslant x_{i} \leqslant b,\ i=0,1,\cdots,n$，</li>
+</ul>
+<p>则 $\forall x \in[a,b]$，$\exists \xi \in(a,b)$：</p>
+<script type="math/tex; mode=display">
+R_{n}(x)=f(x)-L_{n}(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!} \omega_{n+1}(x)</script><ul>
+<li>当 $n=1$ 时，线性插值余项为<script type="math/tex; mode=display">
+R_{1}(x)=\frac{1}{2} f^{\prime \prime}(\xi) \omega_{2}(x)=\frac{1}{2} f^{\prime \prime}(\xi)\left(x-x_{0}\right)\left(x-x_{1}\right),\quad \xi \in\left[x_{0},x_{1}\right]</script></li>
+<li>当 $n=2$ 时，抛物插值的余项为<script type="math/tex; mode=display">
+R_{2}(x)=\frac{1}{6} f^{\prime \prime \prime}(\xi)\left(x-x_{0}\right)\left(x-x_{1}\right)\left(x-x_{2}\right),\quad \xi \in\left[x_{0},x_{2}\right]</script></li>
+<li>插值多项式 $L_{n}(x)$ 逼近 $f(x)$ 的截断误差限是<script type="math/tex; mode=display">
+\left|R_{n}(x)\right| \leqslant \frac{M_{n+1}}{(n+1)!}\left|\omega_{n+1}(x)\right|</script>其中<script type="math/tex; mode=display">
+M_{n+1} = \max _{a \leqslant x \leqslant b}\left|f^{(n+1)}(x)\right|</script></li>
+</ul>
+<h3 id="差商"><a href="#差商" class="headerlink" title="差商"></a>差商</h3><p>称 $f\left[x_{0},x_{k}\right]=\frac{f\left(x_{k}\right)-f\left(x_{0}\right)}{x_{k}-x_{0}}$ 为函数 $f(x)$ 关于点 $x_{0},x_{k}$ 的<strong>一阶差商</strong>，称</p>
+<script type="math/tex; mode=display">
+f\left[x_{0},x_{1},x_{k}\right]=\frac{f\left[x_{0},x_{k}\right]-f\left[x_{0},x_{1}\right]}{x_{k}-x_{1}}</script><p>为 $f(x)$ 关于点 $x_{0},x_{1},x_{k}$ 的<strong>二阶差商</strong></p>
+<p>一般地，称</p>
+<script type="math/tex; mode=display">
+f\left[x_{0},x_{1},\cdots,x_{k}\right]=\frac{f\left[x_{0},x_{1},\cdots,x_{k-2},x_{k}\right]-f\left[x_{0},x_{1},\cdots,x_{k-1}\right]}{x_{k}-x_{k-1}}</script><p>为 $f(x)$ 的 <strong>k 阶差商</strong></p>
+<h4 id="性质-1"><a href="#性质-1" class="headerlink" title="性质"></a>性质</h4><ul>
+<li>k 阶差商可表示为函数值 $f\left(x_{0}\right),f\left(x_{1}\right),\cdots,f\left(x_{k}\right)$ 的线性组合，即<script type="math/tex; mode=display">
+f\left[x_{0},x_{1},\cdots,x_{k}\right]=\sum_{j=0}^{k} \frac{f\left(x_{j}\right)}{\left(x_{j}-x_{0}\right) \cdots\left(x_{j}-x_{j-1}\right)\left(x_{j}-x_{j+1}\right) \cdots\left(x_{j}-x_{k}\right)}</script></li>
+<li>差商与节点的排列次序无关，称为差商的对称性，即<script type="math/tex; mode=display">
+f\left[x_{0},x_{1},\cdots,x_{k}\right]=f\left[x_{1},x_{0},x_{2},\cdots,x_{k}\right]=\cdots=f\left[x_{1},x_{2},\cdots,x_{k},x_{0}\right]</script></li>
+<li><script type="math/tex; mode=display">
+f\left[x_{0},x_{1},\cdots,x_{k}\right]=\frac{f\left[x_{1},x_{2},\cdots,x_{k}\right]-f\left[x_{0},x_{1},\cdots,x_{k-1}\right]}{x_{k}-x_{0}}</script></li>
+<li>若 $f(x)$ 在 $[a,b]$ 上存在 $n$ 阶导数，且节点 $x_{0},x_{1},\cdots,x_{n} \in[a,b]$，则 $n$ 阶差商与导数关系为<script type="math/tex; mode=display">
+f\left[x_{0},x_{1},\cdots,x_{n}\right]=\frac{f^{(n)}(\xi)}{n!},\quad \xi \in[a,b]</script></li>
+<li>若 $F(x)=c f(x)$，则 <script type="math/tex; mode=display">
+F\left[x_{0},x_{1},\cdots,x_{n}\right]=c f\left[x_{0},x_{1},\cdots,x_{n}\right]</script></li>
+<li>若 $F(x)=f(x)+g(x)$，则 <script type="math/tex; mode=display">
+F\left[x_{0},x_{1},\cdots,x_{n}\right]=f\left[x_{0},x_{1},\cdots,x_{n}\right]+g\left[x_{0},x_{1},\cdots,x_{n}\right]</script></li>
+</ul>
+<h3 id="Newton-插值公式"><a href="#Newton-插值公式" class="headerlink" title="Newton 插值公式"></a>Newton 插值公式</h3><script type="math/tex; mode=display">
+f(x) = N_{n}(x) + R_{n}(x)</script><p>其中差值项</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+N_{n}(x)= & f\left(x_{0}\right)+f\left[x_{0},x_{1}\right]\left(x-x_{0}\right)+f\left[x_{0},x_{1},x_{2}\right]\left(x-x_{0}\right)\left(x-x_{1}\right)+\cdots \\
+& +f\left[x_{0},x_{1},\cdots,x_{n}\right]\left(x-x_{0}\right)\left(x-x_{1}\right) \cdots\left(x-x_{n-1}\right)
+\end{aligned}</script><p>余项</p>
+<script type="math/tex; mode=display">
+R_{n}(x)= f(x)-N_{n}(x)=f\left[x,x_{0},\cdots,x_{n}\right] \omega_{n+1}(x)</script><h3 id="分段低次插值"><a href="#分段低次插值" class="headerlink" title="分段低次插值"></a>分段低次插值</h3><h4 id="背景-1"><a href="#背景-1" class="headerlink" title="背景"></a>背景</h4><ul>
+<li>拉格朗日插值多项式 $L_{n}(x)$ 近似 $f(x)$ 时，$L_{n}(x)$ 的次数不是越高精度越好，事实上当 $n \rightarrow \infty$ 时，$L_{n}(x)$ 不一定收敛到 $f(x)$</li>
+<li>分段线性插值，就是将插值点用折线段连接起来逼近 $f(x)$ </li>
+</ul>
+<h4 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h4><p>设已知节点 $a=x_{0}&lt;x_{1}&lt;\cdots&lt;x_{n}=b$ 上的函数值 $f_{0},f_{1},\cdots,f_{n}$，记 $h_{k}=x_{k+1}-x_{k}$，$h=\max _{k} \{h_{k}\}$ 称 $I_{h}(x)$ 为<strong>分段线性插值函数</strong>，如果满足：</p>
+<ul>
+<li>记 $I_{h}(x) \in C[a,b]$；</li>
+<li>$I_{h}\left(x_{k}\right)=f_{k}(k=0,1,\cdots,n)$；</li>
+<li>$I_{h}(x)$ 在每个区间 $\left[x_{k},x_{k+1}\right]$ 上是线性函数，</li>
+</ul>
+<p>则由定义可知，$I_{h}(x)$ 在每个小区间 $\left[x_{k},x_{k+1}\right]$ 上可表示为</p>
+<script type="math/tex; mode=display">
+I_{h}(x)=\frac{x-x_{k+1}}{x_{k}-x_{k+1}} f_{k}+\frac{x-x_{k}}{x_{k+1}-x_{k}} f_{k+1} \quad\left(x_{k} \leqslant x \leqslant x_{k+1}\right)</script><p>若用插值基函数表示，则 $I_{h}(x)$ 在整个区间 $[a,b]$ 上可表示为</p>
+<script type="math/tex; mode=display">
+I_{h}(x)=\sum_{j=0}^{n} f_{j} l_{j}(x)</script><p>其中基函数 $l_{j}(x)$ 满足条件 $l_{j}\left(x_{k}\right)=\delta_{j k}(j,k=0,1,\cdots,n)$，其形式是</p>
+<script type="math/tex; mode=display">
+l_{j}(x)=\left\{\begin{array}{ll}
+\frac{x-x_{j-1}}{x_{j}-x_{j-1}},& x_{j-1} \leqslant x \leqslant x_{j}\quad(j=0 \mathrm{略去}),\\
+\frac{x_{j}-x_{j+1}}{x-x_{j+1}},& x_{j} \leqslant x \leqslant x_{j+1} \quad(j=n \mathrm{略去}),\\
+0,& x \in[a,b],x \notin\left[x_{j-1},x_{j+1}\right]
+\end{array}\right.</script><p>分段线性插值基函数 $l_{j}(x)$ 只在 $x_{j}$ 附近不为零，在其他地方均为零，这种性质称为局部非零性质</p>
+<h3 id="Hermite-差值"><a href="#Hermite-差值" class="headerlink" title="Hermite 差值"></a>Hermite 差值</h3><p>设在节点 $a \leqslant x_{0}&lt;x_{1}&lt;\cdots&lt;x_{n} \leqslant b$ 上，$y_{j}   =f\left(x_{j}\right)$，$m_{j}=f^{\prime}\left(x_{j}\right)(j=0,1,\cdots,n)$，要求插值多项式 $H(x)$，满足条件</p>
+<script type="math/tex; mode=display">
+H\left(x_{j}\right)=y_{j},\quad H^{\prime}\left(x_{j}\right)=m_{j} \quad(j=0,1,\cdots,n)</script><p>这里给出的 $2 n+2$ 个条件，可唯一确定一个次数不超过 $2 n+1$ 的多项式</p>
+<script type="math/tex; mode=display">
+H_{2 n+1}(x)=H(x)</script><p>其形式为</p>
+<script type="math/tex; mode=display">
+H_{2 n+1}(x)=a_{0}+a_{1} x+\cdots+a_{2 n+1} x^{2 n+1}</script><p>用求 Lagrange 插值多项式的基函数方法：先求插值基函数 $\alpha_{j}(x)$ 及 $\beta_{j}(x)(j=0,1,\cdots,n)$，共有 $2 n+2$ 个，每一个基函数都是 $2 n+1$ 次多项式，且满足条件</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\alpha_{j}\left(x_{k}\right)=\delta_{j k}=\left\{\begin{array}{ll}
+0,& j \neq k,\\
+1,& j=k,
+\end{array} \quad \alpha_{j}^{\prime}\left(x_{k}\right)=0 \quad(j,k=0,1,\cdots,n),\right. \\
+\beta_{j}\left(x_{k}\right)=0,\quad \beta_{j}^{\prime}\left(x_{k}\right)=\delta_{j k}
+\end{array}\right.</script><p>解得</p>
+<script type="math/tex; mode=display">
+\alpha_{j}(x)=\left[1-2\left(x-x_{j}\right) \sum_{\substack{k=0 \\
+k \neq j}}^{n} \frac{1}{x_{j}-x_{k}}\right] l_{j}^{2}(x)</script><script type="math/tex; mode=display">
+\beta_{j}(x)=\left(x-x_{j}\right) l_{j}^{2}(x)</script><p>于是插值多项式 $H(x)=H_{2 n+1}(x)$ 可写成用插值基函数表示的形式：</p>
+<script type="math/tex; mode=display">
+H_{2 n+1}(x)=\sum_{j=0}^{n}\left[y_{j} \alpha_{j}(x)+m_{j} \beta_{j}(x)\right]</script><p>重要特例是 $n=1$ 的情形，这时可取节点为 $x_{k}$ 及 $x_{k+1}$，插值多项式为 $H_{3}(x)$，满足条件</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+H_{3}\left(x_{k}\right)=y_{k},\quad H_{3}\left(x_{k+1}\right)=y_{k+1},\\
+H_{3}^{\prime}\left(x_{k}\right)=m_{k},\quad H_{3}^{\prime}\left(x_{k+1}\right)=m_{k+1}
+\end{array}\right.</script><p>基函数</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\alpha_{k}(x)=\left(1+2 \frac{x-x_{k}}{x_{k+1}-x_{k}}\right)\left(\frac{x-x_{k+1}}{x_{k}-x_{k+1}}\right)^{2} \\
+\alpha_{k+1}(x)=\left(1+2 \frac{x-x_{k+1}}{x_{k}-x_{k+1}}\right)\left(\frac{x-x_{k}}{x_{k+1}-x_{k}}\right)^{2}
+\end{array}\right.</script><script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\beta_{k}(x)=\left(x-x_{k}\right)\left(\frac{x-x_{k+1}}{x_{k}-x_{k+1}}\right)^{2} \\
+\beta_{k+1}(x)=\left(x-x_{k+1}\right)\left(\frac{x-x_{k}}{x_{k+1}-x_{k}}\right)^{2}
+\end{array}\right.</script><p>插值多项式是</p>
+<script type="math/tex; mode=display">
+H_{3}(x)=y_{k} \alpha_{k}(x)+y_{k+1} \alpha_{k+1}(x)+m_{k} \beta_{k}(x)+m_{k+1} \beta_{k+1}(x)</script><p>其余项 $R_{3}(x)=f(x)-H_{3}(x)$</p>
+<script type="math/tex; mode=display">
+R_{3}(x)=\frac{1}{4!} f^{(4)}(\xi)\left(x-x_{k}\right)^{2}\left(x-x_{k+1}\right)^{2}</script><h3 id="分段三次-Hermite-插值"><a href="#分段三次-Hermite-插值" class="headerlink" title="分段三次 Hermite 插值"></a>分段三次 Hermite 插值</h3><p>分段线性插值函数 $I_{h}(x)$ 的导数是间断的，若在节点 $x_{k}(k=0,1,\cdots,n)$ 上除已知函数值 $f_{k}$ 外还给出导数值 $f_{k}^{\prime}=m_{k}(k=0,1,\cdots,n)$，就可构造一个导数连续的分段插值函数 $I_{h}(x)$，它满足如下条件：</p>
+<ul>
+<li>$I_{h}(x) \in C^{1}[a,b]$（$C^{1}[a,b]$ 代表区间 $[a,b]$ 上一阶导数连续的函数集合）</li>
+<li>$I_{h}\left(x_{k}\right)=f_{k},I_{h}^{\prime}\left(x_{k}\right)=f_{k}^{\prime} \quad(k=0,1,\cdots,n)$</li>
+<li>$I_{h}(x)$ 在每个小区间 $\left[x_{k},x_{k+1}\right]$ 上是三次多项式<script type="math/tex; mode=display">
+\alpha_{j}(x)=
+\left\{\begin{array}{ll}
+\left(\frac{x-x_{j-1}}{x_{j}-x_{j-1}}\right)^{2}\left(1+2 \frac{x-x_{j}}{x_{j-1}-x_{j}}\right),& x_{j-1} \leqslant x \leqslant x_{j} \quad(j=0 \mathrm{略去}),\\ 
+\left(\frac{x-x_{j+1}}{x_{j}-x_{j+1}}\right)^{2}\left(1+2 \frac{x-x_{j}}{x_{j+1}-x_{j}}\right),& x_{j} \leqslant x \leqslant x_{j+1} \quad(j=n \mathrm{略去}),\\ 
+0,& \mathrm{其他}
+\end{array}\right.</script><script type="math/tex; mode=display">
+\beta_{j}(x)=
+\left\{\begin{array}{ll}
+\left(\frac{x-x_{j-1}}{x_{j}-x_{j-1}}\right)^{2}\left(x-x_{j}\right),& x_{j-1} \leqslant x \leqslant x_{j} \quad(j=0 \mathrm{略去}),\\ 
+\left(\frac{x-x_{j+1}}{x_{j}-x_{j+1}}\right)^{2}\left(x-x_{j}\right),& x_{j} \leqslant x \leqslant x_{j+1} \quad(j=n \mathrm{略去}),\\ 
+0,& \mathrm{其他}
+\end{array}\right.</script>于是 $I_{h}(x)$ 可表示为<script type="math/tex; mode=display">
+I_{h}(x)=\sum_{j=0}^{n}\left[f_{j} \alpha_{j}(x)+f_{j}^{\prime} \beta_{j}(x)\right]</script>由于 $\alpha_{j}(x),\beta_{j}(x)$ 的局部非零性质，当 $x \in\left[x_{k},x_{k+1}\right]$ 时，只有 $\alpha_{k}(x),\alpha_{k+1}(x)$，$\beta_{k}(x),\beta_{k+1}(x)$ 不为零，于是 $I_{h}(x)$ 也可表示为<script type="math/tex; mode=display">
+I_{h}(x)=f_{k} \alpha_{k}(x)+f_{k+1} \alpha_{k+1}(x)+f_{k}^{\prime} \beta_{k}(x)+f_{k+1}^{\prime} \beta_{k+1}(x) \quad\left(x_{k} \leqslant x \leqslant x_{k+1}\right)</script></li>
+</ul>
+<h3 id="三次样条曲线"><a href="#三次样条曲线" class="headerlink" title="三次样条曲线"></a>三次样条曲线</h3><h4 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h4><p>若函数 $S(x) \in C^{2}[a,b]$，且在每个小区间 $\left[x_{j},x_{j+1}\right]$ 上是三次多项式，其中 $a=x_{0}&lt;x_{1}&lt;\cdots&lt;x_{n}=b$ 是给定节点，则称 $S(x)$ 是节点 $x_{0},x_{1},\cdots,x_{n}$ 上的<strong>三次样条函数</strong>。若在节点 $x_{j}$ 上给定函数值 $y_{j}=f\left(x_{j}\right)(j=0,1,\cdots,n)$，且</p>
+<script type="math/tex; mode=display">
+S\left(x_{j}\right)=y_{j} \quad(j=0,1,\cdots,n)</script><p>成立，则称 $S(x)$ 为<strong>三次样条插值函数</strong>。</p>
+<h4 id="解析条件"><a href="#解析条件" class="headerlink" title="解析条件"></a>解析条件</h4><p>从定义知，要求出 $S(x)$，在每个小区间 $\left[x_{j},x_{j+1}\right]$ 上要确定 $4$ 个待定系数，共有 $n$ 个小区间，故应确定 $4 n$ 个参数。根据 $S(x)$ 在 $[a,b]$ 上二阶导数连续，在节点 $x_{j} (j=1,2,\cdots,n-1)$ 处应满足连续性条件</p>
+<script type="math/tex; mode=display">
+\begin{aligned}
+S\left(x_{j}-0\right)= & S\left(x_{j}+0\right),\quad S^{\prime}\left(x_{j}-0\right)=S^{\prime}\left(x_{j}+0\right),\\
+& S^{\prime \prime}\left(x_{j}-0\right)=S^{\prime \prime}\left(x_{j}+0\right),
+\end{aligned}</script><p>共有 $3 n-3$ 个条件，再加上 $S(x)$ 满足插值条件，共有 $4 n-2$ 个条件，因此还需要 $2$ 个条件才能确定 $S(x)$ 通常可在区间 $[a,b]$ 端点 $a=x_{0},b=x_{n}$ 上各加一个条件（称为<strong>边界条件</strong>）。</p>
+<ul>
+<li>已知两端的一阶导数值，即<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+S^{\prime}\left(x_{0}\right)=f_{0}^{\prime},\\
+S^{\prime}\left(x_{n}\right)=f_{n}^{\prime}
+\end{array}\right.</script></li>
+<li>两端的二阶导数已知，即<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+S^{\prime \prime}\left(x_{0}\right)=f_{0}^{\prime \prime},\\
+S^{\prime \prime}\left(x_{n}\right)=f_{n}^{\prime \prime}
+\end{array}\right.</script></li>
+<li>自然边界条件<script type="math/tex; mode=display">
+S^{\prime \prime}\left(x_{0}\right)=S^{\prime \prime}\left(x_{n}\right)=0</script></li>
+<li>当 $f(x)$ 是以 $x_{n}-x_{0}$ 为周期的周期函数时，则要求 $S(x)$ 也是周期函数，这时边界条件应满足<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+S\left(x_{0}+0\right)=S\left(x_{n}-0\right),\\
+S^{\prime}\left(x_{0}+0\right)=S^{\prime}\left(x_{n}-0\right),\\
+S^{\prime \prime}\left(x_{0}+0\right)=S^{\prime \prime}\left(x_{n}-0\right),
+\end{array}\right.</script>这样确定的样条函数 $S(x)$ 称为<strong>周期样条函数</strong></li>
+</ul>
+<h4 id="三转角方程"><a href="#三转角方程" class="headerlink" title="三转角方程"></a>三转角方程</h4><p>（Todo）</p>
+<h4 id="收敛性"><a href="#收敛性" class="headerlink" title="收敛性"></a>收敛性</h4><p>（Todo）</p>
+<h2 id="第三章-逼近"><a href="#第三章-逼近" class="headerlink" title="第三章 逼近"></a>第三章 逼近</h2><h3 id="逼近的定义"><a href="#逼近的定义" class="headerlink" title="逼近的定义"></a>逼近的定义</h3><p>对于函数类 $A$ 中给定的函数 $f(x)$，要求在另一类较简单的便于计算的函数类 $B$中，求函数 $P(x)\in B \subset A$，使 $P(x)$ 与 $f(x)$ 之差在某种度量意义下最小</p>
+<ul>
+<li>函数类 $A$ 通常是区间 $[a,b]$ 上的连续函数,记作 $C[a,b]$</li>
+<li>函数类 $B$ 通常是代数多项式、分式有理函数或三角多项式</li>
+<li>度量标准最常用的有两种：<ul>
+<li><strong>一致逼近（均匀逼近）</strong><script type="math/tex; mode=display">
+\|f(x)-P(x)\|_{\infty}=\max _{a \leqslant x \leqslant b}|f(x)-P(x)|</script></li>
+<li><strong>均方逼近（平方逼近）</strong><br>在这种度量意义下的函数逼近称为；另一种度量标准是<script type="math/tex; mode=display">
+\|f(x)-P(x)\|_{2}=\sqrt{\int_{a}^{b}[f(x)-P(x)]^{2} \mathrm{~d} x}</script></li>
+</ul>
+</li>
+</ul>
+<h3 id="Weierstrass-定理"><a href="#Weierstrass-定理" class="headerlink" title="Weierstrass 定理"></a>Weierstrass 定理</h3><p>设 $f(x) \in C[a,b]$，则对于任何 $\varepsilon&gt;0$，总存在一个代数多项式 $P(x)$，使</p>
+<script type="math/tex; mode=display">
+\|f(x)-P(x)\|_{\infty}<\varepsilon</script><p>在 $[a,b]$ 上一致成立</p>
+<h3 id="函数范数"><a href="#函数范数" class="headerlink" title="函数范数"></a>函数范数</h3><p>区间 $[a,b]$ 上的所有实连续函数组成一个空间，记作 $C[a,b]$。$f \in C[a,b]$ 的范数定义为</p>
+<script type="math/tex; mode=display">
+\|f\|_{\infty}=\max _{a \leqslant x \leqslant b}|f(x)|,</script><p>$|\cdot|_{\infty}$ 称为 $\infty -$ 范数，它满足范数 $|\cdot|$ 的三个性质：</p>
+<ul>
+<li>$|f| \geqslant 0$，当且仅当 $f \equiv 0$ 时才有 $|f|=0$</li>
+<li>$|a f|=|a||f|$ 对于任意 $f \in C[a,b]$ 成立，$a$ 为任意实数</li>
+<li>对于任意 $f,g \in C[a,b]$，有<script type="math/tex; mode=display">
+\|f+g\| \leqslant\|f\|+\|g\|</script></li>
+</ul>
+<p>与向量空间类似，当 $f,g \in C[a,b]$ 时，定义 $f$ 与 $g$ 的<strong>距离</strong>为</p>
+<script type="math/tex; mode=display">
+D(f,g)=\|f-g\|_{\infty}</script><p>于是可得到</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+D(f,g) \leqslant D(f,h)+D(h,g) \\
+\left|\|f\|_{\infty}-\|g\|_{\infty}\right| \leqslant\|f-g\|_{\infty}
+\end{array}</script><h3 id="最佳一致逼近问题"><a href="#最佳一致逼近问题" class="headerlink" title="最佳一致逼近问题"></a>最佳一致逼近问题</h3><h4 id="逼近多项式"><a href="#逼近多项式" class="headerlink" title="逼近多项式"></a>逼近多项式</h4><p>记次数不大于 $n$ 的多项式集合为 $H_{n}$，$H_{n} \subseteq C[a,b]$。又记 $H_{n}=\operatorname{span}\left\{1,x,\cdots,x^{n}\right\}$，其中 $1,x,\cdots,x^{n}$ 是 $[a,b]$ 上一组线性无关的函数组，是 $H_{n}$ 中的一组<strong>基</strong>，$H_{n}$ 中的元素 $P_{n}(x)$ 可表示为</p>
+<script type="math/tex; mode=display">
+P_{n}(x)=a_{0}+a_{1} x+\cdots+a_{n} x^{n}</script><h4 id="偏差"><a href="#偏差" class="headerlink" title="偏差"></a>偏差</h4><p>设 $P_{n}(x) \in H_{n}$，$f(x) \in C[a,b]$，称</p>
+<script type="math/tex; mode=display">
+\Delta\left(f,P_{n}\right)=\left\|f-P_{n}\right\|_{\infty}=\max _{a \leqslant x \leqslant b}\left|f(x)-P_{n}(x)\right|</script><p>为 $f(x)$ 与 $P_{n}(x)$ 在 $[a,b]$ 上的<strong>偏差</strong></p>
+<p>偏差的全体组成一个集合，记作 $\left\{\Delta\left(f,P_{n}\right)\right\}$，下界是 $0$，下确界记为</p>
+<script type="math/tex; mode=display">
+E_{n}=\inf _{P_{n} \in H_{n}}\left\{\Delta\left(f,P_{n}\right)\right\}=\inf _{P_{n} \in H_{n}} \max _{a \leqslant x \leqslant b}\left|f(x)-P_{n}(x)\right|</script><p>则称 $E_{n}$ 为 $f(x)$ 在 $[a,b]$ 上的<strong>最小偏差</strong>，这个最小偏差在逼近多项式为最佳逼近多项式时取得</p>
+<h4 id="最佳一致逼近多项式"><a href="#最佳一致逼近多项式" class="headerlink" title="最佳一致逼近多项式"></a>最佳一致逼近多项式</h4><p>假定 $f(x) \in C[a,b]$，若存在 $P_{n}^{*}(x) \in H_{n}$ 使得</p>
+<script type="math/tex; mode=display">
+\Delta\left(f,P_{n}^{*}\right)=E_{n},</script><p>则称 $P_{n}^{*}(x)$ 是 $f(x)$ 在 $[a,b]$ 上的<strong>最佳一致逼近多项式</strong>或<strong>最小偏差逼近多项式</strong>，简称<strong>最佳逼近多项式</strong></p>
+<p>存在性：若 $f(x) \in C[a,b]$，则总存在 $P_{n}^{*}(x) \in H_{n}$，使</p>
+<script type="math/tex; mode=display">
+\left\|f(x)-P_{n}^{*}(x)\right\|_{\infty}=E_{n}</script><p>也就是最佳逼近多项式一定存在。</p>
+<h4 id="偏差点"><a href="#偏差点" class="headerlink" title="偏差点"></a>偏差点</h4><p>设 $f(x) \in C[a,b]$，$P(x) \in H_{n}$，若在 $x=x_{0}$ 上有</p>
+<script type="math/tex; mode=display">
+\left|P\left(x_{0}\right)-f\left(x_{0}\right)\right|=\max _{a \leqslant x \leqslant b}|P(x)-f(x)|=\mu,</script><p>则称 $x_{0}$ 是 $P(x)$ 的<strong>偏差点</strong></p>
+<ul>
+<li>若 $P\left(x_{0}\right)-f\left(x_{0}\right)=\mu$，则称 $x_{0}$ 为<strong>正偏差点</strong></li>
+<li>若 $P\left(x_{0}\right)-f\left(x_{0}\right)=-\mu$，则称 $x_{0}$ 为<strong>负偏差点</strong></li>
+</ul>
+<p>存在性：由于函数 $P(x)-f(x)$ 在 $[a,b]$ 上连续，因此，至少存在一个点 $x_{0} \in[a,b]$，使得</p>
+<script type="math/tex; mode=display">
+\left|P\left(x_{0}\right)-f\left(x_{0}\right)\right|=\mu,</script><h4 id="Chebyshev（切比雪夫）定理"><a href="#Chebyshev（切比雪夫）定理" class="headerlink" title="Chebyshev（切比雪夫）定理"></a>Chebyshev（切比雪夫）定理</h4><p>$P(x) \in H_{n}$ 是 $f(x) \in C[a,b]$ 的最佳逼近多项式的<strong>充分必要条件</strong>是 $P(x)$ 在 $[a,b]$ 上至少有 $n+2$ 个<strong>轮流为正、负的偏差点</strong>，即有 $n+2$ 个点 $a \leqslant x_{1}&lt;   x_{2}&lt;\cdots&lt;x_{n+2} \leqslant b$，使</p>
+<script type="math/tex; mode=display">
+\begin{array}{l} 
+P\left(x_{k}\right)-f\left(x_{k}\right)=(-1)^{k} \sigma\|P(x)-f(x)\|_{\infty},\\
+\sigma= \pm 1,\quad k=1,2,\cdots,n+2
+\end{array}</script><p>这样的点组称为 Chebyshev 交错点组</p>
+<ul>
+<li>若 $f(x) \in C[a,b]$，则在 $H_{n}$ 中存在唯一的最佳逼近多项式</li>
+<li>若 $f(x) \in C[a,b]$，则其最佳逼近多项式 $P_{n}^{*}(x) \in H_{n}$ 是 $f(x)$ 的一个 Lagrange 插值多项式。</li>
+</ul>
+<h3 id="内积空间"><a href="#内积空间" class="headerlink" title="内积空间"></a>内积空间</h3><h4 id="权函数"><a href="#权函数" class="headerlink" title="权函数"></a>权函数</h4><p>设在区间 $(a,b)$ 内，非负函数 $\rho(x)$ 满足以下条件，就称 $\rho(x)$ 为区间 $(a,b)$ 内的<strong>权函数</strong>：</p>
+<ul>
+<li>$\int_{a}^{b}|x|^{n} \rho(x) \mathrm{d} x(n=0,1,\cdots)$ 存在；</li>
+<li>对于非负的连续函数 $g(x)$，若<script type="math/tex; mode=display">
+\int_{a}^{b} g(x) \rho(x) \mathrm{d} x=0,</script>则在 $(a,b)$ 内 $g(x) \equiv 0$</li>
+</ul>
+<h4 id="内积"><a href="#内积" class="headerlink" title="内积"></a>内积</h4><p>设 $f(x),g(x) \in C[a,b]$，$\rho(x)$ 是 $[a,b]$ 上的权函数，积分</p>
+<script type="math/tex; mode=display">
+(f,g)=\int_{a}^{b} \rho(x) f(x) g(x) \mathrm{d} x</script><p>称为函数 $f(x)$ 与 $g(x)$ 在 $[a,b]$ 上的<strong>内积</strong></p>
+<p>内积满足下列四条公理：</p>
+<ul>
+<li>$(f,g)=(g,f)$；</li>
+<li>$(c f,g)=c(f,g)$，$c$ 为常数；</li>
+<li>$\left(f_{1}+f_{2},g\right)=\left(f_{1},g\right)+\left(f_{2},g\right)$；</li>
+<li>$(f,f) \geqslant 0$，当且仅当 $f=0$ 时 $(f,f)=0$</li>
+</ul>
+<p>满足内积定义的函数空间称为<strong>内积空间</strong></p>
+<ul>
+<li>连续函数空间 $C[a,b]$ 上定义了内积就形成一个内积空间</li>
+</ul>
+<h4 id="欧几里得范数"><a href="#欧几里得范数" class="headerlink" title="欧几里得范数"></a>欧几里得范数</h4><p>$f(x) \in C[a,b]$，则</p>
+<script type="math/tex; mode=display">
+\|f\|_{2}=\sqrt{\int_{a}^{b} \rho(x) f^{2}(x) \mathrm{d} x}=\sqrt{(f,f)}</script><p>称为 $f(x)$ 的 <strong>Euclid 范数</strong></p>
+<p>对于任何 $f,g \in C[a,b]$，下列结论成立：</p>
+<ul>
+<li>$|(f,g)| \leqslant|f|_{2}|g|_{2}$ （Cauchy-Schwarz 不等式）</li>
+<li>$|f+g|_{2} \leqslant|f|_{2}+|g|_{2}$（三角不等式）</li>
+<li>$|f+g|_{2}^{2}+|f-g|_{2}^{2}=2\left(|f|_{2}^{2}+|g|_{2}^{2}\right)$（平行四边形定律）</li>
+</ul>
+<h3 id="正交函数"><a href="#正交函数" class="headerlink" title="正交函数"></a>正交函数</h3><p>若 $f(x),g(x) \in C[a,b]$ 满足</p>
+<script type="math/tex; mode=display">
+(f,g)=\int_{a}^{b} \rho(x) f(x) g(x) \mathrm{d} x=0,</script><p>则称 $f$ 与 $g$ 在 $[a,b]$ 上带权 $\rho(x)$ <strong>正交</strong></p>
+<p>若函数族 $\varphi_{0}(x),\varphi_{1}(x),\cdots,\varphi_{n}(x),\cdots$ 满足关系</p>
+<script type="math/tex; mode=display">
+\left(\varphi_{j},\varphi_{k}\right)=\int_{a}^{b} \rho(x) \varphi_{j}(x) \varphi_{k}(x) \mathrm{d} x=\left\{\begin{array}{ll}
+0,& j \neq k,\\
+A_{k}>0,& j=k,
+\end{array}\right.</script><p>则称 $\left\{\varphi_{k}\right\}$ 是 $[a,b]$ 上带权 $\rho(x)$ 的<strong>正交函数族</strong></p>
+<p>若 $A_{k} \equiv 1$，则称 $\left\{\varphi_{k}\right\}$ 为<strong>标准正交函数族</strong></p>
+<p>例如，三角函数族</p>
+<script type="math/tex; mode=display">
+1,\cos x,\sin x,\cos 2 x,\sin 2 x,\cdots</script><p>就是在区间 $[-\pi,\pi]$ 上的正交函数族（权 $\rho(x) \equiv 1$），其</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+(1,1)=2 \pi,\\
+(\sin n x,\sin m x)=\int_{-\pi}^{\pi} \sin n x \sin m x \mathrm{~d} x=\left\{\begin{array}{ll}
+\pi,& m=n,\\
+0,& m \neq n
+\end{array},(n,m=1,2,\cdots),\right. \\
+(\cos n x,\cos m x)=\int_{-\pi}^{\pi} \cos n x \cos m x \mathrm{~d} x=\left\{\begin{array}{ll}
+\pi,& m=n,\\
+0,& m \neq n
+\end{array}(n,m=1,2,\cdots),\right. \\
+(\cos n x,\sin m x)=\int_{-\pi}^{\pi} \cos n x \sin m x \mathrm{~d} x=0 \quad(n,m=1,2,\cdots)
+\end{array}</script><p>在 $\mathbf{R}^{n}$ 空间中，任一向量都可用它的一组线性无关的基表示，内积空间的任一元素 $f(x) \in C[a,b]$ 也同样可用线性无关的基表示</p>
+<h3 id="线性无关函数族"><a href="#线性无关函数族" class="headerlink" title="线性无关函数族"></a>线性无关函数族</h3><p>设 $\varphi_{0}(x),\varphi_{1}(x),\cdots,\varphi_{n-1}(x)$ 在 $[a,b]$ 上连续，如果</p>
+<script type="math/tex; mode=display">
+a_{0} \varphi_{0}(x)+a_{1} \varphi_{1}(x)+\cdots+a_{n-1} \varphi_{n-1}(x)=0</script><p>当且仅当 $a_{0}=a_{1}=\cdots=a_{n-1}=0$ 时成立，则称 $\varphi_{0},\varphi_{1},\cdots,\varphi_{n-1}$ 在 $[a,b]$ 上是<strong>线性无关</strong>的</p>
+<p>若函数族 $\left\{\varphi_{k}\right\}(k=0,1,\cdots)$ 中的任何有限个 $\varphi_{k}$ 线性无关，则称 $\left\{\varphi_{k}\right\}$ 为<strong>线性无关函数族</strong></p>
+<p>若 $\varphi_{0}(x),\varphi_{1}(x),\cdots,\varphi_{n-1}(x)$ 是 $[a,b]$ 上的线性无关函数，且 $a_{0},a_{1},\cdots,a_{n-1}$ 是任意实数，则</p>
+<script type="math/tex; mode=display">
+S(x)=a_{0} \varphi_{0}(x)+a_{1} \varphi_{1}(x)+\cdots+a_{n-1} \varphi_{n-1}(x)</script><p>的全体是 $C[a,b]$ 中的一个子集，记作</p>
+<script type="math/tex; mode=display">
+\Phi=\operatorname{span}\left\{\varphi_{0},\varphi_{1},\cdots,\varphi_{n-1}\right\}</script><p>下面给出判断函数族 $\left\{\varphi_{k}\right\}(k=0,1,\cdots,n-1)$ 线性无关的充要条件</p>
+<p>$\varphi_{0}(x),\varphi_{1}(x),\cdots,\varphi_{n-1}(x)$ 在 $[a,b]$ 上线性无关的充分必要条件是它的 Cramer 行列式 $G_{n-1} \neq 0$，其中</p>
+<script type="math/tex; mode=display">
+G_{n-1}=G\left(\varphi_{0},\varphi_{1},\cdots,\varphi_{n-1}\right)=\left|\begin{array}{cccc}
+\left(\varphi_{0},\varphi_{0}\right) & \left(\varphi_{0},\varphi_{1}\right) & \cdots & \left(\varphi_{0},\varphi_{n-1}\right) \\
+\left(\varphi_{1},\varphi_{0}\right) & \left(\varphi_{1},\varphi_{1}\right) & \cdots & \left(\varphi_{1},\varphi_{n-1}\right) \\
+\vdots & \vdots & & \vdots \\
+\left(\varphi_{n-1},\varphi_{0}\right) & \left(\varphi_{n-1},\varphi_{1}\right) & \cdots & \left(\varphi_{n-1},\varphi_{n-1}\right)
+\end{array}\right|</script><h3 id="正交多项式"><a href="#正交多项式" class="headerlink" title="正交多项式"></a>正交多项式</h3><p>设 $g_{n}(x)$ 是首项系数 $a_{n} \neq 0$ 的 $n$ 次多项式，如果多项式序列 $g_{0}(x),g_{1}(x),\cdots$ 满足</p>
+<script type="math/tex; mode=display">
+\left(g_{j},g_{k}\right)=\int_{a}^{b} \rho(x) g_{j}(x) g_{k}(x) \mathrm{d} x=\left\{\begin{array}{cc}
+0,& j \neq k,\\
+A_{k}>0,& j=k
+\end{array} \quad(j,k=0,1,\cdots),\right.</script><p>则称多项式序列 $g_{0}(x),g_{1}(x),\cdots$ 在 $[a,b]$ 上带权 $\rho(x)$ 正交，并称 $g_{n}(x)$ 是 $[a,b]$ 上带权 $\rho(x)$ 的 <strong>n 次正交多项式</strong></p>
+<p>一般来说，当区间 $[a,b]$ 及权函数 $\rho(x)$ 给定以后，可以由线性无关的一组基 $\left\{1,x,x^{2},\cdots,x^{n},\cdots\right\}$ 并利用正交化方法构造出正交多项式</p>
+<script type="math/tex; mode=display">
+g_{0}(x)=1,\quad g_{n}(x)=x^{n}-\sum_{k=0}^{n-1} \frac{\left(x^{n},g_{k}\right)}{\left(g_{k},g_{k}\right)} \cdot g_{k}(x),\quad k=1,2,\cdots</script><p>这样构造的正交多项式有以下性质：</p>
+<ul>
+<li>$g_{n}(x)$ 是最高项系数为 $1$ 的 $n$ 次多项式。</li>
+<li>任一 $n$ 次多项式 $P_{n}(x) \in H_{n}$ 均可表示为 $g_{0}(x),g_{1}(x),\cdots,g_{n}(x)$ 的线性组合</li>
+<li>当 $n \neq m$ 时，$\left(g_{n},g_{m}\right)=0$ 且 $g_{n}(x)$ 与任一次数小于 $n$ 的多项式正交</li>
+<li>有递推关系<script type="math/tex; mode=display">
+g_{n+1}(x)=\left(x-\alpha_{n}\right) g_{n}(x)-\beta_{n} g_{n-1}(x),\quad n=0,1,\cdots,</script>其中<script type="math/tex; mode=display">
+\begin{array}{c}
+g_{0}(x)=1, \quad g_{n-1}(x)=0, \\
+\alpha_{n}=\frac{\left(x g_{n}, g_{n}\right)}{\left(g_{n}, g_{n}\right)}, \quad n=0,1, \cdots, \\
+\beta_{n}=\frac{\left(g_{n},g_{n}\right)}{\left(g_{n-1},g_{n-1}\right)},\quad n=1,2,\cdots
+\end{array}</script>这里 $\left(x g_{n},g_{n}\right)=\int_{a}^{b} x g_{n}^{2}(x) \rho(x) \mathrm{d} x$</li>
+<li>设 $g_{0}(x),g_{1}(x),\cdots$ 是在 $[a,b]$ 上带权 $\rho(x)$ 的正交多项式序列，则 $g_{n}(x)(n   \geqslant 1)$ 的 $n$ 个根都是单重实根，且都在区间 $(a,b)$ 内</li>
+</ul>
+<h3 id="Legendre（勒让德）多项式"><a href="#Legendre（勒让德）多项式" class="headerlink" title="Legendre（勒让德）多项式"></a>Legendre（勒让德）多项式</h3><p>当区间为 $[-1,1]$、权函数 $\rho(x) \equiv 1$ 时，由 $\left\{1,x,x^{2},\cdots,x^{n},\cdots\right\}$ 正交化得到的多项式就称为 Legendre 多项式，并用 $P_{0}(x),P_{1}(x),\cdots,P_{n}(x),\cdots$ 表示</p>
+<script type="math/tex; mode=display">
+P_{0}(x)=1,\quad P_{n}(x)=\frac{1}{2^{n} n!} \frac{\mathrm{d}^{n}}{\mathrm{~d} x^{n}}\left\{\left(x^{2}-1\right)^{n}\right\} \quad(n=1,2,\cdots)</script><p>由于 $\left(x^{2}-1\right)^{n}$ 是 $2 n$ 次多项式，求 $n$ 阶导数后得</p>
+<script type="math/tex; mode=display">
+P_{n}(x)=\frac{1}{2^{2} n!}(2 n)(2 n-1) \cdots(n+1) x^{n}+a_{n-1} x^{n-1}+\cdots+a_{0},</script><p>于是得首项 $x^{n}$ 的系数 $a_{n}=\frac{(2 n)!}{2^{n}(n!)^{2}}$，显然最高项系数为 $1$ 的 Legendre 多项式为</p>
+<script type="math/tex; mode=display">
+\widetilde{P}_{n}(x)=\frac{n!}{(2 n)!} \frac{\mathrm{d}^{n}}{\mathrm{~d} x^{n}}\left[\left(x^{2}-1\right)^{n}\right]</script><h4 id="性质-2"><a href="#性质-2" class="headerlink" title="性质"></a>性质</h4><ul>
+<li>正交性<script type="math/tex; mode=display">
+\int_{-1}^{1} P_{n}(x) P_{m}(x) \mathrm{d} x=\left\{\begin{array}{cc}
+0,& m \neq n,\\
+\frac{2}{2 n+1},& m=n
+\end{array}\right.</script></li>
+<li>奇偶性<script type="math/tex; mode=display">
+P_{n}(-x)=(-1)^{n} P_{n}(x)</script></li>
+<li>递推关系<br>考虑 $n+1$ 次多项式 $x P_{n}(x)$，它可表示为<script type="math/tex; mode=display">
+x P_{n}(x)=a_{0} P_{0}(x)+a_{1} P_{1}(x)+\cdots+a_{n+1} P_{n+1}(x),</script></li>
+<li>在所有最高项系数为 $1$ 的 $n$ 次多项式中，Legendre 多项式 $\widetilde{P}_{n}(x)$ 在 $[-1,1]$ 上与零的平方误差最小</li>
+<li>$P_{n}(x)$ 在区间 $(-1,1)$ 内有 $n$ 个不同的实零点。</li>
+</ul>
+<h3 id="Chebyshev（切比雪夫）多项式"><a href="#Chebyshev（切比雪夫）多项式" class="headerlink" title="Chebyshev（切比雪夫）多项式"></a>Chebyshev（切比雪夫）多项式</h3><p>当权函数 $\rho(x)=\frac{1}{\sqrt{1-x^{2}}}$，区间为 $[-1,1]$ 时，由序列 $\left\{1,x,x^{2},\cdots,x^{n},\cdots\right\}$ 正交化得到的正交多项式就是 Chebyshev 多项式，它可表示为</p>
+<script type="math/tex; mode=display">
+T_{n}(x)=\cos (n \arccos x),\quad|x| \leqslant 1</script><p>若令 $x=\cos \theta$，则</p>
+<script type="math/tex; mode=display">
+T_{n}(x)=\cos n \theta,\quad 0 \leqslant \theta \leqslant \pi</script><h4 id="性质-3"><a href="#性质-3" class="headerlink" title="性质"></a>性质</h4><ul>
+<li>递推关系<script type="math/tex; mode=display">
+\begin{array}{c}
+T_{0}(x)=1,\quad T_{1}(x)=x \\
+T_{n+1}(x)=2 x T_{n}(x)-T_{n-1}(x) \quad(n=1,2,\cdots)
+\end{array}</script></li>
+<li>$T_{n}(x)$ 对零的偏差最小，它可写成如下定理<br>★ 在区间 $[-1,1]$ 上所有最高项系数为 $1$ 的一切 $n$ 次多项式中，$\omega_{n}(x)   =\frac{1}{2^{n-1}} T_{n}(x)$ 与零的偏差最小，其偏差为 $\frac{1}{2^{n-1}}$</li>
+<li>Chebyshev 多项式 $\left\{T_{k}(x)\right\}$ 在区间 $[-1,1]$ 上带权 $\rho(x)=1 / \sqrt{1-x^{2}}$ 正交，且<script type="math/tex; mode=display">
+\int_{-1}^{1} \frac{T_{n}(x) T_{m}(x) \mathrm{d} x}{\sqrt{1-x^{2}}}=\left\{\begin{array}{ll}
+0,& n \neq m,\\
+\frac{\pi}{2},& n=m \neq 0,\\
+\pi,& n=m=0
+\end{array}\right.</script>事实上，令 $x=\cos \theta$，则 $\mathrm{d} x=-\sin \theta \mathrm{d} \theta$，于是<script type="math/tex; mode=display">
+\int_{-1}^{1} \frac{T_{n}(x) T_{m}(x)}{\sqrt{1-x^{2}}} \mathrm{~d} x=\int_{0}^{\pi} \cos n \theta \cos m \theta \mathrm{~d} \theta=\left\{\begin{array}{ll}
+0,& n \neq m,\\
+\frac{\pi}{2},& n=m \neq 0,\\
+\pi,& n=m=0
+\end{array}\right.</script></li>
+<li>$T_{2 k}(x)$ 只含 $x$ 的偶次幂，$T_{2 k+1}(x)$ 只含 $x$ 的奇次幂。</li>
+<li>$T_{n}(x)$ 在区间 $[-1,1]$ 上有 $n$ 个零点 $x_{k}=\cos \frac{2 k-1}{2 n} \pi,k=1,\cdots,n$。<br>此外，实际计算中时常要求 $x^{n}$ 用 $T_{0},T_{1},\cdots,T_{n}$ 的线性组合表示，其公式为<script type="math/tex; mode=display">
+x^{n}=2^{1-n} \sum_{k=0}^{\left[\frac{n}{2}\right]}\binom{n}{k} T_{n-2 k}(x)</script></li>
+</ul>
+<h4 id="常用低次多项式"><a href="#常用低次多项式" class="headerlink" title="常用低次多项式"></a>常用低次多项式</h4><script type="math/tex; mode=display">
+\begin{array}{l}
+T_{0}(x)=1 \\
+T_{1}(x)=x \\
+T_{2}(x)=2 x^{2}-1 \\
+T_{3}(x)=4 x^{3}-3 x \\
+T_{4}(x)=8 x^{4}-8 x^{2}+1 \\
+T_{5}(x)=16 x^{5}-20 x^{3}+5 x \\
+T_{6}(x)=32 x^{6}-48 x^{4}+18 x^{2}-1 \\
+T_{7}(x)=64 x^{7}-112 x^{5}+56 x^{3}-7 x \\
+T_{8}(x)=128 x^{8}-256 x^{6}+160 x^{4}-32 x^{2}+1
+\end{array}</script><h3 id="★求函数最佳逼近的方法"><a href="#★求函数最佳逼近的方法" class="headerlink" title="★求函数最佳逼近的方法"></a>★求函数最佳逼近的方法</h3><h4 id="最佳零次一致逼近多项式"><a href="#最佳零次一致逼近多项式" class="headerlink" title="最佳零次一致逼近多项式"></a>最佳零次一致逼近多项式</h4><p>令 $m=\inf_{a\le x \le b} f(x)$，$M=\sup_{a\le x \le b} f(x)$，则最佳零次逼近多项式为</p>
+<script type="math/tex; mode=display">
+P_{0}^{*}=\frac{M-m}{2}</script><h4 id="最佳一次一致逼近多项式"><a href="#最佳一次一致逼近多项式" class="headerlink" title="最佳一次一致逼近多项式"></a>最佳一次一致逼近多项式</h4><p>假定 $f(x) \in C^{2}[a,b]$，且 $f^{\prime \prime}(x)$ 在 $(a,b)$ 内不变号。</p>
+<p>先求</p>
+<script type="math/tex; mode=display">
+a_{1}=\frac{f(b)-f(a)}{b-a}</script><p>由于 $f^{\prime \prime}(x)$ 在 $[a,b]$ 上不变号，故 $f^{\prime}(x)$ 单调，$f^{\prime}(x)-a_{1}$ 在 $(a,b)$ 内只有一个零点，解得 $x_{2}$，然后求 $a_{0}$：</p>
+<script type="math/tex; mode=display">
+a_{0}=\frac{f(a)+f\left(x_{2}\right)}{2}-\frac{f(b)-f(a)}{b-a} \frac{a+x_{2}}{2}\\</script><p>最佳一次逼近多项式 $P_{1}^{*}(x)=a_{0}+a_{1} x$，代入得</p>
+<script type="math/tex; mode=display">
+y=\frac{1}{2}\left[f(a)+f\left(x_{2}\right)\right]+a_{1}\left(x-\frac{a+x_{2}}{2}\right)</script><h4 id="最佳-n-次平方逼近多项式"><a href="#最佳-n-次平方逼近多项式" class="headerlink" title="最佳 n 次平方逼近多项式"></a>最佳 n 次平方逼近多项式</h4><ol>
+<li>写出矩阵形式法方程<script type="math/tex; mode=display">
+\boldsymbol{H}\boldsymbol{a}=\boldsymbol{d}</script>其中<script type="math/tex; mode=display">
+\begin{array}{c}
+\boldsymbol{H}=\left(\begin{array}{cccc}
+1 & 1 / 2 & \cdots & 1 /(n+1) \\
+1 / 2 & 1 / 3 & \cdots & 1 /(n+2) \\
+\vdots & \vdots & & \vdots \\
+1 /(n+1) & 1 /(n+2) & \cdots & 1 /(2 n+1)
+\end{array}\right), \\
+\boldsymbol{a}=\left(a_{0}, a_{1}, \cdots, a_{n}\right)^{\mathrm{T}}, \\
+\boldsymbol{d}=\left(d_{0}, d_{1} \cdots, d_{n}\right)^{\mathrm{T}} \\
+\end{array}</script>其中<script type="math/tex; mode=display">
+d_{k}=\left(f, x^{k}\right)=\int_{0}^{1} f(x) x^{k} \mathrm{~d} x\,(k=0,1, \cdots, n)</script></li>
+<li>解方程组得到 <script type="math/tex; mode=display">
+a_{0}^{*}, a_{1}^{*}, \cdots, a_{n}^{*}</script></li>
+<li>得到要求的多项式为<script type="math/tex; mode=display">
+S^{*}(x)=a_{0}^{*}+a_{1}^{*} x+\cdots+a_{n}^{*} x^{n}</script></li>
+<li>计算平方误差<script type="math/tex; mode=display">
+\|\delta\|_{2}^{2}=\|f\|_{2}^{2}-\sum_{k=0}^{n} a_{k}^{*}\left(x^k, f\right)</script></li>
+<li>计算最大误差<script type="math/tex; mode=display">
+\|\delta\|_{\infty}=\max _{a \leqslant x \leqslant b}\left|f(x)-S^{*}(x)\right|</script></li>
+</ol>
+<h4 id="多项式函数的最佳-n-次一致逼近多项式"><a href="#多项式函数的最佳-n-次一致逼近多项式" class="headerlink" title="多项式函数的最佳 n 次一致逼近多项式"></a>多项式函数的最佳 n 次一致逼近多项式</h4><p>若目标区间是 $[-1,1]$，设 $f(x)$ 的最高次项为 $a_{n+1}x^{n+1}$，由切比雪夫多项式的性质，最佳 n 次逼近多项式 $P_{n}^{*}(x)$ 满足</p>
+<script type="math/tex; mode=display">
+f(x)-P_{n}^{*}=\frac{a_{n+1}}{2^{n}}T_{n+1}(x)</script><p>从而求得 $P_{n}^{*}$</p>
+<p>若目标区间不是 $[-1,1]$（假设是 $[a,b]$），则先换元（平移+缩放）到 $[-1,1]$。</p>
+<ol>
+<li>令 $z=\frac{2}{b-a}x-\frac{b+a}{b-a}$，则 $z\in [-1,1]$</li>
+<li>代入 $f(x)$ 求得 $g(z)$</li>
+<li>计算 $g(z)$ 的最佳 n 次逼近多项式 $P_{n}^{*}(z)$</li>
+<li>代入 $x=\frac{b-a}{2}z+\frac{b+a}{2}$ 得到 $P_{n}^{*}(x)$</li>
+</ol>
+<h3 id="最小二乘法"><a href="#最小二乘法" class="headerlink" title="最小二乘法"></a>最小二乘法</h3><h4 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h4><p>对于给定的一组数据 $\left(x_{i},y_{i}=f(x_{i})\right)  (i=0,1,\cdots,m)$，要求在函数空间 $\Phi=\operatorname{span}\left\{\varphi_{0},\varphi_{1},\cdots,\varphi_{n}\right\}$ 中找一个函数 $y=S^{*}(x)$，使误差平方和达到最小：</p>
+<script type="math/tex; mode=display">
+\|\boldsymbol{\delta}\|_{2}^{2}=\sum_{i=0}^{m} \delta_{i}^{2}=\sum_{i=0}^{m}\left[S^{*}\left(x_{i}\right)-y_{i}\right]^{2}=\min _{S(x) \in \Phi} \sum_{i=1}^{m}\left[S\left(x_{i}\right)-y_{i}\right]^{2},</script><p>其中</p>
+<script type="math/tex; mode=display">
+S(x)=a_{0} \varphi_{0}(x)+a_{1} \varphi_{1}(x)+\cdots+a_{n} \varphi_{n}(x) \quad(n<m)</script><p>为了使问题的提法更有一般性，通常把最小二乘法中的项都考虑为加权平方和</p>
+<script type="math/tex; mode=display">
+\|\boldsymbol{\delta}\|_{2}^{2}=\sum_{i=0}^{m} \omega\left(x_{i}\right)\left[S\left(x_{i}\right)-f\left(x_{i}\right)\right]^{2}</script><p>这里 $\omega(x) \geqslant 0$ 是 $[a,b]$ 上的权函数，它表示不同点 $\left(x_{i},f\left(x_{i}\right)\right)$ 处的数据比重不同。</p>
+<p>问题可以转化为多元函数求最值问题，求偏导得到条件：</p>
+<script type="math/tex; mode=display">
+\frac{\partial I}{\partial a_{k}}=2 \sum_{i=0}^{m} \omega\left(x_{i}\right)\left[\sum_{j=0}^{n} a_{j} \varphi_{j}\left(x_{i}\right)-f\left(x_{i}\right)\right] \varphi_{k}\left(x_{i}\right)=0 \quad(k=0,1,\cdots,n)</script><p>若记<strong>（注意和函数内积的区别！）</strong></p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\left(\varphi_{j},\varphi_{k}\right)=\sum_{i=0}^{m} \omega\left(x_{i}\right) \varphi_{j}\left(x_{i}\right) \varphi_{k}\left(x_{i}\right),\\
+\left(f,\varphi_{k}\right)=\sum_{i=0}^{m} \omega\left(x_{i}\right) f\left(x_{i}\right) \varphi_{k}\left(x_{i}\right) \equiv d_{k} \quad(k=0,1,\cdots,n),
+\end{array}</script><p>则方程组可改写为</p>
+<script type="math/tex; mode=display">
+\sum_{j=0}^{n}\left(\varphi_{k},\varphi_{j}\right) a_{j}=d_{k} \quad(k=0,1,\cdots,n)</script><p>它也可写成矩阵形式</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\boldsymbol{G} \boldsymbol{a}=\boldsymbol{d},\\
+\boldsymbol{a}=\left(a_{0},a_{1},\cdots,a_{n}\right)^{\mathrm{T}},\quad \boldsymbol{d}=\left(d_{0},d_{1},\cdots,d_{n}\right)^{\mathrm{T}},\\
+\boldsymbol{G}=\left(\begin{array}{cccc}
+\left(\varphi_{0},\varphi_{0}\right) & \left(\varphi_{0},\varphi_{1}\right) & \cdots & \left(\varphi_{0},\varphi_{n}\right) \\
+\left(\varphi_{1},\varphi_{0}\right) & \left(\varphi_{1},\varphi_{1}\right) & \cdots & \left(\varphi_{1},\varphi_{n}\right) \\
+\vdots & \vdots & & \vdots \\
+\left(\varphi_{n},\varphi_{0}\right) & \left(\varphi_{n},\varphi_{1}\right) & \cdots & \left(\varphi_{n},\varphi_{n}\right)
+\end{array}\right),
+\end{array}</script><p>由于 $\varphi_{0},\varphi_{1},\cdots,\varphi_{n}$ 线性无关，故 $|\boldsymbol{G}| \neq 0$，方程组存在唯一的解</p>
+<script type="math/tex; mode=display">
+a_{k}=a_{k}^{*} \quad(k=0,1,\cdots,n),</script><p>从而得到函数 $f(x)$ 的最小二乘解为</p>
+<script type="math/tex; mode=display">
+S^{*}(x)=a_{0}^{*} \varphi_{0}(x)+a_{1}^{*} \varphi_{1}(x)+\cdots+a_{n}^{*} \varphi_{n}(x)</script>
             </div>
             <hr>
             <div>
