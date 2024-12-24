@@ -247,7 +247,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2024年12月11日 晚上
+                  本文最后更新于：2024年12月24日 晚上
                 
               </p>
             
@@ -1092,7 +1092,7 @@ L_{n}\left(x_{j}\right)=\sum_{k=0}^{n} y_{k} l_{k}\left(x_{j}\right)=y_{j} \quad
 <script type="math/tex; mode=display">
 \omega_{n+1}(x)=\left(x-x_{0}\right)\left(x-x_{1}\right) \cdots\left(x-x_{n}\right),</script><p>容易求得</p>
 <script type="math/tex; mode=display">
-\omega_{n+1}^{\prime}\left(x_{k}\right)=\left(x_{k}-x_{0}\right) \cdots\left(x_{k}-x_{k-1}\right)\left(x_{k}-x_{k+1}\right) \cdots\left(x_{k}-x_{n}\right),</script><p>于是差值多项式也可表示成</p>
+\omega_{n+1}^{\prime}\left(x_{k}\right)=\left(x_{k}-x_{0}\right) \cdots\left(x_{k}-x_{k-1}\right)\left(x_{k}-x_{k+1}\right) \cdots\left(x_{k}-x_{n}\right),</script><p>于是插值多项式也可表示成</p>
 <script type="math/tex; mode=display">
 L_{n}(x)=\sum_{k=0}^{n} y_{k} \frac{\omega_{n+1}(x)}{\left(x-x_{k}\right) \omega_{n+1}^{\prime}\left(x_{k}\right)}</script><ul>
 <li>$n$ 次插值多项式 $L_{n}(x)$ 通常是次数为 $n$ 的多项式，特殊情况次数可能小于 $n$（例如，三点共线）</li>
@@ -1136,7 +1136,7 @@ F\left[x_{0},x_{1},\cdots,x_{n}\right]=c f\left[x_{0},x_{1},\cdots,x_{n}\right]<
 F\left[x_{0},x_{1},\cdots,x_{n}\right]=f\left[x_{0},x_{1},\cdots,x_{n}\right]+g\left[x_{0},x_{1},\cdots,x_{n}\right]</script></li>
 </ul>
 <h3 id="Newton-插值公式"><a href="#Newton-插值公式" class="headerlink" title="Newton 插值公式"></a>Newton 插值公式</h3><script type="math/tex; mode=display">
-f(x) = N_{n}(x) + R_{n}(x)</script><p>其中差值项</p>
+f(x) = N_{n}(x) + R_{n}(x)</script><p>其中插值项</p>
 <script type="math/tex; mode=display">
 \begin{aligned}
 N_{n}(x)= & f\left(x_{0}\right)+f\left[x_{0},x_{1}\right]\left(x-x_{0}\right)+f\left[x_{0},x_{1},x_{2}\right]\left(x-x_{0}\right)\left(x-x_{1}\right)+\cdots \\
@@ -1164,7 +1164,7 @@ l_{j}(x)=\left\{\begin{array}{ll}
 \frac{x_{j}-x_{j+1}}{x-x_{j+1}},& x_{j} \leqslant x \leqslant x_{j+1} \quad(j=n \mathrm{略去}),\\
 0,& x \in[a,b],x \notin\left[x_{j-1},x_{j+1}\right]
 \end{array}\right.</script><p>分段线性插值基函数 $l_{j}(x)$ 只在 $x_{j}$ 附近不为零，在其他地方均为零，这种性质称为局部非零性质</p>
-<h3 id="Hermite-差值"><a href="#Hermite-差值" class="headerlink" title="Hermite 差值"></a>Hermite 差值</h3><p>设在节点 $a \leqslant x_{0}&lt;x_{1}&lt;\cdots&lt;x_{n} \leqslant b$ 上，$y_{j}   =f\left(x_{j}\right)$，$m_{j}=f^{\prime}\left(x_{j}\right)(j=0,1,\cdots,n)$，要求插值多项式 $H(x)$，满足条件</p>
+<h3 id="Hermite-插值"><a href="#Hermite-插值" class="headerlink" title="Hermite 插值"></a>Hermite 插值</h3><p>设在节点 $a \leqslant x_{0}&lt;x_{1}&lt;\cdots&lt;x_{n} \leqslant b$ 上，$y_{j}   =f\left(x_{j}\right)$，$m_{j}=f^{\prime}\left(x_{j}\right)(j=0,1,\cdots,n)$，要求插值多项式 $H(x)$，满足条件</p>
 <script type="math/tex; mode=display">
 H\left(x_{j}\right)=y_{j},\quad H^{\prime}\left(x_{j}\right)=m_{j} \quad(j=0,1,\cdots,n)</script><p>这里给出的 $2 n+2$ 个条件，可唯一确定一个次数不超过 $2 n+1$ 的多项式</p>
 <script type="math/tex; mode=display">
@@ -1429,6 +1429,22 @@ x P_{n}(x)=a_{0} P_{0}(x)+a_{1} P_{1}(x)+\cdots+a_{n+1} P_{n+1}(x),</script></li
 <li>在所有最高项系数为 $1$ 的 $n$ 次多项式中，Legendre 多项式 $\widetilde{P}_{n}(x)$ 在 $[-1,1]$ 上与零的平方误差最小</li>
 <li>$P_{n}(x)$ 在区间 $(-1,1)$ 内有 $n$ 个不同的实零点。</li>
 </ul>
+<h4 id="低次多项式"><a href="#低次多项式" class="headerlink" title="低次多项式"></a>低次多项式</h4><script type="math/tex; mode=display">
+\begin{array}{l}
+P_{0}(x)=1 \\
+P_{1}(x)=x \\
+P_{2}(x)=\left(3 x^{2}-1\right) / 2 \\
+P_{3}(x)=\left(5 x^{3}-3 x\right) / 2 \\
+P_{4}(x)=\left(35 x^{4}-30 x^{2}+3\right) / 8 \\
+P_{5}(x)=\left(63 x^{5}-70 x^{3}+15 x\right) / 8 \\
+P_{6}(x)=\left(231 x^{6}-315 x^{4}+105 x^{2}-5\right) / 16
+\end{array}</script><p>其中 </p>
+<ul>
+<li>$P_{2}(x)$ 的根为 $\pm \frac{1}{\sqrt{3}}$</li>
+<li>$P_{3}(x)$ 的根为 $0$, $\pm \sqrt{\frac{3}{5}}$</li>
+<li>$P_{4}(x)$ 的根为 $\pm \sqrt{\frac{3}{7} \pm \frac{2}{7}\sqrt{\frac{6}{5}}}$</li>
+<li>$P_{5}(x)$ 的根为 $0$, $\pm \frac{1}{3}\sqrt{5 \pm 2\sqrt{\frac{10}{7}}}$</li>
+</ul>
 <h3 id="Chebyshev（切比雪夫）多项式"><a href="#Chebyshev（切比雪夫）多项式" class="headerlink" title="Chebyshev（切比雪夫）多项式"></a>Chebyshev（切比雪夫）多项式</h3><p>当权函数 $\rho(x)=\frac{1}{\sqrt{1-x^{2}}}$，区间为 $[-1,1]$ 时，由序列 $\left\{1,x,x^{2},\cdots,x^{n},\cdots\right\}$ 正交化得到的正交多项式就是 Chebyshev 多项式，它可表示为</p>
 <script type="math/tex; mode=display">
 T_{n}(x)=\cos (n \arccos x),\quad|x| \leqslant 1</script><p>若令 $x=\cos \theta$，则</p>
@@ -1539,7 +1555,181 @@ S(x)=a_{0} \varphi_{0}(x)+a_{1} \varphi_{1}(x)+\cdots+a_{n} \varphi_{n}(x) \quad
 <script type="math/tex; mode=display">
 a_{k}=a_{k}^{*} \quad(k=0,1,\cdots,n),</script><p>从而得到函数 $f(x)$ 的最小二乘解为</p>
 <script type="math/tex; mode=display">
-S^{*}(x)=a_{0}^{*} \varphi_{0}(x)+a_{1}^{*} \varphi_{1}(x)+\cdots+a_{n}^{*} \varphi_{n}(x)</script>
+S^{*}(x)=a_{0}^{*} \varphi_{0}(x)+a_{1}^{*} \varphi_{1}(x)+\cdots+a_{n}^{*} \varphi_{n}(x)</script><h2 id="第四章-数值积分与数值微分"><a href="#第四章-数值积分与数值微分" class="headerlink" title="第四章 数值积分与数值微分"></a>第四章 数值积分与数值微分</h2><h3 id="常用低级积分方法"><a href="#常用低级积分方法" class="headerlink" title="常用低级积分方法"></a>常用低级积分方法</h3><h4 id="梯形公式"><a href="#梯形公式" class="headerlink" title="梯形公式"></a>梯形公式</h4><script type="math/tex; mode=display">
+T =\frac{b-a}{2}[f(a)+f(b)]</script><h4 id="矩形公式"><a href="#矩形公式" class="headerlink" title="矩形公式"></a>矩形公式</h4><script type="math/tex; mode=display">
+R =(b-a) f\left(\frac{a+b}{2}\right)</script><h3 id="代数精度"><a href="#代数精度" class="headerlink" title="代数精度"></a>代数精度</h3><p>如果某个求积公式对于次数不大于 $m$ 的<strong>多项式</strong>均能准确地成立，但对于 $m+1$ 次<strong>多项式</strong>就不一定准确，则称该求积公式具有 <strong>m 次代数精度</strong>。</p>
+<h3 id="插值型积分"><a href="#插值型积分" class="headerlink" title="插值型积分"></a>插值型积分</h3><p>设给定一组节点</p>
+<script type="math/tex; mode=display">
+a \leqslant x_{0}<x_{1}<x_{2}<\cdots<x_{n} \leqslant b</script><p>且已知函数 $f(x)$ 在这些节点上的值，作插值函数 $L_{n}(x)$。由于代数多项式 $L_{n}(x)$ 的原函数是容易求出的，取 $I_{n}=\int_{a}^{b} L_{n}(x) \mathrm{d} x$ 作为积分 $I=\int_{a}^{b} f(x) \mathrm{d} x$ 的近似值，这样构造出的求积公式</p>
+<script type="math/tex; mode=display">
+I_{n}=\sum_{k=0}^{n} A_{k} f\left(x_{k}\right)</script><p>是<strong>插值型</strong>的，其中求积系数 $A_{k}$ 通过插值基函数 $l_{k}(x)$ 积分</p>
+<script type="math/tex; mode=display">
+A_{k}=\int_{a}^{b} l_{k}(x) \mathrm{d} x</script><p>得出</p>
+<p>由插值余项定理即知，对于插值型的求积公式，其余项</p>
+<script type="math/tex; mode=display">
+R[f]=I-I_{n}=\int_{a}^{b} \frac{f^{n+1}(\xi)}{(n+1)!} w(x) \mathrm{d} x,</script><p>其中 $\xi$ 与变量 $x$ 有关，$w(x)=\left(x-x_{0}\right)\left(x-x_{1}\right) \cdots\left(x-x_{n}\right)$</p>
+<p>求积公式至少有 $n$ 次代数精度的<strong>充分必要条件</strong>是，它是插值型的。</p>
+<h3 id="Newton-Cotes-公式"><a href="#Newton-Cotes-公式" class="headerlink" title="Newton-Cotes 公式"></a>Newton-Cotes 公式</h3><p>设将积分区间 $[a,b]$ 划分为 $n$ 等份，步长 $h=\frac{b-a}{n}$，选取等距节点 $x_{k}=a+k h$ 构造出的插值型求积公式</p>
+<script type="math/tex; mode=display">
+I_{n}=(b-a) \sum_{k=0}^{n} C_{k}^{(n)} f\left(x_{k}\right)</script><p>称为 <strong>Newton-Cotes 公式</strong>，其中 $C_{k}^{(n)}$ 称为 <strong>Cotes 系数</strong></p>
+<ul>
+<li>$n=1$ 时即为<strong>梯形公式</strong><ul>
+<li>积分余项：<script type="math/tex; mode=display">
+R_{\mathrm{T}}=\frac{f^{\prime \prime}(\eta)}{2} \int_{a}^{b}(x-a)(x-b) \mathrm{d} x=-\frac{f^{\prime \prime}(\eta)}{12}(b-a)^{3},\quad \eta \in(a,b)</script></li>
+</ul>
+</li>
+<li>$n=2$ 时是 <strong>Simpson 公式</strong>：<script type="math/tex; mode=display">
+S=\frac{b-a}{6}\left[f(a)+4 f\left(\frac{a+b}{2}\right)+f(b)\right]</script><ul>
+<li>积分余项：<script type="math/tex; mode=display">
+R_{\mathrm{S}}=\frac{f^{(4)}(\eta)}{4!} \int_{a}^{b}(x-a)(x-c)^{2}(x-b) \mathrm{d} x=-\frac{b-a}{180}\left(\frac{b-a}{2}\right)^{4} f^{(4)}(\eta)</script></li>
+</ul>
+</li>
+<li><p>$n=4$ 时称为 <strong>Cotes 公式</strong>，其形式为</p>
+<script type="math/tex; mode=display">
+C=\frac{b-a}{90}\left[7 f\left(x_{0}\right)+32 f\left(x_{1}\right)+12 f\left(x_{2}\right)+32 f\left(x_{3}\right)+7 f\left(x_{4}\right)\right]</script><p>这里 $x_{k}=a+k h$，$h=\frac{b-a}{4}$</p>
+<ul>
+<li>积分余项：<script type="math/tex; mode=display">
+R_{\mathrm{C}}=I-C=-\frac{2(b-a)}{945}\left(\frac{b-a}{4}\right)^{6} f^{(6)}(\eta)</script></li>
+</ul>
+</li>
+<li><p>当阶 $n$ 为偶数时，Newton-Cotes 公式至少有 $n+1$ 次代数精度</p>
+</li>
+</ul>
+<h3 id="Cotes-系数"><a href="#Cotes-系数" class="headerlink" title="Cotes 系数"></a>Cotes 系数</h3><p>引进变换</p>
+<script type="math/tex; mode=display">
+x=a+t h,</script><p>则有</p>
+<script type="math/tex; mode=display">
+C_{k}^{(n)}=\frac{h}{b-a} \int_{0}^{n} \prod_{\substack{j=0 \\ j \neq k}}^{n} \frac{t-j}{k-j} \mathrm{~d} t=\frac{(-1)^{n-k}}{n k!(n-k)!} \int_{0}^{n} \prod_{\substack{j = 0 \\ j \neq k}}^{n}(t-j) \mathrm{d} t</script><p>常用 Cotes 系数：</p>
+<script type="math/tex; mode=display">
+\begin{array}{|c|c|c|c|c|c|c|c|c|c|}
+\hline n &  C_{k}^{(n)}  \\
+\hline 1 &  \frac{1}{2}  &  \frac{1}{2}  & & & & & & & \\
+\hline 2 &  \frac{1}{6}  &  \frac{2}{3}  &  \frac{1}{6}  & & & & & & \\
+\hline 3 &  \frac{1}{8}  &  \frac{3}{8}  &  \frac{3}{8}  &  \frac{1}{8}  & & & & & \\
+\hline 4 &  \frac{7}{90}  &  \frac{16}{45}  &  \frac{2}{15}  &  \frac{16}{45}  &  \frac{7}{90}  & & & & \\
+\hline 5 & \frac{19}{288} & \frac{25}{96} & \frac{25}{144} & \frac{25}{144} & \frac{25}{96} & \frac{19}{288} & & & \\
+\hline 6 &  \frac{41}{840}  &  \frac{9}{35}  &  \frac{9}{280}  &  \frac{34}{105}  &  \frac{9}{280}  &  \frac{9}{35}  &  \frac{41}{840}  & & \\
+\hline 7 & \frac{751}{17280} & \frac{3577}{17280} & \frac{1323}{17280} & \frac{2989}{17280} & \frac{2989}{17280} & \frac{1323}{17280} & \frac{3577}{17280} & \frac{751}{17280} & \\
+\hline 8 &  \frac{989}{28350}  & \frac{5888}{28350} & \frac{-928}{28350} & \frac{10496}{28350} & \frac{-4540}{28350} & \frac{10496}{28350} & \frac{-928}{28350}
+ & \frac{5888}{28350} & \frac{989}{28350} \\
+\hline
+\end{array}</script><p>可以看到，当 $n \geqslant 8$ 时，Cotes 系数有正有负，这时稳定性得不到保证。因此，实际计算中不用高阶的 Newton-Cotes 公式。</p>
+<h3 id="复化求积法"><a href="#复化求积法" class="headerlink" title="复化求积法"></a>复化求积法</h3><p>设将积分区间 $[a,b]$ 划分为 $n$ 等份，步长 $h=\frac{b-a}{n}$，分点为 $x_{k}=a+k h,k=0,1,\cdots,n$。所谓复化求积法，就是先用低阶的 Newton-Cotes 公式求得每个子区间 $\left[x_{k},x_{k+1}\right]$ 上的积分值 $I_{k}$，然后再求和，用 $\sum_{k=0}^{n-1} I_{k}$ 作为所求积分 $I$ 的近似值。</p>
+<ul>
+<li>复化梯形公式<script type="math/tex; mode=display">
+T_{n}=\sum_{k=0}^{n-1} \frac{h}{2}\left[f\left(x_{k}\right)+f\left(x_{k+1}\right)\right]=\frac{h}{2}\left[f(a)+2 \sum_{k=1}^{n-1} f\left(x_{k}\right)+f(b)\right]</script><ul>
+<li>积分余项<script type="math/tex; mode=display">
+I-T_{n}=\sum_{k=0}^{n-1}\left[-\frac{h^{3}}{12} f^{\prime \prime}\left(\eta_{k}\right)\right]=-\frac{b-a}{12} h^{2} f^{\prime \prime}(\eta)</script></li>
+</ul>
+</li>
+<li>复化 Simpson 公式<script type="math/tex; mode=display">
+\begin{aligned}
+S_{n} & =\sum_{k=0}^{n-1} \frac{h}{6}\left[f\left(x_{k}\right)+4 f\left(x_{k+\frac{1}{2}}\right)+f\left(x_{k+1}\right)\right] \\
+& =\frac{h}{6}\left[f(a)+4 \sum_{k=0}^{n-1} f\left(x_{k+\frac{1}{2}}\right)+2 \sum_{k=1}^{n-1} f\left(x_{k}\right)+f(b)\right]
+\end{aligned}</script>其中 $x_{k+\frac{1}{2}} = \frac{1}{2}(x_{k}+x_{k+1})$<ul>
+<li>积分余项<script type="math/tex; mode=display">
+I-S_{n}=-\frac{b-a}{180}\left(\frac{h}{2}\right)^{4} f^{(4)}(\eta),\quad \eta \in[a,b]</script></li>
+</ul>
+</li>
+<li>复化 Cotes 公式<script type="math/tex; mode=display">
+\begin{aligned}
+C_{n}= & \frac{h}{90}\left[7 f(a)+32 \sum_{k=0}^{n-1} f\left(x_{k+\frac{1}{4}}\right)+12 \sum_{k=0}^{n-1} f\left(x_{k+\frac{1}{2}}\right)\right. \\
+& \left.+32 \sum_{k=0}^{n-1} f\left(x_{k+\frac{3}{4}}\right)+14 \sum_{k=1}^{n-1} f\left(x_{k}\right)+7 f(b)\right]
+\end{aligned}</script>其中<script type="math/tex; mode=display">
+\begin{array}{c}
+x_{k+\frac{1}{4}} = \frac{1}{4} x_{k} + \frac{3}{4} x_{k+1} \\
+x_{k+\frac{1}{2}} = \frac{1}{2} x_{k} + \frac{1}{2} x_{k+1} \\
+x_{k+\frac{3}{4}} = \frac{3}{4} x_{k} + \frac{1}{4} x_{k+1} \\
+\end{array}</script><ul>
+<li>积分余项<script type="math/tex; mode=display">
+I-C_{n}=-\frac{2(b-a)}{945}\left(\frac{h}{4}\right)^{6} f^{(6)}(\eta),\quad \eta \in[a,b]</script></li>
+</ul>
+</li>
+</ul>
+<h3 id="Romberg-算法"><a href="#Romberg-算法" class="headerlink" title="Romberg 算法"></a>Romberg 算法</h3><h4 id="变步长二分递推"><a href="#变步长二分递推" class="headerlink" title="变步长二分递推"></a>变步长二分递推</h4><p>设将求积区间 $[a,b]$ 分成 $n$ 等份，则一共有 $n+1$ 个分点，按梯形公式计算积分值 $T_{n}$，需要提供 $n+1$ 个函数值。</p>
+<p>如果将求积区间再二分一次，则分点增至 $2 n+1$ 个。</p>
+<p>将二分前后两个积分值联系起来加以考察，注意到每个子区间 $\left[x_{k},x_{k+1}\right]$ 经过二分只增加了一个分点 $x_{k+\frac{1}{2}}=\frac{1}{2}\left(x_{k}+x_{k+1}\right)$，用复化梯形公式求得该子区间上的积分值为</p>
+<script type="math/tex; mode=display">
+\frac{h}{4}\left[f\left(x_{k}\right)+2 f\left(x_{k+\frac{1}{2}}\right)+f\left(x_{k+1}\right)\right]</script><p>注意，这里 $h=\frac{b-a}{n}$ 代表二分前的步长。将每个子区间上的积分值相加，得</p>
+<script type="math/tex; mode=display">
+T_{2 n}=\frac{h}{4} \sum_{k=0}^{n-1}\left[f\left(x_{k}\right)+f\left(x_{k+1}\right)\right]+\frac{h}{2} \sum_{k=0}^{n-1} f\left(x_{k+\frac{1}{2}}\right),</script><p>从而可导出下列递推公式：</p>
+<script type="math/tex; mode=display">
+T_{2 n}=\frac{1}{2} T_{n}+\frac{h}{2} \sum_{k=0}^{n-1} f\left(x_{k+\frac{1}{2}}\right)</script><h4 id="估计补偿"><a href="#估计补偿" class="headerlink" title="估计补偿"></a>估计补偿</h4><p>根据梯形法的误差公式，积分值 $T_{n}$ 的截断误差大致与 $h^{2}$ 成正比，因此当步长二分后，截断误差将减至原有误差的 $1 / 4$，即有</p>
+<script type="math/tex; mode=display">
+\frac{I-T_{2 n}}{I-T_{n}} \approx \frac{1}{4}</script><p>将上式移项整理，可得</p>
+<script type="math/tex; mode=display">
+I-T_{2 n} \approx \frac{1}{3}\left(T_{2 n}-T_{n}\right)</script><p>由此可见，积分近似值 $T_{2 n}$ 的误差大致等于 $\frac{1}{3}\left(T_{2 n}-T_{n}\right)$，因此，如果用这个误差值作为 $T_{2 n}$ 的一种补偿，可以期望更好的结果：</p>
+<script type="math/tex; mode=display">
+\bar{T}=T_{2 n}+\frac{1}{3}\left(T_{2 n}-T_{n}\right)=\frac{4}{3} T_{2 n}-\frac{1}{3} T_{n}</script><p>而事实上这与 Simpson 法的积分值相等</p>
+<script type="math/tex; mode=display">
+S_n = \frac{4}{3} T_{2 n}-\frac{1}{3} T_{n} = \bar{T}</script><p>同样，$S_{n}$ 补偿之后变成了 Cotes 公式</p>
+<script type="math/tex; mode=display">
+C_{n} =\frac{16}{15} S_{2 n}-\frac{1}{15} S_{n}</script><p>$C_{n}$ 补偿之后变成了 Romberg 公式</p>
+<script type="math/tex; mode=display">
+R_{n} =\frac{64}{63} C_{2 n}-\frac{1}{63} C_{n}</script><h3 id="Richardson-外推加速法"><a href="#Richardson-外推加速法" class="headerlink" title="Richardson 外推加速法"></a>Richardson 外推加速法</h3><p>（理论依据）设 $f(x) \in C^{\infty}[a,b]$，则成立</p>
+<script type="math/tex; mode=display">
+T(h)=I+a_{1} h^{2}+a_{2} h^{4}+a_{3} h^{6}+\cdots+a_{k} h^{2 k}+\cdots,</script><p>其中系数 $a_{k}(k=1,2,\cdots)$ 与 $h$ 无关。</p>
+<p>设以 $T_{0}^{(k)}$ 表示二分 $k$ 次后求得的梯形值，且以 $T_{m}^{(k)}$ 表示序列 $\left\{T_{0}^{(k)}\right\}$ 的 $m$ 次加速值，$h_{}$则依递推公式，即</p>
+<script type="math/tex; mode=display">
+T_{m}^{(k)}=\frac{4^{m}}{4^{m}-1} T_{m-1}^{(k+1)}-\frac{1}{4^{m}-1} T_{m-1}^{(k)} \quad(k=1,2,\cdots)</script><p>可以逐行构造出<strong>T 数表</strong>：</p>
+<script type="math/tex; mode=display">
+\begin{array}{ccccc}
+ T_{0}^{(0)}  & & & & \\
+ T_{0}^{(1)}  &  T_{1}^{(0)}  & & & \\
+ T_{0}^{(2)}  &  T_{1}^{(1)}  &  T_{2}^{(0)}  & & \\
+ T_{0}^{(3)}  &  T_{1}^{(2)}  &  T_{2}^{(1)}  &  T_{3}^{(0)}  & \\
+ \vdots  &  \vdots  &  \vdots  &  \vdots  &  \ddots 
+\end{array}</script><p>可以证明，如果 $f(x)$ 充分光滑，那么 $T$ 数表每一列的元素及对角线元素均收敛到所求的积分值 $I$，即</p>
+<script type="math/tex; mode=display">
+\lim _{k \rightarrow \infty} T_{m}^{(k)}=I \quad(m \mathrm{固定}),\quad \lim _{m \rightarrow \infty} T_{m}^{(0)}=I</script><ul>
+<li>初值：<script type="math/tex; mode=display">
+T_0^{(0)} = \frac{b-a}{2}\left(f(a)+f(b)\right)</script></li>
+<li>纵向递推：<script type="math/tex; mode=display">
+T_{0}^{(k)}=\frac{1}{2} T_{0}^{(k-1)}+\frac{b-a}{2^{k}} \sum_{i=0}^{2^{k-1}-1} f\left(x_{i+\frac{1}{2}}\right)</script></li>
+<li>横向递推：<script type="math/tex; mode=display">
+T_{m}^{(k)}=\frac{4^{m}}{4^{m}-1} T_{m-1}^{(k+1)}-\frac{1}{4^{m}-1} T_{m-1}^{(k)}</script></li>
+</ul>
+<h3 id="Gauss-公式"><a href="#Gauss-公式" class="headerlink" title="Gauss 公式"></a>Gauss 公式</h3><h4 id="定义-5"><a href="#定义-5" class="headerlink" title="定义"></a>定义</h4><p>在机械求积公式</p>
+<script type="math/tex; mode=display">
+\int_{a}^{b} f(x) \mathrm{d} x \approx \sum_{k=0}^{n} A_{k} f\left(x_{k}\right)</script><p>中含有 $2 n+2$ 个待定参数 $x_{k},A_{k}(k=0,1,\cdots,n)$，适当选择这些参数，有可能使求积公式具有 $2 n+1$ 次代数精度，这类求积公式称为 <strong>Gauss 公式</strong></p>
+<h4 id="Gauss-点"><a href="#Gauss-点" class="headerlink" title="Gauss 点"></a>Gauss 点</h4><p>如果求积公式具有 $2 n+1$ 次代数精度，则称其节点 $x_{k}(k=0,1,\cdots,n)$ 是 <strong>Gauss 点</strong></p>
+<ul>
+<li>对于插值型求积公式，其节点 $x_{k}(k=0,1,\cdots,n)$ 是 $Gauss$ 点的<strong>充分必要条件</strong>，是以这些点为零点的多项式 $\omega(x)=\prod_{k=0}^{n}\left(x-x_{k}\right)$ 与任意次数不超过 $n$ 的多项式 $P(x)$ 均正交，即<script type="math/tex; mode=display">
+\int_{a}^{b} P(x) \omega(x) \mathrm{d} x=0</script></li>
+</ul>
+<h4 id="Gauss-Legendre-公式"><a href="#Gauss-Legendre-公式" class="headerlink" title="Gauss-Legendre 公式"></a>Gauss-Legendre 公式</h4><p>不失一般性，可取 $a=-1,b=1$ 而考察区间 $[-1,1]$ 上的 Gauss 公式。显然，Legendre 多项式 $P_{n+1}(x)$ 的零点就是求积公式的 Gauss 点。这样子的 Gauss 公式特别地称为 <strong>Gauss-Legendre 公式</strong>。</p>
+<h4 id="常用低次-Gauss-Legendre-公式"><a href="#常用低次-Gauss-Legendre-公式" class="headerlink" title="常用低次 Gauss-Legendre 公式"></a>常用低次 Gauss-Legendre 公式</h4><ul>
+<li><p>$n=0$：</p>
+<script type="math/tex; mode=display">
+\int_{-1}^{1} f(x) \mathrm{d} x \approx 2 f(0)</script></li>
+<li><p>$n=1$：</p>
+<script type="math/tex; mode=display">
+\int_{-1}^{1} f(x) \mathrm{d} x \approx f(-\frac{1}{\sqrt{3}}) + f(\frac{1}{\sqrt{3}})</script></li>
+<li><p>$n=2$：</p>
+<script type="math/tex; mode=display">
+\int_{-1}^{1} f(x) \mathrm{d} x \approx \frac{5}{9} f(-\frac{\sqrt{15}}{5}) + \frac{8}{9} f(0) + \frac{5}{9} f(\frac{\sqrt{15}}{5})</script></li>
+<li><p>$n=3$：</p>
+<script type="math/tex; mode=display">
+\int_{-1}^{1} f(x) \mathrm{d} x \approx \frac{18+\sqrt{30}}{36} \Sigma f(\pm \sqrt{\frac{3}{7} - \frac{2}{7}\sqrt{\frac{6}{5}}})+ \frac{18-\sqrt{30}}{36} \Sigma f(\pm \sqrt{\frac{3}{7} + \frac{2}{7}\sqrt{\frac{6}{5}}})</script></li>
+<li><p>$n=4$：</p>
+<script type="math/tex; mode=display">
+\int_{-1}^{1} f(x) \mathrm{d} x \approx \frac{128}{225} f(0)+ \frac{322+13\sqrt{70}}{900} \Sigma f(\pm \frac{1}{3}\sqrt{5 - 2\sqrt{\frac{10}{7}}})+ \frac{322-13\sqrt{70}}{900} \Sigma f(\pm \frac{1}{3}\sqrt{5 + 2\sqrt{\frac{10}{7}}})</script></li>
+</ul>
+<h4 id="收敛性-1"><a href="#收敛性-1" class="headerlink" title="收敛性"></a>收敛性</h4><p>对于 Gauss 公式，其余项</p>
+<script type="math/tex; mode=display">
+R(x)=\int_{a}^{b} f(x) \mathrm{d} x-\sum_{k=0}^{n} A_{k} f\left(x_{k}\right)=\frac{f^{(2 n+2)}(\xi)}{(2 n+2)!} \int_{a}^{b} \omega^{2}(x) \mathrm{d} x,</script><p>这里 $\omega(x)=\left(x-x_{0}\right)\left(x-x_{1}\right) \cdots\left(x-x_{n}\right)$</p>
+<h4 id="稳定性"><a href="#稳定性" class="headerlink" title="稳定性"></a>稳定性</h4><p>Gauss 公式的求积系数 $A_{k}(k=0,1,\cdots,n)$ 全是正的</p>
+<h4 id="复化两点-Gauss-型积分公式"><a href="#复化两点-Gauss-型积分公式" class="headerlink" title="复化两点 Gauss 型积分公式"></a>复化两点 Gauss 型积分公式</h4><p>将区间 $[a,b]$ 进行 $m$ 等分，每个小区间 $x \in\left[x_{k},x_{k+1}\right]$ 上的两点 Gauss 积分为</p>
+<script type="math/tex; mode=display">
+\frac{h}{2}\left(f\left(x_{k,0}\right)+f\left(x_{k,1}\right)\right)</script><p>其中</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+h=\frac{b-a}{m},\\
+x_{k,0}=\frac{x_{k}+x_{k+1}}{2}-\frac{h}{2} \sqrt{\frac{1}{3}},\\
+x_{k,1}=\frac{x_{k}+x_{k+1}}{2}+\frac{h}{2} \sqrt{\frac{1}{3}} \\
+\end{array}</script><p>求和得到</p>
+<script type="math/tex; mode=display">
+G_{m}=\sum_{k=0}^{m-1} \frac{h}{2}\left(f\left(x_{k,0}\right)+f\left(x_{k,1}\right)\right)</script>
             </div>
             <hr>
             <div>
