@@ -247,7 +247,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2024年12月24日 晚上
+                  本文最后更新于：2025年1月1日 下午
                 
               </p>
             
@@ -1729,7 +1729,254 @@ x_{k,0}=\frac{x_{k}+x_{k+1}}{2}-\frac{h}{2} \sqrt{\frac{1}{3}},\\
 x_{k,1}=\frac{x_{k}+x_{k+1}}{2}+\frac{h}{2} \sqrt{\frac{1}{3}} \\
 \end{array}</script><p>求和得到</p>
 <script type="math/tex; mode=display">
-G_{m}=\sum_{k=0}^{m-1} \frac{h}{2}\left(f\left(x_{k,0}\right)+f\left(x_{k,1}\right)\right)</script>
+G_{m}=\sum_{k=0}^{m-1} \frac{h}{2}\left(f\left(x_{k,0}\right)+f\left(x_{k,1}\right)\right)</script><h2 id="第五章-常微分方程数值解法"><a href="#第五章-常微分方程数值解法" class="headerlink" title="第五章 常微分方程数值解法"></a>第五章 常微分方程数值解法</h2><h3 id="问题背景"><a href="#问题背景" class="headerlink" title="问题背景"></a>问题背景</h3><p>一阶方程的初值问题：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+y^{\prime}=f(x,y),\\
+y\left(x_{0}\right)=y_{0}
+\end{array}\right.</script><p>注意：</p>
+<ul>
+<li>在第一个方程中，$x$ 和 $y$ 表示所有可能的点，可以理解成参数方程 $x(t)$ 和 $y(t)$，而 $f$ 则是关于 $x(t)$ 和 $y(t)$ 的函数</li>
+<li>在第二个方程中 $y(x_0)$ 表示与 $x_0$ 对应的 $y$ 值，这个方程定义了方程的初始条件</li>
+<li>在 $O x y$ 平面上，微分方程的解 $y=y(x)$ 称为它的<strong>积分曲线</strong></li>
+</ul>
+<p>所谓数值解法，就是寻求解 $y(x)$ 在一系列离散节点</p>
+<script type="math/tex; mode=display">
+x_{1}<x_{2}<\cdots<x_{n}<x_{n+1}<\cdots</script><p>上的近似值 $y_{1},y_{2},\cdots,y_{n},y_{n+1},\cdots$，相邻两个节点的间距 $h=x_{n+1}-x_{n}$ 称为<strong>步长</strong>，$x_{n}=x_{0}+n h,n=0,1,2,\cdots$</p>
+<p>初值问题的数值解法有个基本特点，它们都采取“<strong>步进式</strong>”，即求解过程顺着节点排列的次序一步一步地向前推进。描述这类算法，只要给出用已知信息 $y_{n},y_{n-1},y_{n-2},\cdots$ 计算 $y_{n+1}$ 的递推公式即可。这种计算公式称为<strong>差分格式</strong></p>
+<h3 id="前进欧拉"><a href="#前进欧拉" class="headerlink" title="前进欧拉"></a>前进欧拉</h3><p>由方程可知，积分曲线上一点 $(x_n,y_n)$ 的切线斜率等于函数 $f(x,y)$ 在 $(x_n,y_n)$ 的值，故可以将此处的斜率作为小区间 $[x_n, x_{n+1}]$ 内的斜率（即用一条直线来近似积分曲线），于是可以写出直线方程：</p>
+<script type="math/tex; mode=display">
+\frac{y_{n+1}-y_{n}}{x_{n+1}-x_{n}}=f\left(x_{n},y_{n}\right)</script><p>那么 $y_{n+1}$ 的值为</p>
+<script type="math/tex; mode=display">
+y_{n+1}=y_{n}+h f\left(x_{n},y_{n}\right)</script><p>这种方法叫做<strong>前进欧拉格式</strong>（简称<strong>欧拉格式</strong>）</p>
+<p>截断误差：</p>
+<script type="math/tex; mode=display">
+y\left(x_{n+1}\right)-y_{n+1}=\frac{h^{2}}{2} y^{\prime \prime}(\xi) \approx \frac{h^{2}}{2} y^{\prime \prime}\left(x_{n}\right)</script><h3 id="后退欧拉"><a href="#后退欧拉" class="headerlink" title="后退欧拉"></a>后退欧拉</h3><p>若使用向后的差商代替方程中的导数，即</p>
+<script type="math/tex; mode=display">
+\frac{y_{n}-y_{n-1}}{x_{n}-x_{n-1}}=f\left(x_{n},y_{n}\right)</script><p>移项，$n=n+1$，得到</p>
+<script type="math/tex; mode=display">
+y_{n+1}=y_{n}+h f\left(x_{n+1},y_{n+1}\right)</script><p>这种方法叫做<strong>后退欧拉格式</strong>，这种格式实际上是关于 $y_{n+1}$ 的一个方程，因此是<strong>隐式</strong>的，需要使用迭代法求解。</p>
+<p>迭代公式：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+y_{n+1}^{(0)}=y_{n}+h f\left(x_{n},y_{n}\right) \\
+y_{n+1}^{(k+1)}=y_{n}+h f\left(x_{n+1},y_{n+1}^{(k)}\right)
+\end{array}\right.</script><p>截断误差：</p>
+<script type="math/tex; mode=display">
+y\left(x_{n+1}\right)-y_{n+1} \approx-\frac{h^{2}}{2} y^{\prime \prime}\left(x_{n}\right)</script><h3 id="梯形公式-1"><a href="#梯形公式-1" class="headerlink" title="梯形公式"></a>梯形公式</h3><p>比较前进欧拉格式与后退欧拉格式的误差公式，可以看到，如果将这两种方法进行算术平均，即可消除误差的主要部分 $\pm \frac{h^{2}}{2} y^{\prime \prime}_{n}$ 而获得更高的精度。这种平均化方法通常称为<strong>梯形方法</strong>，其计算格式为</p>
+<script type="math/tex; mode=display">
+y_{n+1}=y_{n}+\frac{h}{2}\left[f\left(x_{n},y_{n}\right)+f\left(x_{n+1},y_{n+1}\right)\right]</script><p>迭代公式：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+y_{n+1}^{(0)}=y_{n}+h f\left(x_{n},y_{n}\right),\\
+y_{n+1}^{(k+1)}=y_{n}+\frac{h}{2}\left[f\left(x_{n},y_{n}\right)+f\left(x_{n+1},y_{n+1}^{(k)}\right)\right]
+\end{array}(k=0,1,2,\cdots)\right.</script><h3 id="改进的欧拉格式"><a href="#改进的欧拉格式" class="headerlink" title="改进的欧拉格式"></a>改进的欧拉格式</h3><p>先用欧拉格式求得一个初步的近似值 $\bar{y}_{n+1}$，称之为预测值 $.$ 预测值 $\bar{y}_{n+1}$ 的精度可能很差，再用梯形公式（ $5.2.8$ ）将它校正一次，即按式（ $5.2.9$ ）迭代一次，得 $y_{n+1}$，这个结果称为校正值 $.$ 而这样建立的预测 $-$ 校正系统通常称为改进的欧拉格式：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{c}
+\bar{y}_{n+1}=y_{n}+h f\left(x_{n},y_{n}\right),\\
+y_{n+1}=y_{n}+\frac{h}{2}\left[f\left(x_{n},y_{n}\right)+f\left(x_{n+1},\bar{y}_{n+1}\right)\right]
+\end{array}\right.</script><p>这一计算格式亦可表示为</p>
+<script type="math/tex; mode=display">
+y_{n+1}=y_{n}+\frac{h}{2}\left[f\left(x_{n},y_{n}\right)+f\left(x_{n}+h,y_{n}+h f\left(x_{n},y_{n}\right)\right)\right],</script><p>或表示为下列平均化形式：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+y_{p}=y_{n}+h f\left(x_{n},y_{n}\right) \\
+y_{c}=y_{n}+h f\left(x_{n+1},y_{p}\right) \\
+y_{n+1}=\frac{1}{2}\left(y_{p}+y_{c}\right)
+\end{array}\right.</script><h3 id="欧拉两步格式"><a href="#欧拉两步格式" class="headerlink" title="欧拉两步格式"></a>欧拉两步格式</h3><script type="math/tex; mode=display">
+y_{n+1}=y_{n-1}+2 h f\left(x_{n},y_{n}\right)</script><p>迭代方程：</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\bar{y}_{n+1}=y_{n-1}+2 h f\left(x_{n},y_{n}\right) \\
+y_{n+1}=y_{n}+\frac{h}{2}\left[f\left(x_{n},y_{n}\right)+f\left(x_{n+1},\bar{y}_{n+1}\right)\right]
+\end{array}</script><h3 id="Taylor-格式"><a href="#Taylor-格式" class="headerlink" title="Taylor 格式"></a>Taylor 格式</h3><p>设初值问题有解 $y=y(x)$，用 Taylor 展开，有</p>
+<script type="math/tex; mode=display">
+y\left(x_{n+1}\right)=y\left(x_{n}\right)+h y^{\prime}\left(x_{n}\right)+\frac{h^{2}}{2!} y^{\prime \prime}\left(x_{n}\right)+\frac{h^{3}}{3!} y^{\prime \prime \prime}\left(x_{n}\right)+\cdots,</script><p>其中 $y(x)$ 的各阶导数依据所给方程可以用函数 $f$ 来表达。下面引进函数序列 $f^{(j)}(x,y)$ 来描述求导过程，即</p>
+<script type="math/tex; mode=display">
+y^{\prime}=f \equiv f^{(0)},\quad y^{\prime \prime}=\frac{\partial f^{(0)}}{\partial x}+f \frac{\partial f^{(0)}}{\partial y} \equiv f^{(1)},\quad y^{\prime \prime \prime}=\frac{\partial f^{(1)}}{\partial x}+f \frac{\partial f^{(1)}}{\partial y} \equiv f^{(2)},\quad \cdots</script><p>一般地</p>
+<script type="math/tex; mode=display">
+y^{(j)}=\frac{\partial f^{(j-2)}}{\partial x}+f \frac{\partial f^{(j-2)}}{\partial y} \equiv f^{(j-1)},\quad j=2,3,\cdots,</script><p>在展开式的右端截取若干项，并且在 $\left(x_{n},y_{n}\right)$ 计算系数 $y^{(j)}\left(x_{n}\right)$ 的近似值 $y_{n}^{(j)}$，结果导出下列 Taylor 格式</p>
+<script type="math/tex; mode=display">
+y_{n+1}=y_{n}+h y_{n}^{\prime}+\frac{h^{2}}{2!} y_{n}^{\prime \prime}+\cdots+\frac{h^{p}}{p!} y_{n}^{(p)}</script><p>注意此处的求导可以看成参数方程 $y(t)$ 对 $t$ 求导，而不是 $y$ 对 $x$ 求导！</p>
+<p>提高 Taylor 格式的阶 $p$ 即可提高计算结果的精度。显然，$p$ 阶 Taylor 格式的局部截断误差为</p>
+<script type="math/tex; mode=display">
+y\left(x_{n+1}\right)-y_{n+1}=\frac{h^{p+1}}{(p+1)!} y^{(p+1)}(\xi),\quad x_{n}<\xi<x_{n+1}</script><ul>
+<li>如果一种方法的局部截断误差为 $O\left(h^{p+1}\right)$，则称该方法具有 <strong>p 阶精度</strong></li>
+</ul>
+<h3 id="Runge-Kutta-方法"><a href="#Runge-Kutta-方法" class="headerlink" title="Runge-Kutta 方法"></a>Runge-Kutta 方法</h3><p>考察差商 $\frac{y\left(x_{n+1}\right)-y\left(x_{n}\right)}{h}$，根据微分中值定理，存在 $0&lt;\theta&lt;1$，使得</p>
+<script type="math/tex; mode=display">
+\frac{y\left(x_{n+1}\right)-y\left(x_{n}\right)}{h}=y^{\prime}\left(x_{n}+\theta h\right),</script><p>于是，利用所给方程 $y^{\prime}=f(x,y)$ 得到</p>
+<script type="math/tex; mode=display">
+y\left(x_{n+1}\right)=y\left(x_{n}\right)+h f\left(x_{n}+\theta h,y\left(x_{n}+\theta h\right)\right)</script><p>设 $K^{*}=f\left(x_{n}+\theta h,y\left(x_{n}+\theta h\right)\right)$，称 $K^{*}$ 为区间 $\left[x_{n},x_{n+1}\right]$ 上的平均斜率。由此可见，只要对平均斜率提供一种算法，那么就相应地导出一种计算格式。</p>
+<p>欧拉格式简单地取点 $x_{n}$ 的斜率值 $K_{1}=f\left(x_{n},y_{n}\right)$ 作为平均斜率 $K^{*}$，精度自然很低。这个处理过程启示我们，如果设法在 $\left(x_{n},x_{n+1}\right)$ 内多预测几个点的斜率值，然后将它们加权平均作为平均斜率 $K^{*}$，则有可能构造出具有更高精度的计算格式。</p>
+<h4 id="二阶格式"><a href="#二阶格式" class="headerlink" title="二阶格式"></a>二阶格式</h4><p>首先推广改进的欧拉方法。随意考察区间 $\left(x_{n},x_{n+1}\right)$ 内一点</p>
+<script type="math/tex; mode=display">
+x_{n+p}=x_{n}+p h,\quad 0<p \leqslant 1,</script><p>希望用 $x_{n}$ 和 $x_{n+p}$ 两个点的斜率值 $K_{1}$ 和 $K_{2}$ 线性组合得到平均斜率 $K^{*}$，即令</p>
+<script type="math/tex; mode=display">
+y_{n+1}=y_{n}+h\left(\lambda_{1} K_{1}+\lambda_{2} K_{2}\right),</script><p>其中 $\lambda_{1},\lambda_{2}$ 为待定系数。同改进的欧拉格式一样，这里仍取 $K_{1}=f\left(x_{n},y_{n}\right)$。仿照改进的欧拉格式，先用欧拉格式提供 $y\left(x_{n+p}\right)$ 的预测值，即</p>
+<script type="math/tex; mode=display">
+y_{n+p}=y_{n}+p h K_{1}</script><p>然后再用预测值 $y_{n+p}$ 通过计算 $f$ 产生斜率值</p>
+<script type="math/tex; mode=display">
+K_{2}=f\left(x_{n+p},y_{n+p}\right)</script><p>这样设计出的计算格式具有如下形式：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+y_{n+1}=y_{n}+h\left(\lambda_{1} K_{1}+\lambda_{2} K_{2}\right),\\
+K_{1}=f\left(x_{n},y_{n}\right) \\
+K_{2}=f\left(x_{n+p},y_{n}+p h K_{1}\right)
+\end{array}\right.</script><p>欲使上式具有二阶精度，只要成立</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\lambda_{1}+\lambda_{2}=1,\\
+\lambda_{2} p=\frac{1}{2}
+\end{array}\right.</script><p>满足条件格式统称为二阶 Runge-Kutta 格式</p>
+<ul>
+<li>一种特殊的二阶 Runge-Kutta 格式是所谓变形的 Euler 格式，其形式如下：<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+y_{n+1}=y_{n}+h K_{2} \\
+K_{1}=f\left(x_{n},y_{n}\right) \\
+K_{2}=f\left(x_{n}+\frac{h}{2},y_{n}+\frac{h}{2} K_{1}\right)
+\end{array}\right.</script></li>
+</ul>
+<h4 id="三阶格式"><a href="#三阶格式" class="headerlink" title="三阶格式"></a>三阶格式</h4><p>为了进一步提高精度，设除 $x_{n},x_{n+p}$ 外再考察一点 $x_{n+p}=x_{n}+q h$，$p \leqslant q \leqslant 1$，并用三个点 $x_{n},x_{n+p},x_{n+q}$ 的斜率值 $K_{1},K_{2},K_{3}$ 线性组合得到平均斜率 $K^{*}$，这时计算格式</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+y_{n+1}=y_{n}+h\left(\lambda_{1} K_{1}+\lambda_{2} K_{2}+\lambda_{3} K_{3}\right) \\
+K_{1}=f\left(x_{n},y_{n}\right) \\
+K_{2}=f\left(x_{n}+p h,y_{n}+p h K_{1}\right) \\
+K_{3}=f\left(x_{n}+q h,y_{n}+q h\left(r K_{1}+s K_{2}\right)\right)
+\end{array}\right.</script><p>为了保证它能与三阶 Taylor 格式具有同等精度，只要满足下列方程组：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+r+s=1\\
+\lambda_{1} + \lambda_{2} + \lambda_{3} = 1 \\
+\lambda_{2} p+\lambda_{3} q=\frac{1}{2} \\
+\lambda_{2} p^{2}+\lambda_{3} q^{2}=\frac{1}{3} \\
+\lambda_{3} p q s=\frac{1}{6}
+\end{array}\right.</script><p>满足条件的一族格式统称三阶 Runge-Kutta 格式。</p>
+<ul>
+<li>下面是一个特例：<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+y_{n+1}=y_{n}+\frac{h}{6}\left(K_{1}+4 K_{2}+K_{3}\right) \\
+K_{1}=f\left(x_{n},y_{n}\right) \\
+K_{2}=f\left(x_{n}+\frac{h}{2},y_{n}+\frac{h}{2} K_{1}\right) \\
+K_{3}=f\left(x_{n}+h,y_{n}-h K_{1}+2 h K_{2}\right)
+\end{array}\right.</script></li>
+</ul>
+<h4 id="四阶格式"><a href="#四阶格式" class="headerlink" title="四阶格式"></a>四阶格式</h4><ul>
+<li>一个特例：<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+y_{n+1}=y_{n}+\frac{h}{6}\left(K_{1}+2 K_{2}+2 K_{3}+K_{4}\right) \\
+K_{1}=f\left(x_{n},y_{n}\right) \\
+K_{2}=f\left(x_{n}+\frac{h}{2},y_{n}+\frac{h}{2} K_{1}\right) \\
+K_{3}=f\left(x_{n}+\frac{h}{2},y_{n}+\frac{h}{2} K_{2}\right) \\
+K_{4}=f\left(x_{n}+h,y_{n}+h K_{3}\right)
+\end{array}\right.</script></li>
+</ul>
+<h3 id="方程组的求解"><a href="#方程组的求解" class="headerlink" title="方程组的求解"></a>方程组的求解</h3><p>考察一阶方程组</p>
+<script type="math/tex; mode=display">
+y_{i}^{\prime}=f_{i}\left(x,y_{1},y_{2},\cdots,y_{N}\right) \quad(i=1,2,\cdots,N)</script><p>的初值问题，初始条件为</p>
+<script type="math/tex; mode=display">
+y_{i}\left(x_{0}\right)=y_{i}^{0} \quad(i=1,2,\cdots,N)</script><p>若采用向量的记号，记</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\boldsymbol{y}=\left(y_{1},y_{2},\cdots,y_{N}\right)^{\mathrm{T}},\quad \boldsymbol{y}^{0}=\left(y_{1}^{0},y_{2}^{0},\cdots,y_{N}^{0}\right)^{\mathrm{T}} \\
+\boldsymbol{f}=\left(f_{1},f_{2},\cdots,f_{N}\right)^{\mathrm{T}}
+\end{array}</script><p>则上述方程组的初值问题可表示为</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\boldsymbol{y}^{\prime}=\boldsymbol{f}(x,\boldsymbol{y}) \\ 
+\boldsymbol{y}\left(x_{0}\right)=\boldsymbol{y}_{0}
+\end{array}\right.</script><ul>
+<li>Euler 法<script type="math/tex; mode=display">
+\boldsymbol{y}_{n+1}=\boldsymbol{y}_{n}+h \boldsymbol{f}\left(x_{n},\boldsymbol{y}_{n}\right)</script></li>
+<li>后退 Euler 法<script type="math/tex; mode=display">
+\boldsymbol{y}_{n+1}=\boldsymbol{y}_{n}+h \boldsymbol{f}\left(x_{n+1},\boldsymbol{y}_{n+1}\right)</script></li>
+<li>梯形格式<script type="math/tex; mode=display">
+\boldsymbol{y}_{n+1}=\boldsymbol{y}_{n}+\frac{h}{2}\left(\boldsymbol{f}\left(x_{n},\boldsymbol{y}_{n}\right)+\boldsymbol{f}\left(x_{n+1},\boldsymbol{y}_{n+1}\right)\right)</script></li>
+</ul>
+<h3 id="高阶微分方程（或方程组）"><a href="#高阶微分方程（或方程组）" class="headerlink" title="高阶微分方程（或方程组）"></a>高阶微分方程（或方程组）</h3><p>原则上总可以归结为一阶方程组来求解，例如，考察下列 $m$ 阶微分方程：</p>
+<script type="math/tex; mode=display">
+y^{(m)}=f\left(x,y,y^{\prime},\cdots,y^{(m-1)}\right)</script><p>初始条件为</p>
+<script type="math/tex; mode=display">
+y\left(x_{0}\right)=y_{0},\quad y^{\prime}\left(x_{0}\right)=y_{0}^{\prime},\quad \cdots,\quad y^{(m-1)}\left(x_{0}\right)=y_{0}^{(m-1)}</script><p>只要引进新的变量 $y_{1}=y,y_{2}=y^{\prime},\cdots,y_{m}=y^{(m-1)}$，即可将 $m$ 阶方程化为如下的一阶方程组：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+y_{1}^{\prime} =y_{2} \\
+y_{2}^{\prime} =y_{3} \\
+\quad\vdots \\
+y_{m-1}^{\prime} =y_{m} \\
+y_{m}^{\prime} =f\left(x,y_{1},y_{2},\cdots,y_{m}\right)
+\end{array}\right.</script><p>初始条件则相应地化为</p>
+<script type="math/tex; mode=display">
+y_{1}\left(x_{0}\right)=y_{0},\quad y_{2}\left(x_{0}\right)=y_{0}^{\prime},\quad \cdots,\quad y_{m}\left(x_{0}\right)=y_{0}^{(m-1)}</script><p>特别地，对于下列二阶方程的初值问题：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+y^{\prime \prime}=f\left(x,y,y^{\prime}\right) \\
+y\left(x_{0}\right)=y_{0},\quad y^{\prime}\left(x_{0}\right)=y_{0}^{\prime}
+\end{array}\right.</script><p>引进新的变量 $z=y^{\prime}$，即可化为下列一阶方程组的初值问题：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+y^{\prime}=z,\quad y\left(x_{0}\right)=y_{0} \\
+z^{\prime}=f(x,y,z),\quad z\left(x_{0}\right)=y_{0}^{\prime}
+\end{array}\right.</script><h3 id="边值问题"><a href="#边值问题" class="headerlink" title="边值问题"></a>边值问题</h3><p>对于高阶微分方程，定解条件通常有两种给法</p>
+<ul>
+<li>一种是给出了积分曲线在初始时刻的性态，这类条件称为<strong>初始条件</strong>，相应的定解问题称为<strong>初值问题</strong></li>
+<li>另一种是给出了积分曲线首末两端的性态，这类条件则称为<strong>边界条件</strong>，相应的定解问题称为<strong>边值问题</strong></li>
+</ul>
+<h4 id="打靶法"><a href="#打靶法" class="headerlink" title="打靶法"></a>打靶法</h4><p>以二阶方程</p>
+<script type="math/tex; mode=display">
+y^{\prime \prime}=f\left(x,y,y^{\prime}\right)</script><p>为例，设在区间 $a&lt;x&lt;b$ 上求解方程，则边界条件可以给为</p>
+<script type="math/tex; mode=display">
+y(a)=\alpha,\quad y(b)=\beta</script><p>反复调整初始时刻的斜率值 $y^{\prime}(a)=m$，使初值问题的积分曲线 $y=y(x)$ 能“命中”$y(b)=\beta$<br>迭代过程：</p>
+<script type="math/tex; mode=display">
+m_{3}=m_{1}+\frac{m_{2}-m_{1}}{\beta_{2}-\beta_{1}}\left(\beta-\beta_{1}\right)</script><h4 id="差分方程法"><a href="#差分方程法" class="headerlink" title="差分方程法"></a>差分方程法</h4><p>如果所给方程是如下形式的线性方程：</p>
+<script type="math/tex; mode=display">
+y^{\prime \prime}+p(x) y^{\prime}+q(x) y=r(x)</script><p>设将积分区间 $[a,b]$ 划分为 $N$ 等份，步长 $h=\frac{b-a}{N}$，节点 $x_{n}=x_{0}+n h,n=0,1,\cdots,N$</p>
+<p>用差商替代相应的导数，可将边值问题离散化得下列计算公式：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\frac{y_{n+1}-2 y_{n}+y_{n-1}}{h^{2}}=f\left(x_{n},y_{n},\frac{y_{n+1}-y_{n-1}}{2 h}\right), \,(n=1,2,\cdots,N-1) \\
+y_{0}=\alpha,\quad y_{N}=\beta
+\end{array}\right.</script><p>化简得到</p>
+<script type="math/tex; mode=display">
+\frac{y_{n+1}-2 y_{n}+y_{n-1}}{h^{2}}+p(x_{n}) \frac{y_{n+1}-y_{n-1}}{2 h}+q(x_{n}) y_{n}=r(x_{n}) \quad(n=1,\cdots,N-1)</script><p>利用边界条件消去式中的 $y_{0}$ 和 $y_{N}$，整理得到关于 $y_{n}(1 \leqslant n \leqslant N-1)$ 的下列方程组：</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\left(-2+h^{2} q(x_{1})\right) y_{1}+\left(1+\frac{h}{2} p(x_{1})\right) y_{2}=h^{2} r(x_{1})-\left(1-\frac{h}{2} p(x_{1})\right) \alpha \\
+\left(1-\frac{h}{2} p(x_{n})\right) y_{n-1}+\left(-2+h^{2} q(x_{n})\right) y_{n}+\left(1+\frac{h}{2} p(x_{n})\right) y_{n+1}=h^{2} r(x_{n}) \quad(2 \leqslant n \leqslant N-2),\\
+\left(1-\frac{h}{2} p(x_{N-1})\right) y_{N-2}+\left(-2+h^{2} q(x_{N-1})\right) y_{N-1}=h^{2} r(x_{N-1})-\left(1+\frac{h}{2} p(x_{N-1})\right) \beta
+\end{array}\right.</script><p>这样归结出的方程组是所谓三对角型的，即</p>
+<script type="math/tex; mode=display">
+\left(\begin{array}{ccccc}
+-2+h^{2} q(x_{1}) & 1+\frac{h}{2} p(x_{1}) & & & \\
+1-\frac{h}{2} p(x_{2}) & -2+h^{2} q(x_{2}) & 1+\frac{h}{2} p(x_{2}) & & \\
+& \ddots & \ddots & \ddots & \\
+& & 1-\frac{h}{2} p(x_{N-2}) & -2+h^{2} q(x_{N-2}) & 1+\frac{h}{2} p(x_{N-2}) \\
+& & & 1-\frac{h}{2} p(x_{N-1}) & -2+h^{2} q(x_{N-1})
+\end{array}\right)
+\boldsymbol{y}=
+\left(\begin{array}{c}
+h^{2} r(x_{1})-\left(1-\frac{h}{2} p(x_{1})\right) \alpha \\
+h^{2} r(x_{2}) \\
+\vdots \\
+h^{2} r(x_{N-2}) \\
+h^{2} r(x_{N-1})-\left(1+\frac{h}{2} p(x_{N-1})\right) \beta
+\end{array}\right)</script><p>使用追赶法求解即可。</p>
+<p>有时边界条件按以下方式给出：</p>
+<ul>
+<li>当 $x=a$ 时, $y^{\prime}=\alpha_{0} y+\beta_{0}$</li>
+<li>当 $x=b$ 时, $y^{\prime}=\alpha_{1} y+\beta_{1}$</li>
+</ul>
+<p>这里 $\alpha_{0},\beta_{0},\alpha_{1},\beta_{1}$ 均为已知常数</p>
+<p>这时，边界条件中所包含的微商也要替换成相应的差商</p>
+<script type="math/tex; mode=display">
+\frac{y_{1}-y_{0}}{h}=\alpha_{0} y_{0}+\beta_{0},\quad \frac{y_{N}-y_{N-1}}{h}=\alpha_{1} y_{N}+\beta_{1}</script><p>它们和差分方程一起，仍然构成包含 $N+1$ 个未知数的线性方程组</p>
+<ul>
+<li>差分问题式的解存在并且是唯一的。</li>
+<li>设 $y_{n}$ 是差分问题式的（数值）解，而 $y\left(x_{n}\right)$ 是边值问题的（精确）解 $y(x)$ 在节点 $x_{n}$ 的值，则截断误差 $e_{n}=y\left(x_{n}\right)-y_{n}$ 有下列估计式：<script type="math/tex; mode=display">
+\left|e_{n}\right| \leqslant \frac{M(b-a)^{2}}{96} h^{2},\quad M=\max _{a \leqslant x \leqslant b}\left|y^{(4)}(x)\right|</script></li>
+</ul>
+
             </div>
             <hr>
             <div>
