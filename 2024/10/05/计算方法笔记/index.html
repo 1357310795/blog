@@ -247,7 +247,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2025年1月1日 下午
+                  本文最后更新于：2025年1月7日 下午
                 
               </p>
             
@@ -606,12 +606,38 @@ a_{11}^{(1)} & a_{12}^{(1)} & \cdots & \cdots & \cdots & a_{1 n}^{(1)} & b_{1}^{
 <li>$\boldsymbol{L}$ 为单位下三角阵</li>
 <li>$\boldsymbol{U}$ 为上三角阵</li>
 </ul>
-<h3 id="直接三角分解法"><a href="#直接三角分解法" class="headerlink" title="直接三角分解法"></a>直接三角分解法</h3><p>将 Gauss 消去法改写为紧凑形式，可以直接从矩阵 $\boldsymbol{A}$ 的元素得到计算 $\boldsymbol{L},\boldsymbol{U}$ 元素的递推公式，而不需任何中间步骤，这就是所谓直接三角分解法。一旦实现了矩阵 $\boldsymbol{A}$ 的 $LU$ 分解，那么求解方程组的问题就等价于求解以下两个三角方程组：</p>
+<h3 id="直接三角分解法（适合手算）"><a href="#直接三角分解法（适合手算）" class="headerlink" title="直接三角分解法（适合手算）"></a>直接三角分解法（适合手算）</h3><p>将 Gauss 消去法改写为紧凑形式，可以直接从矩阵 $\boldsymbol{A}$ 的元素得到计算 $\boldsymbol{L},\boldsymbol{U}$ 元素的递推公式，而不需任何中间步骤，这就是所谓直接三角分解法。一旦实现了矩阵 $\boldsymbol{A}$ 的 LU 分解，那么求解方程组的问题就等价于求解以下两个三角方程组：</p>
 <ul>
 <li>$\boldsymbol{L y}=\boldsymbol{b}$，求 $\boldsymbol{y}$</li>
 <li>$\boldsymbol{U} \boldsymbol{x}=\boldsymbol{y}$，求 $\boldsymbol{x}$</li>
 </ul>
-<h3 id="不选主元的三角分解法"><a href="#不选主元的三角分解法" class="headerlink" title="不选主元的三角分解法"></a>不选主元的三角分解法</h3><p>设 $\boldsymbol{A}$ 为非奇异矩阵，且有分解式 $\boldsymbol{A}=\boldsymbol{L} \boldsymbol{U}$，其中 $\boldsymbol{L}$ 为单位下三角阵，$\boldsymbol{U}$ 为上三角阵，即</p>
+<p>计算步骤：</p>
+<ol>
+<li>准备待分解的矩阵 $\boldsymbol{A}$，始终在同一个矩阵里进行操作</li>
+<li>每次选择当前的行和列（直角形），划分成上面一行和左下一列<br><img src="https://s2.loli.net/2025/01/07/g184PjHFboau9zY.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li>首先计算行的数据（蓝色），等于原始数据减去当前行左侧的数据依次乘以当前列上面的数据的乘累加（注意如果数据不够则以少的算，第一次没数据，就不用做乘累加）</li>
+<li>再计算列的数据（橙色），等于原始数据减去当前行左侧的数据依次乘以当前列上面的数据的乘累加，最后再除以直角形的直角所在位置的元素<br><img src="https://s2.loli.net/2025/01/07/sqRO7eHCiEjgnM3.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2025/01/07/2RzHvyDa43Em6ef.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2025/01/07/mavSXKzrHFiyDRB.png" srcset="/img/loading.gif" lazyload alt=""><br><img src="https://s2.loli.net/2025/01/07/gYMqmI2yVAXULf1.png" srcset="/img/loading.gif" lazyload alt=""></li>
+<li>最后，分拆出 $\boldsymbol{L}$ 和 $\boldsymbol{U}$<script type="math/tex; mode=display">
+L=\left[\begin{array}{cccc}
+1 & 0 & 0 & 0 \\
+3 / 2 & 1 & 0 & 0 \\
+1 & 0 & 1 & 0 \\
+2 & 2 & 19 / 5 & 1
+\end{array}\right] \quad U=\left[\begin{array}{cccc}
+2 & 4 & 4 & 2 \\
+0 & -3 & 6 & 3 \\
+0 & 0 & -5 & 0 \\
+0 & 0 & 0 & -9
+\end{array}\right]</script></li>
+</ol>
+<h3 id="Gauss-改写的三角分解法（适合手算）"><a href="#Gauss-改写的三角分解法（适合手算）" class="headerlink" title="Gauss 改写的三角分解法（适合手算）"></a>Gauss 改写的三角分解法（适合手算）</h3><ol>
+<li>令 $\boldsymbol{A}$ 为待分解的矩阵，$\boldsymbol{L}$ 和 $\boldsymbol{P}$ 的初始值为单位阵，$\boldsymbol{U}$ 的初始值为 $\boldsymbol{A}$</li>
+<li>从第一行开始对 $\boldsymbol{U}$ 执行高斯消元</li>
+<li>若当前第 $k$ 行 $\boldsymbol{U}$ 的主元（第 $k$ 列）是 $0$，则需要交换第 $k$ 行和 $k+1$ 行，交换后 $\boldsymbol{L}$ 对角线<strong>左下角部分</strong>也需要交换第 $k$ 行和 $k+1$ 行（事实上此时只有第 $1 \sim k-1$ 列有非零值），然后交换 $\boldsymbol{P}$ 的第 $k$ 行和 $k+1$ 行</li>
+<li>确保主元非零后，将第 $k$ 行的若干倍减到下面的行使得当前主元前面全部变成 $0$，设把第 $k$ 行的 $\lambda$ 倍<strong>减</strong>到第 $m$ 行，则 $\boldsymbol{L}$ 的第 $m$ 行第 $k$ 列<strong>变成</strong> $\lambda$</li>
+<li>完成高斯消元后，得到 $\boldsymbol{PA}=\boldsymbol{LU}$</li>
+</ol>
+<h3 id="不选主元的三角分解法（Doolittle-分解）"><a href="#不选主元的三角分解法（Doolittle-分解）" class="headerlink" title="不选主元的三角分解法（Doolittle 分解）"></a>不选主元的三角分解法（Doolittle 分解）</h3><p>设 $\boldsymbol{A}$ 为非奇异矩阵，且有分解式 $\boldsymbol{A}=\boldsymbol{L} \boldsymbol{U}$（这要求 $\boldsymbol{A}$ 的对角线元素全部非零），其中 $\boldsymbol{L}$ 为单位下三角阵，$\boldsymbol{U}$ 为上三角阵，即</p>
 <script type="math/tex; mode=display">
 \boldsymbol{A}=\left(\begin{array}{cccc}
 1 & & & \\
@@ -630,16 +656,16 @@ a_{1 i}=u_{1 i} \quad(i=1,2,\cdots,n)</script><p>于是得 $\boldsymbol{U}$ 的�
 a_{i 1}=l_{i 1} u_{11},\quad l_{i 1}=a_{i 1} / u_{11} \quad(i=2,\cdots,n)</script><p>于是得 $\boldsymbol{L}$ 的第 $1$ 列元素</p>
 <p>设已经定出 $\boldsymbol{U}$ 的第 $1$ 行到第 $r-1$ 行元素与 $\boldsymbol{L}$ 的第 $1$ 列到第 $r-1$ 列元素。利用矩阵乘法，有</p>
 <script type="math/tex; mode=display">
-a_{r i}=\sum_{k=1}^{n} l_{r k} u_{k i}=\sum_{k=1}^{r-1} l_{k k} u_{k i}+u_{r i} \quad\left(\mathrm{当} r<k,l_{r k}=0 \mathrm{时}\right)</script><p>故</p>
+a_{r i}=\sum_{k=1}^{n} l_{r k} u_{k i}=\sum_{k=1}^{r-1} l_{r k} u_{k i}+u_{r i} \quad\left(\mathrm{当} r<k,l_{r k}=0 \mathrm{时}\right)</script><p>故</p>
 <script type="math/tex; mode=display">
-u_{r i}=a_{n i}-\sum_{k=1}^{r-1} l_{k_{k}} u_{k i} \quad(i=r,r+1,\cdots,n),</script><p>又有</p>
+u_{r i}=a_{r i}-\sum_{k=1}^{r-1} l_{rk} u_{k i} \quad(i=r,r+1,\cdots,n),</script><p>又有</p>
 <script type="math/tex; mode=display">
-a_{i r}=\sum_{k=1}^{n} l_{i k} u_{k r}=\sum_{k=1}^{r-1} l_{i k} u_{k r}+l_{i r} u_{r r}</script><p>总结上述讨论，得到用直接三角分解法解 $\boldsymbol{A x}=b$（要求 $\boldsymbol{A}$ 所有顺序主子式都不为零）的计算公式，步骤如下<br>步 1：计算 $\boldsymbol{U}$ 的第 $1$ 行元素</p>
+a_{i r}=\sum_{k=1}^{n} l_{i k} u_{k r}=\sum_{k=1}^{r-1} l_{i k} u_{k r}+l_{i r} u_{r r}</script><p>总结上述讨论，得到用直接三角分解法解 $\boldsymbol{A x}=\boldsymbol{b}$（要求 $\boldsymbol{A}$ 所有顺序主子式都不为零）的计算公式，步骤如下<br>步 1：计算 $\boldsymbol{U}$ 的第 $1$ 行元素</p>
 <script type="math/tex; mode=display">
 u_{1 i}=a_{1 i}(i=1,2,\cdots,n),\quad l_{i 1}=a_{i 1} / u_{11}(i=2,3,\cdots,n)</script><p>步 2：计算 $\boldsymbol{U}$ 第 $r$ 行，$\boldsymbol{L}$ 的第 $r$ 列元素，$r=2,3,\cdots,n$</p>
 <script type="math/tex; mode=display">
 \begin{array}{c}
-u_{n i}=a_{n i}-\sum_{k=1}^{r-1} l_{r k} u_{k i} \quad(i=r,r+1,\cdots,n) \\
+u_{r i}=a_{r i}-\sum_{k=1}^{r-1} l_{r k} u_{k i} \quad(i=r,r+1,\cdots,n) \\
 l_{i r}=\left(a_{i r}-\sum_{k=1}^{r-1} l_{i k} u_{k r}\right) / u_{r r} \quad(i=r+1,\cdots,n;r \neq n) 
 \end{array}</script><p>步 3：求解 $\boldsymbol{L} \boldsymbol{y}=\boldsymbol{b}$</p>
 <script type="math/tex; mode=display">
@@ -652,8 +678,8 @@ y_{i}=b_{i}-\sum_{k=1}^{i-1} l_{i k} y_{k}\quad(i=2,3,\cdots,n)
 x_{n}=y_{n} / u_{nn},\\
 x_{i}=\left(y_{i}-\sum_{k=i+1}^{n} u_{i k} x_{k}\right) / u_{i i} \quad(i=n-1,n-2,\cdots,1)
 \end{array}\right.</script><p>直接分解法大约需要 $n^{3} / 3$ 次乘、除法运算，和 Gauss 消去法的计算量基本相同</p>
-<h3 id="选主元的三角分解法"><a href="#选主元的三角分解法" class="headerlink" title="选主元的三角分解法"></a>选主元的三角分解法</h3><p>从直接三角分解公式可看出，当 $u_{r r}=0$ 时计算将中断或者当 $u_{r r}$ 绝对值很小时，按分解公式计算可能引起舍入误差的累积。但如果 $\boldsymbol{A}$ 非奇异，就可通过交换 $\boldsymbol{A}$ 的行实现矩阵 $\boldsymbol{P A}$ 的 $LU$ 分解，因此可采用与列主元素消去法类似的方法（可以证明下述方法与列主元素消去法等价），将直接三角分解法修改为（部分）选主元的三角分解法。</p>
-<p>（略）</p>
+<h3 id="选主元的三角分解法"><a href="#选主元的三角分解法" class="headerlink" title="选主元的三角分解法"></a>选主元的三角分解法</h3><p>从直接三角分解公式可看出，当 $u_{r r}=0$ 时计算将中断或者当 $u_{r r}$ 绝对值很小时，按分解公式计算可能引起舍入误差的累积。但如果 $\boldsymbol{A}$ 非奇异，就可通过交换 $\boldsymbol{A}$ 的行实现矩阵 $\boldsymbol{P A}$ 的 LU 分解，因此可采用与列主元素消去法类似的方法（可以证明下述方法与列主元素消去法等价），将直接三角分解法修改为（部分）选主元的三角分解法。</p>
+<p>换句话说，先把 $\boldsymbol{A}$ 的某些行交换使得对角线元素符合要求，再令 $\boldsymbol{P}$ 为单位矩阵应用和 $\boldsymbol{A}$ 一样的交换得到的矩阵。最后分解完成的式子为 $\boldsymbol{P A}=\boldsymbol{LU}$</p>
 <h3 id="平方根法"><a href="#平方根法" class="headerlink" title="平方根法"></a>平方根法</h3><p>应用有限元法解结构力学问题，最后归结为求解线性方程组，这时系数矩阵大多具有对称<strong>正定性质</strong>。所谓平方根法，就是利用<strong>对称正定矩阵的三角分解</strong>而得到的求解对称正定方程组的一种有效方法，目前在计算机上广泛应用平方根法解此类方程组。</p>
 <p>设 $\boldsymbol{A}$ 为对称阵，且 $\boldsymbol{A}$ 的所有顺序主子式均不为零，则 $\boldsymbol{A}$ 可唯一分解为 $\boldsymbol{A}=\boldsymbol{L} \boldsymbol{U}$ 的形式。为了利用 $\boldsymbol{A}$ 的对称性，将 $\boldsymbol{U}$ 再分解，即</p>
 <script type="math/tex; mode=display">
@@ -700,7 +726,7 @@ l_{i j}=\left(a_{i j}-\sum_{k=1}^{j-1} l_{i k} l_{j k}\right) / l_{j j} \quad(i=
 <script type="math/tex; mode=display">
 y_{i}=\left(b_{i}-\sum_{k=1}^{i-1} l_{i k} y_{k}\right) / l_{i n} \quad(i=1,2,\cdots,n)</script><p>步 4：求解 $\boldsymbol{U} \boldsymbol{x}=\boldsymbol{y}$</p>
 <script type="math/tex; mode=display">
-x_{i}=\left(b_{i}-\sum_{k=i+1}^{n} l_{k i} x_{k}\right) / l_{i i} \quad(i=n,n-1,\cdots,1)</script><p>平方根法约需 $n^{3} / 6$ 次乘除法运算，大约为一般直接 $LU$ 分解法计算量的一半。</p>
+x_{i}=\left(b_{i}-\sum_{k=i+1}^{n} l_{k i} x_{k}\right) / l_{i i} \quad(i=n,n-1,\cdots,1)</script><p>平方根法约需 $n^{3} / 6$ 次乘除法运算，大约为一般直接 LU 分解法计算量的一半。</p>
 <h3 id="追赶法"><a href="#追赶法" class="headerlink" title="追赶法"></a>追赶法</h3><p>在一些实际问题中，例如解常微分方程边值问题，解热传导方程以及船体数学放样中建立三次样条函数等中，都会要求解系数矩阵为对角占优的三对角方程组</p>
 <script type="math/tex; mode=display">
 \left(\begin{array}{ccccccc}
@@ -1251,8 +1277,103 @@ S^{\prime}\left(x_{0}+0\right)=S^{\prime}\left(x_{n}-0\right),\\
 S^{\prime \prime}\left(x_{0}+0\right)=S^{\prime \prime}\left(x_{n}-0\right),
 \end{array}\right.</script>这样确定的样条函数 $S(x)$ 称为<strong>周期样条函数</strong></li>
 </ul>
-<h4 id="三转角方程"><a href="#三转角方程" class="headerlink" title="三转角方程"></a>三转角方程</h4><p>（Todo）</p>
-<h4 id="收敛性"><a href="#收敛性" class="headerlink" title="收敛性"></a>收敛性</h4><p>（Todo）</p>
+<h4 id="三转角方程"><a href="#三转角方程" class="headerlink" title="三转角方程"></a>三转角方程</h4><p>若假定 $S^{\prime}(x)$ 在节点 $x_{j}$ 处的值为 $S^{\prime}\left(x_{j}\right)=m_{j} \quad(j=0,1,\cdots,n)$，$h_{j}=x_{j+1}-x_{j}$，则由分段三次 Hermite 插值式可得目标函数</p>
+<script type="math/tex; mode=display">
+S(x)=\sum_{j=0}^{n}\left[y_{j} \alpha_{j}(x)+m_{j} \beta_{j}(x)\right]</script><p>应用已知条件，方程组可简化为</p>
+<script type="math/tex; mode=display">
+\lambda_{j} m_{j-1}+2 m_{j}+\mu_{j} m_{j+1}=g_{j} \quad(j=1,2,\cdots,n-1)</script><p>其中</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\lambda_{j}=\frac{h_{j}}{h_{j-1}+h_{j}},\quad \mu_{j}=\frac{h_{j-1}}{h_{j-1}+h_{j}} \quad(j=1,2,\cdots,n-1),\\
+g_{j}=3\left(\lambda_{j} f\left[x_{j-1},x_{j}\right]+\mu_{j} f\left[x_{j},x_{j+1}\right]\right) \quad(j=1,2,\cdots,n-1)
+\end{array}</script><p>这个方程是关于 $n$ 个未知数 $m_{0},m_{1},\cdots,m_{n}$ 的 $n-1$ 个方程。</p>
+<ul>
+<li>若已知两端的一阶导数值，则<script type="math/tex; mode=display">
+\begin{array}{c}
+m_{0}=f_{0}^{\prime}\\
+m_{n}=f_{n}^{\prime}
+\end{array}</script>那么方程为只含 $m_{1},\cdots,m_{n-1}$ 的 $n-1$ 个方程，写成矩阵形式<script type="math/tex; mode=display">
+\left(\begin{array}{cccccc}
+2 & \mu_{1} & 0 & \cdots & \cdots & 0 \\
+\lambda_{2} & 2 & \mu_{2} & \ddots & & \vdots \\
+0 & \lambda_{3} & 2 & \mu_{3} & \ddots & \vdots \\
+\vdots & \ddots & \ddots & \ddots & \ddots & 0 \\
+0 & & \ddots & \lambda_{n-2} & 2 & \mu_{n-2} \\
+0 & \cdots & \cdots & 0 & \lambda_{n-1} & 2
+\end{array}\right)\left(\begin{array}{c}
+m_{1} \\
+m_{2} \\
+m_{3} \\
+\vdots \\
+m_{n-2} \\
+m_{n-1}
+\end{array}\right)=\left(\begin{array}{c}
+g_{1}-\lambda_{1} f_{0}^{\prime} \\
+g_{2} \\
+g_{3} \\
+\vdots \\
+g_{n-2} \\
+g_{n-1}-\mu_{n-1} f_{n}^{\prime}
+\end{array}\right)</script></li>
+<li>若已知两端的二阶导数值，则<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+2 m_{0}+m_{1}=3 f\left[x_{0},x_{1}\right]-\frac{h_{0}}{2} f_{0}^{\prime \prime}=g_{0} \\
+m_{n-1}+2 m_{n}=3 f\left[x_{n-1},x_{n}\right]+\frac{h_{n-1}}{2} f_{n}^{\prime \prime}=g_{n}
+\end{array}\right.</script>于是，合并后用矩阵形式表示为<script type="math/tex; mode=display">
+\left(\begin{array}{cccccc}
+2 & 1 & 0 & \cdots & \cdots & 0 \\
+\lambda_{1} & 2 & \mu_{1} & \ddots & & \vdots \\
+0 & \lambda_{2} & 2 & \mu_{2} & \ddots & \vdots \\
+\vdots & \ddots & \ddots & \ddots & \ddots & 0 \\
+\vdots & & \ddots & \lambda_{n-1} & 2 & \mu_{n-1} \\
+0 & \cdots & \cdots & 0 & 1 & 2
+\end{array}\right)\left(\begin{array}{c}
+m_{0} \\
+m_{1} \\
+m_{2} \\
+\vdots \\
+m_{n-1} \\
+m_{n}
+\end{array}\right)=\left(\begin{array}{c}
+g_{0} \\
+g_{1} \\
+g_{2} \\
+\vdots \\
+g_{n-1} \\
+g_{n}
+\end{array}\right)</script></li>
+<li>若边界条件为周期样条，则<script type="math/tex; mode=display">
+\begin{array}{c}
+m_{0}=m_{n} \\
+\mu_{n} m_{1}+\lambda_{n} m_{n-1}+2 m_{n}=g_{n} \\
+\end{array}</script>其中<script type="math/tex; mode=display">
+\begin{array}{c}
+\mu_{n}=\frac{h_{n-1}}{h_{0}+h_{n-1}},\quad \lambda_{n}=\frac{h_{n-1}}{h_{0}+h_{n-1}},\\
+g_{n}=3\left(\mu_{n} f\left[x_{0},x_{1}\right]+\lambda_{n} f\left[x_{n-1},x_{n}\right]\right)
+\end{array}</script>合并后的矩阵形式<script type="math/tex; mode=display">
+\left(\begin{array}{cccccc}
+2 & \mu_{1} & \cdots & 0 & \lambda_{1} \\
+\lambda_{2} & 2 & \mu_{2} & \ddots & 0 \\
+\vdots & \ddots & \ddots & \ddots & \vdots \\
+0 & \ddots & \lambda_{n-1} & 2 & \mu_{n-1} \\
+\mu_{n} & 0 & \cdots & \lambda_{n} & 2
+\end{array}\right)\left(\begin{array}{c}
+m_{1} \\
+m_{2} \\
+\vdots \\
+m_{n-1} \\
+m_{n}
+\end{array}\right)=\left(\begin{array}{c}
+g_{1} \\
+g_{2} \\
+\vdots \\
+g_{n-1} \\
+g_{n}
+\end{array}\right)</script></li>
+</ul>
+<h4 id="收敛性"><a href="#收敛性" class="headerlink" title="收敛性"></a>收敛性</h4><p>若 $f(x) \in C[a,b]$，$S(x)$ 是以 $a=x_{0}&lt;x_{1}&lt;\cdots&lt;x_{n}=b$ 为节点，满足自然边界条件的三次样条插值函数，令</p>
+<script type="math/tex; mode=display">
+h_{j}=x_{j+1}-x_{j},\quad h=\max _{0 \leqslant j \leqslant n-1} h_{j},\quad \delta=\min _{0 \leqslant j \leqslant n-1} h_{j},</script><p>设 $h / \delta \leqslant c&lt;\infty$，则 $S(x)$ 在 $[a,b]$ 上一致收敛到 $f(x)$</p>
 <h2 id="第三章-逼近"><a href="#第三章-逼近" class="headerlink" title="第三章 逼近"></a>第三章 逼近</h2><h3 id="逼近的定义"><a href="#逼近的定义" class="headerlink" title="逼近的定义"></a>逼近的定义</h3><p>对于函数类 $A$ 中给定的函数 $f(x)$，要求在另一类较简单的便于计算的函数类 $B$中，求函数 $P(x)\in B \subset A$，使 $P(x)$ 与 $f(x)$ 之差在某种度量意义下最小</p>
 <ul>
 <li>函数类 $A$ 通常是区间 $[a,b]$ 上的连续函数,记作 $C[a,b]$</li>
@@ -1976,6 +2097,200 @@ h^{2} r(x_{N-1})-\left(1+\frac{h}{2} p(x_{N-1})\right) \beta
 <li>设 $y_{n}$ 是差分问题式的（数值）解，而 $y\left(x_{n}\right)$ 是边值问题的（精确）解 $y(x)$ 在节点 $x_{n}$ 的值，则截断误差 $e_{n}=y\left(x_{n}\right)-y_{n}$ 有下列估计式：<script type="math/tex; mode=display">
 \left|e_{n}\right| \leqslant \frac{M(b-a)^{2}}{96} h^{2},\quad M=\max _{a \leqslant x \leqslant b}\left|y^{(4)}(x)\right|</script></li>
 </ul>
+<h2 id="第九章-矩阵的特征值与特征向量计算"><a href="#第九章-矩阵的特征值与特征向量计算" class="headerlink" title="第九章 矩阵的特征值与特征向量计算"></a>第九章 矩阵的特征值与特征向量计算</h2><h3 id="基础概念"><a href="#基础概念" class="headerlink" title="基础概念"></a>基础概念</h3><p>略</p>
+<h3 id="基本定理"><a href="#基本定理" class="headerlink" title="基本定理"></a>基本定理</h3><p>如果 $\lambda_{i}(i=1,2,\cdots,n)$ 是矩阵 $\boldsymbol{A}$ 的特征值，则有</p>
+<ul>
+<li><script type="math/tex; mode=display">
+\sum_{i=1}^{n} \lambda_{i}=\sum_{i=1}^{n} a_{i i}=\operatorname{tr} \boldsymbol{A}</script></li>
+<li><script type="math/tex; mode=display">
+\operatorname{det} \boldsymbol{A}=\lambda_{1} \lambda_{2} \cdots \lambda_{n}</script></li>
+</ul>
+<p>设 $\boldsymbol{A}$ 与 $\boldsymbol{B}$ 为相似矩阵（即存在非奇异阵 $\boldsymbol{T}$ 使 $\boldsymbol{B}=\boldsymbol{T}^{-1} \boldsymbol{A} \boldsymbol{T}$），则 </p>
+<ul>
+<li>$\boldsymbol{A}$ 与 $\boldsymbol{B}$ 有相同的特征值；</li>
+<li>若 $\boldsymbol{x}$ 是 $\boldsymbol{B}$ 的一个特征向量，则 $\boldsymbol{T} \boldsymbol{x}$ 是 $\boldsymbol{A}$ 的特征向量</li>
+</ul>
+<p>（Gerschgorin’s 定理）设 $\boldsymbol{A}=\left(a_{i j}\right)_{n \times n}$，则 $\boldsymbol{A}$ 的每一个特征值必属于下述某个圆盘之中：</p>
+<script type="math/tex; mode=display">
+\left|\lambda-a_{i i}\right| \leqslant \sum_{\substack{j=1 \\ j \neq i}}^{n}\left|a_{i j}\right| \quad(i=1,2,\cdots,n)</script><p>设 $\boldsymbol{A}$ 为 $n$ 阶实对称矩阵，对于任一非零向量 $\boldsymbol{x}$，称 $R(\boldsymbol{x})=\frac{(\boldsymbol{A} \boldsymbol{x},\boldsymbol{x})}{(\boldsymbol{x},\boldsymbol{x})}$ 为对应于向量 $\boldsymbol{x}$ 的 Rayleigh 商</p>
+<p>设 $A \in \mathbf{R}^{n \times n}$ 为对称矩阵（其特征值次序记作 $\lambda_{1} \geqslant \lambda_{2} \geqslant \cdots \geqslant \lambda_{n}$，对应的特征向量 $\boldsymbol{x}_{1},\boldsymbol{x}_{2},\cdots,\boldsymbol{x}_{n}$ 组成规范化正交组，即 $\left(\boldsymbol{x},\boldsymbol{x}_{j}\right)=\delta_{i j}$，则</p>
+<ul>
+<li><script type="math/tex; mode=display">
+\lambda_{n} \leqslant \frac{(\boldsymbol{A} \boldsymbol{x},\boldsymbol{x})}{(\boldsymbol{x},\boldsymbol{x})} \leqslant \lambda_{1} \quad \text{（对于任何非零} x \in \mathbf{R}^{n} \text{）}</script></li>
+<li><script type="math/tex; mode=display">
+\lambda_{1}=\max _{\substack{x \in \mathrm{R}^{n} \\
+x \neq 0}} \frac{(\boldsymbol{A} \boldsymbol{x},\boldsymbol{x})}{(\boldsymbol{x},\boldsymbol{x})}</script></li>
+<li><script type="math/tex; mode=display">
+\lambda_{n}=\min _{\substack{x \in \mathbf{R}^{n} \\
+x \neq 0}} \frac{(\boldsymbol{A} x,\boldsymbol{x})}{(\boldsymbol{x},\boldsymbol{x})}</script></li>
+</ul>
+<h3 id="幂法"><a href="#幂法" class="headerlink" title="幂法"></a>幂法</h3><ul>
+<li>在一些工程、物理问题中，通常只需要求出矩阵的按模最大的特征值（称为 $\boldsymbol{A}$ 的<strong>主特征值</strong>）和相应的特征向量</li>
+<li>幂法是一种计算实矩阵 $\boldsymbol{A}$ 的主特征值的一种<strong>迭代法</strong>，它最大的优点是方法简单，对于<strong>稀疏矩阵</strong>较合适，但有时收敛速度很慢</li>
+</ul>
+<p>设 $\boldsymbol{A} \in \mathbf{R}^{n \times n}$ 有 $n$ 个线性无关的特征向量，主特征值 $\lambda_{1}$ 满足 $\left|\lambda_{1}\right|&gt;\left|\lambda_{2}\right|   \geqslant\left|\lambda_{3}\right| \geqslant \cdots \geqslant\left|\lambda_{n}\right|$，则对于任意非零初始向量 $\boldsymbol{v}_{0}=\boldsymbol{u}_{0}\left(a_{1} \neq 0\right)$，按下述方法构造的向量序列</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\boldsymbol{v}_{0}=\boldsymbol{u}_{0} \neq \mathbf{0} \\
+\boldsymbol{v}_{k}=\boldsymbol{A} \boldsymbol{u}_{k-1},\\
+\boldsymbol{u}_{k}=\frac{\boldsymbol{v}_{k}}{\max \left(\boldsymbol{v}_{k}\right)}
+\end{array} \quad(k=1,2,\cdots),\right.</script><p>有</p>
+<script type="math/tex; mode=display">
+\lim _{k \rightarrow \infty} \boldsymbol{u}_{k}=\frac{\boldsymbol{x}_{1}}{\max \left(\boldsymbol{x}_{1}\right)},\quad \lim _{k \rightarrow \infty} \max \left(\boldsymbol{v}_{k}\right)=\lambda_{1}</script><h4 id="原点平移法加速"><a href="#原点平移法加速" class="headerlink" title="原点平移法加速"></a>原点平移法加速</h4><p>应用幂法计算 $\boldsymbol{A}$ 的主特征值时，其收敛速度主要由比值 $r=\frac{\lambda_{1}}{\lambda_{2}}$ 来决定，当 $r$ 接近于 $1$ 时，收敛可能很慢</p>
+<p>引进矩阵 $\boldsymbol{B}=\boldsymbol{A}-p \boldsymbol{I}$，其中 $p$ 为选择参数。设 $\boldsymbol{A}$ 的特征值为 $\lambda_{1},\lambda_{2},\cdots,\lambda_{n}$，则 $\boldsymbol{B}$ 的相应特征值为 $\lambda_{1}-p,\lambda_{2}-p,\cdots,\lambda_{n}-p$，而且 $\boldsymbol{A}$，$\boldsymbol{B}$ 的特征向量相同。</p>
+<p>如果需要计算 $\boldsymbol{A}$ 的主特征值 $\lambda_{1}$，就要选择适当的 $p$ 使 $\lambda_{1}-p$ 仍然是 $\boldsymbol{B}$ 的主特征值，且使</p>
+<script type="math/tex; mode=display">
+\left|\frac{\lambda_{2}-p}{\lambda_{1}-p}\right|<\left|\frac{\lambda_{2}}{\lambda_{1}}\right|</script><p>对 $\boldsymbol{B}$ 应用幂法，使得在计算 $\boldsymbol{B}$ 的主特征值 $\lambda_{1}-p$ 的过程中得到加速。这种方法通常称为<strong>原点平移法</strong></p>
+<p>当希望计算 $\lambda_{n}$ 时，应选择 $p=\frac{\lambda_{1}+\lambda_{n-1}}{2}=p^{*}$，使得应用幂法计算 $\lambda_{n}$ 得到加速</p>
+<h3 id="Rayleigh-商加速法"><a href="#Rayleigh-商加速法" class="headerlink" title="Rayleigh 商加速法"></a>Rayleigh 商加速法</h3><p>对称矩阵 $\boldsymbol{A}$ 的 $\lambda_{1}$ 及 $\lambda_{n}$ 可用 Rayleigh 商的极值来表示。</p>
+<p>设 $\boldsymbol{A} \in \mathbf{R}^{n \times n}$ 为对称阵，特征值满足 $\left|\lambda_{1}\right|&gt;\left|\lambda_{2}\right| \geqslant\left|\lambda_{3}\right| \geqslant \cdots \geqslant\left|\lambda_{n}\right|$，对应的特征向量满足 $\left(\boldsymbol{x}_{\boldsymbol{i}},\boldsymbol{x}_{j}\right)=\delta_{i j}$，应用幂法计算 $\boldsymbol{A}$ 的主特征值 $\lambda_{1}$，则规范化向量 $\boldsymbol{u}_{k}$ 的 Rayleigh 商给出 $\lambda_{1}$ 的较好的近似，即</p>
+<script type="math/tex; mode=display">
+\frac{\left(\boldsymbol{A} \boldsymbol{u}_{k},\boldsymbol{u}_{k}\right)}{\left(\boldsymbol{u}_{k},\boldsymbol{u}_{k}\right)}=\lambda_{1}+O\left(\left(\frac{\lambda_{2}}{\lambda_{1}}\right)^{2 k}\right)</script><h3 id="反幂法"><a href="#反幂法" class="headerlink" title="反幂法"></a>反幂法</h3><p>计算 $\boldsymbol{A}$ 的按模最小的特征值 $\lambda_{n}$ 的问题就是计算 $\boldsymbol{A}^{-1}$ 的按模最大的特征值问题。对 $\boldsymbol{A}^{-1}$ 应用幂法迭代法（称为反幂法），可求得矩阵 $\boldsymbol{A}^{-1}$ 的主特征值 $1 / \lambda_{n}$，从而求得 $\boldsymbol{A}$ 的按模最小的特征值 $\lambda_{n}$</p>
+<p>反幂法迭代公式为任取初始向量 $v_{0}=\boldsymbol{u}_{0} \neq \mathbf{0}$，构造向量序列</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\boldsymbol{v}_{k}=\boldsymbol{A}^{-1} \boldsymbol{u}_{k-1},\\
+\boldsymbol{u}_{k}=\frac{\boldsymbol{v}_{k}}{\max \left(\boldsymbol{v}_{k}\right)}
+\end{array} \quad(k=1,2,\cdots) \right.</script><p>迭代向量 $\boldsymbol{v}_{k}$ 可以通过解方程组 $\boldsymbol{A} \boldsymbol{v}_{k}=\boldsymbol{u}_{k-1}$ 求得。</p>
+<p>对任何初始非零向量 $\boldsymbol{u}_{0}=\boldsymbol{v}_{0} \quad\left(a_{n} \neq 0\right)$，由反幂法构造的向量序列 $\left\{\boldsymbol{v}_{k}\right\},\left\{\boldsymbol{u}_{k}\right\}$ 满足</p>
+<script type="math/tex; mode=display">
+\lim _{k \rightarrow \infty} \boldsymbol{u}_{k}=\frac{\boldsymbol{x}_{n}}{\max \left(\boldsymbol{x}_{n}\right)},\quad \operatorname{limax}_{k \rightarrow \infty} \max \left(\boldsymbol{v}_{k}\right)=\frac{1}{\lambda_{n}}</script><p>收敛速度的比值为 $\left|\frac{\lambda_{n}}{\lambda_{n-1}}\right|$</p>
+<h4 id="原点平移加速"><a href="#原点平移加速" class="headerlink" title="原点平移加速"></a>原点平移加速</h4><p>设 $\boldsymbol{A} \in \mathbf{R}^{n \times n}$ 有 $n$ 个线性无关的特征向量，$\boldsymbol{A}$ 的特征值及对应的特征向量记作 $\lambda_{i}$ 及 $\boldsymbol{x}_{i}(i=1,2,\cdots,n)$。$p$ 为 $\lambda_{j}$ 的近似值，$(\boldsymbol{A}-p \boldsymbol{I})^{-1}$ 存在，且 $\left|\lambda_{j}-p\right|&lt;\left|\lambda_{i}-p\right|(i \neq j)$，$\boldsymbol{u}_{0}=\sum_{i=1}^{n} a_{i} x_{i} \neq 0$ 为给定的初始向量 $\left(a_{i} \neq 0\right)$，则由反幂法迭代公式构造的向量序列 $\left\{\boldsymbol{v}_{k}\right\}$，$\left\{\boldsymbol{u}_{k}\right\}$ 满足</p>
+<script type="math/tex; mode=display">
+\begin{array}{c}
+\lim _{k \rightarrow \infty} \boldsymbol{u}_{k}=\frac{\boldsymbol{x}_{j}}{\max \left(\boldsymbol{x}_{j}\right)},\\
+\lim _{k \rightarrow \infty} \max \left(\boldsymbol{v}_{k}\right)=\frac{1}{\lambda_{j}-p},\quad \mathrm{即} p+\frac{1}{\max \left(\boldsymbol{v}_{k}\right)} \rightarrow \lambda_{j} \quad(\mathrm{当} k \rightarrow \infty)
+\end{array}</script><p>且收敛速度由比值 $r=\max _{i \neq j}\left|\frac{\lambda_{j}-p}{\lambda_{i}-p}\right|$ 确定</p>
+<ul>
+<li>选取合适的 $p$，可以求 $p$ 值附近的特征值</li>
+</ul>
+<p>通常不会去求 $\boldsymbol{A}^{-1}$（计算量 $n^4$），反幂法迭代公式中的 $\boldsymbol{v}_{k}$ 是通过解方程组 $(\boldsymbol{A}-p \boldsymbol{I}) \boldsymbol{v}_{k}=\boldsymbol{u}_{k-1}$ 求得的（计算量 $n^3$）。为了节省工作量，可以先将 $(\boldsymbol{A}-p \boldsymbol{I})$ 进行三角分解，即</p>
+<script type="math/tex; mode=display">
+\boldsymbol{P}(\boldsymbol{A}-p \boldsymbol{I})=\boldsymbol{L} \boldsymbol{U},</script><p>其中 $\boldsymbol{P}$ 为某个置换矩阵，于是求 $\boldsymbol{v}_{k}$ 相当于解两个三角形方程组 $\boldsymbol{L} \boldsymbol{y}_{k}=\boldsymbol{P} \boldsymbol{u}_{k-1}$，$\boldsymbol{U} \boldsymbol{v}_{k}=\boldsymbol{y}_{k}$。<br>反幂法迭代公式可写为</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\boldsymbol{L} \boldsymbol{y}_{k}=\boldsymbol{P} \boldsymbol{u}_{k-1},\\
+\boldsymbol{U} \boldsymbol{v}_{k}=\boldsymbol{y}_{k},\quad(k=1,2,\cdots)\\
+\boldsymbol{u}_{k}=\frac{\boldsymbol{v}_{k}}{\max \left(\boldsymbol{v}_{k}\right)}
+\end{array}\right.</script><p>按下述方法选择 $\boldsymbol{v}_{0}=\boldsymbol{u}_{0}$ 是较好的：选 $\boldsymbol{u}_{0}$ 使</p>
+<script type="math/tex; mode=display">
+\boldsymbol{U} \boldsymbol{v}_{1}=\boldsymbol{L}^{-1} \boldsymbol{P} \boldsymbol{u}_{0}=(1,1,\cdots,1)^{\mathrm{T}}</script><h3 id="Householder-方法"><a href="#Householder-方法" class="headerlink" title="Householder 方法"></a>Householder 方法</h3><p>设 $\boldsymbol{A} \in \mathbf{R}^{n \times n}$，则存在一个正交阵 $\boldsymbol{R}$，使</p>
+<script type="math/tex; mode=display">
+\boldsymbol{R}^{\mathrm{T}} \boldsymbol{A} \boldsymbol{R}=\left(\begin{array}{cccc}
+T_{11} & T_{12} & \cdots & T_{1 s} \\
+& T_{22} & \cdots & T_{2 s} \\
+& & \ddots & \vdots \\
+& & & T_{ss}
+\end{array}\right),</script><p>其中对角块为一阶或二阶矩阵，每一个一阶对角块即为 $\boldsymbol{A}$ 的实特征值，每一个二阶对角块的两个特征值是 $\boldsymbol{A}$ 的一对共轭复特征值。</p>
+<p>一方阵 $\boldsymbol{B}$，如果当 $i&gt;j+1$ 时有 $b_{i j}=0$，则称 $\boldsymbol{B}$ 为上 Hessenberg 阵，即</p>
+<script type="math/tex; mode=display">
+\boldsymbol{B}=\left(\begin{array}{cccc}
+b_{11} & b_{12} & \cdots & b_{1 n} \\
+b_{21} & b_{22} & \cdots & b_{2 n} \\
+& \ddots & \ddots & \vdots \\
+& & b_{n,n-1} & b_{n n}
+\end{array}\right)</script><p>设向量 $\boldsymbol{w}$ 满足 $\|\boldsymbol{w}\|_{2}=1$，矩阵 $\boldsymbol{H}=\boldsymbol{I}-2 \boldsymbol{w} \boldsymbol{w}^{\mathrm{T}}$ 称为<strong>初等反射阵</strong>，记作 $H(w)$，即</p>
+<script type="math/tex; mode=display">
+\boldsymbol{H}(\boldsymbol{w})=\left(\begin{array}{cccc}
+1-2 w_{1}^{2} & -2 w_{1} w_{2} & \cdots & -2 w_{1} w_{n} \\
+-2 w_{2} w_{1} & 1-2 w_{2}^{2} & \ddots & \vdots \\
+\vdots & \ddots & \ddots & -2 w_{n-1} w_{n} \\
+-2 w_{n} w_{1} & \cdots & -2 w_{n} w_{n-1} & 1-2 w_{n}^{2}
+\end{array}\right)</script><ul>
+<li>初等反射阵 $\boldsymbol{H}$ 是对称阵（$\boldsymbol{H}^{\mathrm{T}}=\boldsymbol{H}$），正交阵（$\boldsymbol{H}^{\mathrm{T}} \boldsymbol{H}=\boldsymbol{I}$）和对合阵（$\boldsymbol{H}^{2}=I$），有 $n-1$ 个特征值 $1$ 和一个特征值 $-1$，特征值 $-1$ 对应的特征向量就是 $\boldsymbol{w}$</li>
+<li>设 $\boldsymbol{x},\boldsymbol{y}$ 为两个不相等的 $n$ 维向量，$\|\boldsymbol{x}\|_{2}=\|\boldsymbol{y}\|_{2}$，则存在一个初等反射阵 $\boldsymbol{H}$，使 $\boldsymbol{H x}=\boldsymbol{y}$<ul>
+<li>易知，$w=\frac{x-y}{\|x-y\|_{2}}$ 是使 $\boldsymbol{H x}=\boldsymbol{y}$ 成立的唯一长度等于 $1$ 的向量（不计符号）</li>
+</ul>
+</li>
+<li>设向量 $\boldsymbol{x} \in \mathbf{R}^{n}(\boldsymbol{x} \neq \mathbf{0})$，$\sigma= \pm\|\boldsymbol{x}\|_{2}$，且 $\boldsymbol{x} \neq-\sigma \boldsymbol{e}_{1}$，则存在一个初等反射阵<script type="math/tex; mode=display">
+\boldsymbol{H}=\boldsymbol{I}-2 \frac{\boldsymbol{u} \boldsymbol{u}^{\mathrm{T}}}{\|\boldsymbol{u}\|_{2}^{2}} \equiv \boldsymbol{I}-\rho^{-1} \boldsymbol{u} \boldsymbol{u}^{\mathrm{T}}</script>使 $\boldsymbol{H} \boldsymbol{x}=-\boldsymbol{\sigma} \boldsymbol{e}_{1}$，其中 $\boldsymbol{u}=\boldsymbol{x}+\sigma \boldsymbol{e}_{1}$，$\rho=\|\boldsymbol{u}\|_{2}^{2} / 2$。</li>
+</ul>
+<h3 id="QR-分解"><a href="#QR-分解" class="headerlink" title="QR 分解"></a>QR 分解</h3><h4 id="QR-分解加速方程求解"><a href="#QR-分解加速方程求解" class="headerlink" title="QR 分解加速方程求解"></a>QR 分解加速方程求解</h4><p>对于方程 $\boldsymbol{A}\boldsymbol{x}=\boldsymbol{b}$，若能把 $\boldsymbol{A}$ 分解成一个正交阵 $\boldsymbol{Q}$ 和一个上三角阵 $\boldsymbol{R}$ 的乘积 $\boldsymbol{A}=\boldsymbol{Q}\boldsymbol{R}$，则方程化为 $\boldsymbol{Q}\boldsymbol{R}\boldsymbol{x}=\boldsymbol{b}$，令 $\boldsymbol{y}=\boldsymbol{R}\boldsymbol{x}$，则</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{c}
+\boldsymbol{Q}\boldsymbol{y}=\boldsymbol{b} \\
+\boldsymbol{y}=\boldsymbol{R}\boldsymbol{x}
+\end{array}\right.</script><p>第一个方程中由于 $\boldsymbol{Q}^{-1}=\boldsymbol{Q}^{\mathrm{T}}$，故 $\boldsymbol{y}=\boldsymbol{Q}^{\mathrm{T}}\boldsymbol{b}$，第二个方程直接代入可以解得 $\boldsymbol{x}$</p>
+<h4 id="QR-分解的方法"><a href="#QR-分解的方法" class="headerlink" title="QR 分解的方法"></a>QR 分解的方法</h4><p>下面考虑用初等反射阵来正交相似约化一般矩阵和对称矩阵。设</p>
+<script type="math/tex; mode=display">
+\boldsymbol{A}=\left(\begin{array}{c:ccc}
+a_{11} & a_{12} & \cdots & a_{1 n} \\
+a_{21} & a_{22} & \cdots & a_{2 n} \\
+\vdots & \vdots & & \vdots \\
+a_{n 1} & a_{n 2} & \cdots & a_{n n}
+\end{array}\right)</script><p>选择初等反射阵 $\boldsymbol{H}_{1}$ 把矩阵的第一列约化</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\sigma_{1}=\operatorname{sgn}\left(a_{11}\right)\sqrt{\sum_{i=1}^{n} a_{i 1}^{2}} \\
+\boldsymbol{u}_{1}=(a_{11} + \sigma_{1}, a_{21}, \cdots, a_{n1})^{\mathrm{T}} \\
+\rho_{1}=\frac{1}{2}\left\|\boldsymbol{u}_{1}\right\|_{2}^{2}=\sigma_{1}\left(\sigma_{1}+a_{11}\right) \\
+\boldsymbol{H}_{1}=\boldsymbol{I}-\rho_{1}^{-1} \boldsymbol{u}_{1} \boldsymbol{u}_{1}^{\mathrm{T}}
+\end{array}\right.</script><p>于是</p>
+<script type="math/tex; mode=display">
+\boldsymbol{A}_{2} = \boldsymbol{H}_{1}\boldsymbol{A}=\left(\begin{array}{c:ccc}
+-\sigma_{1} & a^{(2)}_{12} & \cdots & a^{(2)}_{1 n} \\
+0 & a^{(2)}_{22} & \cdots & a^{(2)}_{2 n} \\
+\vdots & \vdots & & \vdots \\
+0 & a^{(2)}_{n 2} & \cdots & a^{(2)}_{n n}
+\end{array}\right)</script><p>下一步，取 $\boldsymbol{A}_{2}$ 右下角的子矩阵</p>
+<script type="math/tex; mode=display">
+\left(\begin{array}{c:cc}
+a^{(2)}_{22} & \cdots & a^{(2)}_{2 n} \\
+\vdots & & \vdots \\
+a^{(2)}_{n 2} & \cdots & a^{(2)}_{n n}
+\end{array}\right)</script><p>计算矩阵 $\hat{\boldsymbol{H}}_{2}$ 约化这个的第一列，为了把它作用在原矩阵上，只需把左上角填上单位阵即可</p>
+<script type="math/tex; mode=display">
+\boldsymbol{H}_{2}=
+\left(\begin{array}{cc}
+\boldsymbol{I}_{1 \times 1} & \boldsymbol{O} \\
+\boldsymbol{O} & \hat{\boldsymbol{H}}_{2}
+\end{array}\right)</script><p>从合起来可以得到</p>
+<script type="math/tex; mode=display">
+\boldsymbol{A}_{3}=\boldsymbol{H}_{2}\boldsymbol{H}_{1}\boldsymbol{A}=\left(\begin{array}{cc:cc}
+-\sigma_{1} & a^{(3)}_{12} & \cdots & a^{(3)}_{1 n} \\
+0 & -\sigma_{2} & \cdots & a^{(3)}_{2 n} \\
+\vdots & \vdots & & \vdots \\
+0 & 0 & \cdots & a^{(3)}_{n n}
+\end{array}\right)</script><p>依次计算，最终可以得到 $\boldsymbol{A}=\boldsymbol{Q}\boldsymbol{R}$，其中 $\boldsymbol{Q}^{\mathrm{T}} = \boldsymbol{H}_{n-1}\boldsymbol{H}_{n-2}\cdots\boldsymbol{H}_{1}$ 是一个正交阵，$\boldsymbol{R}$ 是一个上三角阵。这样的方法叫做 QR 分解，QR 分解是唯一的。</p>
+<h3 id="QR-算法"><a href="#QR-算法" class="headerlink" title="QR 算法"></a>QR 算法</h3><p>设 $\boldsymbol{A}=\boldsymbol{A}_{1}=\left(a_{i j}\right) \in \mathbf{R}^{n \times n}$，且对 $\boldsymbol{A}$ 进行 $Q R$ 分解，即 $\boldsymbol{A}=\boldsymbol{Q R}$，其中 $\boldsymbol{R}$ 为上三角阵，$\boldsymbol{Q}$ 为正交阵，于是可得到一新矩阵</p>
+<script type="math/tex; mode=display">
+\boldsymbol{B}=\boldsymbol{R} \boldsymbol{Q}=\boldsymbol{Q}^{\mathrm{T}} \boldsymbol{A} \boldsymbol{Q}</script><p>显然，$\boldsymbol{B}$ 是由 $\boldsymbol{A}$ 经过正交相似变换得到，因此 $\boldsymbol{B}$ 与 $\boldsymbol{A}$ 特征值相同。再对 $\boldsymbol{B}$ 进行 QR 分解，又可得一新的矩阵，重复这过程可得到矩阵序列。</p>
+<script type="math/tex; mode=display">
+\begin{array}{l}
+\boldsymbol{A}=\boldsymbol{A}_{1}=\boldsymbol{Q}_{1} \boldsymbol{R}_{1} \\
+\boldsymbol{A}_{2}=\boldsymbol{R}_{1} \boldsymbol{Q}_{1}=\boldsymbol{Q}_{1}^{\mathrm{T}} \boldsymbol{A}_{1} \boldsymbol{Q}_{1} \\
+\cdots \\
+\boldsymbol{A}_{k}=\boldsymbol{Q}_{k} \boldsymbol{R}_{k} \\
+\boldsymbol{A}_{k+1}=\boldsymbol{R}_{k} \boldsymbol{Q}_{k}=\boldsymbol{Q}_{k}^{\mathrm{T}} \boldsymbol{A}_{k} \boldsymbol{Q}_{k}
+\end{array}</script><p>按上述递推法则构造矩阵序列 $\left\{\boldsymbol{A}_{k}\right\}$ 的过程，只要 $\boldsymbol{A}$ 为非奇异矩阵，则由 QR 算法就完全确定 $\left\{\boldsymbol{A}_{k}\right\}$。</p>
+<p>（基本 QR 方法）设 $\boldsymbol{A}=\boldsymbol{A}_{1} \in \mathbf{R}^{n \times n}$，QR 算法为</p>
+<script type="math/tex; mode=display">
+\left\{\begin{array}{l}
+\boldsymbol{A}_{k}=\boldsymbol{Q}_{k} \boldsymbol{R}_{k} \quad\left(\boldsymbol{Q}_{k}^{\mathrm{T}} \boldsymbol{Q}_{k}=\boldsymbol{I},\boldsymbol{R}_{k} \mathrm{为上三角阵}\right),\\
+\boldsymbol{A}_{k+1}=\boldsymbol{R}_{k} \boldsymbol{Q}_{k} \quad(k=1,2,\cdots),
+\end{array}\right.</script><p>且记 $\widetilde{\boldsymbol{Q}}_{k} \equiv \boldsymbol{Q}_{1} \boldsymbol{Q}_{2} \cdots \boldsymbol{Q}_{k}$，$\widetilde{\boldsymbol{R}}_{k} \equiv \boldsymbol{R}_{k} \cdots \boldsymbol{R}_{2} \boldsymbol{R}_{1}$，则有</p>
+<ul>
+<li>$\boldsymbol{A}_{k+1}$ 相似于 $\boldsymbol{A}_{k}$，即 $\boldsymbol{A}_{k+1}=\boldsymbol{Q}_{k}^{\mathrm{T}} \boldsymbol{A}_{k} \boldsymbol{Q}_{k}$</li>
+<li>$\boldsymbol{A}_{k+1}=\left(\boldsymbol{Q}_{1} Q_{2} \cdots \boldsymbol{Q}_{k}\right)^{\mathrm{T}} \boldsymbol{A}_{1}\left(\boldsymbol{Q}_{1} Q_{2} \cdots \boldsymbol{Q}_{k}\right)=\widetilde{\boldsymbol{Q}}_{k}^{\mathrm{T}} \boldsymbol{A}_{1} \widetilde{\boldsymbol{Q}}_{k}$</li>
+<li>$\boldsymbol{A}^{k}$ 的 QR 分解式为 $\boldsymbol{A}^{k}=\widetilde{\boldsymbol{Q}}_{k} \widetilde{\boldsymbol{R}}_{k}$</li>
+</ul>
+<p>设 $\boldsymbol{M}_{k}=\boldsymbol{Q}_{k} \boldsymbol{R}_{k}$，其中 $\boldsymbol{Q}_{k}$ 为正交阵，$\boldsymbol{R}_{k}$ 为具有正对角元素的上三角阵，如果 $\boldsymbol{M}_{k} \rightarrow \boldsymbol{I}(k \rightarrow \infty)$，则 $\boldsymbol{Q}_{k} \rightarrow \boldsymbol{I}$，及 $\boldsymbol{R}_{k} \rightarrow \boldsymbol{I}(k \rightarrow \infty)$。</p>
+<h3 id="收敛性-2"><a href="#收敛性-2" class="headerlink" title="收敛性"></a>收敛性</h3><p>设 $\boldsymbol{A}=\left(a_{i j}\right) \in \mathbf{R}^{n \times n}$，</p>
+<ul>
+<li>如果 $\boldsymbol{A}$ 的特征值满足：$\left|\lambda_{1}\right|&gt;\left|\lambda_{2}\right|&gt;\cdots&gt;\left|\lambda_{n}\right|&gt;0$</li>
+<li>$\boldsymbol{A}$ 有标准形 $\boldsymbol{A}=\boldsymbol{X} \boldsymbol{D} \boldsymbol{X}^{-1}$，其中 $\boldsymbol{D}=\operatorname{diag}\left(\lambda_{1},\lambda_{2},\cdots,\lambda_{n}\right)$，且设 $\boldsymbol{X}^{-1}$ 有三角分解 $\boldsymbol{X}^{-1}=\boldsymbol{L} \boldsymbol{U}$（$\boldsymbol{L}$ 为单位下三角阵，$\boldsymbol{U}$ 为上三角阵）</li>
+</ul>
+<p>则由 QR 算法产生的 $\left\{\boldsymbol{A}_{k}\right\}$ 本质上收敛于上三角阵，即</p>
+<script type="math/tex; mode=display">
+\boldsymbol{A}_{k} \xrightarrow{\mathrm{本质上}} \boldsymbol{R}=\left(\begin{array}{cccc}
+\lambda_{1} & \times & \cdots & \times \\
+& \lambda_{2} & \ddots & \vdots \\
+& & \ddots & \times \\
+& & & \lambda_{n}
+\end{array}\right) \quad(k \rightarrow \infty)</script><ul>
+<li>如果对称阵 $\boldsymbol{A}$ 满足收敛性条件，则由 QR 算法产生的 $\left\{\boldsymbol{A}_{k}\right\}$ 收敛于对角阵</li>
+<li>设 $\boldsymbol{A} \in \mathbf{R}^{n \times n}$，如果 $\boldsymbol{A}$ 的等模特征值中只有实重特征值或多重复的共轭特征值，则由 QR算法产生 $\left\{\boldsymbol{A}_{k}\right\}$ 本质收敛于分块上三角阵（对角块为一阶和二阶子块），且对角块每一个 $2 \times 2$ 子块给出 $\boldsymbol{A}$ 的一对共轭复特征值，每一个 $1 \times 1$ 子块给出 $\boldsymbol{A}$ 的实特征值</li>
+</ul>
 
             </div>
             <hr>
@@ -1997,9 +2312,9 @@ h^{2} r(x_{N-1})-\left(1+\frac{h}{2} p(x_{N-1})\right) \beta
                     
                       <a class="hover-with-bg" href="/tags/%E5%AD%A6%E4%B9%A0/">学习</a>
                     
-                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
-                    
                       <a class="hover-with-bg" href="/tags/%E5%A4%A7%E5%AD%A6/">大学</a>
+                    
+                      <a class="hover-with-bg" href="/tags/%E6%95%B0%E5%AD%A6/">数学</a>
                     
                       <a class="hover-with-bg" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/">计算机</a>
                     
