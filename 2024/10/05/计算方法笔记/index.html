@@ -247,7 +247,7 @@
             
               <p class="note note-info">
                 
-                  本文最后更新于：2025年1月7日 下午
+                  本文最后更新于：2025年1月12日 晚上
                 
               </p>
             
@@ -308,9 +308,9 @@ x^{*}= \pm 10^{m} \times\left(a_{1}+a_{2} \times 10^{-1}+\cdots+a_{n} \times 10^
 <li>要防止大数“吃掉”小数</li>
 <li>注意简化计算步骤，减少运算次数</li>
 </ul>
-<h2 id="第六章-方程求根"><a href="#第六章-方程求根" class="headerlink" title="第六章 方程求根"></a>第六章 方程求根</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>数学、物理中的许多问题常常归结为求解函数方程 $f(x)=0$，这里，$f(x)$ 可以是代数多项式，也可以是超越函数。方程 $f(x)=0$ 的解 $x^{<em>}$ 称为它的<strong>根</strong>，或称为 $f(x)$ 的<em>*零点</em></em>。</p>
+<h2 id="第六章-方程求根"><a href="#第六章-方程求根" class="headerlink" title="第六章 方程求根"></a>第六章 方程求根</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>数学、物理中的许多问题常常归结为求解函数方程 $f(x)=0$，这里，$f(x)$ 可以是代数多项式，也可以是超越函数。方程 $f(x)=0$ 的解 $x^{*}$ 称为它的<strong>根</strong>，或称为 $f(x)$ 的<strong>零点</strong>。</p>
 <p>设函数 $f(x)$ 在 $[a,b]$ 上连续，且 $f(a) f(b)&lt;0$，根据连续函数的性质可知方程 $f(x)=0$ 在区间 $(a,b)$ 内一定有实根，这时称 $[a,b]$ 为方程 $f(x)=0$ 的<strong>有根区间</strong>。</p>
-<h3 id="逐步搜索法"><a href="#逐步搜索法" class="headerlink" title="逐步搜索法"></a>逐步搜索法</h3><p>为明确起见，不妨假定 $f(a)<0,f(b)>0$。从有根区间 $[a,b]$ 的左端点 $x_{0}=a$ 出发，按某个预定的步长 $h$ （譬如取 $h=\frac{b-a}{N},N$ 为正整数）一步一步地向右跨，每跨一步进行一次根的“搜索”，即检查节点 $x_{k}=a+k h$ 上的函数值 $f\left(x_{k}\right)$ 的符号，一旦发现节点 $x_{k}$ 与端点 $a$ 的函数值异号，即 $f\left(x_{k}\right)&gt;0^{\mathbb{1}}$，则可以确定一个缩小了的有根区间 $\left[x_{k-1},x_{k}\right]$，其宽度等于预定的步长 $h$</p>
+<h3 id="逐步搜索法"><a href="#逐步搜索法" class="headerlink" title="逐步搜索法"></a>逐步搜索法</h3><p>为明确起见，不妨假定 $f(a)<0,f(b)>0$。从有根区间 $[a,b]$ 的左端点 $x_{0}=a$ 出发，按某个预定的步长 $h$ （譬如取 $h=\frac{b-a}{N},N$ 为正整数）一步一步地向右跨，每跨一步进行一次根的“搜索”，即检查节点 $x_{k}=a+k h$ 上的函数值 $f\left(x_{k}\right)$ 的符号，一旦发现节点 $x_{k}$ 与端点 $a$ 的函数值异号，即 $f\left(x_{k}\right)&gt;0$，则可以确定一个缩小了的有根区间 $\left[x_{k-1},x_{k}\right]$，其宽度等于预定的步长 $h$</p>
 <h3 id="二分搜索法"><a href="#二分搜索法" class="headerlink" title="二分搜索法"></a>二分搜索法</h3><p>再考察有根区间 $[a,b]$，取中点 $x_{0}=(a+b) / 2$ 将它分为两半，然后进行根的搜索，即检查 $f\left(x_{0}\right)$ 与 $f(a)$ 是否同号，如果确系同号，说明所求的根 $x^{*}$ 在 $x_{0}$ 的右侧，这时令 $a_{1}=x_{0},b_{1}=b$；否则 $x^{*}$ 必在 $x_{0}$ 的左侧，这时令 $a_{1}=a,b_{1}=x_{0}$。不管出现哪一种情况，新的有根区间 $\left[a_{1},b_{1}\right]$ 的长度仅为 $[a,b]$ 的一半。</p>
 <p>对压缩了的有根区间 $\left[a_{1},b_{1}\right]$ 又可施行同样的手续，即用中点 $x_{1}=\left(a_{1}+b_{1}\right) / 2$ 将区间 $\left[a_{1},b_{1}\right]$ 再分为两半，然后通过根的搜索判定所求的根在 $x_{1}$ 的哪一侧，从而又确定一个新的有根区间 $\left[a_{2},b_{2}\right]$，其长度是 $\left[a_{1},b_{1}\right]$ 的一半。</p>
 <p>如此反复二分下去，即可得出一系列有根区间</p>
@@ -380,15 +380,15 @@ a \leqslant \varphi(x) \leqslant b</script></li>
 <script type="math/tex; mode=display">
 \lim _{k \rightarrow \infty} \frac{\left(x_{k+1}-x^{*}\right)}{\left(x_{k}-x^{*}\right)^{p}}=\frac{\varphi^{(p)}\left(x^{*}\right)}{p!}</script><ul>
 <li>由上述定理可知，迭代过程的收敛速度依赖于迭代函数 $\varphi(x)$ 的选取.如果当 $x \in[a,b]$ 时 $\varphi^{\prime}(x) \neq 0$，则该迭代过程只可能是线性收敛的。</li>
-<li>Newton 法在根 $x_{*}$ 的临近是平方收敛的</li>
+<li>Newton 法在根 $x^{*}$ 的临近是平方收敛的</li>
 </ul>
 <h3 id="牛顿迭代法"><a href="#牛顿迭代法" class="headerlink" title="牛顿迭代法"></a>牛顿迭代法</h3><p>迭代函数：</p>
 <script type="math/tex; mode=display">
 \varphi(x)=x-\frac{f(x)}{f^{\prime}(x)},</script><p>Newton 公式</p>
 <script type="math/tex; mode=display">
-x\_{k+1}=x\_{k}-\frac{f\left(x\_{k}\right)}{f^{\prime}\left(x\_{k}\right)}</script><p>Newton 法有明显的几何解释。方程 $f(x)=0$ 的根 $x^{*}$ 可解释为曲线 $y=f(x)$ 与 $x$ 轴的交点的横坐标。设 $x_{k}$ 是根 $x^{*}$ 的某个近似值，过曲线 $y=f(x)$ 上横坐标为 $x_{k}$ 的点 $P_{k}$ 引切线，并将该切线与 $x$ 轴的交点的横坐标 $x_{k+1}$ 作为 $x^{*}$ 的新的近似值。注意到切线方程为</p>
+x_{k+1}=x_{k}-\frac{f\left(x_{k}\right)}{f^{\prime}\left(x_{k}\right)}</script><p>Newton 法有明显的几何解释。方程 $f(x)=0$ 的根 $x^{*}$ 可解释为曲线 $y=f(x)$ 与 $x$ 轴的交点的横坐标。设 $x_{k}$ 是根 $x^{*}$ 的某个近似值，过曲线 $y=f(x)$ 上横坐标为 $x_{k}$ 的点 $P_{k}$ 引切线，并将该切线与 $x$ 轴的交点的横坐标 $x_{k+1}$ 作为 $x^{*}$ 的新的近似值。注意到切线方程为</p>
 <script type="math/tex; mode=display">
-y=f\left(x_{k}\right)+f^{\prime}\left(x_{k}\right)\left(x-x_{k}\right)</script><p>从而就是 $Newton$ 公式的计算结果。由于这种几何背景，Newton 法亦称<strong>切线法</strong></p>
+y=f\left(x_{k}\right)+f^{\prime}\left(x_{k}\right)\left(x-x_{k}\right)</script><p>从而就是 Newton 公式的计算结果。由于这种几何背景，Newton 法亦称<strong>切线法</strong></p>
 <h3 id="弦截法"><a href="#弦截法" class="headerlink" title="弦截法"></a>弦截法</h3><p>设 $x_{k},x_{k-1}$ 是 $f(x)=0$ 的近似根，利用 $f\left(x_{k}\right),f\left(x_{k-1}\right)$ 构造一次插值多项式 $P_{1}(x)$，并用 $P_{1}(x)=0$ 的根作为 $f(x)=0$ 的新的近似根 $x_{k+1}$。由于</p>
 <script type="math/tex; mode=display">
 P_{1}(x) =f\left(x_{k}\right)+\frac{f\left(x_{k}\right)-f\left(x_{k-1}\right)}{x_{k}-x_{k-1}}\left(x-x_{k}\right)</script><p>因此有</p>
@@ -860,6 +860,7 @@ c_{1}\|\boldsymbol{x}\|_{s} \leqslant\|\boldsymbol{x}\|_{t} \leqslant c_{2}\|\bo
 <li>$\boldsymbol{A}$ 的行范数：$\|\boldsymbol{A}\|_{\infty}=\max _{1 \leqslant i \leqslant n} \sum_{j=1}^{n}\left|a_{i j}\right|$</li>
 <li>$\boldsymbol{A}$ 的列范数：$\|\boldsymbol{A}\|_{1}=\max _{1 \leqslant j \leqslant n} \sum_{i=1}^{n}\left|a_{i j}\right|$</li>
 <li>$\boldsymbol{A}$ 的 $2-$ 范数：$\|\boldsymbol{A}\|_{2}=\sqrt{\lambda_{\mathrm{max}}\left(\boldsymbol{A}^{\mathrm{T}} \boldsymbol{A}\right)}$</li>
+<li>$\boldsymbol{A}$ 的 Frobenius 范数：$\boldsymbol{F}(\boldsymbol{A})=\|\boldsymbol{A}\|_{F}=\left(\sum_{i, j=1}^{n} \boldsymbol{a}_{i j}^{2}\right)^{\frac{1}{2}}$</li>
 </ul>
 <h4 id="谱半径"><a href="#谱半径" class="headerlink" title="谱半径"></a>谱半径</h4><p>设 $\boldsymbol{A} \in \mathbf{R}^{n \times n}$ 的特征值为 $\lambda_{i}(i=1,2,\cdots,n)$，称 $\rho(\boldsymbol{A})=\max _{1 \leqslant i \leqslant n}\left|\lambda_{i}\right|$ 为 $\boldsymbol{A}$ 的<strong>谱半径</strong></p>
 <p>（特征值上界）设 $\boldsymbol{A} \in \mathrm{R}^{n \times n}$，则 $\rho(\boldsymbol{A}) \leqslant\|\boldsymbol{A}\|$，即 $\boldsymbol{A}$ 的谱半径不超过 $\boldsymbol{A}$ 的任何一种算子范数（对于 $\|\boldsymbol{A}\|_{F}$ 亦对）。</p>
@@ -1019,7 +1020,7 @@ k \geqslant \frac{s \ln 10}{-\ln \rho(\boldsymbol{B})}</script><p>称 $R(B)=-\ln
 \boldsymbol{P}^{\mathrm{T}} \boldsymbol{A} \boldsymbol{P}=\left(\begin{array}{cc}
 \boldsymbol{A}_{11} & \boldsymbol{A}_{12} \\
 \boldsymbol{O} & \boldsymbol{A}_{22}
-\end{array}\right)</script><p>成立，其中 $\boldsymbol{A}_{11}$ 为 $r$ 阶子矩阵，$\boldsymbol{A}_{22}$ 为 $n-r$ 阶子矩阵 $(1 \leqslant r \leqslant n)$，则称 $\boldsymbol{A}$ 是可约矩阵。如果不存在置换阵 $\boldsymbol{P}$ 使上式成立，则称 $\boldsymbol{A}$ 是不可约矩阵。</p>
+\end{array}\right)</script><p>成立，其中 $\boldsymbol{A}_{11}$ 为 $r$ 阶子矩阵，$\boldsymbol{A}_{22}$ 为 $n-r$ 阶子矩阵 $(1 \leqslant r \leqslant n)$，则称 $\boldsymbol{A}$ 是<strong>可约矩阵</strong>。如果不存在置换阵 $\boldsymbol{P}$ 使上式成立，则称 $\boldsymbol{A}$ 是<strong>不可约矩阵</strong>。</p>
 <p>$\boldsymbol{A}$ 是可约矩阵，意味着 $\boldsymbol{A x}=\boldsymbol{b}$ 可经过若干行列重排（若 $\boldsymbol{A}$ 经过两行交换的同时进行相应的两列的交换，称对 $\boldsymbol{A}$ 进行一次行列重排），化为两个低阶方程组求解。</p>
 <p>事实上，由 $\boldsymbol{A x}=\boldsymbol{b}$ 可化为 $\boldsymbol{P}^{\mathrm{T}} \boldsymbol{A P}\left(\boldsymbol{P}^{\mathrm{T}} \boldsymbol{x}\right)=\boldsymbol{P}^{\mathrm{T}} \boldsymbol{b}$，且记</p>
 <script type="math/tex; mode=display">
@@ -1033,7 +1034,7 @@ k \geqslant \frac{s \ln 10}{-\ln \rho(\boldsymbol{B})}</script><p>称 $R(B)=-\ln
 <script type="math/tex; mode=display">
 \boldsymbol{A} \boldsymbol{x}=\boldsymbol{b}</script><p>其中 $\boldsymbol{A} \in \mathbf{R}^{n \times n}$ 为非奇异矩阵，且设 $a_{i i} \neq 0(i=1,2,\cdots,n)$，分解 $\boldsymbol{A}$ 为</p>
 <script type="math/tex; mode=display">
-A=D-L-U</script><p>设已知第 $k$ 次迭代向量 $\boldsymbol{x}^{(k)}$，及第 $k+1$ 次迭代向量 $\boldsymbol{x}^{(k+1)}$ 的分量 $x_{j}^{(k+1)} \quad(j=1,2,\cdots,i-1)$，要求计算分量 $x_{i}^{(k+1)}$。</p>
+\boldsymbol{A}=\boldsymbol{D}-\boldsymbol{L}-\boldsymbol{U}</script><p>设已知第 $k$ 次迭代向量 $\boldsymbol{x}^{(k)}$，及第 $k+1$ 次迭代向量 $\boldsymbol{x}^{(k+1)}$ 的分量 $x_{j}^{(k+1)} \quad(j=1,2,\cdots,i-1)$，要求计算分量 $x_{i}^{(k+1)}$。</p>
 <p>首先用 Gauss-Seidel 迭代法定义辅助量</p>
 <script type="math/tex; mode=display">
 \tilde{x}_{i}^{(k+1)}=\frac{1}{a_{i i}}\left(b_{i}-\sum_{j=1}^{i-1} a_{i j} x_{j}^{(k+1)}-\sum_{j=i+1}^{n} a_{i j} x_{j}^{(k)}\right) \quad(i=1,2,\cdots,n)</script><p>再把 $x_{i}^{(k+1)}$ 取为 $x_{i}^{(k)}$ 与 $\tilde{x}_{i}^{(k+1)}$ 某个平均值（即加权平均），即</p>
@@ -1059,7 +1060,7 @@ x_{i}^{(k+1)}=x_{i}^{(k)}+\Delta x_{i} \quad(k=0,1,\cdots;i=1,2,\cdots,n)\\
 <li>当 $\omega&gt;1$ 时，称为超松弛法</li>
 </ul>
 </li>
-<li>矩阵 $\boldsymbol{L}_{\omega}$ 称为 $SOR$ 方法的<strong>迭代矩阵</strong></li>
+<li>矩阵 $\boldsymbol{L}_{\omega}$ 称为 SOR 方法的<strong>迭代矩阵</strong></li>
 </ul>
 <p>对原方程组应用 SOR 方法相当于对方程组 $\boldsymbol{x}=\boldsymbol{L}_{\omega} \boldsymbol{x}+\boldsymbol{f}$ 应用一般迭代法。</p>
 <h4 id="收敛性分析"><a href="#收敛性分析" class="headerlink" title="收敛性分析"></a>收敛性分析</h4><p>设有线性方程组 $\boldsymbol{A} \boldsymbol{x}=\boldsymbol{b}$，且 $a_{i i} \neq 0(i=1,2,\cdots,n)$，则解方程组的 SOR 方法收敛的充要条件是</p>
@@ -1374,7 +1375,7 @@ g_{n}
 <h4 id="收敛性"><a href="#收敛性" class="headerlink" title="收敛性"></a>收敛性</h4><p>若 $f(x) \in C[a,b]$，$S(x)$ 是以 $a=x_{0}&lt;x_{1}&lt;\cdots&lt;x_{n}=b$ 为节点，满足自然边界条件的三次样条插值函数，令</p>
 <script type="math/tex; mode=display">
 h_{j}=x_{j+1}-x_{j},\quad h=\max _{0 \leqslant j \leqslant n-1} h_{j},\quad \delta=\min _{0 \leqslant j \leqslant n-1} h_{j},</script><p>设 $h / \delta \leqslant c&lt;\infty$，则 $S(x)$ 在 $[a,b]$ 上一致收敛到 $f(x)$</p>
-<h2 id="第三章-逼近"><a href="#第三章-逼近" class="headerlink" title="第三章 逼近"></a>第三章 逼近</h2><h3 id="逼近的定义"><a href="#逼近的定义" class="headerlink" title="逼近的定义"></a>逼近的定义</h3><p>对于函数类 $A$ 中给定的函数 $f(x)$，要求在另一类较简单的便于计算的函数类 $B$中，求函数 $P(x)\in B \subset A$，使 $P(x)$ 与 $f(x)$ 之差在某种度量意义下最小</p>
+<h2 id="第三章-逼近"><a href="#第三章-逼近" class="headerlink" title="第三章 逼近"></a>第三章 逼近</h2><h3 id="逼近的定义"><a href="#逼近的定义" class="headerlink" title="逼近的定义"></a>逼近的定义</h3><p>对于函数类 $A$ 中给定的函数 $f(x)$，要求在另一类较简单的便于计算的函数类 $B$ 中，求函数 $P(x)\in B \subset A$，使 $P(x)$ 与 $f(x)$ 之差在某种度量意义下最小</p>
 <ul>
 <li>函数类 $A$ 通常是区间 $[a,b]$ 上的连续函数,记作 $C[a,b]$</li>
 <li>函数类 $B$ 通常是代数多项式、分式有理函数或三角多项式</li>
@@ -1389,16 +1390,24 @@ h_{j}=x_{j+1}-x_{j},\quad h=\max _{0 \leqslant j \leqslant n-1} h_{j},\quad \del
 <h3 id="Weierstrass-定理"><a href="#Weierstrass-定理" class="headerlink" title="Weierstrass 定理"></a>Weierstrass 定理</h3><p>设 $f(x) \in C[a,b]$，则对于任何 $\varepsilon&gt;0$，总存在一个代数多项式 $P(x)$，使</p>
 <script type="math/tex; mode=display">
 \|f(x)-P(x)\|_{\infty}<\varepsilon</script><p>在 $[a,b]$ 上一致成立</p>
-<h3 id="函数范数"><a href="#函数范数" class="headerlink" title="函数范数"></a>函数范数</h3><p>区间 $[a,b]$ 上的所有实连续函数组成一个空间，记作 $C[a,b]$。$f \in C[a,b]$ 的范数定义为</p>
+<h3 id="函数范数"><a href="#函数范数" class="headerlink" title="函数范数"></a>函数范数</h3><p>对于定义在一个区间 $[a,b]$ 上的实连续函数 $f(x)\in C[a,b]$，$L^{p}$ 范数（$p \geq 1$）定义为：</p>
 <script type="math/tex; mode=display">
-\|f\|_{\infty}=\max _{a \leqslant x \leqslant b}|f(x)|,</script><p>$|\cdot|_{\infty}$ 称为 $\infty -$ 范数，它满足范数 $|\cdot|$ 的三个性质：</p>
+\|f\|_{p}=\left(\int_{a}^{b}|f(x)|^{p} \mathrm{d} x\right)^{\frac{1}{p}}</script><ul>
+<li>当 $p \rightarrow \infty$ 时，定义 $\|f\|_{\infty}=\sup _{x \in[a,b]}|f(x)|$。</li>
+</ul>
+<p>三种常用范数：</p>
 <ul>
-<li>$|f| \geqslant 0$，当且仅当 $f \equiv 0$ 时才有 $|f|=0$</li>
-<li>$|a f|=|a||f|$ 对于任意 $f \in C[a,b]$ 成立，$a$ 为任意实数</li>
+<li>$L^{1}$ 范数：$\|f\|_{1}=\int_{a}^{b}|f(x)| \mathrm{d}x$ 表示函数绝对值的积分。</li>
+<li>$L^{2}$ 范数：$\|f\|_{2}=\sqrt{\int_{a}^{b}|f(x)|^{2} \mathrm{d} x}$ 表示对应函数的欧几里得长度，经常用于内积空间。</li>
+<li>$L^{\infty}$ 范数：$\|f\|_{\infty}=\max _{x \in[a,b]}|f(x)|$ 表示函数在区间 $[a,b]$ 上的最大绝对值。</li>
+</ul>
+<h4 id="性质-2"><a href="#性质-2" class="headerlink" title="性质"></a>性质</h4><ul>
+<li>$\|f\| \geqslant 0$，当且仅当 $f \equiv 0$ 时才有 $\|f\|=0$</li>
+<li>$\|a f\|=|a|\|f\|$ 对于任意 $f \in C[a,b]$ 成立，$a$ 为任意实数</li>
 <li>对于任意 $f,g \in C[a,b]$，有<script type="math/tex; mode=display">
 \|f+g\| \leqslant\|f\|+\|g\|</script></li>
 </ul>
-<p>与向量空间类似，当 $f,g \in C[a,b]$ 时，定义 $f$ 与 $g$ 的<strong>距离</strong>为</p>
+<h3 id="函数的距离"><a href="#函数的距离" class="headerlink" title="函数的距离"></a>函数的距离</h3><p>与向量空间类似，当 $f,g \in C[a,b]$ 时，定义 $f$ 与 $g$ 的<strong>距离</strong>为</p>
 <script type="math/tex; mode=display">
 D(f,g)=\|f-g\|_{\infty}</script><p>于是可得到</p>
 <script type="math/tex; mode=display">
@@ -1433,7 +1442,7 @@ E_{n}=\inf _{P_{n} \in H_{n}}\left\{\Delta\left(f,P_{n}\right)\right\}=\inf _{P_
 \begin{array}{l} 
 P\left(x_{k}\right)-f\left(x_{k}\right)=(-1)^{k} \sigma\|P(x)-f(x)\|_{\infty},\\
 \sigma= \pm 1,\quad k=1,2,\cdots,n+2
-\end{array}</script><p>这样的点组称为 Chebyshev 交错点组</p>
+\end{array}</script><p>这样的点组称为 <strong>Chebyshev 交错点组</strong></p>
 <ul>
 <li>若 $f(x) \in C[a,b]$，则在 $H_{n}$ 中存在唯一的最佳逼近多项式</li>
 <li>若 $f(x) \in C[a,b]$，则其最佳逼近多项式 $P_{n}^{*}(x) \in H_{n}$ 是 $f(x)$ 的一个 Lagrange 插值多项式。</li>
@@ -1463,9 +1472,9 @@ P\left(x_{k}\right)-f\left(x_{k}\right)=(-1)^{k} \sigma\|P(x)-f(x)\|_{\infty},\\
 \|f\|_{2}=\sqrt{\int_{a}^{b} \rho(x) f^{2}(x) \mathrm{d} x}=\sqrt{(f,f)}</script><p>称为 $f(x)$ 的 <strong>Euclid 范数</strong></p>
 <p>对于任何 $f,g \in C[a,b]$，下列结论成立：</p>
 <ul>
-<li>$|(f,g)| \leqslant|f|_{2}|g|_{2}$ （Cauchy-Schwarz 不等式）</li>
-<li>$|f+g|_{2} \leqslant|f|_{2}+|g|_{2}$（三角不等式）</li>
-<li>$|f+g|_{2}^{2}+|f-g|_{2}^{2}=2\left(|f|_{2}^{2}+|g|_{2}^{2}\right)$（平行四边形定律）</li>
+<li>$\|(f,g)\| \leqslant\|f\|_{2}\|g\|_{2}$ （Cauchy-Schwarz 不等式）</li>
+<li>$\|f+g\|_{2} \leqslant\|f\|_{2}+\|g\|_{2}$（三角不等式）</li>
+<li>$\|f+g\|_{2}^{2}+\|f-g\|_{2}^{2}=2\left(\|f\|_{2}^{2}+\|g\|_{2}^{2}\right)$（平行四边形定律）</li>
 </ul>
 <h3 id="正交函数"><a href="#正交函数" class="headerlink" title="正交函数"></a>正交函数</h3><p>若 $f(x),g(x) \in C[a,b]$ 满足</p>
 <script type="math/tex; mode=display">
@@ -1537,7 +1546,7 @@ P_{0}(x)=1,\quad P_{n}(x)=\frac{1}{2^{n} n!} \frac{\mathrm{d}^{n}}{\mathrm{~d} x
 <script type="math/tex; mode=display">
 P_{n}(x)=\frac{1}{2^{2} n!}(2 n)(2 n-1) \cdots(n+1) x^{n}+a_{n-1} x^{n-1}+\cdots+a_{0},</script><p>于是得首项 $x^{n}$ 的系数 $a_{n}=\frac{(2 n)!}{2^{n}(n!)^{2}}$，显然最高项系数为 $1$ 的 Legendre 多项式为</p>
 <script type="math/tex; mode=display">
-\widetilde{P}_{n}(x)=\frac{n!}{(2 n)!} \frac{\mathrm{d}^{n}}{\mathrm{~d} x^{n}}\left[\left(x^{2}-1\right)^{n}\right]</script><h4 id="性质-2"><a href="#性质-2" class="headerlink" title="性质"></a>性质</h4><ul>
+\widetilde{P}_{n}(x)=\frac{n!}{(2 n)!} \frac{\mathrm{d}^{n}}{\mathrm{~d} x^{n}}\left[\left(x^{2}-1\right)^{n}\right]</script><h4 id="性质-3"><a href="#性质-3" class="headerlink" title="性质"></a>性质</h4><ul>
 <li>正交性<script type="math/tex; mode=display">
 \int_{-1}^{1} P_{n}(x) P_{m}(x) \mathrm{d} x=\left\{\begin{array}{cc}
 0,& m \neq n,\\
@@ -1545,8 +1554,8 @@ P_{n}(x)=\frac{1}{2^{2} n!}(2 n)(2 n-1) \cdots(n+1) x^{n}+a_{n-1} x^{n-1}+\cdots
 \end{array}\right.</script></li>
 <li>奇偶性<script type="math/tex; mode=display">
 P_{n}(-x)=(-1)^{n} P_{n}(x)</script></li>
-<li>递推关系<br>考虑 $n+1$ 次多项式 $x P_{n}(x)$，它可表示为<script type="math/tex; mode=display">
-x P_{n}(x)=a_{0} P_{0}(x)+a_{1} P_{1}(x)+\cdots+a_{n+1} P_{n+1}(x),</script></li>
+<li>递推关系<script type="math/tex; mode=display">
+(n+1) P_{n+1}(x)=(2 n+1) x P_{n}(x)-n P_{n-1}(x) \quad(n=1,2, \cdots)</script></li>
 <li>在所有最高项系数为 $1$ 的 $n$ 次多项式中，Legendre 多项式 $\widetilde{P}_{n}(x)$ 在 $[-1,1]$ 上与零的平方误差最小</li>
 <li>$P_{n}(x)$ 在区间 $(-1,1)$ 内有 $n$ 个不同的实零点。</li>
 </ul>
@@ -1570,7 +1579,7 @@ P_{6}(x)=\left(231 x^{6}-315 x^{4}+105 x^{2}-5\right) / 16
 <script type="math/tex; mode=display">
 T_{n}(x)=\cos (n \arccos x),\quad|x| \leqslant 1</script><p>若令 $x=\cos \theta$，则</p>
 <script type="math/tex; mode=display">
-T_{n}(x)=\cos n \theta,\quad 0 \leqslant \theta \leqslant \pi</script><h4 id="性质-3"><a href="#性质-3" class="headerlink" title="性质"></a>性质</h4><ul>
+T_{n}(x)=\cos n \theta,\quad 0 \leqslant \theta \leqslant \pi</script><h4 id="性质-4"><a href="#性质-4" class="headerlink" title="性质"></a>性质</h4><ul>
 <li>递推关系<script type="math/tex; mode=display">
 \begin{array}{c}
 T_{0}(x)=1,\quad T_{1}(x)=x \\
@@ -1815,7 +1824,7 @@ T_{m}^{(k)}=\frac{4^{m}}{4^{m}-1} T_{m-1}^{(k+1)}-\frac{1}{4^{m}-1} T_{m-1}^{(k)
 \int_{a}^{b} f(x) \mathrm{d} x \approx \sum_{k=0}^{n} A_{k} f\left(x_{k}\right)</script><p>中含有 $2 n+2$ 个待定参数 $x_{k},A_{k}(k=0,1,\cdots,n)$，适当选择这些参数，有可能使求积公式具有 $2 n+1$ 次代数精度，这类求积公式称为 <strong>Gauss 公式</strong></p>
 <h4 id="Gauss-点"><a href="#Gauss-点" class="headerlink" title="Gauss 点"></a>Gauss 点</h4><p>如果求积公式具有 $2 n+1$ 次代数精度，则称其节点 $x_{k}(k=0,1,\cdots,n)$ 是 <strong>Gauss 点</strong></p>
 <ul>
-<li>对于插值型求积公式，其节点 $x_{k}(k=0,1,\cdots,n)$ 是 $Gauss$ 点的<strong>充分必要条件</strong>，是以这些点为零点的多项式 $\omega(x)=\prod_{k=0}^{n}\left(x-x_{k}\right)$ 与任意次数不超过 $n$ 的多项式 $P(x)$ 均正交，即<script type="math/tex; mode=display">
+<li>对于插值型求积公式，其节点 $x_{k}(k=0,1,\cdots,n)$ 是 Gauss 点的<strong>充分必要条件</strong>，是以这些点为零点的多项式 $\omega(x)=\prod_{k=0}^{n}\left(x-x_{k}\right)$ 与任意次数不超过 $n$ 的多项式 $P(x)$ 均正交，即<script type="math/tex; mode=display">
 \int_{a}^{b} P(x) \omega(x) \mathrm{d} x=0</script></li>
 </ul>
 <h4 id="Gauss-Legendre-公式"><a href="#Gauss-Legendre-公式" class="headerlink" title="Gauss-Legendre 公式"></a>Gauss-Legendre 公式</h4><p>不失一般性，可取 $a=-1,b=1$ 而考察区间 $[-1,1]$ 上的 Gauss 公式。显然，Legendre 多项式 $P_{n+1}(x)$ 的零点就是求积公式的 Gauss 点。这样子的 Gauss 公式特别地称为 <strong>Gauss-Legendre 公式</strong>。</p>
@@ -1891,7 +1900,7 @@ y_{n+1}=y_{n}+\frac{h}{2}\left[f\left(x_{n},y_{n}\right)+f\left(x_{n+1},y_{n+1}\
 \left\{\begin{array}{l}
 y_{n+1}^{(0)}=y_{n}+h f\left(x_{n},y_{n}\right),\\
 y_{n+1}^{(k+1)}=y_{n}+\frac{h}{2}\left[f\left(x_{n},y_{n}\right)+f\left(x_{n+1},y_{n+1}^{(k)}\right)\right]
-\end{array}(k=0,1,2,\cdots)\right.</script><h3 id="改进的欧拉格式"><a href="#改进的欧拉格式" class="headerlink" title="改进的欧拉格式"></a>改进的欧拉格式</h3><p>先用欧拉格式求得一个初步的近似值 $\bar{y}_{n+1}$，称之为预测值 $.$ 预测值 $\bar{y}_{n+1}$ 的精度可能很差，再用梯形公式（ $5.2.8$ ）将它校正一次，即按式（ $5.2.9$ ）迭代一次，得 $y_{n+1}$，这个结果称为校正值 $.$ 而这样建立的预测 $-$ 校正系统通常称为改进的欧拉格式：</p>
+\end{array}(k=0,1,2,\cdots)\right.</script><h3 id="改进的欧拉格式"><a href="#改进的欧拉格式" class="headerlink" title="改进的欧拉格式"></a>改进的欧拉格式</h3><p>先用欧拉格式求得一个初步的近似值 $\bar{y}_{n+1}$，称之为预测值。预测值 $\bar{y}_{n+1}$ 的精度可能很差，再用梯形公式将它校正一次，得 $y_{n+1}$，这个结果称为校正值。而这样建立的预测-校正系统通常称为改进的欧拉格式：</p>
 <script type="math/tex; mode=display">
 \left\{\begin{array}{c}
 \bar{y}_{n+1}=y_{n}+h f\left(x_{n},y_{n}\right),\\
@@ -2154,7 +2163,7 @@ x \neq 0}} \frac{(\boldsymbol{A} x,\boldsymbol{x})}{(\boldsymbol{x},\boldsymbol{
 \end{array} \quad(k=1,2,\cdots) \right.</script><p>迭代向量 $\boldsymbol{v}_{k}$ 可以通过解方程组 $\boldsymbol{A} \boldsymbol{v}_{k}=\boldsymbol{u}_{k-1}$ 求得。</p>
 <p>对任何初始非零向量 $\boldsymbol{u}_{0}=\boldsymbol{v}_{0} \quad\left(a_{n} \neq 0\right)$，由反幂法构造的向量序列 $\left\{\boldsymbol{v}_{k}\right\},\left\{\boldsymbol{u}_{k}\right\}$ 满足</p>
 <script type="math/tex; mode=display">
-\lim _{k \rightarrow \infty} \boldsymbol{u}_{k}=\frac{\boldsymbol{x}_{n}}{\max \left(\boldsymbol{x}_{n}\right)},\quad \operatorname{limax}_{k \rightarrow \infty} \max \left(\boldsymbol{v}_{k}\right)=\frac{1}{\lambda_{n}}</script><p>收敛速度的比值为 $\left|\frac{\lambda_{n}}{\lambda_{n-1}}\right|$</p>
+\lim _{k \rightarrow \infty} \boldsymbol{u}_{k}=\frac{\boldsymbol{x}_{n}}{\max \left(\boldsymbol{x}_{n}\right)},\quad \lim_{k \rightarrow \infty} \max \left(\boldsymbol{v}_{k}\right)=\frac{1}{\lambda_{n}}</script><p>收敛速度的比值为 $\left|\frac{\lambda_{n}}{\lambda_{n-1}}\right|$</p>
 <h4 id="原点平移加速"><a href="#原点平移加速" class="headerlink" title="原点平移加速"></a>原点平移加速</h4><p>设 $\boldsymbol{A} \in \mathbf{R}^{n \times n}$ 有 $n$ 个线性无关的特征向量，$\boldsymbol{A}$ 的特征值及对应的特征向量记作 $\lambda_{i}$ 及 $\boldsymbol{x}_{i}(i=1,2,\cdots,n)$。$p$ 为 $\lambda_{j}$ 的近似值，$(\boldsymbol{A}-p \boldsymbol{I})^{-1}$ 存在，且 $\left|\lambda_{j}-p\right|&lt;\left|\lambda_{i}-p\right|(i \neq j)$，$\boldsymbol{u}_{0}=\sum_{i=1}^{n} a_{i} x_{i} \neq 0$ 为给定的初始向量 $\left(a_{i} \neq 0\right)$，则由反幂法迭代公式构造的向量序列 $\left\{\boldsymbol{v}_{k}\right\}$，$\left\{\boldsymbol{u}_{k}\right\}$ 满足</p>
 <script type="math/tex; mode=display">
 \begin{array}{c}
@@ -2251,7 +2260,11 @@ a^{(2)}_{n 2} & \cdots & a^{(2)}_{n n}
 0 & -\sigma_{2} & \cdots & a^{(3)}_{2 n} \\
 \vdots & \vdots & & \vdots \\
 0 & 0 & \cdots & a^{(3)}_{n n}
-\end{array}\right)</script><p>依次计算，最终可以得到 $\boldsymbol{A}=\boldsymbol{Q}\boldsymbol{R}$，其中 $\boldsymbol{Q}^{\mathrm{T}} = \boldsymbol{H}_{n-1}\boldsymbol{H}_{n-2}\cdots\boldsymbol{H}_{1}$ 是一个正交阵，$\boldsymbol{R}$ 是一个上三角阵。这样的方法叫做 QR 分解，QR 分解是唯一的。</p>
+\end{array}\right)</script><p>依次计算，最终可以得到 $\boldsymbol{A}=\boldsymbol{Q}\boldsymbol{R}$，其中 $\boldsymbol{Q}^{\mathrm{T}} = \boldsymbol{H}_{n-1}\boldsymbol{H}_{n-2}\cdots\boldsymbol{H}_{1}$ 是一个正交阵，$\boldsymbol{R}$ 是一个上三角阵。</p>
+<ul>
+<li>QR 分解永远存在（只要 $\boldsymbol{A}$ 是方阵）</li>
+<li>QR 分解唯一的条件是 $\boldsymbol{A}$ 满秩，且主对角元符号要唯一</li>
+</ul>
 <h3 id="QR-算法"><a href="#QR-算法" class="headerlink" title="QR 算法"></a>QR 算法</h3><p>设 $\boldsymbol{A}=\boldsymbol{A}_{1}=\left(a_{i j}\right) \in \mathbf{R}^{n \times n}$，且对 $\boldsymbol{A}$ 进行 $Q R$ 分解，即 $\boldsymbol{A}=\boldsymbol{Q R}$，其中 $\boldsymbol{R}$ 为上三角阵，$\boldsymbol{Q}$ 为正交阵，于是可得到一新矩阵</p>
 <script type="math/tex; mode=display">
 \boldsymbol{B}=\boldsymbol{R} \boldsymbol{Q}=\boldsymbol{Q}^{\mathrm{T}} \boldsymbol{A} \boldsymbol{Q}</script><p>显然，$\boldsymbol{B}$ 是由 $\boldsymbol{A}$ 经过正交相似变换得到，因此 $\boldsymbol{B}$ 与 $\boldsymbol{A}$ 特征值相同。再对 $\boldsymbol{B}$ 进行 QR 分解，又可得一新的矩阵，重复这过程可得到矩阵序列。</p>
